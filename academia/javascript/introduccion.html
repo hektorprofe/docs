@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+  <head>
+    
+    
+    
+    
+
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Aprende lo fundamental de este poderoso lenguaje utilizado tanto para desarrollo frontend como para backend.">
+      
+      
+        <link rel="canonical" href="https://hektorprofe.github.io/docs.hektorprofe.net/academia/javascript/introduccion.html">
+      
+      
+        <meta name="author" content="Héctor Costa Guzman">
+      
+      <link rel="shortcut icon" href="/favicon.ico">
+    
+    
+      
+        <title>Introducción | JavaScript | Academia | Hektor Profe</title>
+      
+    
+    <link rel="stylesheet" href="../../assets/stylesheets/application.2.css">
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    
+    <link rel="stylesheet" href="/assets/stylesheets/tingle.min.css">
+<style>
+@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
+[data-md-color-primary="grey"] .md-header { background-color: #191A1D }
+[data-md-color-primary="grey"] .md-tabs { background-color: #222831 }
+.md-footer-nav { background-color: #222831; }
+.md-footer-meta { background-color: #191A1D }
+html [data-md-color-primary="grey"] .md-nav--primary .md-nav__title--site { background-color: #191A1D; }
+.mini{ display: none; } .maxi{ display: block; }
+.embed-container { position: relative; padding-bottom: 56.25%;height: 0; overflow: hidden; max-width: 100%; height: auto; margin-bottom: 0; } 
+.embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.md-nav__link:focus, .md-nav__link:hover { color: #018dc5; }
+.headerlink{ color: #018dc5 !important; }
+.md-footer-links__highlight a{ color: #777 !important; }
+.md-footer-links__highlight a:hover{ color: #ddd !important; }
+.visible{ display: inherit !important; }
+/*.md-tabs { display: none !important; }*/
+.nav__btn, .nav__logo{ transition: 0.3s; }
+.nav__btn:hover{ color: #aaa; }
+.nav__logo:hover{ opacity:.7; }
+.nav__logo {max-width: 225px !important; }
+img:not([src]){visibility:hidden;}
+img.click{opacity: 0.96;box-shadow:rgb(79, 82, 92) -4px 4px}
+img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
+.button { background-color: #36bf2d; border: none; color: white !important; padding: 20px 0px; text-align: center; text-decoration: none; display: block; font-size: 97%; width: 100%; font-weight: bold;}
+.button:hover { background-color: #4CAF50; color: white; }
+.animated.delay-1dot5s {animation-delay: 1.5s;}
+.md-icon--search { display:inline-block!important}
+a.headerlink{ display: none !important; }
+small.edited { display: block; text-align: right; }
+#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
+#cookie-bar-prompt-logo{ display: none !important; }
+div.my-img{text-align:center;margin-top:20px}
+@media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
+@media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
+@media (min-width: 1999.9px){ .md-header-nav__button.md-logo img { height: 40px !important; width: 240px; } }
+/* Rectificación footer en paginas pequeñas de altura */
+@media (max-width: 1599.8px){ .md-container {height: calc(100% - 48px)} }
+@media (min-width: 1599.9px){ .md-container {height: calc(100% - 53px)} }
+@media (min-width: 1999.9px){ .md-container {height: calc(100% - 58px)} }
+@media only screen and (max-width: 959.9px) { .nav__logo { display: block !important; }} 
+@media only screen and (min-width: 960px) and (max-width: 76.1875em) { .nav__logo { display: block !important; }} 
+@media only screen and (min-width: 76.1875em) { .nav__logo { display: none !important; } } 
+@media only screen and (max-width: 76.1875em) { .md-sidebar--primary { left: -26.2rem;; width: 26.2rem; }  [data-md-toggle="drawer"]:checked ~ .md-container .md-sidebar--primary { -webkit-transform: translateX(26.2rem); transform: translateX(26.2rem); } [dir="rtl"] [data-md-toggle="drawer"]:checked ~ .md-container .md-sidebar--primary { -webkit-transform: translateX(-26.2rem); transform: translateX(-26.2rem); } }
+@media (min-width: 1219.9px){ #home__btn { display: none !important; } #cursos__btn{ color: white !important; } [data-md-color-primary="grey"] .md-nav__link--active{ color: rgba(0, 0, 0, 0.87); text-decoration: underline !important; } }
+@media (min-width: 467.9px){ #discord__btn{ display: inline-block !important; } }
+@media only screen and (min-width: 60em){ .md-search__input { background-color: rgb(53, 54, 56); } .md-search__input:hover { background-color: rgb(84, 87, 93); color: white; }}
+@media (max-width: 1219.9px){ .md-header-nav__title{ padding: 0 1rem; } .nav__btn {display:none;} }
+@media (max-width: 875.9px){ #cookie-bar-button{ margin-top: 20px !important; }}
+@media (max-width: 719.9px){ #cookie-bar { padding: 3.25rem 1.25rem; }}
+@media (max-width: 512.9px){ #cookie-bar { padding: 2rem 1.25rem; }}
+
+.tingle-modal { font-size:18px !important;}
+.tingle-modal-box{ width: 80%; max-width: 1100px; }
+.tingle-btn--danger{ background: darkorange !important; }
+.tingle-modal-box__content { padding: 3rem 2rem 3rem 3rem;}
+@media (max-width: 540px){ .tingle-modal-box{ width: auto; } }
+@media (max-width: 849px){ #supermodal{ grid-template-columns:100% !important; }}
+
+.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 275px - 60px)}
+@media (max-width: 1999.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 246px - 60px);margin-right:-1px;}}
+@media (max-width: 1599.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 222px - 60px)}}
+
+</style>
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="grey" data-md-color-accent="grey">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#introduccion-a-javascript" tabindex="1" class="md-skip">
+        Saltar a contenido
+      </a>
+    
+    
+      <header
+  class="md-header"
+  data-md-component="header"
+  style="position: inherit !important"
+>
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a
+          href="/"
+          title="Hektor Profe"
+          class="md-header-nav__button md-logo"
+          style="font-size: 0px"
+        >
+          <img
+            src="/assets/images/logo.png"
+            width="200px"
+            height="35px"
+            style="margin-top: -5px"
+            alt="Hektor Profe"
+            title="Hektor Profe"
+          />
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label
+          class="md-icon md-icon--menu md-header-nav__button"
+          for="__drawer"
+        ></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div
+          class="md-flex__ellipsis md-header-nav__title"
+          data-md-component="title"
+          style="text-align: right"
+        >
+          <!-- https://fontawesome.com/v4.7.0/ -->
+          <a 
+            class="nav__btn" 
+            href="https://www.hektorprofe.net/" 
+            style="margin-left:0em;" 
+            title="Cursos de Hektor Profe">
+            Cursos
+          </a>
+          <a 
+            class="nav__btn" 
+            href="https://docs.hektorprofe.net/" 
+            style="margin-left:1.4em;" 
+            title="Documentos de Hektor Profe">
+            Documentos
+          </a>
+          <a 
+            class="nav__btn" 
+            href="https://www.hektorprofe.net/portafolio/" 
+            style="margin-left:1.4em;" 
+            title="Portafolio de Hektor Profe">
+            Portafolio
+          </a>
+          <a href="/"
+            ><img
+              class="nav__logo"
+              src="/assets/images/logo.png"
+              width="200px"
+              height="35px"
+              style="margin: 6px auto 0"
+              alt="Hektor Profe"
+              title="Hektor Profe"
+          /></a>
+        </div>
+        <style>
+          .md-sidebar[data-md-state="lock"] {
+            top: 0rem !important;
+          }
+          .md-tabs {
+            display: none !important;
+          }
+          .hde {
+            display: inline-block;
+          }
+          .admonition.note > .superfences-tabs > label:hover,
+          .headerlink {
+            color: #018dc5 !important;
+          }
+          .admonition.info {
+            font-size: 100%;
+          }
+          .admonition.info label {
+            font-size: 91%;
+          }
+          .admonition.note > .admonition-title {
+            display: none;
+          }
+          .image {
+            text-align: center;
+            margin-top: 25px;
+          }
+          .contenedor_youtube {
+            position: relative !important;
+            padding-bottom: 56.25% !important; /*panorámico*/
+            padding-top: 0px !important;
+            height: 0 !important;
+            margin-top: -20px;
+            margin-bottom: 25px;
+          }
+          .contenedor_youtube iframe {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+          }
+        </style>
+      </div>
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container" style="padding-top: 0px !important;">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list" id="top__tabs">
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+      </ul>
+    </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container" style="padding-top: 8px !important;">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap" id="md__sidebar__scroll">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title" for="__drawer" style="padding:0 !important;max-height:5.5rem;"></label>
+  
+  <ul class="md-nav__list" id="main__list" data-md-scrollfix>
+    
+      
+    
+        <!-- comprobación extra -->
+         
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Academia de programación
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Academia de programación
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../index.html" title="Índice del archivo" class="md-nav__link">
+      Índice del archivo
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../python/introduccion.html" title="Python para principiantes" class="md-nav__link">
+      Python para principiantes
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../python/poo-para-interfaces-graficas.html" title="Python para interfaces gráficas" class="md-nav__link">
+      Python para interfaces gráficas
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../python/proyecto-gestor-clientes.html" title="Gestor de clientes con Python" class="md-nav__link">
+      Gestor de clientes con Python
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../python/tutoriales.html" title="Más tutoriales sobre Python" class="md-nav__link">
+      Más tutoriales sobre Python
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../python/modulo-analitico-numpy.html" title="Módulo analítico NumPy" class="md-nav__link">
+      Módulo analítico NumPy
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../python/modulo-grafico-matplotlib.html" title="Módulo gráfico Matplotlib" class="md-nav__link">
+      Módulo gráfico Matplotlib
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../django/introduccion.html" title="Django para principiantes" class="md-nav__link">
+      Django para principiantes
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../django/api-rest-framework.html" title="Server API pelis en Django Rest" class="md-nav__link">
+      Server API pelis en Django Rest
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../django/tutoriales.html" title="Más tutoriales sobre Django" class="md-nav__link">
+      Más tutoriales sobre Django
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        JavaScript para principiantes
+      </label>
+    
+    <a href="introduccion.html" title="JavaScript para principiantes" class="md-nav__link md-nav__link--active" id="md__active_link">
+      JavaScript para principiantes
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-javascript" title="Qué es JavaScript" class="md-nav__link toc__link">
+    Qué es JavaScript
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-se-puede-crear-con-el" title="¿Qué se puede crear con él?" class="md-nav__link toc__link">
+    ¿Qué se puede crear con él?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-se-ejecuta" title="¿Cómo se ejecuta?" class="md-nav__link toc__link">
+    ¿Cómo se ejecuta?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-es-ecmascript" title="¿Qué es ECMAScript?" class="md-nav__link toc__link">
+    ¿Qué es ECMAScript?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primer-contacto" title="Primer contacto" class="md-nav__link toc__link">
+    Primer contacto
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configurando-el-entorno" title="Configurando el entorno" class="md-nav__link toc__link">
+    Configurando el entorno
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejecucion-en-el-navegador" title="Ejecución en el navegador" class="md-nav__link toc__link">
+    Ejecución en el navegador
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#separando-el-codigo" title="Separando el código" class="md-nav__link toc__link">
+    Separando el código
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejecucion-en-nodejs" title="Ejecución en Node.js" class="md-nav__link toc__link">
+    Ejecución en Node.js
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables" title="Variables" class="md-nav__link toc__link">
+    Variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constantes" title="Constantes" class="md-nav__link toc__link">
+    Constantes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipos-primitivos" title="Tipos primitivos" class="md-nav__link toc__link">
+    Tipos primitivos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipado-dinamico" title="Tipado dinámico" class="md-nav__link toc__link">
+    Tipado dinámico
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetos" title="Objetos" class="md-nav__link toc__link">
+    Objetos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-un-objeto" title="¿Qué es un objeto?" class="md-nav__link toc__link">
+    ¿Qué es un objeto?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arreglos" title="Arreglos" class="md-nav__link toc__link">
+    Arreglos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funciones" title="Funciones" class="md-nav__link toc__link">
+    Funciones
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funciones-con-retorno" title="Funciones con retorno" class="md-nav__link toc__link">
+    Funciones con retorno
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="conversor-divisas.html" title="Conversor de divisas en JS" class="md-nav__link">
+      Conversor de divisas en JS
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="biblioteca-p5js.html" title="Introducción a P5.js" class="md-nav__link">
+      Introducción a P5.js
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="nodejs.html" title="Introducción a Node.js" class="md-nav__link">
+      Introducción a Node.js
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="chat-heroku.html" title="Chat online con Node.js" class="md-nav__link">
+      Chat online con Node.js
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="cliente-nuxt.html" title="Cliente API pelis en Nuxt.js" class="md-nav__link">
+      Cliente API pelis en Nuxt.js
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../gnu-linux/ubuntu-server-web.html" title="Configurar Ubuntu Server" class="md-nav__link">
+      Configurar Ubuntu Server
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </ul>
+</nav>
+
+                  </div>
+                </div>
+              </div>
+            
+
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                
+                  
+                    <div class="course-offer" style="margin-bottom:25px;padding:0px 10px;">
+                      <a href="https://www.hektorprofe.net/cupon/python" target="_blank">
+                        <img src="/cdn/assets/python.png" style="width:100%;justify-self:center;align-self:center;"/>
+                      </a>
+                    </div>
+                  
+                
+
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-javascript" title="Qué es JavaScript" class="md-nav__link toc__link">
+    Qué es JavaScript
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-se-puede-crear-con-el" title="¿Qué se puede crear con él?" class="md-nav__link toc__link">
+    ¿Qué se puede crear con él?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-se-ejecuta" title="¿Cómo se ejecuta?" class="md-nav__link toc__link">
+    ¿Cómo se ejecuta?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-es-ecmascript" title="¿Qué es ECMAScript?" class="md-nav__link toc__link">
+    ¿Qué es ECMAScript?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primer-contacto" title="Primer contacto" class="md-nav__link toc__link">
+    Primer contacto
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configurando-el-entorno" title="Configurando el entorno" class="md-nav__link toc__link">
+    Configurando el entorno
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejecucion-en-el-navegador" title="Ejecución en el navegador" class="md-nav__link toc__link">
+    Ejecución en el navegador
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#separando-el-codigo" title="Separando el código" class="md-nav__link toc__link">
+    Separando el código
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejecucion-en-nodejs" title="Ejecución en Node.js" class="md-nav__link toc__link">
+    Ejecución en Node.js
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables" title="Variables" class="md-nav__link toc__link">
+    Variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constantes" title="Constantes" class="md-nav__link toc__link">
+    Constantes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipos-primitivos" title="Tipos primitivos" class="md-nav__link toc__link">
+    Tipos primitivos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipado-dinamico" title="Tipado dinámico" class="md-nav__link toc__link">
+    Tipado dinámico
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetos" title="Objetos" class="md-nav__link toc__link">
+    Objetos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-un-objeto" title="¿Qué es un objeto?" class="md-nav__link toc__link">
+    ¿Qué es un objeto?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arreglos" title="Arreglos" class="md-nav__link toc__link">
+    Arreglos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funciones" title="Funciones" class="md-nav__link toc__link">
+    Funciones
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funciones-con-retorno" title="Funciones con retorno" class="md-nav__link toc__link">
+    Funciones con retorno
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="introduccion-a-javascript">Introducción a JavaScript<a class="headerlink" href="#introduccion-a-javascript" title="Permanent link">&para;</a></h1>
+<div class="contenedor_youtube">
+  <iframe id="odysee-iframe" width="560" height="315" src="https://odysee.com/$/embed/-Curso--JavaScript-para-principiantes/95740f48927a8cb7d76849b8867cf1db0c0fceb0?r=3icueB68NV3UEFHyqs2QRfzRUeABmHDU" allowfullscreen></iframe>
+</div>
+
+<p>Si te interesa aprender este lenguaje pero no sabes muy bien por dónde empezar, en este pequeño curso comparto contigo los primeros pasos que debes seguir para configurar tu entorno de desarrollo, crear tus primeros scripts y los tipos de datos básicos del lenguaje.</p>
+<p>Independientemente del uso que quieras darle al lenguaje estos son los fundamentos que deben quedarte claros desde el principio, ya que estarás utilizándolos durante todo el tiempo.</p>
+<p>Además haremos un breve repaso del uso que se le da profesionalmente para que no te quede ninguna duda antes de lanzarte a la piscina.</p>
+<h2 id="que-es-javascript">Qué es JavaScript<a class="headerlink" href="#que-es-javascript" title="Permanent link">&para;</a></h2>
+<p>JavaScript es uno de los lenguajes más famosos y utilizados del mundo, de hecho en perspectiva es el que tiene un crecimiento más constante y muchas grandes empresas como Netflix y Paypal lo utilizan para desarrollar sus aplicaciones.</p>
+<p>Es sinónimo de empleo, tanto en el presente como en el futuro, ya que con él es posible especializarse en diferentes ramas:</p>
+<ul>
+<li>Desarrollador Front-end</li>
+<li>Desarrollador Back-end</li>
+<li>Desarrollador Full-Stack (ambas)</li>
+</ul>
+<h3 id="que-se-puede-crear-con-el">¿Qué se puede crear con él?<a class="headerlink" href="#que-se-puede-crear-con-el" title="Permanent link">&para;</a></h3>
+<p>Por mucho tiempo JavaScript fue utilizando únicamente en los navegadores para crear webs interactivas. Algunos desarrolladores se refirieron a él como un lenguaje pobre pero esos días quedaron atrás gracias al gran apoyo de su comunidad y a las inversiones de grandes compañías como Google y Facebook.</p>
+<p>Actualmente JavaScript se puede utilizar para desarrollar:</p>
+<ul>
+<li>Aplicaciones web</li>
+<li>Aplicaciones móviles</li>
+<li>Aplicaciones con comunicación en tiempo real (chats, streaming...)</li>
+<li>Scripts y herramientas para la línea de comandos</li>
+<li>Videojuegos, tanto en 2D como 3D</li>
+</ul>
+<h3 id="como-se-ejecuta">¿Cómo se ejecuta?<a class="headerlink" href="#como-se-ejecuta" title="Permanent link">&para;</a></h3>
+<p>Originalmente JavaScript se ideó para funcionar únicamente en navegadores, de manera que estos requerían incluir un motor para ejecutar su código. Por  ejemplo, el motor JavaScript de Firefox es el denominado SpiderMonkey y el de Chrome se llama v8.</p>
+<p>Os cuento todo esto porque en 2009 un ingeniero llamado Ryan Dahl (~Döl) tomó el código open source del motor JavaScript de Chrome y lo embebió dentro de un programa de C++ al que llamó Node. En otras palabras, Node es un programa que incluye el motor v8 y nos permite ejecutar código JavaScript fuera del navegador. Esto hizo que JavaScript diera un salto, pasando de ser un lenguaje de frontend a un lenguaje todoterreno capaz de dar respuesta a todo tipo de necesidades.</p>
+<h3 id="que-es-ecmascript">¿Qué es ECMAScript?<a class="headerlink" href="#que-es-ecmascript" title="Permanent link">&para;</a></h3>
+<p>Pues ECMAScript es sólo una especificación, mientras que JavaScript es un lenguaje de programación que confirma esa especificación. Es la organización ECMA (European Computers Manufacturers Association) la que se ocupa de desarrollar los estándares que luego se implementarán en los motores que ejecutarán JavaScript.</p>
+<p>La primera especificación de ECMAScript (v1) se publicó en 1997, y aunque ha habido pequeñas revisiones, no fue hasta 2015 cuando se publicó la especificación ECMAScript 6, también conocida como ECMAScript 2015. Desde entonces cada año se lanza una nueva revisión añadiendo mejoras al lenguaje.</p>
+<p>Pero basta de tanta cháchara y vamos a practicar para que podáis experimentar un poco lo que ofrece este lenguaje.</p>
+<h2 id="primer-contacto">Primer contacto<a class="headerlink" href="#primer-contacto" title="Permanent link">&para;</a></h2>
+<p>Como ya sabemos para ejecutar Javascript sólo necesitamos un navegador. Chrome por ejemplo integra un entorno de ejecución en tiempo real donde podemos hacer algunas pruebas.</p>
+<p>Para abrirlo tenemos que acceder a la <strong>Consola</strong> de las <strong>Herramientas para desarrolladores</strong>, o haciendo clic derecho <strong>Inspeccionar</strong> en medio de una página.</p>
+<p>Probad lo siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hola mundo&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p>Con esa instrucción podemos mostrar un mensaje en la consola, es el típico print de todos los lenguajes.</p>
+<p>También podemos sumar dos números, como si fuera una calculadora:</p>
+<div class="highlight"><pre><span></span><code><span class="mf">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">2</span>
+</code></pre></div>
+<p>O interactuar con el navegador introduciendo este comando:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Hola mundo&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>Como bien comentamos en la lección anterior, Javascript se creó para añadir interactividad en las páginas web, ¿pero esto qué significa? </p>
+<p>Si conocéis HTML sabréis que este lenguaje describe una estructura utilizando marcas. Estas marcas crean jerarquías que el navegador transforma en una estructura dinámica y viva con la que podemos interactuar, esa estructura se denomina DOM, Document Object Model o árbol de componentes. </p>
+<p>Vamos a experimentar un poco con algunas instrucciones que nos permiten interactuar con el DOM del documento actual:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Nuevo título&quot;</span>
+</code></pre></div>
+<p>No siempre es tan fácil modificar los componentes del documento…</p>
+<div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Algo&quot;</span><span class="w"> </span><span class="c1">// Esto no funcionará</span>
+</code></pre></div>
+<p>Eso es debido a que la estructura del body es más compleja que el título:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Que tal&quot;</span>
+</code></pre></div>
+<p>Obviamente podemos poner contenido en lenguaje HTML:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;h1&gt;Cabecera de primer nivel&lt;/h1&gt;&quot;</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">&quot;&lt;p&gt;Esto es un parágrafo...&lt;/p&gt;&quot;</span>
+</code></pre></div>
+<p>Vamos a dejarlo por ahora porque tampoco quiero abrumaros, además estoy seguro de que con esto ya empezáis a haceros una idea de lo que JavaScript nos permite hacer.</p>
+<h2 id="configurando-el-entorno">Configurando el entorno<a class="headerlink" href="#configurando-el-entorno" title="Permanent link">&para;</a></h2>
+<p>Si queremos escribir código Javascript, necesitamos un editor de código. Algunos editores muy extendidos hoy en día pueden ser:</p>
+<ul>
+<li>Visual Studio Code</li>
+<li>Sublime Text</li>
+<li>Atom</li>
+</ul>
+<p>Hay muchos más pero mi favorito es VSCode, que se puede descargar desde <a href="https://code.visualstudio.com">su web oficial</a>. Es simple de utilizar, ligero y multiplataforma, es el que utilizaré en el curso así que podéis descargarlo e instalarlo siguiendo los pasos.</p>
+<p>Lo segundo que necesitamos para tener un buen entorno de trabajo es Node, que se puede descargar desde <a href="https://nodejs.org">su web oficial</a>. Estrictamente no es necesario, pero es muy útil tenerlo para instalar librerías de terceros usando su gestor de paquetes npm.</p>
+<p>Pausad el vídeo y tomaros vuestro tiempo para instalar Node, la versión LTS os servirá perfectamente; cuando lo tengáis seguiremos configurando un poco VSCode.</p>
+<p>Para configurar VSCode vamos a hacerlo con un nuevo proyecto. Simplemente es necesario crear un directorio (por ejemplo <strong>curso-js</strong>) y lo abriremos con VSCode. </p>
+<p>Añadiremos un nuevo fichero llamado <em>index.html</em>, se supone que ya deberéis saber un poco de HTML así que no os extrañará esta parte. Ahora podemos escribir un <strong>!</strong> y presionar el tabulador, eso generará una plantilla HTML predefinida, también se puede escribir <strong>html:5</strong>:</p>
+<p><code>index.html</code>
+<div class="highlight"><pre><span></span><code>!DOCTYPE html&gt;
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;ie=edge&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Document<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div></p>
+<p>Guardamos… y ahora vamos a instalar una extensión llamada <strong>Live Server</strong> que nos servirá para ver y actualizar en tiempo real los cambios en nuestras páginas HTML.</p>
+<p>Una vez instalada y habiendo recargado VSCode si es necesario, podemos hacer clic derecho en el <strong>index.html</strong> y abrirlo en el Live Server.</p>
+<p>Ahora si escribimos algo de código en el body, debería mostrarse automáticamente en el navegador al guardar el fichero:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hola mundo<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</code></pre></div>
+<h2 id="ejecucion-en-el-navegador">Ejecución en el navegador<a class="headerlink" href="#ejecucion-en-el-navegador" title="Permanent link">&para;</a></h2>
+<p>Ya lo tenemos todo preparado para escribir nuestro código JavaScript, ¿cómo y dónde lo hacemos?</p>
+<ul>
+<li>HTML integra una etiqueta llamada <strong>script</strong>, ella es la encargada de contener el código JavaScript. </li>
+<li>En cuanto al dónde, hay dos lugares posibles: dentro de la cabecera <strong>head</strong> o dentro del <strong>body</strong>. </li>
+<li>Lo más recomendable es añadirlo al final del body, justo después de todo el contenido. Hay dos razones para ello: <ul>
+<li>La primera es que el navegador ejecuta el código de arriba hacia abajo, por lo que si ponemos el script en la cabecera, en el caso en que tengamos mucho código, el navegador no seguirá renderizando la web hasta que no haya procesado todo ese código y eso podría afectar negativamente a la experiencia de los usuarios. </li>
+<li>La segunda es la propia naturaleza de Javascript, y es que como explicamos antes está pensado para interactuar con el DOM. El problema es que para hacer referencia a esos elementos, estos tienen que haberse creado antes. En otras palabras, si por ejemplo ejecutamos un código para interactuar con un campo de texto, si ese campo no se ha renderizado no podremos interactuar con él. Solo podemos interactuar con los elementos HTML definidos antes del bloque <strong>script</strong>, y por eso poniéndolo al final estaremos seguro de que existen todos y podemos interactuar con cualquier elemento de la página.</li>
+</ul>
+</li>
+</ul>
+<p><code>index.html</code>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hola mundo<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</code></pre></div></p>
+<p>Es importante comentar que hay un caso excepcional donde sí se está bien definir un bloque script en la cabecera antes del body, relacionado con la carga de recursos y librerías de terceros, pero de eso ya hablaremos más adelante.</p>
+<p>Por ahora vamos a intentar ejecutar algo simple:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="c1">// Esto es un comentario</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hola mundo&#39;</span><span class="p">);</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>Si volvemos al navegador ya nos debería aparecer el mensaje en la consola del inspector.</p>
+<h2 id="separando-el-codigo">Separando el código<a class="headerlink" href="#separando-el-codigo" title="Permanent link">&para;</a></h2>
+<p>Organizar el código es fundamental para crear aplicaciones escalables y bien ordenadas, de ahí que no sea necesario escribir todo nuestro código en el propio HTML, podemos escribirlo en sus propios ficheros y cargarlos como si fueran librerías de código.</p>
+<p>Vamos a crear un fichero <strong>index.js</strong> en nuestro proyecto y dentro escribiremos el código javascript sin las etiquetas:</p>
+<p><code>index.js</code> 
+<div class="highlight"><pre><span></span><code><span class="c1">// Esto es un comentario</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hola mundo&#39;</span><span class="p">);</span>
+</code></pre></div></p>
+<p>Ahora podemos cambiar lo que teníamos antes y cargar este fichero con su contenido de la siguiente forma:</p>
+<p><code>index.html</code>
+<div class="highlight"><pre><span></span><code>  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;index.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</code></pre></div></p>
+<p>Funcionará exactamente igual que antes, pero habremos separado el código, dejando el HTML con la maquetación y el scripts JS para la lógica de JavaScript.</p>
+<h2 id="ejecucion-en-nodejs">Ejecución en Node.js<a class="headerlink" href="#ejecucion-en-nodejs" title="Permanent link">&para;</a></h2>
+<p>Al haber separado el código, hemos conseguido un script que se puede ejecutar también a través de Node.js. Para probarlo tendremos que abrir una terminal, navegador al directorio y ejecutar el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code>node<span class="w"> </span>index.js
+</code></pre></div>
+<p>Así le pasaremos a node el scripts y éste ejecutará el contenido usando el motor v8 de Google.</p>
+<p>Si hacemos uso de VSCode esto se simplifica gracias a la terminal integrada, ya que podremos ejecutar el código cómodamente ahí.</p>
+<h2 id="variables">Variables<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h2>
+<p>Empezamos nuestro recorrido por los conceptos fundamentales hablando del más importante, no sólo de Javascript sino de cualquier lenguaje: las variables.</p>
+<p>Programar sirve esencialmente para manipular datos o información, y para manipularlos muchas veces necesitaremos almacenarlos.</p>
+<p>Utilizamos las variables para almacenar esos datos temporalmente en la memoria de los ordenadores. Así pues, una variable no es más que un nombre que damos a un espacio de la memoria donde guardaremos algunos datos. La clave está en que mientras tengamos el nombre de la variable siempre podremos acceder a la información que contiene.</p>
+<p>Tradicionalmente en JavaScript se utiliza la palabra reservada <strong>var</strong> para declarar una variable, pero desde ES6 también se puede usar <strong>let</strong>. Su diferencia radica en los ámbitos que abarcan: <strong>var</strong> afecta al ámbito de la función y <strong>let</strong> al bloque, no quiero entrar en detalles para no liaros, si tenéis curiosidad así que os dejaré <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/let">un enlace</a> donde se explican en detalle.</p>
+<p>Sea como sea vamos a crear una variable en el <strong>index.js</strong> usando <strong>let</strong> para irnos acostumbrando:</p>
+<p><code>index.js</code>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">nombre</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">nombre</span><span class="p">);</span>
+</code></pre></div></p>
+<p>Al ejecutarse este código veremos que el resultado es <strong>undefined</strong>, no definido. Esto nos indica que no tiene un valor asignado, así que vamos a darle uno. Podemos hacerlo inicializando la variable durante la declaración:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Héctor&#39;</span><span class="p">;</span><span class="w">  </span><span class="c1">// tipo texto =&gt; cadena de caracteres =&gt; string</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">nombre</span><span class="p">);</span>
+</code></pre></div>
+<p>Las cadenas son un tipo de datos pueden declararse de varias formas, normalmente limitando el texto entre comillas simples o dobles.</p>
+<p>Así que hemos declarado una variable llamada nombre que contiene información de tipo texto.</p>
+<p>Es importante comentar que no se puede ni se debe establecer cualquier nombre para una variable, hay que seguir algunas reglas y buenas prácticas:</p>
+<ol>
+<li>No se puede usar de nombre una palabra reservada. Éstas forman parte de la sintaxis del lenguaje, por ejemplo let, var, if, for… No os preocupéis porque el propio editor os indicará un fallo si da la casualidad que habéis puesto un nombre reservado.</li>
+<li>No pueden comenzar con un número.</li>
+<li>No pueden contener espacios ni guiones, aunque sí guiones bajos, pero por convención es recomendable usar la notación camel case:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">primerApellido</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">segundoApellido</span><span class="p">;</span>
+</code></pre></div>
+<ol>
+<li>Deberían tener nombres descriptivos que den información contextual. Por ejemplo, nombres como a, b, x… no nos dan ninguna información y eso puede llevarnos a confusiones.</li>
+<li>Son case sensitive, es decir, las mayúsculas y minúsculas afectan directamente a la singularidad de las variables. Por ejemplo, no es lo mismo primerApellido que PrimerApellido, son dos variables diferentes. </li>
+<li>Por último, si bien se pueden declarar múltiples variables en una línea separándolas por comas:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">primerApellido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Costa&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">segundoApellido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Guzmán&#39;</span><span class="p">;</span>
+</code></pre></div>
+<p>Es más recomendable hacerlo en dos para mejorar la legilibilidad:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">primerApellido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Costa&#39;</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">segundoApellido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Guzmán&#39;</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="constantes">Constantes<a class="headerlink" href="#constantes" title="Permanent link">&para;</a></h2>
+<p>Ya hemos visto lo que es una variable, pero lo que le da sentido al nombre es su capacidad de cambiar de valor en cualquier momento, es decir, de tener un valor variable.</p>
+<p>Tomemos una variable numérica llamada número con un valor de 50:</p>
+<p><code>index.js</code>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">numero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">50</span><span class="p">;</span><span class="w"> </span><span class="c1">// tipo número</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numero</span><span class="p">);</span>
+</code></pre></div></p>
+<p>Ahora supongamos que en un determinado momento necesitamos cambiar el 50 por otro número,, sería tan fácil como asignarlo con el igual, pero esta vez no necesitamos declarar la variable, sólo modificar el valor:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">numero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">50</span><span class="p">;</span>
+<span class="nx">numero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numero</span><span class="p">);</span>
+</code></pre></div>
+<p>Ahora bien, quizá en algún momento nos gustaría proteger el valor inicial de una variable para que no se pueda editar. Para lograr esa funcionalidad haríamos uso de las constantes:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">numero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">50</span><span class="p">;</span>
+<span class="nx">numero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numero</span><span class="p">);</span>
+</code></pre></div>
+<p>Al ejecutarse este código veremos un error en la consola <strong>TypeError: Assignment to constant variable</strong>. Tal como su nombre indica, un valor constante no puede cambiar, de ahí que de el error.</p>
+<h2 id="tipos-primitivos">Tipos primitivos<a class="headerlink" href="#tipos-primitivos" title="Permanent link">&para;</a></h2>
+<p>Ahora que sabemos como declarar e inicializar variables, es un buen momento para repasar los tipos de valores que podemos asignar a una variable en JavaScript. </p>
+<p>Ya  hemos visto las cadenas y los números, pero hay otros y además se organizan en dos tipos:</p>
+<ul>
+<li>Los tipos por valor o primitivos.</li>
+<li>Los tipos por referencia.</li>
+</ul>
+<p>Vamos a hablar de los primeros, los otros los tocaré en las siguientes lecciones.</p>
+<p>En la categoría de los tipos primitivos encontramos esencialmente 5:</p>
+<ul>
+<li>String (cadena)</li>
+<li>Number (número)</li>
+<li>Boolean (booleano)</li>
+<li>undefined (no definido)</li>
+<li>null (nulos)</li>
+</ul>
+<p>El sentido de los tipos cadenas y número es implícito, pues sirven para almacenar información de ese tipo:</p>
+<p><code>index.js</code>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Héctor&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// literal cadena</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">30</span><span class="p">;</span><span class="w"> </span><span class="c1">// literal número</span>
+</code></pre></div></p>
+<p>El tipo booleano o lógico podemos entenderlo como el sentido afirmativo o negativo de una sentencia. Únicamente puede tener dos valores true o false (verdadero o falso), que por cierto son palabras reservadas:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">llevoGafas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// literal booleano</span>
+</code></pre></div>
+<p>El tipo indefinido ya lo vimos anteriormente, es el valor que tiene por defecto una variable no inicializada, que también se puede asignar:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">apellido</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">apellido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">undefined</span><span class="p">;</span>
+</code></pre></div>
+<p>Por último el tipo nulo se utiliza para establecer un valor vacío en una variable, es decir, limpiar el valor pero dejando rastro de que la variable sí tuvo un valor anteriormente:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">apellido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Costa&#39;</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">apellido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">apellido</span><span class="p">);</span>
+</code></pre></div>
+<p>Y es que tenemos que entender que no es lo mismo el concepto de vacío que de indefinido. En el primero se entiende que ha habido o que habrá un valor, mientras que el otro indica que todavía no se ha asignado nada.</p>
+<p>En cualquier caso es una cosa que os iréis topando con la práctica, así que no os preocupéis demasiado por ello.</p>
+<h2 id="tipado-dinamico">Tipado dinámico<a class="headerlink" href="#tipado-dinamico" title="Permanent link">&para;</a></h2>
+<p>JavaScript, al igual que Python, es un lenguaje de tipado dinámico.</p>
+<p>Hay dos formas de tipado:</p>
+<ul>
+<li>Estático</li>
+<li>Dinámico</li>
+</ul>
+<p>En los lenguajes estáticos, cuando declaramos una variable es necesario especificar el tipo que tiene y ese tipo es inalterable:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">String</span><span class="w"> </span><span class="nx">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Héctor&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// java</span>
+</code></pre></div>
+<p>En cambio en lenguajes como JavaScript, no es necesario establecer un tipo y además puede cambiar en cualquier momento, eso es porque viene determinado en tiempo de ejecución por el valor asignado a la variable:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Héctor&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// javascript</span>
+</code></pre></div>
+<p>Podemos ver esto en acción desde la consola del navegador haciendo uso del operador <strong>typeof</strong>. Éste nos permite saber el tipo de una variable:</p>
+<div class="highlight"><pre><span></span><code><span class="ow">typeof</span><span class="w"> </span><span class="nx">nombre</span>
+
+<span class="o">&gt;</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
+</code></pre></div>
+<p>Como vemos inicialmente la variable nombre es de tipo string, pero si le asignamos un número cambiará:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span>
+<span class="ow">typeof</span><span class="w"> </span><span class="nx">nombre</span>
+
+<span class="o">&gt;</span><span class="w"> </span><span class="s2">&quot;number&quot;</span>
+</code></pre></div>
+<p>Algo interesante es que Javascript a diferencia de otros lenguajes no distingue explícitamente entre números enteros y flotantes como pasa en otros lenguajes. Si establecemos el valor…</p>
+<div class="highlight"><pre><span></span><code><span class="nx">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10.5</span>
+<span class="ow">typeof</span><span class="w"> </span><span class="nx">nombre</span>
+
+<span class="o">&gt;</span><span class="w"> </span><span class="s2">&quot;number&quot;</span>
+</code></pre></div>
+<p>Seguiremos teniendo un tipo number. </p>
+<p>Por cierto, notad que los decimales se escriben con un punto y no una coma, eso como siempre digo es "de facto" en casi todos los lenguajes, pues en inglés se escriben de esa forma.</p>
+<p>Experimentad vosotros mismos un poco más con los otros tipos.</p>
+<h2 id="objetos">Objetos<a class="headerlink" href="#objetos" title="Permanent link">&para;</a></h2>
+<p>Es hora de hablar de los tipos por referencia que dejamos pendientes. Dentro de esta categoría encontramos:</p>
+<ul>
+<li>Objetos</li>
+<li>Arreglos</li>
+<li>Funciones</li>
+</ul>
+<p>Así que vamos a empezar con los primeros.</p>
+<h2 id="que-es-un-objeto">¿Qué es un objeto?<a class="headerlink" href="#que-es-un-objeto" title="Permanent link">&para;</a></h2>
+<p>En JavaScript y otros lenguajes, un objeto es eso, un objeto. De acuerdo, no es la mejor definición, pero se entiende mejor si pensamos en ello como la representación virtual de un objeto real. </p>
+<p>Mirad, los objetos en la vida real comparten propiedades que permiten definirlos. Por ejemplo pensemos en una persona. Hay muchas personas, pero todas comparten algunas propiedades comunes: tienen un nombre, un apellido, una edad...</p>
+<p>Vamos a trasladar este concepto a código.</p>
+<p>Partamos de la base que tenemos tres variables para representar esas propiedades de una persona:</p>
+<p><code>index.js</code>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Héctor&#39;</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">apellido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Costa&#39;</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">30</span><span class="p">;</span>
+</code></pre></div></p>
+<p>Necesitamos una forma de trabajar con las tres variables en conjunto, es decir, un objeto. Lo haremos con la siguiente sintaxis:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">persona</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+
+<span class="p">};</span>
+</code></pre></div>
+<p>Las llaves indican que vamos a definir un objeto, cuyo contenido se declara en pares clave-valor.</p>
+<p>Cada clave es como el nombre de la variable pero para la propiedad del objeto y seguido de dos puntos vendría el valor:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">persona</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Héctor&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">apellido</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Costa&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">edad</span><span class="o">:</span><span class="w"> </span><span class="mf">30</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">persona</span><span class="p">);</span>
+</code></pre></div>
+<p>Como podremos observar en la consola, el objeto persona está formado por las tres propiedades.</p>
+<p>Hay dos formas de trabajar con las propiedades de un objeto. Por ejemplo, si queremos modificar el contenido de una propiedad podemos usar:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Notación con punto</span>
+
+<span class="nx">persona</span><span class="p">.</span><span class="nx">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Daniel&#39;</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">persona</span><span class="p">.</span><span class="nx">nombre</span><span class="p">);</span>
+</code></pre></div>
+<p>O también:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Notación con corchetes</span>
+
+<span class="nx">persona</span><span class="p">[</span><span class="s1">&#39;nombre&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Javier&#39;</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">persona</span><span class="p">[</span><span class="s1">&#39;nombre&#39;</span><span class="p">]);</span>
+</code></pre></div>
+<p>La notación con corchetes tiene la ventaja de que puede ser dinámica, es decir, podemos definir en una variable una cadena con el nombre de la propiedad que queremos manipular:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">propiedad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;nombre&#39;</span><span class="p">;</span>
+
+<span class="nx">persona</span><span class="p">[</span><span class="nx">propiedad</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Fernando&#39;</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">persona</span><span class="p">[</span><span class="nx">propiedad</span><span class="p">]);</span>
+</code></pre></div>
+<p>Quizá os parece algo confuso y no lo veis mucha utilidad, pero estoy seguro que dentro de un tiempo  recordaréis este truco y os hará un buen servicio.</p>
+<h2 id="arreglos">Arreglos<a class="headerlink" href="#arreglos" title="Permanent link">&para;</a></h2>
+<p>Cuando trabajamos con datos, a menudo necesitamos lidiar con más de uno a la vez. Eso lo conseguimos  en conjuntos llamados arreglos, arrays en inglés.</p>
+<p>Dentro de un arreglo podemos definir varios elementos, ya sean literales u objetos. Por ejemplo, un arreglo de nombres:</p>
+<p><code>index.js</code>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">nombres</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;Héctor&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Daniel&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Javier&#39;</span><span class="p">];</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">nombres</span><span class="p">);</span>
+</code></pre></div></p>
+<p>Si observamos la consola veremos que cada elemento dentro del array tiene un índice numérico. Este índice representa la posición del elemento en el arreglo, y el primer elemento siempre concuerda con el índice cero. De hecho utilizando estos índices podemos mostrar un solo elemento del arreglo:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">nombres</span><span class="p">[</span><span class="mf">0</span><span class="p">]);</span>
+</code></pre></div>
+<p>Como ya comentamos, JavaScript es un lenguaje dinámico que permite a las variables cambiar de tipo al vuelo. Lo mismo ocurre con los arreglos y su longitud, el número de elementos que contienen es dinámico, permitiéndonos añadir elementos de forma muy sencilla:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">nombres</span><span class="p">[</span><span class="mf">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Juanito&#39;</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">nombres</span><span class="p">);</span>
+</code></pre></div>
+<p>Además no estamos limitados a añadir elementos del mismo tipo, podemos mezclar cualquier tipo de dato, incluso objetos dentro de un arreglo:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">nombres</span><span class="p">[</span><span class="mf">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">999</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">nombres</span><span class="p">);</span>
+</code></pre></div>
+<p>¿Pero qué tipo de dato es un arreglo?</p>
+<div class="highlight"><pre><span></span><code><span class="ow">typeof</span><span class="w"> </span><span class="nx">nombres</span>
+
+<span class="o">&gt;</span><span class="w"> </span><span class="s2">&quot;object&quot;</span>
+</code></pre></div>
+<p>¿Os esperábais un tipo array? Pues no, es un tipo de objeto que ya viene creado en JavaScript, y lo bueno es que contiene un montón de propiedades por defecto, las cuales podemos ver en el editor VSCode poniendo un puntito tras el arreglo.</p>
+<p>Una de ellas es tremendamente útil y nos permite saber la longitud del arreglo, es decir, el número de elementos que contiene:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">nombres</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+</code></pre></div>
+<p>En una futura sección trataremos más en profundidad el tema de los arreglos y cómo trabajar con todas esas propiedades que contienen.</p>
+<h2 id="funciones">Funciones<a class="headerlink" href="#funciones" title="Permanent link">&para;</a></h2>
+<p>Dentro de los tipos por referencia ya hemos aprendido sobre los objetos y los arreglos, ahora es el turno de las funciones.</p>
+<p>Las funciones son uno de los tipos de bloque de código fundamentales en la programación. Son esencialmente una serie de instrucciones reutilizables que realizan una determinada tarea o cálculo sobre unos valores. </p>
+<p>Se entiende mucho mejor en la práctica, así que vamos a crear una para su funcionamiento:</p>
+<p><code>index.js</code>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">saludar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hola mundo&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>No es necesario finalizar el bloque de la función con punto coma.</p>
+<p>Una vez la tenemos definida la podemos ejecutar haciendo referencia a su nombre:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">saludar</span><span class="p">();</span>
+</code></pre></div>
+<p>Los paréntesis es lo que indica que queremos ejecutar la función, sino los ponemos simplemente haríamos referencia a ella. </p>
+<p>Podemos ejecutarla tantas veces como queramos:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">saludar</span><span class="p">();</span>
+<span class="nx">saludar</span><span class="p">();</span>
+<span class="nx">saludar</span><span class="p">();</span>
+</code></pre></div>
+<p>Tal como tenemos nuestra función no es muy útil, sólo imprime un mensaje, vamos a transformarla en algo más interesante.</p>
+<p>Las funciones pueden recibir datos, datos que pueden manipularse dentro de la función para realizar diferentes tareas. Es precisamente el hecho de que una función puede recibir datos lo que las hace tan versátiles y uno de los conceptos claves de la programación.</p>
+<p>Por ejemplo podríamos recibir un nombre y saludarlo. Para hacerlo es muy sencillo, sólo tenemos que definir un parámetro de la siguiente forma:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">saludar</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hola mundo&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>El parámetro nombre se comportará como una variable que únicamente existirá dentro de la función, así que podemos hacer uso de ella:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">saludar</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hola &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">nombre</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Ahora para enviar el nombre, deberemos pasar el valor durante la llamada de la función como si fuera una variable o literal:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">saludar</span><span class="p">(</span><span class="s1">&#39;Héctor&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p>En este punto es importante hacer una aclaración. Los valores que enviamos a una función se llaman argumentos, pero durante la definición nos referimos a ellos como parámetros.</p>
+<p>Sea como sea con este cambio hemos transformado la función en algo dinámico que tiene comportamientos distintos dependiendo del nombre que le pasemos:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">saludar</span><span class="p">(</span><span class="s1">&#39;Daniel&#39;</span><span class="p">);</span>
+<span class="nx">saludar</span><span class="p">(</span><span class="s1">&#39;Javier&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p>¿Y si quisiéramos enviar un segundo argumento con el apellido? Pues deberíamos añadir un segundo parámetro en la definición:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">saludar</span><span class="p">(</span><span class="nx">nombre</span><span class="p">,</span><span class="w"> </span><span class="nx">apellido</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hola &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">nombre</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">apellido</span><span class="p">);</span><span class="w">  </span><span class="c1">// es mejorable</span>
+<span class="p">}</span><span class="w"> </span>
+</code></pre></div>
+<p>Y al ejecutarlo enviar ese segundo argumento:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">saludar</span><span class="p">(</span><span class="s1">&#39;Héctor&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Costa&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p>Por cierto, ¿qué valor creéis que tiene el parámetro apellido si no lo enviamos?</p>
+<div class="highlight"><pre><span></span><code><span class="nx">saludar</span><span class="p">(</span><span class="s1">&#39;Héctor&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p>Pues tiene el valor <strong>undefined</strong>, como si fuera una variable no inicializada en el ámbito de la función.</p>
+<h2 id="funciones-con-retorno">Funciones con retorno<a class="headerlink" href="#funciones-con-retorno" title="Permanent link">&para;</a></h2>
+<p>Como os expliqué, las funciones pueden recibir argumentos y manejar sus valores como parámetros:</p>
+<p><code>index.js</code>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">doblar</span><span class="p">(</span><span class="nx">numero</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numero</span><span class="o">*</span><span class="mf">2</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">doblar</span><span class="p">(</span><span class="mf">5</span><span class="p">);</span>
+</code></pre></div></p>
+<p>El problema es que sólo existen dentro de su propio bloque, por lo que no podemos acceder a esa información desde el exterior:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numero</span><span class="p">);</span>
+
+<span class="o">&gt;</span><span class="w"> </span><span class="nx">Uncaught</span><span class="w"> </span><span class="ne">ReferenceError</span><span class="o">:</span><span class="w"> </span><span class="nx">numero</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="nx">not</span><span class="w"> </span><span class="nx">defined</span>
+</code></pre></div>
+<p>Si en lugar de mostrar el doble del número quisiéramos devolver ese valor al exterior para seguir trabajando con él, entonces necesitaremos usar el retorno de valores:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">doblar</span><span class="p">(</span><span class="nx">numero</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">numero</span><span class="o">*</span><span class="mf">2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">doblar</span><span class="p">(</span><span class="mf">5</span><span class="p">);</span>
+</code></pre></div>
+<p>En este momento veremos que no se muestra nada, tendríamos que ponerlo en un <strong>console.log()</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">doblar</span><span class="p">(</span><span class="mf">5</span><span class="p">));</span>
+</code></pre></div>
+<p>Sin embargo la utilidad más común es almacenar el valor en una variable para poder seguir trabajando con ella:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">numero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">doblar</span><span class="p">(</span><span class="mf">5</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numero</span><span class="p">);</span>
+</code></pre></div>
+<p>De esta forma habremos devuelto un cálculo interno de la función al exterior.</p>
+<p>Por cierto, imaginaros que queremos el doble del doble del doble de un número. ¿Cómo podríamos hacerlo? Pues fácil, llamando de forma anidada la función 3 veces:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">numero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">doblar</span><span class="p">(</span><span class="nx">doblar</span><span class="p">(</span><span class="nx">doblar</span><span class="p">(</span><span class="mf">5</span><span class="p">)));</span><span class="w">  </span><span class="c1">// 5 -&gt; 10 -&gt; 20 -&gt; 40</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numero</span><span class="p">);</span>
+</code></pre></div>
+<p>No importa si no acabáis de entenderlo, era un ejemplo para liaros un poco. </p>
+<p>Lo que debéis recordar es que las funciones son un conjunto de instrucciones reutilizables identificadas con un nombre, que tienen como objetivo realizar una tarea o un cálculo y que pueden comunicarse con el exterior recibiendo y retornando datos.</p>
+<hr />
+<p><small class="edited"><i>Última edición: 17 de Marzo de 2021</i></small></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-nav">
+    <nav class="md-footer-nav__inner md-grid">
+      
+      <a
+        href="../django/tutoriales.html"
+        title="Más tutoriales sobre Django"
+        class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+        rel="prev"
+      >
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+        </div>
+        <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+          <span class="md-flex__ellipsis">
+            <span class="md-footer-nav__direction">
+              Anterior
+            </span>
+            Más tutoriales sobre Django
+          </span>
+        </div>
+      </a>
+       
+      <a
+        href="conversor-divisas.html"
+        title="Conversor de divisas en JS"
+        class="md-flex md-footer-nav__link md-footer-nav__link--next"
+        rel="next"
+      >
+        <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+          <span class="md-flex__ellipsis">
+            <span class="md-footer-nav__direction">
+              Siguiente
+            </span>
+            Conversor de divisas en JS
+          </span>
+        </div>
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+        </div>
+      </a>
+      
+    </nav>
+  </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        <!--<div class="md-footer-links__highlight">
+          <a href="/comunidad/">Comunidad</a> · <a href="/politica-de-cookies/">Política de cookies</a> · <a href="/sobre-mi/">Sobre mí</a>
+        </div>-->
+        <div class="md-footer-copyright__highlight">
+          2015 - 2022 &copy; Héctor Costa Guzmán (<u
+            ><a
+              href="https://creativecommons.org/licenses/by/4.0/deed.es"
+              target="_blank"
+              rel="nofollow"
+              >Licencia CC BY 4.0</a
+            ></u
+          >)
+        </div>
+      </div>
+       
+<style>.md-footer-social__link {transition: 0.3s;}</style>
+<div class="md-footer-social" style="font-size: 2.5rem; margin-top: -6px!important; padding: 0px!important; margin-bottom: -6px; overflow: hidden!important;">
+  <a href="https://github.com/hcosta" title="Github" target="_blank" class="md-footer-social__link fa fa-github-square"></a>
+  <a href="https://www.youtube.com/c/HektorProfe" title="Youtube" target="_blank" class="md-footer-social__link fa fa-youtube-square"></a>
+  &nbsp;
+</div>
+ 
+    </div>
+  </div>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i["GoogleAnalyticsObject"] = r;
+      (i[r] =
+        i[r] ||
+        function () {
+          (i[r].q = i[r].q || []).push(arguments);
+        }),
+        (i[r].l = 1 * new Date());
+      (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m);
+    })(
+      window,
+      document,
+      "script",
+      "https://www.google-analytics.com/analytics.js",
+      "ga"
+    );
+    ga("create", "UA-124845547-1", "auto");
+    ga("send", "pageview");
+  </script>
+</footer>
+      
+      <a id="anchorID" href="https://www.hektorprofe.net/" target="_blank"></a>
+    </div>
+  <script type='text/javascript' src="/assets/javascripts/application.a26c1c21.js"></script>
+  <script src="/assets/javascripts/tingle.min.js"></script>
+  <script type='text/javascript'>
+    var modalButtonOnly = new tingle.modal({
+        closeMethods: [],
+        footer: true,
+        stickyFooter: true
+    });
+    var btn5 = document.querySelector('.js-tingle-modal-5');
+
+    // set content
+    modalButtonOnly.setContent(`
+    <div style="display:grid;grid-template-columns:32% 32% 32%;grid-column-gap: 1.33%;" id="supermodal">
+      <div class="course">
+        <a href="https://www.hektorprofe.net/cupon/python" target="_blank"><img src="/cdn/assets/python.png" style="width:100%;justify-self:center;align-self:center;"/></a>
+      </div>
+      <div class="course">
+        <a href="https://www.hektorprofe.net/cupon/django" target="_blank"><img src="/cdn/assets/django.png" style="width:100%;justify-self:center;align-self:center;"/></a>
+      </div>
+      <div class="course">
+        <a href="https://www.hektorprofe.net/cupon/pyside" target="_blank"><img src="/cdn/assets/pyside.png" style="width:100%;justify-self:center;align-self:center;"/></a>
+      </div>
+    </div>`);
+
+    modalButtonOnly.addFooterBtn('Cerrar', 'tingle-btn tingle-btn--default tingle-btn--pull-right', function(){
+      modalButtonOnly.close();
+    });
+
+    app.initialize({version:"1.2.3",url:{base:"../.."}})
+    var _extends=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(t[o]=n[o])}return t},_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t};!function(t,e){"object"===("undefined"==typeof exports?"undefined":_typeof(exports))&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):t.LazyLoad=e()}(this,function(){"use strict";function t(t,e,n){var o=e._settings;!n&&i(t)||(C(o.callback_enter,t),R.indexOf(t.tagName)>-1&&(N(t,e),I(t,o.class_loading)),E(t,e),a(t),C(o.callback_set,t))}var e={elements_selector:"img",container:document,threshold:300,thresholds:null,data_src:"src",data_srcset:"srcset",data_sizes:"sizes",data_bg:"bg",class_loading:"loading",class_loaded:"loaded",class_error:"error",load_delay:0,callback_load:null,callback_error:null,callback_set:null,callback_enter:null,callback_finish:null,to_webp:!1},n=function(t){return _extends({},e,t)},o=function(t,e){return t.getAttribute("data-"+e)},r=function(t,e,n){var o="data-"+e;null!==n?t.setAttribute(o,n):t.removeAttribute(o)},a=function(t){return r(t,"was-processed","true")},i=function(t){return"true"===o(t,"was-processed")},s=function(t,e){return r(t,"ll-timeout",e)},c=function(t){return o(t,"ll-timeout")},l=function(t){return t.filter(function(t){return!i(t)})},u=function(t,e){return t.filter(function(t){return t!==e})},d=function(t,e){var n,o=new t(e);try{n=new CustomEvent("LazyLoad::Initialized",{detail:{instance:o}})}catch(t){(n=document.createEvent("CustomEvent")).initCustomEvent("LazyLoad::Initialized",!1,!1,{instance:o})}window.dispatchEvent(n)},f=function(t,e){return e?t.replace(/\.(jpe?g|png)/gi,".webp"):t},_="undefined"!=typeof window,v=_&&!("onscroll"in window)||/(gle|ing|ro)bot|crawl|spider/i.test(navigator.userAgent),g=_&&"IntersectionObserver"in window,h=_&&"classList"in document.createElement("p"),b=_&&function(){var t=document.createElement("canvas");return!(!t.getContext||!t.getContext("2d"))&&0===t.toDataURL("image/webp").indexOf("data:image/webp")}(),m=function(t,e,n,r){for(var a,i=0;a=t.children[i];i+=1)if("SOURCE"===a.tagName){var s=o(a,n);p(a,e,s,r)}},p=function(t,e,n,o){n&&t.setAttribute(e,f(n,o))},y=function(t,e){var n=b&&e.to_webp,r=o(t,e.data_src),a=o(t,e.data_bg);if(r){var i=f(r,n);t.style.backgroundImage='url("'+i+'")'}if(a){var s=f(a,n);t.style.backgroundImage=s}},w={IMG:function(t,e){var n=b&&e.to_webp,r=e.data_srcset,a=t.parentNode;a&&"PICTURE"===a.tagName&&m(a,"srcset",r,n);var i=o(t,e.data_sizes);p(t,"sizes",i);var s=o(t,r);p(t,"srcset",s,n);var c=o(t,e.data_src);p(t,"src",c,n)},IFRAME:function(t,e){var n=o(t,e.data_src);p(t,"src",n)},VIDEO:function(t,e){var n=e.data_src,r=o(t,n);m(t,"src",n),p(t,"src",r),t.load()}},E=function(t,e){var n=e._settings,o=t.tagName,r=w[o];if(r)return r(t,n),e._updateLoadingCount(1),void(e._elements=u(e._elements,t));y(t,n)},I=function(t,e){h?t.classList.add(e):t.className+=(t.className?" ":"")+e},L=function(t,e){h?t.classList.remove(e):t.className=t.className.replace(new RegExp("(^|\\s+)"+e+"(\\s+|$)")," ").replace(/^\s+/,"").replace(/\s+$/,"")},C=function(t,e){t&&t(e)},O=function(t,e,n){t.addEventListener(e,n)},k=function(t,e,n){t.removeEventListener(e,n)},x=function(t,e,n){O(t,"load",e),O(t,"loadeddata",e),O(t,"error",n)},A=function(t,e,n){k(t,"load",e),k(t,"loadeddata",e),k(t,"error",n)},z=function(t,e,n){var o=n._settings,r=e?o.class_loaded:o.class_error,a=e?o.callback_load:o.callback_error,i=t.target;L(i,o.class_loading),I(i,r),C(a,i),n._updateLoadingCount(-1)},N=function(t,e){var n=function n(r){z(r,!0,e),A(t,n,o)},o=function o(r){z(r,!1,e),A(t,n,o)};x(t,n,o)},R=["IMG","IFRAME","VIDEO"],S=function(e,n,o){t(e,o),n.unobserve(e)},M=function(t){var e=c(t);e&&(clearTimeout(e),s(t,null))},j=function(t,e,n){var o=n._settings.load_delay,r=c(t);r||(r=setTimeout(function(){S(t,e,n),M(t)},o),s(t,r))},D=function(t){return t.isIntersecting||t.intersectionRatio>0},T=function(t){return{root:t.container===document?null:t.container,rootMargin:t.thresholds||t.threshold+"px"}},U=function(t,e){this._settings=n(t),this._setObserver(),this._loadingCount=0,this.update(e)};return U.prototype={_manageIntersection:function(t){var e=this._observer,n=this._settings.load_delay,o=t.target;n?D(t)?j(o,e,this):M(o):D(t)&&S(o,e,this)},_onIntersection:function(t){t.forEach(this._manageIntersection.bind(this))},_setObserver:function(){g&&(this._observer=new IntersectionObserver(this._onIntersection.bind(this),T(this._settings)))},_updateLoadingCount:function(t){this._loadingCount+=t,0===this._elements.length&&0===this._loadingCount&&C(this._settings.callback_finish)},update:function(t){var e=this,n=this._settings,o=t||n.container.querySelectorAll(n.elements_selector);this._elements=l(Array.prototype.slice.call(o)),!v&&this._observer?this._elements.forEach(function(t){e._observer.observe(t)}):this.loadAll()},destroy:function(){var t=this;this._observer&&(this._elements.forEach(function(e){t._observer.unobserve(e)}),this._observer=null),this._elements=null,this._settings=null},load:function(e,n){t(e,this,n)},loadAll:function(){var t=this;this._elements.forEach(function(e){t.load(e)})}},_&&function(t,e){if(e)if(e.length)for(var n,o=0;n=e[o];o+=1)d(t,n);else d(t,e)}(U,window.lazyLoadOptions),U});
+    var myLazyLoad = new LazyLoad({elements_selector: ".lazy"});
+    const mdMenuItems = document.querySelectorAll('.md-nav__link');
+    function doNav(){ document.getElementById("main__list").innerHTML = '<li class="md-nav__item"><a class="md-nav__link" href="/cursos/">Cursos</a></li><li class="md-nav__item"><a class="md-nav__link" href="/blog/">Blog</a></li>';}
+    for (i = 0; i < mdMenuItems.length; i++) {  var item = mdMenuItems[i]; var htmlstring = item.innerHTML; htmlstring = (htmlstring.trim) ? htmlstring.trim() : htmlstring.replace(/^\s+/,''); if (htmlstring == 'Servidor de encuentro') { item.parentNode.removeChild(item);continue; }  if (htmlstring == 'Política de Cookies') { item.parentNode.removeChild(item);continue; } if (htmlstring == 'Buscador') { item.parentNode.removeChild(item); continue; } }
+    try { var topPos = document.querySelector('#md__active_link').offsetTop; document.querySelector('#md__sidebar__scroll').scrollTop = topPos - 60; } catch (err) {}
+  </script>
+  </body>
+</html>

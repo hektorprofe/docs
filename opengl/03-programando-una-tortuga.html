@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+  <head>
+    
+    
+    
+    
+
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Programando una tortuga con OpenGL en Python">
+      
+      
+        <link rel="canonical" href="https://hektorprofe.github.io/docs.hektorprofe.net/opengl/03-programando-una-tortuga.html">
+      
+      
+        <meta name="author" content="Héctor Costa Guzman">
+      
+      <link rel="shortcut icon" href="/favicon.ico">
+    
+    
+      
+        <title>Programando una tortuga | OpenGL en Python | Hektor Profe</title>
+      
+    
+    <link rel="stylesheet" href="../assets/stylesheets/application.2.css">
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    
+    <link rel="stylesheet" href="/assets/stylesheets/tingle.min.css">
+<style>
+@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
+[data-md-color-primary="grey"] .md-header { background-color: #191A1D }
+[data-md-color-primary="grey"] .md-tabs { background-color: #222831 }
+.md-footer-nav { background-color: #222831; }
+.md-footer-meta { background-color: #191A1D }
+html [data-md-color-primary="grey"] .md-nav--primary .md-nav__title--site { background-color: #191A1D; }
+.mini{ display: none; } .maxi{ display: block; }
+.embed-container { position: relative; padding-bottom: 56.25%;height: 0; overflow: hidden; max-width: 100%; height: auto; margin-bottom: 0; } 
+.embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.md-nav__link:focus, .md-nav__link:hover { color: #018dc5; }
+.headerlink{ color: #018dc5 !important; }
+.md-footer-links__highlight a{ color: #777 !important; }
+.md-footer-links__highlight a:hover{ color: #ddd !important; }
+.visible{ display: inherit !important; }
+/*.md-tabs { display: none !important; }*/
+.nav__btn, .nav__logo{ transition: 0.3s; }
+.nav__btn:hover{ color: #aaa; }
+.nav__logo:hover{ opacity:.7; }
+.nav__logo {max-width: 225px !important; }
+img:not([src]){visibility:hidden;}
+img.click{opacity: 0.96;box-shadow:rgb(79, 82, 92) -4px 4px}
+img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
+.button { background-color: #36bf2d; border: none; color: white !important; padding: 20px 0px; text-align: center; text-decoration: none; display: block; font-size: 97%; width: 100%; font-weight: bold;}
+.button:hover { background-color: #4CAF50; color: white; }
+.animated.delay-1dot5s {animation-delay: 1.5s;}
+.md-icon--search { display:inline-block!important}
+a.headerlink{ display: none !important; }
+small.edited { display: block; text-align: right; }
+#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
+#cookie-bar-prompt-logo{ display: none !important; }
+div.my-img{text-align:center;margin-top:20px}
+@media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
+@media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
+@media (min-width: 1999.9px){ .md-header-nav__button.md-logo img { height: 40px !important; width: 240px; } }
+/* Rectificación footer en paginas pequeñas de altura */
+@media (max-width: 1599.8px){ .md-container {height: calc(100% - 48px)} }
+@media (min-width: 1599.9px){ .md-container {height: calc(100% - 53px)} }
+@media (min-width: 1999.9px){ .md-container {height: calc(100% - 58px)} }
+@media only screen and (max-width: 959.9px) { .nav__logo { display: block !important; }} 
+@media only screen and (min-width: 960px) and (max-width: 76.1875em) { .nav__logo { display: block !important; }} 
+@media only screen and (min-width: 76.1875em) { .nav__logo { display: none !important; } } 
+@media only screen and (max-width: 76.1875em) { .md-sidebar--primary { left: -26.2rem;; width: 26.2rem; }  [data-md-toggle="drawer"]:checked ~ .md-container .md-sidebar--primary { -webkit-transform: translateX(26.2rem); transform: translateX(26.2rem); } [dir="rtl"] [data-md-toggle="drawer"]:checked ~ .md-container .md-sidebar--primary { -webkit-transform: translateX(-26.2rem); transform: translateX(-26.2rem); } }
+@media (min-width: 1219.9px){ #home__btn { display: none !important; } #cursos__btn{ color: white !important; } [data-md-color-primary="grey"] .md-nav__link--active{ color: rgba(0, 0, 0, 0.87); text-decoration: underline !important; } }
+@media (min-width: 467.9px){ #discord__btn{ display: inline-block !important; } }
+@media only screen and (min-width: 60em){ .md-search__input { background-color: rgb(53, 54, 56); } .md-search__input:hover { background-color: rgb(84, 87, 93); color: white; }}
+@media (max-width: 1219.9px){ .md-header-nav__title{ padding: 0 1rem; } .nav__btn {display:none;} }
+@media (max-width: 875.9px){ #cookie-bar-button{ margin-top: 20px !important; }}
+@media (max-width: 719.9px){ #cookie-bar { padding: 3.25rem 1.25rem; }}
+@media (max-width: 512.9px){ #cookie-bar { padding: 2rem 1.25rem; }}
+
+.tingle-modal { font-size:18px !important;}
+.tingle-modal-box{ width: 80%; max-width: 1100px; }
+.tingle-btn--danger{ background: darkorange !important; }
+.tingle-modal-box__content { padding: 3rem 2rem 3rem 3rem;}
+@media (max-width: 540px){ .tingle-modal-box{ width: auto; } }
+@media (max-width: 849px){ #supermodal{ grid-template-columns:100% !important; }}
+
+.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 275px - 60px)}
+@media (max-width: 1999.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 246px - 60px);margin-right:-1px;}}
+@media (max-width: 1599.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 222px - 60px)}}
+
+</style>
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="grey" data-md-color-accent="grey">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#programando-una-tortuga-con-opengl" tabindex="1" class="md-skip">
+        Saltar a contenido
+      </a>
+    
+    
+      <header
+  class="md-header"
+  data-md-component="header"
+  style="position: inherit !important"
+>
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a
+          href="/"
+          title="Hektor Profe"
+          class="md-header-nav__button md-logo"
+          style="font-size: 0px"
+        >
+          <img
+            src="/assets/images/logo.png"
+            width="200px"
+            height="35px"
+            style="margin-top: -5px"
+            alt="Hektor Profe"
+            title="Hektor Profe"
+          />
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label
+          class="md-icon md-icon--menu md-header-nav__button"
+          for="__drawer"
+        ></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div
+          class="md-flex__ellipsis md-header-nav__title"
+          data-md-component="title"
+          style="text-align: right"
+        >
+          <!-- https://fontawesome.com/v4.7.0/ -->
+          <a 
+            class="nav__btn" 
+            href="https://www.hektorprofe.net/" 
+            style="margin-left:0em;" 
+            title="Cursos de Hektor Profe">
+            Cursos
+          </a>
+          <a 
+            class="nav__btn" 
+            href="https://docs.hektorprofe.net/" 
+            style="margin-left:1.4em;" 
+            title="Documentos de Hektor Profe">
+            Documentos
+          </a>
+          <a 
+            class="nav__btn" 
+            href="https://www.hektorprofe.net/portafolio/" 
+            style="margin-left:1.4em;" 
+            title="Portafolio de Hektor Profe">
+            Portafolio
+          </a>
+          <a href="/"
+            ><img
+              class="nav__logo"
+              src="/assets/images/logo.png"
+              width="200px"
+              height="35px"
+              style="margin: 6px auto 0"
+              alt="Hektor Profe"
+              title="Hektor Profe"
+          /></a>
+        </div>
+        <style>
+          .md-sidebar[data-md-state="lock"] {
+            top: 0rem !important;
+          }
+          .md-tabs {
+            display: none !important;
+          }
+          .hde {
+            display: inline-block;
+          }
+          .admonition.note > .superfences-tabs > label:hover,
+          .headerlink {
+            color: #018dc5 !important;
+          }
+          .admonition.info {
+            font-size: 100%;
+          }
+          .admonition.info label {
+            font-size: 91%;
+          }
+          .admonition.note > .admonition-title {
+            display: none;
+          }
+          .image {
+            text-align: center;
+            margin-top: 25px;
+          }
+          .contenedor_youtube {
+            position: relative !important;
+            padding-bottom: 56.25% !important; /*panorámico*/
+            padding-top: 0px !important;
+            height: 0 !important;
+            margin-top: -20px;
+            margin-bottom: 25px;
+          }
+          .contenedor_youtube iframe {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+          }
+        </style>
+      </div>
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container" style="padding-top: 0px !important;">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list" id="top__tabs">
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+      </ul>
+    </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container" style="padding-top: 8px !important;">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap" id="md__sidebar__scroll">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title" for="__drawer" style="padding:0 !important;max-height:5.5rem;"></label>
+  
+  <ul class="md-nav__list" id="main__list" data-md-scrollfix>
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+        <!-- comprobación extra -->
+         
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9" checked>
+    
+    <label class="md-nav__link" for="nav-9">
+      Apuntes de OpenGL
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        Apuntes de OpenGL
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="index.html" title="Índice del archivo" class="md-nav__link">
+      Índice del archivo
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="01-primeros-pasos.html" title="Primeros pasos" class="md-nav__link">
+      Primeros pasos
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="02-graficos-primitivos.html" title="Gráficos primitivos" class="md-nav__link">
+      Gráficos primitivos
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Tortuga y fractales
+      </label>
+    
+    <a href="03-programando-una-tortuga.html" title="Tortuga y fractales" class="md-nav__link md-nav__link--active" id="md__active_link">
+      Tortuga y fractales
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-basica" title="Estructura básica" class="md-nav__link toc__link">
+    Estructura básica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rotacion-y-movimiento" title="Rotación y movimiento" class="md-nav__link toc__link">
+    Rotación y movimiento
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sistemas-de-lindenmayer" title="Sistemas de Lindenmayer" class="md-nav__link toc__link">
+    Sistemas de Lindenmayer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sistemas-iterativos-de-funciones" title="Sistemas iterativos de funciones" class="md-nav__link toc__link">
+    Sistemas iterativos de funciones
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="04-trabajando-con-mallas.html" title="Trabajando con mallas" class="md-nav__link">
+      Trabajando con mallas
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="05-dibujando-el-espacio-3d.html" title="Dibujando el espacio 3D" class="md-nav__link">
+      Dibujando el espacio 3D
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </ul>
+</nav>
+
+                  </div>
+                </div>
+              </div>
+            
+
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                
+                  
+                    <div class="course-offer" style="margin-bottom:25px;padding:0px 10px;">
+                      <a href="https://www.hektorprofe.net/cupon/python" target="_blank">
+                        <img src="/cdn/assets/python.png" style="width:100%;justify-self:center;align-self:center;"/>
+                      </a>
+                    </div>
+                  
+                
+
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-basica" title="Estructura básica" class="md-nav__link toc__link">
+    Estructura básica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rotacion-y-movimiento" title="Rotación y movimiento" class="md-nav__link toc__link">
+    Rotación y movimiento
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sistemas-de-lindenmayer" title="Sistemas de Lindenmayer" class="md-nav__link toc__link">
+    Sistemas de Lindenmayer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sistemas-iterativos-de-funciones" title="Sistemas iterativos de funciones" class="md-nav__link toc__link">
+    Sistemas iterativos de funciones
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="programando-una-tortuga-con-opengl">Programando una tortuga con OpenGL<a class="headerlink" href="#programando-una-tortuga-con-opengl" title="Permanent link">&para;</a></h1>
+<p>Unas de las prácticas más interesantes que he tenido el placer de realizar con el fin de aprender OpenGL ha sido crear mi propia tortuga y dibujar fractales con ellas. </p>
+<p><strong>Turtle</strong> es un módulo de Python para dibujar primitivas que también se puede encontrar como entorno aislado en <a href="https://pythonturtle.org/">https://pythonturtle.org/</a>.</p>
+<p>La tortuga es esencialmente una pluma para dibujar sobre un lienzo mediante instrucciones. Implementa diferentes funciones para avanzar hacia adelante, rotar sobre si misma, cambiar el color, levantar la pluma, etc. </p>
+<p>Es una forma genial de aprender a programar visualmente y crear un programa que sirva para ello es una de las mejores prácticas posibles.</p>
+<h2 id="estructura-basica">Estructura básica<a class="headerlink" href="#estructura-basica" title="Permanent link">&para;</a></h2>
+<p>Vamos a empezar con un proyecto ya preparado con una ventana de <code>600x600</code> y mismo tamaño de espacio ortográfico pero de <code>-300</code> a <code>300</code> en cada eje, esto nos permitirá partir con la tortuga en el origen <code>(0,0)</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pygame</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pg</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">res.App</span><span class="w"> </span><span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">OpenGL.GL</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">OpenGL.GLU</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Point</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">GLUtils</span><span class="p">:</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">InitOrtho</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">bottom</span><span class="p">):</span>
+        <span class="n">glMatrixMode</span><span class="p">(</span><span class="n">GL_PROJECTION</span><span class="p">)</span>
+        <span class="n">glLoadIdentity</span><span class="p">()</span>
+        <span class="n">gluOrtho2D</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">bottom</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">PrepareRender</span><span class="p">():</span>
+        <span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span> <span class="o">|</span> <span class="n">GL_DEPTH_BUFFER_BIT</span><span class="p">)</span>
+        <span class="n">glMatrixMode</span><span class="p">(</span><span class="n">GL_MODELVIEW</span><span class="p">)</span>
+        <span class="n">glLoadIdentity</span><span class="p">()</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">OpenGLApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">Setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">GLUtils</span><span class="o">.</span><span class="n">InitOrtho</span><span class="p">(</span><span class="o">-</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="o">-</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">GLUtils</span><span class="o">.</span><span class="n">PrepareRender</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">OpenGLApp</span><span class="p">(</span><span class="s2">&quot;Tortuga con OpenGL&quot;</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="/cdn/opengl/img09.png" /></p>
+<p>Vamos a implementar la tortuga en su propia clase <code>Turtle</code> que contará con una posición que será un punto <code>(0,0)</code>. Le añadiremos un método de clase <code>LineTo</code> para trazar una línea desde su posición actual hasta la nueva posición que pasemos al método y luego cambiaremos su posición actual a la nueva posición:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Turtle</span><span class="p">:</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">LineTo</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="n">glLineWidth</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">glBegin</span><span class="p">(</span><span class="n">GL_LINE_STRIP</span><span class="p">)</span>
+        <span class="n">glVertex2f</span><span class="p">(</span><span class="n">Turtle</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">Turtle</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">glVertex2f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">glEnd</span><span class="p">()</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+</code></pre></div>
+<p>Simplemente llamaremos al método de la clase <code>Turtle</code>, que al ser de clase no requiere crear una instancia y podemos usar la propia definición de clase:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">OpenGLApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">Setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">GLUtils</span><span class="o">.</span><span class="n">InitOrtho</span><span class="p">(</span><span class="o">-</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="o">-</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">GLUtils</span><span class="o">.</span><span class="n">PrepareRender</span><span class="p">()</span>
+        <span class="n">Turtle</span><span class="o">.</span><span class="n">LineTo</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</code></pre></div>
+<p>Si ejecutamos el programa se trazará una pequeña línea desde el centro pero rápidamente desaparecerá. Esto se debe a que en el primer ciclo del bucle la tortuga se mueve de <code>(0,0)</code> a <code>(10,10)</code> pero después ya se encuentra en <code>(10, 10)</code> y por tanto no se mueve ni se dibuja nada.</p>
+<p>Si creamos un método para reiniciar la posición de la tortuga a <code>(0,0)</code> en cada fotograma se dibujará el movimiento en cada ciclo:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Turtle</span><span class="p">:</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">Reset</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">OpenGLApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">GLUtils</span><span class="o">.</span><span class="n">PrepareRender</span><span class="p">()</span>
+        <span class="n">Turtle</span><span class="o">.</span><span class="n">Reset</span><span class="p">()</span>
+        <span class="n">Turtle</span><span class="o">.</span><span class="n">LineTo</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="" src="/cdn/opengl/img10.png" /></p>
+<p>Moviéndonos a otras posiciones podemos dibujar una forma:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">OpenGLApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">GLUtils</span><span class="o">.</span><span class="n">PrepareRender</span><span class="p">()</span>
+        <span class="n">Turtle</span><span class="o">.</span><span class="n">Reset</span><span class="p">()</span>
+        <span class="n">Turtle</span><span class="o">.</span><span class="n">LineTo</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="n">Turtle</span><span class="o">.</span><span class="n">LineTo</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="n">Turtle</span><span class="o">.</span><span class="n">LineTo</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="n">Turtle</span><span class="o">.</span><span class="n">LineTo</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="" src="/cdn/opengl/img11.png" /></p>
+<p>Sin embargo una tortuga no funciona así, la tortuga solo puede moverse adelante y para ir en otro dirección debe girar sobre sí misma.</p>
+<p>Así que necesitamos manejar la dirección hacia donde mira nuestra tortuga y para ello necesitamos un vector. Como OpenGL funciona en 3D necesitaremos un vector para almacenar los componentes <code>x</code>, <code>y</code> y <code>z</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Vector3</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">z</span>
+</code></pre></div>
+<p>Crearemos uno de estos para la dirección de la tortuga donde inicialmente la dirección será hacia arriba, es decir 1 en el eje <code>y</code>. Su valor también lo reiniciaremos en <code>Reset</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Turtle</span><span class="p">:</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="nb">dir</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">Reset</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">dir</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<p>Por cierto, <code>dir</code> es una función interna de Python pero la vamos a sobreescribir porque tampoco tengo intención de utilizarla.</p>
+<p>A continuación vamos a crear un método que substituirá a <code>LineTo</code> para movernos y lo hará solo hacia adelante, se llamará <code>Forward</code>. Multiplicará el vector de dirección por una longitud y lo sumará a la posición actual:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">Forward</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">distance</span><span class="p">):</span>
+    <span class="n">dest</span> <span class="o">=</span> <span class="n">Point</span><span class="p">()</span>
+    <span class="n">dest</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="bp">cls</span><span class="o">.</span><span class="n">dir</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">distance</span>
+    <span class="n">dest</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="bp">cls</span><span class="o">.</span><span class="n">dir</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">distance</span>
+    <span class="bp">cls</span><span class="o">.</span><span class="n">LineTo</span><span class="p">(</span><span class="n">dest</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">dest</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+</code></pre></div>
+<p>Así podremos mover la tortuga <code>100</code> píxeles adelante:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">OpenGLApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">GLUtils</span><span class="o">.</span><span class="n">PrepareRender</span><span class="p">()</span>
+        <span class="n">Turtle</span><span class="o">.</span><span class="n">Reset</span><span class="p">()</span>
+        <span class="n">Turtle</span><span class="o">.</span><span class="n">Forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="" src="/cdn/opengl/img12.png" /></p>
+<h2 id="rotacion-y-movimiento">Rotación y movimiento<a class="headerlink" href="#rotacion-y-movimiento" title="Permanent link">&para;</a></h2>
+<p>Para rotar la tortuga debemos rotar el vector de dirección formado por tres componentes, pero debemos elegir sobre qué eje rotar. En el espacio tridimensional no es lo mismo rotar sobre <code>x</code>, que <code>y</code> o <code>z</code> tal como muestra esta imagen:</p>
+<p><img alt="" src="/cdn/opengl/img13.png" /></p>
+<p>Para rotar la tortuga en nuestro espacio lo que tenemos que hacer es aplicar la rotación sobre el eje <code>z</code>. Este eje representa la profundidad y apunta directamente hacia nosotros como saliendo de la pantalla, sería la flecha azul en la figura de la avisón.</p>
+<p>La rotación es una transformación lineal que explico en detalle en <a href="https://docs.hektorprofe.net/graficos-3d/05-transformaciones-lineales/#rotacion-de-vectores">mis apuntes sobre gráficos 3D</a>. Me limitaré a recuperar la fórmula, si queréis más detalles echad un vistazo a mis apuntes:</p>
+<p><img alt="" src="/cdn/opengl/img14.png" /></p>
+<p>Sería perfecto que la propia clase <code>Vector3</code> tenga un método para rotar sobre su eje <code>z</code> un cierto ángulo, que por cierto debe ser aplicado en radianos, por lo que realizaremos una conversión al ángulo con grados enviado: </p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Vector3</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">RotateZ</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">angle</span><span class="p">):</span>
+        <span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>  <span class="c1"># ángulo a radianos</span>
+        <span class="n">rotatedX</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+        <span class="n">rotatedY</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">rotatedX</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">rotatedY</span>
+</code></pre></div>
+<p>En la tortuga implementaremos el método <code>Rotate</code> para aplicar la rotación al vector de dirección:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">Rotate</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">angle</span><span class="p">):</span>
+    <span class="bp">cls</span><span class="o">.</span><span class="n">dir</span><span class="o">.</span><span class="n">RotateZ</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+</code></pre></div>
+<p>Ahora podemos movernos hacia adelante, rotar y movernos otra vez:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">GLUtils</span><span class="o">.</span><span class="n">PrepareRender</span><span class="p">()</span>
+    <span class="n">Turtle</span><span class="o">.</span><span class="n">Reset</span><span class="p">()</span>
+    <span class="n">Turtle</span><span class="o">.</span><span class="n">Forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">Turtle</span><span class="o">.</span><span class="n">Rotate</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+    <span class="n">Turtle</span><span class="o">.</span><span class="n">Forward</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="" src="/cdn/opengl/img15.png" /></p>
+<p>Bien, pero ¿notáis algo extraño? Bueno, al rotar estamos haciéndolo en sentido antihorario. ¿Por qué sucede esto? OpenGL se implementa sobre la conocida regla de la mano izquierda, donde el eje <code>z</code> aumenta  hacia adentro de la pantalla (esto también lo explico más en detalle en <a href="https://docs.hektorprofe.net/graficos-3d/04-proyeccion-de-puntos/#regla-de-la-mano">mis apuntes</a> sobre gráficos 3D):</p>
+<p><img alt="" src="/cdn/opengl/img16.png" /></p>
+<p>En cualquier caso si queremos obtener el efecto contrario para rotar en sentido horario tendremos que negar el ángulo de rotación, tan sencillo como hacer:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">Rotate</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">angle</span><span class="p">):</span>
+    <span class="bp">cls</span><span class="o">.</span><span class="n">dir</span><span class="o">.</span><span class="n">RotateZ</span><span class="p">(</span><span class="o">-</span><span class="n">angle</span><span class="p">)</span>
+</code></pre></div>
+<p>Ahora la rotación será acorde a lo que nuestra lógica podría esperar:</p>
+<p><img alt="" src="/cdn/opengl/img17.png" /></p>
+<p>Ahora, por si en algún momento queremos que la tortuga se desplace a otro lugar sin trazar una línea, podemos añadir el método <code>MoveTo</code> donde simplemente actualiz su posición:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">MoveTo</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="bp">cls</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="bp">cls</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+</code></pre></div>
+<p>Así podemos dejar de dibujar, mover la tortuga a otro punto y seguir dibujando:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">GLUtils</span><span class="o">.</span><span class="n">PrepareRender</span><span class="p">()</span>
+    <span class="n">Turtle</span><span class="o">.</span><span class="n">Reset</span><span class="p">()</span>
+    <span class="n">Turtle</span><span class="o">.</span><span class="n">Forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">Turtle</span><span class="o">.</span><span class="n">Rotate</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+    <span class="n">Turtle</span><span class="o">.</span><span class="n">Forward</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">Turtle</span><span class="o">.</span><span class="n">MoveTo</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">Turtle</span><span class="o">.</span><span class="n">Rotate</span><span class="p">(</span><span class="mi">180</span><span class="p">)</span>
+    <span class="n">Turtle</span><span class="o">.</span><span class="n">Forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">Turtle</span><span class="o">.</span><span class="n">Rotate</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span>
+    <span class="n">Turtle</span><span class="o">.</span><span class="n">Forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">Turtle</span><span class="o">.</span><span class="n">Rotate</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span>
+    <span class="n">Turtle</span><span class="o">.</span><span class="n">Forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="" src="/cdn/opengl/img18.png" /></p>
+<p>Y ya está, aunque parezca mentira una tortuga no hace muchas más cosas. Podríamos añadir métodos para cambiar el color del trazo o el tamaño, pero esencialmente en esto se basa el funcionamiento.</p>
+<p>Con algo ingenio, matemáticas y algún bucle podemos dibujar polígonos fácilmente:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">GLUtils</span><span class="o">.</span><span class="n">PrepareRender</span><span class="p">()</span>
+    <span class="n">Turtle</span><span class="o">.</span><span class="n">Reset</span><span class="p">()</span>
+    <span class="n">Turtle</span><span class="o">.</span><span class="n">MoveTo</span><span class="p">(</span><span class="o">-</span><span class="mi">150</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="n">Turtle</span><span class="o">.</span><span class="n">Forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+        <span class="n">Turtle</span><span class="o">.</span><span class="n">Rotate</span><span class="p">(</span><span class="mi">360</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="" src="/cdn/opengl/img19.png" /></p>
+<p>O figuras como estrellas:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">GLUtils</span><span class="o">.</span><span class="n">PrepareRender</span><span class="p">()</span>
+    <span class="n">Turtle</span><span class="o">.</span><span class="n">Reset</span><span class="p">()</span>
+    <span class="n">Turtle</span><span class="o">.</span><span class="n">MoveTo</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">150</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+        <span class="n">Turtle</span><span class="o">.</span><span class="n">Forward</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span>
+        <span class="n">Turtle</span><span class="o">.</span><span class="n">Rotate</span><span class="p">(</span><span class="mi">170</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="" src="/cdn/opengl/img20.png" /></p>
+<h2 id="sistemas-de-lindenmayer">Sistemas de Lindenmayer<a class="headerlink" href="#sistemas-de-lindenmayer" title="Permanent link">&para;</a></h2>
+<p>Un <strong>fractal</strong> es un objeto geométrico cuya estructura básica, fragmentada o aparentemente irregular, se repite a diferentes escalas:</p>
+<p><img alt="" src="/cdn/opengl/img22.png" /></p>
+<p>Un <strong>sistema de Lindenmayer</strong> es una gramática formal (un conjunto de reglas y símbolos) utilizados para modelar el proceso de crecimiento de las plantas y la morfología de una variedad de organismos. Fueron introducidos y desarrollados en 1968 por el biólogo y botánico teórico húngaro Aristid Lindenmayer.</p>
+<p>La naturaleza recursiva de las reglas de los sistemas-L conduce a la autosemejanza y por tanto facilita la descripción de formas tipo fractales. Los modelos de plantas y formas orgánicas de aspecto natural son fáciles de definir: al incrementarse el nivel de recursión la forma crece lentamente y se vuelve más compleja. Los sistemas de Lindenmayer también son populares en la generación de vida artificial.</p>
+<p><img alt="" src="/cdn/opengl/img21.png" /></p>
+<p>Introducción a parte, vamos a desarrollar nuestro propio sistema-L el cuál definirá una serie de reglas e instrucciones que la tortuga seguirá para trazar diferentes figuras (para una explicación detallada echad un vistazo a la <a href="https://es.wikipedia.org/wiki/Sistema-L">Wikipedia</a>).</p>
+<p>Nuestro sistema tendrá una variable <strong>axiom</strong> con una cadena que representará el estado inicial y un conjunto de reglas <strong>rules</strong> que explicarán cómo reemplazar los valores del axioma.</p>
+<p>Por ejemplo, dado el axioma <code>"F"</code> y la regla <code>"F=F[+F]F"</code>, siendo por ejemplo "F" moverse hacia adelante o "+" rotar un cierto ángulo. En pocas iteraciones el sistema-L generará de forma revursiva una cadena final con un kit de instrucciones complejo:</p>
+<div class="highlight"><pre><span></span><code>1: F
+2: F[+F]F
+3: F[+F]F[+F[+F]F]F[+F]F
+4: F[+F]F[+F[+F]F]F[+F]F[+F[+F]F[+F[+F]F]F[+F]F]F[+F]F[+F[+F]F]F[+F]F
+</code></pre></div>
+<p>Veamos a codificarlo:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">LSystem</span><span class="p">:</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axiom</span><span class="p">,</span> <span class="n">rules</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">axiom</span> <span class="o">=</span> <span class="n">axiom</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rules</span> <span class="o">=</span> <span class="n">rules</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">Generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">times</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;===== Generando sistema-L en </span><span class="si">{</span><span class="n">times</span><span class="si">}</span><span class="s2"> ciclos =====&quot;</span><span class="p">)</span>
+        <span class="c1"># El valor inicial de las instrucciones es el axioma base</span>
+        <span class="n">instructions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">axiom</span>
+        <span class="c1"># Aplicamos las reglas de forma recursiva N repeticiones</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">times</span><span class="p">):</span>
+            <span class="c1"># Copiamos las instrucciones actuales</span>
+            <span class="n">previous_instructions</span> <span class="o">=</span> <span class="n">instructions</span>
+            <span class="c1"># Reiniciamos las instrucciones actuales para reprocesarlas</span>
+            <span class="n">instructions</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="c1"># Para cada carácter en las instrucciones guardadas</span>
+            <span class="k">for</span> <span class="n">instruction_char</span> <span class="ow">in</span> <span class="n">previous_instructions</span><span class="p">:</span>
+                <span class="c1"># Si se encuentra definido en las reglas</span>
+                <span class="k">if</span> <span class="n">instruction_char</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">rules</span><span class="p">:</span>
+                    <span class="c1"># Sumamos la porción substituida de las regglas</span>
+                    <span class="n">instructions</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rules</span><span class="p">[</span><span class="n">instruction_char</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Sino simplemente sumamos el carácter</span>
+                    <span class="n">instructions</span> <span class="o">+=</span> <span class="n">instruction_char</span>
+        <span class="c1"># Debugeamos la regla generada en esa iteración</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Resultado: &quot;</span><span class="p">,</span> <span class="n">instructions</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">instructions</span>
+</code></pre></div>
+<p>Este sistema permite generar la cadena resultante al aplicar las reglas al axioma en un número variable de iteraciones. Debemos pasarle el axioma y un diccionario de reglas y para ejecutarlo el número de repeticiones:</p>
+<div class="highlight"><pre><span></span><code><span class="n">LSystem</span><span class="p">(</span><span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;F&quot;</span><span class="p">:</span> <span class="s2">&quot;F[+F]F&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">Generate</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+<p>El resultado de lo anterior es efectivamente la cadena esperada:</p>
+<div class="highlight"><pre><span></span><code>===== Generando sistema-L en 3 ciclos =====
+Resultado:  F[+F]F[+F[+F]F]F[+F]F[+F[+F]F[+F[+F]F]F[+F]F]F[+F]F[+F[+F]F]F[+F]F
+</code></pre></div>
+<p>Nuestro objetivo ahora es parsear la cadena resultante de manera que la tortuga sepa interpretar cada carácter, cuyos significados serán:</p>
+<ul>
+<li><code>F</code>: Moverse hacia adelante una cantidad determinada.</li>
+<li><code>[</code>: Almacenar la posición y rotación actual en una pila.</li>
+<li><code>+</code>: Rotar la dirección una cantidad determinada en sentido horario.</li>
+<li><code>-</code>: Rotar la dirección una cantidad determinada en sentido antihorario.</li>
+<li><code>]</code>: Recuperar la última posición y rotación de la pila.</li>
+</ul>
+<p>Podemos añadir un método <code>ExecuteLSystem</code> a nuestra tortuga y procesar desde ahí cada instrucción de la cadena generada:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">copy</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Turtle</span><span class="p">:</span>
+    <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ExecuteLSystem</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">system</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">angle</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">instruction</span> <span class="ow">in</span> <span class="n">system</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">instruction</span> <span class="o">==</span> <span class="s1">&#39;F&#39;</span><span class="p">:</span>
+                <span class="bp">cls</span><span class="o">.</span><span class="n">Forward</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">instruction</span> <span class="o">==</span> <span class="s1">&#39;[&#39;</span><span class="p">:</span>
+                <span class="bp">cls</span><span class="o">.</span><span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">copy</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">pos</span><span class="p">),</span> <span class="n">copy</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">dir</span><span class="p">)))</span>
+            <span class="k">elif</span> <span class="n">instruction</span> <span class="o">==</span> <span class="s1">&#39;+&#39;</span><span class="p">:</span>
+                <span class="bp">cls</span><span class="o">.</span><span class="n">Rotate</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">instruction</span> <span class="o">==</span> <span class="s1">&#39;-&#39;</span><span class="p">:</span>
+                <span class="bp">cls</span><span class="o">.</span><span class="n">Rotate</span><span class="p">(</span><span class="o">-</span><span class="n">angle</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">instruction</span> <span class="o">==</span> <span class="s1">&#39;]&#39;</span><span class="p">:</span>
+                <span class="bp">cls</span><span class="o">.</span><span class="n">pos</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">dir</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+</code></pre></div>
+<p>Importante notar que los valores a añadir en la pila son copias y no los objetos originales. Los objetos se manejan por referencia, debemos copiar los valores para no modificar los originales.</p>
+<p>Lo ejecutamos en nuestra aplicación generando al principio el sistema y tendremos nuestro primer fractal generado con un sistema-L:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">OpenGLApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">Init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span> <span class="o">=</span> <span class="n">LSystem</span><span class="p">(</span>
+            <span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="p">{</span>
+                <span class="s2">&quot;F&quot;</span><span class="p">:</span> <span class="s2">&quot;F[+F]F&quot;</span>
+            <span class="p">})</span><span class="o">.</span><span class="n">Generate</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">GLUtils</span><span class="o">.</span><span class="n">PrepareRender</span><span class="p">()</span>
+        <span class="n">Turtle</span><span class="o">.</span><span class="n">Reset</span><span class="p">()</span>
+        <span class="n">Turtle</span><span class="o">.</span><span class="n">ExecuteLSystem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="" src="/cdn/opengl/img24.png" /></p>
+<p>Como el resultado se sale de la ventana podemos rectificar las coordenadas <code>(0,0)</code> del espacio ortogonal para centrarlo verticalmente en la base de la ventana:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">Setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">GLUtils</span><span class="o">.</span><span class="n">InitOrtho</span><span class="p">(</span><span class="o">-</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="" src="/cdn/opengl/img25.png" /></p>
+<p>Mediante las reglas, la distancia, la rotación y las iteraciones se pueden obtener diferentes fractales:</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">system</span> <span class="o">=</span> <span class="n">LSystem</span><span class="p">(</span>
+    <span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="s2">&quot;F&quot;</span><span class="p">:</span> <span class="s2">&quot;F[+F][-F]F&quot;</span>
+    <span class="p">})</span><span class="o">.</span><span class="n">Generate</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="" src="/cdn/opengl/img26.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">system</span> <span class="o">=</span> <span class="n">LSystem</span><span class="p">(</span>
+    <span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="s2">&quot;F&quot;</span><span class="p">:</span> <span class="s2">&quot;FF[+F][--FF][-F+F]&quot;</span>
+    <span class="p">})</span><span class="o">.</span><span class="n">Generate</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Rotación de 25º</span>
+<span class="n">Turtle</span><span class="o">.</span><span class="n">ExecuteLSystem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="" src="/cdn/opengl/img27.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">system</span> <span class="o">=</span> <span class="n">LSystem</span><span class="p">(</span>
+    <span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="s2">&quot;F&quot;</span><span class="p">:</span> <span class="s2">&quot;FF&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="s2">&quot;F+[-F-XF-X][+FF][--XF[+X]][++F-X]&quot;</span>
+    <span class="p">})</span><span class="o">.</span><span class="n">Generate</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="" src="/cdn/opengl/img28.png" /></p>
+<p>En la <a href="https://en.wikipedia.org/wiki/L-system">Wikipedia</a> se explica cómo implementar los ejemplos anteriores y muchos más.</p>
+<h2 id="sistemas-iterativos-de-funciones">Sistemas iterativos de funciones<a class="headerlink" href="#sistemas-iterativos-de-funciones" title="Permanent link">&para;</a></h2>
+<p>Otra forma de construir fractales es mediante <strong>IFSs</strong> (<em>Iterated Function Systems</em>). Esencialmente se trata de utilizar una función que a una coordenada le aplica cierta función y devuelve una nueva coordenada, toma la nueva coordenada y le aplica de nuevo la función y así sucesivamente.</p>
+<p>Partiremos de un sencillo ejemplo donde en lugar de utilizar la tortuga nos limitaremos a renderizar unos cuantos puntos generados con <code>numpy</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pygame</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pg</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">res.App</span><span class="w"> </span><span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">OpenGL.GL</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">OpenGL.GLU</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Point</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">GLUtils</span><span class="p">:</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">InitOrtho</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">bottom</span><span class="p">):</span>
+        <span class="n">glMatrixMode</span><span class="p">(</span><span class="n">GL_PROJECTION</span><span class="p">)</span>
+        <span class="n">glLoadIdentity</span><span class="p">()</span>
+        <span class="n">gluOrtho2D</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">bottom</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">PrepareRender</span><span class="p">():</span>
+        <span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span> <span class="o">|</span> <span class="n">GL_DEPTH_BUFFER_BIT</span><span class="p">)</span>
+        <span class="n">glMatrixMode</span><span class="p">(</span><span class="n">GL_MODELVIEW</span><span class="p">)</span>
+        <span class="n">glLoadIdentity</span><span class="p">()</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">DrawPoints</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+        <span class="n">glPointSize</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+        <span class="n">glBegin</span><span class="p">(</span><span class="n">GL_POINTS</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">points</span><span class="p">:</span>
+            <span class="n">glVertex2f</span><span class="p">(</span><span class="n">point</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">point</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">glEnd</span><span class="p">()</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">OpenGLApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">Init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># Generamos 100 puntos de prueba</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">Point</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span>
+                      <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">400</span><span class="p">)))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">Setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">GLUtils</span><span class="o">.</span><span class="n">InitOrtho</span><span class="p">(</span><span class="o">-</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">GLUtils</span><span class="o">.</span><span class="n">PrepareRender</span><span class="p">()</span>
+        <span class="n">GLUtils</span><span class="o">.</span><span class="n">DrawPoints</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">OpenGLApp</span><span class="p">(</span><span class="s2">&quot;OpenGL en Python&quot;</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="/cdn/opengl/img29.png" /></p>
+<p>Ahora lo que vamos a hacer es generar un único punto en cada fotograma y su posición vendrá determinado por una serie de condiciones en base a un valor aleatorio. Una vez tengamos el punto calculado lo añadiremos a la lista de puntos y el sistema irá dibujando poco a poco un fractal:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">OpenGLApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">Init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Creamos un punto que sirva como origen en cada iteración</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">point</span> <span class="o">=</span> <span class="n">Point</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">Update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Generamos un número para modificar el punto usando condiciones</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="mf">0.1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.00</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.00</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="mf">0.00</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.00</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.16</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="mf">0.00</span>
+        <span class="k">elif</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="mf">0.86</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.85</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.04</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="mf">0.00</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.04</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.85</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="mf">1.60</span>
+        <span class="k">elif</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="mf">0.93</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.20</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="mf">0.26</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="mf">0.00</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.23</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.22</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="mf">1.60</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.15</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.28</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="mf">0.00</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.26</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.24</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="mf">0.44</span>
+
+        <span class="c1"># Añadimos el nuevo punto a la lista</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+</code></pre></div>
+<p><img alt="" src="/cdn/opengl/img30.png" /></p>
+<p>Fijaros que se ve muy pequeño porque las modificaciones de posisición son también reducidas. Podemos escalar el espacio ortográfico con la función de OpenGL <code>glScaled</code> y estirar el espacio como haciendo un zoom (de paso también cambiaremos el tamaño del punto a <code>1</code> píxel):</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">PrepareRender</span><span class="p">():</span>
+    <span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span> <span class="o">|</span> <span class="n">GL_DEPTH_BUFFER_BIT</span><span class="p">)</span>
+    <span class="n">glMatrixMode</span><span class="p">(</span><span class="n">GL_MODELVIEW</span><span class="p">)</span>
+    <span class="n">glLoadIdentity</span><span class="p">()</span>
+    <span class="n">glScaled</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># &lt;-----</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">GLUtils</span><span class="o">.</span><span class="n">PrepareRender</span><span class="p">()</span>
+    <span class="n">GLUtils</span><span class="o">.</span><span class="n">DrawPoints</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># &lt;-----</span>
+</code></pre></div>
+<p><img alt="" src="/cdn/opengl/anim17.gif" /></p>
+<p>El fractal que acabamos de dibujar se llama <strong>helecho de Barnsley</strong>, fue descrito por el matemático británico Michael Barnsley por primera vez en 1993 y todo el proceso de desarrollo está perfectamente explicado en la <a href="https://es.wikipedia.org/wiki/Helecho_de_Barnsley">Wikipedia</a>. Ahí se detalla como mediante transformaciones se determina la nueva posición de los puntos para 4 grupos en función de una posibilidad: tallo, foliolos sucesivamente más pequeños, foliolo más grande a la izquierda y foliolo más grande a la derecha.</p>
+<p>Otro fractal muy famoso que podemos construir es el <strong>triángulo de Sierpiński</strong>, solo debemos modificar las condiciones así:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">Update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1"># Generamos un número para modificar el punto usando condiciones</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="mf">0.33</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.00</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">x</span>  <span class="o">+</span> <span class="mf">0.50</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="mf">0.5</span>
+    <span class="k">elif</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="mf">0.66</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.0</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="mf">0.5</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="mf">0.0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.0</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="mf">0.0</span>
+
+    <span class="c1"># Añadimos el nuevo punto a la lista</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+</code></pre></div>
+<p><img alt="" src="/cdn/opengl/img31.png" /></p>
+<p>Por defecto se ve muy pequeño, lo podemos escalar y trasladar con OpenGL un poco más arriba:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">PrepareRender</span><span class="p">():</span>
+    <span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span> <span class="o">|</span> <span class="n">GL_DEPTH_BUFFER_BIT</span><span class="p">)</span>
+    <span class="n">glMatrixMode</span><span class="p">(</span><span class="n">GL_MODELVIEW</span><span class="p">)</span>
+    <span class="n">glLoadIdentity</span><span class="p">()</span>
+    <span class="n">glTranslate</span><span class="p">(</span><span class="o">-</span><span class="mi">300</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># &lt;----</span>
+    <span class="n">glScaled</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># &lt;----</span>
+</code></pre></div>
+<p><img alt="" src="/cdn/opengl/anim18.gif" /></p>
+<p>Por ahora dejamos los fractales, si queréis más información sobre el triángulo de Sierpiński podéis la tenéis en la <a href="https://en.wikipedia.org/wiki/Sierpi%C5%84ski_triangle">Wikipedia</a>.</p>
+<hr />
+<p><small class="edited"><i>Última edición: 12 de Junio de 2022</i></small></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-nav">
+    <nav class="md-footer-nav__inner md-grid">
+      
+      <a
+        href="02-graficos-primitivos.html"
+        title="Gráficos primitivos"
+        class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+        rel="prev"
+      >
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+        </div>
+        <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+          <span class="md-flex__ellipsis">
+            <span class="md-footer-nav__direction">
+              Anterior
+            </span>
+            Gráficos primitivos
+          </span>
+        </div>
+      </a>
+       
+      <a
+        href="04-trabajando-con-mallas.html"
+        title="Trabajando con mallas"
+        class="md-flex md-footer-nav__link md-footer-nav__link--next"
+        rel="next"
+      >
+        <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+          <span class="md-flex__ellipsis">
+            <span class="md-footer-nav__direction">
+              Siguiente
+            </span>
+            Trabajando con mallas
+          </span>
+        </div>
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+        </div>
+      </a>
+      
+    </nav>
+  </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        <!--<div class="md-footer-links__highlight">
+          <a href="/comunidad/">Comunidad</a> · <a href="/politica-de-cookies/">Política de cookies</a> · <a href="/sobre-mi/">Sobre mí</a>
+        </div>-->
+        <div class="md-footer-copyright__highlight">
+          2015 - 2022 &copy; Héctor Costa Guzmán (<u
+            ><a
+              href="https://creativecommons.org/licenses/by/4.0/deed.es"
+              target="_blank"
+              rel="nofollow"
+              >Licencia CC BY 4.0</a
+            ></u
+          >)
+        </div>
+      </div>
+       
+<style>.md-footer-social__link {transition: 0.3s;}</style>
+<div class="md-footer-social" style="font-size: 2.5rem; margin-top: -6px!important; padding: 0px!important; margin-bottom: -6px; overflow: hidden!important;">
+  <a href="https://github.com/hcosta" title="Github" target="_blank" class="md-footer-social__link fa fa-github-square"></a>
+  <a href="https://www.youtube.com/c/HektorProfe" title="Youtube" target="_blank" class="md-footer-social__link fa fa-youtube-square"></a>
+  &nbsp;
+</div>
+ 
+    </div>
+  </div>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i["GoogleAnalyticsObject"] = r;
+      (i[r] =
+        i[r] ||
+        function () {
+          (i[r].q = i[r].q || []).push(arguments);
+        }),
+        (i[r].l = 1 * new Date());
+      (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m);
+    })(
+      window,
+      document,
+      "script",
+      "https://www.google-analytics.com/analytics.js",
+      "ga"
+    );
+    ga("create", "UA-124845547-1", "auto");
+    ga("send", "pageview");
+  </script>
+</footer>
+      
+      <a id="anchorID" href="https://www.hektorprofe.net/" target="_blank"></a>
+    </div>
+  <script type='text/javascript' src="/assets/javascripts/application.a26c1c21.js"></script>
+  <script src="/assets/javascripts/tingle.min.js"></script>
+  <script type='text/javascript'>
+    var modalButtonOnly = new tingle.modal({
+        closeMethods: [],
+        footer: true,
+        stickyFooter: true
+    });
+    var btn5 = document.querySelector('.js-tingle-modal-5');
+
+    // set content
+    modalButtonOnly.setContent(`
+    <div style="display:grid;grid-template-columns:32% 32% 32%;grid-column-gap: 1.33%;" id="supermodal">
+      <div class="course">
+        <a href="https://www.hektorprofe.net/cupon/python" target="_blank"><img src="/cdn/assets/python.png" style="width:100%;justify-self:center;align-self:center;"/></a>
+      </div>
+      <div class="course">
+        <a href="https://www.hektorprofe.net/cupon/django" target="_blank"><img src="/cdn/assets/django.png" style="width:100%;justify-self:center;align-self:center;"/></a>
+      </div>
+      <div class="course">
+        <a href="https://www.hektorprofe.net/cupon/pyside" target="_blank"><img src="/cdn/assets/pyside.png" style="width:100%;justify-self:center;align-self:center;"/></a>
+      </div>
+    </div>`);
+
+    modalButtonOnly.addFooterBtn('Cerrar', 'tingle-btn tingle-btn--default tingle-btn--pull-right', function(){
+      modalButtonOnly.close();
+    });
+
+    app.initialize({version:"1.2.3",url:{base:".."}})
+    var _extends=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(t[o]=n[o])}return t},_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t};!function(t,e){"object"===("undefined"==typeof exports?"undefined":_typeof(exports))&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):t.LazyLoad=e()}(this,function(){"use strict";function t(t,e,n){var o=e._settings;!n&&i(t)||(C(o.callback_enter,t),R.indexOf(t.tagName)>-1&&(N(t,e),I(t,o.class_loading)),E(t,e),a(t),C(o.callback_set,t))}var e={elements_selector:"img",container:document,threshold:300,thresholds:null,data_src:"src",data_srcset:"srcset",data_sizes:"sizes",data_bg:"bg",class_loading:"loading",class_loaded:"loaded",class_error:"error",load_delay:0,callback_load:null,callback_error:null,callback_set:null,callback_enter:null,callback_finish:null,to_webp:!1},n=function(t){return _extends({},e,t)},o=function(t,e){return t.getAttribute("data-"+e)},r=function(t,e,n){var o="data-"+e;null!==n?t.setAttribute(o,n):t.removeAttribute(o)},a=function(t){return r(t,"was-processed","true")},i=function(t){return"true"===o(t,"was-processed")},s=function(t,e){return r(t,"ll-timeout",e)},c=function(t){return o(t,"ll-timeout")},l=function(t){return t.filter(function(t){return!i(t)})},u=function(t,e){return t.filter(function(t){return t!==e})},d=function(t,e){var n,o=new t(e);try{n=new CustomEvent("LazyLoad::Initialized",{detail:{instance:o}})}catch(t){(n=document.createEvent("CustomEvent")).initCustomEvent("LazyLoad::Initialized",!1,!1,{instance:o})}window.dispatchEvent(n)},f=function(t,e){return e?t.replace(/\.(jpe?g|png)/gi,".webp"):t},_="undefined"!=typeof window,v=_&&!("onscroll"in window)||/(gle|ing|ro)bot|crawl|spider/i.test(navigator.userAgent),g=_&&"IntersectionObserver"in window,h=_&&"classList"in document.createElement("p"),b=_&&function(){var t=document.createElement("canvas");return!(!t.getContext||!t.getContext("2d"))&&0===t.toDataURL("image/webp").indexOf("data:image/webp")}(),m=function(t,e,n,r){for(var a,i=0;a=t.children[i];i+=1)if("SOURCE"===a.tagName){var s=o(a,n);p(a,e,s,r)}},p=function(t,e,n,o){n&&t.setAttribute(e,f(n,o))},y=function(t,e){var n=b&&e.to_webp,r=o(t,e.data_src),a=o(t,e.data_bg);if(r){var i=f(r,n);t.style.backgroundImage='url("'+i+'")'}if(a){var s=f(a,n);t.style.backgroundImage=s}},w={IMG:function(t,e){var n=b&&e.to_webp,r=e.data_srcset,a=t.parentNode;a&&"PICTURE"===a.tagName&&m(a,"srcset",r,n);var i=o(t,e.data_sizes);p(t,"sizes",i);var s=o(t,r);p(t,"srcset",s,n);var c=o(t,e.data_src);p(t,"src",c,n)},IFRAME:function(t,e){var n=o(t,e.data_src);p(t,"src",n)},VIDEO:function(t,e){var n=e.data_src,r=o(t,n);m(t,"src",n),p(t,"src",r),t.load()}},E=function(t,e){var n=e._settings,o=t.tagName,r=w[o];if(r)return r(t,n),e._updateLoadingCount(1),void(e._elements=u(e._elements,t));y(t,n)},I=function(t,e){h?t.classList.add(e):t.className+=(t.className?" ":"")+e},L=function(t,e){h?t.classList.remove(e):t.className=t.className.replace(new RegExp("(^|\\s+)"+e+"(\\s+|$)")," ").replace(/^\s+/,"").replace(/\s+$/,"")},C=function(t,e){t&&t(e)},O=function(t,e,n){t.addEventListener(e,n)},k=function(t,e,n){t.removeEventListener(e,n)},x=function(t,e,n){O(t,"load",e),O(t,"loadeddata",e),O(t,"error",n)},A=function(t,e,n){k(t,"load",e),k(t,"loadeddata",e),k(t,"error",n)},z=function(t,e,n){var o=n._settings,r=e?o.class_loaded:o.class_error,a=e?o.callback_load:o.callback_error,i=t.target;L(i,o.class_loading),I(i,r),C(a,i),n._updateLoadingCount(-1)},N=function(t,e){var n=function n(r){z(r,!0,e),A(t,n,o)},o=function o(r){z(r,!1,e),A(t,n,o)};x(t,n,o)},R=["IMG","IFRAME","VIDEO"],S=function(e,n,o){t(e,o),n.unobserve(e)},M=function(t){var e=c(t);e&&(clearTimeout(e),s(t,null))},j=function(t,e,n){var o=n._settings.load_delay,r=c(t);r||(r=setTimeout(function(){S(t,e,n),M(t)},o),s(t,r))},D=function(t){return t.isIntersecting||t.intersectionRatio>0},T=function(t){return{root:t.container===document?null:t.container,rootMargin:t.thresholds||t.threshold+"px"}},U=function(t,e){this._settings=n(t),this._setObserver(),this._loadingCount=0,this.update(e)};return U.prototype={_manageIntersection:function(t){var e=this._observer,n=this._settings.load_delay,o=t.target;n?D(t)?j(o,e,this):M(o):D(t)&&S(o,e,this)},_onIntersection:function(t){t.forEach(this._manageIntersection.bind(this))},_setObserver:function(){g&&(this._observer=new IntersectionObserver(this._onIntersection.bind(this),T(this._settings)))},_updateLoadingCount:function(t){this._loadingCount+=t,0===this._elements.length&&0===this._loadingCount&&C(this._settings.callback_finish)},update:function(t){var e=this,n=this._settings,o=t||n.container.querySelectorAll(n.elements_selector);this._elements=l(Array.prototype.slice.call(o)),!v&&this._observer?this._elements.forEach(function(t){e._observer.observe(t)}):this.loadAll()},destroy:function(){var t=this;this._observer&&(this._elements.forEach(function(e){t._observer.unobserve(e)}),this._observer=null),this._elements=null,this._settings=null},load:function(e,n){t(e,this,n)},loadAll:function(){var t=this;this._elements.forEach(function(e){t.load(e)})}},_&&function(t,e){if(e)if(e.length)for(var n,o=0;n=e[o];o+=1)d(t,n);else d(t,e)}(U,window.lazyLoadOptions),U});
+    var myLazyLoad = new LazyLoad({elements_selector: ".lazy"});
+    const mdMenuItems = document.querySelectorAll('.md-nav__link');
+    function doNav(){ document.getElementById("main__list").innerHTML = '<li class="md-nav__item"><a class="md-nav__link" href="/cursos/">Cursos</a></li><li class="md-nav__item"><a class="md-nav__link" href="/blog/">Blog</a></li>';}
+    for (i = 0; i < mdMenuItems.length; i++) {  var item = mdMenuItems[i]; var htmlstring = item.innerHTML; htmlstring = (htmlstring.trim) ? htmlstring.trim() : htmlstring.replace(/^\s+/,''); if (htmlstring == 'Servidor de encuentro') { item.parentNode.removeChild(item);continue; }  if (htmlstring == 'Política de Cookies') { item.parentNode.removeChild(item);continue; } if (htmlstring == 'Buscador') { item.parentNode.removeChild(item); continue; } }
+    try { var topPos = document.querySelector('#md__active_link').offsetTop; document.querySelector('#md__sidebar__scroll').scrollTop = topPos - 60; } catch (err) {}
+  </script>
+  </body>
+</html>

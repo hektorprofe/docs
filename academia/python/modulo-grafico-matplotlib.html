@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+  <head>
+    
+    
+    
+    
+
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Aprende a visualizar y personalizar tus gráficos de datos con esta potente biblioteca utilizada en conjunto con numpy y pandas.">
+      
+      
+        <link rel="canonical" href="https://hektorprofe.github.io/docs.hektorprofe.net/academia/python/modulo-grafico-matplotlib.html">
+      
+      
+        <meta name="author" content="Héctor Costa Guzman">
+      
+      <link rel="shortcut icon" href="/favicon.ico">
+    
+    
+      
+        <title>Módulo gráfico Matplotlib | Python | Academia | Hektor Profe</title>
+      
+    
+    <link rel="stylesheet" href="../../assets/stylesheets/application.2.css">
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    
+    <link rel="stylesheet" href="/assets/stylesheets/tingle.min.css">
+<style>
+@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
+[data-md-color-primary="grey"] .md-header { background-color: #191A1D }
+[data-md-color-primary="grey"] .md-tabs { background-color: #222831 }
+.md-footer-nav { background-color: #222831; }
+.md-footer-meta { background-color: #191A1D }
+html [data-md-color-primary="grey"] .md-nav--primary .md-nav__title--site { background-color: #191A1D; }
+.mini{ display: none; } .maxi{ display: block; }
+.embed-container { position: relative; padding-bottom: 56.25%;height: 0; overflow: hidden; max-width: 100%; height: auto; margin-bottom: 0; } 
+.embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.md-nav__link:focus, .md-nav__link:hover { color: #018dc5; }
+.headerlink{ color: #018dc5 !important; }
+.md-footer-links__highlight a{ color: #777 !important; }
+.md-footer-links__highlight a:hover{ color: #ddd !important; }
+.visible{ display: inherit !important; }
+/*.md-tabs { display: none !important; }*/
+.nav__btn, .nav__logo{ transition: 0.3s; }
+.nav__btn:hover{ color: #aaa; }
+.nav__logo:hover{ opacity:.7; }
+.nav__logo {max-width: 225px !important; }
+img:not([src]){visibility:hidden;}
+img.click{opacity: 0.96;box-shadow:rgb(79, 82, 92) -4px 4px}
+img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
+.button { background-color: #36bf2d; border: none; color: white !important; padding: 20px 0px; text-align: center; text-decoration: none; display: block; font-size: 97%; width: 100%; font-weight: bold;}
+.button:hover { background-color: #4CAF50; color: white; }
+.animated.delay-1dot5s {animation-delay: 1.5s;}
+.md-icon--search { display:inline-block!important}
+a.headerlink{ display: none !important; }
+small.edited { display: block; text-align: right; }
+#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
+#cookie-bar-prompt-logo{ display: none !important; }
+div.my-img{text-align:center;margin-top:20px}
+@media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
+@media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
+@media (min-width: 1999.9px){ .md-header-nav__button.md-logo img { height: 40px !important; width: 240px; } }
+/* Rectificación footer en paginas pequeñas de altura */
+@media (max-width: 1599.8px){ .md-container {height: calc(100% - 48px)} }
+@media (min-width: 1599.9px){ .md-container {height: calc(100% - 53px)} }
+@media (min-width: 1999.9px){ .md-container {height: calc(100% - 58px)} }
+@media only screen and (max-width: 959.9px) { .nav__logo { display: block !important; }} 
+@media only screen and (min-width: 960px) and (max-width: 76.1875em) { .nav__logo { display: block !important; }} 
+@media only screen and (min-width: 76.1875em) { .nav__logo { display: none !important; } } 
+@media only screen and (max-width: 76.1875em) { .md-sidebar--primary { left: -26.2rem;; width: 26.2rem; }  [data-md-toggle="drawer"]:checked ~ .md-container .md-sidebar--primary { -webkit-transform: translateX(26.2rem); transform: translateX(26.2rem); } [dir="rtl"] [data-md-toggle="drawer"]:checked ~ .md-container .md-sidebar--primary { -webkit-transform: translateX(-26.2rem); transform: translateX(-26.2rem); } }
+@media (min-width: 1219.9px){ #home__btn { display: none !important; } #cursos__btn{ color: white !important; } [data-md-color-primary="grey"] .md-nav__link--active{ color: rgba(0, 0, 0, 0.87); text-decoration: underline !important; } }
+@media (min-width: 467.9px){ #discord__btn{ display: inline-block !important; } }
+@media only screen and (min-width: 60em){ .md-search__input { background-color: rgb(53, 54, 56); } .md-search__input:hover { background-color: rgb(84, 87, 93); color: white; }}
+@media (max-width: 1219.9px){ .md-header-nav__title{ padding: 0 1rem; } .nav__btn {display:none;} }
+@media (max-width: 875.9px){ #cookie-bar-button{ margin-top: 20px !important; }}
+@media (max-width: 719.9px){ #cookie-bar { padding: 3.25rem 1.25rem; }}
+@media (max-width: 512.9px){ #cookie-bar { padding: 2rem 1.25rem; }}
+
+.tingle-modal { font-size:18px !important;}
+.tingle-modal-box{ width: 80%; max-width: 1100px; }
+.tingle-btn--danger{ background: darkorange !important; }
+.tingle-modal-box__content { padding: 3rem 2rem 3rem 3rem;}
+@media (max-width: 540px){ .tingle-modal-box{ width: auto; } }
+@media (max-width: 849px){ #supermodal{ grid-template-columns:100% !important; }}
+
+.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 275px - 60px)}
+@media (max-width: 1999.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 246px - 60px);margin-right:-1px;}}
+@media (max-width: 1599.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 222px - 60px)}}
+
+</style>
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="grey" data-md-color-accent="grey">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#introduccion-al-modulo-grafico-matplotlib" tabindex="1" class="md-skip">
+        Saltar a contenido
+      </a>
+    
+    
+      <header
+  class="md-header"
+  data-md-component="header"
+  style="position: inherit !important"
+>
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a
+          href="/"
+          title="Hektor Profe"
+          class="md-header-nav__button md-logo"
+          style="font-size: 0px"
+        >
+          <img
+            src="/assets/images/logo.png"
+            width="200px"
+            height="35px"
+            style="margin-top: -5px"
+            alt="Hektor Profe"
+            title="Hektor Profe"
+          />
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label
+          class="md-icon md-icon--menu md-header-nav__button"
+          for="__drawer"
+        ></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div
+          class="md-flex__ellipsis md-header-nav__title"
+          data-md-component="title"
+          style="text-align: right"
+        >
+          <!-- https://fontawesome.com/v4.7.0/ -->
+          <a 
+            class="nav__btn" 
+            href="https://www.hektorprofe.net/" 
+            style="margin-left:0em;" 
+            title="Cursos de Hektor Profe">
+            Cursos
+          </a>
+          <a 
+            class="nav__btn" 
+            href="https://docs.hektorprofe.net/" 
+            style="margin-left:1.4em;" 
+            title="Documentos de Hektor Profe">
+            Documentos
+          </a>
+          <a 
+            class="nav__btn" 
+            href="https://www.hektorprofe.net/portafolio/" 
+            style="margin-left:1.4em;" 
+            title="Portafolio de Hektor Profe">
+            Portafolio
+          </a>
+          <a href="/"
+            ><img
+              class="nav__logo"
+              src="/assets/images/logo.png"
+              width="200px"
+              height="35px"
+              style="margin: 6px auto 0"
+              alt="Hektor Profe"
+              title="Hektor Profe"
+          /></a>
+        </div>
+        <style>
+          .md-sidebar[data-md-state="lock"] {
+            top: 0rem !important;
+          }
+          .md-tabs {
+            display: none !important;
+          }
+          .hde {
+            display: inline-block;
+          }
+          .admonition.note > .superfences-tabs > label:hover,
+          .headerlink {
+            color: #018dc5 !important;
+          }
+          .admonition.info {
+            font-size: 100%;
+          }
+          .admonition.info label {
+            font-size: 91%;
+          }
+          .admonition.note > .admonition-title {
+            display: none;
+          }
+          .image {
+            text-align: center;
+            margin-top: 25px;
+          }
+          .contenedor_youtube {
+            position: relative !important;
+            padding-bottom: 56.25% !important; /*panorámico*/
+            padding-top: 0px !important;
+            height: 0 !important;
+            margin-top: -20px;
+            margin-bottom: 25px;
+          }
+          .contenedor_youtube iframe {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+          }
+        </style>
+      </div>
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container" style="padding-top: 0px !important;">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list" id="top__tabs">
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+      </ul>
+    </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container" style="padding-top: 8px !important;">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap" id="md__sidebar__scroll">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title" for="__drawer" style="padding:0 !important;max-height:5.5rem;"></label>
+  
+  <ul class="md-nav__list" id="main__list" data-md-scrollfix>
+    
+      
+    
+        <!-- comprobación extra -->
+         
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Academia de programación
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Academia de programación
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../index.html" title="Índice del archivo" class="md-nav__link">
+      Índice del archivo
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="introduccion.html" title="Python para principiantes" class="md-nav__link">
+      Python para principiantes
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="poo-para-interfaces-graficas.html" title="Python para interfaces gráficas" class="md-nav__link">
+      Python para interfaces gráficas
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="proyecto-gestor-clientes.html" title="Gestor de clientes con Python" class="md-nav__link">
+      Gestor de clientes con Python
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="tutoriales.html" title="Más tutoriales sobre Python" class="md-nav__link">
+      Más tutoriales sobre Python
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="modulo-analitico-numpy.html" title="Módulo analítico NumPy" class="md-nav__link">
+      Módulo analítico NumPy
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Módulo gráfico Matplotlib
+      </label>
+    
+    <a href="modulo-grafico-matplotlib.html" title="Módulo gráfico Matplotlib" class="md-nav__link md-nav__link--active" id="md__active_link">
+      Módulo gráfico Matplotlib
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#primer-grafico" title="Primer gráfico" class="md-nav__link toc__link">
+    Primer gráfico
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejes-y-mapeados" title="Ejes y mapeados" class="md-nav__link toc__link">
+    Ejes y mapeados
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mapeado-de-texto-en-los-ejes" title="Mapeado de texto en los ejes" class="md-nav__link toc__link">
+    Mapeado de texto en los ejes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eje-x-y-eje-y" title="Eje X y eje Y" class="md-nav__link toc__link">
+    Eje X y eje Y
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graficos-invertidos" title="Gráficos invertidos" class="md-nav__link toc__link">
+    Gráficos invertidos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-curioso" title="Ejemplo curioso" class="md-nav__link toc__link">
+    Ejemplo curioso
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limites" title="Límites" class="md-nav__link toc__link">
+    Límites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#titulos-etiquetas-y-leyendas" title="Títulos, etiquetas y leyendas" class="md-nav__link toc__link">
+    Títulos, etiquetas y leyendas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estilos-de-linea-y-marcadores" title="Estilos de línea y marcadores" class="md-nav__link toc__link">
+    Estilos de línea y marcadores
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lineas" title="Líneas" class="md-nav__link toc__link">
+    Líneas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#marcadores" title="Marcadores" class="md-nav__link toc__link">
+    Marcadores
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subgraficos" title="Subgráficos" class="md-nav__link toc__link">
+    Subgráficos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#figuras" title="Figuras" class="md-nav__link toc__link">
+    Figuras
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipos-de-graficos" title="Tipos de gráficos" class="md-nav__link toc__link">
+    Tipos de gráficos
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grafico-lineal-plot" title="Gráfico lineal (plot)" class="md-nav__link toc__link">
+    Gráfico lineal (plot)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grafico-de-lineas-verticales-stem" title="Gráfico de líneas verticales (stem)" class="md-nav__link toc__link">
+    Gráfico de líneas verticales (stem)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grafico-de-series-comparadas-fill_between" title="Gráfico de series comparadas (fill_between)" class="md-nav__link toc__link">
+    Gráfico de series comparadas (fill_between)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grafico-circular-o-de-pastel-pie" title="Gráfico circular o de pastel (pie)" class="md-nav__link toc__link">
+    Gráfico circular o de pastel (pie)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grafico-de-cajas-y-bigotes-boxplot" title="Gráfico de cajas y bigotes (boxplot)" class="md-nav__link toc__link">
+    Gráfico de cajas y bigotes (boxplot)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grafico-histograma-hist" title="Gráfico histograma (hist)" class="md-nav__link toc__link">
+    Gráfico histograma (hist)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grafico-de-barras-bar" title="Gráfico de barras (bar)" class="md-nav__link toc__link">
+    Gráfico de barras (bar)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grafico-de-barras-horizontales-barh" title="Gráfico de barras horizontales (barh)" class="md-nav__link toc__link">
+    Gráfico de barras horizontales (barh)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grafico-de-escaleras-step" title="Gráfico de escaleras (step)" class="md-nav__link toc__link">
+    Gráfico de escaleras (step)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mas-graficos" title="Más gráficos" class="md-nav__link toc__link">
+    Más gráficos
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../django/introduccion.html" title="Django para principiantes" class="md-nav__link">
+      Django para principiantes
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../django/api-rest-framework.html" title="Server API pelis en Django Rest" class="md-nav__link">
+      Server API pelis en Django Rest
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../django/tutoriales.html" title="Más tutoriales sobre Django" class="md-nav__link">
+      Más tutoriales sobre Django
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../javascript/introduccion.html" title="JavaScript para principiantes" class="md-nav__link">
+      JavaScript para principiantes
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../javascript/conversor-divisas.html" title="Conversor de divisas en JS" class="md-nav__link">
+      Conversor de divisas en JS
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../javascript/biblioteca-p5js.html" title="Introducción a P5.js" class="md-nav__link">
+      Introducción a P5.js
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../javascript/nodejs.html" title="Introducción a Node.js" class="md-nav__link">
+      Introducción a Node.js
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../javascript/chat-heroku.html" title="Chat online con Node.js" class="md-nav__link">
+      Chat online con Node.js
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../javascript/cliente-nuxt.html" title="Cliente API pelis en Nuxt.js" class="md-nav__link">
+      Cliente API pelis en Nuxt.js
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../gnu-linux/ubuntu-server-web.html" title="Configurar Ubuntu Server" class="md-nav__link">
+      Configurar Ubuntu Server
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </ul>
+</nav>
+
+                  </div>
+                </div>
+              </div>
+            
+
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                
+                  
+                    <div class="course-offer" style="margin-bottom:25px;padding:0px 10px;">
+                      <a href="https://www.hektorprofe.net/cupon/python" target="_blank">
+                        <img src="/cdn/assets/python.png" style="width:100%;justify-self:center;align-self:center;"/>
+                      </a>
+                    </div>
+                  
+                
+
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#primer-grafico" title="Primer gráfico" class="md-nav__link toc__link">
+    Primer gráfico
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejes-y-mapeados" title="Ejes y mapeados" class="md-nav__link toc__link">
+    Ejes y mapeados
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mapeado-de-texto-en-los-ejes" title="Mapeado de texto en los ejes" class="md-nav__link toc__link">
+    Mapeado de texto en los ejes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eje-x-y-eje-y" title="Eje X y eje Y" class="md-nav__link toc__link">
+    Eje X y eje Y
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graficos-invertidos" title="Gráficos invertidos" class="md-nav__link toc__link">
+    Gráficos invertidos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-curioso" title="Ejemplo curioso" class="md-nav__link toc__link">
+    Ejemplo curioso
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limites" title="Límites" class="md-nav__link toc__link">
+    Límites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#titulos-etiquetas-y-leyendas" title="Títulos, etiquetas y leyendas" class="md-nav__link toc__link">
+    Títulos, etiquetas y leyendas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estilos-de-linea-y-marcadores" title="Estilos de línea y marcadores" class="md-nav__link toc__link">
+    Estilos de línea y marcadores
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lineas" title="Líneas" class="md-nav__link toc__link">
+    Líneas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#marcadores" title="Marcadores" class="md-nav__link toc__link">
+    Marcadores
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subgraficos" title="Subgráficos" class="md-nav__link toc__link">
+    Subgráficos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#figuras" title="Figuras" class="md-nav__link toc__link">
+    Figuras
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipos-de-graficos" title="Tipos de gráficos" class="md-nav__link toc__link">
+    Tipos de gráficos
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grafico-lineal-plot" title="Gráfico lineal (plot)" class="md-nav__link toc__link">
+    Gráfico lineal (plot)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grafico-de-lineas-verticales-stem" title="Gráfico de líneas verticales (stem)" class="md-nav__link toc__link">
+    Gráfico de líneas verticales (stem)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grafico-de-series-comparadas-fill_between" title="Gráfico de series comparadas (fill_between)" class="md-nav__link toc__link">
+    Gráfico de series comparadas (fill_between)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grafico-circular-o-de-pastel-pie" title="Gráfico circular o de pastel (pie)" class="md-nav__link toc__link">
+    Gráfico circular o de pastel (pie)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grafico-de-cajas-y-bigotes-boxplot" title="Gráfico de cajas y bigotes (boxplot)" class="md-nav__link toc__link">
+    Gráfico de cajas y bigotes (boxplot)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grafico-histograma-hist" title="Gráfico histograma (hist)" class="md-nav__link toc__link">
+    Gráfico histograma (hist)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grafico-de-barras-bar" title="Gráfico de barras (bar)" class="md-nav__link toc__link">
+    Gráfico de barras (bar)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grafico-de-barras-horizontales-barh" title="Gráfico de barras horizontales (barh)" class="md-nav__link toc__link">
+    Gráfico de barras horizontales (barh)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grafico-de-escaleras-step" title="Gráfico de escaleras (step)" class="md-nav__link toc__link">
+    Gráfico de escaleras (step)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mas-graficos" title="Más gráficos" class="md-nav__link toc__link">
+    Más gráficos
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="introduccion-al-modulo-grafico-matplotlib">Introducción al módulo gráfico Matplotlib<a class="headerlink" href="#introduccion-al-modulo-grafico-matplotlib" title="Permanent link">&para;</a></h1>
+<!-- <div class="contenedor_youtube">
+  <iframe width="838" height="470" src="https://www.youtube.com/embed/r0NBTtxUYrs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div> -->
+
+<h2 id="primer-grafico">Primer gráfico<a class="headerlink" href="#primer-grafico" title="Permanent link">&para;</a></h2>
+<p>Empezaremos nuestra andadura viendo el gráfico más simple, el de líneas.</p>
+<p>Dando por hecho que estáis continuando <a href="/curso/introduccion-analisis-datos-python-numpy">el curso de numpy</a> y tenéis el entorno preparado, lo primero será cargar <strong>mumpy</strong> y <strong>matplotlib</strong> en una celda:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</code></pre></div>
+<p>Supongamos que necesitamos un gráfico que muestre los ahorros que hemos tenido durante los últimos 4 meses.</p>
+<p>Vamos a declarar una lista con ellos:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ahorros</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">65</span><span class="p">]</span>
+</code></pre></div>
+<p>Ahora con <strong>matplotlib</strong> podemos dibujar un gráfico a partir de esta lista sin mucha complicación:</p>
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ahorros</span><span class="p">)</span>
+</code></pre></div>
+<p>¿Qué os parece? ¿Os esperábais algo más complejo?</p>
+<p>Este gráfico tiene dos ejes, el horizontal (X) con 4 números de 0 a 3 y el vertical con los ahorros (Y) que empieza con el mínimo 30 hasta el máximo 100. Estos números corresponden a los índices de los valores en la lista y <strong>matplotlib</strong> genera una escala a partir de ellos.</p>
+<p>El primer elemento con índice 0 es el 50, el segundo de índice 1 el 100 y así sucesivamente.</p>
+<p>Así pues podemos crear gráficos a partir de listas pero también podemos hacerlo con arrays de <strong>numpy</strong>, ahí está gracia de todo.</p>
+<p>Por ejemplo podemos generar un array aleatorio de ahorros para el último año (12 meses):</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="n">ahorros</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">12</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ahorros</span><span class="p">)</span>
+</code></pre></div>
+<p>Como véis con <strong>numpy</strong> tenemos una forma perfecta de generar valores aleatorios para nuestros gráficos de ejemplo.</p>
+<p>Por cierto, nuestros gráficos se muestran porque como ya sabéis <strong>jupyter</strong> muestra la última celda automáticamente, de ahí que nos aparezca el nombre del objeto y su dirección en la memoria.</p>
+<p>Podemos evitar que aparezca esa línea llamando explícitamente al método <strong>show()</strong> del gráfico:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ahorros</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p>Es una buena práctica para no mostrar información de más, así que vamos a usarlo de ahora en adelante.</p>
+<h2 id="ejes-y-mapeados">Ejes y mapeados<a class="headerlink" href="#ejes-y-mapeados" title="Permanent link">&para;</a></h2>
+<p>En esta segunda lección aprenderemos a:</p>
+<ul>
+<li>Mapear texto en los ejes numéricos.</li>
+<li>A trabajar con el eje X y el eje Y.</li>
+<li>A crear gráficos con los ejes invertidos.</li>
+</ul>
+<h3 id="mapeado-de-texto-en-los-ejes">Mapeado de texto en los ejes<a class="headerlink" href="#mapeado-de-texto-en-los-ejes" title="Permanent link">&para;</a></h3>
+<p>Por defecto en los gráficos no podemos mostrar texto en los ejes porque estos se basan en valores numéricos.</p>
+<p>Lo que podemos hacer es mapear los textos a mostrar en una lista del mismo tamaño que el número de valores del eje (x para el horizontal e y para el vertical), utilizando los métodos <strong>xticks()</strong> o <strong>yticks()</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">ahorros</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
+<span class="n">meses</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Enero&#39;</span><span class="p">,</span> <span class="s1">&#39;Febrero&#39;</span><span class="p">,</span> <span class="s1">&#39;Marzo&#39;</span><span class="p">,</span> <span class="s1">&#39;Abril&#39;</span><span class="p">,</span> <span class="s1">&#39;Mayo&#39;</span><span class="p">,</span> <span class="s1">&#39;Junio&#39;</span><span class="p">]</span>
+<span class="n">mapeado</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">meses</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ahorros</span><span class="p">)</span>           <span class="c1"># Añadimos el gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">mapeado</span><span class="p">,</span> <span class="n">meses</span><span class="p">)</span>  <span class="c1"># Mapeamos los valores horizontales</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                  <span class="c1"># Finalmente lo mostramos</span>
+</code></pre></div>
+<h3 id="eje-x-y-eje-y">Eje X y eje Y<a class="headerlink" href="#eje-x-y-eje-y" title="Permanent link">&para;</a></h3>
+<p>Bien, hasta ahora los gráficos que hemos visualizado los hemos creado a partir de vectores de una dimensión.</p>
+<p>Al utilizar un único vector en el método <strong>.plot()</strong> éste lo toma como los valores del eje Y y genera el eje X automáticamente a partir de la longitud del vector.</p>
+<p>Ahora bien, nosotros podemos decidir los valores del eje X si los pasamos en otro vector como primer parámetro:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="graficos-invertidos">Gráficos invertidos<a class="headerlink" href="#graficos-invertidos" title="Permanent link">&para;</a></h3>
+<p>Algo interesante es que cambiando el orden de los ejes podemos generar un gráfico invertido:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="ejemplo-curioso">Ejemplo curioso<a class="headerlink" href="#ejemplo-curioso" title="Permanent link">&para;</a></h3>
+<p>Ahora bien, ¿qué ocurriría si los valores en X también fueran aleatorios?</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p>Pues como véis se genera un gráfico muy extraño.</p>
+<p>Los gráficos lineales se rigen en función del tiempo, eso implica que uno de los ejes debe ser un valor incremental. Al generar valores aleatorios hemos "roto" completamente esa lógica y como resultado nos queda un gráfico donde las líneas se cruzan por todas partes.</p>
+<p>La gracia de los gráficos es facilitar la comprensión en lugar de dificultarla así que deberíais evitar ejemplos como este.</p>
+<h2 id="limites">Límites<a class="headerlink" href="#limites" title="Permanent link">&para;</a></h2>
+<p>En algunas ocasiones necesitaremos manipular los límites inferiores y superiores de los ejes. Eso podemos hacerlo gracias a los métodos:</p>
+<ul>
+<li><strong>plt.xlim(min, max)</strong></li>
+<li><strong>plt.ylim(min, max)</strong></li>
+</ul>
+<p>Por ejemplo volvamos al ejemplo de los ahorros de la lección anterior</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">ahorros</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
+<span class="n">meses</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Enero&#39;</span><span class="p">,</span> <span class="s1">&#39;Febrero&#39;</span><span class="p">,</span> <span class="s1">&#39;Marzo&#39;</span><span class="p">,</span> <span class="s1">&#39;Abril&#39;</span><span class="p">,</span> <span class="s1">&#39;Mayo&#39;</span><span class="p">,</span> <span class="s1">&#39;Junio&#39;</span><span class="p">]</span>
+<span class="n">mapeado</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">meses</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ahorros</span><span class="p">)</span>           <span class="c1"># Añadimos el gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">mapeado</span><span class="p">,</span> <span class="n">meses</span><span class="p">)</span>  <span class="c1"># Mapeamos los valores horizontales</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                  <span class="c1"># Finalmente lo mostramos</span>
+</code></pre></div>
+<p>En este gráfico estamos manejando un array de datos aleatorios de 0 a 100. Sin embargo el gráfico establecerá los límites en los meses con más y menos ahorros.</p>
+<p>Podemos establecer que utilice 0 y 100 como escala para el eje Y con los ahorros aunque no tengamos ningún valor explícito con ellos:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="c1"># Límites verticales</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ahorros</span><span class="p">)</span>           <span class="c1"># Añadimos el gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">mapeado</span><span class="p">,</span> <span class="n">meses</span><span class="p">)</span>  <span class="c1"># Mapeamos los valores horizontales</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>            <span class="c1"># Configuramos el límite vertical</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                  <span class="c1"># Finalmente lo mostramos</span>
+</code></pre></div>
+<p>Utilizando los límites podemos centrarnos en una parte específica del gráfico.</p>
+<p>Por ejemplo si quisiéramos mostrar únicamente los meses de Marzo, Abril y Mayo, podemos limitar el eje X a los valores numéricos de los meses 2, 3 y 4 con un range de 2 a 4:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="c1"># Límites horizontales</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ahorros</span><span class="p">)</span>           <span class="c1"># Añadimos el gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">mapeado</span><span class="p">,</span> <span class="n">meses</span><span class="p">)</span>  <span class="c1"># Mapeamos los valores horizontales</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>              <span class="c1"># Configuramos el límite horizontal</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>            <span class="c1"># Configuramos el límite vertical</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                  <span class="c1"># Finalmente lo mostramos</span>
+</code></pre></div>
+<p>En cierta forma podemos considerarlo una forma de zoom así que no lo olvidéis.</p>
+<h2 id="titulos-etiquetas-y-leyendas">Títulos, etiquetas y leyendas<a class="headerlink" href="#titulos-etiquetas-y-leyendas" title="Permanent link">&para;</a></h2>
+<p>Sigamos con el ejemplo de los ahorros y vamos a utilizarlo para aprender a personalizar nuestros gráficos, añadiéndoles títulos, etiquetas y leyendas.</p>
+<p>Podríamos añadir a nuestro gráfico el titulo "Ahorros del primer semestre" y unas etiquetas para los eje X e Y con "Meses" y "Cantidad en €" respectivamente.</p>
+<p>Para ello utilizaremos los métodos:</p>
+<ul>
+<li><strong>plt.title("Título")</strong></li>
+<li><strong>plt.xlabel("Etiqueta horizontal")</strong></li>
+<li><strong>plt.ylabel("Etiqueta vertical")</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">ahorros</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
+<span class="n">meses</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Enero&#39;</span><span class="p">,</span> <span class="s1">&#39;Febrero&#39;</span><span class="p">,</span> <span class="s1">&#39;Marzo&#39;</span><span class="p">,</span> <span class="s1">&#39;Abril&#39;</span><span class="p">,</span> <span class="s1">&#39;Mayo&#39;</span><span class="p">,</span> <span class="s1">&#39;Junio&#39;</span><span class="p">]</span>
+<span class="n">mapeado</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">meses</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ahorros</span><span class="p">)</span>                         <span class="c1"># Añadimos el gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">mapeado</span><span class="p">,</span> <span class="n">meses</span><span class="p">)</span>                <span class="c1"># Mapeamos los valores horizontales</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>                            <span class="c1"># Configuramos el límite horizontal</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Ahorros del primer semestre&quot;</span><span class="p">)</span>  <span class="c1"># Configuramos el título</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Meses&quot;</span><span class="p">)</span>                       <span class="c1"># Configuramos la etiqueta del eje X</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cantidad en €&quot;</span><span class="p">)</span>               <span class="c1"># Configuramos la etiqueta del eje Y</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                                <span class="c1"># Finalmente lo mostramos</span>
+</code></pre></div>
+<p>El otro elemento informativo que podemos añadir son las leyendas utilizando:</p>
+<ul>
+<li><strong>plt.legend(LOCALIZACION)</strong></li>
+</ul>
+<p>Podemos elegir optativamente una localización a partir de las distintas opciones que nos indican en <a href="https://matplotlib.org/1.3.1/api/pyplot_api.html#matplotlib.pyplot.legend">la documentación de matplotlib</a> y que os dejaré recopiladas abajo en los apuntes:</p>
+<ul>
+<li><strong>'best'</strong> =&gt; 0</li>
+<li><strong>'upper right'</strong> =&gt; 1</li>
+<li><strong>'upper left'</strong> =&gt; 2</li>
+<li><strong>'lower left'</strong> =&gt; 3</li>
+<li><strong>'lower right'</strong> =&gt; 4</li>
+<li><strong>'right'</strong> =&gt; 5</li>
+<li><strong>'center left'</strong> =&gt; 6</li>
+<li><strong>'center right'</strong> =&gt; 7</li>
+<li><strong>'lower center'</strong> =&gt; 8</li>
+<li><strong>'upper center'</strong> =&gt; 9</li>
+<li><strong>'center'</strong> =&gt; 10</li>
+</ul>
+<p>Por defecto se usa la opción 0 para detectar automáticamente el mejor sitio donde poner la leyenda:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="c1"># Mostramos una leyenda</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ahorros</span><span class="p">)</span>                         <span class="c1"># Añadimos el gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">mapeado</span><span class="p">,</span> <span class="n">meses</span><span class="p">)</span>                <span class="c1"># Mapeamos los valores horizontales</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>                            <span class="c1"># Configuramos el límite horizontal</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Ahorros del primer semestre&quot;</span><span class="p">)</span>  <span class="c1"># Configuramos el título</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Meses&quot;</span><span class="p">)</span>                       <span class="c1"># Configuramos la etiqueta del eje X</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cantidad en €&quot;</span><span class="p">)</span>               <span class="c1"># Configuramos la etiqueta del eje Y</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>                         <span class="c1"># Mostramos la leyenda</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                                <span class="c1"># Finalmente lo mostramos</span>
+</code></pre></div>
+<p>Veréis que nos aparece un cuadradito pero no muestra nada, eso es porque tenemos que configurar el texto para del gráfico, algo que definiremos con la propiedad <strong>label</strong> al usar <strong>plot()</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="c1"># Mostramos una leyenda con un texto</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ahorros</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Evolución&quot;</span><span class="p">)</span>      <span class="c1"># Añadimos el gráfico con un texto</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">mapeado</span><span class="p">,</span> <span class="n">meses</span><span class="p">)</span>                <span class="c1"># Mapeamos los valores horizontales</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>                            <span class="c1"># Configuramos el límite horizontal</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Ahorros del primer semestre&quot;</span><span class="p">)</span>  <span class="c1"># Configuramos el título</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Meses&quot;</span><span class="p">)</span>                       <span class="c1"># Configuramos la etiqueta del eje X</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cantidad en €&quot;</span><span class="p">)</span>               <span class="c1"># Configuramos la etiqueta del eje Y</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>                              <span class="c1"># Mostramos la leyenda automáticamente</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                                <span class="c1"># Finalmente lo mostramos</span>
+</code></pre></div>
+<p>En este escenario donde dibujamos un único vector de datos una leyenda no tiene mucho sentido, pero si en lugar de uno tubiéramos por ejemplo tres vectores representando los ahorros de tres personas la cosa cambiaría:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="c1"># Mostramos los ahorros de tres personas diferentes</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">meses</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Enero&#39;</span><span class="p">,</span> <span class="s1">&#39;Febrero&#39;</span><span class="p">,</span> <span class="s1">&#39;Marzo&#39;</span><span class="p">,</span> <span class="s1">&#39;Abril&#39;</span><span class="p">,</span> <span class="s1">&#39;Mayo&#39;</span><span class="p">,</span> <span class="s1">&#39;Junio&#39;</span><span class="p">]</span>
+<span class="n">mapeado</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">meses</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">]),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Pedro&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">]),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Marta&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">]),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Ana&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">mapeado</span><span class="p">,</span> <span class="n">meses</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Ahorros del primer semestre&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Meses&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cantidad en €&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p>Esto que acabamos de hacer se denomina <strong>visualización de múltiples series</strong>, representando cada serie una de las líneas del gráfico.</p>
+<p>Con esto que sabemos y un poco de comprensión de listas podemos hacer otro ejemplo muy rápidamente para dibujar las tablas de multiplicas del 1 al 10:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="c1"># Tablas de multiplicar del 1 al 10</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span>                   <span class="c1"># Eje X</span>
+        <span class="p">[</span><span class="n">t</span> <span class="o">*</span> <span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)],</span>  <span class="c1"># Eje Y</span>
+        <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Tabla del </span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">&quot;</span>          <span class="c1"># Leyenda</span>
+    <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Tablas&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Número&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Resultado&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p>Para que luego digan que Python no mola...</p>
+<h2 id="estilos-de-linea-y-marcadores">Estilos de línea y marcadores<a class="headerlink" href="#estilos-de-linea-y-marcadores" title="Permanent link">&para;</a></h2>
+<p>En esta lección vamos a seguir personalizando nuestros gráficos, concretamente las líneas y los marcadores.</p>
+<h3 id="lineas">Líneas<a class="headerlink" href="#lineas" title="Permanent link">&para;</a></h3>
+<p>Vamos a empezar con las líneas usando nuestro ejemplo de los ahorros y lo haremos justo en el momento de añadir el gráfico de cada persona.</p>
+<p>Tenemos las siguientes propiedades básicas:</p>
+<ul>
+<li><strong>linewidth (lw)</strong>: Ancho de la línea</li>
+<li><strong>linestyle (ls)</strong>: Estilo de la línea *</li>
+<li><strong>color</strong>: Color de la línea (número y decimal)</li>
+<li><strong>alpha</strong>: Opacidad de la línea (de 0 a 1)</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="c1"># Personalizamos las líneas</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">meses</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Enero&#39;</span><span class="p">,</span> <span class="s1">&#39;Febrero&#39;</span><span class="p">,</span> <span class="s1">&#39;Marzo&#39;</span><span class="p">,</span> <span class="s1">&#39;Abril&#39;</span><span class="p">,</span> <span class="s1">&#39;Mayo&#39;</span><span class="p">,</span> <span class="s1">&#39;Junio&#39;</span><span class="p">]</span>
+<span class="n">mapeado</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">meses</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">]),</span>
+         <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Pedro&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="s2">&quot;3&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">]),</span>
+         <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Marta&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#0000ff&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="s2">&quot;4&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">]),</span>
+         <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Ana&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-.&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="s2">&quot;4&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">mapeado</span><span class="p">,</span> <span class="n">meses</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p>(*) En la <a href="https://matplotlib.org/api/lines_api.html#matplotlib.lines.Line2D.set_linestyle">documentación oficial</a> podéis consultar otras opciones para configurar las líneas.</p>
+<h3 id="marcadores">Marcadores<a class="headerlink" href="#marcadores" title="Permanent link">&para;</a></h3>
+<p>En los gráficos lineales los marcadores hacen referencia a los puntos o vértices donde se dibujan los valores.</p>
+<p>Vamos a ver los siguientes métodos:</p>
+<ul>
+<li><strong>marker</strong>: Tipo de marcador *</li>
+<li><strong>markersize</strong>: Tamaño del marcador</li>
+<li><strong>markerfacecolor</strong>: Color del marcador (número y decimal)</li>
+<li><strong>markeredgecolor</strong>: Color del borde (número y decimal)</li>
+<li><strong>markeredgewidth</strong>: Tamaño del borde</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="c1"># Personalizamos los marcadores</span>
+
+<span class="n">meses</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Enero&#39;</span><span class="p">,</span> <span class="s1">&#39;Febrero&#39;</span><span class="p">,</span> <span class="s1">&#39;Marzo&#39;</span><span class="p">,</span> <span class="s1">&#39;Abril&#39;</span><span class="p">,</span> <span class="s1">&#39;Mayo&#39;</span><span class="p">,</span> <span class="s1">&#39;Junio&#39;</span><span class="p">]</span>
+<span class="n">mapeado</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">meses</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">]),</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="s2">&quot;8&quot;</span><span class="p">,</span> <span class="n">markeredgewidth</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="p">,</span>
+         <span class="n">markerfacecolor</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">]),</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="s2">&quot;10&quot;</span><span class="p">,</span> <span class="n">markeredgewidth</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="p">,</span>
+         <span class="n">markerfacecolor</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">]),</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="s2">&quot;5&quot;</span><span class="p">,</span> <span class="n">markeredgewidth</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="p">,</span>
+         <span class="n">markerfacecolor</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">mapeado</span><span class="p">,</span> <span class="n">meses</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p>(*) La lista completa de marcadores posibles la encontraréis en la <a href="https://matplotlib.org/api/markers_api.html">documentación oficial</a>.</p>
+<h2 id="subgraficos">Subgráficos<a class="headerlink" href="#subgraficos" title="Permanent link">&para;</a></h2>
+<p>Ya hemos visto cómo crear gráficos. ¿Pero y si queremos dibujar más de un gráfico en el mismo espacio? ¿Por ejemplo para hacer una comparativa de los ahorros de cada personas cada sin sobreponer las líneas en la misma figura? Para esos casos podemos utilizar subgráficos.</p>
+<p>La regla de oro para añadir subgráficos es imaginar que estamos dibujando una tabla y cada subgráfico se dibujará en una celda dentro de esa tabla.</p>
+<p>Por tanto lo que debemos indicarle a <strong>matplotlib</strong> es en qué celda debe dibujar cada subgráfico:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="c1"># Dibujos con subgráficos</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Tabla 1x3 y dibujaremos en la celda 1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">]),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Pedro&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Tabla 1x3 y dibujaremos en la celda 2</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">]),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Marta&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># Tabla 1x3 y dibujaremos en la celda 3</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">]),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Ana&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># Dibujamos el conjunto</span>
+</code></pre></div>
+<p>Tened en cuenta que tenréis que dibujar cada subgráfico individualmente con su propia configuración, títulos, etiquetas, leyendas... y finalmente usar <strong>plt.show()</strong> para mostrar el conjunto de subgráficos.</p>
+<p>Podemos hacer otro ejemplo generado dinámicamente utilizando un bucle para que veáis como hacer lo mismo pero con varias filas:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="c1"># Dibujando 9 subgráficos</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Tabla 3x3</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">]))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">]))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h2 id="figuras">Figuras<a class="headerlink" href="#figuras" title="Permanent link">&para;</a></h2>
+<p>Hasta ahora todo lo que hemos hecho con <strong>matplotlib</strong> ha sido dibujar gráficos en celdas, pero en la vida real necesitaremos manejar estos gráficos para poder exportarlos y utilizarlos en nuestros programas y aplicaciones web.</p>
+<p>Para manejarlos se utilizan las figuras, la versión orientada a objetos de todo lo que hemos estado haciendo usando instancias y métodos. Cambia un poco la sintaxis así que tenedlo en cuenta:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="c1"># Gráficos usando figuras</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># La figura crea un espacio donde dibujar el gráfico</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="c1"># Necesitamos definir una relación de tamaños para el rectángulo del dibujo (l,b,w,h)</span>
+<span class="c1"># Nota: En jupyter l(eft) y b(ottom) para el primer gráfico no se tienen en cuenta</span>
+<span class="n">rect</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Añadimos los límites para crear un objeto de ejes sobre el que dibujar el gráfico</span>
+<span class="n">axes</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">(</span><span class="n">rect</span><span class="p">)</span>
+
+<span class="c1"># A partir de este objeto podremos crear nuestro gráfico como si fuera el clásico plt</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">]),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Pedro&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">]),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Marta&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">]),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Ana&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">)</span>
+
+<span class="c1"># La mayor diferencia ahora es a la hora de personalizar el gráfico, teniéndonos</span>
+<span class="c1"># que referir a los métodos con la palabra set precediendo del nombre clásico</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Meses&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Cantidad en €&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Ahorros del primer semestre&quot;</span><span class="p">)</span>
+
+<span class="c1"># La parte de mapear los nombres cambia un poco y requiere usar dos métodos</span>
+<span class="n">meses</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Enero&#39;</span><span class="p">,</span> <span class="s1">&#39;Febrero&#39;</span><span class="p">,</span> <span class="s1">&#39;Marzo&#39;</span><span class="p">,</span> <span class="s1">&#39;Abril&#39;</span><span class="p">,</span> <span class="s1">&#39;Mayo&#39;</span><span class="p">,</span> <span class="s1">&#39;Junio&#39;</span><span class="p">]</span>
+<span class="n">mapeado</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">meses</span><span class="p">))</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">mapeado</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">meses</span><span class="p">)</span>
+
+<span class="c1"># Finalmente mostramos la figura</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p>¿Cuál es la gracia de todo esto? Pues que al ser un objeto independiente podemos modificar su tamaño estableciendo una relación de pulgadas en ancho/alto y una densidad de píxeles por pulgada (dpi):</p>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</code></pre></div>
+<p>Una vez tengamos los gráficos podemos guardarlos abriéndolos con doble clic y usando el botón de exportar que soporta <strong>png</strong>, <strong>svg</strong> y <strong>pdf</strong>.</p>
+<h2 id="tipos-de-graficos">Tipos de gráficos<a class="headerlink" href="#tipos-de-graficos" title="Permanent link">&para;</a></h2>
+<p>Esta última lección es una galería donde veremos diferentes tipos de gráficos que nos ofrece <strong>matplotlib</strong>. En esencia se utilizan igual que el gráfico lineal así que no entraremos en detalles, pero igualmente os dejaré los códigos y enlaces a la documentación de cada tipo por si queréis aprender más.</p>
+<h3 id="grafico-lineal-plot">Gráfico lineal (plot)<a class="headerlink" href="#grafico-lineal-plot" title="Permanent link">&para;</a></h3>
+<p>Es el que hemos utilizado durante todo el curso, no requieren indicar nada específico a la hora de crearlos.</p>
+<ul>
+<li><a href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.pyplot.plot.html">Documentación oficial</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="c1"># Gráfico lineal</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="grafico-de-lineas-verticales-stem">Gráfico de líneas verticales (stem)<a class="headerlink" href="#grafico-de-lineas-verticales-stem" title="Permanent link">&para;</a></h3>
+<p>Este gráfico es muy útil para ilustrar valores positivos y negativos.</p>
+<ul>
+<li><a href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.pyplot.stem.html">Documentación oficial</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="c1"># Gráfico de líneas verticales</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="grafico-de-series-comparadas-fill_between">Gráfico de series comparadas (fill_between)<a class="headerlink" href="#grafico-de-series-comparadas-fill_between" title="Permanent link">&para;</a></h3>
+<p>Con éste podemos rellenar el espacio que hay entre dos series en el eje Y, pero hay que dibujarlas de más excluyente a menos para que no solapen los colores.</p>
+<ul>
+<li><a href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.pyplot.fill_between.html">Documentación oficial</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="c1"># Gráfico de series comparadas</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
+        <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span>
+        <span class="p">[</span><span class="n">t</span> <span class="o">*</span> <span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)],</span>
+        <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Tabla del </span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Tablas de multiplicar&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="grafico-circular-o-de-pastel-pie">Gráfico circular o de pastel (pie)<a class="headerlink" href="#grafico-circular-o-de-pastel-pie" title="Permanent link">&para;</a></h3>
+<p>El gráfico de "quesitos" como yo lo llamo es muy útil para representar porcentajes.</p>
+<ul>
+<li><a href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.pyplot.pie.html">Documentación oficial</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="c1"># Gráfico circular o de pastel</span>
+<span class="c1"># https://es.wikipedia.org/wiki/Anexo:Destinos_tur%C3%ADsticos_mundiales</span>
+
+<span class="n">turistas</span> <span class="o">=</span> <span class="p">[</span><span class="mf">86.9</span><span class="p">,</span> <span class="mf">81.8</span><span class="p">,</span> <span class="mf">75.9</span><span class="p">,</span> <span class="mf">60.7</span><span class="p">,</span> <span class="mf">58.2</span><span class="p">,</span> <span class="mf">39.3</span><span class="p">,</span> <span class="mf">37.7</span><span class="p">,</span> <span class="mf">37.6</span><span class="p">,</span> <span class="mf">37.5</span><span class="p">,</span> <span class="mf">35.4</span><span class="p">]</span>
+<span class="n">paises</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Francia&#39;</span><span class="p">,</span> <span class="s1">&#39;España&#39;</span><span class="p">,</span> <span class="s1">&#39;EEUU&#39;</span><span class="p">,</span> <span class="s1">&#39;China&#39;</span><span class="p">,</span> <span class="s1">&#39;Italia&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;México&#39;</span><span class="p">,</span> <span class="s1">&#39;Reino Unido&#39;</span><span class="p">,</span> <span class="s1">&#39;Turquía&#39;</span><span class="p">,</span> <span class="s1">&#39;Alemania&#39;</span><span class="p">,</span> <span class="s1">&#39;Tailandia&#39;</span><span class="p">]</span>
+
+<span class="n">explode</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># Destacar algunos</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">turistas</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">paises</span><span class="p">,</span> <span class="n">explode</span><span class="o">=</span><span class="n">explode</span><span class="p">,</span>
+        <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;TOP 10 DESTINOS TURÍSTICOS EN 2017&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="grafico-de-cajas-y-bigotes-boxplot">Gráfico de cajas y bigotes (boxplot)<a class="headerlink" href="#grafico-de-cajas-y-bigotes-boxplot" title="Permanent link">&para;</a></h3>
+<p>Este tipo nos permite hacernos una idea de valores medios gracias a las cajas, mientras por otro lado los bigotes nos indican valores límitantes.</p>
+<ul>
+<li><a href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.pyplot.boxplot.html">Documentación oficial</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="c1"># Gráfico de cajas y bigotes</span>
+<span class="c1"># https://es.wikipedia.org/wiki/Estatura</span>
+
+<span class="n">jap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">166</span><span class="p">,</span> <span class="mi">176</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">ale</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">175</span><span class="p">,</span> <span class="mi">185</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">arg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Cambio los colores para que se vea bien en VSC con tema oscura</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">([</span><span class="n">jap</span><span class="p">,</span> <span class="n">ale</span><span class="p">,</span> <span class="n">arg</span><span class="p">],</span>
+            <span class="n">notch</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">patch_artist</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">capprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">),</span>
+            <span class="n">medianprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">),</span>
+            <span class="n">whiskerprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;yellow&quot;</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Japón&#39;</span><span class="p">,</span> <span class="s1">&#39;Alemania&#39;</span><span class="p">,</span> <span class="s1">&#39;Argentina&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Estaturas (cm)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="grafico-histograma-hist">Gráfico histograma (hist)<a class="headerlink" href="#grafico-histograma-hist" title="Permanent link">&para;</a></h3>
+<p>Los histogramas sirven para hacernos una idea de la frecuencia de distribución de valores en un rango determinado.</p>
+<ul>
+<li><a href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.pyplot.hist.html">Documentación oficial</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="c1"># Gráfico histograma</span>
+<span class="n">alturas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># El rango se define con bins, debe ser menor que el número de muestras</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">alturas</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribución de 1000 alturas&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Altura media (cm)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Muestras&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p>Otro ejemplo con <a href="https://es.wikipedia.org/wiki/Distribuci%C3%B3n_normal">distribución gaussiana</a> a partir de un vector normal con <strong>numpy</strong> que tiende a dibujar una campana con su máximo justo en medio:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="c1"># Gráfico histograma gaussiano</span>
+<span class="n">numeros</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">numeros</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Histograma Gaussiano&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Valor&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frecuencia&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="grafico-de-barras-bar">Gráfico de barras (bar)<a class="headerlink" href="#grafico-de-barras-bar" title="Permanent link">&para;</a></h3>
+<p>Este es el clásico gráfico donde las barras nos indican cantidades en el eje Y para los valores en el eje X.</p>
+<ul>
+<li><a href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.pyplot.bar.html">Documentación oficial</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="c1"># Gráfico de barras</span>
+<span class="c1"># http://www.datosmacro.com/prima-riesgo/espana</span>
+
+<span class="n">fechas</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;19/08/2019&#39;</span><span class="p">,</span> <span class="s1">&#39;20/08/2019&#39;</span><span class="p">,</span> <span class="s1">&#39;21/08/2019&#39;</span><span class="p">,</span> <span class="s1">&#39;22/08/2019&#39;</span><span class="p">,</span> <span class="s1">&#39;23/08/2019&#39;</span><span class="p">]</span>
+<span class="n">primas</span> <span class="o">=</span> <span class="p">[</span><span class="mi">79</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">79</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">82</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">primas</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">fechas</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;PRIMA DE RIESGO EN ESPAÑA&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">primas</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">primas</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="grafico-de-barras-horizontales-barh">Gráfico de barras horizontales (barh)<a class="headerlink" href="#grafico-de-barras-horizontales-barh" title="Permanent link">&para;</a></h3>
+<p>Es una variante del anterior con las columnas dispuestas horizontalmente, por lo que cambian los ejes de las etiquetas y límites:</p>
+<ul>
+<li><a href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.pyplot.barh.html">Documentación oficial</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="c1"># Gráfico de barras horizontales</span>
+<span class="c1"># http://www.datosmacro.com/prima-riesgo/espana</span>
+
+<span class="n">fechas</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;19/08/2019&#39;</span><span class="p">,</span> <span class="s1">&#39;20/08/2019&#39;</span><span class="p">,</span> <span class="s1">&#39;21/08/2019&#39;</span><span class="p">,</span> <span class="s1">&#39;22/08/2019&#39;</span><span class="p">,</span> <span class="s1">&#39;23/08/2019&#39;</span><span class="p">]</span>
+<span class="n">primas</span> <span class="o">=</span> <span class="p">[</span><span class="mi">79</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">79</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">82</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">primas</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">fechas</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;PRIMA DE RIESGO EN ESPAÑA&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">primas</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">primas</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="grafico-de-escaleras-step">Gráfico de escaleras (step)<a class="headerlink" href="#grafico-de-escaleras-step" title="Permanent link">&para;</a></h3>
+<p>Otro gráfico muy simple que nos muestra las variaciones de forma continuada dibujando una escalera:</p>
+<ul>
+<li><a href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.pyplot.step.html">Documentación oficial</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="c1"># Gráfico de escaleras</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="mas-graficos">Más gráficos<a class="headerlink" href="#mas-graficos" title="Permanent link">&para;</a></h3>
+<p>Esta biblioteca nos ofrece muchísimos más tipos de gráficos, por eso os sugiero explorar más tipos de gráficos en la <a href="http://matplotlib.org/gallery.html">galería oficial de matplotlib</a>, ahí encontraréis cientos y cientos de ejemplos.</p>
+<p>Con esto acabamos el curso, espero que lo hayáis disfrutado tanto como yo creándolo.</p>
+<hr />
+<p><small class="edited"><i>Última edición: 16 de Marzo de 2021</i></small></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-nav">
+    <nav class="md-footer-nav__inner md-grid">
+      
+      <a
+        href="modulo-analitico-numpy.html"
+        title="Módulo analítico NumPy"
+        class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+        rel="prev"
+      >
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+        </div>
+        <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+          <span class="md-flex__ellipsis">
+            <span class="md-footer-nav__direction">
+              Anterior
+            </span>
+            Módulo analítico NumPy
+          </span>
+        </div>
+      </a>
+       
+      <a
+        href="../django/introduccion.html"
+        title="Django para principiantes"
+        class="md-flex md-footer-nav__link md-footer-nav__link--next"
+        rel="next"
+      >
+        <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+          <span class="md-flex__ellipsis">
+            <span class="md-footer-nav__direction">
+              Siguiente
+            </span>
+            Django para principiantes
+          </span>
+        </div>
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+        </div>
+      </a>
+      
+    </nav>
+  </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        <!--<div class="md-footer-links__highlight">
+          <a href="/comunidad/">Comunidad</a> · <a href="/politica-de-cookies/">Política de cookies</a> · <a href="/sobre-mi/">Sobre mí</a>
+        </div>-->
+        <div class="md-footer-copyright__highlight">
+          2015 - 2022 &copy; Héctor Costa Guzmán (<u
+            ><a
+              href="https://creativecommons.org/licenses/by/4.0/deed.es"
+              target="_blank"
+              rel="nofollow"
+              >Licencia CC BY 4.0</a
+            ></u
+          >)
+        </div>
+      </div>
+       
+<style>.md-footer-social__link {transition: 0.3s;}</style>
+<div class="md-footer-social" style="font-size: 2.5rem; margin-top: -6px!important; padding: 0px!important; margin-bottom: -6px; overflow: hidden!important;">
+  <a href="https://github.com/hcosta" title="Github" target="_blank" class="md-footer-social__link fa fa-github-square"></a>
+  <a href="https://www.youtube.com/c/HektorProfe" title="Youtube" target="_blank" class="md-footer-social__link fa fa-youtube-square"></a>
+  &nbsp;
+</div>
+ 
+    </div>
+  </div>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i["GoogleAnalyticsObject"] = r;
+      (i[r] =
+        i[r] ||
+        function () {
+          (i[r].q = i[r].q || []).push(arguments);
+        }),
+        (i[r].l = 1 * new Date());
+      (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m);
+    })(
+      window,
+      document,
+      "script",
+      "https://www.google-analytics.com/analytics.js",
+      "ga"
+    );
+    ga("create", "UA-124845547-1", "auto");
+    ga("send", "pageview");
+  </script>
+</footer>
+      
+      <a id="anchorID" href="https://www.hektorprofe.net/" target="_blank"></a>
+    </div>
+  <script type='text/javascript' src="/assets/javascripts/application.a26c1c21.js"></script>
+  <script src="/assets/javascripts/tingle.min.js"></script>
+  <script type='text/javascript'>
+    var modalButtonOnly = new tingle.modal({
+        closeMethods: [],
+        footer: true,
+        stickyFooter: true
+    });
+    var btn5 = document.querySelector('.js-tingle-modal-5');
+
+    // set content
+    modalButtonOnly.setContent(`
+    <div style="display:grid;grid-template-columns:32% 32% 32%;grid-column-gap: 1.33%;" id="supermodal">
+      <div class="course">
+        <a href="https://www.hektorprofe.net/cupon/python" target="_blank"><img src="/cdn/assets/python.png" style="width:100%;justify-self:center;align-self:center;"/></a>
+      </div>
+      <div class="course">
+        <a href="https://www.hektorprofe.net/cupon/django" target="_blank"><img src="/cdn/assets/django.png" style="width:100%;justify-self:center;align-self:center;"/></a>
+      </div>
+      <div class="course">
+        <a href="https://www.hektorprofe.net/cupon/pyside" target="_blank"><img src="/cdn/assets/pyside.png" style="width:100%;justify-self:center;align-self:center;"/></a>
+      </div>
+    </div>`);
+
+    modalButtonOnly.addFooterBtn('Cerrar', 'tingle-btn tingle-btn--default tingle-btn--pull-right', function(){
+      modalButtonOnly.close();
+    });
+
+    app.initialize({version:"1.2.3",url:{base:"../.."}})
+    var _extends=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(t[o]=n[o])}return t},_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t};!function(t,e){"object"===("undefined"==typeof exports?"undefined":_typeof(exports))&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):t.LazyLoad=e()}(this,function(){"use strict";function t(t,e,n){var o=e._settings;!n&&i(t)||(C(o.callback_enter,t),R.indexOf(t.tagName)>-1&&(N(t,e),I(t,o.class_loading)),E(t,e),a(t),C(o.callback_set,t))}var e={elements_selector:"img",container:document,threshold:300,thresholds:null,data_src:"src",data_srcset:"srcset",data_sizes:"sizes",data_bg:"bg",class_loading:"loading",class_loaded:"loaded",class_error:"error",load_delay:0,callback_load:null,callback_error:null,callback_set:null,callback_enter:null,callback_finish:null,to_webp:!1},n=function(t){return _extends({},e,t)},o=function(t,e){return t.getAttribute("data-"+e)},r=function(t,e,n){var o="data-"+e;null!==n?t.setAttribute(o,n):t.removeAttribute(o)},a=function(t){return r(t,"was-processed","true")},i=function(t){return"true"===o(t,"was-processed")},s=function(t,e){return r(t,"ll-timeout",e)},c=function(t){return o(t,"ll-timeout")},l=function(t){return t.filter(function(t){return!i(t)})},u=function(t,e){return t.filter(function(t){return t!==e})},d=function(t,e){var n,o=new t(e);try{n=new CustomEvent("LazyLoad::Initialized",{detail:{instance:o}})}catch(t){(n=document.createEvent("CustomEvent")).initCustomEvent("LazyLoad::Initialized",!1,!1,{instance:o})}window.dispatchEvent(n)},f=function(t,e){return e?t.replace(/\.(jpe?g|png)/gi,".webp"):t},_="undefined"!=typeof window,v=_&&!("onscroll"in window)||/(gle|ing|ro)bot|crawl|spider/i.test(navigator.userAgent),g=_&&"IntersectionObserver"in window,h=_&&"classList"in document.createElement("p"),b=_&&function(){var t=document.createElement("canvas");return!(!t.getContext||!t.getContext("2d"))&&0===t.toDataURL("image/webp").indexOf("data:image/webp")}(),m=function(t,e,n,r){for(var a,i=0;a=t.children[i];i+=1)if("SOURCE"===a.tagName){var s=o(a,n);p(a,e,s,r)}},p=function(t,e,n,o){n&&t.setAttribute(e,f(n,o))},y=function(t,e){var n=b&&e.to_webp,r=o(t,e.data_src),a=o(t,e.data_bg);if(r){var i=f(r,n);t.style.backgroundImage='url("'+i+'")'}if(a){var s=f(a,n);t.style.backgroundImage=s}},w={IMG:function(t,e){var n=b&&e.to_webp,r=e.data_srcset,a=t.parentNode;a&&"PICTURE"===a.tagName&&m(a,"srcset",r,n);var i=o(t,e.data_sizes);p(t,"sizes",i);var s=o(t,r);p(t,"srcset",s,n);var c=o(t,e.data_src);p(t,"src",c,n)},IFRAME:function(t,e){var n=o(t,e.data_src);p(t,"src",n)},VIDEO:function(t,e){var n=e.data_src,r=o(t,n);m(t,"src",n),p(t,"src",r),t.load()}},E=function(t,e){var n=e._settings,o=t.tagName,r=w[o];if(r)return r(t,n),e._updateLoadingCount(1),void(e._elements=u(e._elements,t));y(t,n)},I=function(t,e){h?t.classList.add(e):t.className+=(t.className?" ":"")+e},L=function(t,e){h?t.classList.remove(e):t.className=t.className.replace(new RegExp("(^|\\s+)"+e+"(\\s+|$)")," ").replace(/^\s+/,"").replace(/\s+$/,"")},C=function(t,e){t&&t(e)},O=function(t,e,n){t.addEventListener(e,n)},k=function(t,e,n){t.removeEventListener(e,n)},x=function(t,e,n){O(t,"load",e),O(t,"loadeddata",e),O(t,"error",n)},A=function(t,e,n){k(t,"load",e),k(t,"loadeddata",e),k(t,"error",n)},z=function(t,e,n){var o=n._settings,r=e?o.class_loaded:o.class_error,a=e?o.callback_load:o.callback_error,i=t.target;L(i,o.class_loading),I(i,r),C(a,i),n._updateLoadingCount(-1)},N=function(t,e){var n=function n(r){z(r,!0,e),A(t,n,o)},o=function o(r){z(r,!1,e),A(t,n,o)};x(t,n,o)},R=["IMG","IFRAME","VIDEO"],S=function(e,n,o){t(e,o),n.unobserve(e)},M=function(t){var e=c(t);e&&(clearTimeout(e),s(t,null))},j=function(t,e,n){var o=n._settings.load_delay,r=c(t);r||(r=setTimeout(function(){S(t,e,n),M(t)},o),s(t,r))},D=function(t){return t.isIntersecting||t.intersectionRatio>0},T=function(t){return{root:t.container===document?null:t.container,rootMargin:t.thresholds||t.threshold+"px"}},U=function(t,e){this._settings=n(t),this._setObserver(),this._loadingCount=0,this.update(e)};return U.prototype={_manageIntersection:function(t){var e=this._observer,n=this._settings.load_delay,o=t.target;n?D(t)?j(o,e,this):M(o):D(t)&&S(o,e,this)},_onIntersection:function(t){t.forEach(this._manageIntersection.bind(this))},_setObserver:function(){g&&(this._observer=new IntersectionObserver(this._onIntersection.bind(this),T(this._settings)))},_updateLoadingCount:function(t){this._loadingCount+=t,0===this._elements.length&&0===this._loadingCount&&C(this._settings.callback_finish)},update:function(t){var e=this,n=this._settings,o=t||n.container.querySelectorAll(n.elements_selector);this._elements=l(Array.prototype.slice.call(o)),!v&&this._observer?this._elements.forEach(function(t){e._observer.observe(t)}):this.loadAll()},destroy:function(){var t=this;this._observer&&(this._elements.forEach(function(e){t._observer.unobserve(e)}),this._observer=null),this._elements=null,this._settings=null},load:function(e,n){t(e,this,n)},loadAll:function(){var t=this;this._elements.forEach(function(e){t.load(e)})}},_&&function(t,e){if(e)if(e.length)for(var n,o=0;n=e[o];o+=1)d(t,n);else d(t,e)}(U,window.lazyLoadOptions),U});
+    var myLazyLoad = new LazyLoad({elements_selector: ".lazy"});
+    const mdMenuItems = document.querySelectorAll('.md-nav__link');
+    function doNav(){ document.getElementById("main__list").innerHTML = '<li class="md-nav__item"><a class="md-nav__link" href="/cursos/">Cursos</a></li><li class="md-nav__item"><a class="md-nav__link" href="/blog/">Blog</a></li>';}
+    for (i = 0; i < mdMenuItems.length; i++) {  var item = mdMenuItems[i]; var htmlstring = item.innerHTML; htmlstring = (htmlstring.trim) ? htmlstring.trim() : htmlstring.replace(/^\s+/,''); if (htmlstring == 'Servidor de encuentro') { item.parentNode.removeChild(item);continue; }  if (htmlstring == 'Política de Cookies') { item.parentNode.removeChild(item);continue; } if (htmlstring == 'Buscador') { item.parentNode.removeChild(item); continue; } }
+    try { var topPos = document.querySelector('#md__active_link').offsetTop; document.querySelector('#md__sidebar__scroll').scrollTop = topPos - 60; } catch (err) {}
+  </script>
+  </body>
+</html>
