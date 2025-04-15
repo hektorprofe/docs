@@ -5,17 +5,13 @@
     
     
     
-
-    
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
         <meta name="description" content="Web de apuntes de programación de Hector Costa Guzman.">
       
-      
-        <link rel="canonical" href="https://hektorprofe.github.io/docs.hektorprofe.net/graficos-3d/16-matrices-de-transformacion-3d/index.html">
-      
+      <link rel="canonical" href="https://hektorprofe.github.io/docs/graficos-3d/16-matrices-de-transformacion-3d/">
       
         <meta name="author" content="Héctor Costa Guzman">
       
@@ -26,18 +22,21 @@
         <title>Matrices de transformación 3D | Programación de gráficos 3D | Hektor Profe</title>
       
     
-    <link rel="stylesheet" href="../../assets/stylesheets/application.2.css">
+    <link rel="stylesheet"
+          href="../../assets/stylesheets/application.2.css">
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
     
-    <link rel="stylesheet" href="/assets/stylesheets/tingle.min.css">
-<style>
-@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
+    <link rel="stylesheet"
+          href="https://hektorprofe.github.io/docs/assets/stylesheets/tingle.min.css">
+    <style>
+@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
 [data-md-color-primary="grey"] .md-header { background-color: #191A1D }
 [data-md-color-primary="grey"] .md-tabs { background-color: #222831 }
 .md-footer-nav { background-color: #222831; }
@@ -98,90 +97,79 @@ div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 1999.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 246px - 60px);margin-right:-1px;}}
 @media (max-width: 1599.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 222px - 60px)}}
 
-</style>
+    </style>
   </head>
   
     
     
-    <body dir="ltr" data-md-color-primary="grey" data-md-color-accent="grey">
-  
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    <body dir="ltr"
+          data-md-color-primary="grey"
+          data-md-color-accent="grey">
     
-      <a href="#matrices-de-transformacion-3d" tabindex="1" class="md-skip">
-        Saltar a contenido
-      </a>
-    
-    
-      <header
-  class="md-header"
-  data-md-component="header"
-  style="position: inherit !important"
->
+      <input class="md-toggle"
+             data-md-toggle="drawer"
+             type="checkbox"
+             id="__drawer"
+             autocomplete="off">
+      <input class="md-toggle"
+             data-md-toggle="search"
+             type="checkbox"
+             id="__search"
+             autocomplete="off">
+      <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+      
+        <a href="#matrices-de-transformacion-3d"
+           tabindex="1"
+           class="md-skip">Saltar a contenido</a>
+      
+      
+        <header class="md-header"
+        data-md-component="header"
+        style="position: inherit !important">
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a
-          href="/"
-          title="Hektor Profe"
-          class="md-header-nav__button md-logo"
-          style="font-size: 0px"
-        >
-          <img
-            src="/assets/images/logo.png"
-            width="200px"
-            height="35px"
-            style="margin-top: -5px"
-            alt="Hektor Profe"
-            title="Hektor Profe"
-          />
+        <a href="/"
+           title="Hektor Profe"
+           class="md-header-nav__button md-logo"
+           style="font-size: 0px">
+          <img src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+               width="200px"
+               height="35px"
+               style="margin-top: -5px"
+               alt="Hektor Profe"
+               title="Hektor Profe" />
         </a>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
-        <label
-          class="md-icon md-icon--menu md-header-nav__button"
-          for="__drawer"
-        ></label>
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
-        <div
-          class="md-flex__ellipsis md-header-nav__title"
-          data-md-component="title"
-          style="text-align: right"
-        >
+        <div class="md-flex__ellipsis md-header-nav__title"
+             data-md-component="title"
+             style="text-align: right">
           <!-- https://fontawesome.com/v4.7.0/ -->
-          <a 
-            class="nav__btn" 
-            href="https://www.hektorprofe.net/" 
-            style="margin-left:0em;" 
-            title="Cursos de Hektor Profe">
-            Cursos
+          <a class="nav__btn"
+             href="https://www.hektorprofe.net/"
+             style="margin-left:0em"
+             title="Cursos de Hektor Profe">Cursos</a>
+          <a class="nav__btn"
+             href="https://docs.hektorprofe.net/"
+             style="margin-left:1.4em"
+             title="Documentos de Hektor Profe">Documentos</a>
+          <a class="nav__btn"
+             href="https://www.hektorprofe.net/portafolio/"
+             style="margin-left:1.4em"
+             title="Portafolio de Hektor Profe">Portafolio</a>
+          <a href="/">
+            <img class="nav__logo"
+                 src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+                 width="200px"
+                 height="35px"
+                 style="margin: 6px auto 0"
+                 alt="Hektor Profe"
+                 title="Hektor Profe" />
           </a>
-          <a 
-            class="nav__btn" 
-            href="https://docs.hektorprofe.net/" 
-            style="margin-left:1.4em;" 
-            title="Documentos de Hektor Profe">
-            Documentos
-          </a>
-          <a 
-            class="nav__btn" 
-            href="https://www.hektorprofe.net/portafolio/" 
-            style="margin-left:1.4em;" 
-            title="Portafolio de Hektor Profe">
-            Portafolio
-          </a>
-          <a href="/"
-            ><img
-              class="nav__logo"
-              src="/assets/images/logo.png"
-              width="200px"
-              height="35px"
-              style="margin: 6px auto 0"
-              alt="Hektor Profe"
-              title="Hektor Profe"
-          /></a>
         </div>
         <style>
           .md-sidebar[data-md-state="lock"] {
@@ -230,13 +218,13 @@ div.my-img{text-align:center;margin-top:20px}
     </div>
   </nav>
 </header>
-    
-    <div class="md-container" style="padding-top: 0px !important;">
       
+      <div class="md-container" style="padding-top: 0px !important;">
         
-      
-      
+          
         
+        
+          
 
   
 
@@ -273,15 +261,16 @@ div.my-img{text-align:center;margin-top:20px}
       </ul>
     </div>
 </nav>
-      
-      <main class="md-main">
-        <div class="md-main__inner md-grid" data-md-component="container" style="padding-top: 8px !important;">
-          
+        
+        <main class="md-main">
+          <div class="md-main__inner md-grid"
+               data-md-component="container"
+               style="padding-top: 8px !important">
             
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
-                <div class="md-sidebar__scrollwrap" id="md__sidebar__scroll">
-                  <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
+              
+                <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                  <div class="md-sidebar__scrollwrap" id="md__sidebar__scroll">
+                    <div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title" for="__drawer" style="padding:0 !important;max-height:5.5rem;"></label>
   
   <ul class="md-nav__list" id="main__list" data-md-scrollfix>
@@ -329,7 +318,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../index.html" title="Índice del archivo" class="md-nav__link">
+    <a href="../" title="Índice del archivo" class="md-nav__link">
       Índice del archivo
     </a>
   </li>
@@ -341,7 +330,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../01-configuracion-previa/index.html" title="Configuración previa" class="md-nav__link">
+    <a href="../01-configuracion-previa/" title="Configuración previa" class="md-nav__link">
       Configuración previa
     </a>
   </li>
@@ -353,7 +342,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../02-buffer-de-color/index.html" title="Buffer de color" class="md-nav__link">
+    <a href="../02-buffer-de-color/" title="Buffer de color" class="md-nav__link">
       Buffer de color
     </a>
   </li>
@@ -365,7 +354,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../03-vectores-y-puntos/index.html" title="Vectores y puntos" class="md-nav__link">
+    <a href="../03-vectores-y-puntos/" title="Vectores y puntos" class="md-nav__link">
       Vectores y puntos
     </a>
   </li>
@@ -377,7 +366,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../04-proyeccion-de-puntos/index.html" title="Proyección de puntos" class="md-nav__link">
+    <a href="../04-proyeccion-de-puntos/" title="Proyección de puntos" class="md-nav__link">
       Proyección de puntos
     </a>
   </li>
@@ -389,7 +378,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../05-transformaciones-lineales/index.html" title="Transformaciones lineales" class="md-nav__link">
+    <a href="../05-transformaciones-lineales/" title="Transformaciones lineales" class="md-nav__link">
       Transformaciones lineales
     </a>
   </li>
@@ -401,7 +390,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../06-triangulos-vertices-mallas/index.html" title="Triángulos, vértices y mallas" class="md-nav__link">
+    <a href="../06-triangulos-vertices-mallas/" title="Triángulos, vértices y mallas" class="md-nav__link">
       Triángulos, vértices y mallas
     </a>
   </li>
@@ -413,7 +402,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../07-rasterizacion-de-lineas/index.html" title="Rasterización de líneas" class="md-nav__link">
+    <a href="../07-rasterizacion-de-lineas/" title="Rasterización de líneas" class="md-nav__link">
       Rasterización de líneas
     </a>
   </li>
@@ -425,7 +414,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../08-mallas-en-memoria-dinamica/index.html" title="Mallas en memoria dinámica" class="md-nav__link">
+    <a href="../08-mallas-en-memoria-dinamica/" title="Mallas en memoria dinámica" class="md-nav__link">
       Mallas en memoria dinámica
     </a>
   </li>
@@ -437,7 +426,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../09-ficheros-con-modelos-obj/index.html" title="Ficheros con modelos OBJ" class="md-nav__link">
+    <a href="../09-ficheros-con-modelos-obj/" title="Ficheros con modelos OBJ" class="md-nav__link">
       Ficheros con modelos OBJ
     </a>
   </li>
@@ -449,7 +438,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../10-operaciones-con-vectores/index.html" title="Operaciones con vectores" class="md-nav__link">
+    <a href="../10-operaciones-con-vectores/" title="Operaciones con vectores" class="md-nav__link">
       Operaciones con vectores
     </a>
   </li>
@@ -461,7 +450,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../11-back-face-culling/index.html" title="Back-face Culling" class="md-nav__link">
+    <a href="../11-back-face-culling/" title="Back-face Culling" class="md-nav__link">
       Back-face Culling
     </a>
   </li>
@@ -473,7 +462,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../12-rasterizacion-de-triangulos/index.html" title="Rasterización de triángulos" class="md-nav__link">
+    <a href="../12-rasterizacion-de-triangulos/" title="Rasterización de triángulos" class="md-nav__link">
       Rasterización de triángulos
     </a>
   </li>
@@ -485,7 +474,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../13-interfaz-dear-imgui/index.html" title="Interfaz Dear ImGui" class="md-nav__link">
+    <a href="../13-interfaz-dear-imgui/" title="Interfaz Dear ImGui" class="md-nav__link">
       Interfaz Dear ImGui
     </a>
   </li>
@@ -497,7 +486,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../14-ordenar-caras-por-profundidad/index.html" title="Ordenar caras por profundidad" class="md-nav__link">
+    <a href="../14-ordenar-caras-por-profundidad/" title="Ordenar caras por profundidad" class="md-nav__link">
       Ordenar caras por profundidad
     </a>
   </li>
@@ -509,7 +498,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../15-operaciones-con-matrices/index.html" title="Operaciones con matrices" class="md-nav__link">
+    <a href="../15-operaciones-con-matrices/" title="Operaciones con matrices" class="md-nav__link">
       Operaciones con matrices
     </a>
   </li>
@@ -533,7 +522,7 @@ div.my-img{text-align:center;margin-top:20px}
         Matrices de transformación 3D
       </label>
     
-    <a href="index.html" title="Matrices de transformación 3D" class="md-nav__link md-nav__link--active" id="md__active_link">
+    <a href="./" title="Matrices de transformación 3D" class="md-nav__link md-nav__link--active" id="md__active_link">
       Matrices de transformación 3D
     </a>
     
@@ -599,7 +588,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../17-matriz-de-proyeccion/index.html" title="Matriz de proyección" class="md-nav__link">
+    <a href="../17-matriz-de-proyeccion/" title="Matriz de proyección" class="md-nav__link">
       Matriz de proyección
     </a>
   </li>
@@ -611,7 +600,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../18-luz-y-sombreado/index.html" title="Luz y sombreado" class="md-nav__link">
+    <a href="../18-luz-y-sombreado/" title="Luz y sombreado" class="md-nav__link">
       Luz y sombreado
     </a>
   </li>
@@ -623,7 +612,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../19-migracion-a-visual-studio/index.html" title="Migración a Visual Studio" class="md-nav__link">
+    <a href="../19-migracion-a-visual-studio/" title="Migración a Visual Studio" class="md-nav__link">
       Migración a Visual Studio
     </a>
   </li>
@@ -635,7 +624,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../20-mapeado-de-texturas/index.html" title="Mapeado de texturas" class="md-nav__link">
+    <a href="../20-mapeado-de-texturas/" title="Mapeado de texturas" class="md-nav__link">
       Mapeado de texturas
     </a>
   </li>
@@ -647,7 +636,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../21-interpolacion-de-perspectiva/index.html" title="Interpolación de perspectiva" class="md-nav__link">
+    <a href="../21-interpolacion-de-perspectiva/" title="Interpolación de perspectiva" class="md-nav__link">
       Interpolación de perspectiva
     </a>
   </li>
@@ -659,7 +648,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../22-decodificacion-de-ficheros-png/index.html" title="Decodificación de ficheros PNG" class="md-nav__link">
+    <a href="../22-decodificacion-de-ficheros-png/" title="Decodificación de ficheros PNG" class="md-nav__link">
       Decodificación de ficheros PNG
     </a>
   </li>
@@ -671,7 +660,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../23-ficheros-obj-con-texturas/index.html" title="Ficheros OBJ con texturas" class="md-nav__link">
+    <a href="../23-ficheros-obj-con-texturas/" title="Ficheros OBJ con texturas" class="md-nav__link">
       Ficheros OBJ con texturas
     </a>
   </li>
@@ -683,7 +672,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../24-profundidad-con-z-buffer/index.html" title="Profundidad con Z-Buffer" class="md-nav__link">
+    <a href="../24-profundidad-con-z-buffer/" title="Profundidad con Z-Buffer" class="md-nav__link">
       Profundidad con Z-Buffer
     </a>
   </li>
@@ -695,7 +684,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../25-matriz-de-vista-y-camara/index.html" title="Matriz de vista y cámaras" class="md-nav__link">
+    <a href="../25-matriz-de-vista-y-camara/" title="Matriz de vista y cámaras" class="md-nav__link">
       Matriz de vista y cámaras
     </a>
   </li>
@@ -707,7 +696,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../26-renderizado-y-debug-separado/index.html" title="Renderizado y debug separado" class="md-nav__link">
+    <a href="../26-renderizado-y-debug-separado/" title="Renderizado y debug separado" class="md-nav__link">
       Renderizado y debug separado
     </a>
   </li>
@@ -719,7 +708,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../27-clipping/index.html" title="Clipping" class="md-nav__link">
+    <a href="../27-clipping/" title="Clipping" class="md-nav__link">
       Clipping
     </a>
   </li>
@@ -731,7 +720,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../28-multiples-mallas/index.html" title="Múltiples mallas" class="md-nav__link">
+    <a href="../28-multiples-mallas/" title="Múltiples mallas" class="md-nav__link">
       Múltiples mallas
     </a>
   </li>
@@ -756,27 +745,14 @@ div.my-img{text-align:center;margin-top:20px}
     
   </ul>
 </nav>
-
+</div>
                   </div>
                 </div>
-              </div>
-            
-
-            
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                
-                  
-                    <div class="course-offer" style="margin-bottom:25px;padding:0px 10px;">
-                      <a href="https://www.hektorprofe.net/cupon/python" target="_blank">
-                        <img src="/cdn/assets/python.png" style="width:100%;justify-self:center;align-self:center;"/>
-                      </a>
-                    </div>
-                  
-                
-
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
+              
+              
+                <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                  <div class="md-sidebar__scrollwrap">
+                    <div class="md-sidebar__inner">
 <nav class="md-nav md-nav--secondary">
   
   
@@ -827,18 +803,17 @@ div.my-img{text-align:center;margin-top:20px}
       
     </ul>
   
-</nav>
+</nav></div>
                   </div>
                 </div>
-              </div>
-            
-          
-          <div class="md-content">
-            <article class="md-content__inner md-typeset">
               
+            
+            <div class="md-content">
+              <article class="md-content__inner md-typeset">
                 
-                
-                <h1 id="matrices-de-transformacion-3d">Matrices de transformación 3D<a class="headerlink" href="#matrices-de-transformacion-3d" title="Permanent link">&para;</a></h1>
+                  
+                  
+                  <h1 id="matrices-de-transformacion-3d">Matrices de transformación 3D<a class="headerlink" href="#matrices-de-transformacion-3d" title="Permanent link">&para;</a></h1>
 <p>En este bloque vamos a repasar las diferentes matrices de transformación para aplicar en entornos 3D. Estas matrices se pueden presentar individualmente o de forma combinada (<strong>traslación</strong>, <strong>rotación</strong>, <strong>escalado</strong> o <strong>transformación de mundo</strong>).</p>
 <p>En álgebra lineal, las transformaciones lineales pueden representarse con matrices. Generalmente se utilizan matrices <code>4x4</code> para representar transformaciones 3D:</p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}\begin{bmatrix}m&space;&&space;m&space;&&space;m&space;&&space;m&space;\\m&space;&&space;&space;m&&space;m&space;&&space;m&space;\\m&space;&&space;m&space;&&space;m&space;&&space;m&space;\\m&space;&&space;m&space;&&space;m&space;&&space;m&space;\\\end{bmatrix}{\color{Red}*&space;}\begin{bmatrix}x&space;\\y&space;\\z&space;\\&space;\\\end{bmatrix}&space;"/></p>
@@ -1007,7 +982,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>Por ahora este es el resultado del escalado con matrices:</p>
-<p><img alt="" src="/cdn/graficos3d/anim-17.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-17.gif" /></p>
 <h2 id="matriz-de-traslacion-3d">Matriz de traslación 3D<a class="headerlink" href="#matriz-de-traslacion-3d" title="Permanent link">&para;</a></h2>
 <p>La matriz que aplicaremos para realizar una traslación, modificar la posición en el espacio de la malla, es la siguiente:</p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}\begin{bmatrix}1&0&0&{\color{Blue}tx}\\0&1&0&{\color{Blue}ty}\\0&0&1&{\color{Blue}tz}\\0&0&0&1\\\end{bmatrix}{\color{Red}*}\begin{bmatrix}x\\y\\z\\1\\\end{bmatrix}" /></p>
@@ -1079,7 +1054,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="kt">int</span><span class="w"> </span><span class="n">fovFactor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">400</span><span class="p">;</span>
 </code></pre></div>
 <p>Con esto deberíamos ser capaces de cambiar la posición del modelo y de la cámara correctamente:</p>
-<p><img alt="" src="/cdn/graficos3d/anim-18.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-18.gif" /></p>
 <h2 id="matriz-de-rotacion-3d">Matriz de rotación 3D<a class="headerlink" href="#matriz-de-rotacion-3d" title="Permanent link">&para;</a></h2>
 <p>La rotación 3D se realiza mediante el bloqueo de un eje, por lo que tendremos 3 variantes de la matriz de rotación dependiendo del eje alrededor del cuál queramos rotar. Por lo demás es aplicar la lógica que vimos para realizar una rotación de un vector en 2D.</p>
 <p>La matriz de rotación alrededor del eje <code>Z</code>, manteniéndo ese eje intocable (tercera fila y tercera columna) es:</p>
@@ -1162,7 +1137,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>En principio podemos reutilizar lo que teníamos de la interfaz y ya tendremos un visualizador de modelos 3D bastante completo:</p>
-<p><img alt="" src="/cdn/graficos3d/anim-19.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-19.gif" /></p>
 <h2 id="matriz-de-mundo-3d">Matriz de mundo 3D<a class="headerlink" href="#matriz-de-mundo-3d" title="Permanent link">&para;</a></h2>
 <p>La matriz de mundo es una combinación de todas las demás transformaciones (escalado, rotación, traslación...) en una sola matriz.</p>
 <p>En la práctica es una multiplicación de todas las demás matrices:</p>
@@ -1208,7 +1183,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>Con esto tendremos la matriz de mundo todo en una:</p>
-<p><img alt="" src="/cdn/graficos3d/anim-20.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-20.gif" /></p>
 <h2 id="reflexion-sobre-la-traslacion">Reflexión sobre la traslación<a class="headerlink" href="#reflexion-sobre-la-traslacion" title="Permanent link">&para;</a></h2>
 <p>Según lo tratado hasta ahora, la traslación es una transformación un tanto especial, recordemos que es la única que requiere la cuarta columna para multiplicar los valores por la cantidad de traslación:</p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}\begin{bmatrix}1&0&0&{\color{Blue}tx}\\0&1&0&{\color{Blue}ty}\\0&0&1&{\color{Blue}tz}\\0&0&0&1\\\end{bmatrix}{\color{Red}*}\begin{bmatrix}x\\y\\z\\1\\\end{bmatrix}" /></p>
@@ -1222,28 +1197,28 @@ div.my-img{text-align:center;margin-top:20px}
 <p>Para solucionar este problema  lo que hacemos es abstraer el vector a una cuarta dimensión imaginaria (la cuarta columna y fila de la matriz), realizamos los cálculos pertinentes para trasladarlos y una vez lo tenemos transformamos de nuevo al espacio tridimensional 3D.</p>
 <hr />
 <p><small class="edited"><i>Última edición: 05 de Junio de 2022</i></small></p>
-                
+                  
+                    
                   
                 
-              
-              
                 
+                  
 
 
-              
-            </article>
+                
+              </article>
+            </div>
           </div>
-        </div>
-      </main>
-      
+        </main>
         
+          
 <footer class="md-footer">
   
   <div class="md-footer-nav">
     <nav class="md-footer-nav__inner md-grid">
       
       <a
-        href="../15-operaciones-con-matrices/index.html"
+        href="../15-operaciones-con-matrices/"
         title="Operaciones con matrices"
         class="md-flex md-footer-nav__link md-footer-nav__link--prev"
         rel="prev"
@@ -1262,7 +1237,7 @@ div.my-img{text-align:center;margin-top:20px}
       </a>
        
       <a
-        href="../17-matriz-de-proyeccion/index.html"
+        href="../17-matriz-de-proyeccion/"
         title="Matriz de proyección"
         class="md-flex md-footer-nav__link md-footer-nav__link--next"
         rel="next"
@@ -1334,12 +1309,13 @@ div.my-img{text-align:center;margin-top:20px}
     ga("send", "pageview");
   </script>
 </footer>
-      
-      <a id="anchorID" href="https://www.hektorprofe.net/" target="_blank"></a>
-    </div>
-  <script type='text/javascript' src="/assets/javascripts/application.a26c1c21.js"></script>
-  <script src="/assets/javascripts/tingle.min.js"></script>
-  <script type='text/javascript'>
+        
+        <a id="anchorID" href="https://www.hektorprofe.net/" target="_blank"></a>
+      </div>
+      <script type='text/javascript'
+              src="https://hektorprofe.github.io/docs/assets/javascripts/application.a26c1c21.js"></script>
+      <script src="https://hektorprofe.github.io/docs/assets/javascripts/tingle.min.js"></script>
+      <script type='text/javascript'>
     var modalButtonOnly = new tingle.modal({
         closeMethods: [],
         footer: true,
@@ -1351,13 +1327,13 @@ div.my-img{text-align:center;margin-top:20px}
     modalButtonOnly.setContent(`
     <div style="display:grid;grid-template-columns:32% 32% 32%;grid-column-gap: 1.33%;" id="supermodal">
       <div class="course">
-        <a href="https://www.hektorprofe.net/cupon/python" target="_blank"><img src="/cdn/assets/python.png" style="width:100%;justify-self:center;align-self:center;"/></a>
+        <a href="https://www.hektorprofe.net/cupon/python" target="_blank"><img src="assets/python.png" style="width:100%;justify-self:center;align-self:center;" /></a>
       </div>
       <div class="course">
-        <a href="https://www.hektorprofe.net/cupon/django" target="_blank"><img src="/cdn/assets/django.png" style="width:100%;justify-self:center;align-self:center;"/></a>
+        <a href="https://www.hektorprofe.net/cupon/django" target="_blank"><img src="assets/django.png" style="width:100%;justify-self:center;align-self:center;" /></a>
       </div>
       <div class="course">
-        <a href="https://www.hektorprofe.net/cupon/pyside" target="_blank"><img src="/cdn/assets/pyside.png" style="width:100%;justify-self:center;align-self:center;"/></a>
+        <a href="https://www.hektorprofe.net/cupon/pyside" target="_blank"><img src="assets/pyside.png" style="width:100%;justify-self:center;align-self:center;" /></a>
       </div>
     </div>`);
 
@@ -1372,6 +1348,6 @@ div.my-img{text-align:center;margin-top:20px}
     function doNav(){ document.getElementById("main__list").innerHTML = '<li class="md-nav__item"><a class="md-nav__link" href="/cursos/">Cursos</a></li><li class="md-nav__item"><a class="md-nav__link" href="/blog/">Blog</a></li>';}
     for (i = 0; i < mdMenuItems.length; i++) {  var item = mdMenuItems[i]; var htmlstring = item.innerHTML; htmlstring = (htmlstring.trim) ? htmlstring.trim() : htmlstring.replace(/^\s+/,''); if (htmlstring == 'Servidor de encuentro') { item.parentNode.removeChild(item);continue; }  if (htmlstring == 'Política de Cookies') { item.parentNode.removeChild(item);continue; } if (htmlstring == 'Buscador') { item.parentNode.removeChild(item); continue; } }
     try { var topPos = document.querySelector('#md__active_link').offsetTop; document.querySelector('#md__sidebar__scroll').scrollTop = topPos - 60; } catch (err) {}
-  </script>
-  </body>
-</html>
+      </script>
+    </body>
+  </html>

@@ -5,17 +5,13 @@
     
     
     
-
-    
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
         <meta name="description" content="Web de apuntes de programación de Hector Costa Guzman.">
       
-      
-        <link rel="canonical" href="https://hektorprofe.github.io/docs.hektorprofe.net/graficos-3d/27-clipping/index.html">
-      
+      <link rel="canonical" href="https://hektorprofe.github.io/docs/graficos-3d/27-clipping/">
       
         <meta name="author" content="Héctor Costa Guzman">
       
@@ -26,18 +22,21 @@
         <title>Clipping | Programación de gráficos 3D | Hektor Profe</title>
       
     
-    <link rel="stylesheet" href="../../assets/stylesheets/application.2.css">
+    <link rel="stylesheet"
+          href="../../assets/stylesheets/application.2.css">
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
     
-    <link rel="stylesheet" href="/assets/stylesheets/tingle.min.css">
-<style>
-@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
+    <link rel="stylesheet"
+          href="https://hektorprofe.github.io/docs/assets/stylesheets/tingle.min.css">
+    <style>
+@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
 [data-md-color-primary="grey"] .md-header { background-color: #191A1D }
 [data-md-color-primary="grey"] .md-tabs { background-color: #222831 }
 .md-footer-nav { background-color: #222831; }
@@ -98,90 +97,79 @@ div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 1999.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 246px - 60px);margin-right:-1px;}}
 @media (max-width: 1599.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 222px - 60px)}}
 
-</style>
+    </style>
   </head>
   
     
     
-    <body dir="ltr" data-md-color-primary="grey" data-md-color-accent="grey">
-  
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    <body dir="ltr"
+          data-md-color-primary="grey"
+          data-md-color-accent="grey">
     
-      <a href="#clipping" tabindex="1" class="md-skip">
-        Saltar a contenido
-      </a>
-    
-    
-      <header
-  class="md-header"
-  data-md-component="header"
-  style="position: inherit !important"
->
+      <input class="md-toggle"
+             data-md-toggle="drawer"
+             type="checkbox"
+             id="__drawer"
+             autocomplete="off">
+      <input class="md-toggle"
+             data-md-toggle="search"
+             type="checkbox"
+             id="__search"
+             autocomplete="off">
+      <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+      
+        <a href="#clipping"
+           tabindex="1"
+           class="md-skip">Saltar a contenido</a>
+      
+      
+        <header class="md-header"
+        data-md-component="header"
+        style="position: inherit !important">
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a
-          href="/"
-          title="Hektor Profe"
-          class="md-header-nav__button md-logo"
-          style="font-size: 0px"
-        >
-          <img
-            src="/assets/images/logo.png"
-            width="200px"
-            height="35px"
-            style="margin-top: -5px"
-            alt="Hektor Profe"
-            title="Hektor Profe"
-          />
+        <a href="/"
+           title="Hektor Profe"
+           class="md-header-nav__button md-logo"
+           style="font-size: 0px">
+          <img src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+               width="200px"
+               height="35px"
+               style="margin-top: -5px"
+               alt="Hektor Profe"
+               title="Hektor Profe" />
         </a>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
-        <label
-          class="md-icon md-icon--menu md-header-nav__button"
-          for="__drawer"
-        ></label>
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
-        <div
-          class="md-flex__ellipsis md-header-nav__title"
-          data-md-component="title"
-          style="text-align: right"
-        >
+        <div class="md-flex__ellipsis md-header-nav__title"
+             data-md-component="title"
+             style="text-align: right">
           <!-- https://fontawesome.com/v4.7.0/ -->
-          <a 
-            class="nav__btn" 
-            href="https://www.hektorprofe.net/" 
-            style="margin-left:0em;" 
-            title="Cursos de Hektor Profe">
-            Cursos
+          <a class="nav__btn"
+             href="https://www.hektorprofe.net/"
+             style="margin-left:0em"
+             title="Cursos de Hektor Profe">Cursos</a>
+          <a class="nav__btn"
+             href="https://docs.hektorprofe.net/"
+             style="margin-left:1.4em"
+             title="Documentos de Hektor Profe">Documentos</a>
+          <a class="nav__btn"
+             href="https://www.hektorprofe.net/portafolio/"
+             style="margin-left:1.4em"
+             title="Portafolio de Hektor Profe">Portafolio</a>
+          <a href="/">
+            <img class="nav__logo"
+                 src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+                 width="200px"
+                 height="35px"
+                 style="margin: 6px auto 0"
+                 alt="Hektor Profe"
+                 title="Hektor Profe" />
           </a>
-          <a 
-            class="nav__btn" 
-            href="https://docs.hektorprofe.net/" 
-            style="margin-left:1.4em;" 
-            title="Documentos de Hektor Profe">
-            Documentos
-          </a>
-          <a 
-            class="nav__btn" 
-            href="https://www.hektorprofe.net/portafolio/" 
-            style="margin-left:1.4em;" 
-            title="Portafolio de Hektor Profe">
-            Portafolio
-          </a>
-          <a href="/"
-            ><img
-              class="nav__logo"
-              src="/assets/images/logo.png"
-              width="200px"
-              height="35px"
-              style="margin: 6px auto 0"
-              alt="Hektor Profe"
-              title="Hektor Profe"
-          /></a>
         </div>
         <style>
           .md-sidebar[data-md-state="lock"] {
@@ -230,13 +218,13 @@ div.my-img{text-align:center;margin-top:20px}
     </div>
   </nav>
 </header>
-    
-    <div class="md-container" style="padding-top: 0px !important;">
       
+      <div class="md-container" style="padding-top: 0px !important;">
         
-      
-      
+          
         
+        
+          
 
   
 
@@ -273,15 +261,16 @@ div.my-img{text-align:center;margin-top:20px}
       </ul>
     </div>
 </nav>
-      
-      <main class="md-main">
-        <div class="md-main__inner md-grid" data-md-component="container" style="padding-top: 8px !important;">
-          
+        
+        <main class="md-main">
+          <div class="md-main__inner md-grid"
+               data-md-component="container"
+               style="padding-top: 8px !important">
             
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
-                <div class="md-sidebar__scrollwrap" id="md__sidebar__scroll">
-                  <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
+              
+                <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                  <div class="md-sidebar__scrollwrap" id="md__sidebar__scroll">
+                    <div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title" for="__drawer" style="padding:0 !important;max-height:5.5rem;"></label>
   
   <ul class="md-nav__list" id="main__list" data-md-scrollfix>
@@ -329,7 +318,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../index.html" title="Índice del archivo" class="md-nav__link">
+    <a href="../" title="Índice del archivo" class="md-nav__link">
       Índice del archivo
     </a>
   </li>
@@ -341,7 +330,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../01-configuracion-previa/index.html" title="Configuración previa" class="md-nav__link">
+    <a href="../01-configuracion-previa/" title="Configuración previa" class="md-nav__link">
       Configuración previa
     </a>
   </li>
@@ -353,7 +342,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../02-buffer-de-color/index.html" title="Buffer de color" class="md-nav__link">
+    <a href="../02-buffer-de-color/" title="Buffer de color" class="md-nav__link">
       Buffer de color
     </a>
   </li>
@@ -365,7 +354,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../03-vectores-y-puntos/index.html" title="Vectores y puntos" class="md-nav__link">
+    <a href="../03-vectores-y-puntos/" title="Vectores y puntos" class="md-nav__link">
       Vectores y puntos
     </a>
   </li>
@@ -377,7 +366,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../04-proyeccion-de-puntos/index.html" title="Proyección de puntos" class="md-nav__link">
+    <a href="../04-proyeccion-de-puntos/" title="Proyección de puntos" class="md-nav__link">
       Proyección de puntos
     </a>
   </li>
@@ -389,7 +378,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../05-transformaciones-lineales/index.html" title="Transformaciones lineales" class="md-nav__link">
+    <a href="../05-transformaciones-lineales/" title="Transformaciones lineales" class="md-nav__link">
       Transformaciones lineales
     </a>
   </li>
@@ -401,7 +390,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../06-triangulos-vertices-mallas/index.html" title="Triángulos, vértices y mallas" class="md-nav__link">
+    <a href="../06-triangulos-vertices-mallas/" title="Triángulos, vértices y mallas" class="md-nav__link">
       Triángulos, vértices y mallas
     </a>
   </li>
@@ -413,7 +402,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../07-rasterizacion-de-lineas/index.html" title="Rasterización de líneas" class="md-nav__link">
+    <a href="../07-rasterizacion-de-lineas/" title="Rasterización de líneas" class="md-nav__link">
       Rasterización de líneas
     </a>
   </li>
@@ -425,7 +414,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../08-mallas-en-memoria-dinamica/index.html" title="Mallas en memoria dinámica" class="md-nav__link">
+    <a href="../08-mallas-en-memoria-dinamica/" title="Mallas en memoria dinámica" class="md-nav__link">
       Mallas en memoria dinámica
     </a>
   </li>
@@ -437,7 +426,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../09-ficheros-con-modelos-obj/index.html" title="Ficheros con modelos OBJ" class="md-nav__link">
+    <a href="../09-ficheros-con-modelos-obj/" title="Ficheros con modelos OBJ" class="md-nav__link">
       Ficheros con modelos OBJ
     </a>
   </li>
@@ -449,7 +438,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../10-operaciones-con-vectores/index.html" title="Operaciones con vectores" class="md-nav__link">
+    <a href="../10-operaciones-con-vectores/" title="Operaciones con vectores" class="md-nav__link">
       Operaciones con vectores
     </a>
   </li>
@@ -461,7 +450,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../11-back-face-culling/index.html" title="Back-face Culling" class="md-nav__link">
+    <a href="../11-back-face-culling/" title="Back-face Culling" class="md-nav__link">
       Back-face Culling
     </a>
   </li>
@@ -473,7 +462,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../12-rasterizacion-de-triangulos/index.html" title="Rasterización de triángulos" class="md-nav__link">
+    <a href="../12-rasterizacion-de-triangulos/" title="Rasterización de triángulos" class="md-nav__link">
       Rasterización de triángulos
     </a>
   </li>
@@ -485,7 +474,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../13-interfaz-dear-imgui/index.html" title="Interfaz Dear ImGui" class="md-nav__link">
+    <a href="../13-interfaz-dear-imgui/" title="Interfaz Dear ImGui" class="md-nav__link">
       Interfaz Dear ImGui
     </a>
   </li>
@@ -497,7 +486,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../14-ordenar-caras-por-profundidad/index.html" title="Ordenar caras por profundidad" class="md-nav__link">
+    <a href="../14-ordenar-caras-por-profundidad/" title="Ordenar caras por profundidad" class="md-nav__link">
       Ordenar caras por profundidad
     </a>
   </li>
@@ -509,7 +498,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../15-operaciones-con-matrices/index.html" title="Operaciones con matrices" class="md-nav__link">
+    <a href="../15-operaciones-con-matrices/" title="Operaciones con matrices" class="md-nav__link">
       Operaciones con matrices
     </a>
   </li>
@@ -521,7 +510,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../16-matrices-de-transformacion-3d/index.html" title="Matrices de transformación 3D" class="md-nav__link">
+    <a href="../16-matrices-de-transformacion-3d/" title="Matrices de transformación 3D" class="md-nav__link">
       Matrices de transformación 3D
     </a>
   </li>
@@ -533,7 +522,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../17-matriz-de-proyeccion/index.html" title="Matriz de proyección" class="md-nav__link">
+    <a href="../17-matriz-de-proyeccion/" title="Matriz de proyección" class="md-nav__link">
       Matriz de proyección
     </a>
   </li>
@@ -545,7 +534,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../18-luz-y-sombreado/index.html" title="Luz y sombreado" class="md-nav__link">
+    <a href="../18-luz-y-sombreado/" title="Luz y sombreado" class="md-nav__link">
       Luz y sombreado
     </a>
   </li>
@@ -557,7 +546,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../19-migracion-a-visual-studio/index.html" title="Migración a Visual Studio" class="md-nav__link">
+    <a href="../19-migracion-a-visual-studio/" title="Migración a Visual Studio" class="md-nav__link">
       Migración a Visual Studio
     </a>
   </li>
@@ -569,7 +558,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../20-mapeado-de-texturas/index.html" title="Mapeado de texturas" class="md-nav__link">
+    <a href="../20-mapeado-de-texturas/" title="Mapeado de texturas" class="md-nav__link">
       Mapeado de texturas
     </a>
   </li>
@@ -581,7 +570,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../21-interpolacion-de-perspectiva/index.html" title="Interpolación de perspectiva" class="md-nav__link">
+    <a href="../21-interpolacion-de-perspectiva/" title="Interpolación de perspectiva" class="md-nav__link">
       Interpolación de perspectiva
     </a>
   </li>
@@ -593,7 +582,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../22-decodificacion-de-ficheros-png/index.html" title="Decodificación de ficheros PNG" class="md-nav__link">
+    <a href="../22-decodificacion-de-ficheros-png/" title="Decodificación de ficheros PNG" class="md-nav__link">
       Decodificación de ficheros PNG
     </a>
   </li>
@@ -605,7 +594,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../23-ficheros-obj-con-texturas/index.html" title="Ficheros OBJ con texturas" class="md-nav__link">
+    <a href="../23-ficheros-obj-con-texturas/" title="Ficheros OBJ con texturas" class="md-nav__link">
       Ficheros OBJ con texturas
     </a>
   </li>
@@ -617,7 +606,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../24-profundidad-con-z-buffer/index.html" title="Profundidad con Z-Buffer" class="md-nav__link">
+    <a href="../24-profundidad-con-z-buffer/" title="Profundidad con Z-Buffer" class="md-nav__link">
       Profundidad con Z-Buffer
     </a>
   </li>
@@ -629,7 +618,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../25-matriz-de-vista-y-camara/index.html" title="Matriz de vista y cámaras" class="md-nav__link">
+    <a href="../25-matriz-de-vista-y-camara/" title="Matriz de vista y cámaras" class="md-nav__link">
       Matriz de vista y cámaras
     </a>
   </li>
@@ -641,7 +630,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../26-renderizado-y-debug-separado/index.html" title="Renderizado y debug separado" class="md-nav__link">
+    <a href="../26-renderizado-y-debug-separado/" title="Renderizado y debug separado" class="md-nav__link">
       Renderizado y debug separado
     </a>
   </li>
@@ -665,7 +654,7 @@ div.my-img{text-align:center;margin-top:20px}
         Clipping
       </label>
     
-    <a href="index.html" title="Clipping" class="md-nav__link md-nav__link--active" id="md__active_link">
+    <a href="./" title="Clipping" class="md-nav__link md-nav__link--active" id="md__active_link">
       Clipping
     </a>
     
@@ -752,7 +741,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../28-multiples-mallas/index.html" title="Múltiples mallas" class="md-nav__link">
+    <a href="../28-multiples-mallas/" title="Múltiples mallas" class="md-nav__link">
       Múltiples mallas
     </a>
   </li>
@@ -777,27 +766,14 @@ div.my-img{text-align:center;margin-top:20px}
     
   </ul>
 </nav>
-
+</div>
                   </div>
                 </div>
-              </div>
-            
-
-            
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                
-                  
-                    <div class="course-offer" style="margin-bottom:25px;padding:0px 10px;">
-                      <a href="https://www.hektorprofe.net/cupon/python" target="_blank">
-                        <img src="/cdn/assets/python.png" style="width:100%;justify-self:center;align-self:center;"/>
-                      </a>
-                    </div>
-                  
-                
-
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
+              
+              
+                <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                  <div class="md-sidebar__scrollwrap">
+                    <div class="md-sidebar__inner">
 <nav class="md-nav md-nav--secondary">
   
   
@@ -869,20 +845,19 @@ div.my-img{text-align:center;margin-top:20px}
       
     </ul>
   
-</nav>
+</nav></div>
                   </div>
                 </div>
-              </div>
-            
-          
-          <div class="md-content">
-            <article class="md-content__inner md-typeset">
               
+            
+            <div class="md-content">
+              <article class="md-content__inner md-typeset">
                 
-                
-                <h1 id="clipping">Clipping<a class="headerlink" href="#clipping" title="Permanent link">&para;</a></h1>
+                  
+                  
+                  <h1 id="clipping">Clipping<a class="headerlink" href="#clipping" title="Permanent link">&para;</a></h1>
 <p>Llegó la hora de implementar la última funcionalidad importante de mi sistema de renderizado, el <em>clipping</em>:</p>
-<p><img alt="" src="/cdn/graficos3d/image-72.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-72.png" /></p>
 <p>Empezaré enumerando sus objetivos más importantes del <em>clipping</em>:</p>
 <ul>
 <li>La meta de usar <em>clipping</em> es eliminar los objetos o segmentos de línea que quedan fuera del volumen de la vista (aka <em>frustum</em>).</li>
@@ -890,7 +865,7 @@ div.my-img{text-align:center;margin-top:20px}
 <li>El <em>pipeline</em> define varios pasos, uno para cada plano del <em>frustum</em> que hay que recortar.</li>
 </ul>
 <p>Es decir, no se trata solo de descartar los modelos externos al <em>frustum</em> sino de la capacidad de recortar los que se encuentran cortando el propio <em>frustum</em> y eso nos traerá bastante trabajo:</p>
-<p><img alt="" src="/cdn/graficos3d/image-138.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-138.png" /></p>
 <p>En el <em>frustum clipping</em> tenemos que recortar los modelos en cada uno de los seis planos por orden:</p>
 <ol>
 <li>Arriba</li>
@@ -904,7 +879,7 @@ div.my-img{text-align:center;margin-top:20px}
 <h2 id="planos-del-frustum">Planos del frustum<a class="headerlink" href="#planos-del-frustum" title="Permanent link">&para;</a></h2>
 <p>Empecemos repasando qué es un plano, a fin de cuentas necesitamos 6 planos para formar un <em>frustum</em>.</p>
 <p>Un plano se define como el <strong>conjunto de un punto y un vector normal</strong>:</p>
-<p><img alt="" src="/cdn/graficos3d/image-139.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-139.png" /></p>
 <p>Un punto puede tener infinitos planos dependiendo del vector normal.</p>
 <p>Así que vamos a crear esta clase dentro de nuestra nueva cabecera <code>clipping.h</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="cp">#ifndef CLIPPING_H</span>
@@ -928,32 +903,32 @@ div.my-img{text-align:center;margin-top:20px}
 </ul>
 <p><strong>Plano derecho</strong></p>
 <p>Si suponemos que miramos desde arriba y queremos determinar el plano derecho del <code>frustum</code> tenemos:</p>
-<p><img alt="" src="/cdn/graficos3d/image-140.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-140.png" /></p>
 <p>El punto <code>P</code> podemos suponerlo como el origen o la propia cámara en <code>(0,0,0)</code>. Mediante trigonometría encontraremos cada componente:</p>
-<p><img alt="" src="/cdn/graficos3d/image-141.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-141.png" /></p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}\\{\color{Blue}&space;P}&space;=&space;(0,0,0)\\&space;{\color{Green}&space;\overrightarrow{n}}_{x}&space;=&space;-cos({\color{Orange}&space;fov/2})\\&space;{\color{Green}&space;\overrightarrow{n}}_{y}&space;=&space;0\\&space;{\color{Green}&space;\overrightarrow{n}}_{z}&space;=&space;sin({\color{Orange}&space;fov/2})"/></p>
 <p>Debemos tener en cuenta que <code>X</code> se encuentra a la izquierda y por tanto es negativa, de ahí que el coseno sea negativo.</p>
 <p><strong>Plano izquierdo</strong></p>
 <p>Este es exactamente igual pero la <code>X</code> es positiva, por tanto el ángulo del coseno será positivo:</p>
-<p><img alt="" src="/cdn/graficos3d/image-142.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-142.png" /></p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}\\{\color{Blue}&space;P}&space;=&space;(0,0,0)\\&space;{\color{Green}&space;\overrightarrow{n}}_{x}&space;=&space;cos({\color{Orange}&space;fov/2})\\&space;{\color{Green}&space;\overrightarrow{n}}_{y}&space;=&space;0\\&space;{\color{Green}&space;\overrightarrow{n}}_{z}&space;=&space;sin({\color{Orange}&space;fov/2})"/></p>
 <p><strong>Plano superior</strong></p>
 <p>Ahora vamos a cambiar de perspectiva, vamos a ver el <code>frustum</code> desde el lado. Así podemos conseguir <code>Y</code> y <code>Z</code>:</p>
-<p><img alt="" src="/cdn/graficos3d/image-143.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-143.png" /></p>
 <p>Dado que la <code>Y</code> es negativa, el coseno del ángulo será negativo:</p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}\\{\color{Blue}&space;P}&space;=&space;(0,0,0)\\&space;{\color{Green}&space;\overrightarrow{n}}_{x}&space;=&space;0\\&space;{\color{Green}&space;\overrightarrow{n}}_{y}&space;=&space;-cos({\color{Orange}&space;fov/2})\\&space;{\color{Green}&space;\overrightarrow{n}}_{z}&space;=&space;sin({\color{Orange}&space;fov/2})" /></p>
 <p><strong>Plano inferior</strong></p>
 <p>Cambiando al plano de abajo, el único cambio es que la <code>Y</code> es ahora positiva, por tanto el coseno será positivo:</p>
-<p><img alt="" src="/cdn/graficos3d/image-144.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-144.png" /></p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}\\{\color{Blue}&space;P}&space;=&space;(0,0,0)\\&space;{\color{Green}&space;\overrightarrow{n}}_{x}&space;=&space;0\\&space;{\color{Green}&space;\overrightarrow{n}}_{y}&space;=&space;cos({\color{Orange}&space;fov/2})\\&space;{\color{Green}&space;\overrightarrow{n}}_{z}&space;=&space;sin({\color{Orange}&space;fov/2})"/></p>
 <p><strong>Plano cercano</strong></p>
 <p>Para poner en perspectiva la profundidad la vamos a visualizar desde el lado, suponiendo que tenemos un plano cercano cortando el <code>frustum</code>:</p>
-<p><img alt="" src="/cdn/graficos3d/image-145.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-145.png" /></p>
 <p>En esta ocasión el punto <code>P</code> ya no será <code>(0,0,0)</code> sino que la profundidad <code>Z</code> vendrá marcada por el valor <code>znear</code> y la longitud normalizada es <code>1</code> hacia adelante, por tanto positiva:</p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}\\{\color{Blue}&space;P}&space;=&space;(0,&space;0,&space;{\color{Orange}&space;znear})\\&space;{\color{Green}&space;\overrightarrow{n}}_{x}&space;=&space;0\\&space;{\color{Green}&space;\overrightarrow{n}}_{y}&space;=&space;0\\&space;{\color{Green}&space;\overrightarrow{n}}_{z}&space;=&space;1" /></p>
 <p><strong>Plano alejado</strong></p>
 <p>Prácticamente con la misma lógica determinamos el plano más lejos en profundidad:</p>
-<p><img alt="" src="/cdn/graficos3d/image-146.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-146.png" /></p>
 <p>la diferencia es que ahora la profundidad del punto <code>P</code> la determina nuestro valor <code>zfar</code> y el vector normal apunta hacia adentro, por lo que será negativo:</p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}\\{\color{Blue}&space;P}&space;=&space;(0,&space;0,&space;{\color{Orange}&space;zfar})\\&space;{\color{Green}&space;\overrightarrow{n}}_{x}&space;=&space;0\\&space;{\color{Green}&space;\overrightarrow{n}}_{y}&space;=&space;0\\&space;{\color{Green}&space;\overrightarrow{n}}_{z}&space;=&space;-1" /></p>
 <p>Con la información de los planos podemos codificar un método para inicializar una nueva clase <code>frustum</code> en función del valor <code>fov</code>, <code>znear</code> y <code>zfar</code>:</p>
@@ -1022,23 +997,23 @@ div.my-img{text-align:center;margin-top:20px}
 <p><strong>Dentro del plano</strong></p>
 <p>El punto <code>Q</code> estará dentro del plano si el resultado del producto escalar es mayor que <code>0</code>:</p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}({\color{DarkRed}&space;Q}&space;-&space;{\color{Blue}&space;P})&space;\cdot&space;{\color{DarkGreen}&space;\overrightarrow{n}}&space;>&space;0" /&gt;</p>
-<p><img alt="" src="/cdn/graficos3d/image-148.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-148.png" /></p>
 <p><strong>Fuera del plano</strong></p>
 <p>El punto <code>Q</code> estará fuera del plano si el resultado del producto escalar es menor que <code>0</code>:</p>
-<p><img alt="" src="/cdn/graficos3d/latex099.png" /></p>
-<p><img alt="" src="/cdn/graficos3d/image-149.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/latex099.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-149.png" /></p>
 <p><strong>Alineado sobre el plano</strong></p>
 <p>El punto <code>Q</code> estará alineado sobre el plano si el resultado del producto escalar es igual <code>0</code>:</p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}({\color{DarkRed}&space;Q}&space;-&space;{\color{Blue}&space;P})&space;\cdot&space;{\color{DarkGreen}&space;\overrightarrow{n}}&space;=&space;0" /></p>
-<p><img alt="" src="/cdn/graficos3d/image-147.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-147.png" /></p>
 <h2 id="punto-de-interseccion">Punto de intersección<a class="headerlink" href="#punto-de-interseccion" title="Permanent link">&para;</a></h2>
 <p>Sabiendo cómo determinar si un punto <code>Q</code> se encuentra dentro o fuera de un plano ya podemos descartar los vértices fuera del frustum.</p>
 <p>Si todos los vértices de una malla están fuera del frustum simplemente la ignoramos y no la dibujamos, pero... ¿Y si la malla tiene algunos vértices dentro y otros fuera del plano? </p>
-<p><img alt="" src="/cdn/graficos3d/image-150.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-150.png" /></p>
 <p>En ese caso lo siguiente que debemos encontrar son <strong>los puntos de intersección</strong> entre el plano y el polígono:</p>
-<p><img alt="" src="/cdn/graficos3d/image-151.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-151.png" /></p>
 <p>Bueno, en realidad lo que queremos encontrar es el punto de intersección entre un segmento de una línea y una plano:</p>
-<p><img alt="" src="/cdn/graficos3d/image-152.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-152.png" /></p>
 <p>Podemos interpolar cualquier punto de este segmento mediante la ecuación de <strong>interpolación lineal</strong>:</p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}{\color{Red}&space;I}&space;=&space;Q_1&space;&plus;&space;{\color{Blue}&space;t}(Q_2&space;-&space;Q_1)"/></p>
 <p>Donde <code>t</code> es un factor entre <code>0</code> y <code>1</code> cuyo valor nos dará cualquier punto entre el segmento <code>Q1</code> y <code>Q2</code>, siendo <code>I = Q1</code> si <code>t = 0</code> o <code>I = Q2</code> si <code>t = 1</code>.</p>
@@ -1050,13 +1025,13 @@ div.my-img{text-align:center;margin-top:20px}
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}{\color{Red}&space;I}&space;=&space;Q_1&space;&plus;&space;\frac{dot_{Q1}}{(dot_{Q1}-dot_{Q2})}(Q_2&space;-&space;Q_1)" /></p>
 <h2 id="algoritmo-de-clipping">Algoritmo de clipping<a class="headerlink" href="#algoritmo-de-clipping" title="Permanent link">&para;</a></h2>
 <p>En este punto ya podemos hacernos una idea del procedimiento de <em>clipping</em>:</p>
-<p><img alt="" src="/cdn/graficos3d/image-153.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-153.png" /></p>
 <p>Al final la idea se basa en subtituir los vértices fuera de los planos por los puntos de intersecciónen, dando lugar a un nuevo polígono:</p>
-<p><img alt="" src="/cdn/graficos3d/image-154.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-154.png" /></p>
 <p>Esto sería el recorte para un plano, tendremos que repetir el proceso para cada plano del <em>frustum</em> (arriba, abajo, izquierda, derecha, cercano y alejado), <strong>utilizando como entrada el polígono resultante de cada recorte anterior</strong>:</p>
-<p><img alt="" src="/cdn/graficos3d/image-155.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-155.png" /></p>
 <p>La función que implementará todo este procedimiento para los seis planos tomará un polígono (una nueva clase <code>Poligon</code> en <code>clipping.h</code>) creado inicialmente con un triángulo y que podrá tener un número indeterminado de vértices, debido a que después del corte, pueden generarse nuevos vértices como en este ejemplo que al cortar un triángulo obtenemos un polígono de cuatro costados:</p>
-<p><img alt="" src="/cdn/graficos3d/image-156.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-156.png" /></p>
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;deque&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;vector.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;triangle.h&quot;</span>
@@ -1170,16 +1145,16 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Polygon vertices: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">polygon</span><span class="p">.</span><span class="n">vertices</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 </code></pre></div>
 <p>Deberíamos ver como cambia el contador dependiendo de cómo lo cortemos, por ejemplo recortando por arriba obtendremos 3 vértices:</p>
-<p><img alt="" src="/cdn/graficos3d/image-157.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-157.png" /></p>
 <p>Recortando por la izquierda 4 vértices:</p>
-<p><img alt="" src="/cdn/graficos3d/image-158.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-158.png" /></p>
 <p>Por abajo a la izquierda 5 vértices:</p>
-<p><img alt="" src="/cdn/graficos3d/image-159.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-159.png" /></p>
 <p>En conclusión parece que funciona.</p>
 <h2 id="de-poligonos-a-triangulos">De polígonos a triángulos<a class="headerlink" href="#de-poligonos-a-triangulos" title="Permanent link">&para;</a></h2>
 <p>El siguiente objetivo es transformar el polígono formado por una cantidad indeterminado de vértices de nuevo a triángulos para renderizararlos.</p>
 <p>Para conseguirlo podemos unir el primer vértice del polígono con el segundo y el tercero, de nuevo el primero con el tercero y el cuarto, el primero con el cuarto y el quinto... Así sucesivamente hasta el penúltimo vértice (<code>-2</code> respecto a la longitud de la cola):</p>
-<p><img alt="" src="/cdn/graficos3d/image-160.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-160.png" /></p>
 <p>La implementación es fácil, en un método <code>GenerateClippedTriangles</code> iremos metiendo los triángulos recortados en una cola que pasaremos por referencia:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Polygon</span>
 <span class="p">{</span>
@@ -1236,10 +1211,10 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">clippedTriangles</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
 </code></pre></div>
 <p>En este punto, aunque con algún <em>bug</em> en el frustum, se deberían recortar los triángulos, formarse nuevos polígonos y transformarse de nuevo en triángulos:</p>
-<p><img alt="" src="/cdn/graficos3d/anim-45.gif" /> </p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-45.gif" /> </p>
 <h2 id="ajustando-el-angulo-fov">Ajustando el ángulo FOV<a class="headerlink" href="#ajustando-el-angulo-fov" title="Permanent link">&para;</a></h2>
 <p>Por alguna razón ahora mismo se está considerando el espacio de <strong>clipping</strong> algo así:</p>
-<p><img alt="" src="/cdn/graficos3d/image-161.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-161.png" /></p>
 <p>Solo con observar podemos suponer que se está tomando el mismo ancho que alto para el <em>frustum</em> y es que al crearlo utilizamos un <code>fovFactor</code> basado en el <code>aspectRatio</code> de la altura respecto a la anchura:</p>
 <div class="highlight"><pre><span></span><code><span class="n">aspectRatio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rendererHeight</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">rendererWidth</span><span class="p">);</span>
 <span class="n">viewFrustum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Frustum</span><span class="p">(</span><span class="n">fovFactor</span><span class="p">,</span><span class="w"> </span><span class="n">zNear</span><span class="p">,</span><span class="w"> </span><span class="n">zFar</span><span class="p">);</span>
@@ -1307,9 +1282,9 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="n">viewFrustum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Frustum</span><span class="p">(</span><span class="n">fovFactorX</span><span class="p">,</span><span class="w"> </span><span class="n">fovFactorY</span><span class="p">,</span><span class="w"> </span><span class="n">zNear</span><span class="p">,</span><span class="w"> </span><span class="n">zFar</span><span class="p">);</span>
 </code></pre></div>
 <p>Con esto tendremos perfectamente configurado el <em>frustum</em> de la cámara:</p>
-<p><img alt="" src="/cdn/graficos3d/anim-46.gif" /> </p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-46.gif" /> </p>
 <p>El coloreado de triángulos también debería funcionar, pero el texturizado tendremos que rectificarlo:</p>
-<p><img alt="" src="/cdn/graficos3d/anim-47.gif" /> </p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-47.gif" /> </p>
 <h2 id="clipping-en-las-texturas">Clipping en las texturas<a class="headerlink" href="#clipping-en-las-texturas" title="Permanent link">&para;</a></h2>
 <p>La información de la textura de cada cara está contenida en el triángulo que enviamos al polígono y almacenamos en <code>sourceTriangle</code>, por lo que podemos empezar almacenándolas en una cola durante la creación del mismo:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Polygon</span>
@@ -1432,15 +1407,15 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>Con esto el <em>clipping</em> para las texturas debería funcionar:</p>
-<p><img alt="" src="/cdn/graficos3d/anim-48.gif" /> </p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-48.gif" /> </p>
 <p>Ha sido un largo camino empezando por la creación del <em>frustum</em> con sus diferentes planos, el recorte de los vértices de los triángulos dando lugar a polígonos de lados indeterminados, la interpolación de los nuevos vértices y texturas para finalmente regenerar nuevos triángulos, pero ha valido la pena.</p>
 <p>Ahora el sistema de renderizado está mucho más optimizado, el <em>clipping</em> nos ahorra renderizar elementos descartados y además evita que se bloquee por los vértices por detrás de la cámara:</p>
-<p><img alt="" src="/cdn/graficos3d/anim-49.gif" /> </p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-49.gif" /> </p>
 <h2 id="frustum-clipping-y-space-clipping">Frustum clipping y space clipping<a class="headerlink" href="#frustum-clipping-y-space-clipping" title="Permanent link">&para;</a></h2>
 <p>Al final el proceso de realizar el <em>clipping</em> es bastante costoso para nuestra CPU. Debemos tener en cuenta que se ejecuta todo el procedimiento de recortar los polígonos, regenerar los triángulos y todas sus interpolaciones en cada fotograma. Con una malla formada por pocos triángulos no se notará, como un cubo de 8 vértices el rendimiento es exagerado y fácilmente llego a los <code>300</code> FPS:</p>
-<p><img alt="" src="/cdn/graficos3d/image-162.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-162.png" /></p>
 <p>Pero con otros modelos con un número de triángulos mucho mayor, como este dron con <code>7750</code> vértices la tasa de fotogramas se reduce drásticamente hasta apenas alcanzar los <code>25</code> FPS de media:</p>
-<p><img alt="" src="/cdn/graficos3d/image-163.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-163.png" /></p>
 <p>Repasando el <em>rendering pipeline</em> de mi sistema:</p>
 <ol>
 <li><strong>Model space</strong>: El modelo empieza en su propio espacio codificado tal como se ha creado en un programa de modelado.</li>
@@ -1480,28 +1455,28 @@ div.my-img{text-align:center;margin-top:20px}
 <p>Para profundizar sobre los algoritmos de <em>culling</em> recomiendo el artículo de la Wikipedia sobre la <a href="https://en.wikipedia.org/wiki/Hidden-surface_determination">determinación de las caras ocultas</a>. Los llamados algoritmos <strong>HSR</strong> (<em>Hidden Surface Determination</em>), <strong>OC</strong> (<em>Oclusion culling</em>) o el <strong>VSD</strong> (<em>Visible Surface Determination</em>) abarcan todo tipo de técnicas desde el <em>Z-Buffer</em>, el algoritmo del pintor o el <em>Ray tracing</em>, vale la pena echar un vistazo.</p>
 <hr />
 <p><small class="edited"><i>Última edición: 05 de Junio de 2022</i></small></p>
-                
+                  
+                    
                   
                 
-              
-              
                 
+                  
 
 
-              
-            </article>
+                
+              </article>
+            </div>
           </div>
-        </div>
-      </main>
-      
+        </main>
         
+          
 <footer class="md-footer">
   
   <div class="md-footer-nav">
     <nav class="md-footer-nav__inner md-grid">
       
       <a
-        href="../26-renderizado-y-debug-separado/index.html"
+        href="../26-renderizado-y-debug-separado/"
         title="Renderizado y debug separado"
         class="md-flex md-footer-nav__link md-footer-nav__link--prev"
         rel="prev"
@@ -1520,7 +1495,7 @@ div.my-img{text-align:center;margin-top:20px}
       </a>
        
       <a
-        href="../28-multiples-mallas/index.html"
+        href="../28-multiples-mallas/"
         title="Múltiples mallas"
         class="md-flex md-footer-nav__link md-footer-nav__link--next"
         rel="next"
@@ -1592,12 +1567,13 @@ div.my-img{text-align:center;margin-top:20px}
     ga("send", "pageview");
   </script>
 </footer>
-      
-      <a id="anchorID" href="https://www.hektorprofe.net/" target="_blank"></a>
-    </div>
-  <script type='text/javascript' src="/assets/javascripts/application.a26c1c21.js"></script>
-  <script src="/assets/javascripts/tingle.min.js"></script>
-  <script type='text/javascript'>
+        
+        <a id="anchorID" href="https://www.hektorprofe.net/" target="_blank"></a>
+      </div>
+      <script type='text/javascript'
+              src="https://hektorprofe.github.io/docs/assets/javascripts/application.a26c1c21.js"></script>
+      <script src="https://hektorprofe.github.io/docs/assets/javascripts/tingle.min.js"></script>
+      <script type='text/javascript'>
     var modalButtonOnly = new tingle.modal({
         closeMethods: [],
         footer: true,
@@ -1609,13 +1585,13 @@ div.my-img{text-align:center;margin-top:20px}
     modalButtonOnly.setContent(`
     <div style="display:grid;grid-template-columns:32% 32% 32%;grid-column-gap: 1.33%;" id="supermodal">
       <div class="course">
-        <a href="https://www.hektorprofe.net/cupon/python" target="_blank"><img src="/cdn/assets/python.png" style="width:100%;justify-self:center;align-self:center;"/></a>
+        <a href="https://www.hektorprofe.net/cupon/python" target="_blank"><img src="assets/python.png" style="width:100%;justify-self:center;align-self:center;" /></a>
       </div>
       <div class="course">
-        <a href="https://www.hektorprofe.net/cupon/django" target="_blank"><img src="/cdn/assets/django.png" style="width:100%;justify-self:center;align-self:center;"/></a>
+        <a href="https://www.hektorprofe.net/cupon/django" target="_blank"><img src="assets/django.png" style="width:100%;justify-self:center;align-self:center;" /></a>
       </div>
       <div class="course">
-        <a href="https://www.hektorprofe.net/cupon/pyside" target="_blank"><img src="/cdn/assets/pyside.png" style="width:100%;justify-self:center;align-self:center;"/></a>
+        <a href="https://www.hektorprofe.net/cupon/pyside" target="_blank"><img src="assets/pyside.png" style="width:100%;justify-self:center;align-self:center;" /></a>
       </div>
     </div>`);
 
@@ -1630,6 +1606,6 @@ div.my-img{text-align:center;margin-top:20px}
     function doNav(){ document.getElementById("main__list").innerHTML = '<li class="md-nav__item"><a class="md-nav__link" href="/cursos/">Cursos</a></li><li class="md-nav__item"><a class="md-nav__link" href="/blog/">Blog</a></li>';}
     for (i = 0; i < mdMenuItems.length; i++) {  var item = mdMenuItems[i]; var htmlstring = item.innerHTML; htmlstring = (htmlstring.trim) ? htmlstring.trim() : htmlstring.replace(/^\s+/,''); if (htmlstring == 'Servidor de encuentro') { item.parentNode.removeChild(item);continue; }  if (htmlstring == 'Política de Cookies') { item.parentNode.removeChild(item);continue; } if (htmlstring == 'Buscador') { item.parentNode.removeChild(item); continue; } }
     try { var topPos = document.querySelector('#md__active_link').offsetTop; document.querySelector('#md__sidebar__scroll').scrollTop = topPos - 60; } catch (err) {}
-  </script>
-  </body>
-</html>
+      </script>
+    </body>
+  </html>

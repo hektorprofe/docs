@@ -1,0 +1,2286 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+  <head>
+    
+    
+    
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Primeros pasos con las clases | Apuntes lenguaje C++">
+      
+      <link rel="canonical" href="https://hektorprofe.github.io/docs/cpp/11-clases/01-primeros-pasos/">
+      
+        <meta name="author" content="Héctor Costa Guzman">
+      
+      <link rel="shortcut icon" href="/favicon.ico">
+    
+    
+      
+        <title>Primeros pasos con las clases | Apuntes lenguaje C++ | Hektor Profe</title>
+      
+    
+    <link rel="stylesheet"
+          href="../../../assets/stylesheets/application.2.css">
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    
+    <link rel="stylesheet"
+          href="https://hektorprofe.github.io/docs/assets/stylesheets/tingle.min.css">
+    <style>
+@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
+[data-md-color-primary="grey"] .md-header { background-color: #191A1D }
+[data-md-color-primary="grey"] .md-tabs { background-color: #222831 }
+.md-footer-nav { background-color: #222831; }
+.md-footer-meta { background-color: #191A1D }
+html [data-md-color-primary="grey"] .md-nav--primary .md-nav__title--site { background-color: #191A1D; }
+.mini{ display: none; } .maxi{ display: block; }
+.embed-container { position: relative; padding-bottom: 56.25%;height: 0; overflow: hidden; max-width: 100%; height: auto; margin-bottom: 0; } 
+.embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.md-nav__link:focus, .md-nav__link:hover { color: #018dc5; }
+.headerlink{ color: #018dc5 !important; }
+.md-footer-links__highlight a{ color: #777 !important; }
+.md-footer-links__highlight a:hover{ color: #ddd !important; }
+.visible{ display: inherit !important; }
+/*.md-tabs { display: none !important; }*/
+.nav__btn, .nav__logo{ transition: 0.3s; }
+.nav__btn:hover{ color: #aaa; }
+.nav__logo:hover{ opacity:.7; }
+.nav__logo {max-width: 225px !important; }
+img:not([src]){visibility:hidden;}
+img.click{opacity: 0.96;box-shadow:rgb(79, 82, 92) -4px 4px}
+img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
+.button { background-color: #36bf2d; border: none; color: white !important; padding: 20px 0px; text-align: center; text-decoration: none; display: block; font-size: 97%; width: 100%; font-weight: bold;}
+.button:hover { background-color: #4CAF50; color: white; }
+.animated.delay-1dot5s {animation-delay: 1.5s;}
+.md-icon--search { display:inline-block!important}
+a.headerlink{ display: none !important; }
+small.edited { display: block; text-align: right; }
+#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
+#cookie-bar-prompt-logo{ display: none !important; }
+div.my-img{text-align:center;margin-top:20px}
+@media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
+@media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
+@media (min-width: 1999.9px){ .md-header-nav__button.md-logo img { height: 40px !important; width: 240px; } }
+/* Rectificación footer en paginas pequeñas de altura */
+@media (max-width: 1599.8px){ .md-container {height: calc(100% - 48px)} }
+@media (min-width: 1599.9px){ .md-container {height: calc(100% - 53px)} }
+@media (min-width: 1999.9px){ .md-container {height: calc(100% - 58px)} }
+@media only screen and (max-width: 959.9px) { .nav__logo { display: block !important; }} 
+@media only screen and (min-width: 960px) and (max-width: 76.1875em) { .nav__logo { display: block !important; }} 
+@media only screen and (min-width: 76.1875em) { .nav__logo { display: none !important; } } 
+@media only screen and (max-width: 76.1875em) { .md-sidebar--primary { left: -26.2rem;; width: 26.2rem; }  [data-md-toggle="drawer"]:checked ~ .md-container .md-sidebar--primary { -webkit-transform: translateX(26.2rem); transform: translateX(26.2rem); } [dir="rtl"] [data-md-toggle="drawer"]:checked ~ .md-container .md-sidebar--primary { -webkit-transform: translateX(-26.2rem); transform: translateX(-26.2rem); } }
+@media (min-width: 1219.9px){ #home__btn { display: none !important; } #cursos__btn{ color: white !important; } [data-md-color-primary="grey"] .md-nav__link--active{ color: rgba(0, 0, 0, 0.87); text-decoration: underline !important; } }
+@media (min-width: 467.9px){ #discord__btn{ display: inline-block !important; } }
+@media only screen and (min-width: 60em){ .md-search__input { background-color: rgb(53, 54, 56); } .md-search__input:hover { background-color: rgb(84, 87, 93); color: white; }}
+@media (max-width: 1219.9px){ .md-header-nav__title{ padding: 0 1rem; } .nav__btn {display:none;} }
+@media (max-width: 875.9px){ #cookie-bar-button{ margin-top: 20px !important; }}
+@media (max-width: 719.9px){ #cookie-bar { padding: 3.25rem 1.25rem; }}
+@media (max-width: 512.9px){ #cookie-bar { padding: 2rem 1.25rem; }}
+
+.tingle-modal { font-size:18px !important;}
+.tingle-modal-box{ width: 80%; max-width: 1100px; }
+.tingle-btn--danger{ background: darkorange !important; }
+.tingle-modal-box__content { padding: 3rem 2rem 3rem 3rem;}
+@media (max-width: 540px){ .tingle-modal-box{ width: auto; } }
+@media (max-width: 849px){ #supermodal{ grid-template-columns:100% !important; }}
+
+.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 275px - 60px)}
+@media (max-width: 1999.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 246px - 60px);margin-right:-1px;}}
+@media (max-width: 1599.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 222px - 60px)}}
+
+    </style>
+  </head>
+  
+    
+    
+    <body dir="ltr"
+          data-md-color-primary="grey"
+          data-md-color-accent="grey">
+    
+      <input class="md-toggle"
+             data-md-toggle="drawer"
+             type="checkbox"
+             id="__drawer"
+             autocomplete="off">
+      <input class="md-toggle"
+             data-md-toggle="search"
+             type="checkbox"
+             id="__search"
+             autocomplete="off">
+      <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+      
+        <a href="#primeros-pasos-con-las-clases-en-c"
+           tabindex="1"
+           class="md-skip">Saltar a contenido</a>
+      
+      
+        <header class="md-header"
+        data-md-component="header"
+        style="position: inherit !important">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="/"
+           title="Hektor Profe"
+           class="md-header-nav__button md-logo"
+           style="font-size: 0px">
+          <img src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+               width="200px"
+               height="35px"
+               style="margin-top: -5px"
+               alt="Hektor Profe"
+               title="Hektor Profe" />
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title"
+             data-md-component="title"
+             style="text-align: right">
+          <!-- https://fontawesome.com/v4.7.0/ -->
+          <a class="nav__btn"
+             href="https://www.hektorprofe.net/"
+             style="margin-left:0em"
+             title="Cursos de Hektor Profe">Cursos</a>
+          <a class="nav__btn"
+             href="https://docs.hektorprofe.net/"
+             style="margin-left:1.4em"
+             title="Documentos de Hektor Profe">Documentos</a>
+          <a class="nav__btn"
+             href="https://www.hektorprofe.net/portafolio/"
+             style="margin-left:1.4em"
+             title="Portafolio de Hektor Profe">Portafolio</a>
+          <a href="/">
+            <img class="nav__logo"
+                 src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+                 width="200px"
+                 height="35px"
+                 style="margin: 6px auto 0"
+                 alt="Hektor Profe"
+                 title="Hektor Profe" />
+          </a>
+        </div>
+        <style>
+          .md-sidebar[data-md-state="lock"] {
+            top: 0rem !important;
+          }
+          .md-tabs {
+            display: none !important;
+          }
+          .hde {
+            display: inline-block;
+          }
+          .admonition.note > .superfences-tabs > label:hover,
+          .headerlink {
+            color: #018dc5 !important;
+          }
+          .admonition.info {
+            font-size: 100%;
+          }
+          .admonition.info label {
+            font-size: 91%;
+          }
+          .admonition.note > .admonition-title {
+            display: none;
+          }
+          .image {
+            text-align: center;
+            margin-top: 25px;
+          }
+          .contenedor_youtube {
+            position: relative !important;
+            padding-bottom: 56.25% !important; /*panorámico*/
+            padding-top: 0px !important;
+            height: 0 !important;
+            margin-top: -20px;
+            margin-bottom: 25px;
+          }
+          .contenedor_youtube iframe {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+          }
+        </style>
+      </div>
+    </div>
+  </nav>
+</header>
+      
+      <div class="md-container" style="padding-top: 0px !important;">
+        
+          
+        
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list" id="top__tabs">
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+      </ul>
+    </div>
+</nav>
+        
+        <main class="md-main">
+          <div class="md-main__inner md-grid"
+               data-md-component="container"
+               style="padding-top: 8px !important">
+            
+              
+                <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                  <div class="md-sidebar__scrollwrap" id="md__sidebar__scroll">
+                    <div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title" for="__drawer" style="padding:0 !important;max-height:5.5rem;"></label>
+  
+  <ul class="md-nav__list" id="main__list" data-md-scrollfix>
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+        <!-- comprobación extra -->
+         
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+    
+    <label class="md-nav__link" for="nav-6">
+      Apuntes C++
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Apuntes C++
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../" title="Índice del archivo" class="md-nav__link">
+      Índice del archivo
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../01-entorno-desarrollo/" title="Entorno de desarrollo" class="md-nav__link">
+      Entorno de desarrollo
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../02-primeros-pasos/" title="Primeros pasos" class="md-nav__link">
+      Primeros pasos
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../03-tipos-de-datos/" title="Tipos de datos" class="md-nav__link">
+      Tipos de datos
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../04-modificadores/" title="Modificadores" class="md-nav__link">
+      Modificadores
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../05-control-de-flujo/" title="Control del flujo" class="md-nav__link">
+      Control del flujo
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../06-arreglos-clasicos/" title="Arreglos clásicos" class="md-nav__link">
+      Arreglos clásicos
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-8" type="checkbox" id="nav-6-8">
+    
+    <label class="md-nav__link" for="nav-6-8">
+      Punteros y memoria
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-8">
+        Punteros y memoria
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../07-punteros-memoria/01-primeros-pasos/" title="Primeros pasos" class="md-nav__link">
+      Primeros pasos
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../07-punteros-memoria/02-null-nullptr-void0/" title="Nullptr, void* y ((void*)0)" class="md-nav__link">
+      Nullptr, void* y ((void*)0)
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../07-punteros-memoria/03-punteros-constantes/" title="Punteros constantes" class="md-nav__link">
+      Punteros constantes
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../07-punteros-memoria/04-arreglos-punteros/" title="Arreglos y punteros" class="md-nav__link">
+      Arreglos y punteros
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../07-punteros-memoria/05-aritmetica-punteros/" title="Aritmética de punteros" class="md-nav__link">
+      Aritmética de punteros
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../07-punteros-memoria/06-tipos-memoria-stack-heap/" title="Gestión de la memoria" class="md-nav__link">
+      Gestión de la memoria
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../07-punteros-memoria/07-memoria-dinamica/" title="Memoria dinámica (Heap)" class="md-nav__link">
+      Memoria dinámica (Heap)
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../07-punteros-memoria/08-referencias-arreglos/" title="Referencias y arreglos" class="md-nav__link">
+      Referencias y arreglos
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../08-cadenas-caracteres/" title="Cadenas de caracteres" class="md-nav__link">
+      Cadenas de caracteres
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-10" type="checkbox" id="nav-6-10">
+    
+    <label class="md-nav__link" for="nav-6-10">
+      Programación de funciones
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-10">
+        Programación de funciones
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../09-funciones/01-primeros-pasos/" title="Primeros pasos" class="md-nav__link">
+      Primeros pasos
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../09-funciones/02-sobrecarga-funciones/" title="Sobrecarga de funciones" class="md-nav__link">
+      Sobrecarga de funciones
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../09-funciones/03-funciones-lambda/" title="Funciones Lambda" class="md-nav__link">
+      Funciones Lambda
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../09-funciones/04-funciones-inline/" title="Funciones Inline" class="md-nav__link">
+      Funciones Inline
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../10-function-templates/" title="Function Templates" class="md-nav__link">
+      Function Templates
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-12" type="checkbox" id="nav-6-12" checked>
+    
+    <label class="md-nav__link" for="nav-6-12">
+      Programación de clases
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-12">
+        Programación de clases
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+            
+            
+            
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Primeros pasos
+      </label>
+    
+    <a href="./" title="Primeros pasos" class="md-nav__link md-nav__link--active" id="md__active_link">
+      Primeros pasos
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#definicion-de-clases-y-objetos" title="Definición de clases y objetos" class="md-nav__link toc__link">
+    Definición de clases y objetos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodo-constructor-en-clases" title="Método constructor en clases" class="md-nav__link toc__link">
+    Método constructor en clases
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodo-destructor-en-clases" title="Método destructor en clases" class="md-nav__link toc__link">
+    Método destructor en clases
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getters-y-setters-en-clases" title="Getters y Setters en clases" class="md-nav__link toc__link">
+    Getters y Setters en clases
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#organizacion-de-clases-en-ficheros" title="Organización de clases en ficheros" class="md-nav__link toc__link">
+    Organización de clases en ficheros
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compilacion-y-vinculacion" title="Compilación y vinculación" class="md-nav__link toc__link">
+    Compilación y vinculación
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-encadenados-con-puntero-this" title="Métodos encadenados con puntero this" class="md-nav__link toc__link">
+    Métodos encadenados con puntero this
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diferencias-entre-class-y-struct" title="Diferencias entre Class y Struct" class="md-nav__link toc__link">
+    Diferencias entre Class y Struct
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acerca-de-los-objetos-constantes" title="Acerca de los objetos constantes" class="md-nav__link toc__link">
+    Acerca de los objetos constantes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getters-actuando-como-setters" title="Getters actuando como setters" class="md-nav__link toc__link">
+    Getters actuando como setters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inicializacion-listada-en-constructor" title="Inicialización listada en constructor" class="md-nav__link toc__link">
+    Inicialización listada en constructor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constructores-explicitos-y-delegados" title="Constructores explícitos y delegados" class="md-nav__link toc__link">
+    Constructores explícitos y delegados
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#copia-de-objetos-shallowdeep-en-constructores" title="Copia de objetos (shallow/deep) en constructores" class="md-nav__link toc__link">
+    Copia de objetos (shallow/deep) en constructores
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manejo-secuencial-de-objetos-en-arreglos" title="Manejo secuencial de objetos en arreglos" class="md-nav__link toc__link">
+    Manejo secuencial de objetos en arreglos
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../02-funciones-clases-amigas/" title="Funciones y clases amigas" class="md-nav__link">
+      Funciones y clases amigas
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../03-miembros-estaticos/" title="Miembros estáticos" class="md-nav__link">
+      Miembros estáticos
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../04-sobrecarga-operadores/" title="Sobrecarga de operadores" class="md-nav__link">
+      Sobrecarga de operadores
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../05-herencia-clases/" title="Herencia de clases" class="md-nav__link">
+      Herencia de clases
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../06-polimorfismo-clases/" title="Polimorfismo de clases" class="md-nav__link">
+      Polimorfismo de clases
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../07-class-templates/" title="Class templates" class="md-nav__link">
+      Class templates
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../08-semanticas-movimiento/" title="Semánticas de movimiento" class="md-nav__link">
+      Semánticas de movimiento
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../12-punteros-inteligentes/" title="Punteros inteligentes" class="md-nav__link">
+      Punteros inteligentes
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../13-manejo-excepciones/" title="Manejo de excepciones" class="md-nav__link">
+      Manejo de excepciones
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../14-biblioteca-stl/" title="Biblioteca STL" class="md-nav__link">
+      Biblioteca STL
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-16" type="checkbox" id="nav-6-16">
+    
+    <label class="md-nav__link" for="nav-6-16">
+      Miscelánea
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-16">
+        Miscelánea
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../30-miscelanea/01-operadores-bit-a-bit/" title="Operadores bit a bit" class="md-nav__link">
+      Operadores bit a bit
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../30-miscelanea/02-enumeradores-alias/" title="Enumeradores y alias" class="md-nav__link">
+      Enumeradores y alias
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../30-miscelanea/03-numeros-aleatorios/" title="Números aleatorios" class="md-nav__link">
+      Números aleatorios
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../30-miscelanea/04-tiempo-ejecucion/" title="Tiempo de ejecución" class="md-nav__link">
+      Tiempo de ejecución
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../30-miscelanea/05-espacio-nombres/" title="Espacio de nombres" class="md-nav__link">
+      Espacio de nombres
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </ul>
+</nav>
+</div>
+                  </div>
+                </div>
+              
+              
+                <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                  <div class="md-sidebar__scrollwrap">
+                    <div class="md-sidebar__inner">
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#definicion-de-clases-y-objetos" title="Definición de clases y objetos" class="md-nav__link toc__link">
+    Definición de clases y objetos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodo-constructor-en-clases" title="Método constructor en clases" class="md-nav__link toc__link">
+    Método constructor en clases
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodo-destructor-en-clases" title="Método destructor en clases" class="md-nav__link toc__link">
+    Método destructor en clases
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getters-y-setters-en-clases" title="Getters y Setters en clases" class="md-nav__link toc__link">
+    Getters y Setters en clases
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#organizacion-de-clases-en-ficheros" title="Organización de clases en ficheros" class="md-nav__link toc__link">
+    Organización de clases en ficheros
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compilacion-y-vinculacion" title="Compilación y vinculación" class="md-nav__link toc__link">
+    Compilación y vinculación
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-encadenados-con-puntero-this" title="Métodos encadenados con puntero this" class="md-nav__link toc__link">
+    Métodos encadenados con puntero this
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diferencias-entre-class-y-struct" title="Diferencias entre Class y Struct" class="md-nav__link toc__link">
+    Diferencias entre Class y Struct
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acerca-de-los-objetos-constantes" title="Acerca de los objetos constantes" class="md-nav__link toc__link">
+    Acerca de los objetos constantes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getters-actuando-como-setters" title="Getters actuando como setters" class="md-nav__link toc__link">
+    Getters actuando como setters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inicializacion-listada-en-constructor" title="Inicialización listada en constructor" class="md-nav__link toc__link">
+    Inicialización listada en constructor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constructores-explicitos-y-delegados" title="Constructores explícitos y delegados" class="md-nav__link toc__link">
+    Constructores explícitos y delegados
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#copia-de-objetos-shallowdeep-en-constructores" title="Copia de objetos (shallow/deep) en constructores" class="md-nav__link toc__link">
+    Copia de objetos (shallow/deep) en constructores
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manejo-secuencial-de-objetos-en-arreglos" title="Manejo secuencial de objetos en arreglos" class="md-nav__link toc__link">
+    Manejo secuencial de objetos en arreglos
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav></div>
+                  </div>
+                </div>
+              
+            
+            <div class="md-content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+                  
+                  <h1 id="primeros-pasos-con-las-clases-en-c">Primeros pasos con las clases en C++<a class="headerlink" href="#primeros-pasos-con-las-clases-en-c" title="Permanent link">&para;</a></h1>
+<h2 id="definicion-de-clases-y-objetos">Definición de clases y objetos<a class="headerlink" href="#definicion-de-clases-y-objetos" title="Permanent link">&para;</a></h2>
+<p>Las clases nos ofrecen un paradigma distinto para desarrollar soluciones, en ellas nos enfocamos en replicar problemas del mundo real en la programación mediante los objetos, las instancias de nuestras propias estructuras:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="p">{</span><span class="mf">3.14159265358979323846264338</span><span class="p">};</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Cilindro</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="o">:</span><span class="w"> </span>
+<span class="w">        </span><span class="c1">//Funciones (métodos)</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">volumen</span><span class="p">(){</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radio</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radio</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">altura</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="o">:</span><span class="w"> </span>
+<span class="w">        </span><span class="c1">// Variables miembro</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">radio</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">altura</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Para trabajar con nuestra clase crearemos instancias, ya sea en el <strong>stack</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Objecto en el stack</span>
+<span class="n">Cilindro</span><span class="w"> </span><span class="n">cilindro1</span><span class="p">;</span><span class="w"> </span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;volumen: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">cilindro1</span><span class="p">.</span><span class="n">volumen</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="c1">// Cambiamos las variables miembro</span>
+<span class="n">cilindro1</span><span class="p">.</span><span class="n">radio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="n">cilindro1</span><span class="p">.</span><span class="n">altura</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;volumen: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">cilindro1</span><span class="p">.</span><span class="n">volumen</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</code></pre></div>
+<p>O en el <strong>heap</strong> mediante punteros, sin olvidar liberar la memoria tras el uso, teniendo en cuenta que el acceso a los métodos y miembros es mediante la notación con flecha:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Objecto en el heap</span>
+<span class="n">Cilindro</span><span class="w"> </span><span class="o">*</span><span class="n">cilindro2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Cilindro</span><span class="p">();</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;volumen: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">cilindro2</span><span class="p">).</span><span class="n">volumen</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;volumen: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">cilindro2</span><span class="o">-&gt;</span><span class="n">volumen</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="c1">// Cambiamos las variables miembro</span>
+<span class="n">cilindro2</span><span class="o">-&gt;</span><span class="n">radio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="n">cilindro2</span><span class="o">-&gt;</span><span class="n">altura</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;volumen: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">cilindro2</span><span class="o">-&gt;</span><span class="n">volumen</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="c1">// Liberamos la memoria</span>
+<span class="k">delete</span><span class="w"> </span><span class="n">cilindro2</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="metodo-constructor-en-clases">Método constructor en clases<a class="headerlink" href="#metodo-constructor-en-clases" title="Permanent link">&para;</a></h2>
+<p>El método <strong>constructor</strong> es un método especial que se llama al crear una instancia, no retorna nada, tiene el mismo nombre que la clase, puede recibir parámetros y usualmente inicializada las variables miembro de la clase, además se puede sobrecargar y mediante el puntero <code>this</code> se puede hacer referencia a un puntero que apunta a la propia instancia, útil para comunicarse entre las variables miembro entre métodos:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">PI</span><span class="p">{</span><span class="mf">3.14159265358979323846264338</span><span class="p">};</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Cilindro</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Constructor sin parámetros</span>
+<span class="w">    </span><span class="n">Cilindro</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">radio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">altura</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="c1">// Constructor con parámetros</span>
+<span class="w">    </span><span class="n">Cilindro</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">radio</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">altura</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">radio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">radio</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">altura</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">altura</span><span class="p">;</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="c1">// Funciones (métodos)</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">volumen</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radio</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radio</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">altura</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Variables miembro</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">radio</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">altura</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+<span class="p">};</span>
+
+<span class="n">Cilindro</span><span class="w"> </span><span class="n">cilindro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cilindro</span><span class="p">(</span><span class="mf">4.5</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;volumen: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">cilindro</span><span class="p">.</span><span class="n">volumen</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</code></pre></div>
+<p>También existen los <strong>constructores por defecto</strong>, que pueden ser llamados sin argumentos:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">PI</span><span class="p">{</span><span class="mf">3.14159265358979323846264338</span><span class="p">};</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Cilindro</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Constructor por defecto</span>
+<span class="w">    </span><span class="n">Cilindro</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Constructor con parámetros</span>
+<span class="w">    </span><span class="n">Cilindro</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">radio</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">altura</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">radio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">radio</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">altura</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">altura</span><span class="p">;</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="c1">// Funciones (métodos)</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">volumen</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radio</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radio</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">altura</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Variables miembro</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">radio</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">altura</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+<span class="p">};</span>
+
+<span class="n">Cilindro</span><span class="w"> </span><span class="n">cilindro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cilindro</span><span class="p">();</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;volumen: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">cilindro</span><span class="p">.</span><span class="n">volumen</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="metodo-destructor-en-clases">Método destructor en clases<a class="headerlink" href="#metodo-destructor-en-clases" title="Permanent link">&para;</a></h2>
+<p>El método especial <strong>destructor</strong> se llama cuanto un objeto se borra de la memoria, es decir, muere. Son necesarios para definir las tareas de liberación de la memoria dinámica o limpiezas asociadas.</p>
+<p>Por ejemplo, supongamos una clase <code>Perro</code> con una variable edad que hemos decidido almacenar dinámicamente, pues recae en nuestra mano como programadores liberar correctamente esa memoria en el destructor:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Perro</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Constructores</span>
+<span class="w">    </span><span class="n">Perro</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Nada&quot;</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// Memoria dinámica</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">;</span>
+<span class="w">        </span><span class="o">*</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">Perro</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">edad</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// Memoria dinámica</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">;</span>
+<span class="w">        </span><span class="o">*</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">edad</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Destructor con tareas de limpieza</span>
+<span class="w">    </span><span class="o">~</span><span class="n">Perro</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">delete</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">edad</span><span class="p">;</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Perro liberado de la memoria&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">edad</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// Perro liberado de la memoria al finalizar la función</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Perro</span><span class="w"> </span><span class="n">perro</span><span class="p">(</span><span class="s">&quot;Maxi&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Debemos prestar atención porque si bien el momento de la destrucción a veces es obvio, como un objeto local sale de su ámbito o cuando liberamos un objeto del <code>heap</code>, en otros casos no lo es tanto, como cuando pasamos un objeto a una función o lo devolvemos un objeto desde una función:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Perro creado en memoria dinámica en la función</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">funcion</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Perro</span><span class="w"> </span><span class="o">*</span><span class="n">perro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Perro</span><span class="p">(</span><span class="s">&quot;Maxi&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Perro nunca liberado de la memoria</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">funcion</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>¡Recordemos siempre limpiar la memoria dinámica!</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Perro creado en memoria dinámica en la función</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">funcion</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Perro</span><span class="w"> </span><span class="o">*</span><span class="n">perro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Perro</span><span class="p">(</span><span class="s">&quot;Maxi&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Liberar la memoria</span>
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">perro</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Perro liberado de la memoria dentro de la propia función</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">funcion</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="getters-y-setters-en-clases">Getters y Setters en clases<a class="headerlink" href="#getters-y-setters-en-clases" title="Permanent link">&para;</a></h2>
+<p>Los <strong>getters</strong> y <strong>setters</strong> son métodos de acceso para exponer los miembros privados de la clase, de manera que podamos controlar la forma de establecer y consultar los valores almacenados en ellos:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">PI</span><span class="p">{</span><span class="mf">3.14159265358979323846264338</span><span class="p">};</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Cilindro</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Constructor por defecto</span>
+<span class="w">    </span><span class="n">Cilindro</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Constructor con parámetros</span>
+<span class="w">    </span><span class="n">Cilindro</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">radio</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">altura</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">radio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">radio</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">altura</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">altura</span><span class="p">;</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="c1">// Métodos getter</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">get_radio</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">radio</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">get_altura</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">altura</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Métodos setter</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">set_radio</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">radio</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">radio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">radio</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">set_altura</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">altura</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">altura</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">altura</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Funciones (métodos)</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">volumen</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radio</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radio</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">altura</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Variables miembro</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">radio</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">altura</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+<span class="p">};</span>
+
+<span class="n">Cilindro</span><span class="w"> </span><span class="n">cilindro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cilindro</span><span class="p">(</span><span class="mf">3.1</span><span class="p">,</span><span class="w"> </span><span class="mf">5.6</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;volumen: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">cilindro</span><span class="p">.</span><span class="n">volumen</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="n">cilindro</span><span class="p">.</span><span class="n">set_radio</span><span class="p">(</span><span class="mf">4.5</span><span class="p">);</span>
+<span class="n">cilindro</span><span class="p">.</span><span class="n">set_altura</span><span class="p">(</span><span class="mf">9.5</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;volumen: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">cilindro</span><span class="p">.</span><span class="n">volumen</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;altura: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">cilindro</span><span class="p">.</span><span class="n">get_altura</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="organizacion-de-clases-en-ficheros">Organización de clases en ficheros<a class="headerlink" href="#organizacion-de-clases-en-ficheros" title="Permanent link">&para;</a></h2>
+<p>Para ejecutar y organizar de forma eficiente el código las clases suelen separar en <strong>ficheros de cabeceras</strong> (header files) con las declaraciones y <strong>ficheros de fuentes</strong> (source files) con las definiciones.</p>
+<p>Además, para evitar dependencias cruzadas se utilizan guardas de inclusión <code>ifndef</code> que generan <em>wrappers</em>, espacios contenidos dentro de una cláusula para evitar la redefinición múltiple.</p>
+<p>Adaptando el ejemplo del cilindro tendremos:</p>
+<p><strong>cilindro.h</strong></p>
+<p>Declaración o cabecera de la clase <code>Cilindro</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#ifndef CYLINDER_H</span>
+<span class="cp">#define CYLINDER_H</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;constantes.h&quot;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Cilindro</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Constructores</span>
+<span class="w">    </span><span class="n">Cilindro</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Cilindro</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">radio</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">altura</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// métodos</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">volumen</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// Métodos setter y getter</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">get_radio</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">get_altura</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">;</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">set_radio</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">radio</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">set_altura</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">altura</span><span class="p">);</span>
+
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Variables miembro</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">radio</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">altura</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+<span class="p">};</span>
+
+<span class="cp">#endif</span>
+</code></pre></div>
+<p><strong>cilindro.cpp</strong></p>
+<p>Definición o fuente de la clase <code>Cilindro</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;cilindro.h&quot;</span>
+
+<span class="c1">// Constructor con parámetros</span>
+<span class="n">Cilindro</span><span class="o">::</span><span class="n">Cilindro</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">radio</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">altura</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">radio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">radio</span><span class="p">;</span>
+<span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">altura</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">altura</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// Métodos getter</span>
+<span class="kt">double</span><span class="w"> </span><span class="nf">Cilindro::get_radio</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">radio</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">double</span><span class="w"> </span><span class="nf">Cilindro::get_altura</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">altura</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Métodos setter</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">Cilindro::set_radio</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">radio</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">radio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">radio</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">Cilindro::set_altura</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">altura</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">altura</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">altura</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Funciones (métodos)</span>
+<span class="kt">double</span><span class="w"> </span><span class="nf">Cilindro::volumen</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radio</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radio</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">altura</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>constantes.h</strong></p>
+<p>Cabeceras con constantes potencialmente incluidas de forma cruzada:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#ifndef CONSTANTS_H</span>
+<span class="cp">#define CONSTANTS_H</span>
+
+<span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="p">{</span><span class="mf">3.14159265358979323846264338327</span><span class="p">};</span>
+
+<span class="cp">#endif</span>
+</code></pre></div>
+<p><strong>main.cpp</strong></p>
+<p>Fichero que incluirá las declaraciones y la función principal:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;cilindro.h&quot;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
+<span class="w">    </span><span class="n">Cilindro</span><span class="w"> </span><span class="n">cilindro</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;volumen: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">cilindro</span><span class="p">.</span><span class="n">volumen</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="compilacion-y-vinculacion">Compilación y vinculación<a class="headerlink" href="#compilacion-y-vinculacion" title="Permanent link">&para;</a></h2>
+<p>Cuando trabajamos con múltiples ficheros, a la hora de compilar debemos tener en cuenta dos procesos distintos: la compilación (compiling) y la vinculación (linking).</p>
+<ul>
+<li>
+<p>La <strong>compilación</strong> es la fase que traduce el programa a un código de nivel de ensamblaje de bajo nivel. El compilador toma el archivo preprocesado (sin ninguna directiva) y genera un archivo de objeto que contiene código de nivel de ensamblaje. Ahora, el archivo de objeto creado está en forma binaria. En el archivo de objeto creado, cada línea describe una instrucción de nivel de máquina de bajo nivel. La conversión a lenguaje ensamblador es importante ya que es un lenguaje de salida común para muchos compiladores de diferentes lenguajes de alto nivel.</p>
+</li>
+<li>
+<p>La <strong>vinculación</strong>, como sugiere el nombre, se refiere a la creación de un solo archivo ejecutable a partir de múltiples archivos de objetos. El archivo creado después de la vinculación está listo para ser cargado en la memoria y ejecutado por el sistema.</p>
+</li>
+</ul>
+<p>Los comandos para compilar y vincular son, por ejemplo a partir de un fichero principal <strong>main.cpp</strong> y unas utilidades con su cabecera <strong>utilities.h</strong> y fuente <strong>utilities.cpp</strong>:</p>
+<ul>
+<li>Compilación y vinculación: <code>g++ -o output.exe main.cpp utilities.cpp</code></li>
+<li>Compilación: g++ <code>-c main.cpp utilities.cpp</code></li>
+<li>Vinculación: g++ <code>-o output.exe main.o utilities.o</code></li>
+</ul>
+<p>Por otro lado, acerca de la <strong>declaración</strong> y la <strong>definición</strong> debemos tener en cuenta:</p>
+<ul>
+<li>Si el nombre no se utiliza nunca (no se llama la función o variable) en la función principal <code>main</code>, la definición no será necesaria.</li>
+<li>Si se compila sin una declaración, y el nombre es utilizado, se obtendrá un error de compilación de tipo <code>unknown name</code>.</li>
+<li>Si se compila una declaración sin una definición pero ésta no se llama en el código, la compilación funcionará.</li>
+<li>Si se compila una declaración sin una definición y ésta se llama en el código, la compilación dará un error de vinculación.</li>
+</ul>
+<p>En este punto empezaremos a hablar de <strong>unidades de traducción</strong> (TU) una unidad básica de compilación en C++, consistente en el contenido de un solo archivo de fuente, más el contenido de cualquier archivo de encabezado incluido directa o indirectamente en él, exceptuando aquellas líneas que se ignoraron mediante instrucciones de preprocesamiento condicional.</p>
+<p>Es importante tenerlo en cuenta porque la vinculación es una propiedad asociada a un nombre que controla su ámbito la visibilidad entre las <strong>TU</strong>.</p>
+<p>Una <strong>constante</strong> tiene una vinculación interna, eso significa que es únicamente visible en la TU donde se ha declarado. Si se declara la variable de mismo nombre en otra <strong>TU</strong>, la variable creada será una definición separada de la anterior. Una variable definida mediante la cláusula extern implicará que tiene una vinculación externa, por lo que si es utilizada en otra <strong>TU</strong> vinculada, será la misma variable y esto también afectará a una <strong>constante</strong>. Así mismo, una función puede importarse como externa con la misma palabra <code>extern</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// main.cpp</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="kt">double</span><span class="w"> </span><span class="n">PI</span><span class="p">{</span><span class="mf">3.14</span><span class="p">};</span><span class="w">           </span><span class="c1">// Vinculación interna</span>
+<span class="k">extern</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">E</span><span class="p">;</span><span class="w">     </span><span class="c1">// Vinculación externa</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">hola</span><span class="p">{</span><span class="mi">6</span><span class="p">};</span><span class="w">               </span><span class="c1">// Vinculación externa</span>
+
+<span class="k">extern</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">();</span><span class="w">       </span><span class="c1">// Vinculación externa</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;&amp;PI en main: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">PI</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;&amp;hola en main: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">hola</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">print</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// prueba.cpp</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">PI</span><span class="p">{</span><span class="mf">3.14</span><span class="p">};</span><span class="w">        </span><span class="c1">// vinculación interna</span>
+<span class="k">extern</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">E</span><span class="p">{</span><span class="mf">2.71</span><span class="p">};</span><span class="w">  </span><span class="c1">// vinculación externa</span>
+<span class="k">extern</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">hola</span><span class="p">;</span><span class="w">              </span><span class="c1">// vinculación externa</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">()</span><span class="w"> </span><span class="c1">// vinculación externa</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;&amp;PI en prueba: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">PI</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;&amp;hola en prueba: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">hola</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$ g++ -o main.exe main.cpp utilities.cpp
+$ ./main.exe
+
+&amp;PI en main: 0x7ff60c924020      &lt;---- son diferentes
+&amp;E en main: 0x7ff7369a5088       &lt;---- es la misma
+&amp;hola en main: 0x7ff60c924028    &lt;---- es la misma
+
+&amp;PI en prueba: 0x7ff60c925070
+&amp;E en prueba: 0x7ff7369a5088
+&amp;hola en prueba: 0x7ff60c924028
+</code></pre></div>
+<p>Por último comentar que es posible realizar una <strong>declaración adelantada</strong> (forward declaration) de una clase para poder utilizarla en una cabecera, pero no podremos utilizar ninguno de sus miembros, solo la referencia del nombre:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Punto</span><span class="p">;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Linea</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">Linea</span><span class="p">();</span>
+<span class="w">    </span><span class="o">~</span><span class="n">Linea</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// Funcionará sin que el compilador conozca los miembros</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">imprimir_punto</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Punto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">p</span><span class="p">);</span><span class="w"> </span>
+
+<span class="w">    </span><span class="c1">// No funcionará, el compilador no conoce los miembros</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">imprimir_punto</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Punto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w">  </span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="metodos-encadenados-con-puntero-this">Métodos encadenados con puntero this<a class="headerlink" href="#metodos-encadenados-con-puntero-this" title="Permanent link">&para;</a></h2>
+<p>Ya comentamos que el puntero <code>this</code> es un realidad la dirección en la memoria donde se encuentra la instancia de la clase. Esto nos permite trabajar con la instancia de formas interesantes, por ejemplo consultar su dirección:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Perro</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">Perro</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">edad</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">;</span>
+<span class="w">        </span><span class="o">*</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">edad</span><span class="p">;</span>
+
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Perro &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">nombre</span>
+<span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; construido en &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="o">~</span><span class="n">Perro</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">delete</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">edad</span><span class="p">;</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Perro liberado de la memoria&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">edad</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Perro</span><span class="w"> </span><span class="n">perro</span><span class="p">(</span><span class="s">&quot;Maxi&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Perro Maxi construido en 0xc68c1ffa00
+Perro liberado de la memoria
+</code></pre></div>
+<p>Pues algo muy interesante es que si devolvemos el puntero <code>this</code> en nuestros métodos, podemos encadenar la llamada de diferentes métodos, pues estamos devolviendo la propia instancia, aunque para ello necesitaremos contar desde el principio con la dirección de la instancia, algo que podemos solucionar creando el objeto dinámicamente en el <strong>heap</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Método que devuelve  el puntero this para encadenarlos</span>
+<span class="n">Perro</span><span class="w"> </span><span class="o">*</span><span class="nf">set_nombre</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Método que devuelve  el puntero this para encadenarlos</span>
+<span class="n">Perro</span><span class="w"> </span><span class="o">*</span><span class="nf">set_edad</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">edad</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="o">*</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">edad</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">info</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Perro &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">nombre</span>
+<span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; con edad &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">edad</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Perro</span><span class="w"> </span><span class="o">*</span><span class="n">perro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Perro</span><span class="p">(</span><span class="s">&quot;Maxi&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="w">    </span><span class="n">perro</span><span class="o">-&gt;</span><span class="n">set_nombre</span><span class="p">(</span><span class="s">&quot;Fox&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">set_edad</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">info</span><span class="p">();</span>
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">perro</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Perro Maxi construido en 0x19dc22b6f90
+Perro Fox con edad 5
+Perro liberado de la memoria
+</code></pre></div>
+<p>Si preferimos trabajar en el <strong>stack</strong> y no almacenar la memoria dinámicamente, podemos obtener el mismo resultado mediante el retorno de las referencias del punteros <code>this</code> con <code>&amp;</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Método que devuelve la referencia de this para encadenarlos</span>
+<span class="n">Perro</span><span class="w"> </span><span class="o">&amp;</span><span class="nf">set_nombre</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// Método que devuelve la referencia de this para encadenarlos</span>
+<span class="n">Perro</span><span class="w"> </span><span class="o">&amp;</span><span class="nf">set_edad</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">edad</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="o">*</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">edad</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Perro</span><span class="w"> </span><span class="n">perro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Perro</span><span class="p">(</span><span class="s">&quot;Maxi&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="w">    </span><span class="n">perro</span><span class="p">.</span><span class="n">set_nombre</span><span class="p">(</span><span class="s">&quot;Fox&quot;</span><span class="p">).</span><span class="n">set_edad</span><span class="p">(</span><span class="mi">5</span><span class="p">).</span><span class="n">info</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Perro Maxi construido en 0xeaa71ffa80
+Perro Fox con edad 5
+Perro liberado de la memoria
+</code></pre></div>
+<h2 id="diferencias-entre-class-y-struct">Diferencias entre Class y Struct<a class="headerlink" href="#diferencias-entre-class-y-struct" title="Permanent link">&para;</a></h2>
+<p>A parte de las clases <code>class</code>, también encontramos el tipo estructura <code>struct</code>, cuya diferencia clave es que sus miembros son públicos por defecto.</p>
+<p>Por ejemplo, en esta clase <code>Perro</code> no podemos acceder directamente a los miembros:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Perro</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Perro</span><span class="w"> </span><span class="n">perro</span><span class="p">;</span>
+<span class="w">    </span><span class="n">perro</span><span class="p">.</span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Maxi&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Error, miembro privado</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Pero sí podemos hacerlo en su versión con <code>struct</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">Perro</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Perro</span><span class="w"> </span><span class="n">perro</span><span class="p">;</span>
+<span class="w">    </span><span class="n">perro</span><span class="p">.</span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Maxi&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Funciona, miembro público</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">perro</span><span class="p">.</span><span class="n">nombre</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Maxi
+</code></pre></div>
+<p>Esta capacidad hace a las estructuras perfectas para almacenar datos simples sin tener que desarrollar la lógica de las clases.</p>
+<p>De hecho, existe una forma de extraer la información de una estructura muy rápidamente mediante <strong>bindings</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">Perro</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span><span class="w">  </span><span class="c1">// indice 0</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">edad</span><span class="p">;</span><span class="w">            </span><span class="c1">// indice 1</span>
+<span class="p">};</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Perro</span><span class="w"> </span><span class="n">perro</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;Maxi&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">};</span><span class="w"> </span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">edad</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">perro</span><span class="p">;</span><span class="w">  </span><span class="c1">// 0, 1</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Nombre: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Edad: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">edad</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Nombre: Maxi
+Edad: 5
+</code></pre></div>
+<h2 id="acerca-de-los-objetos-constantes">Acerca de los objetos constantes<a class="headerlink" href="#acerca-de-los-objetos-constantes" title="Permanent link">&para;</a></h2>
+<p>Un objeto puede declararse constante, como cualquier otra variable en C++:</p>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">PI</span><span class="p">{</span><span class="mf">3.14159265358979323846264338</span><span class="p">};</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Cilindro</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Constructor con parámetros</span>
+<span class="w">    </span><span class="n">Cilindro</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">radio</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">altura</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">radio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">radio</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">altura</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">altura</span><span class="p">;</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="c1">// Métodos getter</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">get_radio</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">radio</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">get_altura</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">altura</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Métodos setter </span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">set_radio</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">radio</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">radio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">radio</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">set_altura</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">altura</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">altura</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">altura</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Funciones (métodos)</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">volumen</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radio</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radio</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">altura</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Variables miembro</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">radio</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">altura</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+<span class="p">};</span>
+
+<span class="k">const</span><span class="w"> </span><span class="n">Cilindro</span><span class="w"> </span><span class="n">cilindro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cilindro</span><span class="p">(</span><span class="mf">3.1</span><span class="p">,</span><span class="w"> </span><span class="mf">5.6</span><span class="p">);</span>
+</code></pre></div>
+<p>La propiedad <code>const</code> afecta después de la construcción y finaliza antes de la destrucción de la instancia, en otras palabras, el constructor y destructor pueden modificar los miembros del objeto pero todos los demás métodos no pueden:</p>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">cilindro</span><span class="p">.</span><span class="n">volumen</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w">  </span><span class="c1">// Error</span>
+</code></pre></div>
+<p>Sin embargo, si definimos una función miembro como constante, tendremos acceso a ella:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">volumen</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="c1">// &lt;-----</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radio</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radio</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">altura</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Y ahora la llamada funcionará:</p>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">cilindro</span><span class="p">.</span><span class="n">volumen</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w">  </span><span class="c1">// 169.06</span>
+</code></pre></div>
+<p>El puntero <code>this</code> que se envía a las funciones miembro constantes es un puntero constante, eso significa que el puntero no se puede utilizar para modificar los objetos de los miembros, cualquier intento de cambiar la información desde esas funciones dará error:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="nf">volumen</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">radio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="c1">// Error</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radio</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radio</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">altura</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Los objetos constantes solo pueden llamar funciones miembro constantes, los objetos no constantes tienen acceso tanto a las funciones mimbro constantes como no constantes.</p>
+<p>Una función miembro constante puede sobrecargarse con una versión no constante de la misma, la elección de la versión la hará el compilador en función de que el objeto que la llama sea o no constante.</p>
+<p>Así mismo, los constructores y destructores jamás deben declararse como constantes, pues ellos siempre deben tener acceso a modificar el objeto aunque éste sea constante (son el principio y fin de su ciclo de vida).</p>
+<p>Como curiosidad, las funciones miembro estáticas no pueden definirse como constantes, la palabra <code>const</code> modifica el puntero <code>this</code> pasado a la función, pero las funciones miembro estáticas <code>static</code> no envían el puntero <code>this</code> al poder ser llamadas sin instanciar un objeto.</p>
+<div class="admonition tip">
+<p class="admonition-title">Buenas prácticas</p>
+<p>Cualquier función miembro <strong>no estática que no modifique</strong> los datos miembro del objeto, debería declararse como <code>const</code> para poder trabajar con objetos constantes.</p>
+</div>
+<h2 id="getters-actuando-como-setters">Getters actuando como setters<a class="headerlink" href="#getters-actuando-como-setters" title="Permanent link">&para;</a></h2>
+<p>Puede ser que en algún momento nos interese devolver una referencia en un método de una clase, en ese caso debemos tener en cuenta que el objeto miembro devuelto será modificable a través del método:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">PI</span><span class="p">{</span><span class="mf">3.14159265358979323846264338</span><span class="p">};</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Cilindro</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Constructor con parámetros</span>
+<span class="w">    </span><span class="n">Cilindro</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">radio</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">altura</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">radio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">radio</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">altura</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">altura</span><span class="p">;</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="c1">// La referencia es modificable!</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="o">&amp;</span><span class="nf">get_radio</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">radio</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// La referencia es modificable!</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="o">&amp;</span><span class="nf">get_altura</span><span class="p">()</span><span class="w"> </span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">altura</span><span class="p">;</span><span class="w">  </span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">volumen</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radio</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radio</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">altura</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Variables miembro</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">radio</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">altura</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+<span class="p">};</span>
+
+<span class="n">Cilindro</span><span class="w"> </span><span class="n">cilindro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cilindro</span><span class="p">(</span><span class="mf">3.1</span><span class="p">,</span><span class="w"> </span><span class="mf">5.6</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">cilindro</span><span class="p">.</span><span class="n">volumen</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="n">cilindro</span><span class="p">.</span><span class="n">get_radio</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10.6</span><span class="p">;</span><span class="w"> </span><span class="c1">// Es modificable!</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">cilindro</span><span class="p">.</span><span class="n">volumen</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</code></pre></div>
+<p>Definir la referencia como constante solucionará el problema, e idealmente definir la función como miembro constante añadiría otra capa de seguridad:</p>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&amp;</span><span class="nf">get_radio</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">radio</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&amp;</span><span class="nf">get_altura</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">altura</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">cilindro</span><span class="p">.</span><span class="n">get_radio</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10.6</span><span class="p">;</span><span class="w"> </span><span class="c1">// Error, no es modificable!</span>
+</code></pre></div>
+<h2 id="inicializacion-listada-en-constructor">Inicialización listada en constructor<a class="headerlink" href="#inicializacion-listada-en-constructor" title="Permanent link">&para;</a></h2>
+<p>Esta es una técnica que consiste en indicar de forma listada los miembros a inicializar en el constructor, tiene algunas ventajas como evitar copias innecesarias de los datos e incluso en algunos casos son la única forma de inicializar un objeto.</p>
+<p>En la <strong>inicialización por copia</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Constructor clásico con inicialización de valores copiados</span>
+<span class="n">Cilindro</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">radio</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">altura</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">radio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">radio</span><span class="p">;</span>
+<span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">altura</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">altura</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<ul>
+<li>El objeto se crea y los miembros se asignan a partir de las variables.</li>
+<li>Se generan copias innecesarias de los datos.</li>
+<li>El orden de las variables miembro no importa.</li>
+</ul>
+<p>En la <strong>inicialización listada</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Constructor listado con inicialización directa en miembros</span>
+<span class="n">Cilindro</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">radio</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">altura</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">radio</span><span class="p">(</span><span class="n">radio</span><span class="p">),</span><span class="w"> </span><span class="n">altura</span><span class="p">(</span><span class="n">altura</span><span class="p">){</span><span class="w"> </span><span class="p">};</span>
+</code></pre></div>
+<ul>
+<li>La inicialización ocurre en la creación real del objeto.</li>
+<li>Se evitan copias innecesarias.</li>
+<li>El orden de las variables miembro importa.</li>
+</ul>
+<h2 id="constructores-explicitos-y-delegados">Constructores explícitos y delegados<a class="headerlink" href="#constructores-explicitos-y-delegados" title="Permanent link">&para;</a></h2>
+<p>Hablemos de algunas características de los constructores, empezando por la cláusula <code>explicit</code>, que indica al constructor que utilice conversiones explícitas en los tipos de datos:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Punto</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Conversión explícita a enteros</span>
+<span class="w">    </span><span class="k">explicit</span><span class="w"> </span><span class="n">Punto</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">y</span><span class="p">){};</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;(&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="p">{},</span><span class="w"> </span><span class="n">y</span><span class="p">{};</span>
+<span class="p">};</span>
+
+<span class="n">Punto</span><span class="w"> </span><span class="nf">p</span><span class="p">(</span><span class="mf">14.76</span><span class="p">,</span><span class="w"> </span><span class="mf">84.25</span><span class="p">);</span>
+<span class="n">p</span><span class="p">.</span><span class="n">print</span><span class="p">();</span><span class="w"> </span><span class="c1">// (14, 84) &lt;-- ¡Son enteros!</span>
+</code></pre></div>
+<p>También podemos <strong>delegar un constructor</strong> a otro, por ejemplo, con una inicialización vacía:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Constructor delegado</span>
+<span class="n">Punto</span><span class="p">()</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Punto</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="c1">// Se llamará a este constructor en caso de no enviar argumentos</span>
+<span class="k">explicit</span><span class="w"> </span><span class="n">Punto</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">y</span><span class="p">){};</span>
+
+<span class="n">Punto</span><span class="w"> </span><span class="n">p</span><span class="p">;</span>
+<span class="n">p</span><span class="p">.</span><span class="n">print</span><span class="p">();</span><span class="w"> </span><span class="c1">// (5, 5)</span>
+</code></pre></div>
+<h2 id="copia-de-objetos-shallowdeep-en-constructores">Copia de objetos (shallow/deep) en constructores<a class="headerlink" href="#copia-de-objetos-shallowdeep-en-constructores" title="Permanent link">&para;</a></h2>
+<p>En C++ un constructor puede recibir una instancia para realizar una copia de los valores uno a uno:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Punto</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">Punto</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">y</span><span class="p">){};</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;(&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;) &quot;</span>
+<span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;[&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;]&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">set</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="p">{},</span><span class="w"> </span><span class="n">y</span><span class="p">{};</span>
+<span class="p">};</span>
+
+<span class="n">Punto</span><span class="w"> </span><span class="nf">p1</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+<span class="n">Punto</span><span class="w"> </span><span class="nf">p2</span><span class="p">(</span><span class="n">p1</span><span class="p">);</span>
+<span class="n">p1</span><span class="p">.</span><span class="n">print</span><span class="p">();</span><span class="w"> </span><span class="c1">// (5, 5) [0x952e7ffd20]</span>
+<span class="n">p2</span><span class="p">.</span><span class="n">print</span><span class="p">();</span><span class="w"> </span><span class="c1">// (5, 5) [0x952e7ffd10]</span>
+
+<span class="c1">// Si editamos el primer punto solo cambiará ese</span>
+<span class="n">p1</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="n">p1</span><span class="p">.</span><span class="n">print</span><span class="p">();</span><span class="w"> </span><span class="c1">// (10, 10) [0x952e7ffd20]</span>
+<span class="n">p2</span><span class="p">.</span><span class="n">print</span><span class="p">();</span><span class="w"> </span><span class="c1">// (5, 5) [0x952e7ffd10]</span>
+</code></pre></div>
+<p>Hasta aquí todo es correcto, el problema aparece cuando nuestras clases contienen miembros que son punteros o en otras palabras, están almacenados en el <strong>heap</strong>, pues en esa situación no se copiarán los valores sino que se copiara la dirección en la memoria, implicando que en ambos objetos el miembro apunte al mismo lugar:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Punto</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="o">~</span><span class="n">Punto</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">delete</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">x</span><span class="p">;</span>
+<span class="w">        </span><span class="k">delete</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Al trabajar con punteros crearemos los datos dinámicamente</span>
+<span class="w">    </span><span class="n">Punto</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="p">(</span><span class="n">y</span><span class="p">)){};</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">set</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="o">*</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">        </span><span class="o">*</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;(&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;) &quot;</span>
+<span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;[&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;]&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">x</span><span class="p">{},</span><span class="w"> </span><span class="o">*</span><span class="n">y</span><span class="p">{};</span><span class="w">  </span><span class="c1">// Ahora trabajamos con punteros</span>
+<span class="p">};</span>
+
+<span class="n">Punto</span><span class="w"> </span><span class="nf">p1</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+<span class="n">Punto</span><span class="w"> </span><span class="nf">p2</span><span class="p">(</span><span class="n">p1</span><span class="p">);</span>
+<span class="n">p1</span><span class="p">.</span><span class="n">print</span><span class="p">();</span><span class="w"> </span><span class="c1">// (5, 5) [0xca45fffba0]</span>
+<span class="n">p2</span><span class="p">.</span><span class="n">print</span><span class="p">();</span><span class="w"> </span><span class="c1">// (5, 5) [0xca45fffb90]</span>
+
+<span class="c1">// Si editamos el primer punto cambiarán ambos</span>
+<span class="n">p1</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="n">p1</span><span class="p">.</span><span class="n">print</span><span class="p">();</span><span class="w"> </span><span class="c1">// (10, 10) [0xca45fffba0]</span>
+<span class="n">p2</span><span class="p">.</span><span class="n">print</span><span class="p">();</span><span class="w"> </span><span class="c1">// (10, 10) [0xca45fffb90]</span>
+</code></pre></div>
+<p>Para solucionar esto podemos crear unos <strong>getters</strong> que devuelvan el valor de los miembros privados y sobrecargar un constructor para que copie directamente los valores consultando estos getters a partir de la referencia del objeto:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Punto</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="o">~</span><span class="n">Punto</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">delete</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">x</span><span class="p">;</span>
+<span class="w">        </span><span class="k">delete</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">Punto</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="p">(</span><span class="n">y</span><span class="p">)){};</span>
+
+<span class="w">    </span><span class="c1">// Creamos unos getters</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="nf">get_x</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="nf">get_y</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Sobrecargamos un constructor que tome los datos de un Punto</span>
+<span class="w">    </span><span class="n">Punto</span><span class="p">(</span><span class="n">Punto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Punto</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">get_x</span><span class="p">()),</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">get_y</span><span class="p">())){};</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">set</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="o">*</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">        </span><span class="o">*</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;(&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;) &quot;</span>
+<span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;[&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;]&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">x</span><span class="p">{},</span><span class="w"> </span><span class="o">*</span><span class="n">y</span><span class="p">{};</span>
+<span class="p">};</span>
+
+<span class="n">Punto</span><span class="w"> </span><span class="nf">p1</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+<span class="n">Punto</span><span class="w"> </span><span class="nf">p2</span><span class="p">(</span><span class="n">p1</span><span class="p">);</span>
+<span class="n">p1</span><span class="p">.</span><span class="n">print</span><span class="p">();</span><span class="w"> </span><span class="c1">// (5, 5) [0xca45fffba0]</span>
+<span class="n">p2</span><span class="p">.</span><span class="n">print</span><span class="p">();</span><span class="w"> </span><span class="c1">// (5, 5) [0xca45fffb90]</span>
+
+<span class="c1">// Si editamos el primer punto solo cambiará ese</span>
+<span class="n">p1</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="n">p1</span><span class="p">.</span><span class="n">print</span><span class="p">();</span><span class="w"> </span><span class="c1">// (10, 10) [0xca45fffba0]</span>
+<span class="n">p2</span><span class="p">.</span><span class="n">print</span><span class="p">();</span><span class="w"> </span><span class="c1">// (5, 5) [0xca45fffb90]</span>
+</code></pre></div>
+<p><strong>Shallow Copy (copia superficial)</strong></p>
+<p>La forma de copiar directamente los valores se conoce como <strong>Shallow Copy</strong> (copia superficial) y funcione bien mientras no haya ningún miembro almacenado en el <strong>heap</strong>. </p>
+<p>En el momento en que realizamos una copia con valores en el <strong>heap</strong> (memoria dinámica), entonces debemos ser conscientes que copiarlos directamente afectará a la dirección de memoria y no tendremos una copia, sino un acceso entre a la misma información.</p>
+<p><strong>Deep Copy (copia profunda)</strong></p>
+<p>Si implementamos una copia por valores real para los datos del <strong>heap</strong> almacenando nueva memoria, tal como hemos hecho en el segundo ejemplo, ésta se denomina <strong>Deep Copy</strong> (copia profunda).</p>
+<h2 id="manejo-secuencial-de-objetos-en-arreglos">Manejo secuencial de objetos en arreglos<a class="headerlink" href="#manejo-secuencial-de-objetos-en-arreglos" title="Permanent link">&para;</a></h2>
+<p>Manejar objetos en arreglos es muy sencillo, tenemos distintas formas dependiendo de si queremos contar con copias o referencias a los mismos para poder modificarlos:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Punto</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="o">~</span><span class="n">Punto</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">delete</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">x</span><span class="p">;</span>
+<span class="w">        </span><span class="k">delete</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">Punto</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="p">(</span><span class="n">y</span><span class="p">)){};</span>
+
+<span class="w">    </span><span class="c1">// Creamos unos getters y setters</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="nf">get_x</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="nf">get_y</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Sobrecargamos un constructor que tome los datos de un Punto</span>
+<span class="w">    </span><span class="n">Punto</span><span class="p">(</span><span class="n">Punto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Punto</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">get_x</span><span class="p">()),</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">get_y</span><span class="p">())){};</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">set</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="o">*</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">        </span><span class="o">*</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;(&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;) &quot;</span>
+<span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;[&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;]&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">x</span><span class="p">{},</span><span class="w"> </span><span class="o">*</span><span class="n">y</span><span class="p">{};</span>
+<span class="p">};</span>
+
+<span class="n">Punto</span><span class="w"> </span><span class="nf">p1</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="n">p2</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="n">p3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="n">Punto</span><span class="w"> </span><span class="n">puntos</span><span class="p">[]{</span><span class="n">p1</span><span class="p">,</span><span class="w"> </span><span class="n">p2</span><span class="p">,</span><span class="w"> </span><span class="n">p3</span><span class="p">,</span><span class="w"> </span><span class="n">Punto</span><span class="p">(</span><span class="n">p3</span><span class="p">),</span><span class="w"> </span><span class="n">Punto</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)};</span>
+</code></pre></div>
+<p>Por ejemplo podemos recorrer con copias, aunque eso utilizará más memoria de la necesaria:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Cuando recorremos los objetos generamos copias</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Punto</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">puntos</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">p</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">get_x</span><span class="p">())</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">get_y</span><span class="p">())</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="w">    </span><span class="n">p</span><span class="p">.</span><span class="n">print</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>(10, 8) [0xe03d7ff6a0]
+(6, 8) [0xe03d7ff6a0]
+(2, 4) [0xe03d7ff6a0]
+(2, 4) [0xe03d7ff6a0]
+(14, 10) [0xe03d7ff6a0]
+</code></pre></div>
+<p>Mediante las referencias podemos modificar los objetos originales y ahorrar memoria:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Con referencia podemos modificar los objetos</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Punto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">p</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">puntos</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">p</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">get_x</span><span class="p">())</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">get_y</span><span class="p">())</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="w">    </span><span class="n">p</span><span class="p">.</span><span class="n">print</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>(10, 8) [0x38197ff5e0]
+(6, 8) [0x38197ff5f0]
+(2, 4) [0x38197ff600]
+(2, 4) [0x38197ff610]
+(14, 10) [0x38197ff620]
+</code></pre></div>
+<p>Si queremos referencias a objetos constantes, deberemos recordar marcar los métodos necesarios como constantes:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Método llamable por objetos constantes</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;(&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;) &quot;</span>
+<span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;[&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;]&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// Con referencia a objetos prevenimos la modificación</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Punto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">p</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">puntos</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">p</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">get_x</span><span class="p">())</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">get_y</span><span class="p">())</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="c1">// Error</span>
+<span class="w">    </span><span class="n">p</span><span class="p">.</span><span class="n">print</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>(5, 4) [0x5ab5bffb20]
+(3, 4) [0x5ab5bffb30]
+(1, 2) [0x5ab5bffb40]
+(1, 2) [0x5ab5bffb50]
+(7, 5) [0x5ab5bffb60]
+</code></pre></div>
+<p>Y no podemos olvidar la gestión secuencial clásica mediante índices, pues accediendo directamente al arreglo tampoco realizaremos copias, aunque <strong>aquí los objetos sí serán modificables</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Un loop normal tampoco generará copias</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="p">{};</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">size</span><span class="p">(</span><span class="n">puntos</span><span class="p">);</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">puntos</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="n">puntos</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">print</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// (puntos + i)-&gt;print();</span>
+<span class="w">    </span><span class="c1">// (*(puntos + i)).print();</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>(0, 0) [0xc71cbff930]
+(0, 0) [0xc71cbff940]
+(0, 0) [0xc71cbff950]
+(0, 0) [0xc71cbff960]
+(0, 0) [0xc71cbff970]
+</code></pre></div>
+<hr />
+<p><small class="edited"><i>Última edición: 09 de Mayo de 2022</i></small></p>
+                  
+                    
+                  
+                
+                
+                  
+
+
+                
+              </article>
+            </div>
+          </div>
+        </main>
+        
+          
+<footer class="md-footer">
+  
+  <div class="md-footer-nav">
+    <nav class="md-footer-nav__inner md-grid">
+      
+      <a
+        href="../../10-function-templates/"
+        title="Function Templates"
+        class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+        rel="prev"
+      >
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+        </div>
+        <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+          <span class="md-flex__ellipsis">
+            <span class="md-footer-nav__direction">
+              Anterior
+            </span>
+            Function Templates
+          </span>
+        </div>
+      </a>
+       
+      <a
+        href="../02-funciones-clases-amigas/"
+        title="Funciones y clases amigas"
+        class="md-flex md-footer-nav__link md-footer-nav__link--next"
+        rel="next"
+      >
+        <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+          <span class="md-flex__ellipsis">
+            <span class="md-footer-nav__direction">
+              Siguiente
+            </span>
+            Funciones y clases amigas
+          </span>
+        </div>
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+        </div>
+      </a>
+      
+    </nav>
+  </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        <!--<div class="md-footer-links__highlight">
+          <a href="/comunidad/">Comunidad</a> · <a href="/politica-de-cookies/">Política de cookies</a> · <a href="/sobre-mi/">Sobre mí</a>
+        </div>-->
+        <div class="md-footer-copyright__highlight">
+          2015 - 2022 &copy; Héctor Costa Guzmán (<u
+            ><a
+              href="https://creativecommons.org/licenses/by/4.0/deed.es"
+              target="_blank"
+              rel="nofollow"
+              >Licencia CC BY 4.0</a
+            ></u
+          >)
+        </div>
+      </div>
+       
+<style>.md-footer-social__link {transition: 0.3s;}</style>
+<div class="md-footer-social" style="font-size: 2.5rem; margin-top: -6px!important; padding: 0px!important; margin-bottom: -6px; overflow: hidden!important;">
+  <a href="https://github.com/hcosta" title="Github" target="_blank" class="md-footer-social__link fa fa-github-square"></a>
+  <a href="https://www.youtube.com/c/HektorProfe" title="Youtube" target="_blank" class="md-footer-social__link fa fa-youtube-square"></a>
+  &nbsp;
+</div>
+ 
+    </div>
+  </div>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i["GoogleAnalyticsObject"] = r;
+      (i[r] =
+        i[r] ||
+        function () {
+          (i[r].q = i[r].q || []).push(arguments);
+        }),
+        (i[r].l = 1 * new Date());
+      (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m);
+    })(
+      window,
+      document,
+      "script",
+      "https://www.google-analytics.com/analytics.js",
+      "ga"
+    );
+    ga("create", "UA-124845547-1", "auto");
+    ga("send", "pageview");
+  </script>
+</footer>
+        
+        <a id="anchorID" href="https://www.hektorprofe.net/" target="_blank"></a>
+      </div>
+      <script type='text/javascript'
+              src="https://hektorprofe.github.io/docs/assets/javascripts/application.a26c1c21.js"></script>
+      <script src="https://hektorprofe.github.io/docs/assets/javascripts/tingle.min.js"></script>
+      <script type='text/javascript'>
+    var modalButtonOnly = new tingle.modal({
+        closeMethods: [],
+        footer: true,
+        stickyFooter: true
+    });
+    var btn5 = document.querySelector('.js-tingle-modal-5');
+
+    // set content
+    modalButtonOnly.setContent(`
+    <div style="display:grid;grid-template-columns:32% 32% 32%;grid-column-gap: 1.33%;" id="supermodal">
+      <div class="course">
+        <a href="https://www.hektorprofe.net/cupon/python" target="_blank"><img src="assets/python.png" style="width:100%;justify-self:center;align-self:center;" /></a>
+      </div>
+      <div class="course">
+        <a href="https://www.hektorprofe.net/cupon/django" target="_blank"><img src="assets/django.png" style="width:100%;justify-self:center;align-self:center;" /></a>
+      </div>
+      <div class="course">
+        <a href="https://www.hektorprofe.net/cupon/pyside" target="_blank"><img src="assets/pyside.png" style="width:100%;justify-self:center;align-self:center;" /></a>
+      </div>
+    </div>`);
+
+    modalButtonOnly.addFooterBtn('Cerrar', 'tingle-btn tingle-btn--default tingle-btn--pull-right', function(){
+      modalButtonOnly.close();
+    });
+
+    app.initialize({version:"1.2.3",url:{base:"../../.."}})
+    var _extends=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(t[o]=n[o])}return t},_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t};!function(t,e){"object"===("undefined"==typeof exports?"undefined":_typeof(exports))&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):t.LazyLoad=e()}(this,function(){"use strict";function t(t,e,n){var o=e._settings;!n&&i(t)||(C(o.callback_enter,t),R.indexOf(t.tagName)>-1&&(N(t,e),I(t,o.class_loading)),E(t,e),a(t),C(o.callback_set,t))}var e={elements_selector:"img",container:document,threshold:300,thresholds:null,data_src:"src",data_srcset:"srcset",data_sizes:"sizes",data_bg:"bg",class_loading:"loading",class_loaded:"loaded",class_error:"error",load_delay:0,callback_load:null,callback_error:null,callback_set:null,callback_enter:null,callback_finish:null,to_webp:!1},n=function(t){return _extends({},e,t)},o=function(t,e){return t.getAttribute("data-"+e)},r=function(t,e,n){var o="data-"+e;null!==n?t.setAttribute(o,n):t.removeAttribute(o)},a=function(t){return r(t,"was-processed","true")},i=function(t){return"true"===o(t,"was-processed")},s=function(t,e){return r(t,"ll-timeout",e)},c=function(t){return o(t,"ll-timeout")},l=function(t){return t.filter(function(t){return!i(t)})},u=function(t,e){return t.filter(function(t){return t!==e})},d=function(t,e){var n,o=new t(e);try{n=new CustomEvent("LazyLoad::Initialized",{detail:{instance:o}})}catch(t){(n=document.createEvent("CustomEvent")).initCustomEvent("LazyLoad::Initialized",!1,!1,{instance:o})}window.dispatchEvent(n)},f=function(t,e){return e?t.replace(/\.(jpe?g|png)/gi,".webp"):t},_="undefined"!=typeof window,v=_&&!("onscroll"in window)||/(gle|ing|ro)bot|crawl|spider/i.test(navigator.userAgent),g=_&&"IntersectionObserver"in window,h=_&&"classList"in document.createElement("p"),b=_&&function(){var t=document.createElement("canvas");return!(!t.getContext||!t.getContext("2d"))&&0===t.toDataURL("image/webp").indexOf("data:image/webp")}(),m=function(t,e,n,r){for(var a,i=0;a=t.children[i];i+=1)if("SOURCE"===a.tagName){var s=o(a,n);p(a,e,s,r)}},p=function(t,e,n,o){n&&t.setAttribute(e,f(n,o))},y=function(t,e){var n=b&&e.to_webp,r=o(t,e.data_src),a=o(t,e.data_bg);if(r){var i=f(r,n);t.style.backgroundImage='url("'+i+'")'}if(a){var s=f(a,n);t.style.backgroundImage=s}},w={IMG:function(t,e){var n=b&&e.to_webp,r=e.data_srcset,a=t.parentNode;a&&"PICTURE"===a.tagName&&m(a,"srcset",r,n);var i=o(t,e.data_sizes);p(t,"sizes",i);var s=o(t,r);p(t,"srcset",s,n);var c=o(t,e.data_src);p(t,"src",c,n)},IFRAME:function(t,e){var n=o(t,e.data_src);p(t,"src",n)},VIDEO:function(t,e){var n=e.data_src,r=o(t,n);m(t,"src",n),p(t,"src",r),t.load()}},E=function(t,e){var n=e._settings,o=t.tagName,r=w[o];if(r)return r(t,n),e._updateLoadingCount(1),void(e._elements=u(e._elements,t));y(t,n)},I=function(t,e){h?t.classList.add(e):t.className+=(t.className?" ":"")+e},L=function(t,e){h?t.classList.remove(e):t.className=t.className.replace(new RegExp("(^|\\s+)"+e+"(\\s+|$)")," ").replace(/^\s+/,"").replace(/\s+$/,"")},C=function(t,e){t&&t(e)},O=function(t,e,n){t.addEventListener(e,n)},k=function(t,e,n){t.removeEventListener(e,n)},x=function(t,e,n){O(t,"load",e),O(t,"loadeddata",e),O(t,"error",n)},A=function(t,e,n){k(t,"load",e),k(t,"loadeddata",e),k(t,"error",n)},z=function(t,e,n){var o=n._settings,r=e?o.class_loaded:o.class_error,a=e?o.callback_load:o.callback_error,i=t.target;L(i,o.class_loading),I(i,r),C(a,i),n._updateLoadingCount(-1)},N=function(t,e){var n=function n(r){z(r,!0,e),A(t,n,o)},o=function o(r){z(r,!1,e),A(t,n,o)};x(t,n,o)},R=["IMG","IFRAME","VIDEO"],S=function(e,n,o){t(e,o),n.unobserve(e)},M=function(t){var e=c(t);e&&(clearTimeout(e),s(t,null))},j=function(t,e,n){var o=n._settings.load_delay,r=c(t);r||(r=setTimeout(function(){S(t,e,n),M(t)},o),s(t,r))},D=function(t){return t.isIntersecting||t.intersectionRatio>0},T=function(t){return{root:t.container===document?null:t.container,rootMargin:t.thresholds||t.threshold+"px"}},U=function(t,e){this._settings=n(t),this._setObserver(),this._loadingCount=0,this.update(e)};return U.prototype={_manageIntersection:function(t){var e=this._observer,n=this._settings.load_delay,o=t.target;n?D(t)?j(o,e,this):M(o):D(t)&&S(o,e,this)},_onIntersection:function(t){t.forEach(this._manageIntersection.bind(this))},_setObserver:function(){g&&(this._observer=new IntersectionObserver(this._onIntersection.bind(this),T(this._settings)))},_updateLoadingCount:function(t){this._loadingCount+=t,0===this._elements.length&&0===this._loadingCount&&C(this._settings.callback_finish)},update:function(t){var e=this,n=this._settings,o=t||n.container.querySelectorAll(n.elements_selector);this._elements=l(Array.prototype.slice.call(o)),!v&&this._observer?this._elements.forEach(function(t){e._observer.observe(t)}):this.loadAll()},destroy:function(){var t=this;this._observer&&(this._elements.forEach(function(e){t._observer.unobserve(e)}),this._observer=null),this._elements=null,this._settings=null},load:function(e,n){t(e,this,n)},loadAll:function(){var t=this;this._elements.forEach(function(e){t.load(e)})}},_&&function(t,e){if(e)if(e.length)for(var n,o=0;n=e[o];o+=1)d(t,n);else d(t,e)}(U,window.lazyLoadOptions),U});
+    var myLazyLoad = new LazyLoad({elements_selector: ".lazy"});
+    const mdMenuItems = document.querySelectorAll('.md-nav__link');
+    function doNav(){ document.getElementById("main__list").innerHTML = '<li class="md-nav__item"><a class="md-nav__link" href="/cursos/">Cursos</a></li><li class="md-nav__item"><a class="md-nav__link" href="/blog/">Blog</a></li>';}
+    for (i = 0; i < mdMenuItems.length; i++) {  var item = mdMenuItems[i]; var htmlstring = item.innerHTML; htmlstring = (htmlstring.trim) ? htmlstring.trim() : htmlstring.replace(/^\s+/,''); if (htmlstring == 'Servidor de encuentro') { item.parentNode.removeChild(item);continue; }  if (htmlstring == 'Política de Cookies') { item.parentNode.removeChild(item);continue; } if (htmlstring == 'Buscador') { item.parentNode.removeChild(item); continue; } }
+    try { var topPos = document.querySelector('#md__active_link').offsetTop; document.querySelector('#md__sidebar__scroll').scrollTop = topPos - 60; } catch (err) {}
+      </script>
+    </body>
+  </html>

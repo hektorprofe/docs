@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+  <head>
+    
+    
+    
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Aprende los conceptos básicos para empezar a crear interfaces gráficas: bucles infinitos, módulos y POO.">
+      
+      <link rel="canonical" href="https://hektorprofe.github.io/docs/academia/python/poo-para-interfaces-graficas/">
+      
+        <meta name="author" content="Héctor Costa Guzman">
+      
+      <link rel="shortcut icon" href="/favicon.ico">
+    
+    
+      
+        <title>POO para interfaces | Python | Academia | Hektor Profe</title>
+      
+    
+    <link rel="stylesheet"
+          href="../../../assets/stylesheets/application.2.css">
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    
+    <link rel="stylesheet"
+          href="https://hektorprofe.github.io/docs/assets/stylesheets/tingle.min.css">
+    <style>
+@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
+[data-md-color-primary="grey"] .md-header { background-color: #191A1D }
+[data-md-color-primary="grey"] .md-tabs { background-color: #222831 }
+.md-footer-nav { background-color: #222831; }
+.md-footer-meta { background-color: #191A1D }
+html [data-md-color-primary="grey"] .md-nav--primary .md-nav__title--site { background-color: #191A1D; }
+.mini{ display: none; } .maxi{ display: block; }
+.embed-container { position: relative; padding-bottom: 56.25%;height: 0; overflow: hidden; max-width: 100%; height: auto; margin-bottom: 0; } 
+.embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.md-nav__link:focus, .md-nav__link:hover { color: #018dc5; }
+.headerlink{ color: #018dc5 !important; }
+.md-footer-links__highlight a{ color: #777 !important; }
+.md-footer-links__highlight a:hover{ color: #ddd !important; }
+.visible{ display: inherit !important; }
+/*.md-tabs { display: none !important; }*/
+.nav__btn, .nav__logo{ transition: 0.3s; }
+.nav__btn:hover{ color: #aaa; }
+.nav__logo:hover{ opacity:.7; }
+.nav__logo {max-width: 225px !important; }
+img:not([src]){visibility:hidden;}
+img.click{opacity: 0.96;box-shadow:rgb(79, 82, 92) -4px 4px}
+img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
+.button { background-color: #36bf2d; border: none; color: white !important; padding: 20px 0px; text-align: center; text-decoration: none; display: block; font-size: 97%; width: 100%; font-weight: bold;}
+.button:hover { background-color: #4CAF50; color: white; }
+.animated.delay-1dot5s {animation-delay: 1.5s;}
+.md-icon--search { display:inline-block!important}
+a.headerlink{ display: none !important; }
+small.edited { display: block; text-align: right; }
+#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
+#cookie-bar-prompt-logo{ display: none !important; }
+div.my-img{text-align:center;margin-top:20px}
+@media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
+@media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
+@media (min-width: 1999.9px){ .md-header-nav__button.md-logo img { height: 40px !important; width: 240px; } }
+/* Rectificación footer en paginas pequeñas de altura */
+@media (max-width: 1599.8px){ .md-container {height: calc(100% - 48px)} }
+@media (min-width: 1599.9px){ .md-container {height: calc(100% - 53px)} }
+@media (min-width: 1999.9px){ .md-container {height: calc(100% - 58px)} }
+@media only screen and (max-width: 959.9px) { .nav__logo { display: block !important; }} 
+@media only screen and (min-width: 960px) and (max-width: 76.1875em) { .nav__logo { display: block !important; }} 
+@media only screen and (min-width: 76.1875em) { .nav__logo { display: none !important; } } 
+@media only screen and (max-width: 76.1875em) { .md-sidebar--primary { left: -26.2rem;; width: 26.2rem; }  [data-md-toggle="drawer"]:checked ~ .md-container .md-sidebar--primary { -webkit-transform: translateX(26.2rem); transform: translateX(26.2rem); } [dir="rtl"] [data-md-toggle="drawer"]:checked ~ .md-container .md-sidebar--primary { -webkit-transform: translateX(-26.2rem); transform: translateX(-26.2rem); } }
+@media (min-width: 1219.9px){ #home__btn { display: none !important; } #cursos__btn{ color: white !important; } [data-md-color-primary="grey"] .md-nav__link--active{ color: rgba(0, 0, 0, 0.87); text-decoration: underline !important; } }
+@media (min-width: 467.9px){ #discord__btn{ display: inline-block !important; } }
+@media only screen and (min-width: 60em){ .md-search__input { background-color: rgb(53, 54, 56); } .md-search__input:hover { background-color: rgb(84, 87, 93); color: white; }}
+@media (max-width: 1219.9px){ .md-header-nav__title{ padding: 0 1rem; } .nav__btn {display:none;} }
+@media (max-width: 875.9px){ #cookie-bar-button{ margin-top: 20px !important; }}
+@media (max-width: 719.9px){ #cookie-bar { padding: 3.25rem 1.25rem; }}
+@media (max-width: 512.9px){ #cookie-bar { padding: 2rem 1.25rem; }}
+
+.tingle-modal { font-size:18px !important;}
+.tingle-modal-box{ width: 80%; max-width: 1100px; }
+.tingle-btn--danger{ background: darkorange !important; }
+.tingle-modal-box__content { padding: 3rem 2rem 3rem 3rem;}
+@media (max-width: 540px){ .tingle-modal-box{ width: auto; } }
+@media (max-width: 849px){ #supermodal{ grid-template-columns:100% !important; }}
+
+.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 275px - 60px)}
+@media (max-width: 1999.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 246px - 60px);margin-right:-1px;}}
+@media (max-width: 1599.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 222px - 60px)}}
+
+    </style>
+  </head>
+  
+    
+    
+    <body dir="ltr"
+          data-md-color-primary="grey"
+          data-md-color-accent="grey">
+    
+      <input class="md-toggle"
+             data-md-toggle="drawer"
+             type="checkbox"
+             id="__drawer"
+             autocomplete="off">
+      <input class="md-toggle"
+             data-md-toggle="search"
+             type="checkbox"
+             id="__search"
+             autocomplete="off">
+      <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+      
+        <a href="#fundamentos-de-poo-para-interfaces-graficas"
+           tabindex="1"
+           class="md-skip">Saltar a contenido</a>
+      
+      
+        <header class="md-header"
+        data-md-component="header"
+        style="position: inherit !important">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="/"
+           title="Hektor Profe"
+           class="md-header-nav__button md-logo"
+           style="font-size: 0px">
+          <img src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+               width="200px"
+               height="35px"
+               style="margin-top: -5px"
+               alt="Hektor Profe"
+               title="Hektor Profe" />
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title"
+             data-md-component="title"
+             style="text-align: right">
+          <!-- https://fontawesome.com/v4.7.0/ -->
+          <a class="nav__btn"
+             href="https://www.hektorprofe.net/"
+             style="margin-left:0em"
+             title="Cursos de Hektor Profe">Cursos</a>
+          <a class="nav__btn"
+             href="https://docs.hektorprofe.net/"
+             style="margin-left:1.4em"
+             title="Documentos de Hektor Profe">Documentos</a>
+          <a class="nav__btn"
+             href="https://www.hektorprofe.net/portafolio/"
+             style="margin-left:1.4em"
+             title="Portafolio de Hektor Profe">Portafolio</a>
+          <a href="/">
+            <img class="nav__logo"
+                 src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+                 width="200px"
+                 height="35px"
+                 style="margin: 6px auto 0"
+                 alt="Hektor Profe"
+                 title="Hektor Profe" />
+          </a>
+        </div>
+        <style>
+          .md-sidebar[data-md-state="lock"] {
+            top: 0rem !important;
+          }
+          .md-tabs {
+            display: none !important;
+          }
+          .hde {
+            display: inline-block;
+          }
+          .admonition.note > .superfences-tabs > label:hover,
+          .headerlink {
+            color: #018dc5 !important;
+          }
+          .admonition.info {
+            font-size: 100%;
+          }
+          .admonition.info label {
+            font-size: 91%;
+          }
+          .admonition.note > .admonition-title {
+            display: none;
+          }
+          .image {
+            text-align: center;
+            margin-top: 25px;
+          }
+          .contenedor_youtube {
+            position: relative !important;
+            padding-bottom: 56.25% !important; /*panorámico*/
+            padding-top: 0px !important;
+            height: 0 !important;
+            margin-top: -20px;
+            margin-bottom: 25px;
+          }
+          .contenedor_youtube iframe {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+          }
+        </style>
+      </div>
+    </div>
+  </nav>
+</header>
+      
+      <div class="md-container" style="padding-top: 0px !important;">
+        
+          
+        
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list" id="top__tabs">
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+      </ul>
+    </div>
+</nav>
+        
+        <main class="md-main">
+          <div class="md-main__inner md-grid"
+               data-md-component="container"
+               style="padding-top: 8px !important">
+            
+              
+                <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                  <div class="md-sidebar__scrollwrap" id="md__sidebar__scroll">
+                    <div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title" for="__drawer" style="padding:0 !important;max-height:5.5rem;"></label>
+  
+  <ul class="md-nav__list" id="main__list" data-md-scrollfix>
+    
+      
+    
+        <!-- comprobación extra -->
+         
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Academia de programación
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Academia de programación
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../" title="Índice del archivo" class="md-nav__link">
+      Índice del archivo
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../introduccion/" title="Python para principiantes" class="md-nav__link">
+      Python para principiantes
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Python para interfaces gráficas
+      </label>
+    
+    <a href="./" title="Python para interfaces gráficas" class="md-nav__link md-nav__link--active" id="md__active_link">
+      Python para interfaces gráficas
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bucles-infinitos" title="Bucles infinitos" class="md-nav__link toc__link">
+    Bucles infinitos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#menu-interactivo" title="Menú interactivo" class="md-nav__link toc__link">
+    Menú interactivo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modularizacion-del-codigo" title="Modularización del código" class="md-nav__link toc__link">
+    Modularización del código
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clases-y-objetos" title="Clases y objetos" class="md-nav__link toc__link">
+    Clases y objetos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instancias-de-clase" title="Instancias de clase" class="md-nav__link toc__link">
+    Instancias de clase
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-clase" title="Métodos de clase" class="md-nav__link toc__link">
+    Métodos de clase
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodo-constructor" title="Método constructor" class="md-nav__link toc__link">
+    Método constructor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodo-strings" title="Método strings" class="md-nav__link toc__link">
+    Método strings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#herencia-y-mixins" title="Herencia y mixins" class="md-nav__link toc__link">
+    Herencia y mixins
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#herencia-multiple" title="Herencia múltiple" class="md-nav__link toc__link">
+    Herencia múltiple
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extendiendo-metodos" title="Extendiendo métodos" class="md-nav__link toc__link">
+    Extendiendo métodos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primer-programa-con-tkinter" title="Primer programa con Tkinter" class="md-nav__link toc__link">
+    Primer programa con Tkinter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primer-programa-con-wxpython" title="Primer programa con WxPython" class="md-nav__link toc__link">
+    Primer programa con WxPython
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historia-de-qt-pyqt-y-pyside" title="Historia de Qt, PyQt y PySide" class="md-nav__link toc__link">
+    Historia de Qt, PyQt y PySide
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primer-programa-con-pyside" title="Primer programa con PySide" class="md-nav__link toc__link">
+    Primer programa con PySide
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../proyecto-gestor-clientes/" title="Gestor de clientes con Python" class="md-nav__link">
+      Gestor de clientes con Python
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../tutoriales/" title="Más tutoriales sobre Python" class="md-nav__link">
+      Más tutoriales sobre Python
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../modulo-analitico-numpy/" title="Módulo analítico NumPy" class="md-nav__link">
+      Módulo analítico NumPy
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../modulo-grafico-matplotlib/" title="Módulo gráfico Matplotlib" class="md-nav__link">
+      Módulo gráfico Matplotlib
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../django/introduccion/" title="Django para principiantes" class="md-nav__link">
+      Django para principiantes
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../django/api-rest-framework/" title="Server API pelis en Django Rest" class="md-nav__link">
+      Server API pelis en Django Rest
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../django/tutoriales/" title="Más tutoriales sobre Django" class="md-nav__link">
+      Más tutoriales sobre Django
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../javascript/introduccion/" title="JavaScript para principiantes" class="md-nav__link">
+      JavaScript para principiantes
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../javascript/conversor-divisas/" title="Conversor de divisas en JS" class="md-nav__link">
+      Conversor de divisas en JS
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../javascript/biblioteca-p5js/" title="Introducción a P5.js" class="md-nav__link">
+      Introducción a P5.js
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../javascript/nodejs/" title="Introducción a Node.js" class="md-nav__link">
+      Introducción a Node.js
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../javascript/chat-heroku/" title="Chat online con Node.js" class="md-nav__link">
+      Chat online con Node.js
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../javascript/cliente-nuxt/" title="Cliente API pelis en Nuxt.js" class="md-nav__link">
+      Cliente API pelis en Nuxt.js
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../gnu-linux/ubuntu-server-web/" title="Configurar Ubuntu Server" class="md-nav__link">
+      Configurar Ubuntu Server
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </ul>
+</nav>
+</div>
+                  </div>
+                </div>
+              
+              
+                <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                  <div class="md-sidebar__scrollwrap">
+                    <div class="md-sidebar__inner">
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bucles-infinitos" title="Bucles infinitos" class="md-nav__link toc__link">
+    Bucles infinitos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#menu-interactivo" title="Menú interactivo" class="md-nav__link toc__link">
+    Menú interactivo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modularizacion-del-codigo" title="Modularización del código" class="md-nav__link toc__link">
+    Modularización del código
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clases-y-objetos" title="Clases y objetos" class="md-nav__link toc__link">
+    Clases y objetos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instancias-de-clase" title="Instancias de clase" class="md-nav__link toc__link">
+    Instancias de clase
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-clase" title="Métodos de clase" class="md-nav__link toc__link">
+    Métodos de clase
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodo-constructor" title="Método constructor" class="md-nav__link toc__link">
+    Método constructor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodo-strings" title="Método strings" class="md-nav__link toc__link">
+    Método strings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#herencia-y-mixins" title="Herencia y mixins" class="md-nav__link toc__link">
+    Herencia y mixins
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#herencia-multiple" title="Herencia múltiple" class="md-nav__link toc__link">
+    Herencia múltiple
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extendiendo-metodos" title="Extendiendo métodos" class="md-nav__link toc__link">
+    Extendiendo métodos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primer-programa-con-tkinter" title="Primer programa con Tkinter" class="md-nav__link toc__link">
+    Primer programa con Tkinter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primer-programa-con-wxpython" title="Primer programa con WxPython" class="md-nav__link toc__link">
+    Primer programa con WxPython
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historia-de-qt-pyqt-y-pyside" title="Historia de Qt, PyQt y PySide" class="md-nav__link toc__link">
+    Historia de Qt, PyQt y PySide
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primer-programa-con-pyside" title="Primer programa con PySide" class="md-nav__link toc__link">
+    Primer programa con PySide
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav></div>
+                  </div>
+                </div>
+              
+            
+            <div class="md-content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+                  
+                  <h1 id="fundamentos-de-poo-para-interfaces-graficas">Fundamentos de POO para interfaces gráficas<a class="headerlink" href="#fundamentos-de-poo-para-interfaces-graficas" title="Permanent link">&para;</a></h1>
+<div class="contenedor_youtube">
+  <iframe id="odysee-iframe" width="560" height="315" src="https://odysee.com/$/embed/-Curso--Fundamentos-para-interfaces/3263da2d39089aeadba1d8d4c9dc93ddfff9b37b?r=3icueB68NV3UEFHyqs2QRfzRUeABmHDU" allowfullscreen></iframe>
+</div>
+
+<p>Dentro de la programación existe una especialidad enfocada al desarrollo de programas utilizando interfaces gráficas de usuario, también conocidas como Graphic User Interfaces o GUI.</p>
+<p>En ella se dan cita algunos conceptos importantes de la programación, en especial de la programación orientada a objetos.</p>
+<p>Aquí trataremos esos conocimientos además de dar los primeros pasos en tres bibliotecas gráficas para Python: Tkinter, WxPython y PySide, también conocida como Qt for Python.</p>
+<p>Con ellas crearemos un primer programa para aprender a aplicar los conceptos básicos.</p>
+<h2 id="bucles-infinitos">Bucles infinitos<a class="headerlink" href="#bucles-infinitos" title="Permanent link">&para;</a></h2>
+<p>Anteriormente ya creamos algunos scripts o guiones de código que se ejecutan de arriba abajo y finalizan con la última instrucción.</p>
+<p>Ahora bien, si os lo paráis a pensar los programas raramente funcionan de esa forma, no se cierran solos sino que normalmente se mantienen abiertos hasta que nosotros los cerramos. </p>
+<p>Para poder mantenerse en marcha, el código de los programas funciona dentro de lo que se conoce como "bucles infinitos" para ejecutar sus instrucciones permanentemente.</p>
+<p>En Python un bucle infinito se puede crear con la instrucción <strong>while</strong> para repetir un bloque de código mientras se cumple una condición. </p>
+<p>Dejadme enseñaros como crear un cronómetro en Python porque es un ejemplo muy ilustrativo:</p>
+<p><code>cronometro.py</code></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="n">segundero</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># esperamos un segundo</span>
+    <span class="n">segundero</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># segundero = segundero + 1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">segundero</span><span class="p">)</span>
+</code></pre></div>
+<p>El problema de los bucles infinitos es que nunca dejan de ejecutarse, para finalizarlos hay que cerrar el proceso forzosamente con Control+C.</p>
+<p>La forma de finalizar un bucle infinito es romper su ejecución desde dentro, algo que en Python se puede hacer condicionando el código y utilizando la instrucción <strong>break</strong>: </p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="n">segundero</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">maximo</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span> 
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># esperamos un segundo</span>
+    <span class="n">segundero</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># segundero = segundero + 1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">segundero</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">segundero</span> <span class="o">==</span> <span class="n">maximo</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Se ha llegado al límite, rompiendo el bucle infinito&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+</code></pre></div>
+<p>En resumen, mientras que un script es una serie de instrucciones que se ejecutan y finalizan de forma natural, un programa son unas instrucciones que se repiten de forma indefinida hasta que se acciona en su interior el mecanismo que las finaliza.</p>
+<p>Sin los bucles infinitos no tendríamos programas gráficos, ni servicios web y mucho menos videojuegos, por eso son tan importantes.</p>
+<h2 id="menu-interactivo">Menú interactivo<a class="headerlink" href="#menu-interactivo" title="Permanent link">&para;</a></h2>
+<p>Quiero consolidar este concepto del bucle infinito con un ejemplo interactivo, así que vamos a hacer un programa muy sencillo para la terminal.</p>
+<p>En Python hay una instrucción que permite leer una cadena de caracteres por teclado a través del prompt y asignarla a una variable, se llama <strong>input</strong>: </p>
+<p><code>menu.py</code>
+<div class="highlight"><pre><span></span><code><span class="n">nombre</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Introduce tu nombre</span><span class="se">\n</span><span class="s2">&gt; &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hola&quot;</span><span class="p">,</span> <span class="n">nombre</span><span class="p">)</span>
+</code></pre></div></p>
+<p>Usando esta función en conjunto con un bucle infinito y unas condiciones, podemos crear un programa con un menú interactivo que haga varias cosas, incluyendo una opción para romper el bucle:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[1] Mostrar la hora</span><span class="se">\t</span><span class="s2">[2] Mostrar la fecha</span><span class="se">\t</span><span class="s2">[3] Salir&quot;</span><span class="p">)</span>
+    <span class="n">opcion</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;&gt; &quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">opcion</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%H:%M:%S&quot;</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">opcion</span> <span class="o">==</span> <span class="s2">&quot;2&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">/%m/%Y&quot;</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">opcion</span> <span class="o">==</span> <span class="s2">&quot;3&quot;</span><span class="p">:</span>
+        <span class="k">break</span>
+</code></pre></div>
+<p>¿Queda más clara la idea no? Este menú se ejecuta indefinidamente pero como hemos incluido la opción 3 para romper el bucle podemos salir del programa en cualquier momento. </p>
+<p>Pues los programas gráficos funcionan de forma similar.</p>
+<h2 id="modularizacion-del-codigo">Modularización del código<a class="headerlink" href="#modularizacion-del-codigo" title="Permanent link">&para;</a></h2>
+<p>En las lecciones anteriores hemos visto que Python incluye un módulo llamado <strong>time</strong> para manipular la información del tiempo del sistema, pero no es el único. </p>
+<p>Hay muchos otros módulos internos para realizar todo tipo de tareas y también contamos con un repositorio público llamado Python Package Index (PyPI.org) donde hay decenas de miles de módulos externos creados por la comunidad.</p>
+<p>Un módulo es un fichero con definiciones de código que se puede importar en otros scripts y programas para utilizarlas. Si un programa cuenta con varios módulos que trabajan en conjunto para resolver un problema, a este conjunto de módulos se le denomina paquete, pero este concepto no lo trataré en el curso.</p>
+<p>Por ejemplo supongamos que tenemos un módulo llamado <strong>operaciones.py</strong> con varias funciones para realizar operaciones aritméticas como sumas, restas y multiplicaciones.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">suma</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">resta</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">-</span><span class="n">b</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">producto</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span>
+
+
+<span class="c1"># Funciones para probar el módulo</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;La suma de 5 y 10 es&quot;</span><span class="p">,</span> <span class="n">suma</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;La resta de -9 y 8 es&quot;</span><span class="p">,</span> <span class="n">resta</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El producto de 3 y -6 es&quot;</span><span class="p">,</span> <span class="n">producto</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">))</span>
+</code></pre></div>
+<p>Ahora supongamos que necesitamos usar alguna de estas operaciones en otro script llamado <strong>programa.py</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">operaciones</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4*6=&quot;</span><span class="p">,</span> <span class="n">operaciones</span><span class="o">.</span><span class="n">producto</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</code></pre></div>
+<p>Al ejecutar el programa veremos que efectivamente se llama la función <strong>producto</strong>, pero antes se han ejecutado las pruebas del módulo, aquellas instrucciones que pusimos abajo.</p>
+<p>Esto sucede porque <strong>import</strong> a parte de cargar las definiciones del módulo también ejecuta todas las instrucciones sueltas del fichero.</p>
+<p>Para evitar este comportamiento hay que definir una condición en los módulos que ejecute sólo las instrucciones sueltas cuando se ejecuta específicamente el propio fichero. Eso se hace así:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Funciones para probar el módulo</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;La suma de 5 y 11 es&quot;</span><span class="p">,</span> <span class="n">suma</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;La resta de -9 y 8 es&quot;</span><span class="p">,</span> <span class="n">resta</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El producto de -3 y -6 es&quot;</span><span class="p">,</span> <span class="n">producto</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">))</span>
+</code></pre></div>
+<p>La variable especial <strong>__name__</strong> siempre contiene el nombre del propio fichero menos cuando concuerda con el script que ejecuta el programa, en ese caso su valor cambia a <strong>__main__</strong>, que en contexto indica que es el fichero "principal" del programa. </p>
+<p>En otras palabras, al hacer:</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>programa.py
+</code></pre></div>
+<p>El <strong>__name__</strong> de <strong>operaciones.py</strong> es "operaciones" y no se ejecutan las instrucciones sueltas, pero si ejecutamos directamente:</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>operaciones.py
+</code></pre></div>
+<p>Su <strong>__name__</strong> cambia a <strong>__main__</strong> y entonces sí se ejecutan.</p>
+<p>Dejando esto de banda, también es posible especificar qué definiciones queremos importar:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">operaciones</span><span class="w"> </span><span class="kn">import</span> <span class="n">producto</span><span class="p">,</span> <span class="n">suma</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4*6=&quot;</span><span class="p">,</span> <span class="n">producto</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;5+3=&quot;</span><span class="p">,</span> <span class="n">suma</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</code></pre></div>
+<p>Usando la importación específica no tenemos que llamar las funciones con el módulo delante, pero por contra no podremos usar las definiciones que no importamos, como resta.</p>
+<p>Sea como sea con lo que hemos aprendido queda clara la idea de que los módulos nos permiten organizar el código de nuestros proyectos en diferentes ficheros para hacerlos más fáciles de mantener.</p>
+<p>Como las bibliotecas gráficas están repletas de componentes y definiciones, conocer como trabajar con los módulos es un concepto esencial para utilizarlas.</p>
+<h2 id="clases-y-objetos">Clases y objetos<a class="headerlink" href="#clases-y-objetos" title="Permanent link">&para;</a></h2>
+<p>Para entender el desarrollo de interfaces gráficas es obligatorio conocer el paradigma de la programación orientada a objetos.</p>
+<p>Este concepto se basa en la idea de simular los datos de la vida real en unas estructuras independientes y reutilizables. Los objetos tienen sus propias variables y funciones internas para manipular su contenido, conocidas como atributos y métodos respectivamente.</p>
+<p>Python incluye un constructor base para crear objetos, se trata de la clase <strong>object</strong>:</p>
+<p><code>objetos.py</code>
+<div class="highlight"><pre><span></span><code><span class="n">objeto</span> <span class="o">=</span> <span class="nb">object</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">objeto</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+</code></pre></div></p>
+<p>La clase <strong>object</strong> por sí misma no provee ninguna funcionalidad relevante pero es la base de todas la clases en Python.</p>
+<p>¿Pero a todo esto qué es una clase?</p>
+<p>Pues una clase es una definición que explica como crear un nuevo tipo de dato. Esta idea se entiende mejor con el ejemplo del molde y las galletas.</p>
+<p>Una clase es un molde para hacer galletas y las galletas son los objetos que se crean con el molde. Mirad, vamos a  crear una nueva clase en Python llamada <strong>Molde</strong>, no tendrá nada todavía así que usaremos la sentencia <strong>pass</strong> para dejarla en blanco:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Molde</span><span class="p">:</span>
+    <span class="k">pass</span>
+</code></pre></div>
+<p>Ahora podemos crear un objeto galleta a partir de la definición de la clase Molde:</p>
+<div class="highlight"><pre><span></span><code><span class="n">galleta</span> <span class="o">=</span> <span class="n">Molde</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">galleta</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+</code></pre></div>
+<p>Al consultar el tipo de nuestra galleta vemos que se devuelve "Molde", eso es porque se ha creado siguiendo las instrucciones de la clase Molde. ¿Pero esto no tiene mucha lógica verdad? Es por eso que normalmente las clases tienen el nombre del objeto que definen, así que en lugar de Molde vamos a llamar a la clase Galleta:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Galleta</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+
+<span class="n">galleta</span> <span class="o">=</span> <span class="n">Galleta</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">galleta</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+</code></pre></div>
+<p>¿Váis captando la idea? Una clase es la definición de un tipo de dato, mientras que un objeto es el resultado de crear ese dato siguiendo las instrucciones de la clase. </p>
+<p>Los números, las cadenas, las listas... en Python todo son clases que definen estructuras de datos. </p>
+<p>Hemos estado creando objetos todo el tiempo sin darnos cuenta y la única diferencia respecto a nuestra clase Galleta, es que ésta la hemos creado nosotros y podemos extenderla para que realice todo lo que nosotros queramos.</p>
+<h2 id="instancias-de-clase">Instancias de clase<a class="headerlink" href="#instancias-de-clase" title="Permanent link">&para;</a></h2>
+<p>Cada vez que asignamos datos a una variable se está reservando un espacio en la memoria de nuestro ordenador para almacenar ahí su información.</p>
+<p>A este proceso de reservar el espacio en la memoria se le conoce como instanciación y podemos comprobar la dirección de memoria de cualquier objeto haciendo uso de un par de funciones de Python:</p>
+<p><code>objetos.py</code>
+<div class="highlight"><pre><span></span><code><span class="n">numero</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">cadena</span> <span class="o">=</span> <span class="s2">&quot;Hola mundo&quot;</span>
+<span class="n">lista</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">hex</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">numero</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">hex</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">cadena</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">hex</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">lista</span><span class="p">)))</span>
+</code></pre></div></p>
+<p>Evidentemente ocurre lo mismo con los objetos creados con nuestras propias clases:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Galleta</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+
+<span class="n">galleta</span> <span class="o">=</span> <span class="n">Galleta</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">hex</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">galleta</span><span class="p">)))</span>
+</code></pre></div>
+<p>Incluso por muy extraño que parezca, la propia definición de la clase existe en la memoria:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">hex</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">Galleta</span><span class="p">)))</span>
+</code></pre></div>
+<p>Y es que si no existieran esas instrucciones no podríamos utilizarlas para crear nuestros objetos, es incluso lógico.</p>
+<p>Lo interesante en este punto es que todos los objetos creados a partir de la clase Galleta comparten la misma estructura. Eso no se aprecia porque no hemos definido nada dentro, pero mirad qué ocurre si añadimos un atributo a la clase:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Galleta</span><span class="p">:</span>
+    <span class="n">sabor</span> <span class="o">=</span> <span class="s2">&quot;dulce&quot;</span>
+
+
+<span class="n">galleta_dulce</span> <span class="o">=</span> <span class="n">Galleta</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">galleta_dulce</span><span class="o">.</span><span class="n">sabor</span><span class="p">)</span>
+
+<span class="n">galleta_salada</span> <span class="o">=</span> <span class="n">Galleta</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">galleta_salada</span><span class="o">.</span><span class="n">sabor</span><span class="p">)</span>
+
+<span class="n">galleta_picante</span> <span class="o">=</span> <span class="n">Galleta</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">galleta_picante</span><span class="o">.</span><span class="n">sabor</span><span class="p">)</span>
+</code></pre></div>
+<p>Todas nuestras galletas por defecto son dulces, pero eso podemos cambiarlo fácilmente redefiniendo su sabor:</p>
+<div class="highlight"><pre><span></span><code><span class="n">galleta_salada</span> <span class="o">=</span> <span class="n">Galleta</span><span class="p">()</span>
+<span class="n">galleta_salada</span><span class="o">.</span><span class="n">sabor</span> <span class="o">=</span> <span class="s2">&quot;salada&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">galleta_salada</span><span class="o">.</span><span class="n">sabor</span><span class="p">)</span>
+
+<span class="n">galleta_picante</span> <span class="o">=</span> <span class="n">Galleta</span><span class="p">()</span>
+<span class="n">galleta_picante</span><span class="o">.</span><span class="n">sabor</span> <span class="o">=</span> <span class="s2">&quot;picante&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">galleta_picante</span><span class="o">.</span><span class="n">sabor</span><span class="p">)</span>
+</code></pre></div>
+<p>¿Interesante verdad? Como cada galleta se almacena en una instancia diferente de la memoria, sus atributos son independientes de las otras y pueden almacenar diferentes valores.</p>
+<p>En conclusión, una instancia es un espacio en la memoria donde se almacenan los datos individuales de un objeto tal como define su clase.</p>
+<h2 id="metodos-de-clase">Métodos de clase<a class="headerlink" href="#metodos-de-clase" title="Permanent link">&para;</a></h2>
+<p>Más allá de los atributos, una clase también puede definir métodos. Los métodos son funciones que encontramos en los objetos para interactuar con ellos.</p>
+<p>Hay un ejemplo que me encanta para ilustrar esto. Supongamos que nuestra galleta tiene un atributo <strong>chocolate</strong> que es falso por defecto, indicando que la galleta no tiene chocolate:</p>
+<p><code>objetos.py</code>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Galleta</span><span class="p">:</span>
+    <span class="n">sabor</span> <span class="o">=</span> <span class="s2">&quot;dulce&quot;</span>
+    <span class="n">chocolate</span> <span class="o">=</span> <span class="kc">False</span>
+</code></pre></div></p>
+<p>Ahora si quisiéramos chocolatear nuestras galletas sin modificar directamente el atributo chocolate, lo que podemos hacer es crear un método <strong>chocolatear</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Galleta</span><span class="p">:</span>
+    <span class="n">sabor</span> <span class="o">=</span> <span class="s2">&quot;dulce&quot;</span>
+    <span class="n">chocolate</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">chocolatear</span><span class="p">():</span>
+        <span class="n">chocolate</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="n">galleta</span> <span class="o">=</span> <span class="n">Galleta</span><span class="p">()</span>
+<span class="n">galleta</span><span class="o">.</span><span class="n">chocolatear</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">galleta</span><span class="o">.</span><span class="n">chocolate</span><span class="p">)</span>
+</code></pre></div>
+<p>Esta es la lógica básica, sin embargo tendremos un problema al ejecutarlo, Python nos devolverá un error indicando:</p>
+<div class="highlight"><pre><span></span><code>TypeError: chocolatear() takes 0 positional arguments but 1 was given
+</code></pre></div>
+<p>Se está quejando de que el método <strong>chocolatear</strong> requiere definir por lo menos un argumento, ¿cuál es la razón? Ahora mismo lo vais a entender.</p>
+<p>Haced esto:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Galleta</span><span class="p">:</span>
+    <span class="n">sabor</span> <span class="o">=</span> <span class="s2">&quot;dulce&quot;</span>
+    <span class="n">chocolate</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">chocolatear</span><span class="p">(</span><span class="n">argumento_misterioso</span><span class="p">):</span>
+        <span class="n">chocolate</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="n">galleta</span> <span class="o">=</span> <span class="n">Galleta</span><span class="p">()</span>
+<span class="n">galleta</span><span class="o">.</span><span class="n">chocolatear</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">galleta</span><span class="o">.</span><span class="n">chocolate</span><span class="p">)</span>
+</code></pre></div>
+<p>Al hacer este cambio veremos que el código se ejecuta, sin embargo el atributo <strong>chocolate</strong> no se ha modificado al llamar al método chocolate.</p>
+<p>Esto se debe a que el atributo <strong>chocolate</strong> que hay definido fuera del método y el que hay dentro no son el mismo, forman parte de ámbitos diferentes. El primero pertenece a la clase y el otro al método, algo que podemos constatar consultando sus posiciones en la memoria:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Galleta</span><span class="p">:</span>
+    <span class="n">sabor</span> <span class="o">=</span> <span class="s2">&quot;dulce&quot;</span>
+    <span class="n">chocolate</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">chocolatear</span><span class="p">(</span><span class="n">argumento_misterioso</span><span class="p">):</span>
+        <span class="n">chocolate</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Posición en la memoria de &#39;chocolate&#39; en chocolatear -&gt;&quot;</span><span class="p">,</span>
+              <span class="nb">hex</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">chocolate</span><span class="p">)))</span>
+
+
+<span class="n">galleta</span> <span class="o">=</span> <span class="n">Galleta</span><span class="p">()</span>
+<span class="n">galleta</span><span class="o">.</span><span class="n">chocolatear</span><span class="p">()</span>
+<span class="c1"># print(galleta.chocolate)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Posición en la memoria de &#39;chocolate&#39; en la galleta -&gt;&quot;</span><span class="p">,</span>
+      <span class="nb">hex</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">galleta</span><span class="o">.</span><span class="n">chocolate</span><span class="p">)))</span>
+</code></pre></div>
+<p>Como véis se almacenan en lugares diferentes y eso significa que no son lo mismo.</p>
+<p>¿Entonces como vamos a interactuar con los atributos de nuestras instancias? Tranquilos, aquí entra en juego ese argumento misterioso. ¿Qué debe de ser? Vamos a mostrarlo:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Galleta</span><span class="p">:</span>
+    <span class="n">sabor</span> <span class="o">=</span> <span class="s2">&quot;dulce&quot;</span>
+    <span class="n">chocolate</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">chocolatear</span><span class="p">(</span><span class="n">argumento_misterioso</span><span class="p">):</span>
+        <span class="n">chocolate</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El valor del argumento misterioso es -&gt;&quot;</span><span class="p">,</span> <span class="n">argumento_misterioso</span><span class="p">)</span>
+
+
+<span class="n">galleta</span> <span class="o">=</span> <span class="n">Galleta</span><span class="p">()</span>
+<span class="n">galleta</span><span class="o">.</span><span class="n">chocolatear</span><span class="p">()</span>
+<span class="c1"># print(galleta.chocolate)</span>
+</code></pre></div>
+<p>Y nos devolverá:</p>
+<div class="highlight"><pre><span></span><code>El valor del argumento misterioso es &lt;__main__.Galleta object at 0x01170830&gt;
+</code></pre></div>
+<p>¡Un objeto galleta! ¿Podría ser la propia instancia del objeto galleta? Vamos a comparar la posición de sus instancias en la memoria:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Galleta</span><span class="p">:</span>
+    <span class="n">sabor</span> <span class="o">=</span> <span class="s2">&quot;dulce&quot;</span>
+    <span class="n">chocolate</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">chocolatear</span><span class="p">(</span><span class="n">argumento_misterioso</span><span class="p">):</span>
+        <span class="n">chocolate</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Instancia en la memoria del argumento misterioso -&gt;&quot;</span><span class="p">,</span>
+              <span class="nb">hex</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">argumento_misterioso</span><span class="p">)))</span>
+
+
+<span class="n">galleta</span> <span class="o">=</span> <span class="n">Galleta</span><span class="p">()</span>
+<span class="n">galleta</span><span class="o">.</span><span class="n">chocolatear</span><span class="p">()</span>
+<span class="c1"># print(galleta.chocolate)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Instancia en la memoria de la galleta -&gt;&quot;</span><span class="p">,</span> <span class="nb">hex</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">galleta</span><span class="p">)))</span>
+</code></pre></div>
+<p>Pues efectivamente, este argumento misterioso es en realidad la propia instancia de la galleta, la posición en la memoria donde se ha creado y se guardan sus datos. En otras palabras, si hacemos referencia a él debería ser lo mismo que hacer referencia a la galleta, así que podríamos asignar su atributo chocolate:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Galleta</span><span class="p">:</span>
+    <span class="n">sabor</span> <span class="o">=</span> <span class="s2">&quot;dulce&quot;</span>
+    <span class="n">chocolate</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">chocolatear</span><span class="p">(</span><span class="n">instancia</span><span class="p">):</span>     <span class="c1"># &lt;-- cambiar nombre a instancia</span>
+        <span class="n">instancia</span><span class="o">.</span><span class="n">chocolate</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># &lt;-- cambiar nombre a instancia</span>
+
+
+<span class="n">galleta</span> <span class="o">=</span> <span class="n">Galleta</span><span class="p">()</span>
+<span class="n">galleta</span><span class="o">.</span><span class="n">chocolatear</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">galleta</span><span class="o">.</span><span class="n">chocolate</span><span class="p">)</span>
+</code></pre></div>
+<p>¡Por fin hemos llegado al kit de la cuestión! Ese argumento que necesitan los métodos es una referencia a la propia instancia para poder acceder a sus atributos y métodos internamente.</p>
+<p>¿Y sabéis qué? Por conveniencia a este argumento deberíamos llamarlo <strong>self</strong> haciendo referencia a "la instancia en sí misma". Esta es la razón por la cuál VSC se lleva quejando un montón de rato, así que vamos a escribirlo bien:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">chocolatear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">chocolate</span> <span class="o">=</span> <span class="kc">True</span>
+</code></pre></div>
+<p>En resumen, para manipular los atributos de los objetos desde sus métodos internos es necesario tener la referencia a sus instancias en la memoria y esa es la razón por la que se envía automáticamente como primer argumento.</p>
+<h2 id="metodo-constructor">Método constructor<a class="headerlink" href="#metodo-constructor" title="Permanent link">&para;</a></h2>
+<p>Una peculiaridad interesante que tienen los objetos, es que al crearse pueden recibir unos valores iniciales para establecerlos en sus posibles atributos internos. Esto es gracias a un método especial de las clases llamado constructor:</p>
+<p><code>objetos.py</code>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Galleta</span><span class="p">:</span>
+    <span class="n">sabor</span> <span class="o">=</span> <span class="s2">&quot;dulce&quot;</span>
+    <span class="n">chocolate</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Soy una galletita recién horneada&quot;</span><span class="p">)</span>
+
+<span class="n">galleta</span> <span class="o">=</span> <span class="n">Galleta</span><span class="p">()</span>
+</code></pre></div></p>
+<p>Si quisiéramos establecer los valores iniciales de los atributos <strong>sabor</strong> y <strong>chocolate</strong> sería tan sencillo como definirlos como parámetros y enviarlos durante la instanciación:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Galleta</span><span class="p">:</span>
+    <span class="n">sabor</span> <span class="o">=</span> <span class="s2">&quot;dulce&quot;</span>
+    <span class="n">chocolate</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sabor</span><span class="p">,</span> <span class="n">chocolate</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sabor</span> <span class="o">=</span> <span class="n">sabor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">chocolate</span> <span class="o">=</span> <span class="n">chocolate</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Soy una galletita recién horneada&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">chocolatear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">chocolate</span> <span class="o">=</span> <span class="kc">True</span>
+
+
+<span class="c1"># galleta = Galleta(&quot;Salada&quot;, False)</span>
+<span class="n">galleta</span> <span class="o">=</span> <span class="n">Galleta</span><span class="p">(</span><span class="n">sabor</span><span class="o">=</span><span class="s2">&quot;Salada&quot;</span><span class="p">,</span> <span class="n">chocolate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">galleta</span><span class="o">.</span><span class="n">sabor</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">galleta</span><span class="o">.</span><span class="n">chocolate</span><span class="p">)</span>
+</code></pre></div>
+<p>Si utilizamos este método tendremos que enviar siempre los dos valores u ocurrirá un error:</p>
+<div class="highlight"><pre><span></span><code><span class="n">galleta</span> <span class="o">=</span> <span class="n">Galleta</span><span class="p">()</span>
+</code></pre></div>
+<p>Podemos solucionarlo añadiendo un valor por defecto igual que ocurre con los parámetos de las funciones:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sabor</span><span class="o">=</span><span class="s2">&quot;dulce&quot;</span><span class="p">,</span> <span class="n">chocolate</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+</code></pre></div>
+<p>Sin embargo al hacer esto los atributos de clase pierden su sentido, por eso no casi nunca se suelen utilizar:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Galleta</span><span class="p">:</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sabor</span><span class="o">=</span><span class="s2">&quot;dulce&quot;</span><span class="p">,</span> <span class="n">chocolate</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sabor</span> <span class="o">=</span> <span class="n">sabor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">chocolate</span> <span class="o">=</span> <span class="n">chocolate</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Soy una galletita recién horneada&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">chocolatear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">chocolate</span> <span class="o">=</span> <span class="kc">True</span>
+
+
+<span class="n">galleta</span> <span class="o">=</span> <span class="n">Galleta</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">galleta</span><span class="o">.</span><span class="n">sabor</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">galleta</span><span class="o">.</span><span class="n">chocolate</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="metodo-strings">Método strings<a class="headerlink" href="#metodo-strings" title="Permanent link">&para;</a></h2>
+<p>Otro método especial que vale la pena comentar es <strong>__str__</strong>, sirve para dar una representación textual a un objeto en forma de cadena. </p>
+<p>En nuestro caso nos sería muy útil para mostrar un resumen de la galleta al imprimirla por pantalla con <strong>print()</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Galleta</span><span class="p">:</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sabor</span><span class="o">=</span><span class="s2">&quot;dulce&quot;</span><span class="p">,</span> <span class="n">chocolate</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sabor</span> <span class="o">=</span> <span class="n">sabor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">chocolate</span> <span class="o">=</span> <span class="n">chocolate</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">resumen</span> <span class="o">=</span> <span class="s2">&quot;Soy una galletita &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sabor</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">chocolate</span><span class="p">:</span>
+            <span class="n">resumen</span> <span class="o">+=</span> <span class="s2">&quot; con chocolate&quot;</span>
+        <span class="k">return</span> <span class="n">resumen</span>  <span class="c1"># debe devolver una cadena</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">chocolatear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">chocolate</span> <span class="o">=</span> <span class="kc">True</span>
+
+
+<span class="n">galleta</span> <span class="o">=</span> <span class="n">Galleta</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">galleta</span><span class="p">)</span>
+</code></pre></div>
+<p>Como vemos <strong>print()</strong> ejecuta implícitamente el metodo string del objeto galleta.</p>
+<p>Este valor también podemos conseguirlo llamándolo directamente o utilizando la función <strong>str()</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">galleta</span> <span class="o">=</span> <span class="n">Galleta</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">galleta</span><span class="p">)</span>
+
+<span class="n">resumen_galleta</span> <span class="o">=</span> <span class="n">galleta</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resumen_galleta</span><span class="p">)</span>
+
+<span class="n">resumen_galleta</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">galleta</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resumen_galleta</span><span class="p">)</span>
+</code></pre></div>
+<p>Bastante útil como véis.</p>
+<h2 id="herencia-y-mixins">Herencia y mixins<a class="headerlink" href="#herencia-y-mixins" title="Permanent link">&para;</a></h2>
+<p>La herencia de clases es la capacidad que tiene una clase, llamada subclase, de heredar los atributos y métodos de una o varias clases, llamadas superclases.</p>
+<p>Muchas veces para explicar este concepto he usado de ejemplo una clases Vehículo que sirve como base de dos clases Coche y Camión. O también una clase Animal como base para dos clases Gato y Perro. Todos los vehículo tienen ruedas, todos los animales tienen patas, etc. Se trata de encontar atributos comunes en las clases padre y hacer que las clases hijas los hereden, bla, bla, bla.</p>
+<p>Pero sinceramente, en todos los años que llevo programando, que son como 12 o 13, sólo he diseñado un sistema alrededor de este concepto y ni siquiera salió bien. No me malinterpretéis, no quiero decir que la herencia sea una tontería, sino que raramente es aplicable para resolver problemas del mundo real. Donde sale a relucir su verdadero potencial es en la ingeniería de software, cuando se utiliza para crear bibliotecas que tienen como objetivo desarrollar más software, como por ejemplo los frameworks web, los motores de videojuegos y las interfaces gráficas, que son entornos puramente virtuales.</p>
+<p>Fuera de estos ámbitos sólo hay una razón por la que la herencia me parece útil, y esa es es para extender las funcionalidades de las clases heredando de otras clases. Estas clases se conocen como <strong>Mixins</strong> y tienen la peculiaridad de ofrecer una funcionalidad pero por si mismas no sirven para nada.</p>
+<p>Imaginad que tenemos una clase A y otra clase B sin nada en especial:</p>
+<p><code>mixins.py</code>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">A</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">B</span><span class="p">:</span>
+    <span class="k">pass</span>
+</code></pre></div></p>
+<p>Nuestro objetivo es implementar en ellas un nuevo método llamado <strong>instancia()</strong> que muestre por pantalla su posición en la memoria.</p>
+<p>Usando un mixin esto sería muy fácil de solucionar, simplemente crearemos una clase que haga eso mismo y haremos que A y B hereden de ella para extender su comportamiento:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">MixinInstancia</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">instancia</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">hex</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="bp">self</span><span class="p">)))</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">A</span><span class="p">(</span><span class="n">MixinInstancia</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">B</span><span class="p">(</span><span class="n">MixinInstancia</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">A</span><span class="p">()</span>
+<span class="n">a</span><span class="o">.</span><span class="n">instancia</span><span class="p">()</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">B</span><span class="p">()</span>
+<span class="n">b</span><span class="o">.</span><span class="n">instancia</span><span class="p">()</span>
+</code></pre></div>
+<p>Pero no nos quedemos aquí. Imaginad que necesitamos otra función común para mostrar por pantalla el nombre de la clase, pues podríamos declarar otro mixin y heredar de él, dando como lugar al concepto de herencia múltiple:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">MixinInstancia</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">instancia</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">hex</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="bp">self</span><span class="p">)))</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MixinClase</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">clase</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">A</span><span class="p">(</span><span class="n">MixinInstancia</span><span class="p">,</span> <span class="n">MixinClase</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">B</span><span class="p">(</span><span class="n">MixinInstancia</span><span class="p">,</span> <span class="n">MixinClase</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">A</span><span class="p">()</span>
+<span class="n">a</span><span class="o">.</span><span class="n">instancia</span><span class="p">()</span>
+<span class="n">a</span><span class="o">.</span><span class="n">clase</span><span class="p">()</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">B</span><span class="p">()</span>
+<span class="n">b</span><span class="o">.</span><span class="n">instancia</span><span class="p">()</span>
+<span class="n">b</span><span class="o">.</span><span class="n">clase</span><span class="p">()</span>
+</code></pre></div>
+<p>Como véis usando mixins podemos extender nuestras clases de una forma flexible, sin obligar a que una clase tengan todas las funcionalidades de otra por el hecho de heredar de ella, algo que puede ocasionar problemas trabajando con herencia múltiple.</p>
+<p>Hablaremos de ello en la siguiente lección.</p>
+<h2 id="herencia-multiple">Herencia múltiple<a class="headerlink" href="#herencia-multiple" title="Permanent link">&para;</a></h2>
+<p>Cuando heredamos de varias clases y éstas no son Mixins, la herencia múltiple puede volverse en nuestra contra, ya que las subclases heredan todo el contenido de las superclases. ¿Pero es eso cierto? ¿Lo heredan todo? Pues no, en el caso de que dos o más superclases tengan el mismo método, solo uno de los métodos prevalecerá. </p>
+<p>Esto se puede ilustrar con un ejemplo:</p>
+<p><code>herencia_multiple.py</code>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">A</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hola</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hola heredado de la clase A&quot;</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">B</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hola</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hola heredado de la clase B&quot;</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">C</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">hola</span><span class="p">()</span>
+</code></pre></div></p>
+<p>Como véis la superclase dominante es la A, y la única razón para que sea así es que se encuentra más a la izquierda al heredarla. Sí, la posición es lo que determina la prioridad en la herencia cuando tenemos el mismo método.</p>
+<p>Esto que a priori parece sin importancia puede ser un problema, porque imaginad el caso excepcional donde tenemos dos métodos solapados y queremos heredar uno de una clase específica, no podemos porque la prioridad lo destruye:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">A</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hola</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hola heredado de la clase A&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">adios</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Adiós heredado de la clase A&quot;</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">B</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hola</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hola heredado de la clase B&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">adios</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Adiós heredado de la clase B&quot;</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">C</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">adios</span><span class="p">()</span>  <span class="c1"># No podemos heredar de B aunque queramos</span>
+</code></pre></div>
+<p>Por suerte hay una forma muy fácil de solucionar el problema. Esa es sobreescribir el método en la subclase y hacer la llamada manualmente al método de la superclase que necesitamos:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">C</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">adios</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">B</span><span class="o">.</span><span class="n">adios</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="extendiendo-metodos">Extendiendo métodos<a class="headerlink" href="#extendiendo-metodos" title="Permanent link">&para;</a></h2>
+<p>En la lección anterior vimos que es posible llamar manualmente un método de una superclase, pero esa no es su única utilidad, también se utiliza para extender un método sin perder la funcionalidad de la clase heredada:</p>
+<p><code>herencia_multiple.py</code>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">A</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hola</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hola heredado de la clase A&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">B</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">hola</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hola de la propia clase B&quot;</span><span class="p">)</span>
+        <span class="n">A</span><span class="o">.</span><span class="n">hola</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="c1"># &lt;-- aquí la magia</span>
+
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">B</span><span class="p">()</span>
+<span class="n">b</span><span class="o">.</span><span class="n">hola</span><span class="p">()</span>
+</code></pre></div></p>
+<p>Python 3 provee un nivel de abstracción para no tener que hacer referencia explícitamente al nombre de la superclase usando la función <strong>super()</strong> para substituir la superclase inmediata:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">hola</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hola de la propia clase B&quot;</span><span class="p">)</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">hola</span><span class="p">()</span>
+</code></pre></div>
+<p>Esto también se puede escribir con la sintaxis que indica explícitamente buscar la superclase de B, que es A, de la siguiente manera:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">hola</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hola de la propia clase B&quot;</span><span class="p">)</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">hola</span><span class="p">()</span>
+</code></pre></div>
+<p>La primera forma es más simple pero en mucha documentación lo veréis escrito de la segunda, así que tenedlo en cuenta.</p>
+<p>Con todo lo que hemos visto ya deberíais tener una base suficiente sobre la programación orientada a objetos. No os preocupéis si algún concepto no os ha quedado del todo claro, cuando los veáis en la práctica os iréis familiarizando con ellos y siempre estáis a tiempo de volver a estos apuntes si necesitáis refrescar la memoria.</p>
+<p>Y ahora sí, ha llegado el momento de empezar con lo bueno.</p>
+<h2 id="primer-programa-con-tkinter">Primer programa con Tkinter<a class="headerlink" href="#primer-programa-con-tkinter" title="Permanent link">&para;</a></h2>
+<p>De las tres bibliotecas que utilizaremos en este curso, Tkinter es la única que en principio viene preinstalada, es por decirlo de alguna forma la biblioteca oficial de Python para crear interfaces gráficas.</p>
+<p>Si bien es bastante simple y fácil de empezar a utilizar, por contra ofrece pocos elementos gráficos y un control limitado sobre el comportamiento de la interfaz. Además su principal es que en realidad se trata de un puente para usar otra biblioteca gráfica llamada Tcl/Tk en Python. Eso hace que carezca en sí misma de una documentación en condiciones y si quieres profundizar en sus componentes tienes que acabar consultando la documentación oficial de Tcl/Tk, cuya presentación digamos que no es muy amigable.</p>
+<p>En fin, vamos a crear nuestro programa de ejemplo a ver qué podemos aprender de él:</p>
+<p><code>hola_tk.py</code> 
+<div class="highlight"><pre><span></span><code><span class="c1"># Todos los componentes se encuentran en este módulo</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>  
+
+<span class="c1"># Tk es la clase que crea el componente raíz o ventana principal</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>   
+<span class="c1"># Su método mainloop() inicia el bucle infinito del programa</span>
+<span class="n">app</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>  
+</code></pre></div></p>
+<p>El componente raíz es una ventana en sí misma, pero no tiene ningún contenido. Si queremos añadir algo dentro tendremos que crear otros componentes y añadirlos dentro, por ejemplo un botón:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Al instanciarlo el primer argumento indica el contenedor</span>
+<span class="n">button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Hola&quot;</span><span class="p">)</span>  
+</code></pre></div>
+<p>Sin embargo en <strong>tkinter</strong> no es suficiente con crear un componente y añadirlo al contenedor, tenemos que posicionarlo:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Podemos usar el método pack para empaquetarlo en su contenedor</span>
+<span class="n">button</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+</code></pre></div>
+<p>Como veis ya aparece nuestro botón, pero curiosamente la ventana se ha estrechado. Eso es porque el componente raíz no tiene tamaño propio. </p>
+<p>Para añadirle un tamaño por defecto podemos usar el método geometry:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Esto le dará 100px de ancho por 50 de alto</span>
+<span class="n">app</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s2">&quot;100x50&quot;</span><span class="p">)</span>  
+</code></pre></div>
+<p>Ahora nos falta añadirle la funcionalidad al botón para que al presionarlo se muestre un mensaje en la terminal. Para hacer necesitaremos enlazar una función como comando del botón y tendremos que definirla antes de enlazarla porque sino no se encontrará su referencia:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">hola</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;¡Hola mundo!&quot;</span><span class="p">)</span>
+
+<span class="c1"># ...</span>
+
+<span class="n">button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Hola&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">hola</span><span class="p">)</span>
+</code></pre></div>
+<p>Con esto ya tenemos nuestro programa "Hola Mundo" con Tkinter, sin embargo se trata de una estructura poco reutilizable y tener que definir las funciones antes no es muy práctico.</p>
+<p>Podemos solucionar estos problemas adaptando el ejemplo para que use programación orientada a objetos bajo nuestra propia lógica:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MainWindow</span><span class="p">:</span>
+    <span class="c1"># Le pasamos el componente raíz al constructor</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">):</span>
+        <span class="c1"># Establecemos el tamaño de la raíz</span>
+        <span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s2">&quot;100x50&quot;</span><span class="p">)</span>
+        <span class="c1"># Añadimos el botón y lo empaquetamos</span>
+        <span class="n">button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Hola&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hola</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+    <span class="c1"># Definimos la función como un método de clase</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hola</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;¡Hola mundo!&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Creamos la aplicación, la ventana e iniciamos el bucle</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">window</span> <span class="o">=</span> <span class="n">MainWindow</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</code></pre></div>
+<p>Con esto ya lo tenemos.</p>
+<p>¿Qué os ha parecido? No os sintáis abrumados por tantos nuevos conceptos, hacedme caso. </p>
+<p>Lo importante es que entendáis el flujo del programa. ¿Sabríais determinar cuales son las clases que se están usando? ¿Los métodos y atributos?</p>
+<p>Si es así no temáis nada, la mayoría de las veces la programación no se trata de memorizar instrucciones, sino intuir qué necesitas y buscar en la documentación o en algún ejemplo hasta que das con esa instrucción. Leed documentación, tutoriales, ejemplos... haced pequeños experimentos practicando lo que vais aprendiendo, esa es la clave para dominar cualquier tema.</p>
+<p>Os dejaré algunos enlaces de documentación en los apuntes por si queréis profundizar más sobre Tkinter:</p>
+<ul>
+<li><a href="https://docs.python.org/3/library/tkinter.html">Web oficial</a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_gui_programming.htm">Tutorialspoint</a></li>
+<li><a href="https://www.tcl.tk/doc/">Documentación de Tcl/Tk</a></li>
+</ul>
+<h2 id="primer-programa-con-wxpython">Primer programa con WxPython<a class="headerlink" href="#primer-programa-con-wxpython" title="Permanent link">&para;</a></h2>
+<p>Ahora que hemos visto Tkinter, las otras bibliotecas se entenderán mucho más fácilmente, ya que la estructura de los programas es prácticamente la misma cambiando un poco la sintaxis.</p>
+<p>En esta lección vamos a conocer WxPython /wixpython/, un binding para WxWidgets /wixwidgets/, una biblioteca libre y multiplataforma para desarrollar interfaces en C++. </p>
+<p>Cuenta con un conjunto de elementos gráficos mucho más extenso que el de Tkinter y a diferencia de éste es mucho más flexible para controlar la interfaz. Algunas características interesantes que ofrece son por ejemplo una apariencia más nativa en cada sistema operativo, la posibilidad de separar el diseño del código usando ficheros XML y también la de crear tus propios componentes gráficos. Por contra es más difícil de aprender y hay que instalarla a parte. </p>
+<p>Así que empecemos por instalarla desde el prompt de Python o una CMD:</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>wxpython
+</code></pre></div>
+<p>Ahora veamos como es aquí la estructura base de un programa:</p>
+<p><code>hola_wx.py</code>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">wx</span>
+
+<span class="c1"># Creamos una nueva app</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">()</span>
+
+<span class="c1"># Iniciamos el bucle</span>
+<span class="n">app</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
+</code></pre></div></p>
+<p>Al ejecutar este código no ocurrirá nada, eso es porque la aplicación raíz no tiene componente gráfico, sirve para manejar el proceso.</p>
+<p>Para crear una ventana instanciaremos un componente llamado <strong>Frame</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">wx</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">()</span>
+
+<span class="c1"># Le añadimos un marco contenedor</span>
+<span class="n">frame</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_ANY</span><span class="p">,</span> <span class="s2">&quot;Hola mundo&quot;</span><span class="p">)</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
+</code></pre></div>
+<p>Pero con esto aún no es suficiente, tenemos que mostrar ese <strong>Frame</strong> porque por defecto está escondido:</p>
+<div class="highlight"><pre><span></span><code><span class="n">frame</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_ANY</span><span class="p">,</span> <span class="s2">&quot;Hola mundo&quot;</span><span class="p">)</span>
+<span class="n">frame</span><span class="o">.</span><span class="n">Show</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<p>Para establecerle un tamaño distinto lo haremos con un argumento <strong>size</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">frame</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_ANY</span><span class="p">,</span> <span class="s2">&quot;Hola mundo&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+</code></pre></div>
+<p>Esto ya empieza a funcionar, vamos a añadir un botón a la ventana:</p>
+<div class="highlight"><pre><span></span><code><span class="n">button</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_ANY</span><span class="p">,</span> <span class="s2">&quot;Hola&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>¡Perfecto! Ya sólo nos falta crear una función y llamarla al presionar el botón:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">hola</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;¡Hola mundo!&quot;</span><span class="p">)</span>
+
+<span class="c1"># ...</span>
+
+<span class="n">button</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_ANY</span><span class="p">,</span> <span class="s2">&quot;Hola&quot;</span><span class="p">)</span>
+
+<span class="c1"># Aquí conectamos la función al botón con el método Bind</span>
+<span class="n">button</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_BUTTON</span><span class="p">,</span> <span class="n">hola</span><span class="p">)</span>
+</code></pre></div>
+<p>Listo, ya tenemos una versión estructurada del programa "Hola mundo, ahora vamos a trasladar esto a clases y objetos:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">wx</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MainWindow</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
+    <span class="c1"># Creamos nuestra ventana a partir de un Frame</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Con super ejecutamos su propio constructor y le pasamos los argumentos</span>
+        <span class="c1"># Así se crea la ventana en su propia instancia self</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_ANY</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+        <span class="n">button</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_ANY</span><span class="p">,</span> <span class="s2">&quot;Hola&quot;</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_BUTTON</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hola</span><span class="p">)</span>
+        <span class="c1"># Finalmente mostramos la ventana</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Show</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Se requiere un parámetro de argumentos indeterminados en los métodos</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hola</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;¡Hola mundo!&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Creamos la aplicación, la ventana e iniciamos el bucle</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">()</span>
+<span class="n">window</span> <span class="o">=</span> <span class="n">MainWindow</span><span class="p">()</span>
+<span class="n">app</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
+</code></pre></div>
+<p>En esencia es casi lo mismo que la versión hecha con Tkinter, sólo que aquí como necesitamos utilizar obligatoriamente un <strong>Frame</strong> para hacer de contenedor podemos usarlo en nuestra propia clase.</p>
+<p>Igual que antes os dejaré un par de enlaces con documentación en los apuntes:</p>
+<ul>
+<li><a href="https://wiki.wxpython.org/">Web oficial</a></li>
+<li><a href="https://www.tutorialspoint.com/wxpython/index.htm">Tutorialspoint</a></li>
+</ul>
+<h2 id="historia-de-qt-pyqt-y-pyside">Historia de Qt, PyQt y PySide<a class="headerlink" href="#historia-de-qt-pyqt-y-pyside" title="Permanent link">&para;</a></h2>
+<p>Finalmente llegamos a mi biblioteca favorita y en la que se basarán algunos de mi mis futuros cursos de Python, así que me vais a permitir explicaros un poco su historia.</p>
+<p>¿Conocéis Qt? Pronunciado como bonito o lindo en inglés.</p>
+<p>Qt es un famosísimo framework orientado a objetos utilizado para desarrollar programas con interfaz de usuario usando C++. Empezó en 1995 como un proyecto de la empresa Nokia y desde 2014 es desarrollado por la compañía finlandesa "The Qt Company" como software libre y código abierto bajo un proyecto comunitario llamado "Qt Project". </p>
+<p>Muchísimos programas profesionales utilizan Qt, por ejemplo Google Earth, VirtualBox, el reproductor VLC, Autodesk Maya, CryEngine... Incluso el famoso entorno de escritorio KDE y su suite de programas.</p>
+<p>Siendo Qt un portento en el mundo de las interfaces de usuario no es de extrañar que tenga bindings o puentes para utilizarlo en otros lenguajes y Python no iba a ser una excepción. </p>
+<p>En el año 1999 apareció PyQt, un binding de Qt creado por la compañía inglesa Riverbank Computing, distribuido bajo varias licencias diferentes. Una libre y otra para uso comercial con un coste que actualmente es de $550 USD por desarrollador.</p>
+<p>En 2009, Nokia intentó negociar con Riverbank Computing la liberación de PyQt bajo una licencia libre LGPL, pero no lo consiguió, seguramente porque esta empresa vive específicamente de la venta de licencias de PyQt, tal como explica en su propia página web. Como consecuencia ese mismo año Nokia lanzó su propio binding llamado PySide, prácticamente un clon de PyQt pero con la licencia libre LGPL.</p>
+<p>El problema es que PySide no recibió suficiente apoyo y PyQt era muy superior, así que muchos clientes preferían usar la alternativa de pago. Las cosas empezaron a cambiar lentamente con la revisión PySide2 lanzada en 2015, sin embargo el futuro no era muy alentador debido una vez más a la falta de soporte. </p>
+<p>Pero esto cambió hace unos meses.</p>
+<p>En diciembre de 2018, "The Qt Company" anunció inesperadamente su pleno apoyo a PySide2, lo rebautizó como proyecto "Qt for Python" y decidió lanzarlo como producto oficial de su plataforma Qt.</p>
+<p>¿Cuál podría ser la razón tras este cambio de estrategia? Yo creo que notaron el auge de Python y no han querido perder la oportunidad de subirse al carro, pero en cualquier caso esto es muy positivo para la comunidad, ya que por fin tenemos un binding oficial de Qt distribuido bajo una licencia libre y con buen soporte.</p>
+<p>Más no se puede pedir.</p>
+<h2 id="primer-programa-con-pyside">Primer programa con PySide<a class="headerlink" href="#primer-programa-con-pyside" title="Permanent link">&para;</a></h2>
+<p>Instalar PySide se puede hacer fácilmente con pip:</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>pyside6
+</code></pre></div>
+<p>La estructura principal de un programa en PySide es muy parecida a la de WxPython, aquí también necesitamos crear un contenedor para la ventana. </p>
+<p>Hay varios pero el más común es el widget para la ventana principal:</p>
+<p><code>hola_pyside.py</code>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">PySide6</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtWidgets</span> <span class="k">as</span> <span class="n">QW</span>
+
+<span class="c1"># Creamos una nueva app</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">QW</span><span class="o">.</span><span class="n">QApplication</span><span class="p">()</span>
+
+<span class="c1"># Creamos la ventana principal y la mostramos</span>
+<span class="n">window</span> <span class="o">=</span> <span class="n">QW</span><span class="o">.</span><span class="n">QMainWindow</span><span class="p">()</span>
+<span class="n">window</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">window</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Iniciamos el bucle</span>
+<span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+</code></pre></div></p>
+<p>Añadir un botón y conectarlo a una función también se hace casi igual que en WxPython:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">hola</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;¡Hola mundo!&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># ...</span>
+
+<span class="c1"># Creamos el botón y lo conectamos</span>
+<span class="n">button</span> <span class="o">=</span> <span class="n">QW</span><span class="o">.</span><span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Hola&quot;</span><span class="p">,</span> <span class="n">window</span><span class="p">)</span>
+<span class="n">button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">hola</span><span class="p">)</span>
+</code></pre></div>
+<p>Este es el código correcto, sin embargo no veremos el botón. Esto es debido a que en Qt tenemos que mostrar la ventana al final, después de haber añadido sus componentes:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Creamos la ventana principal</span>
+<span class="n">window</span> <span class="o">=</span> <span class="n">QW</span><span class="o">.</span><span class="n">QMainWindow</span><span class="p">()</span>
+<span class="n">window</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Creamos el botón y lo conectamos</span>
+<span class="n">button</span> <span class="o">=</span> <span class="n">QW</span><span class="o">.</span><span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Hola&quot;</span><span class="p">,</span> <span class="n">window</span><span class="p">)</span>
+<span class="n">button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">hola</span><span class="p">)</span>
+
+<span class="c1"># Mostramos la ventana principal</span>
+<span class="n">window</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p>Ya lo tenemos, en mi opinión la sintaxis es más intuitiva que en las otras bibliotecas, no sé qué pensaréis vosotros.</p>
+<p>En fin, vamos a llevar este código a nuestra propia clase para dejarlo finiquitado:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">PySide6</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtWidgets</span> <span class="k">as</span> <span class="n">QW</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MainWindow</span><span class="p">(</span><span class="n">QW</span><span class="o">.</span><span class="n">QMainWindow</span><span class="p">):</span>
+    <span class="c1"># Creamos nuestra ventana a partir de un QMainWindow</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Con super ejecutamos su propio constructor</span>
+        <span class="c1"># Así se crea la ventana en su propia instancia self</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="c1"># Redimensionamos y añadimos el botón</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="n">button</span> <span class="o">=</span> <span class="n">QW</span><span class="o">.</span><span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Hola&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hola</span><span class="p">)</span>
+        <span class="c1"># Finalmente mostramos la ventana</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">hola</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;¡Hola mundo!&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Creamos la aplicación, la ventana e iniciamos el bucle</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">QW</span><span class="o">.</span><span class="n">QApplication</span><span class="p">()</span>
+<span class="n">window</span> <span class="o">=</span> <span class="n">MainWindow</span><span class="p">()</span>
+<span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+</code></pre></div>
+<p>¿Qué os ha parecido PySide? ¿Verdad que es prácticamente la misma lógica que WxPython pero cambiando un poco la sintaxis? Ya os dije al comenzar el curso que todas las biblioteas se parecían mucho.</p>
+<p>En cualquier caso os dejaré la documentación en los apuntes para que aprendáis un poco más por vuestra cuenta:</p>
+<ul>
+<li><a href="https://doc.qt.io/qtforpython/">Web oficial</a></li>
+<li><a href="https://wiki.qt.io/Qt_for_Python/Tutorial">Tutoriales oficiales</a></li>
+</ul>
+<p>Y con esto acabamos. </p>
+<p>Espero que el curso os haya servido, sobretodo la unidad de programación orientada a objetos. Esos conocimientos se utilizan no sólo en bibliotecas de interfaces, sino también en desarrollo web, videojuegos y muchos otros ámbitos, así que repasadlos de tanto en tanto.</p>
+<hr />
+<p><small class="edited"><i>Última edición: 16 de Marzo de 2021</i></small></p>
+                  
+                    
+                  
+                
+                
+                  
+
+
+                
+              </article>
+            </div>
+          </div>
+        </main>
+        
+          
+<footer class="md-footer">
+  
+  <div class="md-footer-nav">
+    <nav class="md-footer-nav__inner md-grid">
+      
+      <a
+        href="../introduccion/"
+        title="Python para principiantes"
+        class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+        rel="prev"
+      >
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+        </div>
+        <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+          <span class="md-flex__ellipsis">
+            <span class="md-footer-nav__direction">
+              Anterior
+            </span>
+            Python para principiantes
+          </span>
+        </div>
+      </a>
+       
+      <a
+        href="../proyecto-gestor-clientes/"
+        title="Gestor de clientes con Python"
+        class="md-flex md-footer-nav__link md-footer-nav__link--next"
+        rel="next"
+      >
+        <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+          <span class="md-flex__ellipsis">
+            <span class="md-footer-nav__direction">
+              Siguiente
+            </span>
+            Gestor de clientes con Python
+          </span>
+        </div>
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+        </div>
+      </a>
+      
+    </nav>
+  </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        <!--<div class="md-footer-links__highlight">
+          <a href="/comunidad/">Comunidad</a> · <a href="/politica-de-cookies/">Política de cookies</a> · <a href="/sobre-mi/">Sobre mí</a>
+        </div>-->
+        <div class="md-footer-copyright__highlight">
+          2015 - 2022 &copy; Héctor Costa Guzmán (<u
+            ><a
+              href="https://creativecommons.org/licenses/by/4.0/deed.es"
+              target="_blank"
+              rel="nofollow"
+              >Licencia CC BY 4.0</a
+            ></u
+          >)
+        </div>
+      </div>
+       
+<style>.md-footer-social__link {transition: 0.3s;}</style>
+<div class="md-footer-social" style="font-size: 2.5rem; margin-top: -6px!important; padding: 0px!important; margin-bottom: -6px; overflow: hidden!important;">
+  <a href="https://github.com/hcosta" title="Github" target="_blank" class="md-footer-social__link fa fa-github-square"></a>
+  <a href="https://www.youtube.com/c/HektorProfe" title="Youtube" target="_blank" class="md-footer-social__link fa fa-youtube-square"></a>
+  &nbsp;
+</div>
+ 
+    </div>
+  </div>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i["GoogleAnalyticsObject"] = r;
+      (i[r] =
+        i[r] ||
+        function () {
+          (i[r].q = i[r].q || []).push(arguments);
+        }),
+        (i[r].l = 1 * new Date());
+      (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m);
+    })(
+      window,
+      document,
+      "script",
+      "https://www.google-analytics.com/analytics.js",
+      "ga"
+    );
+    ga("create", "UA-124845547-1", "auto");
+    ga("send", "pageview");
+  </script>
+</footer>
+        
+        <a id="anchorID" href="https://www.hektorprofe.net/" target="_blank"></a>
+      </div>
+      <script type='text/javascript'
+              src="https://hektorprofe.github.io/docs/assets/javascripts/application.a26c1c21.js"></script>
+      <script src="https://hektorprofe.github.io/docs/assets/javascripts/tingle.min.js"></script>
+      <script type='text/javascript'>
+    var modalButtonOnly = new tingle.modal({
+        closeMethods: [],
+        footer: true,
+        stickyFooter: true
+    });
+    var btn5 = document.querySelector('.js-tingle-modal-5');
+
+    // set content
+    modalButtonOnly.setContent(`
+    <div style="display:grid;grid-template-columns:32% 32% 32%;grid-column-gap: 1.33%;" id="supermodal">
+      <div class="course">
+        <a href="https://www.hektorprofe.net/cupon/python" target="_blank"><img src="assets/python.png" style="width:100%;justify-self:center;align-self:center;" /></a>
+      </div>
+      <div class="course">
+        <a href="https://www.hektorprofe.net/cupon/django" target="_blank"><img src="assets/django.png" style="width:100%;justify-self:center;align-self:center;" /></a>
+      </div>
+      <div class="course">
+        <a href="https://www.hektorprofe.net/cupon/pyside" target="_blank"><img src="assets/pyside.png" style="width:100%;justify-self:center;align-self:center;" /></a>
+      </div>
+    </div>`);
+
+    modalButtonOnly.addFooterBtn('Cerrar', 'tingle-btn tingle-btn--default tingle-btn--pull-right', function(){
+      modalButtonOnly.close();
+    });
+
+    app.initialize({version:"1.2.3",url:{base:"../../.."}})
+    var _extends=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(t[o]=n[o])}return t},_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t};!function(t,e){"object"===("undefined"==typeof exports?"undefined":_typeof(exports))&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):t.LazyLoad=e()}(this,function(){"use strict";function t(t,e,n){var o=e._settings;!n&&i(t)||(C(o.callback_enter,t),R.indexOf(t.tagName)>-1&&(N(t,e),I(t,o.class_loading)),E(t,e),a(t),C(o.callback_set,t))}var e={elements_selector:"img",container:document,threshold:300,thresholds:null,data_src:"src",data_srcset:"srcset",data_sizes:"sizes",data_bg:"bg",class_loading:"loading",class_loaded:"loaded",class_error:"error",load_delay:0,callback_load:null,callback_error:null,callback_set:null,callback_enter:null,callback_finish:null,to_webp:!1},n=function(t){return _extends({},e,t)},o=function(t,e){return t.getAttribute("data-"+e)},r=function(t,e,n){var o="data-"+e;null!==n?t.setAttribute(o,n):t.removeAttribute(o)},a=function(t){return r(t,"was-processed","true")},i=function(t){return"true"===o(t,"was-processed")},s=function(t,e){return r(t,"ll-timeout",e)},c=function(t){return o(t,"ll-timeout")},l=function(t){return t.filter(function(t){return!i(t)})},u=function(t,e){return t.filter(function(t){return t!==e})},d=function(t,e){var n,o=new t(e);try{n=new CustomEvent("LazyLoad::Initialized",{detail:{instance:o}})}catch(t){(n=document.createEvent("CustomEvent")).initCustomEvent("LazyLoad::Initialized",!1,!1,{instance:o})}window.dispatchEvent(n)},f=function(t,e){return e?t.replace(/\.(jpe?g|png)/gi,".webp"):t},_="undefined"!=typeof window,v=_&&!("onscroll"in window)||/(gle|ing|ro)bot|crawl|spider/i.test(navigator.userAgent),g=_&&"IntersectionObserver"in window,h=_&&"classList"in document.createElement("p"),b=_&&function(){var t=document.createElement("canvas");return!(!t.getContext||!t.getContext("2d"))&&0===t.toDataURL("image/webp").indexOf("data:image/webp")}(),m=function(t,e,n,r){for(var a,i=0;a=t.children[i];i+=1)if("SOURCE"===a.tagName){var s=o(a,n);p(a,e,s,r)}},p=function(t,e,n,o){n&&t.setAttribute(e,f(n,o))},y=function(t,e){var n=b&&e.to_webp,r=o(t,e.data_src),a=o(t,e.data_bg);if(r){var i=f(r,n);t.style.backgroundImage='url("'+i+'")'}if(a){var s=f(a,n);t.style.backgroundImage=s}},w={IMG:function(t,e){var n=b&&e.to_webp,r=e.data_srcset,a=t.parentNode;a&&"PICTURE"===a.tagName&&m(a,"srcset",r,n);var i=o(t,e.data_sizes);p(t,"sizes",i);var s=o(t,r);p(t,"srcset",s,n);var c=o(t,e.data_src);p(t,"src",c,n)},IFRAME:function(t,e){var n=o(t,e.data_src);p(t,"src",n)},VIDEO:function(t,e){var n=e.data_src,r=o(t,n);m(t,"src",n),p(t,"src",r),t.load()}},E=function(t,e){var n=e._settings,o=t.tagName,r=w[o];if(r)return r(t,n),e._updateLoadingCount(1),void(e._elements=u(e._elements,t));y(t,n)},I=function(t,e){h?t.classList.add(e):t.className+=(t.className?" ":"")+e},L=function(t,e){h?t.classList.remove(e):t.className=t.className.replace(new RegExp("(^|\\s+)"+e+"(\\s+|$)")," ").replace(/^\s+/,"").replace(/\s+$/,"")},C=function(t,e){t&&t(e)},O=function(t,e,n){t.addEventListener(e,n)},k=function(t,e,n){t.removeEventListener(e,n)},x=function(t,e,n){O(t,"load",e),O(t,"loadeddata",e),O(t,"error",n)},A=function(t,e,n){k(t,"load",e),k(t,"loadeddata",e),k(t,"error",n)},z=function(t,e,n){var o=n._settings,r=e?o.class_loaded:o.class_error,a=e?o.callback_load:o.callback_error,i=t.target;L(i,o.class_loading),I(i,r),C(a,i),n._updateLoadingCount(-1)},N=function(t,e){var n=function n(r){z(r,!0,e),A(t,n,o)},o=function o(r){z(r,!1,e),A(t,n,o)};x(t,n,o)},R=["IMG","IFRAME","VIDEO"],S=function(e,n,o){t(e,o),n.unobserve(e)},M=function(t){var e=c(t);e&&(clearTimeout(e),s(t,null))},j=function(t,e,n){var o=n._settings.load_delay,r=c(t);r||(r=setTimeout(function(){S(t,e,n),M(t)},o),s(t,r))},D=function(t){return t.isIntersecting||t.intersectionRatio>0},T=function(t){return{root:t.container===document?null:t.container,rootMargin:t.thresholds||t.threshold+"px"}},U=function(t,e){this._settings=n(t),this._setObserver(),this._loadingCount=0,this.update(e)};return U.prototype={_manageIntersection:function(t){var e=this._observer,n=this._settings.load_delay,o=t.target;n?D(t)?j(o,e,this):M(o):D(t)&&S(o,e,this)},_onIntersection:function(t){t.forEach(this._manageIntersection.bind(this))},_setObserver:function(){g&&(this._observer=new IntersectionObserver(this._onIntersection.bind(this),T(this._settings)))},_updateLoadingCount:function(t){this._loadingCount+=t,0===this._elements.length&&0===this._loadingCount&&C(this._settings.callback_finish)},update:function(t){var e=this,n=this._settings,o=t||n.container.querySelectorAll(n.elements_selector);this._elements=l(Array.prototype.slice.call(o)),!v&&this._observer?this._elements.forEach(function(t){e._observer.observe(t)}):this.loadAll()},destroy:function(){var t=this;this._observer&&(this._elements.forEach(function(e){t._observer.unobserve(e)}),this._observer=null),this._elements=null,this._settings=null},load:function(e,n){t(e,this,n)},loadAll:function(){var t=this;this._elements.forEach(function(e){t.load(e)})}},_&&function(t,e){if(e)if(e.length)for(var n,o=0;n=e[o];o+=1)d(t,n);else d(t,e)}(U,window.lazyLoadOptions),U});
+    var myLazyLoad = new LazyLoad({elements_selector: ".lazy"});
+    const mdMenuItems = document.querySelectorAll('.md-nav__link');
+    function doNav(){ document.getElementById("main__list").innerHTML = '<li class="md-nav__item"><a class="md-nav__link" href="/cursos/">Cursos</a></li><li class="md-nav__item"><a class="md-nav__link" href="/blog/">Blog</a></li>';}
+    for (i = 0; i < mdMenuItems.length; i++) {  var item = mdMenuItems[i]; var htmlstring = item.innerHTML; htmlstring = (htmlstring.trim) ? htmlstring.trim() : htmlstring.replace(/^\s+/,''); if (htmlstring == 'Servidor de encuentro') { item.parentNode.removeChild(item);continue; }  if (htmlstring == 'Política de Cookies') { item.parentNode.removeChild(item);continue; } if (htmlstring == 'Buscador') { item.parentNode.removeChild(item); continue; } }
+    try { var topPos = document.querySelector('#md__active_link').offsetTop; document.querySelector('#md__sidebar__scroll').scrollTop = topPos - 60; } catch (err) {}
+      </script>
+    </body>
+  </html>

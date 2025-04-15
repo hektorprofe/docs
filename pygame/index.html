@@ -5,17 +5,13 @@
     
     
     
-
-    
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
         <meta name="description" content="Recopilación de apuntes sobre Desarrollo de Videojuegos en PyGame.">
       
-      
-        <link rel="canonical" href="https://hektorprofe.github.io/docs.hektorprofe.net/pygame/index.html">
-      
+      <link rel="canonical" href="https://hektorprofe.github.io/docs/pygame/">
       
         <meta name="author" content="Héctor Costa Guzman">
       
@@ -26,18 +22,21 @@
         <title>Desarrollo de Videojuegos en Python | Curso PyGame | Hektor Profe</title>
       
     
-    <link rel="stylesheet" href="../assets/stylesheets/application.2.css">
+    <link rel="stylesheet"
+          href="../assets/stylesheets/application.2.css">
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
     
-    <link rel="stylesheet" href="/assets/stylesheets/tingle.min.css">
-<style>
-@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
+    <link rel="stylesheet"
+          href="https://hektorprofe.github.io/docs/assets/stylesheets/tingle.min.css">
+    <style>
+@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
 [data-md-color-primary="grey"] .md-header { background-color: #191A1D }
 [data-md-color-primary="grey"] .md-tabs { background-color: #222831 }
 .md-footer-nav { background-color: #222831; }
@@ -98,90 +97,79 @@ div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 1999.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 246px - 60px);margin-right:-1px;}}
 @media (max-width: 1599.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 222px - 60px)}}
 
-</style>
+    </style>
   </head>
   
     
     
-    <body dir="ltr" data-md-color-primary="grey" data-md-color-accent="grey">
-  
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    <body dir="ltr"
+          data-md-color-primary="grey"
+          data-md-color-accent="grey">
     
-      <a href="#apuntes-desarrollo-de-videojuegos-con-pygame" tabindex="1" class="md-skip">
-        Saltar a contenido
-      </a>
-    
-    
-      <header
-  class="md-header"
-  data-md-component="header"
-  style="position: inherit !important"
->
+      <input class="md-toggle"
+             data-md-toggle="drawer"
+             type="checkbox"
+             id="__drawer"
+             autocomplete="off">
+      <input class="md-toggle"
+             data-md-toggle="search"
+             type="checkbox"
+             id="__search"
+             autocomplete="off">
+      <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+      
+        <a href="#apuntes-desarrollo-de-videojuegos-con-pygame"
+           tabindex="1"
+           class="md-skip">Saltar a contenido</a>
+      
+      
+        <header class="md-header"
+        data-md-component="header"
+        style="position: inherit !important">
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a
-          href="/"
-          title="Hektor Profe"
-          class="md-header-nav__button md-logo"
-          style="font-size: 0px"
-        >
-          <img
-            src="/assets/images/logo.png"
-            width="200px"
-            height="35px"
-            style="margin-top: -5px"
-            alt="Hektor Profe"
-            title="Hektor Profe"
-          />
+        <a href="/"
+           title="Hektor Profe"
+           class="md-header-nav__button md-logo"
+           style="font-size: 0px">
+          <img src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+               width="200px"
+               height="35px"
+               style="margin-top: -5px"
+               alt="Hektor Profe"
+               title="Hektor Profe" />
         </a>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
-        <label
-          class="md-icon md-icon--menu md-header-nav__button"
-          for="__drawer"
-        ></label>
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
-        <div
-          class="md-flex__ellipsis md-header-nav__title"
-          data-md-component="title"
-          style="text-align: right"
-        >
+        <div class="md-flex__ellipsis md-header-nav__title"
+             data-md-component="title"
+             style="text-align: right">
           <!-- https://fontawesome.com/v4.7.0/ -->
-          <a 
-            class="nav__btn" 
-            href="https://www.hektorprofe.net/" 
-            style="margin-left:0em;" 
-            title="Cursos de Hektor Profe">
-            Cursos
+          <a class="nav__btn"
+             href="https://www.hektorprofe.net/"
+             style="margin-left:0em"
+             title="Cursos de Hektor Profe">Cursos</a>
+          <a class="nav__btn"
+             href="https://docs.hektorprofe.net/"
+             style="margin-left:1.4em"
+             title="Documentos de Hektor Profe">Documentos</a>
+          <a class="nav__btn"
+             href="https://www.hektorprofe.net/portafolio/"
+             style="margin-left:1.4em"
+             title="Portafolio de Hektor Profe">Portafolio</a>
+          <a href="/">
+            <img class="nav__logo"
+                 src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+                 width="200px"
+                 height="35px"
+                 style="margin: 6px auto 0"
+                 alt="Hektor Profe"
+                 title="Hektor Profe" />
           </a>
-          <a 
-            class="nav__btn" 
-            href="https://docs.hektorprofe.net/" 
-            style="margin-left:1.4em;" 
-            title="Documentos de Hektor Profe">
-            Documentos
-          </a>
-          <a 
-            class="nav__btn" 
-            href="https://www.hektorprofe.net/portafolio/" 
-            style="margin-left:1.4em;" 
-            title="Portafolio de Hektor Profe">
-            Portafolio
-          </a>
-          <a href="/"
-            ><img
-              class="nav__logo"
-              src="/assets/images/logo.png"
-              width="200px"
-              height="35px"
-              style="margin: 6px auto 0"
-              alt="Hektor Profe"
-              title="Hektor Profe"
-          /></a>
         </div>
         <style>
           .md-sidebar[data-md-state="lock"] {
@@ -230,13 +218,13 @@ div.my-img{text-align:center;margin-top:20px}
     </div>
   </nav>
 </header>
-    
-    <div class="md-container" style="padding-top: 0px !important;">
       
+      <div class="md-container" style="padding-top: 0px !important;">
         
-      
-      
+          
         
+        
+          
 
   
 
@@ -273,15 +261,16 @@ div.my-img{text-align:center;margin-top:20px}
       </ul>
     </div>
 </nav>
-      
-      <main class="md-main">
-        <div class="md-main__inner md-grid" data-md-component="container" style="padding-top: 8px !important;">
-          
+        
+        <main class="md-main">
+          <div class="md-main__inner md-grid"
+               data-md-component="container"
+               style="padding-top: 8px !important">
             
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
-                <div class="md-sidebar__scrollwrap" id="md__sidebar__scroll">
-                  <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
+              
+                <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                  <div class="md-sidebar__scrollwrap" id="md__sidebar__scroll">
+                    <div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title" for="__drawer" style="padding:0 !important;max-height:5.5rem;"></label>
   
   <ul class="md-nav__list" id="main__list" data-md-scrollfix>
@@ -335,7 +324,7 @@ div.my-img{text-align:center;margin-top:20px}
       
     
     
-    <a href="index.html" title="Índice del archivo" class="md-nav__link md-nav__link--active" id="md__active_link">
+    <a href="./" title="Índice del archivo" class="md-nav__link md-nav__link--active" id="md__active_link">
       Índice del archivo
     </a>
     
@@ -367,7 +356,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="renderizado/creacion-superficie.html" title="Creación de la superficie" class="md-nav__link">
+    <a href="renderizado/creacion-superficie/" title="Creación de la superficie" class="md-nav__link">
       Creación de la superficie
     </a>
   </li>
@@ -379,7 +368,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="renderizado/dibujo-superficie.html" title="Dibujando en la superficie" class="md-nav__link">
+    <a href="renderizado/dibujo-superficie/" title="Dibujando en la superficie" class="md-nav__link">
       Dibujando en la superficie
     </a>
   </li>
@@ -391,7 +380,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="renderizado/blitting-imagenes.html" title="Blitting de Imágenes (copia)" class="md-nav__link">
+    <a href="renderizado/blitting-imagenes/" title="Blitting de Imágenes (copia)" class="md-nav__link">
       Blitting de Imágenes (copia)
     </a>
   </li>
@@ -403,7 +392,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="renderizado/blitting-textos.html" title="Blitting de Textos (copia)" class="md-nav__link">
+    <a href="renderizado/blitting-textos/" title="Blitting de Textos (copia)" class="md-nav__link">
       Blitting de Textos (copia)
     </a>
   </li>
@@ -415,7 +404,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="renderizado/transformacion-superficie.html" title="Transformación de superficie" class="md-nav__link">
+    <a href="renderizado/transformacion-superficie/" title="Transformación de superficie" class="md-nav__link">
       Transformación de superficie
     </a>
   </li>
@@ -427,7 +416,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="renderizado/delta-time-fps.html" title="Delta time y FPS" class="md-nav__link">
+    <a href="renderizado/delta-time-fps/" title="Delta time y FPS" class="md-nav__link">
       Delta time y FPS
     </a>
   </li>
@@ -439,7 +428,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="renderizado/icono-ventana-bandeja.html" title="Iconos de ventana y bandeja" class="md-nav__link">
+    <a href="renderizado/icono-ventana-bandeja/" title="Iconos de ventana y bandeja" class="md-nav__link">
       Iconos de ventana y bandeja
     </a>
   </li>
@@ -475,7 +464,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="eventos/movimiento-raton.html" title="Movimiento de ratón" class="md-nav__link">
+    <a href="eventos/movimiento-raton/" title="Movimiento de ratón" class="md-nav__link">
       Movimiento de ratón
     </a>
   </li>
@@ -487,7 +476,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="eventos/movimiento-teclado-discreto.html" title="Movimiento de teclado discreto" class="md-nav__link">
+    <a href="eventos/movimiento-teclado-discreto/" title="Movimiento de teclado discreto" class="md-nav__link">
       Movimiento de teclado discreto
     </a>
   </li>
@@ -499,7 +488,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="eventos/movimiento-teclado-continuo.html" title="Movimiento de teclado contínuo" class="md-nav__link">
+    <a href="eventos/movimiento-teclado-continuo/" title="Movimiento de teclado contínuo" class="md-nav__link">
       Movimiento de teclado contínuo
     </a>
   </li>
@@ -511,7 +500,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="eventos/movimiento-limitado.html" title="Movimiento limitado" class="md-nav__link">
+    <a href="eventos/movimiento-limitado/" title="Movimiento limitado" class="md-nav__link">
       Movimiento limitado
     </a>
   </li>
@@ -523,7 +512,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="eventos/deteccion-colisiones.html" title="Detección de colisiones" class="md-nav__link">
+    <a href="eventos/deteccion-colisiones/" title="Detección de colisiones" class="md-nav__link">
       Detección de colisiones
     </a>
   </li>
@@ -535,7 +524,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="eventos/debug-colisiones.html" title="Debugeando las colisiones" class="md-nav__link">
+    <a href="eventos/debug-colisiones/" title="Debugeando las colisiones" class="md-nav__link">
       Debugeando las colisiones
     </a>
   </li>
@@ -547,7 +536,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="eventos/mascaras-colision.html" title="Máscaras de colisión" class="md-nav__link">
+    <a href="eventos/mascaras-colision/" title="Máscaras de colisión" class="md-nav__link">
       Máscaras de colisión
     </a>
   </li>
@@ -559,7 +548,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="eventos/debug-mascaras-colision.html" title="Debugeando las máscaras" class="md-nav__link">
+    <a href="eventos/debug-mascaras-colision/" title="Debugeando las máscaras" class="md-nav__link">
       Debugeando las máscaras
     </a>
   </li>
@@ -571,7 +560,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="eventos/efectos-sonido-musica.html" title="Efectos de sonido y música" class="md-nav__link">
+    <a href="eventos/efectos-sonido-musica/" title="Efectos de sonido y música" class="md-nav__link">
       Efectos de sonido y música
     </a>
   </li>
@@ -583,7 +572,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="eventos/modo-ventana-fullscreen.html" title="Modo ventana y fullscreen" class="md-nav__link">
+    <a href="eventos/modo-ventana-fullscreen/" title="Modo ventana y fullscreen" class="md-nav__link">
       Modo ventana y fullscreen
     </a>
   </li>
@@ -619,7 +608,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="sprites/clases.html" title="Repaso de clases" class="md-nav__link">
+    <a href="sprites/clases/" title="Repaso de clases" class="md-nav__link">
       Repaso de clases
     </a>
   </li>
@@ -631,7 +620,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="sprites/herencia.html" title="Repaso de herencia" class="md-nav__link">
+    <a href="sprites/herencia/" title="Repaso de herencia" class="md-nav__link">
       Repaso de herencia
     </a>
   </li>
@@ -643,7 +632,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="sprites/grupos.html" title="Clase sprite y grupos" class="md-nav__link">
+    <a href="sprites/grupos/" title="Clase sprite y grupos" class="md-nav__link">
       Clase sprite y grupos
     </a>
   </li>
@@ -655,7 +644,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="sprites/actualizacion-frame.html" title="Actualización por fotograma" class="md-nav__link">
+    <a href="sprites/actualizacion-frame/" title="Actualización por fotograma" class="md-nav__link">
       Actualización por fotograma
     </a>
   </li>
@@ -667,7 +656,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="sprites/actualizacion-time.html" title="Actualización por tiempo" class="md-nav__link">
+    <a href="sprites/actualizacion-time/" title="Actualización por tiempo" class="md-nav__link">
       Actualización por tiempo
     </a>
   </li>
@@ -679,7 +668,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="sprites/colisiones.html" title="Colisiones de sprites" class="md-nav__link">
+    <a href="sprites/colisiones/" title="Colisiones de sprites" class="md-nav__link">
       Colisiones de sprites
     </a>
   </li>
@@ -691,7 +680,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="sprites/grupos-colision.html" title="Colisiones de grupos" class="md-nav__link">
+    <a href="sprites/grupos-colision/" title="Colisiones de grupos" class="md-nav__link">
       Colisiones de grupos
     </a>
   </li>
@@ -703,7 +692,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="sprites/mascaras-colision.html" title="Máscaras en sprites" class="md-nav__link">
+    <a href="sprites/mascaras-colision/" title="Máscaras en sprites" class="md-nav__link">
       Máscaras en sprites
     </a>
   </li>
@@ -715,7 +704,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="sprites/mascaras-grupos-colision.html" title="Máscaras en grupos" class="md-nav__link">
+    <a href="sprites/mascaras-grupos-colision/" title="Máscaras en grupos" class="md-nav__link">
       Máscaras en grupos
     </a>
   </li>
@@ -727,7 +716,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="sprites/animaciones-estaticas.html" title="Animaciones estáticas" class="md-nav__link">
+    <a href="sprites/animaciones-estaticas/" title="Animaciones estáticas" class="md-nav__link">
       Animaciones estáticas
     </a>
   </li>
@@ -739,7 +728,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="sprites/animaciones-movimiento.html" title="Animaciones en movimiento" class="md-nav__link">
+    <a href="sprites/animaciones-movimiento/" title="Animaciones en movimiento" class="md-nav__link">
       Animaciones en movimiento
     </a>
   </li>
@@ -775,7 +764,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="organizacion/estructura-proyecto.html" title="Estructura de un proyecto" class="md-nav__link">
+    <a href="organizacion/estructura-proyecto/" title="Estructura de un proyecto" class="md-nav__link">
       Estructura de un proyecto
     </a>
   </li>
@@ -787,7 +776,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="organizacion/estructura-principal.html" title="Estructura principal" class="md-nav__link">
+    <a href="organizacion/estructura-principal/" title="Estructura principal" class="md-nav__link">
       Estructura principal
     </a>
   </li>
@@ -799,7 +788,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="organizacion/adaptar-ejemplo.html" title="Adaptando un ejemplo" class="md-nav__link">
+    <a href="organizacion/adaptar-ejemplo/" title="Adaptando un ejemplo" class="md-nav__link">
       Adaptando un ejemplo
     </a>
   </li>
@@ -835,7 +824,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="escenas-gui/gestor-escenas.html" title="Gestor de escenas" class="md-nav__link">
+    <a href="escenas-gui/gestor-escenas/" title="Gestor de escenas" class="md-nav__link">
       Gestor de escenas
     </a>
   </li>
@@ -847,7 +836,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="escenas-gui/cambio-escenas.html" title="Cambio de escena" class="md-nav__link">
+    <a href="escenas-gui/cambio-escenas/" title="Cambio de escena" class="md-nav__link">
       Cambio de escena
     </a>
   </li>
@@ -859,7 +848,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="escenas-gui/menu-flechas.html" title="Menú con flechas" class="md-nav__link">
+    <a href="escenas-gui/menu-flechas/" title="Menú con flechas" class="md-nav__link">
       Menú con flechas
     </a>
   </li>
@@ -871,7 +860,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="escenas-gui/menu-clicable.html" title="Menú clicable" class="md-nav__link">
+    <a href="escenas-gui/menu-clicable/" title="Menú clicable" class="md-nav__link">
       Menú clicable
     </a>
   </li>
@@ -883,7 +872,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="escenas-gui/boton-animado.html" title="Botón animado" class="md-nav__link">
+    <a href="escenas-gui/boton-animado/" title="Botón animado" class="md-nav__link">
       Botón animado
     </a>
   </li>
@@ -895,7 +884,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="escenas-gui/multiples-botones.html" title="Múltiples botones" class="md-nav__link">
+    <a href="escenas-gui/multiples-botones/" title="Múltiples botones" class="md-nav__link">
       Múltiples botones
     </a>
   </li>
@@ -907,7 +896,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="escenas-gui/pygame-gui.html" title="PyGame GUI" class="md-nav__link">
+    <a href="escenas-gui/pygame-gui/" title="PyGame GUI" class="md-nav__link">
       PyGame GUI
     </a>
   </li>
@@ -919,7 +908,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="escenas-gui/integracion.html" title="Ejemplo de integración" class="md-nav__link">
+    <a href="escenas-gui/integracion/" title="Ejemplo de integración" class="md-nav__link">
       Ejemplo de integración
     </a>
   </li>
@@ -955,7 +944,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="ejecutables/autopytoexe.html" title="AutoPytoExe" class="md-nav__link">
+    <a href="ejecutables/autopytoexe/" title="AutoPytoExe" class="md-nav__link">
       AutoPytoExe
     </a>
   </li>
@@ -987,72 +976,58 @@ div.my-img{text-align:center;margin-top:20px}
     
   </ul>
 </nav>
-
+</div>
                   </div>
                 </div>
-              </div>
-            
-
-            
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                
-                  
-                    <div class="course-offer" style="margin-bottom:25px;padding:0px 10px;">
-                      <a href="https://www.hektorprofe.net/cupon/python" target="_blank">
-                        <img src="/cdn/assets/python.png" style="width:100%;justify-self:center;align-self:center;"/>
-                      </a>
-                    </div>
-                  
-                
-
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
+              
+              
+                <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                  <div class="md-sidebar__scrollwrap">
+                    <div class="md-sidebar__inner">
 <nav class="md-nav md-nav--secondary">
   
   
     
   
   
-</nav>
+</nav></div>
                   </div>
                 </div>
-              </div>
-            
-          
-          <div class="md-content">
-            <article class="md-content__inner md-typeset">
               
+            
+            <div class="md-content">
+              <article class="md-content__inner md-typeset">
                 
-                
-                <h1 id="apuntes-desarrollo-de-videojuegos-con-pygame">Apuntes Desarrollo de Videojuegos con PyGame<a class="headerlink" href="#apuntes-desarrollo-de-videojuegos-con-pygame" title="Permanent link">&para;</a></h1>
-<p><img alt="" src="/cdn/pygame/023.gif" /></p>
+                  
+                  
+                  <h1 id="apuntes-desarrollo-de-videojuegos-con-pygame">Apuntes Desarrollo de Videojuegos con PyGame<a class="headerlink" href="#apuntes-desarrollo-de-videojuegos-con-pygame" title="Permanent link">&para;</a></h1>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//pygame/023.gif" /></p>
 <p>Estos apuntes son publicados bajo una <a href="https://creativecommons.org/licenses/by/4.0/deed.es">Licencia CC BY 4.0</a>. Si decides utilizarlos o compartirlos asegúrate de cumplir las normas de atribución.</p>
 <p>Podéis navegar por ellos utilizando el menú lateral.</p>
 <hr />
 <p><small class="edited"><i>Última edición: 13 de Febrero de 2022</i></small></p>
-                
+                  
+                    
                   
                 
-              
-              
                 
+                  
 
 
-              
-            </article>
+                
+              </article>
+            </div>
           </div>
-        </div>
-      </main>
-      
+        </main>
         
+          
 <footer class="md-footer">
   
   <div class="md-footer-nav">
     <nav class="md-footer-nav__inner md-grid">
       
       <a
-        href="../cpp/30-miscelanea/05-espacio-nombres.html"
+        href="../cpp/30-miscelanea/05-espacio-nombres/"
         title="Espacio de nombres"
         class="md-flex md-footer-nav__link md-footer-nav__link--prev"
         rel="prev"
@@ -1071,7 +1046,7 @@ div.my-img{text-align:center;margin-top:20px}
       </a>
        
       <a
-        href="renderizado/creacion-superficie.html"
+        href="renderizado/creacion-superficie/"
         title="Creación de la superficie"
         class="md-flex md-footer-nav__link md-footer-nav__link--next"
         rel="next"
@@ -1143,12 +1118,13 @@ div.my-img{text-align:center;margin-top:20px}
     ga("send", "pageview");
   </script>
 </footer>
-      
-      <a id="anchorID" href="https://www.hektorprofe.net/" target="_blank"></a>
-    </div>
-  <script type='text/javascript' src="/assets/javascripts/application.a26c1c21.js"></script>
-  <script src="/assets/javascripts/tingle.min.js"></script>
-  <script type='text/javascript'>
+        
+        <a id="anchorID" href="https://www.hektorprofe.net/" target="_blank"></a>
+      </div>
+      <script type='text/javascript'
+              src="https://hektorprofe.github.io/docs/assets/javascripts/application.a26c1c21.js"></script>
+      <script src="https://hektorprofe.github.io/docs/assets/javascripts/tingle.min.js"></script>
+      <script type='text/javascript'>
     var modalButtonOnly = new tingle.modal({
         closeMethods: [],
         footer: true,
@@ -1160,13 +1136,13 @@ div.my-img{text-align:center;margin-top:20px}
     modalButtonOnly.setContent(`
     <div style="display:grid;grid-template-columns:32% 32% 32%;grid-column-gap: 1.33%;" id="supermodal">
       <div class="course">
-        <a href="https://www.hektorprofe.net/cupon/python" target="_blank"><img src="/cdn/assets/python.png" style="width:100%;justify-self:center;align-self:center;"/></a>
+        <a href="https://www.hektorprofe.net/cupon/python" target="_blank"><img src="assets/python.png" style="width:100%;justify-self:center;align-self:center;" /></a>
       </div>
       <div class="course">
-        <a href="https://www.hektorprofe.net/cupon/django" target="_blank"><img src="/cdn/assets/django.png" style="width:100%;justify-self:center;align-self:center;"/></a>
+        <a href="https://www.hektorprofe.net/cupon/django" target="_blank"><img src="assets/django.png" style="width:100%;justify-self:center;align-self:center;" /></a>
       </div>
       <div class="course">
-        <a href="https://www.hektorprofe.net/cupon/pyside" target="_blank"><img src="/cdn/assets/pyside.png" style="width:100%;justify-self:center;align-self:center;"/></a>
+        <a href="https://www.hektorprofe.net/cupon/pyside" target="_blank"><img src="assets/pyside.png" style="width:100%;justify-self:center;align-self:center;" /></a>
       </div>
     </div>`);
 
@@ -1181,6 +1157,6 @@ div.my-img{text-align:center;margin-top:20px}
     function doNav(){ document.getElementById("main__list").innerHTML = '<li class="md-nav__item"><a class="md-nav__link" href="/cursos/">Cursos</a></li><li class="md-nav__item"><a class="md-nav__link" href="/blog/">Blog</a></li>';}
     for (i = 0; i < mdMenuItems.length; i++) {  var item = mdMenuItems[i]; var htmlstring = item.innerHTML; htmlstring = (htmlstring.trim) ? htmlstring.trim() : htmlstring.replace(/^\s+/,''); if (htmlstring == 'Servidor de encuentro') { item.parentNode.removeChild(item);continue; }  if (htmlstring == 'Política de Cookies') { item.parentNode.removeChild(item);continue; } if (htmlstring == 'Buscador') { item.parentNode.removeChild(item); continue; } }
     try { var topPos = document.querySelector('#md__active_link').offsetTop; document.querySelector('#md__sidebar__scroll').scrollTop = topPos - 60; } catch (err) {}
-  </script>
-  </body>
-</html>
+      </script>
+    </body>
+  </html>

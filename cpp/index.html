@@ -5,17 +5,13 @@
     
     
     
-
-    
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
         <meta name="description" content="Recopilación de apuntes sobre el lenguaje C++, clásico y moderno.">
       
-      
-        <link rel="canonical" href="https://hektorprofe.github.io/docs.hektorprofe.net/cpp/index.html">
-      
+      <link rel="canonical" href="https://hektorprofe.github.io/docs/cpp/">
       
         <meta name="author" content="Héctor Costa Guzman">
       
@@ -26,18 +22,21 @@
         <title>Apuntes lenguaje C++ | Hektor Profe</title>
       
     
-    <link rel="stylesheet" href="../assets/stylesheets/application.2.css">
+    <link rel="stylesheet"
+          href="../assets/stylesheets/application.2.css">
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
     
-    <link rel="stylesheet" href="/assets/stylesheets/tingle.min.css">
-<style>
-@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
+    <link rel="stylesheet"
+          href="https://hektorprofe.github.io/docs/assets/stylesheets/tingle.min.css">
+    <style>
+@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
 [data-md-color-primary="grey"] .md-header { background-color: #191A1D }
 [data-md-color-primary="grey"] .md-tabs { background-color: #222831 }
 .md-footer-nav { background-color: #222831; }
@@ -98,90 +97,79 @@ div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 1999.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 246px - 60px);margin-right:-1px;}}
 @media (max-width: 1599.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 222px - 60px)}}
 
-</style>
+    </style>
   </head>
   
     
     
-    <body dir="ltr" data-md-color-primary="grey" data-md-color-accent="grey">
-  
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    <body dir="ltr"
+          data-md-color-primary="grey"
+          data-md-color-accent="grey">
     
-      <a href="#apuntes-lenguaje-c" tabindex="1" class="md-skip">
-        Saltar a contenido
-      </a>
-    
-    
-      <header
-  class="md-header"
-  data-md-component="header"
-  style="position: inherit !important"
->
+      <input class="md-toggle"
+             data-md-toggle="drawer"
+             type="checkbox"
+             id="__drawer"
+             autocomplete="off">
+      <input class="md-toggle"
+             data-md-toggle="search"
+             type="checkbox"
+             id="__search"
+             autocomplete="off">
+      <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+      
+        <a href="#apuntes-lenguaje-c"
+           tabindex="1"
+           class="md-skip">Saltar a contenido</a>
+      
+      
+        <header class="md-header"
+        data-md-component="header"
+        style="position: inherit !important">
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a
-          href="/"
-          title="Hektor Profe"
-          class="md-header-nav__button md-logo"
-          style="font-size: 0px"
-        >
-          <img
-            src="/assets/images/logo.png"
-            width="200px"
-            height="35px"
-            style="margin-top: -5px"
-            alt="Hektor Profe"
-            title="Hektor Profe"
-          />
+        <a href="/"
+           title="Hektor Profe"
+           class="md-header-nav__button md-logo"
+           style="font-size: 0px">
+          <img src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+               width="200px"
+               height="35px"
+               style="margin-top: -5px"
+               alt="Hektor Profe"
+               title="Hektor Profe" />
         </a>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
-        <label
-          class="md-icon md-icon--menu md-header-nav__button"
-          for="__drawer"
-        ></label>
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
-        <div
-          class="md-flex__ellipsis md-header-nav__title"
-          data-md-component="title"
-          style="text-align: right"
-        >
+        <div class="md-flex__ellipsis md-header-nav__title"
+             data-md-component="title"
+             style="text-align: right">
           <!-- https://fontawesome.com/v4.7.0/ -->
-          <a 
-            class="nav__btn" 
-            href="https://www.hektorprofe.net/" 
-            style="margin-left:0em;" 
-            title="Cursos de Hektor Profe">
-            Cursos
+          <a class="nav__btn"
+             href="https://www.hektorprofe.net/"
+             style="margin-left:0em"
+             title="Cursos de Hektor Profe">Cursos</a>
+          <a class="nav__btn"
+             href="https://docs.hektorprofe.net/"
+             style="margin-left:1.4em"
+             title="Documentos de Hektor Profe">Documentos</a>
+          <a class="nav__btn"
+             href="https://www.hektorprofe.net/portafolio/"
+             style="margin-left:1.4em"
+             title="Portafolio de Hektor Profe">Portafolio</a>
+          <a href="/">
+            <img class="nav__logo"
+                 src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+                 width="200px"
+                 height="35px"
+                 style="margin: 6px auto 0"
+                 alt="Hektor Profe"
+                 title="Hektor Profe" />
           </a>
-          <a 
-            class="nav__btn" 
-            href="https://docs.hektorprofe.net/" 
-            style="margin-left:1.4em;" 
-            title="Documentos de Hektor Profe">
-            Documentos
-          </a>
-          <a 
-            class="nav__btn" 
-            href="https://www.hektorprofe.net/portafolio/" 
-            style="margin-left:1.4em;" 
-            title="Portafolio de Hektor Profe">
-            Portafolio
-          </a>
-          <a href="/"
-            ><img
-              class="nav__logo"
-              src="/assets/images/logo.png"
-              width="200px"
-              height="35px"
-              style="margin: 6px auto 0"
-              alt="Hektor Profe"
-              title="Hektor Profe"
-          /></a>
         </div>
         <style>
           .md-sidebar[data-md-state="lock"] {
@@ -230,13 +218,13 @@ div.my-img{text-align:center;margin-top:20px}
     </div>
   </nav>
 </header>
-    
-    <div class="md-container" style="padding-top: 0px !important;">
       
+      <div class="md-container" style="padding-top: 0px !important;">
         
-      
-      
+          
         
+        
+          
 
   
 
@@ -273,15 +261,16 @@ div.my-img{text-align:center;margin-top:20px}
       </ul>
     </div>
 </nav>
-      
-      <main class="md-main">
-        <div class="md-main__inner md-grid" data-md-component="container" style="padding-top: 8px !important;">
-          
+        
+        <main class="md-main">
+          <div class="md-main__inner md-grid"
+               data-md-component="container"
+               style="padding-top: 8px !important">
             
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
-                <div class="md-sidebar__scrollwrap" id="md__sidebar__scroll">
-                  <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
+              
+                <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                  <div class="md-sidebar__scrollwrap" id="md__sidebar__scroll">
+                    <div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title" for="__drawer" style="padding:0 !important;max-height:5.5rem;"></label>
   
   <ul class="md-nav__list" id="main__list" data-md-scrollfix>
@@ -333,7 +322,7 @@ div.my-img{text-align:center;margin-top:20px}
       
     
     
-    <a href="index.html" title="Índice del archivo" class="md-nav__link md-nav__link--active" id="md__active_link">
+    <a href="./" title="Índice del archivo" class="md-nav__link md-nav__link--active" id="md__active_link">
       Índice del archivo
     </a>
     
@@ -346,7 +335,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="01-entorno-desarrollo/index.html" title="Entorno de desarrollo" class="md-nav__link">
+    <a href="01-entorno-desarrollo/" title="Entorno de desarrollo" class="md-nav__link">
       Entorno de desarrollo
     </a>
   </li>
@@ -358,7 +347,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="02-primeros-pasos/index.html" title="Primeros pasos" class="md-nav__link">
+    <a href="02-primeros-pasos/" title="Primeros pasos" class="md-nav__link">
       Primeros pasos
     </a>
   </li>
@@ -370,7 +359,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="03-tipos-de-datos/index.html" title="Tipos de datos" class="md-nav__link">
+    <a href="03-tipos-de-datos/" title="Tipos de datos" class="md-nav__link">
       Tipos de datos
     </a>
   </li>
@@ -382,7 +371,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="04-modificadores/index.html" title="Modificadores" class="md-nav__link">
+    <a href="04-modificadores/" title="Modificadores" class="md-nav__link">
       Modificadores
     </a>
   </li>
@@ -394,7 +383,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="05-control-de-flujo/index.html" title="Control del flujo" class="md-nav__link">
+    <a href="05-control-de-flujo/" title="Control del flujo" class="md-nav__link">
       Control del flujo
     </a>
   </li>
@@ -406,7 +395,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="06-arreglos-clasicos/index.html" title="Arreglos clásicos" class="md-nav__link">
+    <a href="06-arreglos-clasicos/" title="Arreglos clásicos" class="md-nav__link">
       Arreglos clásicos
     </a>
   </li>
@@ -437,7 +426,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="07-punteros-memoria/01-primeros-pasos.html" title="Primeros pasos" class="md-nav__link">
+    <a href="07-punteros-memoria/01-primeros-pasos/" title="Primeros pasos" class="md-nav__link">
       Primeros pasos
     </a>
   </li>
@@ -449,7 +438,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="07-punteros-memoria/02-null-nullptr-void0.html" title="Nullptr, void* y ((void*)0)" class="md-nav__link">
+    <a href="07-punteros-memoria/02-null-nullptr-void0/" title="Nullptr, void* y ((void*)0)" class="md-nav__link">
       Nullptr, void* y ((void*)0)
     </a>
   </li>
@@ -461,7 +450,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="07-punteros-memoria/03-punteros-constantes.html" title="Punteros constantes" class="md-nav__link">
+    <a href="07-punteros-memoria/03-punteros-constantes/" title="Punteros constantes" class="md-nav__link">
       Punteros constantes
     </a>
   </li>
@@ -473,7 +462,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="07-punteros-memoria/04-arreglos-punteros.html" title="Arreglos y punteros" class="md-nav__link">
+    <a href="07-punteros-memoria/04-arreglos-punteros/" title="Arreglos y punteros" class="md-nav__link">
       Arreglos y punteros
     </a>
   </li>
@@ -485,7 +474,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="07-punteros-memoria/05-aritmetica-punteros.html" title="Aritmética de punteros" class="md-nav__link">
+    <a href="07-punteros-memoria/05-aritmetica-punteros/" title="Aritmética de punteros" class="md-nav__link">
       Aritmética de punteros
     </a>
   </li>
@@ -497,7 +486,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="07-punteros-memoria/06-tipos-memoria-stack-heap.html" title="Gestión de la memoria" class="md-nav__link">
+    <a href="07-punteros-memoria/06-tipos-memoria-stack-heap/" title="Gestión de la memoria" class="md-nav__link">
       Gestión de la memoria
     </a>
   </li>
@@ -509,7 +498,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="07-punteros-memoria/07-memoria-dinamica.html" title="Memoria dinámica (Heap)" class="md-nav__link">
+    <a href="07-punteros-memoria/07-memoria-dinamica/" title="Memoria dinámica (Heap)" class="md-nav__link">
       Memoria dinámica (Heap)
     </a>
   </li>
@@ -521,7 +510,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="07-punteros-memoria/08-referencias-arreglos.html" title="Referencias y arreglos" class="md-nav__link">
+    <a href="07-punteros-memoria/08-referencias-arreglos/" title="Referencias y arreglos" class="md-nav__link">
       Referencias y arreglos
     </a>
   </li>
@@ -538,7 +527,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="08-cadenas-caracteres/index.html" title="Cadenas de caracteres" class="md-nav__link">
+    <a href="08-cadenas-caracteres/" title="Cadenas de caracteres" class="md-nav__link">
       Cadenas de caracteres
     </a>
   </li>
@@ -569,7 +558,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="09-funciones/01-primeros-pasos.html" title="Primeros pasos" class="md-nav__link">
+    <a href="09-funciones/01-primeros-pasos/" title="Primeros pasos" class="md-nav__link">
       Primeros pasos
     </a>
   </li>
@@ -581,7 +570,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="09-funciones/02-sobrecarga-funciones.html" title="Sobrecarga de funciones" class="md-nav__link">
+    <a href="09-funciones/02-sobrecarga-funciones/" title="Sobrecarga de funciones" class="md-nav__link">
       Sobrecarga de funciones
     </a>
   </li>
@@ -593,7 +582,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="09-funciones/03-funciones-lambda.html" title="Funciones Lambda" class="md-nav__link">
+    <a href="09-funciones/03-funciones-lambda/" title="Funciones Lambda" class="md-nav__link">
       Funciones Lambda
     </a>
   </li>
@@ -605,7 +594,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="09-funciones/04-funciones-inline.html" title="Funciones Inline" class="md-nav__link">
+    <a href="09-funciones/04-funciones-inline/" title="Funciones Inline" class="md-nav__link">
       Funciones Inline
     </a>
   </li>
@@ -622,7 +611,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="10-function-templates/index.html" title="Function Templates" class="md-nav__link">
+    <a href="10-function-templates/" title="Function Templates" class="md-nav__link">
       Function Templates
     </a>
   </li>
@@ -653,7 +642,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="11-clases/01-primeros-pasos.html" title="Primeros pasos" class="md-nav__link">
+    <a href="11-clases/01-primeros-pasos/" title="Primeros pasos" class="md-nav__link">
       Primeros pasos
     </a>
   </li>
@@ -665,7 +654,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="11-clases/02-funciones-clases-amigas.html" title="Funciones y clases amigas" class="md-nav__link">
+    <a href="11-clases/02-funciones-clases-amigas/" title="Funciones y clases amigas" class="md-nav__link">
       Funciones y clases amigas
     </a>
   </li>
@@ -677,7 +666,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="11-clases/03-miembros-estaticos.html" title="Miembros estáticos" class="md-nav__link">
+    <a href="11-clases/03-miembros-estaticos/" title="Miembros estáticos" class="md-nav__link">
       Miembros estáticos
     </a>
   </li>
@@ -689,7 +678,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="11-clases/04-sobrecarga-operadores.html" title="Sobrecarga de operadores" class="md-nav__link">
+    <a href="11-clases/04-sobrecarga-operadores/" title="Sobrecarga de operadores" class="md-nav__link">
       Sobrecarga de operadores
     </a>
   </li>
@@ -701,7 +690,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="11-clases/05-herencia-clases.html" title="Herencia de clases" class="md-nav__link">
+    <a href="11-clases/05-herencia-clases/" title="Herencia de clases" class="md-nav__link">
       Herencia de clases
     </a>
   </li>
@@ -713,7 +702,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="11-clases/06-polimorfismo-clases.html" title="Polimorfismo de clases" class="md-nav__link">
+    <a href="11-clases/06-polimorfismo-clases/" title="Polimorfismo de clases" class="md-nav__link">
       Polimorfismo de clases
     </a>
   </li>
@@ -725,7 +714,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="11-clases/07-class-templates.html" title="Class templates" class="md-nav__link">
+    <a href="11-clases/07-class-templates/" title="Class templates" class="md-nav__link">
       Class templates
     </a>
   </li>
@@ -737,7 +726,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="11-clases/08-semanticas-movimiento.html" title="Semánticas de movimiento" class="md-nav__link">
+    <a href="11-clases/08-semanticas-movimiento/" title="Semánticas de movimiento" class="md-nav__link">
       Semánticas de movimiento
     </a>
   </li>
@@ -754,7 +743,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="12-punteros-inteligentes/index.html" title="Punteros inteligentes" class="md-nav__link">
+    <a href="12-punteros-inteligentes/" title="Punteros inteligentes" class="md-nav__link">
       Punteros inteligentes
     </a>
   </li>
@@ -766,7 +755,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="13-manejo-excepciones/index.html" title="Manejo de excepciones" class="md-nav__link">
+    <a href="13-manejo-excepciones/" title="Manejo de excepciones" class="md-nav__link">
       Manejo de excepciones
     </a>
   </li>
@@ -778,7 +767,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="14-biblioteca-stl/index.html" title="Biblioteca STL" class="md-nav__link">
+    <a href="14-biblioteca-stl/" title="Biblioteca STL" class="md-nav__link">
       Biblioteca STL
     </a>
   </li>
@@ -809,7 +798,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="30-miscelanea/01-operadores-bit-a-bit.html" title="Operadores bit a bit" class="md-nav__link">
+    <a href="30-miscelanea/01-operadores-bit-a-bit/" title="Operadores bit a bit" class="md-nav__link">
       Operadores bit a bit
     </a>
   </li>
@@ -821,7 +810,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="30-miscelanea/02-enumeradores-alias.html" title="Enumeradores y alias" class="md-nav__link">
+    <a href="30-miscelanea/02-enumeradores-alias/" title="Enumeradores y alias" class="md-nav__link">
       Enumeradores y alias
     </a>
   </li>
@@ -833,7 +822,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="30-miscelanea/03-numeros-aleatorios.html" title="Números aleatorios" class="md-nav__link">
+    <a href="30-miscelanea/03-numeros-aleatorios/" title="Números aleatorios" class="md-nav__link">
       Números aleatorios
     </a>
   </li>
@@ -845,7 +834,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="30-miscelanea/04-tiempo-ejecucion.html" title="Tiempo de ejecución" class="md-nav__link">
+    <a href="30-miscelanea/04-tiempo-ejecucion/" title="Tiempo de ejecución" class="md-nav__link">
       Tiempo de ejecución
     </a>
   </li>
@@ -857,7 +846,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="30-miscelanea/05-espacio-nombres.html" title="Espacio de nombres" class="md-nav__link">
+    <a href="30-miscelanea/05-espacio-nombres/" title="Espacio de nombres" class="md-nav__link">
       Espacio de nombres
     </a>
   </li>
@@ -891,71 +880,57 @@ div.my-img{text-align:center;margin-top:20px}
     
   </ul>
 </nav>
-
+</div>
                   </div>
                 </div>
-              </div>
-            
-
-            
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                
-                  
-                    <div class="course-offer" style="margin-bottom:25px;padding:0px 10px;">
-                      <a href="https://www.hektorprofe.net/cupon/python" target="_blank">
-                        <img src="/cdn/assets/python.png" style="width:100%;justify-self:center;align-self:center;"/>
-                      </a>
-                    </div>
-                  
-                
-
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
+              
+              
+                <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                  <div class="md-sidebar__scrollwrap">
+                    <div class="md-sidebar__inner">
 <nav class="md-nav md-nav--secondary">
   
   
     
   
   
-</nav>
+</nav></div>
                   </div>
                 </div>
-              </div>
-            
-          
-          <div class="md-content">
-            <article class="md-content__inner md-typeset">
               
+            
+            <div class="md-content">
+              <article class="md-content__inner md-typeset">
                 
-                
-                <h1 id="apuntes-lenguaje-c">Apuntes lenguaje C++<a class="headerlink" href="#apuntes-lenguaje-c" title="Permanent link">&para;</a></h1>
+                  
+                  
+                  <h1 id="apuntes-lenguaje-c">Apuntes lenguaje C++<a class="headerlink" href="#apuntes-lenguaje-c" title="Permanent link">&para;</a></h1>
 <p>Estos apuntes están publicados bajo una <a href="https://creativecommons.org/licenses/by/4.0/deed.es">Licencia CC BY 4.0</a>. Si decides utilizarlos o compartirlos asegúrate de cumplir las normas de atribución.</p>
 <p>Podéis navegar por ellos utilizando el menú lateral.</p>
 <hr />
 <p><small class="edited"><i>Última edición: 07 de Mayo de 2022</i></small></p>
-                
+                  
+                    
                   
                 
-              
-              
                 
+                  
 
 
-              
-            </article>
+                
+              </article>
+            </div>
           </div>
-        </div>
-      </main>
-      
+        </main>
         
+          
 <footer class="md-footer">
   
   <div class="md-footer-nav">
     <nav class="md-footer-nav__inner md-grid">
       
       <a
-        href="../qt-pyside/desarrollo-proyectos/index.html"
+        href="../qt-pyside/desarrollo-proyectos/"
         title="Desarrollo de proyectos"
         class="md-flex md-footer-nav__link md-footer-nav__link--prev"
         rel="prev"
@@ -974,7 +949,7 @@ div.my-img{text-align:center;margin-top:20px}
       </a>
        
       <a
-        href="01-entorno-desarrollo/index.html"
+        href="01-entorno-desarrollo/"
         title="Entorno de desarrollo"
         class="md-flex md-footer-nav__link md-footer-nav__link--next"
         rel="next"
@@ -1046,12 +1021,13 @@ div.my-img{text-align:center;margin-top:20px}
     ga("send", "pageview");
   </script>
 </footer>
-      
-      <a id="anchorID" href="https://www.hektorprofe.net/" target="_blank"></a>
-    </div>
-  <script type='text/javascript' src="/assets/javascripts/application.a26c1c21.js"></script>
-  <script src="/assets/javascripts/tingle.min.js"></script>
-  <script type='text/javascript'>
+        
+        <a id="anchorID" href="https://www.hektorprofe.net/" target="_blank"></a>
+      </div>
+      <script type='text/javascript'
+              src="https://hektorprofe.github.io/docs/assets/javascripts/application.a26c1c21.js"></script>
+      <script src="https://hektorprofe.github.io/docs/assets/javascripts/tingle.min.js"></script>
+      <script type='text/javascript'>
     var modalButtonOnly = new tingle.modal({
         closeMethods: [],
         footer: true,
@@ -1063,13 +1039,13 @@ div.my-img{text-align:center;margin-top:20px}
     modalButtonOnly.setContent(`
     <div style="display:grid;grid-template-columns:32% 32% 32%;grid-column-gap: 1.33%;" id="supermodal">
       <div class="course">
-        <a href="https://www.hektorprofe.net/cupon/python" target="_blank"><img src="/cdn/assets/python.png" style="width:100%;justify-self:center;align-self:center;"/></a>
+        <a href="https://www.hektorprofe.net/cupon/python" target="_blank"><img src="assets/python.png" style="width:100%;justify-self:center;align-self:center;" /></a>
       </div>
       <div class="course">
-        <a href="https://www.hektorprofe.net/cupon/django" target="_blank"><img src="/cdn/assets/django.png" style="width:100%;justify-self:center;align-self:center;"/></a>
+        <a href="https://www.hektorprofe.net/cupon/django" target="_blank"><img src="assets/django.png" style="width:100%;justify-self:center;align-self:center;" /></a>
       </div>
       <div class="course">
-        <a href="https://www.hektorprofe.net/cupon/pyside" target="_blank"><img src="/cdn/assets/pyside.png" style="width:100%;justify-self:center;align-self:center;"/></a>
+        <a href="https://www.hektorprofe.net/cupon/pyside" target="_blank"><img src="assets/pyside.png" style="width:100%;justify-self:center;align-self:center;" /></a>
       </div>
     </div>`);
 
@@ -1084,6 +1060,6 @@ div.my-img{text-align:center;margin-top:20px}
     function doNav(){ document.getElementById("main__list").innerHTML = '<li class="md-nav__item"><a class="md-nav__link" href="/cursos/">Cursos</a></li><li class="md-nav__item"><a class="md-nav__link" href="/blog/">Blog</a></li>';}
     for (i = 0; i < mdMenuItems.length; i++) {  var item = mdMenuItems[i]; var htmlstring = item.innerHTML; htmlstring = (htmlstring.trim) ? htmlstring.trim() : htmlstring.replace(/^\s+/,''); if (htmlstring == 'Servidor de encuentro') { item.parentNode.removeChild(item);continue; }  if (htmlstring == 'Política de Cookies') { item.parentNode.removeChild(item);continue; } if (htmlstring == 'Buscador') { item.parentNode.removeChild(item); continue; } }
     try { var topPos = document.querySelector('#md__active_link').offsetTop; document.querySelector('#md__sidebar__scroll').scrollTop = topPos - 60; } catch (err) {}
-  </script>
-  </body>
-</html>
+      </script>
+    </body>
+  </html>

@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+  <head>
+    
+    
+    
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Aprende lo básico de Node, un entorno de ejecución JavaScript para el backend usado en la creación de servicios de networking.">
+      
+      <link rel="canonical" href="https://hektorprofe.github.io/docs/academia/javascript/nodejs/">
+      
+        <meta name="author" content="Héctor Costa Guzman">
+      
+      <link rel="shortcut icon" href="/favicon.ico">
+    
+    
+      
+        <title>Introducción a Node.js | JavaScript | Academia | Hektor Profe</title>
+      
+    
+    <link rel="stylesheet"
+          href="../../../assets/stylesheets/application.2.css">
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    
+    <link rel="stylesheet"
+          href="https://hektorprofe.github.io/docs/assets/stylesheets/tingle.min.css">
+    <style>
+@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
+[data-md-color-primary="grey"] .md-header { background-color: #191A1D }
+[data-md-color-primary="grey"] .md-tabs { background-color: #222831 }
+.md-footer-nav { background-color: #222831; }
+.md-footer-meta { background-color: #191A1D }
+html [data-md-color-primary="grey"] .md-nav--primary .md-nav__title--site { background-color: #191A1D; }
+.mini{ display: none; } .maxi{ display: block; }
+.embed-container { position: relative; padding-bottom: 56.25%;height: 0; overflow: hidden; max-width: 100%; height: auto; margin-bottom: 0; } 
+.embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.md-nav__link:focus, .md-nav__link:hover { color: #018dc5; }
+.headerlink{ color: #018dc5 !important; }
+.md-footer-links__highlight a{ color: #777 !important; }
+.md-footer-links__highlight a:hover{ color: #ddd !important; }
+.visible{ display: inherit !important; }
+/*.md-tabs { display: none !important; }*/
+.nav__btn, .nav__logo{ transition: 0.3s; }
+.nav__btn:hover{ color: #aaa; }
+.nav__logo:hover{ opacity:.7; }
+.nav__logo {max-width: 225px !important; }
+img:not([src]){visibility:hidden;}
+img.click{opacity: 0.96;box-shadow:rgb(79, 82, 92) -4px 4px}
+img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
+.button { background-color: #36bf2d; border: none; color: white !important; padding: 20px 0px; text-align: center; text-decoration: none; display: block; font-size: 97%; width: 100%; font-weight: bold;}
+.button:hover { background-color: #4CAF50; color: white; }
+.animated.delay-1dot5s {animation-delay: 1.5s;}
+.md-icon--search { display:inline-block!important}
+a.headerlink{ display: none !important; }
+small.edited { display: block; text-align: right; }
+#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
+#cookie-bar-prompt-logo{ display: none !important; }
+div.my-img{text-align:center;margin-top:20px}
+@media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
+@media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
+@media (min-width: 1999.9px){ .md-header-nav__button.md-logo img { height: 40px !important; width: 240px; } }
+/* Rectificación footer en paginas pequeñas de altura */
+@media (max-width: 1599.8px){ .md-container {height: calc(100% - 48px)} }
+@media (min-width: 1599.9px){ .md-container {height: calc(100% - 53px)} }
+@media (min-width: 1999.9px){ .md-container {height: calc(100% - 58px)} }
+@media only screen and (max-width: 959.9px) { .nav__logo { display: block !important; }} 
+@media only screen and (min-width: 960px) and (max-width: 76.1875em) { .nav__logo { display: block !important; }} 
+@media only screen and (min-width: 76.1875em) { .nav__logo { display: none !important; } } 
+@media only screen and (max-width: 76.1875em) { .md-sidebar--primary { left: -26.2rem;; width: 26.2rem; }  [data-md-toggle="drawer"]:checked ~ .md-container .md-sidebar--primary { -webkit-transform: translateX(26.2rem); transform: translateX(26.2rem); } [dir="rtl"] [data-md-toggle="drawer"]:checked ~ .md-container .md-sidebar--primary { -webkit-transform: translateX(-26.2rem); transform: translateX(-26.2rem); } }
+@media (min-width: 1219.9px){ #home__btn { display: none !important; } #cursos__btn{ color: white !important; } [data-md-color-primary="grey"] .md-nav__link--active{ color: rgba(0, 0, 0, 0.87); text-decoration: underline !important; } }
+@media (min-width: 467.9px){ #discord__btn{ display: inline-block !important; } }
+@media only screen and (min-width: 60em){ .md-search__input { background-color: rgb(53, 54, 56); } .md-search__input:hover { background-color: rgb(84, 87, 93); color: white; }}
+@media (max-width: 1219.9px){ .md-header-nav__title{ padding: 0 1rem; } .nav__btn {display:none;} }
+@media (max-width: 875.9px){ #cookie-bar-button{ margin-top: 20px !important; }}
+@media (max-width: 719.9px){ #cookie-bar { padding: 3.25rem 1.25rem; }}
+@media (max-width: 512.9px){ #cookie-bar { padding: 2rem 1.25rem; }}
+
+.tingle-modal { font-size:18px !important;}
+.tingle-modal-box{ width: 80%; max-width: 1100px; }
+.tingle-btn--danger{ background: darkorange !important; }
+.tingle-modal-box__content { padding: 3rem 2rem 3rem 3rem;}
+@media (max-width: 540px){ .tingle-modal-box{ width: auto; } }
+@media (max-width: 849px){ #supermodal{ grid-template-columns:100% !important; }}
+
+.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 275px - 60px)}
+@media (max-width: 1999.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 246px - 60px);margin-right:-1px;}}
+@media (max-width: 1599.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 222px - 60px)}}
+
+    </style>
+  </head>
+  
+    
+    
+    <body dir="ltr"
+          data-md-color-primary="grey"
+          data-md-color-accent="grey">
+    
+      <input class="md-toggle"
+             data-md-toggle="drawer"
+             type="checkbox"
+             id="__drawer"
+             autocomplete="off">
+      <input class="md-toggle"
+             data-md-toggle="search"
+             type="checkbox"
+             id="__search"
+             autocomplete="off">
+      <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+      
+        <a href="#introduccion-a-nodejs"
+           tabindex="1"
+           class="md-skip">Saltar a contenido</a>
+      
+      
+        <header class="md-header"
+        data-md-component="header"
+        style="position: inherit !important">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="/"
+           title="Hektor Profe"
+           class="md-header-nav__button md-logo"
+           style="font-size: 0px">
+          <img src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+               width="200px"
+               height="35px"
+               style="margin-top: -5px"
+               alt="Hektor Profe"
+               title="Hektor Profe" />
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title"
+             data-md-component="title"
+             style="text-align: right">
+          <!-- https://fontawesome.com/v4.7.0/ -->
+          <a class="nav__btn"
+             href="https://www.hektorprofe.net/"
+             style="margin-left:0em"
+             title="Cursos de Hektor Profe">Cursos</a>
+          <a class="nav__btn"
+             href="https://docs.hektorprofe.net/"
+             style="margin-left:1.4em"
+             title="Documentos de Hektor Profe">Documentos</a>
+          <a class="nav__btn"
+             href="https://www.hektorprofe.net/portafolio/"
+             style="margin-left:1.4em"
+             title="Portafolio de Hektor Profe">Portafolio</a>
+          <a href="/">
+            <img class="nav__logo"
+                 src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+                 width="200px"
+                 height="35px"
+                 style="margin: 6px auto 0"
+                 alt="Hektor Profe"
+                 title="Hektor Profe" />
+          </a>
+        </div>
+        <style>
+          .md-sidebar[data-md-state="lock"] {
+            top: 0rem !important;
+          }
+          .md-tabs {
+            display: none !important;
+          }
+          .hde {
+            display: inline-block;
+          }
+          .admonition.note > .superfences-tabs > label:hover,
+          .headerlink {
+            color: #018dc5 !important;
+          }
+          .admonition.info {
+            font-size: 100%;
+          }
+          .admonition.info label {
+            font-size: 91%;
+          }
+          .admonition.note > .admonition-title {
+            display: none;
+          }
+          .image {
+            text-align: center;
+            margin-top: 25px;
+          }
+          .contenedor_youtube {
+            position: relative !important;
+            padding-bottom: 56.25% !important; /*panorámico*/
+            padding-top: 0px !important;
+            height: 0 !important;
+            margin-top: -20px;
+            margin-bottom: 25px;
+          }
+          .contenedor_youtube iframe {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+          }
+        </style>
+      </div>
+    </div>
+  </nav>
+</header>
+      
+      <div class="md-container" style="padding-top: 0px !important;">
+        
+          
+        
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list" id="top__tabs">
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+      </ul>
+    </div>
+</nav>
+        
+        <main class="md-main">
+          <div class="md-main__inner md-grid"
+               data-md-component="container"
+               style="padding-top: 8px !important">
+            
+              
+                <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                  <div class="md-sidebar__scrollwrap" id="md__sidebar__scroll">
+                    <div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title" for="__drawer" style="padding:0 !important;max-height:5.5rem;"></label>
+  
+  <ul class="md-nav__list" id="main__list" data-md-scrollfix>
+    
+      
+    
+        <!-- comprobación extra -->
+         
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Academia de programación
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Academia de programación
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../" title="Índice del archivo" class="md-nav__link">
+      Índice del archivo
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../python/introduccion/" title="Python para principiantes" class="md-nav__link">
+      Python para principiantes
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../python/poo-para-interfaces-graficas/" title="Python para interfaces gráficas" class="md-nav__link">
+      Python para interfaces gráficas
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../python/proyecto-gestor-clientes/" title="Gestor de clientes con Python" class="md-nav__link">
+      Gestor de clientes con Python
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../python/tutoriales/" title="Más tutoriales sobre Python" class="md-nav__link">
+      Más tutoriales sobre Python
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../python/modulo-analitico-numpy/" title="Módulo analítico NumPy" class="md-nav__link">
+      Módulo analítico NumPy
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../python/modulo-grafico-matplotlib/" title="Módulo gráfico Matplotlib" class="md-nav__link">
+      Módulo gráfico Matplotlib
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../django/introduccion/" title="Django para principiantes" class="md-nav__link">
+      Django para principiantes
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../django/api-rest-framework/" title="Server API pelis en Django Rest" class="md-nav__link">
+      Server API pelis en Django Rest
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../django/tutoriales/" title="Más tutoriales sobre Django" class="md-nav__link">
+      Más tutoriales sobre Django
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../introduccion/" title="JavaScript para principiantes" class="md-nav__link">
+      JavaScript para principiantes
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../conversor-divisas/" title="Conversor de divisas en JS" class="md-nav__link">
+      Conversor de divisas en JS
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../biblioteca-p5js/" title="Introducción a P5.js" class="md-nav__link">
+      Introducción a P5.js
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Introducción a Node.js
+      </label>
+    
+    <a href="./" title="Introducción a Node.js" class="md-nav__link md-nav__link--active" id="md__active_link">
+      Introducción a Node.js
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-nodejs" title="¿Qué es Node.js?" class="md-nav__link toc__link">
+    ¿Qué es Node.js?
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#para-que-sirve" title="¿Para qué sirve?" class="md-nav__link toc__link">
+    ¿Para qué sirve?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arquitectura-cliente-servidor" title="Arquitectura cliente-servidor" class="md-nav__link toc__link">
+    Arquitectura cliente-servidor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ventajas-que-ofrece" title="Ventajas que ofrece" class="md-nav__link toc__link">
+    Ventajas que ofrece
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompt-de-node" title="Prompt de Node" class="md-nav__link toc__link">
+    Prompt de Node
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codigo-no-bloqueante" title="Código no bloqueante" class="md-nav__link toc__link">
+    Código no bloqueante
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-objeto-global" title="El objeto global" class="md-nav__link toc__link">
+    El objeto global
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#los-modulos" title="Los módulos" class="md-nav__link toc__link">
+    Los módulos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creando-un-modulo" title="Creando un módulo" class="md-nav__link toc__link">
+    Creando un módulo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#utilizando-un-modulo" title="Utilizando un módulo" class="md-nav__link toc__link">
+    Utilizando un módulo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exportacion-simplificada" title="Exportación simplificada" class="md-nav__link toc__link">
+    Exportación simplificada
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#importacion-selectiva" title="Importación selectiva" class="md-nav__link toc__link">
+    Importación selectiva
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentacion" title="Documentación" class="md-nav__link toc__link">
+    Documentación
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-path" title="Módulo Path" class="md-nav__link toc__link">
+    Módulo Path
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-os" title="Módulo OS" class="md-nav__link toc__link">
+    Módulo OS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-file-system" title="Módulo File System" class="md-nav__link toc__link">
+    Módulo File System
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-http" title="Módulo Http" class="md-nav__link toc__link">
+    Módulo Http
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peticiones-y-respuestas" title="Peticiones y respuestas" class="md-nav__link toc__link">
+    Peticiones y respuestas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simulando-una-api" title="Simulando una API" class="md-nav__link toc__link">
+    Simulando una API
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../chat-heroku/" title="Chat online con Node.js" class="md-nav__link">
+      Chat online con Node.js
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../cliente-nuxt/" title="Cliente API pelis en Nuxt.js" class="md-nav__link">
+      Cliente API pelis en Nuxt.js
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../gnu-linux/ubuntu-server-web/" title="Configurar Ubuntu Server" class="md-nav__link">
+      Configurar Ubuntu Server
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </ul>
+</nav>
+</div>
+                  </div>
+                </div>
+              
+              
+                <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                  <div class="md-sidebar__scrollwrap">
+                    <div class="md-sidebar__inner">
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-nodejs" title="¿Qué es Node.js?" class="md-nav__link toc__link">
+    ¿Qué es Node.js?
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#para-que-sirve" title="¿Para qué sirve?" class="md-nav__link toc__link">
+    ¿Para qué sirve?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arquitectura-cliente-servidor" title="Arquitectura cliente-servidor" class="md-nav__link toc__link">
+    Arquitectura cliente-servidor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ventajas-que-ofrece" title="Ventajas que ofrece" class="md-nav__link toc__link">
+    Ventajas que ofrece
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompt-de-node" title="Prompt de Node" class="md-nav__link toc__link">
+    Prompt de Node
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codigo-no-bloqueante" title="Código no bloqueante" class="md-nav__link toc__link">
+    Código no bloqueante
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-objeto-global" title="El objeto global" class="md-nav__link toc__link">
+    El objeto global
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#los-modulos" title="Los módulos" class="md-nav__link toc__link">
+    Los módulos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creando-un-modulo" title="Creando un módulo" class="md-nav__link toc__link">
+    Creando un módulo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#utilizando-un-modulo" title="Utilizando un módulo" class="md-nav__link toc__link">
+    Utilizando un módulo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exportacion-simplificada" title="Exportación simplificada" class="md-nav__link toc__link">
+    Exportación simplificada
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#importacion-selectiva" title="Importación selectiva" class="md-nav__link toc__link">
+    Importación selectiva
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentacion" title="Documentación" class="md-nav__link toc__link">
+    Documentación
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-path" title="Módulo Path" class="md-nav__link toc__link">
+    Módulo Path
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-os" title="Módulo OS" class="md-nav__link toc__link">
+    Módulo OS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-file-system" title="Módulo File System" class="md-nav__link toc__link">
+    Módulo File System
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-http" title="Módulo Http" class="md-nav__link toc__link">
+    Módulo Http
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peticiones-y-respuestas" title="Peticiones y respuestas" class="md-nav__link toc__link">
+    Peticiones y respuestas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simulando-una-api" title="Simulando una API" class="md-nav__link toc__link">
+    Simulando una API
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav></div>
+                  </div>
+                </div>
+              
+            
+            <div class="md-content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+                  
+                  <h1 id="introduccion-a-nodejs">Introducción a Node.js<a class="headerlink" href="#introduccion-a-nodejs" title="Permanent link">&para;</a></h1>
+<div class="contenedor_youtube">
+  <iframe id="odysee-iframe" width="560" height="315" src="https://odysee.com/$/embed/-Curso--Nodejs-para-principiantes/b880f0334e2261dc792615d1bb172eb7680d2242?r=3icueB68NV3UEFHyqs2QRfzRUeABmHDU" allowfullscreen></iframe>
+</div>
+
+<p>Si ya cuentas con conocimientos básicos de JavaScript para el frontend, no pierdes nada por dar una oportunidad a Node.js y alcanzar el siguiente nivel.</p>
+<p>A lo largo de este curso aprenderás para qué sirve, cómo implementar tus propios módulos de desarrollo y a utilizar algunos de los que vienen incluidos en su núcleo para desarrollar servicios de networking, como por ejemplo un servidor HTTP o una API de pruebas.</p>
+<h2 id="que-es-nodejs">¿Qué es Node.js?<a class="headerlink" href="#que-es-nodejs" title="Permanent link">&para;</a></h2>
+<p>No pierdas la oportunidad de aprender esta tecnología que te puede ofrecer tanto a cambio de muy poco.</p>
+<h3 id="para-que-sirve">¿Para qué sirve?<a class="headerlink" href="#para-que-sirve" title="Permanent link">&para;</a></h3>
+<p>Node se utiliza sobretodo para crear servicios backend conocidos como APIs, en español Interfaces de Programación de Aplicaciones. Estos son los servicios que potencian las aplicaciones conocidas como clientes. </p>
+<h3 id="arquitectura-cliente-servidor">Arquitectura cliente-servidor<a class="headerlink" href="#arquitectura-cliente-servidor" title="Permanent link">&para;</a></h3>
+<p>Normalmente las aplicaciones cliente ofrecen bonitas interfaces que permiten a los usuarios interactuar con ellas cómodamente, por ejemplo una web funcionando en un navegador o una app móvil en tu smartphone son clientes.</p>
+<p>Sin embargo lo que se ve es sólo la punta del iceberg, porque los clientes por sí mismo no tienen mucha utilidad, necesitan apoyarse de servicios centralizados conocidos como servidores, ellos son los encargados de almacenar información en la nube, registros en las bases de datos, enviar correos, notificaciones y mucho más, todo sin que el usuario se percate de lo que ocurre tras bambalinas.</p>
+<h3 id="ventajas-que-ofrece">Ventajas que ofrece<a class="headerlink" href="#ventajas-que-ofrece" title="Permanent link">&para;</a></h3>
+<p>Pues Node es ideal para crear este tipo de servicios porque es relativamente fácil de aprender comparado con otros frameworks como ASP.NET, Rails o Django que tienen una curva de aprendizaje mayor. </p>
+<p>Con Node en muy poco tiempo puedes tener prototipos funcionales que además ofrecen mucho rendimiento gracias a que se ejecutan sobre el motor v8 de Google. Esto sumado a que permite crear servicios escalables, son algunas de las razones por las que grandes compañías como Paypal, Netflix o Spotify lo utilizan. </p>
+<p>Además como Node utiliza JavaScript, si eres un programador web frontend y quieres transicionar o empezar con el backend, puedes hacerlo sin aprender un nuevo lenguaje.</p>
+<p>Pero sobre todo lo demás, lo que destaca de Node es el enorme ecosistema que ha conseguido en muy pocos años. Si el de Python es ya inmenso con más de 175.000 paquetes, el de Node es absurdamente inmenso pues supera a día de hoy los 800.000 paquetes según las estimaciones de la web <a href="http://www.modulecounts.com/">modulecounts.com</a>.</p>
+<p>Sin duda Node es una herramienta que vale la pena conocer, puede ofrecerte mucho a cambio de muy poco.</p>
+<h2 id="prompt-de-node">Prompt de Node<a class="headerlink" href="#prompt-de-node" title="Permanent link">&para;</a></h2>
+<p>Como ya vimos Node es un programa que se instala en el sistema y podemos ejecutarlo desde la terminal escribiendo:</p>
+<div class="highlight"><pre><span></span><code>node
+</code></pre></div>
+<p>Al ejecutarlo accederemos al Prompt de Node, una línea de comandos que nos permite ejecutar diferentes instrucciones en lenguaje JavaScript. </p>
+<p>Podemos realizar algunas operaciones al vuelo:</p>
+<div class="highlight"><pre><span></span><code><span class="mf">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">2</span>
+<span class="mf">5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">5</span>
+</code></pre></div>
+<p>Declarar variables y operarlas:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span>
+<span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5</span>
+
+<span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span>
+</code></pre></div>
+<p>Y no sólo podemos usar tipos primitivos, también podemos declarar un arreglo y manipularlo:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">palabras</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;casa&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ordenador&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;coche&#39;</span><span class="p">]</span>
+
+<span class="nx">palabras</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
+<span class="nx">palabras</span><span class="p">[</span><span class="mf">1</span><span class="p">]</span>
+</code></pre></div>
+<p>Incluso una función:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">saludar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Hola mundo&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="nx">saludar</span><span class="p">()</span>
+</code></pre></div>
+<p>Algo que vale la pena comentar, es que si bien cuando ejecutamos JavaScript en el navegador contamos con una ventana para interactuar con ella y conseguir información de la ejecución, aquí no es el caso:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">window</span>
+</code></pre></div>
+<p>Lo que tenemos en Node es un proceso, al que podemos hacer referencia con:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">process</span>
+</code></pre></div>
+<p>Este proceso es un objeto con mucha informacion sobra la ejecución y lo podemos consultar desde nuestros programas:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">process</span><span class="p">.</span><span class="nx">pid</span>
+<span class="nx">process</span><span class="p">.</span><span class="nx">env</span>
+</code></pre></div>
+<p>De hecho también contiene un método para salir del intérprete:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
+</code></pre></div>
+<p>Pero aunque el Prompt esté bien para hacer algunas pruebas no sirve para crear programas, eso se hace en scripts y hablaremos de ellos en la siguiente lección.</p>
+<h2 id="codigo-no-bloqueante">Código no bloqueante<a class="headerlink" href="#codigo-no-bloqueante" title="Permanent link">&para;</a></h2>
+<p>Antes de comenzar os recomiendo instalar una extensión llamada Code Runner en Visual Studio Code, con ella podéis ejecutar los scripts de Node con una simple combinación de teclas Control+Alt+N. Si decidís utilizarla activad la opción <strong>RunInTerminal</strong> para utilizar la terminal del sistema en lugar de la que viene en Visual Studio Code, eso os ahorrará problemas.</p>
+<p>Dicho esto, en el curso para principiantes ya vimos que es posible pasar como argumento un fichero o script con código JavaScript a Node para ejecutar las instrucciones que contiene, hágámoslo de nuevo:</p>
+<p><code>curso-node/hola.js</code>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hola mundo&#39;</span><span class="p">);</span>
+</code></pre></div></p>
+<p>Para ejecutarlo podemos hacer desde la propia terminal de VSC o con Control+Alt+N si habéis instalado Code Runner:</p>
+<div class="highlight"><pre><span></span><code>node<span class="w"> </span>hola.js
+</code></pre></div>
+<p>Como cabría esperar se muestra nuestro saludo por pantalla.</p>
+<p>Ahora bien, ¿y si quisiéramos que se muestre el saludo 2 segundos después de  ejecutar el programa?</p>
+<p>JavaScript cuenta con una instrucción llamada <strong>setTimeout</strong> que permite establecer una especie de temporizador. Recibe dos argumentos, el primero es una función callback con el código a ejecutar y el otro son los milisegundos que debe esperar antes de ejecutar el código:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hola mundo&#39;</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">2000</span><span class="p">);</span>
+</code></pre></div>
+<p>Si lo ejecutamos veremos que efectivamente se espera 2 segundos y entonces muestra el mensaje.</p>
+<p>En otros lenguajes esto sería equivalente a poner a "dormir" el script durante unos segundos, por ejemplo en Python se hace así:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># dormir 2 segundos</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hola mundo&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>Ahora bien, mirad lo que ocurre si escribimos otra instrucción después del <strong>timeout</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hola&#39;</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">2000</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;mundo&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>Lo que ocurre es que el código fuera del <strong>timeout</strong> se llama inmediatamente, no se bloquea la ejecución.</p>
+<p>En cambio la misma lógica en Python sí es bloqueante, es como si se parase completamente el programa durante esos 2 segundos:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># dormir 2 segundos</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hola&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;mundo&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>El bloqueo de código ocurre en la mayoría de lenguajes pero a veces se puede solventar usando hilos de ejecución paralelos, algo que normalmente requiere de conocimientos avanzados.</p>
+<p>Pero eso no es así en Node, ya que al estar desarrollado sobre un motor pensado para el navegador, donde es sumamente importante garantizar el funcionamiento estable y continuo sin bloquear el programa, esta capacidad de ejecutar múltiples tareas a la vez viene de fábrica, y eso que Node se ejecuta en un solo hilo, ¿curioso verdad?</p>
+<p>Sea como sea es gracias a esta capacidad de gestionar múltiples tareas que Node es tan bueno manejando servicios con la arquitectura cliente-servidor y de hecho su propio nombre "Node" indica su principal objetivo, servir de "nodo" para unir diferentes procesos en uno.</p>
+<p>En la próxima sección veremos como funcionan los módulos, la forma de organizar el código que utiliza Node.</p>
+<h2 id="el-objeto-global">El objeto global<a class="headerlink" href="#el-objeto-global" title="Permanent link">&para;</a></h2>
+<p>Cuando llamamos una instrucción como <strong>console.log()</strong>:</p>
+<p><code>app.js</code>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Hola mundo&quot;</span><span class="p">)</span>
+</code></pre></div></p>
+<p>Estamos haciendo referencia a un objeto llamado <strong>console</strong> y a su método <strong>log()</strong>. Lo interesante es que este objeto es accesible desde cualquier lugar, es lo que se conoce como un objeto global porque forma parte del ámbito global de un programa en Node.</p>
+<p>Hay muchos objetos y funciones que forman parte del ámbito global, como por ejemplo las funciones para controlar temporizadores:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">setTimeout</span><span class="p">()</span>
+<span class="nx">clearTimeout</span><span class="p">()</span>
+
+<span class="nx">setInterval</span><span class="p">()</span>
+<span class="nx">clearInterval</span><span class="p">()</span>
+</code></pre></div>
+<p>Un par muy interesante son también <strong>__filename</strong> y <strong>__dirname</strong> que almacenan el nombre del fichero y su localización:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">__filename</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">);</span>
+</code></pre></div>
+<p>Pero la verdad es que estos dos objetos no son exactamente globales sino que se mapean en los ficheros al ejecutarse, como si fueran una configuración extra. </p>
+<p>Sea como sea cuando utilizamos JavaScript en el navegador, estos objetos forman parte de la ventana, el objeto <strong>window</strong>, pero en Node no tenemos ventana, sino que como vimos tenemos un proceso:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">process</span><span class="p">);</span>
+</code></pre></div>
+<p>Este proceso almacena la información de la ejecución, pero en él no encontraremos las definiciones globales. Éstas se encuentran específicamente en otro objeto, el objeto <strong>global</strong>, cuyo contenido se añade al script al ejecutarse:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">global</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Hola mundo&quot;</span><span class="p">)</span>
+<span class="nb">global</span><span class="p">.</span><span class="nx">setTimeout</span><span class="p">()</span>
+</code></pre></div>
+<p>Usando esta lógica podríamos hacer un programa estructurando el código en diferentes ficheros y enviar datos entre ellos añadiéndolos al objeto global:</p>
+<p><code>datos.js</code>
+<div class="highlight"><pre><span></span><code><span class="nb">global</span><span class="p">.</span><span class="nx">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Hola mundo&quot;</span><span class="p">;</span>
+</code></pre></div></p>
+<p>Para cargar el fichero <strong>datos.js</strong> en nuestra <strong>app.js</strong>, utilizaríamos la función <strong>require</strong> que también forma parte del ámbito global:</p>
+<p><code>app.js</code>
+<div class="highlight"><pre><span></span><code><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./datos&#39;</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">global</span><span class="p">.</span><span class="nx">test</span><span class="p">);</span>
+</code></pre></div></p>
+<p>Esto implica varias cosas, pero la más importante es que los datos globales se pueden volver a modificar, no están protegidos o mejor dicho, encapsulados:</p>
+<p><code>app.js</code>
+<div class="highlight"><pre><span></span><code><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./datos&#39;</span><span class="p">);</span>
+
+<span class="nb">global</span><span class="p">.</span><span class="nx">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Adiós mundo&quot;</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">global</span><span class="p">.</span><span class="nx">test</span><span class="p">);</span>
+</code></pre></div></p>
+<p>La verdad es que usar variables globales es una mala práctica, no sólo en Node sino en todos los lenguajes. Hacen el código más difícil de entender, depurar, testear, mantener y reutilizar. Os dejaré <a href="https://softwareengineering.stackexchange.com/questions/148108/">un hilo en Stack Overflow</a> donde podéis profundizar al respecto.</p>
+<p>Así que todo esto nos lleva a la cuestión obvia, si no debemos utilizar <strong>global</strong> para comunicar las definiciones entre ficheros, ¿cómo lo hacemos? Pues con los módulos.</p>
+<h2 id="los-modulos">Los módulos<a class="headerlink" href="#los-modulos" title="Permanent link">&para;</a></h2>
+<p>La modularización es un concepto que se basa en crear pequeños bloques donde definimos nuestras variables y funciones.</p>
+<p>Node se basa en este concepto para organizar su código, de manera que cada fichero se considera un módulo en sí mismo cuyo ámbito es el propio fichero. Es decir, las definiciones que contiene están aisladas de los demás ficheros.</p>
+<p>Mirad:</p>
+<p><code>app.js</code>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">module</span><span class="p">);</span>
+</code></pre></div></p>
+<p>Este objeto <strong>module</strong> tiene varias propiedades, como su identificador único, padres, hijos, el path, etc. Pero no os preocupéis por estos campos, la clave que debéis entender aquí es que el objeto <strong>module</strong> existe dentro del fichero y contiene la información para que éste pueda interactuar con otros módulos.</p>
+<p>Así pues el contenido de cada módulo es privado por defecto y la única forma de acceder desde otro módulo es exportándolo para hacerlo público.</p>
+<p>Veremos cómo hacerlo en las siguientes lecciones.</p>
+<h2 id="creando-un-modulo">Creando un módulo<a class="headerlink" href="#creando-un-modulo" title="Permanent link">&para;</a></h2>
+<p>Vamos a crear un módulo muy simple con una función que salude a un nombre que le enviamos:</p>
+<p><code>messages.js</code>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">hello</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Hola &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">name</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>Por defecto la función <strong>hello</strong> es privada, tenemos que exportarla para que sea accesible desde otros módulos. Lo haremos así:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">hello</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hello</span><span class="p">;</span>
+</code></pre></div>
+<p>Con esto tenemos el módulo listo.</p>
+<h2 id="utilizando-un-modulo">Utilizando un módulo<a class="headerlink" href="#utilizando-un-modulo" title="Permanent link">&para;</a></h2>
+<p>Para utilizar la función <strong>hello</strong> en nuestra aplicación tenemos que cargar el módulo con el <strong>require</strong> y almacenarlo en algún lugar, normalmente una constante con el mismo nombre y desde ella hacer uso de sus funciones:</p>
+<p><code>app.js</code>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">messages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./messages&#39;</span><span class="p">);</span>
+
+<span class="nx">messages</span><span class="p">.</span><span class="nx">hello</span><span class="p">(</span><span class="s2">&quot;Héctor&quot;</span><span class="p">)</span>
+</code></pre></div></p>
+<p>Sin embargo normalmente un módulo contendrá más de una definición:</p>
+<p><code>messages.js</code>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">hello</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Hola &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">name</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">bye</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Adiós &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">name</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">12345</span><span class="p">;</span>
+</code></pre></div></p>
+<p>Para poder utilizarlas también tendremos que añadirlas al export:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">hello</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hello</span><span class="p">;</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">bye</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">bye</span><span class="p">;</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">number</span><span class="p">;</span>
+</code></pre></div>
+<p>Y las utilizaremos de la misma forma:</p>
+<p><code>app.js</code>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">messages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./messages&#39;</span><span class="p">);</span>
+
+<span class="nx">messages</span><span class="p">.</span><span class="nx">hello</span><span class="p">(</span><span class="s2">&quot;Héctor&quot;</span><span class="p">);</span>
+<span class="nx">messages</span><span class="p">.</span><span class="nx">bye</span><span class="p">(</span><span class="s2">&quot;Héctor&quot;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">messages</span><span class="p">.</span><span class="nx">number</span><span class="p">);</span>
+</code></pre></div></p>
+<p>¿Entonces tenemos que exportar todas las definiciones por separado? Así es, pero podemos hacer un truco para ahorrarnos un poco de código.</p>
+<h2 id="exportacion-simplificada">Exportación simplificada<a class="headerlink" href="#exportacion-simplificada" title="Permanent link">&para;</a></h2>
+<p>Si queremos exportar todo el contenido de una vez podemos definir el contenido del módulo como un objeto:</p>
+<p><code>messages.js</code>
+<div class="highlight"><pre><span></span><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">number</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">hello</span><span class="o">:</span><span class="w"> </span><span class="nx">hello</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">bye</span><span class="o">:</span><span class="w"> </span><span class="nx">bye</span><span class="p">,</span>
+<span class="p">};</span>
+</code></pre></div></p>
+<p>Es lo mismo pero por lo menos hemos reducido algo de código.</p>
+<h2 id="importacion-selectiva">Importación selectiva<a class="headerlink" href="#importacion-selectiva" title="Permanent link">&para;</a></h2>
+<p>Por último algo que debéis de haber notado es que al cargar un módulo estamos importando todas sus definiciones, esto no es muy interesante, sobretodo si tenemos módulos con muchas definiciones. Para solventarlo podemos requerir explícitamente las definciones que queremos.</p>
+<p>La sintaxis para hacerlo sería la siguiente:</p>
+<p><code>app.js</code>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">hello</span><span class="p">,</span><span class="w"> </span><span class="nx">bye</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./lib&#39;</span><span class="p">);</span>
+</code></pre></div></p>
+<p>La contraparte es que ya no tenemos un objeto con el módulo completo, sino cada definición lista para usarla:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">hello</span><span class="p">,</span><span class="w"> </span><span class="nx">bye</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./messages&#39;</span><span class="p">);</span>
+
+<span class="nx">hello</span><span class="p">(</span><span class="s2">&quot;Héctor&quot;</span><span class="p">)</span>
+<span class="nx">bye</span><span class="p">(</span><span class="s2">&quot;Héctor&quot;</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">number</span><span class="p">)</span>
+</code></pre></div>
+<p>Creo que con esto ya sabéis suficiente sobre cómo crear vuestros propios módulos. En la siguiente sección veremos algunos de los que vienen integrados en el núcleo de Node.</p>
+<h2 id="documentacion">Documentación<a class="headerlink" href="#documentacion" title="Permanent link">&para;</a></h2>
+<p>Como vengo comentando Node incluye un montón de módulos en su núcleo que podemos utilizar para desarrollar diferentes tipos de aplicaciones.</p>
+<p>Si vamos al apartado de documentación de la <a href="https://nodejs.org/">web oficial</a> para la versión LTS encontraremos una lista con todos los objetos y módulos que podemos utilizar en Node.</p>
+<p>Como veréis hay muchísimos y este es un curso básico así que trataremos sólo algunos de los más interesantes.</p>
+<h2 id="modulo-path">Módulo Path<a class="headerlink" href="#modulo-path" title="Permanent link">&para;</a></h2>
+<p>Vamos a empezar este breve repaso con el módulo <strong>path</strong>, es básico porque provee varias utilidades para trabajar con ficheros y directorios.</p>
+<p>Tal como indican en la documentación podemos cargarlo de esta forma con el require:</p>
+<p><code>app_path.js</code>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">);</span>
+</code></pre></div></p>
+<p>Fijaros que al cargar un módulo interno no especificamos con un punto y una barra la localización específica sino directamente con su nombre.</p>
+<p>Así que tenemos un objeto constante con el módulo <strong>path</strong> que incluye un puñado de métodos interesantes para trabajar con rutas.</p>
+<p>Uno de esos métodos extremadamente útil es <strong>parse()</strong>. </p>
+<p>¿Recordáis que teníamos un objeto global llamado __filename?</p>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">__filename</span><span class="p">);</span>
+</code></pre></div>
+<p>Este contiene la ruta exacta del fichero dentro del disco duro.</p>
+<p>Pues lo que hace <strong>parse()</strong> es extraer toda la información de una ruta y la almacena en un objeto bien organizado, fijaros:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">pathObj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">__filename</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">pathObj</span><span class="p">);</span>
+</code></pre></div>
+<p>Hemos transformado una simple cadena con una ruta al script actual en un objeto que contiene la raíz, el directorio contenedor, el nombre base del fichero, su extensión y su nombre simple, todo de forma automática. Consultar una de las propiedades sería tan fácil como referirnos a ella:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">pathObj</span><span class="p">.</span><span class="nx">base</span><span class="p">);</span>
+</code></pre></div>
+<p>Os animo a estudiar los ejemplos de la documentación, ya que es la mejor forma de aprender y descubrir las utilidades disponibles.</p>
+<h2 id="modulo-os">Módulo OS<a class="headerlink" href="#modulo-os" title="Permanent link">&para;</a></h2>
+<p>Otro módulo muy interesante es <strong>OS</strong> centrado en proporcionar información del sistema operativo:</p>
+<p><code>app_os.js</code>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">os</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;os&#39;</span><span class="p">);</span>
+</code></pre></div></p>
+<p>Algunos métodos que podemos consultar:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Nombre de la máquina -&gt; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">hostname</span><span class="p">());</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Arquitectura -&gt; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">arch</span><span class="p">());</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Plataforma -&gt; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">platform</span><span class="p">());</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Memoria total (Bytes) -&gt; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">totalmem</span><span class="p">());</span>
+</code></pre></div>
+<p>Así conseguiremos la cantidad de bytes, si queremos saber los mega bytes deberíamos dividir dos veces entre 1024:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">megaBytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">totalmem</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Memoria total (Mega Bytes) -&gt; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">megaBytes</span><span class="p">);</span>
+</code></pre></div>
+<p>Para redondear el decimal podemos usar el método <strong>toFixed</strong> de los números indicando cero decimales:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">megabytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">totalmem</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span><span class="w">  </span><span class="c1">// Number no requerido</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Memoria total (Mega Bytes) -&gt; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">megaBytes</span><span class="p">);</span>
+</code></pre></div>
+<p>Por cierto, desde ECMA Script 6 se pueden usar los template strings para introducir variables en las cadenas, es mucho más fácil que ir escribiendo comillas dobles todo el rato:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Memoria total (Mega Bytes) -&gt; </span><span class="si">${</span><span class="nx">megaBytes</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</code></pre></div>
+<p>Vosotros mismos experimentad con los demás métodos del módulo para aprender más.</p>
+<h2 id="modulo-file-system">Módulo File System<a class="headerlink" href="#modulo-file-system" title="Permanent link">&para;</a></h2>
+<p>En esta lección os voy a enseñar cómo trabajar con ficheros en Node utilizando el módulo File System.</p>
+<p>En este módulo tenemos un montón de métodos para manejar ficheros y directorios, vamos a ver los más esenciales para empezar a trabajar, luego cada uno puede profundizar más por su cuenta dependiendo de lo que desee hacer.</p>
+<p><code>app_fs.js</code>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">fs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">);</span>
+</code></pre></div></p>
+<p>Lo primero que notaréis es que los métodos de este módulo se presentan en dos formas, la normal y otra con un Sync al final. Eso es porque están disponibles de forma no bloqueante por defecto (asíncrona) o bloqueante (síncrona). </p>
+<p>¿Recordáis la función <strong>setTimeout</strong>? Pues con los métodos asíncronos pasa lo mismo, se ejecutan sin bloquear el resto del programa.</p>
+<p>Esto es importante porque normalmente estas tareas suelen ser bloqueantes debido a que, aunque sepas cuándo abres el fichero, no sabes cuanto se tardará  en leer o escribir su contenido, depende de varios factores, como la rapidez de la memoria o el propio tamaño del fichero. Al hacerlo de forma asíncrona no tenemos este problema y todo se sigue ejecutando independientemente de cuanto tarden en manipularse los ficheros, es un escenario ideal.</p>
+<p>¿Y entonces porqué se incluyen las formas síncronas? Pues por conveniencia, porque quizá en algunos escenarios sí es conveniente detener la ejecución, pero creedme que no es lo normal.</p>
+<p>Aún así vamos a realizar un ejemplo de código que lea el contenido de un directorio de ambas formas para que entendáis la diferencia con la práctica.</p>
+<p>Para leer el contenido de un directorio, es decir los ficheros que hay dentro se utiliza el método <strong>readdir</strong>, éste devuelve un arreglo con los ficheros.</p>
+<p>Hagámoslo primero de forma bloqueante:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fs</span><span class="p">.</span><span class="nx">readdirSync</span><span class="p">(</span><span class="s1">&#39;./&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">files</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Fin del progama&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Como véis obtenemos el arreglo con los ficheros. Si quiséramos recorrerlos uno a uno podríamos usar el método <strong>forEach</strong> de las colecciones tal como expliqué en el curso del conversor de divisas:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fs</span><span class="p">.</span><span class="nx">readdirSync</span><span class="p">(</span><span class="s1">&#39;./&#39;</span><span class="p">);</span>
+<span class="nx">files</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">file</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Ahora vamos a la versión asíncrona, su peculiaridad es que su resultado se devuelve a una función callback de retorno que se llamará cuando se haya ejecutado el método, exactamente igual como funciona el <strong>setTimeout</strong> pero sin el temporizador, con la diferencia que la función requiere un parámetro para almacenar posibles errores si no se lee bien el directorio, y otro con los ficheros encontrados:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// const files = fs.readdirSync(&#39;./&#39;);</span>
+
+<span class="nx">fs</span><span class="p">.</span><span class="nx">readdir</span><span class="p">(</span><span class="s1">&#39;./&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">files</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">files</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">file</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Si lo ejecutamos devolverá el mismo resultado, pero lo interesante es que veremos el mensaje <strong>Fin del programa</strong> antes de que se lea el contenido del directorio. </p>
+<p>Una mejor implementación de este código haciendo uso del error sería uso de una condición <strong>if</strong> (sí en español) para comprobar si <strong>err</strong> tiene algún valor y en caso contrario, si todo está correcto, usar la contra condición <strong>else</strong> (sino en español) y mostrar los ficheros:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">fs</span><span class="p">.</span><span class="nx">readdir</span><span class="p">(</span><span class="s1">&#39;./&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">files</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Ocurrió un error&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">files</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">file</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Si provocamos manualmente un fallo, por ejemplo poniendo un directorio que no existe, veremos como nos muestra el fallo que ha ocurrido.</p>
+<p>Sea como sea con este ejemplo seguro que os queda un poco más clara la diferencia entre código bloqueante y código no bloqueante que hemos venido comentando desde el principio del curso.</p>
+<p>Os recomiendo echar un vistazo a los métodos <strong>readFile</strong> y <strong>writeFile</strong> para leer y escribir ficheros, mirad los ejemplos de la documentación y no tengáis miedo de experimentar.</p>
+<h2 id="modulo-http">Módulo Http<a class="headerlink" href="#modulo-http" title="Permanent link">&para;</a></h2>
+<p>Los módulos que hemos visto hasta ahora son utilidades, pero el último que vamos a ver es más especial porque está pensado para crear servicios web backend.</p>
+<p>Este módulo es cosa fina y para entender bien como funciona os sugiero estudiar antes el protocolo Http en relación a la gestión de las peticiones, los mensajes, las cabeceras y sus respuestas. Os voy a dejar <a href="https://es.wikipedia.org/wiki/Protocolo_de_transferencia_de_hipertexto#Descripci%C3%B3n">un enlace a la wikipedia</a> donde se explica en detalle su funcionamiento.</p>
+<p>Pero a lo que vamos, ¿qué es un servicio? Un servicio es un programa que está en marcha permentemente esperando para responder diferentes peticiones de clientes a través de la red informática, también se les llama servidores.</p>
+<p><code>app_http.js</code>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
+</code></pre></div></p>
+<p>El módulo <strong>http</strong> incluye un método para crear un servidor http que escucha las peticiones que le llegan desde un puerto de la red del sistema y responde con contenido HTML a esas peticiones, es decir, responde con páginas web que el cliente puede visualizar.</p>
+<p>Para crear nuestro servidor lo haremos así:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">();</span>
+</code></pre></div>
+<p>En este punto tenemos todo lo necesario en el objeto server, pero no lo tenemos escuchando todavía las peticiones, debemos indicarle que empiece a escuchar peticiones en algún puerto libre:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">();</span>
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3000</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Servidor HTTP iniciado&quot;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Escuchando el puerto 3000&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Ya tenemos nuestro servidor web escuchando el puerto 3000, pero sólo escucha, todavía no procesa ninguna petición. </p>
+<p>Vamos a hacer algo interesante, programar un evento. Los eventos son momentos que ocurren en los servicios y podemos detectarlos. Un momento importante es por ejemplo cuando se conecta un cliente al servidor. </p>
+<p>Para definir un evento se utiliza el método <strong>on</strong> y el nombre del evento que queremos programar, en nuestro caso será <strong>connection</strong>. </p>
+<p>Como en todas las tareas asíncronas, ésta llamará una función callback cuando se conecte un cliente, y en este caso le pasará un objeto de tipo <strong>socket</strong> que contiene información sobre la conexión activa entre el servidor y el cliente conectado:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">();</span>
+
+<span class="nx">server</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;connection&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">socket</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Nueva conexión en el puerto 3000&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">socket</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3000</span><span class="p">);</span>
+</code></pre></div>
+<p>Si ponemos en marcha el servidor y hacemos una petición al puerto 3000, veremos que nos muestra por pantalla que ha ocurrido el evento. Una forma rápida de hacerlo es desde el navegador, o también podemos usar la herramienta <strong>curl</strong> que tienen todos los sitemas operativos, dividiendo cómodamente la terminal en dos:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span><span class="m">127</span>.0.0.1:3000
+</code></pre></div>
+<p>Sin embargo la gracia de un servicio web no es manejar los sockets, eso es algo que se hace en una capa inferior. El objetivo de los servicios web es manejar las peticiones a diferentes URL del servidor y responderles contenido HTML.</p>
+<p>Veremos cómo hacerlo en la siguiente lección.</p>
+<h2 id="peticiones-y-respuestas">Peticiones y respuestas<a class="headerlink" href="#peticiones-y-respuestas" title="Permanent link">&para;</a></h2>
+<p>Para poder manejar peticiones y respuestas, el método <strong>createServer</strong> permite definir una función callback que nos provee de dos objetos, uno llamado <strong>request</strong> (petición) y otro <strong>response</strong> (respuesta):</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">){</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Petición a la URL -&gt; </span><span class="si">${</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3000</span><span class="p">);</span>
+</code></pre></div>
+<p>Fijaros qué ocurre si hacemos ahora diferentes peticiones con curl:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span><span class="m">127</span>.0.0.1:3000
+curl<span class="w"> </span><span class="m">127</span>.0.0.1:3000/blog
+</code></pre></div>
+<p>El registro del servidor nos muestra esas peticiones:</p>
+<div class="highlight"><pre><span></span><code>Servidor HTTP iniciado
+Escuchando el puerto 3000
+Petición a la URL /
+Petición a la URL /blog
+</code></pre></div>
+<p>¿Véis por donde van los tiros?</p>
+<p>El problema es que estas conexiones siguen en marcha, por eso curl sigue funcionando hasta que finaliza automáticamente al cabo de un rato. Para cerrar la respuesta debemos llamar a su método <strong>end</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">){</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Petición a la URL -&gt; </span><span class="si">${</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">request</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3000</span><span class="p">);</span>
+</code></pre></div>
+<p>En este punto sólo nos falta hacer una cosa, identificar las diferentes URL que el cliente necesita y responderle un contenido diferente en cada caso.</p>
+<p>Usando el condicional <strong>if</strong> podemos hacerlo de forma bastante rudimentaria:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">){</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Petición a la URL -&gt; </span><span class="si">${</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">response</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&quot;Bienvenido a Hektor Profe&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;/blog&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">response</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&quot;Este es el blog de Hektor Profe&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span>
+<span class="w">    </span><span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Si volvemos a hacer las peticiones, esta vez nos devolverá los contenidos que nosotros estamos escribiendo en las respuestas:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span><span class="m">127</span>.0.0.1:3000
+curl<span class="w"> </span><span class="m">127</span>.0.0.1:3000/blog
+</code></pre></div>
+<p>Si hacemos estas peticiones a través del navegador también funcionarán:</p>
+<div class="highlight"><pre><span></span><code>http://127.0.0.1:3000
+http://127.0.0.1:3000/blog
+</code></pre></div>
+<p>Y si en lugar de enviar texto plano enviamos etiquetas HTML tendremos hecha toda la magia:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">request</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Petición a la URL -&gt; </span><span class="si">${</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">response</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="sb">`</span>
+<span class="sb">            &lt;h1&gt;Hektor Profe&lt;/h1&gt;</span>
+<span class="sb">            &lt;h3&gt;Portada&lt;/h3&gt;</span>
+<span class="sb">            &lt;p&gt;Esto es un texto de mi portada...&lt;p&gt;</span>
+<span class="sb">            &lt;a href=&quot;/blog&quot;&gt;Blog&lt;/a&gt;</span>
+<span class="sb">        `</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;/blog&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">response</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="sb">`</span>
+<span class="sb">            &lt;h1&gt;Hektor Profe&lt;/h1&gt;</span>
+<span class="sb">            &lt;h3&gt;Blog&lt;/h3&gt;</span>
+<span class="sb">            &lt;p&gt;Esto es una noticia de mi blog...&lt;p&gt;</span>
+<span class="sb">            &lt;a href=&quot;/&quot;&gt;Portada&lt;/a&gt;</span>
+<span class="sb">        `</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>¿Qué os parece? Evidentemente no es la mejor forma de programar un web backend, pero hemos conseguido un prototipo funcional de una web en muy poco tiempo.</p>
+<h2 id="simulando-una-api">Simulando una API<a class="headerlink" href="#simulando-una-api" title="Permanent link">&para;</a></h2>
+<p>No me quiero despedir sin antes hacer un interesante y revelador experimento. ¿Recordáis el proyecto del conversor de divisas? Pues os quiero mostrar como crear un prototipo muy muy sencillo simulando una API JSON de ese estilo usando lo que sabemos del módulo http.</p>
+<p>Podríamos usar la siguiente base:</p>
+<p><code>app_api.js</code>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">request</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;/api/divisas&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Supondremos que tenemos los datos de un fichero o base de datos</span>
+<span class="w">        </span><span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3000</span><span class="p">);</span>
+</code></pre></div></p>
+<p>Vamos a tomar los valores tal cual los devuelve la API de <em>exchangeratesapi</em> <a href="https://api.exchangeratesapi.io/latest?symbols=USD,GBP,JPY">en este enlace</a>.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;base&quot;</span><span class="o">:</span><span class="s2">&quot;EUR&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;rates&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;USD&quot;</span><span class="o">:</span><span class="mf">1.1199</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;JPY&quot;</span><span class="o">:</span><span class="mf">124.13</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;GBP&quot;</span><span class="o">:</span><span class="mf">0.8547</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+</code></pre></div>
+<p>Ahora vamos a escribir el resultado en la respuesta, pero necesitamos transformar este objeto a formato JSON que es el que utilizan las API. </p>
+<p>Pues hacer esto es tan fácil como usar la librería JSON de JavaScript y su método stringify de la siguiente forma:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;base&quot;</span><span class="o">:</span><span class="s2">&quot;EUR&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;rates&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;USD&quot;</span><span class="o">:</span><span class="mf">1.1199</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;JPY&quot;</span><span class="o">:</span><span class="mf">124.13</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;GBP&quot;</span><span class="o">:</span><span class="mf">0.8547</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">response</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">values</span><span class="p">));</span>
+<span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+</code></pre></div>
+<p>Con esto podemos hacer la petición a la url <strong>/api/divisas</strong> y tendremos exactamente lo mismo que nos ofrece la API real:</p>
+<div class="highlight"><pre><span></span><code>http://127.0.0.1:3000/api/divisas
+</code></pre></div>
+<p>Claro, esto es sólo una simulación y los datos están escritos en crudo. La gracia del programa sería tener una base de datos actualizada y tomar la información para usarla en la API.</p>
+<hr />
+<p><small class="edited"><i>Última edición: 17 de Marzo de 2021</i></small></p>
+                  
+                    
+                  
+                
+                
+                  
+
+
+                
+              </article>
+            </div>
+          </div>
+        </main>
+        
+          
+<footer class="md-footer">
+  
+  <div class="md-footer-nav">
+    <nav class="md-footer-nav__inner md-grid">
+      
+      <a
+        href="../biblioteca-p5js/"
+        title="Introducción a P5.js"
+        class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+        rel="prev"
+      >
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+        </div>
+        <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+          <span class="md-flex__ellipsis">
+            <span class="md-footer-nav__direction">
+              Anterior
+            </span>
+            Introducción a P5.js
+          </span>
+        </div>
+      </a>
+       
+      <a
+        href="../chat-heroku/"
+        title="Chat online con Node.js"
+        class="md-flex md-footer-nav__link md-footer-nav__link--next"
+        rel="next"
+      >
+        <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+          <span class="md-flex__ellipsis">
+            <span class="md-footer-nav__direction">
+              Siguiente
+            </span>
+            Chat online con Node.js
+          </span>
+        </div>
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+        </div>
+      </a>
+      
+    </nav>
+  </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        <!--<div class="md-footer-links__highlight">
+          <a href="/comunidad/">Comunidad</a> · <a href="/politica-de-cookies/">Política de cookies</a> · <a href="/sobre-mi/">Sobre mí</a>
+        </div>-->
+        <div class="md-footer-copyright__highlight">
+          2015 - 2022 &copy; Héctor Costa Guzmán (<u
+            ><a
+              href="https://creativecommons.org/licenses/by/4.0/deed.es"
+              target="_blank"
+              rel="nofollow"
+              >Licencia CC BY 4.0</a
+            ></u
+          >)
+        </div>
+      </div>
+       
+<style>.md-footer-social__link {transition: 0.3s;}</style>
+<div class="md-footer-social" style="font-size: 2.5rem; margin-top: -6px!important; padding: 0px!important; margin-bottom: -6px; overflow: hidden!important;">
+  <a href="https://github.com/hcosta" title="Github" target="_blank" class="md-footer-social__link fa fa-github-square"></a>
+  <a href="https://www.youtube.com/c/HektorProfe" title="Youtube" target="_blank" class="md-footer-social__link fa fa-youtube-square"></a>
+  &nbsp;
+</div>
+ 
+    </div>
+  </div>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i["GoogleAnalyticsObject"] = r;
+      (i[r] =
+        i[r] ||
+        function () {
+          (i[r].q = i[r].q || []).push(arguments);
+        }),
+        (i[r].l = 1 * new Date());
+      (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m);
+    })(
+      window,
+      document,
+      "script",
+      "https://www.google-analytics.com/analytics.js",
+      "ga"
+    );
+    ga("create", "UA-124845547-1", "auto");
+    ga("send", "pageview");
+  </script>
+</footer>
+        
+        <a id="anchorID" href="https://www.hektorprofe.net/" target="_blank"></a>
+      </div>
+      <script type='text/javascript'
+              src="https://hektorprofe.github.io/docs/assets/javascripts/application.a26c1c21.js"></script>
+      <script src="https://hektorprofe.github.io/docs/assets/javascripts/tingle.min.js"></script>
+      <script type='text/javascript'>
+    var modalButtonOnly = new tingle.modal({
+        closeMethods: [],
+        footer: true,
+        stickyFooter: true
+    });
+    var btn5 = document.querySelector('.js-tingle-modal-5');
+
+    // set content
+    modalButtonOnly.setContent(`
+    <div style="display:grid;grid-template-columns:32% 32% 32%;grid-column-gap: 1.33%;" id="supermodal">
+      <div class="course">
+        <a href="https://www.hektorprofe.net/cupon/python" target="_blank"><img src="assets/python.png" style="width:100%;justify-self:center;align-self:center;" /></a>
+      </div>
+      <div class="course">
+        <a href="https://www.hektorprofe.net/cupon/django" target="_blank"><img src="assets/django.png" style="width:100%;justify-self:center;align-self:center;" /></a>
+      </div>
+      <div class="course">
+        <a href="https://www.hektorprofe.net/cupon/pyside" target="_blank"><img src="assets/pyside.png" style="width:100%;justify-self:center;align-self:center;" /></a>
+      </div>
+    </div>`);
+
+    modalButtonOnly.addFooterBtn('Cerrar', 'tingle-btn tingle-btn--default tingle-btn--pull-right', function(){
+      modalButtonOnly.close();
+    });
+
+    app.initialize({version:"1.2.3",url:{base:"../../.."}})
+    var _extends=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(t[o]=n[o])}return t},_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t};!function(t,e){"object"===("undefined"==typeof exports?"undefined":_typeof(exports))&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):t.LazyLoad=e()}(this,function(){"use strict";function t(t,e,n){var o=e._settings;!n&&i(t)||(C(o.callback_enter,t),R.indexOf(t.tagName)>-1&&(N(t,e),I(t,o.class_loading)),E(t,e),a(t),C(o.callback_set,t))}var e={elements_selector:"img",container:document,threshold:300,thresholds:null,data_src:"src",data_srcset:"srcset",data_sizes:"sizes",data_bg:"bg",class_loading:"loading",class_loaded:"loaded",class_error:"error",load_delay:0,callback_load:null,callback_error:null,callback_set:null,callback_enter:null,callback_finish:null,to_webp:!1},n=function(t){return _extends({},e,t)},o=function(t,e){return t.getAttribute("data-"+e)},r=function(t,e,n){var o="data-"+e;null!==n?t.setAttribute(o,n):t.removeAttribute(o)},a=function(t){return r(t,"was-processed","true")},i=function(t){return"true"===o(t,"was-processed")},s=function(t,e){return r(t,"ll-timeout",e)},c=function(t){return o(t,"ll-timeout")},l=function(t){return t.filter(function(t){return!i(t)})},u=function(t,e){return t.filter(function(t){return t!==e})},d=function(t,e){var n,o=new t(e);try{n=new CustomEvent("LazyLoad::Initialized",{detail:{instance:o}})}catch(t){(n=document.createEvent("CustomEvent")).initCustomEvent("LazyLoad::Initialized",!1,!1,{instance:o})}window.dispatchEvent(n)},f=function(t,e){return e?t.replace(/\.(jpe?g|png)/gi,".webp"):t},_="undefined"!=typeof window,v=_&&!("onscroll"in window)||/(gle|ing|ro)bot|crawl|spider/i.test(navigator.userAgent),g=_&&"IntersectionObserver"in window,h=_&&"classList"in document.createElement("p"),b=_&&function(){var t=document.createElement("canvas");return!(!t.getContext||!t.getContext("2d"))&&0===t.toDataURL("image/webp").indexOf("data:image/webp")}(),m=function(t,e,n,r){for(var a,i=0;a=t.children[i];i+=1)if("SOURCE"===a.tagName){var s=o(a,n);p(a,e,s,r)}},p=function(t,e,n,o){n&&t.setAttribute(e,f(n,o))},y=function(t,e){var n=b&&e.to_webp,r=o(t,e.data_src),a=o(t,e.data_bg);if(r){var i=f(r,n);t.style.backgroundImage='url("'+i+'")'}if(a){var s=f(a,n);t.style.backgroundImage=s}},w={IMG:function(t,e){var n=b&&e.to_webp,r=e.data_srcset,a=t.parentNode;a&&"PICTURE"===a.tagName&&m(a,"srcset",r,n);var i=o(t,e.data_sizes);p(t,"sizes",i);var s=o(t,r);p(t,"srcset",s,n);var c=o(t,e.data_src);p(t,"src",c,n)},IFRAME:function(t,e){var n=o(t,e.data_src);p(t,"src",n)},VIDEO:function(t,e){var n=e.data_src,r=o(t,n);m(t,"src",n),p(t,"src",r),t.load()}},E=function(t,e){var n=e._settings,o=t.tagName,r=w[o];if(r)return r(t,n),e._updateLoadingCount(1),void(e._elements=u(e._elements,t));y(t,n)},I=function(t,e){h?t.classList.add(e):t.className+=(t.className?" ":"")+e},L=function(t,e){h?t.classList.remove(e):t.className=t.className.replace(new RegExp("(^|\\s+)"+e+"(\\s+|$)")," ").replace(/^\s+/,"").replace(/\s+$/,"")},C=function(t,e){t&&t(e)},O=function(t,e,n){t.addEventListener(e,n)},k=function(t,e,n){t.removeEventListener(e,n)},x=function(t,e,n){O(t,"load",e),O(t,"loadeddata",e),O(t,"error",n)},A=function(t,e,n){k(t,"load",e),k(t,"loadeddata",e),k(t,"error",n)},z=function(t,e,n){var o=n._settings,r=e?o.class_loaded:o.class_error,a=e?o.callback_load:o.callback_error,i=t.target;L(i,o.class_loading),I(i,r),C(a,i),n._updateLoadingCount(-1)},N=function(t,e){var n=function n(r){z(r,!0,e),A(t,n,o)},o=function o(r){z(r,!1,e),A(t,n,o)};x(t,n,o)},R=["IMG","IFRAME","VIDEO"],S=function(e,n,o){t(e,o),n.unobserve(e)},M=function(t){var e=c(t);e&&(clearTimeout(e),s(t,null))},j=function(t,e,n){var o=n._settings.load_delay,r=c(t);r||(r=setTimeout(function(){S(t,e,n),M(t)},o),s(t,r))},D=function(t){return t.isIntersecting||t.intersectionRatio>0},T=function(t){return{root:t.container===document?null:t.container,rootMargin:t.thresholds||t.threshold+"px"}},U=function(t,e){this._settings=n(t),this._setObserver(),this._loadingCount=0,this.update(e)};return U.prototype={_manageIntersection:function(t){var e=this._observer,n=this._settings.load_delay,o=t.target;n?D(t)?j(o,e,this):M(o):D(t)&&S(o,e,this)},_onIntersection:function(t){t.forEach(this._manageIntersection.bind(this))},_setObserver:function(){g&&(this._observer=new IntersectionObserver(this._onIntersection.bind(this),T(this._settings)))},_updateLoadingCount:function(t){this._loadingCount+=t,0===this._elements.length&&0===this._loadingCount&&C(this._settings.callback_finish)},update:function(t){var e=this,n=this._settings,o=t||n.container.querySelectorAll(n.elements_selector);this._elements=l(Array.prototype.slice.call(o)),!v&&this._observer?this._elements.forEach(function(t){e._observer.observe(t)}):this.loadAll()},destroy:function(){var t=this;this._observer&&(this._elements.forEach(function(e){t._observer.unobserve(e)}),this._observer=null),this._elements=null,this._settings=null},load:function(e,n){t(e,this,n)},loadAll:function(){var t=this;this._elements.forEach(function(e){t.load(e)})}},_&&function(t,e){if(e)if(e.length)for(var n,o=0;n=e[o];o+=1)d(t,n);else d(t,e)}(U,window.lazyLoadOptions),U});
+    var myLazyLoad = new LazyLoad({elements_selector: ".lazy"});
+    const mdMenuItems = document.querySelectorAll('.md-nav__link');
+    function doNav(){ document.getElementById("main__list").innerHTML = '<li class="md-nav__item"><a class="md-nav__link" href="/cursos/">Cursos</a></li><li class="md-nav__item"><a class="md-nav__link" href="/blog/">Blog</a></li>';}
+    for (i = 0; i < mdMenuItems.length; i++) {  var item = mdMenuItems[i]; var htmlstring = item.innerHTML; htmlstring = (htmlstring.trim) ? htmlstring.trim() : htmlstring.replace(/^\s+/,''); if (htmlstring == 'Servidor de encuentro') { item.parentNode.removeChild(item);continue; }  if (htmlstring == 'Política de Cookies') { item.parentNode.removeChild(item);continue; } if (htmlstring == 'Buscador') { item.parentNode.removeChild(item); continue; } }
+    try { var topPos = document.querySelector('#md__active_link').offsetTop; document.querySelector('#md__sidebar__scroll').scrollTop = topPos - 60; } catch (err) {}
+      </script>
+    </body>
+  </html>

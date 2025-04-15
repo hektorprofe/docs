@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+  <head>
+    
+    
+    
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Aprende a configurar tu propio servidor Ubuntu Server para desplegar servicios web usando Nginx y certificados SSL.">
+      
+      <link rel="canonical" href="https://hektorprofe.github.io/docs/academia/gnu-linux/ubuntu-server-web/">
+      
+        <meta name="author" content="Héctor Costa Guzman">
+      
+      <link rel="shortcut icon" href="/favicon.ico">
+    
+    
+      
+        <title>Configurar Ubuntu Server para servicios web | GNU/Linux | Academia | Hektor Profe</title>
+      
+    
+    <link rel="stylesheet"
+          href="../../../assets/stylesheets/application.2.css">
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    
+    <link rel="stylesheet"
+          href="https://hektorprofe.github.io/docs/assets/stylesheets/tingle.min.css">
+    <style>
+@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
+[data-md-color-primary="grey"] .md-header { background-color: #191A1D }
+[data-md-color-primary="grey"] .md-tabs { background-color: #222831 }
+.md-footer-nav { background-color: #222831; }
+.md-footer-meta { background-color: #191A1D }
+html [data-md-color-primary="grey"] .md-nav--primary .md-nav__title--site { background-color: #191A1D; }
+.mini{ display: none; } .maxi{ display: block; }
+.embed-container { position: relative; padding-bottom: 56.25%;height: 0; overflow: hidden; max-width: 100%; height: auto; margin-bottom: 0; } 
+.embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.md-nav__link:focus, .md-nav__link:hover { color: #018dc5; }
+.headerlink{ color: #018dc5 !important; }
+.md-footer-links__highlight a{ color: #777 !important; }
+.md-footer-links__highlight a:hover{ color: #ddd !important; }
+.visible{ display: inherit !important; }
+/*.md-tabs { display: none !important; }*/
+.nav__btn, .nav__logo{ transition: 0.3s; }
+.nav__btn:hover{ color: #aaa; }
+.nav__logo:hover{ opacity:.7; }
+.nav__logo {max-width: 225px !important; }
+img:not([src]){visibility:hidden;}
+img.click{opacity: 0.96;box-shadow:rgb(79, 82, 92) -4px 4px}
+img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
+.button { background-color: #36bf2d; border: none; color: white !important; padding: 20px 0px; text-align: center; text-decoration: none; display: block; font-size: 97%; width: 100%; font-weight: bold;}
+.button:hover { background-color: #4CAF50; color: white; }
+.animated.delay-1dot5s {animation-delay: 1.5s;}
+.md-icon--search { display:inline-block!important}
+a.headerlink{ display: none !important; }
+small.edited { display: block; text-align: right; }
+#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
+#cookie-bar-prompt-logo{ display: none !important; }
+div.my-img{text-align:center;margin-top:20px}
+@media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
+@media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
+@media (min-width: 1999.9px){ .md-header-nav__button.md-logo img { height: 40px !important; width: 240px; } }
+/* Rectificación footer en paginas pequeñas de altura */
+@media (max-width: 1599.8px){ .md-container {height: calc(100% - 48px)} }
+@media (min-width: 1599.9px){ .md-container {height: calc(100% - 53px)} }
+@media (min-width: 1999.9px){ .md-container {height: calc(100% - 58px)} }
+@media only screen and (max-width: 959.9px) { .nav__logo { display: block !important; }} 
+@media only screen and (min-width: 960px) and (max-width: 76.1875em) { .nav__logo { display: block !important; }} 
+@media only screen and (min-width: 76.1875em) { .nav__logo { display: none !important; } } 
+@media only screen and (max-width: 76.1875em) { .md-sidebar--primary { left: -26.2rem;; width: 26.2rem; }  [data-md-toggle="drawer"]:checked ~ .md-container .md-sidebar--primary { -webkit-transform: translateX(26.2rem); transform: translateX(26.2rem); } [dir="rtl"] [data-md-toggle="drawer"]:checked ~ .md-container .md-sidebar--primary { -webkit-transform: translateX(-26.2rem); transform: translateX(-26.2rem); } }
+@media (min-width: 1219.9px){ #home__btn { display: none !important; } #cursos__btn{ color: white !important; } [data-md-color-primary="grey"] .md-nav__link--active{ color: rgba(0, 0, 0, 0.87); text-decoration: underline !important; } }
+@media (min-width: 467.9px){ #discord__btn{ display: inline-block !important; } }
+@media only screen and (min-width: 60em){ .md-search__input { background-color: rgb(53, 54, 56); } .md-search__input:hover { background-color: rgb(84, 87, 93); color: white; }}
+@media (max-width: 1219.9px){ .md-header-nav__title{ padding: 0 1rem; } .nav__btn {display:none;} }
+@media (max-width: 875.9px){ #cookie-bar-button{ margin-top: 20px !important; }}
+@media (max-width: 719.9px){ #cookie-bar { padding: 3.25rem 1.25rem; }}
+@media (max-width: 512.9px){ #cookie-bar { padding: 2rem 1.25rem; }}
+
+.tingle-modal { font-size:18px !important;}
+.tingle-modal-box{ width: 80%; max-width: 1100px; }
+.tingle-btn--danger{ background: darkorange !important; }
+.tingle-modal-box__content { padding: 3rem 2rem 3rem 3rem;}
+@media (max-width: 540px){ .tingle-modal-box{ width: auto; } }
+@media (max-width: 849px){ #supermodal{ grid-template-columns:100% !important; }}
+
+.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 275px - 60px)}
+@media (max-width: 1999.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 246px - 60px);margin-right:-1px;}}
+@media (max-width: 1599.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 222px - 60px)}}
+
+    </style>
+  </head>
+  
+    
+    
+    <body dir="ltr"
+          data-md-color-primary="grey"
+          data-md-color-accent="grey">
+    
+      <input class="md-toggle"
+             data-md-toggle="drawer"
+             type="checkbox"
+             id="__drawer"
+             autocomplete="off">
+      <input class="md-toggle"
+             data-md-toggle="search"
+             type="checkbox"
+             id="__search"
+             autocomplete="off">
+      <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+      
+        <a href="#configurar-ubuntu-server-para-servicios-web"
+           tabindex="1"
+           class="md-skip">Saltar a contenido</a>
+      
+      
+        <header class="md-header"
+        data-md-component="header"
+        style="position: inherit !important">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="/"
+           title="Hektor Profe"
+           class="md-header-nav__button md-logo"
+           style="font-size: 0px">
+          <img src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+               width="200px"
+               height="35px"
+               style="margin-top: -5px"
+               alt="Hektor Profe"
+               title="Hektor Profe" />
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title"
+             data-md-component="title"
+             style="text-align: right">
+          <!-- https://fontawesome.com/v4.7.0/ -->
+          <a class="nav__btn"
+             href="https://www.hektorprofe.net/"
+             style="margin-left:0em"
+             title="Cursos de Hektor Profe">Cursos</a>
+          <a class="nav__btn"
+             href="https://docs.hektorprofe.net/"
+             style="margin-left:1.4em"
+             title="Documentos de Hektor Profe">Documentos</a>
+          <a class="nav__btn"
+             href="https://www.hektorprofe.net/portafolio/"
+             style="margin-left:1.4em"
+             title="Portafolio de Hektor Profe">Portafolio</a>
+          <a href="/">
+            <img class="nav__logo"
+                 src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+                 width="200px"
+                 height="35px"
+                 style="margin: 6px auto 0"
+                 alt="Hektor Profe"
+                 title="Hektor Profe" />
+          </a>
+        </div>
+        <style>
+          .md-sidebar[data-md-state="lock"] {
+            top: 0rem !important;
+          }
+          .md-tabs {
+            display: none !important;
+          }
+          .hde {
+            display: inline-block;
+          }
+          .admonition.note > .superfences-tabs > label:hover,
+          .headerlink {
+            color: #018dc5 !important;
+          }
+          .admonition.info {
+            font-size: 100%;
+          }
+          .admonition.info label {
+            font-size: 91%;
+          }
+          .admonition.note > .admonition-title {
+            display: none;
+          }
+          .image {
+            text-align: center;
+            margin-top: 25px;
+          }
+          .contenedor_youtube {
+            position: relative !important;
+            padding-bottom: 56.25% !important; /*panorámico*/
+            padding-top: 0px !important;
+            height: 0 !important;
+            margin-top: -20px;
+            margin-bottom: 25px;
+          }
+          .contenedor_youtube iframe {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+          }
+        </style>
+      </div>
+    </div>
+  </nav>
+</header>
+      
+      <div class="md-container" style="padding-top: 0px !important;">
+        
+          
+        
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list" id="top__tabs">
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+      </ul>
+    </div>
+</nav>
+        
+        <main class="md-main">
+          <div class="md-main__inner md-grid"
+               data-md-component="container"
+               style="padding-top: 8px !important">
+            
+              
+                <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                  <div class="md-sidebar__scrollwrap" id="md__sidebar__scroll">
+                    <div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title" for="__drawer" style="padding:0 !important;max-height:5.5rem;"></label>
+  
+  <ul class="md-nav__list" id="main__list" data-md-scrollfix>
+    
+      
+    
+        <!-- comprobación extra -->
+         
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Academia de programación
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Academia de programación
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../" title="Índice del archivo" class="md-nav__link">
+      Índice del archivo
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../python/introduccion/" title="Python para principiantes" class="md-nav__link">
+      Python para principiantes
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../python/poo-para-interfaces-graficas/" title="Python para interfaces gráficas" class="md-nav__link">
+      Python para interfaces gráficas
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../python/proyecto-gestor-clientes/" title="Gestor de clientes con Python" class="md-nav__link">
+      Gestor de clientes con Python
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../python/tutoriales/" title="Más tutoriales sobre Python" class="md-nav__link">
+      Más tutoriales sobre Python
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../python/modulo-analitico-numpy/" title="Módulo analítico NumPy" class="md-nav__link">
+      Módulo analítico NumPy
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../python/modulo-grafico-matplotlib/" title="Módulo gráfico Matplotlib" class="md-nav__link">
+      Módulo gráfico Matplotlib
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../django/introduccion/" title="Django para principiantes" class="md-nav__link">
+      Django para principiantes
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../django/api-rest-framework/" title="Server API pelis en Django Rest" class="md-nav__link">
+      Server API pelis en Django Rest
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../django/tutoriales/" title="Más tutoriales sobre Django" class="md-nav__link">
+      Más tutoriales sobre Django
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../javascript/introduccion/" title="JavaScript para principiantes" class="md-nav__link">
+      JavaScript para principiantes
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../javascript/conversor-divisas/" title="Conversor de divisas en JS" class="md-nav__link">
+      Conversor de divisas en JS
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../javascript/biblioteca-p5js/" title="Introducción a P5.js" class="md-nav__link">
+      Introducción a P5.js
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../javascript/nodejs/" title="Introducción a Node.js" class="md-nav__link">
+      Introducción a Node.js
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../javascript/chat-heroku/" title="Chat online con Node.js" class="md-nav__link">
+      Chat online con Node.js
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../javascript/cliente-nuxt/" title="Cliente API pelis en Nuxt.js" class="md-nav__link">
+      Cliente API pelis en Nuxt.js
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Configurar Ubuntu Server
+      </label>
+    
+    <a href="./" title="Configurar Ubuntu Server" class="md-nav__link md-nav__link--active" id="md__active_link">
+      Configurar Ubuntu Server
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bienvenida" title="Bienvenida" class="md-nav__link toc__link">
+    Bienvenida
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registro-en-digital-ocean" title="Registro en Digital Ocean" class="md-nav__link toc__link">
+    Registro en Digital Ocean
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creando-un-droplet" title="Creando un Droplet" class="md-nav__link toc__link">
+    Creando un Droplet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primera-conexion-ssh" title="Primera conexión SSH" class="md-nav__link toc__link">
+    Primera conexión SSH
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chuleta-de-comandos-para-terminal-bash" title="Chuleta de comandos para terminal Bash" class="md-nav__link toc__link">
+    Chuleta de comandos para terminal Bash
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creando-un-administrador" title="Creando un administrador" class="md-nav__link toc__link">
+    Creando un administrador
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accediendo-con-clave-ssh" title="Accediendo con clave SSH" class="md-nav__link toc__link">
+    Accediendo con clave SSH
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configurando-un-dominio" title="Configurando un dominio" class="md-nav__link toc__link">
+    Configurando un dominio
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primeros-pasos-con-nginx" title="Primeros pasos con Nginx" class="md-nav__link toc__link">
+    Primeros pasos con Nginx
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chuleta-de-comandos-para-gestionar-nginx" title="Chuleta de comandos para gestionar Nginx" class="md-nav__link toc__link">
+    Chuleta de comandos para gestionar Nginx
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bloques-de-servidor" title="Bloques de servidor" class="md-nav__link toc__link">
+    Bloques de servidor
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chuleta-de-ficheros-y-directorios-de-nginx" title="Chuleta de ficheros y directorios de Nginx" class="md-nav__link toc__link">
+    Chuleta de ficheros y directorios de Nginx
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creando-certificados-ssl" title="Creando certificados SSL" class="md-nav__link toc__link">
+    Creando certificados SSL
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tutoriales-utiles-de-certbot" title="Tutoriales útiles de Certbot" class="md-nav__link toc__link">
+    Tutoriales útiles de Certbot
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </ul>
+</nav>
+</div>
+                  </div>
+                </div>
+              
+              
+                <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                  <div class="md-sidebar__scrollwrap">
+                    <div class="md-sidebar__inner">
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bienvenida" title="Bienvenida" class="md-nav__link toc__link">
+    Bienvenida
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registro-en-digital-ocean" title="Registro en Digital Ocean" class="md-nav__link toc__link">
+    Registro en Digital Ocean
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creando-un-droplet" title="Creando un Droplet" class="md-nav__link toc__link">
+    Creando un Droplet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primera-conexion-ssh" title="Primera conexión SSH" class="md-nav__link toc__link">
+    Primera conexión SSH
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chuleta-de-comandos-para-terminal-bash" title="Chuleta de comandos para terminal Bash" class="md-nav__link toc__link">
+    Chuleta de comandos para terminal Bash
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creando-un-administrador" title="Creando un administrador" class="md-nav__link toc__link">
+    Creando un administrador
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accediendo-con-clave-ssh" title="Accediendo con clave SSH" class="md-nav__link toc__link">
+    Accediendo con clave SSH
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configurando-un-dominio" title="Configurando un dominio" class="md-nav__link toc__link">
+    Configurando un dominio
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primeros-pasos-con-nginx" title="Primeros pasos con Nginx" class="md-nav__link toc__link">
+    Primeros pasos con Nginx
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chuleta-de-comandos-para-gestionar-nginx" title="Chuleta de comandos para gestionar Nginx" class="md-nav__link toc__link">
+    Chuleta de comandos para gestionar Nginx
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bloques-de-servidor" title="Bloques de servidor" class="md-nav__link toc__link">
+    Bloques de servidor
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chuleta-de-ficheros-y-directorios-de-nginx" title="Chuleta de ficheros y directorios de Nginx" class="md-nav__link toc__link">
+    Chuleta de ficheros y directorios de Nginx
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creando-certificados-ssl" title="Creando certificados SSL" class="md-nav__link toc__link">
+    Creando certificados SSL
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tutoriales-utiles-de-certbot" title="Tutoriales útiles de Certbot" class="md-nav__link toc__link">
+    Tutoriales útiles de Certbot
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav></div>
+                  </div>
+                </div>
+              
+            
+            <div class="md-content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+                  
+                  <h1 id="configurar-ubuntu-server-para-servicios-web">Configurar Ubuntu Server para servicios web<a class="headerlink" href="#configurar-ubuntu-server-para-servicios-web" title="Permanent link">&para;</a></h1>
+<div class="contenedor_youtube">
+  <iframe id="odysee-iframe" width="560" height="315" src="https://odysee.com/$/embed/-Curso--Ubuntu-Server-b%C3%A1sico/2b53b43cefdd68ed78c3d01ff27309bf2663b1e3?r=3icueB68NV3UEFHyqs2QRfzRUeABmHDU" allowfullscreen></iframe>
+</div>
+
+<h2 id="bienvenida">Bienvenida<a class="headerlink" href="#bienvenida" title="Permanent link">&para;</a></h2>
+<p>Vamos a aprender a configurar un servidor GNU/Linux para desplegar diferentes servicios web utilizando la distribución Ubuntu Server. Pero... ¿por qué os debería interesar aprender esto? Porque si sois desarrolladores web podréis ahorraros muchísimo dinero.</p>
+<p>La mayoría de empresas de hosting ofrecen la posibilidad de publicar un proyecto como un producto, de manera que si quieres tener varios proyectos alojados debes pagar múltiples veces. No me refiero al dominio, eso siempre hay que pagarlo, sino al servidor que tendrá en marcha tu proyectos las 24 horas del día.</p>
+<p>Yo nunca trabajo de esa forma y eso es porque sé configurar mis propios servidores. Gracias a ello me ahorro mucho dinero porque pago una infraestructura y la reutilizo. Por ejemplo puedo tener un blog personal con PHP y Wordpress, mi bot para Discord, el frontend de mi academia funcionando con Node.js y varias API creadas con Python y Django, todo corriendo en paralelo en la misma máquina pero en diferentes dominios y subdominios.</p>
+<p>Eso es lo que quiero compartir con vosotros, unas guías paso a paso para que podáis configurar vuestro propio servidor y alojar en él tantos servicios como queráis. Evidentemente lo suyo es que sepáis de antemano címo funciona la línea de comandos de Linux, pero al final como son sólo configuraciones podéis seguir los pasos y deberíais de lograr el mismo resultado.</p>
+<p>Para tomar estos cursos no os voy a pedir que instaléis Ubuntu Server sino que creéis una cuenta en el proveedor Digital Ocean donde podréis manejar unos servidores virtuales llamados Droplets que soportan diferentes sistemas operativos. Mantener en marcha un Droplet tiene un coste mínimo de $5 dólares mensuales pero yo os facilitaré un enlace para registraros y probar el servicio de forma gratuita durante 30 días para que podáis practicar. Pasado ese primer mes podéis borrar la cuenta o seguir utilizando el servicio si os ha convencido. Óbviamente si tenéis Ubuntu Server en cualquier otro hosting pues también podéis seguir el curso sin problemas.</p>
+<h2 id="registro-en-digital-ocean">Registro en Digital Ocean<a class="headerlink" href="#registro-en-digital-ocean" title="Permanent link">&para;</a></h2>
+<p>Lo primero será que os creéis <a href="https://m.do.co/c/e2ff725d5acf">una cuenta en Digital Ocean a través de este enlace</a>, os voy a mostrar los pasos pero tened en cuenta que el proceso puede cambiar en el futuro.</p>
+<p>El requisito más importante para crear la cuenta es añadir un método de pago, ya sea una tarjeta de crédito o una cuenta Paypal. Os recomiendo configurar una tarjeta porque con Paypal os pedirán realizar un prepago de $5, no sé porqué pero así es como funciona y con la tarjeta no os cobrarán nada.</p>
+<p>Si por alguna razón no tenéis tarjeta o cuenta de Paypal para utilizar Digital Ocean ni tampoco tenéis otro proveedor, como última alternativa podéis crear vuestro propio servidor Ubuntu Server para practicar en una máquina virtual, os <a href="https://vivaubuntu.com/instalar-ubuntu-server-18-04-lts-en-virtualbox/">dejaré un tutorial</a> en los apuntes.</p>
+<p>Eventualmente durante el registro os pedirá crear un primer proyecto, podéis poner el nombre que queráis por ejemplo <strong>Pruebas</strong> y finalizar la creación de la cuenta sin contestar las encuestas que os harán.</p>
+<p>Al final acabaréis llegando al panel de usuario de Digital Ocean donde podremos empezar a trabajar.</p>
+<h2 id="creando-un-droplet">Creando un Droplet<a class="headerlink" href="#creando-un-droplet" title="Permanent link">&para;</a></h2>
+<p>Vamos a crear nuestro Droplet, para ello estando en el proyecto haremos clic en el botón superior <strong>Create</strong> &gt; <strong>Droplets</strong>.</p>
+<p>Crearemos un Droplet con las siguientes características:</p>
+<ul>
+<li>Ubuntu Server LTS</li>
+<li>Plan Standard de $5/m</li>
+<li>Datacenter en New York</li>
+<li>Autenticación usando contraseña de un uso.</li>
+<li>Optativamente podéis darle un nombre al droplet.</li>
+</ul>
+<p>Una vez la barra llegue al final tendremos nuestro Droplet con Ubuntu Server creado y listo para empezar a usarlo.</p>
+<p>En cuanto recibáis un correo de confirmación con los datos del Droplet y la contraseña podemos continuar con la siguiente lección.</p>
+<h2 id="primera-conexion-ssh">Primera conexión SSH<a class="headerlink" href="#primera-conexion-ssh" title="Permanent link">&para;</a></h2>
+<p>Para conectarnos al Droplet utilizaremos el protocolo SSH. En Windows os recomiendo <a href="https://git-scm.com/">instalar Git</a>, el software control de versiones, para utilizar su terminal integrada Git Bash que incluye un cliente SSH, podéis seguir todos los pasos por defecto en la instalación.</p>
+<p>Una vez instalado Git abriremos una terminal en cualquier parte haciendo clic derecho y nos conectaremos al Droplet.</p>
+<p>Necesitaremos las credenciales que habréis recibido en email:</p>
+<ul>
+<li>La IP del Droplet.</li>
+<li>La contraseña del usuario root.</li>
+</ul>
+<p>El usuario <strong>root</strong> es el más importante de un sistema GNU/Linux y vamos a acceder con él para realizar la configuración inicial del servidor:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>root@WW.XX.YY.ZZ
+</code></pre></div>
+<p>Si se conecta correctamente lo primero que hará el servidor es establecer una nueva contraseña de preferencia personal, hay que repetir de nuevo la que nos dan de un uso y confirmar la nueva dos veces.</p>
+<h3 id="chuleta-de-comandos-para-terminal-bash">Chuleta de comandos para terminal Bash<a class="headerlink" href="#chuleta-de-comandos-para-terminal-bash" title="Permanent link">&para;</a></h3>
+<p>Una vez nos hemos conectado vamos a aprovechar para hacer un pequeño repaso de los comandos básicos de Linux que estaremos utilizando:</p>
+<ul>
+<li><strong>pwd</strong>: Siglas del comando <strong>print working directory</strong> que nos muestra el directorio actual donde nos encontramos.</li>
+<li><strong>ls</strong>: Del inglés <strong>list</strong> muestra el contenido del directorio donde nos encontramos.</li>
+<li><strong>ls -l</strong>: Muestra el contenido del directorio en forma más amigable.</li>
+<li><strong>ls -la</strong>: Muestra todo el contenido del directorio incluyendo los ficheros ocultos.</li>
+<li><strong>cd /ruta</strong>: Siglas del comando <strong>change directory</strong> para cambiar de directorio. Un puntito <strong>.</strong> hace referencia al directorio actual y dos puntitos <strong>..</strong> al directorio anterior al actual.</li>
+<li><strong>tabulación</strong>: Autocompleta nombres de ficheros y directorios.</li>
+<li><strong>touch /ruta/fichero</strong>: Crea un fichero vacío en la ruta que indiquemos.</li>
+<li><strong>nano /ruta/fichero</strong>: Abre el editor <strong>nano</strong> para la terminal que permite editar y guardar ficheros.</li>
+<li><strong>cat /ruta/fichero</strong>: Muestra el contenido de un fichero en la terminal.</li>
+<li><strong>head -n 1 /ruta/fichero</strong>: Muestra la primera línea (o las que especifiquemos) de un fichero.</li>
+<li><strong>rm /ruta/fichero</strong>: Siglas del comando <strong>remove</strong> que sirve para borrar un fichero.</li>
+<li><strong>exit</strong>: Cierra la sesión del usuario actual.</li>
+<li><strong>control + C</strong>: Cierra forzosamente la conexión SSH.</li>
+<li><strong>control + L</strong>: Limpia el contenido de la terminal.</li>
+</ul>
+<p>Con esto ya hemos visto lo más esencial, a continuación procederemos a crear un usuario administrador.</p>
+<h2 id="creando-un-administrador">Creando un administrador<a class="headerlink" href="#creando-un-administrador" title="Permanent link">&para;</a></h2>
+<p>El usuario <strong>root</strong> en Linux es muy peligroso porque tiene todos los privilegios dentro de la máquina, por eso no es aconsejable utilizarlo como administrador del sistema.</p>
+<p>En su lugar vamos a crear un nuevo usuario administrador con el que vamos a estar trabajando:</p>
+<div class="highlight"><pre><span></span><code>adduser<span class="w"> </span>usuario
+</code></pre></div>
+<p>Le daremos los permisos de administrador:</p>
+<div class="highlight"><pre><span></span><code>usermod<span class="w"> </span>-aG<span class="w"> </span>sudo<span class="w"> </span>usuario
+</code></pre></div>
+<p>Podemos listar los usuarios y grupos del sistema con el comando:</p>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/etc/passwd
+</code></pre></div>
+<p>Con una tubería podemos usar la herramienta <strong>grep</strong> para filtrar por un texto:</p>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/etc/passwd<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>usuario
+</code></pre></div>
+<p>Finalmente vamos a cambiar a la sesión del usuario <strong>usuario</strong>:</p>
+<div class="highlight"><pre><span></span><code>su<span class="w"> </span>usuario
+</code></pre></div>
+<p>Y a partir de ahora para conectarnos al servidor lo haremos con nuestro usuario administrador:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>usuario@WW.XX.YY.ZZ
+</code></pre></div>
+<h2 id="accediendo-con-clave-ssh">Accediendo con clave SSH<a class="headerlink" href="#accediendo-con-clave-ssh" title="Permanent link">&para;</a></h2>
+<p>SSH proporciona distintos tipos de autenticación, incluyendo contraseña y autenticación basada en claves. La autenticación basada en claves es un método muy seguro porque utiliza claves criptográficas para establecer una conexión de confianza entre el servidor y el cliente.</p>
+<p>Para usarla hay que generar un par de claves SSH que consisten en una clave pública y otra privada. La clave pública se guarda en el servidor, mientras que la privada se guarda en el ordenador cliente. Cuando te conectas mediante SSH se establece una conexión de confianza entre el servidor y el ordenador usando el par de claves. Si alguna de las claves falta o no concuerda con la otra no se podrá establecer conexión.</p>
+<p>Si nunca habéis generado una clave tendréis que hacerlo desde una terminal de <strong>Git Bash</strong> en vuestro ordenador cliente:</p>
+<div class="highlight"><pre><span></span><code>ssh-keygen<span class="w"> </span>-o
+</code></pre></div>
+<p>Una vez completado el proceso podemos acceder al directorio donde se almacenan las claves SSH del usuario haciendo:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/.ssh
+ls
+</code></pre></div>
+<p>Aquí podemos mostrar por pantalla la clave pública con:</p>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>id_rsa.pub
+</code></pre></div>
+<p>La tendréis que seleccionar y copiar al portapapeles.</p>
+<p>A continuación accederemos de nuevo al servidor, nos identificaremos con la contraseña:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>usuario@WW.XX.YY.ZZ
+</code></pre></div>
+<p>Y añadiremos la clave pública al directorio <strong>.ssh</strong> de nuestro usuario, si no existe tendremos que crearlo antes:</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>.ssh
+nano<span class="w"> </span>.ssh/id_rsa.pub
+</code></pre></div>
+<p>Ahora añadiremos la clave pública al fichero <strong>.ssh/authorized_keys</strong> para autorizarla como clave de confianza:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>.ssh
+cat<span class="w"> </span>id_rsa.pub<span class="w"> </span>&gt;&gt;<span class="w"> </span>authorized_keys
+</code></pre></div>
+<p>Finalmente reiniciaremos el servicio <strong>ssh</strong>:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>service<span class="w"> </span>ssh<span class="w"> </span>restart
+</code></pre></div>
+<p>Si salimos de la sesión y nos conectamos de nuevo al servidor ya no debería volver a pedirnos la contraseña:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>usuario@WW.XX.YY.ZZ
+</code></pre></div>
+<h2 id="configurando-un-dominio">Configurando un dominio<a class="headerlink" href="#configurando-un-dominio" title="Permanent link">&para;</a></h2>
+<p>Antes de iniciar la configuración del servidor web deberéis configurar un dominio o subdominio para que apunte al Droplet usando un registro de tipo <strong>A</strong>.</p>
+<p>Evidentemente necesitáis contar con un dominio de antemano, pero si no es así podéis registrar uno gratuito en <a href="http://www.dot.tk/es/index.html">dot.tk</a> que os servirá para el curso y es lo que yo voy a hacer, buscáis si el dominio que queréis está disponible, en mi caso <strong>hektorprofe.tk</strong>, lo añadís al carro y finalizáis la compra.</p>
+<p>Durante la confirmación podéis decirle que os dure 12 meses gratis y también podréis configurar los registros <strong>A</strong> para que apunten al Droplet de Digital Ocean, tanto para la raíz como para el subdominio www:</p>
+<div class="image">
+   <img src="https://hektorprofe.github.io/docs/cdn//linux/dominiotk.png">
+</div>
+
+<p>Cada proveedor os ofrecerá un panel diferente, tendréis que buscar la opción que os permita editar los registros de la zona DNS y si no la encontráis preguntar al soporte técnico para que os ayuden.</p>
+<p>En todo caso si decidís crear el dominio <strong>tk</strong> os llegará un email para confirmar el último paso, tendréis que introducir vuestros datos y una vez hecho tendréis que esperar a que se propaguen las DNS, un proceso que puede tardar varias horas, así que paciencia.</p>
+<p>De tanto en tanto vaciad el caché DNS y haced un <strong>ping</strong> desde la terminal al dominio a ver si lo encuentra:</p>
+<div class="highlight"><pre><span></span><code>ipconfig<span class="w"> </span>/flushdns
+ping<span class="w"> </span>hektorprofe.tk
+</code></pre></div>
+<div class="image">
+   <img src="https://hektorprofe.github.io/docs/cdn//linux/pingdominio.png">
+</div>
+
+<p>Cuando os devuelva una respuesta desde la IP del Droplet ya lo tendréis todo listo para la siguiente lección y aunque podéis continuar igualmente no podréis comprobar si lo que hacéis os funciona.</p>
+<h2 id="primeros-pasos-con-nginx">Primeros pasos con Nginx<a class="headerlink" href="#primeros-pasos-con-nginx" title="Permanent link">&para;</a></h2>
+<p>En este punto, con el usuario administrador ya creado y el subdominio o dominio apuntando al Droplet estamos preparados para configurar el servidor web Nginx, el programa que se encargará de tres tareas vitales:</p>
+<ul>
+<li>Exponer el puerto 80 del droplet públicamente en Internet.</li>
+<li>Procesar las peticiones que se reciban en los dominios y subdominios configurados.</li>
+<li>Actuar como proxy reverso para redirigir las peticiones a los diferentes servicios en ejecución.</li>
+</ul>
+<p>Así que vamos a empezar con la instalación y configuración básica.</p>
+<p>Para actualizar el repositorio e instalaremos Nginx necesitamos ejecutar los comandos como administradores, para ello pondremos el comando <strong>sudo</strong> delante de las instrucciones, que significa <strong>super user do</strong>:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nginx
+</code></pre></div>
+<p>Añadiremos SSH y Nginx al cortafuegos:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>ufw<span class="w"> </span><span class="nb">enable</span>
+sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span>ssh
+sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="s1">&#39;Nginx HTTP&#39;</span>
+sudo<span class="w"> </span>ufw<span class="w"> </span>status
+</code></pre></div>
+<p>Si nos aparece en la lista lo tenemos bien.</p>
+<p>Comprobaremos el estado de Nginx:</p>
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>status<span class="w"> </span>nginx
+</code></pre></div>
+<p>Si aparece <strong>active (running)</strong> es que está funcionando así que desde un navegador podemos comprobar si la IP nos devuelve la bienvenida de Nginx:</p>
+<div class="highlight"><pre><span></span><code>http://WW.XX.YY.ZZ
+</code></pre></div>
+<h3 id="chuleta-de-comandos-para-gestionar-nginx">Chuleta de comandos para gestionar Nginx<a class="headerlink" href="#chuleta-de-comandos-para-gestionar-nginx" title="Permanent link">&para;</a></h3>
+<p>Para <strong>parar</strong> el servidor:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>nginx
+</code></pre></div>
+<p>Para <strong>iniciar</strong> el servidor después de pararlo:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>nginx
+</code></pre></div>
+<p>Para <strong>reiniciar</strong> el servidor:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx
+</code></pre></div>
+<p>Para <strong>recargar</strong> los cambios después de editar la configuración:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
+</code></pre></div>
+<p>Para desactivar que Nginx se inicie automáticamente con el servidor:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>disable<span class="w"> </span>nginx
+</code></pre></div>
+<p>Para <strong>reactivarlo</strong>:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nginx
+</code></pre></div>
+<h2 id="bloques-de-servidor">Bloques de servidor<a class="headerlink" href="#bloques-de-servidor" title="Permanent link">&para;</a></h2>
+<p>Nginx trae una configuración por defecto que expone el puerto 80 del servidor pero nosotros queremos configurar dominios y subdominios así que tendremos que realizar configuraciones individuales para cada caso, eso se hace en lo que se denominan los <strong>Server Blocks</strong> de Nginx.</p>
+<p>Así que vamos a configurar nuestro dominio en un server block, primero creando un directorio donde almacenar los ficheros:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/var/www/hektorprofe.tk/html
+</code></pre></div>
+<p>La opción <strong>-p</strong> creará toda la ruta de directorios automáticamente hasta el último, que es la carpeta <strong>html</strong>.</p>
+<p>Ahora un paso muy importante, asignaremos el propietario del directorio con la variable de sistema <strong>$USER</strong>:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span><span class="nv">$USER</span>:<span class="nv">$USER</span><span class="w"> </span>/var/www/hektorprofe.tk/html
+</code></pre></div>
+<p>Y también le daremos unos permisos de lectura, escritura y ejecución:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span><span class="m">755</span><span class="w"> </span>/var/www/hektorprofe.tk
+</code></pre></div>
+<p>Ahora crearemos un fichero <strong>index.html</strong> de prueba para nuestro dominio:</p>
+<div class="highlight"><pre><span></span><code>nano<span class="w"> </span>/var/www/hektorprofe.tk/html/index.html
+</code></pre></div>
+<p>Con el siguiente contenido:</p>
+<p><code>/var/www/hektorprofe.tk/html/index.html</code></p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Bienvenido a hektorprofe.tk!<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>¡El bloque de servidor de hektorprofe.tk está funcionando!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>Ahora tendremos que añadir la configuración del bloque de servidor, eso lo haremos creando un fichero con el nombre del dominio o subdominio en el directorio <strong>/etc/nginx/sites-available/</strong>, que como su nombre indica almacena las configuraciones de los sitios disponibles para ser utilizados por <strong>Nginx</strong>:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/hektorprofe.tk
+</code></pre></div>
+<p>Dentro añadiremos exactamente esta configuración:</p>
+<p><code>/etc/nginx/sites-available/hektorprofe.tk</code></p>
+<div class="highlight"><pre><span></span><code>server {
+    listen 80;
+    listen [::]:80;
+
+    root /var/www/hektorprofe.tk/html;
+    index index.html index.htm;
+
+    server_name hektorprofe.tk www.hektorprofe.tk;
+
+    location / {
+            try_files $uri $uri/ =404;
+    }
+}
+</code></pre></div>
+<p>Después de guardar nos faltará hacer una última cosa, activar el bloque de servidor, algo que haremos creando un enlace del fichero que acabamos de crear en el directorio <strong>/etc/nginx/sites-enabled/</strong>, que como su nombre indica almacena la configuración de los sitios activados:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/hektorprofe.tk<span class="w"> </span>/etc/nginx/sites-enabled/
+</code></pre></div>
+<p>En este punto tendremos dos bloques activos:</p>
+<ul>
+<li><strong>hektorprofe.tk</strong>: Para responder las peticiones a <strong>hektorprofe.tk</strong> y <strong>www.hektorprofe.tk</strong></li>
+<li><strong>default</strong>: Para responder cualquier petición al puerto 80 que no responda ningún otro bloque de servidor.</li>
+</ul>
+<p>En este punto ya lo tenemos preparado pero haremos un último ajuste para permitir el uso de nombres largos de dominio descomentando una línea de la configuración de <strong>Nginx</strong>:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/nginx.conf
+</code></pre></div>
+<p>Esta es la línea:</p>
+<p><code>/etc/nginx/nginx.conf</code></p>
+<div class="highlight"><pre><span></span><code>...
+http {
+    ...
+    server_names_hash_bucket_size 64;
+    ...
+}
+...
+</code></pre></div>
+<p>Ahora antes de reiniciar <strong>Nginx</strong> y aplicar los cambios podemos comprobar si la configuración está correcta con el comando:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nginx<span class="w"> </span>-t
+</code></pre></div>
+<p>Si no se queja reiniciaremos el servidor:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx
+</code></pre></div>
+<p>En este momento ya deberíamos ser capaces de acceder a nuestro dominio y ver el <strong>index.html</strong> que creamos en el bloque del servidor:</p>
+<div class="highlight"><pre><span></span><code>http://www.hektorprofe.tk
+</code></pre></div>
+<h3 id="chuleta-de-ficheros-y-directorios-de-nginx">Chuleta de ficheros y directorios de Nginx<a class="headerlink" href="#chuleta-de-ficheros-y-directorios-de-nginx" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>/var/www/html</strong>: Ruta donde se almacena el contenido por defecto que muestra Nginx (su default), puede ser cambiado en el fichero de configuración principal.</li>
+<li><strong>/etc/nginx/nginx.conf</strong>: Ruta del fichero de configuración principal.</li>
+<li><strong>/etc/nginx/sites-available/</strong>: Directorio que contiene las configuraciones de los bloques de servidor disponibles pero no activados.</li>
+<li><strong>/etc/nginx/sites-enabled/</strong>: Directorio que contiene las configuraciones de los bloques de servidor activados, normalmente enlazado desde el directorios de bloques de servidor disponibles.</li>
+<li><strong>/etc/nginx/snippets</strong>: Directorio que contiene fragmentos configurables incluidos globalmente en la configuración de Nginx.</li>
+<li><strong>/var/log/nginx/access.log</strong>: Fichero que almacena un registro de las peticiones recibidas.</li>
+<li><strong>/var/log/nginx/error.log</strong>: Fichero que almacena un registro de los posibles errores.</li>
+</ul>
+<h2 id="creando-certificados-ssl">Creando certificados SSL<a class="headerlink" href="#creando-certificados-ssl" title="Permanent link">&para;</a></h2>
+<p>Let's Encrypt es una Autoridad de Certificación que proporciona una manera fácil de obtener e instalar certificados TLS/SSL gratuitos para habilitar las conexiones HTTPS cifradas en los servidores web.</p>
+<p>Simplifica el proceso al proporcionar un cliente de software llamado Certbot que intenta automatizar la mayoría de los pasos necesarios para obtener e instalar el certificado en los servidores Apache y Nginx.</p>
+<p>En esta lección utilizaremos Certbot para obtener un certificado SSL gratuito, lo configuraremos para que funcione en nuestro dominio usando Nginx y haremos que se renueve automáticamente, ya que por defecto tienen una duración de 90 días.</p>
+<p>Empezaremos instalando <strong>Certbot</strong>:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>add-apt-repository<span class="w"> </span>ppa:certbot/certbot
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python-certbot-nginx
+</code></pre></div>
+<p>Con esto tendremos <strong>Certbot</strong> listo para funcionar con <strong>Nginx</strong>.</p>
+<p>Ahora es vital comprobar que tenemos tanto el dominio raiz como el subdominio <strong>www</strong> configurados en el mismo bloque de servidor:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/hektorprofe.tk
+</code></pre></div>
+<p>Apareciéndonos ambos en la línea del <strong>server_name</strong>:</p>
+<p><code>/etc/nginx/sites-available/hektorprofe.tk</code></p>
+<div class="highlight"><pre><span></span><code>...
+http {
+    ...
+    server_names_hash_bucket_size 64;
+    ...
+}
+...
+</code></pre></div>
+<p>Si lo tenemos bien podemos continuar añadiendo permiso al cortafuegos para que Nginx pueda funcionar tanto por HTTP como HTTPS:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>ufw<span class="w"> </span>status
+sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="s1">&#39;Nginx Full&#39;</span>
+sudo<span class="w"> </span>ufw<span class="w"> </span>delete<span class="w"> </span>allow<span class="w"> </span><span class="s1">&#39;Nginx HTTP&#39;</span>
+sudo<span class="w"> </span>ufw<span class="w"> </span>status
+</code></pre></div>
+<p>Si en la lista nos aparece <strong>Nginx Full</strong> ya tendremos bien.</p>
+<p>Ahora vamos a generar los certificados SSL para nuestro dominio raíz y su subdominio <strong>www</strong>:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>ufw<span class="w"> </span>st
+sudo<span class="w"> </span>certbot<span class="w"> </span>--nginx<span class="w"> </span>-d<span class="w"> </span>hektorprofe.tk<span class="w"> </span>-d<span class="w"> </span>www.hektorprofe.tk
+</code></pre></div>
+<p>Eventualmente tendremos que indicar si queremos redireccionar todas las peticiones a HTTPS, os recomiendo hacerlo así que podéis poner un <strong>1</strong>.</p>
+<p>En este punto el certificado estará descargado, instalado y cargado en Nginx, lo último que nos falta es verificar que el servicio de renovación automática está funcionando:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w"> </span>--dry-run
+</code></pre></div>
+<p>Si no devuelve ningún error significa que tenemos configurado el servicio de renovación automático correctamente así que ya hemos acabado. Sólo nos falta reiniciar <strong>Nginx</strong>:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nginx<span class="w"> </span>-t
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx
+</code></pre></div>
+<p>Y comprobar si al aceder al sitio nos carga el certificado correctamente:</p>
+<div class="highlight"><pre><span></span><code>https://www.hektorprofe.tk
+</code></pre></div>
+<h3 id="tutoriales-utiles-de-certbot">Tutoriales útiles de Certbot<a class="headerlink" href="#tutoriales-utiles-de-certbot" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><a href="https://certbot.eff.org/docs/using.html#re-creating-and-updating-existing-certificates">Actualizar certificado de un dominio</a></p>
+</li>
+<li>
+<p><a href="https://certbot.eff.org/docs/using.html#changing-a-certificate-s-domains">Cambiar un certificado de un dominio</a></p>
+</li>
+</ul>
+<hr />
+<p><small class="edited"><i>Última edición: 17 de Marzo de 2021</i></small></p>
+                  
+                    
+                  
+                
+                
+                  
+
+
+                
+              </article>
+            </div>
+          </div>
+        </main>
+        
+          
+<footer class="md-footer">
+  
+  <div class="md-footer-nav">
+    <nav class="md-footer-nav__inner md-grid">
+      
+      <a
+        href="../../javascript/cliente-nuxt/"
+        title="Cliente API pelis en Nuxt.js"
+        class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+        rel="prev"
+      >
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+        </div>
+        <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+          <span class="md-flex__ellipsis">
+            <span class="md-footer-nav__direction">
+              Anterior
+            </span>
+            Cliente API pelis en Nuxt.js
+          </span>
+        </div>
+      </a>
+       
+      <a
+        href="../../../python/"
+        title="Índice del archivo"
+        class="md-flex md-footer-nav__link md-footer-nav__link--next"
+        rel="next"
+      >
+        <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+          <span class="md-flex__ellipsis">
+            <span class="md-footer-nav__direction">
+              Siguiente
+            </span>
+            Índice del archivo
+          </span>
+        </div>
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+        </div>
+      </a>
+      
+    </nav>
+  </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        <!--<div class="md-footer-links__highlight">
+          <a href="/comunidad/">Comunidad</a> · <a href="/politica-de-cookies/">Política de cookies</a> · <a href="/sobre-mi/">Sobre mí</a>
+        </div>-->
+        <div class="md-footer-copyright__highlight">
+          2015 - 2022 &copy; Héctor Costa Guzmán (<u
+            ><a
+              href="https://creativecommons.org/licenses/by/4.0/deed.es"
+              target="_blank"
+              rel="nofollow"
+              >Licencia CC BY 4.0</a
+            ></u
+          >)
+        </div>
+      </div>
+       
+<style>.md-footer-social__link {transition: 0.3s;}</style>
+<div class="md-footer-social" style="font-size: 2.5rem; margin-top: -6px!important; padding: 0px!important; margin-bottom: -6px; overflow: hidden!important;">
+  <a href="https://github.com/hcosta" title="Github" target="_blank" class="md-footer-social__link fa fa-github-square"></a>
+  <a href="https://www.youtube.com/c/HektorProfe" title="Youtube" target="_blank" class="md-footer-social__link fa fa-youtube-square"></a>
+  &nbsp;
+</div>
+ 
+    </div>
+  </div>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i["GoogleAnalyticsObject"] = r;
+      (i[r] =
+        i[r] ||
+        function () {
+          (i[r].q = i[r].q || []).push(arguments);
+        }),
+        (i[r].l = 1 * new Date());
+      (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m);
+    })(
+      window,
+      document,
+      "script",
+      "https://www.google-analytics.com/analytics.js",
+      "ga"
+    );
+    ga("create", "UA-124845547-1", "auto");
+    ga("send", "pageview");
+  </script>
+</footer>
+        
+        <a id="anchorID" href="https://www.hektorprofe.net/" target="_blank"></a>
+      </div>
+      <script type='text/javascript'
+              src="https://hektorprofe.github.io/docs/assets/javascripts/application.a26c1c21.js"></script>
+      <script src="https://hektorprofe.github.io/docs/assets/javascripts/tingle.min.js"></script>
+      <script type='text/javascript'>
+    var modalButtonOnly = new tingle.modal({
+        closeMethods: [],
+        footer: true,
+        stickyFooter: true
+    });
+    var btn5 = document.querySelector('.js-tingle-modal-5');
+
+    // set content
+    modalButtonOnly.setContent(`
+    <div style="display:grid;grid-template-columns:32% 32% 32%;grid-column-gap: 1.33%;" id="supermodal">
+      <div class="course">
+        <a href="https://www.hektorprofe.net/cupon/python" target="_blank"><img src="assets/python.png" style="width:100%;justify-self:center;align-self:center;" /></a>
+      </div>
+      <div class="course">
+        <a href="https://www.hektorprofe.net/cupon/django" target="_blank"><img src="assets/django.png" style="width:100%;justify-self:center;align-self:center;" /></a>
+      </div>
+      <div class="course">
+        <a href="https://www.hektorprofe.net/cupon/pyside" target="_blank"><img src="assets/pyside.png" style="width:100%;justify-self:center;align-self:center;" /></a>
+      </div>
+    </div>`);
+
+    modalButtonOnly.addFooterBtn('Cerrar', 'tingle-btn tingle-btn--default tingle-btn--pull-right', function(){
+      modalButtonOnly.close();
+    });
+
+    app.initialize({version:"1.2.3",url:{base:"../../.."}})
+    var _extends=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(t[o]=n[o])}return t},_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t};!function(t,e){"object"===("undefined"==typeof exports?"undefined":_typeof(exports))&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):t.LazyLoad=e()}(this,function(){"use strict";function t(t,e,n){var o=e._settings;!n&&i(t)||(C(o.callback_enter,t),R.indexOf(t.tagName)>-1&&(N(t,e),I(t,o.class_loading)),E(t,e),a(t),C(o.callback_set,t))}var e={elements_selector:"img",container:document,threshold:300,thresholds:null,data_src:"src",data_srcset:"srcset",data_sizes:"sizes",data_bg:"bg",class_loading:"loading",class_loaded:"loaded",class_error:"error",load_delay:0,callback_load:null,callback_error:null,callback_set:null,callback_enter:null,callback_finish:null,to_webp:!1},n=function(t){return _extends({},e,t)},o=function(t,e){return t.getAttribute("data-"+e)},r=function(t,e,n){var o="data-"+e;null!==n?t.setAttribute(o,n):t.removeAttribute(o)},a=function(t){return r(t,"was-processed","true")},i=function(t){return"true"===o(t,"was-processed")},s=function(t,e){return r(t,"ll-timeout",e)},c=function(t){return o(t,"ll-timeout")},l=function(t){return t.filter(function(t){return!i(t)})},u=function(t,e){return t.filter(function(t){return t!==e})},d=function(t,e){var n,o=new t(e);try{n=new CustomEvent("LazyLoad::Initialized",{detail:{instance:o}})}catch(t){(n=document.createEvent("CustomEvent")).initCustomEvent("LazyLoad::Initialized",!1,!1,{instance:o})}window.dispatchEvent(n)},f=function(t,e){return e?t.replace(/\.(jpe?g|png)/gi,".webp"):t},_="undefined"!=typeof window,v=_&&!("onscroll"in window)||/(gle|ing|ro)bot|crawl|spider/i.test(navigator.userAgent),g=_&&"IntersectionObserver"in window,h=_&&"classList"in document.createElement("p"),b=_&&function(){var t=document.createElement("canvas");return!(!t.getContext||!t.getContext("2d"))&&0===t.toDataURL("image/webp").indexOf("data:image/webp")}(),m=function(t,e,n,r){for(var a,i=0;a=t.children[i];i+=1)if("SOURCE"===a.tagName){var s=o(a,n);p(a,e,s,r)}},p=function(t,e,n,o){n&&t.setAttribute(e,f(n,o))},y=function(t,e){var n=b&&e.to_webp,r=o(t,e.data_src),a=o(t,e.data_bg);if(r){var i=f(r,n);t.style.backgroundImage='url("'+i+'")'}if(a){var s=f(a,n);t.style.backgroundImage=s}},w={IMG:function(t,e){var n=b&&e.to_webp,r=e.data_srcset,a=t.parentNode;a&&"PICTURE"===a.tagName&&m(a,"srcset",r,n);var i=o(t,e.data_sizes);p(t,"sizes",i);var s=o(t,r);p(t,"srcset",s,n);var c=o(t,e.data_src);p(t,"src",c,n)},IFRAME:function(t,e){var n=o(t,e.data_src);p(t,"src",n)},VIDEO:function(t,e){var n=e.data_src,r=o(t,n);m(t,"src",n),p(t,"src",r),t.load()}},E=function(t,e){var n=e._settings,o=t.tagName,r=w[o];if(r)return r(t,n),e._updateLoadingCount(1),void(e._elements=u(e._elements,t));y(t,n)},I=function(t,e){h?t.classList.add(e):t.className+=(t.className?" ":"")+e},L=function(t,e){h?t.classList.remove(e):t.className=t.className.replace(new RegExp("(^|\\s+)"+e+"(\\s+|$)")," ").replace(/^\s+/,"").replace(/\s+$/,"")},C=function(t,e){t&&t(e)},O=function(t,e,n){t.addEventListener(e,n)},k=function(t,e,n){t.removeEventListener(e,n)},x=function(t,e,n){O(t,"load",e),O(t,"loadeddata",e),O(t,"error",n)},A=function(t,e,n){k(t,"load",e),k(t,"loadeddata",e),k(t,"error",n)},z=function(t,e,n){var o=n._settings,r=e?o.class_loaded:o.class_error,a=e?o.callback_load:o.callback_error,i=t.target;L(i,o.class_loading),I(i,r),C(a,i),n._updateLoadingCount(-1)},N=function(t,e){var n=function n(r){z(r,!0,e),A(t,n,o)},o=function o(r){z(r,!1,e),A(t,n,o)};x(t,n,o)},R=["IMG","IFRAME","VIDEO"],S=function(e,n,o){t(e,o),n.unobserve(e)},M=function(t){var e=c(t);e&&(clearTimeout(e),s(t,null))},j=function(t,e,n){var o=n._settings.load_delay,r=c(t);r||(r=setTimeout(function(){S(t,e,n),M(t)},o),s(t,r))},D=function(t){return t.isIntersecting||t.intersectionRatio>0},T=function(t){return{root:t.container===document?null:t.container,rootMargin:t.thresholds||t.threshold+"px"}},U=function(t,e){this._settings=n(t),this._setObserver(),this._loadingCount=0,this.update(e)};return U.prototype={_manageIntersection:function(t){var e=this._observer,n=this._settings.load_delay,o=t.target;n?D(t)?j(o,e,this):M(o):D(t)&&S(o,e,this)},_onIntersection:function(t){t.forEach(this._manageIntersection.bind(this))},_setObserver:function(){g&&(this._observer=new IntersectionObserver(this._onIntersection.bind(this),T(this._settings)))},_updateLoadingCount:function(t){this._loadingCount+=t,0===this._elements.length&&0===this._loadingCount&&C(this._settings.callback_finish)},update:function(t){var e=this,n=this._settings,o=t||n.container.querySelectorAll(n.elements_selector);this._elements=l(Array.prototype.slice.call(o)),!v&&this._observer?this._elements.forEach(function(t){e._observer.observe(t)}):this.loadAll()},destroy:function(){var t=this;this._observer&&(this._elements.forEach(function(e){t._observer.unobserve(e)}),this._observer=null),this._elements=null,this._settings=null},load:function(e,n){t(e,this,n)},loadAll:function(){var t=this;this._elements.forEach(function(e){t.load(e)})}},_&&function(t,e){if(e)if(e.length)for(var n,o=0;n=e[o];o+=1)d(t,n);else d(t,e)}(U,window.lazyLoadOptions),U});
+    var myLazyLoad = new LazyLoad({elements_selector: ".lazy"});
+    const mdMenuItems = document.querySelectorAll('.md-nav__link');
+    function doNav(){ document.getElementById("main__list").innerHTML = '<li class="md-nav__item"><a class="md-nav__link" href="/cursos/">Cursos</a></li><li class="md-nav__item"><a class="md-nav__link" href="/blog/">Blog</a></li>';}
+    for (i = 0; i < mdMenuItems.length; i++) {  var item = mdMenuItems[i]; var htmlstring = item.innerHTML; htmlstring = (htmlstring.trim) ? htmlstring.trim() : htmlstring.replace(/^\s+/,''); if (htmlstring == 'Servidor de encuentro') { item.parentNode.removeChild(item);continue; }  if (htmlstring == 'Política de Cookies') { item.parentNode.removeChild(item);continue; } if (htmlstring == 'Buscador') { item.parentNode.removeChild(item); continue; } }
+    try { var topPos = document.querySelector('#md__active_link').offsetTop; document.querySelector('#md__sidebar__scroll').scrollTop = topPos - 60; } catch (err) {}
+      </script>
+    </body>
+  </html>

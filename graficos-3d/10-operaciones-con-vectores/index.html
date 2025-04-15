@@ -5,17 +5,13 @@
     
     
     
-
-    
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
         <meta name="description" content="Web de apuntes de programación de Hector Costa Guzman.">
       
-      
-        <link rel="canonical" href="https://hektorprofe.github.io/docs.hektorprofe.net/graficos-3d/10-operaciones-con-vectores/index.html">
-      
+      <link rel="canonical" href="https://hektorprofe.github.io/docs/graficos-3d/10-operaciones-con-vectores/">
       
         <meta name="author" content="Héctor Costa Guzman">
       
@@ -26,18 +22,21 @@
         <title>Operaciones con vectores | Programación de gráficos 3D | Hektor Profe</title>
       
     
-    <link rel="stylesheet" href="../../assets/stylesheets/application.2.css">
+    <link rel="stylesheet"
+          href="../../assets/stylesheets/application.2.css">
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
     
-    <link rel="stylesheet" href="/assets/stylesheets/tingle.min.css">
-<style>
-@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
+    <link rel="stylesheet"
+          href="https://hektorprofe.github.io/docs/assets/stylesheets/tingle.min.css">
+    <style>
+@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
 [data-md-color-primary="grey"] .md-header { background-color: #191A1D }
 [data-md-color-primary="grey"] .md-tabs { background-color: #222831 }
 .md-footer-nav { background-color: #222831; }
@@ -98,90 +97,79 @@ div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 1999.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 246px - 60px);margin-right:-1px;}}
 @media (max-width: 1599.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 222px - 60px)}}
 
-</style>
+    </style>
   </head>
   
     
     
-    <body dir="ltr" data-md-color-primary="grey" data-md-color-accent="grey">
-  
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    <body dir="ltr"
+          data-md-color-primary="grey"
+          data-md-color-accent="grey">
     
-      <a href="#operaciones-con-vectores" tabindex="1" class="md-skip">
-        Saltar a contenido
-      </a>
-    
-    
-      <header
-  class="md-header"
-  data-md-component="header"
-  style="position: inherit !important"
->
+      <input class="md-toggle"
+             data-md-toggle="drawer"
+             type="checkbox"
+             id="__drawer"
+             autocomplete="off">
+      <input class="md-toggle"
+             data-md-toggle="search"
+             type="checkbox"
+             id="__search"
+             autocomplete="off">
+      <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+      
+        <a href="#operaciones-con-vectores"
+           tabindex="1"
+           class="md-skip">Saltar a contenido</a>
+      
+      
+        <header class="md-header"
+        data-md-component="header"
+        style="position: inherit !important">
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a
-          href="/"
-          title="Hektor Profe"
-          class="md-header-nav__button md-logo"
-          style="font-size: 0px"
-        >
-          <img
-            src="/assets/images/logo.png"
-            width="200px"
-            height="35px"
-            style="margin-top: -5px"
-            alt="Hektor Profe"
-            title="Hektor Profe"
-          />
+        <a href="/"
+           title="Hektor Profe"
+           class="md-header-nav__button md-logo"
+           style="font-size: 0px">
+          <img src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+               width="200px"
+               height="35px"
+               style="margin-top: -5px"
+               alt="Hektor Profe"
+               title="Hektor Profe" />
         </a>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
-        <label
-          class="md-icon md-icon--menu md-header-nav__button"
-          for="__drawer"
-        ></label>
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
-        <div
-          class="md-flex__ellipsis md-header-nav__title"
-          data-md-component="title"
-          style="text-align: right"
-        >
+        <div class="md-flex__ellipsis md-header-nav__title"
+             data-md-component="title"
+             style="text-align: right">
           <!-- https://fontawesome.com/v4.7.0/ -->
-          <a 
-            class="nav__btn" 
-            href="https://www.hektorprofe.net/" 
-            style="margin-left:0em;" 
-            title="Cursos de Hektor Profe">
-            Cursos
+          <a class="nav__btn"
+             href="https://www.hektorprofe.net/"
+             style="margin-left:0em"
+             title="Cursos de Hektor Profe">Cursos</a>
+          <a class="nav__btn"
+             href="https://docs.hektorprofe.net/"
+             style="margin-left:1.4em"
+             title="Documentos de Hektor Profe">Documentos</a>
+          <a class="nav__btn"
+             href="https://www.hektorprofe.net/portafolio/"
+             style="margin-left:1.4em"
+             title="Portafolio de Hektor Profe">Portafolio</a>
+          <a href="/">
+            <img class="nav__logo"
+                 src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+                 width="200px"
+                 height="35px"
+                 style="margin: 6px auto 0"
+                 alt="Hektor Profe"
+                 title="Hektor Profe" />
           </a>
-          <a 
-            class="nav__btn" 
-            href="https://docs.hektorprofe.net/" 
-            style="margin-left:1.4em;" 
-            title="Documentos de Hektor Profe">
-            Documentos
-          </a>
-          <a 
-            class="nav__btn" 
-            href="https://www.hektorprofe.net/portafolio/" 
-            style="margin-left:1.4em;" 
-            title="Portafolio de Hektor Profe">
-            Portafolio
-          </a>
-          <a href="/"
-            ><img
-              class="nav__logo"
-              src="/assets/images/logo.png"
-              width="200px"
-              height="35px"
-              style="margin: 6px auto 0"
-              alt="Hektor Profe"
-              title="Hektor Profe"
-          /></a>
         </div>
         <style>
           .md-sidebar[data-md-state="lock"] {
@@ -230,13 +218,13 @@ div.my-img{text-align:center;margin-top:20px}
     </div>
   </nav>
 </header>
-    
-    <div class="md-container" style="padding-top: 0px !important;">
       
+      <div class="md-container" style="padding-top: 0px !important;">
         
-      
-      
+          
         
+        
+          
 
   
 
@@ -273,15 +261,16 @@ div.my-img{text-align:center;margin-top:20px}
       </ul>
     </div>
 </nav>
-      
-      <main class="md-main">
-        <div class="md-main__inner md-grid" data-md-component="container" style="padding-top: 8px !important;">
-          
+        
+        <main class="md-main">
+          <div class="md-main__inner md-grid"
+               data-md-component="container"
+               style="padding-top: 8px !important">
             
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
-                <div class="md-sidebar__scrollwrap" id="md__sidebar__scroll">
-                  <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
+              
+                <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                  <div class="md-sidebar__scrollwrap" id="md__sidebar__scroll">
+                    <div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title" for="__drawer" style="padding:0 !important;max-height:5.5rem;"></label>
   
   <ul class="md-nav__list" id="main__list" data-md-scrollfix>
@@ -329,7 +318,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../index.html" title="Índice del archivo" class="md-nav__link">
+    <a href="../" title="Índice del archivo" class="md-nav__link">
       Índice del archivo
     </a>
   </li>
@@ -341,7 +330,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../01-configuracion-previa/index.html" title="Configuración previa" class="md-nav__link">
+    <a href="../01-configuracion-previa/" title="Configuración previa" class="md-nav__link">
       Configuración previa
     </a>
   </li>
@@ -353,7 +342,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../02-buffer-de-color/index.html" title="Buffer de color" class="md-nav__link">
+    <a href="../02-buffer-de-color/" title="Buffer de color" class="md-nav__link">
       Buffer de color
     </a>
   </li>
@@ -365,7 +354,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../03-vectores-y-puntos/index.html" title="Vectores y puntos" class="md-nav__link">
+    <a href="../03-vectores-y-puntos/" title="Vectores y puntos" class="md-nav__link">
       Vectores y puntos
     </a>
   </li>
@@ -377,7 +366,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../04-proyeccion-de-puntos/index.html" title="Proyección de puntos" class="md-nav__link">
+    <a href="../04-proyeccion-de-puntos/" title="Proyección de puntos" class="md-nav__link">
       Proyección de puntos
     </a>
   </li>
@@ -389,7 +378,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../05-transformaciones-lineales/index.html" title="Transformaciones lineales" class="md-nav__link">
+    <a href="../05-transformaciones-lineales/" title="Transformaciones lineales" class="md-nav__link">
       Transformaciones lineales
     </a>
   </li>
@@ -401,7 +390,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../06-triangulos-vertices-mallas/index.html" title="Triángulos, vértices y mallas" class="md-nav__link">
+    <a href="../06-triangulos-vertices-mallas/" title="Triángulos, vértices y mallas" class="md-nav__link">
       Triángulos, vértices y mallas
     </a>
   </li>
@@ -413,7 +402,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../07-rasterizacion-de-lineas/index.html" title="Rasterización de líneas" class="md-nav__link">
+    <a href="../07-rasterizacion-de-lineas/" title="Rasterización de líneas" class="md-nav__link">
       Rasterización de líneas
     </a>
   </li>
@@ -425,7 +414,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../08-mallas-en-memoria-dinamica/index.html" title="Mallas en memoria dinámica" class="md-nav__link">
+    <a href="../08-mallas-en-memoria-dinamica/" title="Mallas en memoria dinámica" class="md-nav__link">
       Mallas en memoria dinámica
     </a>
   </li>
@@ -437,7 +426,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../09-ficheros-con-modelos-obj/index.html" title="Ficheros con modelos OBJ" class="md-nav__link">
+    <a href="../09-ficheros-con-modelos-obj/" title="Ficheros con modelos OBJ" class="md-nav__link">
       Ficheros con modelos OBJ
     </a>
   </li>
@@ -461,7 +450,7 @@ div.my-img{text-align:center;margin-top:20px}
         Operaciones con vectores
       </label>
     
-    <a href="index.html" title="Operaciones con vectores" class="md-nav__link md-nav__link--active" id="md__active_link">
+    <a href="./" title="Operaciones con vectores" class="md-nav__link md-nav__link--active" id="md__active_link">
       Operaciones con vectores
     </a>
     
@@ -534,7 +523,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../11-back-face-culling/index.html" title="Back-face Culling" class="md-nav__link">
+    <a href="../11-back-face-culling/" title="Back-face Culling" class="md-nav__link">
       Back-face Culling
     </a>
   </li>
@@ -546,7 +535,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../12-rasterizacion-de-triangulos/index.html" title="Rasterización de triángulos" class="md-nav__link">
+    <a href="../12-rasterizacion-de-triangulos/" title="Rasterización de triángulos" class="md-nav__link">
       Rasterización de triángulos
     </a>
   </li>
@@ -558,7 +547,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../13-interfaz-dear-imgui/index.html" title="Interfaz Dear ImGui" class="md-nav__link">
+    <a href="../13-interfaz-dear-imgui/" title="Interfaz Dear ImGui" class="md-nav__link">
       Interfaz Dear ImGui
     </a>
   </li>
@@ -570,7 +559,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../14-ordenar-caras-por-profundidad/index.html" title="Ordenar caras por profundidad" class="md-nav__link">
+    <a href="../14-ordenar-caras-por-profundidad/" title="Ordenar caras por profundidad" class="md-nav__link">
       Ordenar caras por profundidad
     </a>
   </li>
@@ -582,7 +571,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../15-operaciones-con-matrices/index.html" title="Operaciones con matrices" class="md-nav__link">
+    <a href="../15-operaciones-con-matrices/" title="Operaciones con matrices" class="md-nav__link">
       Operaciones con matrices
     </a>
   </li>
@@ -594,7 +583,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../16-matrices-de-transformacion-3d/index.html" title="Matrices de transformación 3D" class="md-nav__link">
+    <a href="../16-matrices-de-transformacion-3d/" title="Matrices de transformación 3D" class="md-nav__link">
       Matrices de transformación 3D
     </a>
   </li>
@@ -606,7 +595,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../17-matriz-de-proyeccion/index.html" title="Matriz de proyección" class="md-nav__link">
+    <a href="../17-matriz-de-proyeccion/" title="Matriz de proyección" class="md-nav__link">
       Matriz de proyección
     </a>
   </li>
@@ -618,7 +607,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../18-luz-y-sombreado/index.html" title="Luz y sombreado" class="md-nav__link">
+    <a href="../18-luz-y-sombreado/" title="Luz y sombreado" class="md-nav__link">
       Luz y sombreado
     </a>
   </li>
@@ -630,7 +619,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../19-migracion-a-visual-studio/index.html" title="Migración a Visual Studio" class="md-nav__link">
+    <a href="../19-migracion-a-visual-studio/" title="Migración a Visual Studio" class="md-nav__link">
       Migración a Visual Studio
     </a>
   </li>
@@ -642,7 +631,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../20-mapeado-de-texturas/index.html" title="Mapeado de texturas" class="md-nav__link">
+    <a href="../20-mapeado-de-texturas/" title="Mapeado de texturas" class="md-nav__link">
       Mapeado de texturas
     </a>
   </li>
@@ -654,7 +643,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../21-interpolacion-de-perspectiva/index.html" title="Interpolación de perspectiva" class="md-nav__link">
+    <a href="../21-interpolacion-de-perspectiva/" title="Interpolación de perspectiva" class="md-nav__link">
       Interpolación de perspectiva
     </a>
   </li>
@@ -666,7 +655,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../22-decodificacion-de-ficheros-png/index.html" title="Decodificación de ficheros PNG" class="md-nav__link">
+    <a href="../22-decodificacion-de-ficheros-png/" title="Decodificación de ficheros PNG" class="md-nav__link">
       Decodificación de ficheros PNG
     </a>
   </li>
@@ -678,7 +667,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../23-ficheros-obj-con-texturas/index.html" title="Ficheros OBJ con texturas" class="md-nav__link">
+    <a href="../23-ficheros-obj-con-texturas/" title="Ficheros OBJ con texturas" class="md-nav__link">
       Ficheros OBJ con texturas
     </a>
   </li>
@@ -690,7 +679,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../24-profundidad-con-z-buffer/index.html" title="Profundidad con Z-Buffer" class="md-nav__link">
+    <a href="../24-profundidad-con-z-buffer/" title="Profundidad con Z-Buffer" class="md-nav__link">
       Profundidad con Z-Buffer
     </a>
   </li>
@@ -702,7 +691,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../25-matriz-de-vista-y-camara/index.html" title="Matriz de vista y cámaras" class="md-nav__link">
+    <a href="../25-matriz-de-vista-y-camara/" title="Matriz de vista y cámaras" class="md-nav__link">
       Matriz de vista y cámaras
     </a>
   </li>
@@ -714,7 +703,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../26-renderizado-y-debug-separado/index.html" title="Renderizado y debug separado" class="md-nav__link">
+    <a href="../26-renderizado-y-debug-separado/" title="Renderizado y debug separado" class="md-nav__link">
       Renderizado y debug separado
     </a>
   </li>
@@ -726,7 +715,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../27-clipping/index.html" title="Clipping" class="md-nav__link">
+    <a href="../27-clipping/" title="Clipping" class="md-nav__link">
       Clipping
     </a>
   </li>
@@ -738,7 +727,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../28-multiples-mallas/index.html" title="Múltiples mallas" class="md-nav__link">
+    <a href="../28-multiples-mallas/" title="Múltiples mallas" class="md-nav__link">
       Múltiples mallas
     </a>
   </li>
@@ -763,27 +752,14 @@ div.my-img{text-align:center;margin-top:20px}
     
   </ul>
 </nav>
-
+</div>
                   </div>
                 </div>
-              </div>
-            
-
-            
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                
-                  
-                    <div class="course-offer" style="margin-bottom:25px;padding:0px 10px;">
-                      <a href="https://www.hektorprofe.net/cupon/python" target="_blank">
-                        <img src="/cdn/assets/python.png" style="width:100%;justify-self:center;align-self:center;"/>
-                      </a>
-                    </div>
-                  
-                
-
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
+              
+              
+                <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                  <div class="md-sidebar__scrollwrap">
+                    <div class="md-sidebar__inner">
 <nav class="md-nav md-nav--secondary">
   
   
@@ -841,18 +817,17 @@ div.my-img{text-align:center;margin-top:20px}
       
     </ul>
   
-</nav>
+</nav></div>
                   </div>
                 </div>
-              </div>
-            
-          
-          <div class="md-content">
-            <article class="md-content__inner md-typeset">
               
+            
+            <div class="md-content">
+              <article class="md-content__inner md-typeset">
                 
-                
-                <h1 id="operaciones-con-vectores">Operaciones con vectores<a class="headerlink" href="#operaciones-con-vectores" title="Permanent link">&para;</a></h1>
+                  
+                  
+                  <h1 id="operaciones-con-vectores">Operaciones con vectores<a class="headerlink" href="#operaciones-con-vectores" title="Permanent link">&para;</a></h1>
 <p>En los gráficos por computadora, saber cómo determinar si las  caras de un modelo se encuentran revertidas nos permitirá ahorrarnos su renderizado. Para conseguirlo deberemos aplicar algunas operaciones con vectores así que en esta sección vamos a repasar diferentes operaciones vectoriales.</p>
 <h2 id="magnitud-vectorial">Magnitud vectorial<a class="headerlink" href="#magnitud-vectorial" title="Permanent link">&para;</a></h2>
 <p>La longitud de un vector <code>v</code> es lo que se conoce como su magnitud <code>||v||</code>.</p>
@@ -931,21 +906,21 @@ div.my-img{text-align:center;margin-top:20px}
 <h2 id="producto-vectorial">Producto vectorial<a class="headerlink" href="#producto-vectorial" title="Permanent link">&para;</a></h2>
 <p>El producto vectorial (<em>cross product</em>) <code>a×b</code> es el vector perpendicular resultante de <code>a</code> y <code>b</code>, también llamado vector normal <code>N</code>. </p>
 <p>Una manera de visualizarlo es como la dirección resultante del pulgar en la mano derecha tomando los dedos índice y  corazón como dos vectores <code>a</code> y <code>b</code>:</p>
-<p><img alt="" src="/cdn/graficos3d/image-42.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-42.png" /></p>
 <p>Para encontrar el resultado del producto vectorial <code>(Nx, Ny, Nz)</code> entre los vectores <code>a</code> y <code>b</code> aplicaremos la siguiente fórmula:</p>
 <p><img src="https://latex.codecogs.com/png.image?\large&space;\dpi{150}\bg{white}\\&space;Nx&space;=&space;a_yb_z&space;-&space;a_zb_y\\&space;Ny&space;=&space;a_zb_x&space;-&space;a_xb_z\\&space;Nz&space;=&space;a_xb_y&space;-&space;a_yb_x&space;"/></p>
 <p>Debemos tener en cuenta que el resultado del producto vectorial no es el mismo si cambiamos el orden:</p>
 <p><img src="https://latex.codecogs.com/png.image?\large&space;\dpi{150}\bg{white}\overrightarrow{A}x\overrightarrow{B}&space;\neq&space;\overrightarrow{B}&space;x&space;\overrightarrow{A}"/></p>
 <p>Esto tiene que ver con la dirección del sistema, pues si suponemos que la dirección es con sentido antihorario <code>a x b</code>, el vector normal resultante es perpendicular hacia arriba (se aleja), pero si es con sentido horario <code>b x a</code> es perpendicular hacia abajo (se acerca):</p>
-<p><img alt="" src="/cdn/graficos3d/image-43.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-43.png" /></p>
 <p>La siguiente figura muestra una animación del resultado del producto vectorial dependiendo de dos vectores:</p>
-<p><img alt="" src="/cdn/graficos3d/anim-08.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-08.gif" /></p>
 <p>En ella podemos ver como al final todo tiene que ver con el área del paralelogramo formado por ambos vectores. Cuanto más alineados menor es el producto vectorial, cuanto más alineados mayor es y si están completamente alineados (son la misma línea) el producto vectorial es cero.</p>
 <h2 id="vector-normal-de-una-cara">Vector normal de una cara<a class="headerlink" href="#vector-normal-de-una-cara" title="Permanent link">&para;</a></h2>
 <p>Así que pongamos en práctica lo aprendido para calcular el vector normal de una cara de nuestro modelo, la cuál nos permitirá saber hacia donde mira:</p>
-<p><img alt="" src="/cdn/graficos3d/image-44.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-44.png" /></p>
 <p>El producto vectorial entre dos vectores <code>(B-A)</code> y <code>(C-A)</code> da como resultado el vector <strong>perpendicular</strong> que forma un ángulo de 90º respecto a la cara del triángulo, pues es lo mismo que si trazamos el vector desde el centro de la cara:</p>
-<p><img alt="" src="/cdn/graficos3d/image-45.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-45.png" /></p>
 <p>El método para calcular el producto vectorial quedaría de la siguiente forma:</p>
 <div class="highlight"><pre><span></span><code><span class="n">Vector3</span><span class="w"> </span><span class="nf">Vector3::CrossProduct</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="o">&amp;</span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
 <span class="p">{</span>
@@ -959,9 +934,9 @@ div.my-img{text-align:center;margin-top:20px}
 <h2 id="producto-escalar">Producto escalar<a class="headerlink" href="#producto-escalar" title="Permanent link">&para;</a></h2>
 <p>La última operación que nos resta ver es el producto escalar (<em>dot product</em>) <code>a·b</code> y su peculiaridad es que si bien el producto vectorial tenía como resultado un nuevo vector (llamado <strong>normal</strong>), el resultado del producto escalar tiene como resultado un único número llamado <strong>escalar</strong>. </p>
 <p>Podemos visualizar este número como la proyección del vector <code>b</code> en <code>a</code>:</p>
-<p><img alt="" src="/cdn/graficos3d/image-46.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-46.png" /></p>
 <p>La siguiente animación muestra un ejemplo del producto escalar entre dos vectores: </p>
-<p><img alt="" src="/cdn/graficos3d/anim-09.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-09.gif" /></p>
 <p>Podemos enumerar algunas propiedades del producto escalar:</p>
 <ul>
 <li>Cuando los vectores se encuentran completamente alineados y tienen la misma longitud, el producto escalar es <code>1</code>.</li>
@@ -988,28 +963,28 @@ div.my-img{text-align:center;margin-top:20px}
 </ul>
 <hr />
 <p><small class="edited"><i>Última edición: 05 de Junio de 2022</i></small></p>
-                
+                  
+                    
                   
                 
-              
-              
                 
+                  
 
 
-              
-            </article>
+                
+              </article>
+            </div>
           </div>
-        </div>
-      </main>
-      
+        </main>
         
+          
 <footer class="md-footer">
   
   <div class="md-footer-nav">
     <nav class="md-footer-nav__inner md-grid">
       
       <a
-        href="../09-ficheros-con-modelos-obj/index.html"
+        href="../09-ficheros-con-modelos-obj/"
         title="Ficheros con modelos OBJ"
         class="md-flex md-footer-nav__link md-footer-nav__link--prev"
         rel="prev"
@@ -1028,7 +1003,7 @@ div.my-img{text-align:center;margin-top:20px}
       </a>
        
       <a
-        href="../11-back-face-culling/index.html"
+        href="../11-back-face-culling/"
         title="Back-face Culling"
         class="md-flex md-footer-nav__link md-footer-nav__link--next"
         rel="next"
@@ -1100,12 +1075,13 @@ div.my-img{text-align:center;margin-top:20px}
     ga("send", "pageview");
   </script>
 </footer>
-      
-      <a id="anchorID" href="https://www.hektorprofe.net/" target="_blank"></a>
-    </div>
-  <script type='text/javascript' src="/assets/javascripts/application.a26c1c21.js"></script>
-  <script src="/assets/javascripts/tingle.min.js"></script>
-  <script type='text/javascript'>
+        
+        <a id="anchorID" href="https://www.hektorprofe.net/" target="_blank"></a>
+      </div>
+      <script type='text/javascript'
+              src="https://hektorprofe.github.io/docs/assets/javascripts/application.a26c1c21.js"></script>
+      <script src="https://hektorprofe.github.io/docs/assets/javascripts/tingle.min.js"></script>
+      <script type='text/javascript'>
     var modalButtonOnly = new tingle.modal({
         closeMethods: [],
         footer: true,
@@ -1117,13 +1093,13 @@ div.my-img{text-align:center;margin-top:20px}
     modalButtonOnly.setContent(`
     <div style="display:grid;grid-template-columns:32% 32% 32%;grid-column-gap: 1.33%;" id="supermodal">
       <div class="course">
-        <a href="https://www.hektorprofe.net/cupon/python" target="_blank"><img src="/cdn/assets/python.png" style="width:100%;justify-self:center;align-self:center;"/></a>
+        <a href="https://www.hektorprofe.net/cupon/python" target="_blank"><img src="assets/python.png" style="width:100%;justify-self:center;align-self:center;" /></a>
       </div>
       <div class="course">
-        <a href="https://www.hektorprofe.net/cupon/django" target="_blank"><img src="/cdn/assets/django.png" style="width:100%;justify-self:center;align-self:center;"/></a>
+        <a href="https://www.hektorprofe.net/cupon/django" target="_blank"><img src="assets/django.png" style="width:100%;justify-self:center;align-self:center;" /></a>
       </div>
       <div class="course">
-        <a href="https://www.hektorprofe.net/cupon/pyside" target="_blank"><img src="/cdn/assets/pyside.png" style="width:100%;justify-self:center;align-self:center;"/></a>
+        <a href="https://www.hektorprofe.net/cupon/pyside" target="_blank"><img src="assets/pyside.png" style="width:100%;justify-self:center;align-self:center;" /></a>
       </div>
     </div>`);
 
@@ -1138,6 +1114,6 @@ div.my-img{text-align:center;margin-top:20px}
     function doNav(){ document.getElementById("main__list").innerHTML = '<li class="md-nav__item"><a class="md-nav__link" href="/cursos/">Cursos</a></li><li class="md-nav__item"><a class="md-nav__link" href="/blog/">Blog</a></li>';}
     for (i = 0; i < mdMenuItems.length; i++) {  var item = mdMenuItems[i]; var htmlstring = item.innerHTML; htmlstring = (htmlstring.trim) ? htmlstring.trim() : htmlstring.replace(/^\s+/,''); if (htmlstring == 'Servidor de encuentro') { item.parentNode.removeChild(item);continue; }  if (htmlstring == 'Política de Cookies') { item.parentNode.removeChild(item);continue; } if (htmlstring == 'Buscador') { item.parentNode.removeChild(item); continue; } }
     try { var topPos = document.querySelector('#md__active_link').offsetTop; document.querySelector('#md__sidebar__scroll').scrollTop = topPos - 60; } catch (err) {}
-  </script>
-  </body>
-</html>
+      </script>
+    </body>
+  </html>

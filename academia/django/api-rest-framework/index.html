@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+  <head>
+    
+    
+    
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Desarrolla paso a paso una API con Python y Django Rest Framework para manejar las películas favoritas de tus usuarios.">
+      
+      <link rel="canonical" href="https://hektorprofe.github.io/docs/academia/django/api-rest-framework/">
+      
+        <meta name="author" content="Héctor Costa Guzman">
+      
+      <link rel="shortcut icon" href="/favicon.ico">
+    
+    
+      
+        <title>API con Django Rest Framework | Django | Academia | Hektor Profe</title>
+      
+    
+    <link rel="stylesheet"
+          href="../../../assets/stylesheets/application.2.css">
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    
+    <link rel="stylesheet"
+          href="https://hektorprofe.github.io/docs/assets/stylesheets/tingle.min.css">
+    <style>
+@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
+[data-md-color-primary="grey"] .md-header { background-color: #191A1D }
+[data-md-color-primary="grey"] .md-tabs { background-color: #222831 }
+.md-footer-nav { background-color: #222831; }
+.md-footer-meta { background-color: #191A1D }
+html [data-md-color-primary="grey"] .md-nav--primary .md-nav__title--site { background-color: #191A1D; }
+.mini{ display: none; } .maxi{ display: block; }
+.embed-container { position: relative; padding-bottom: 56.25%;height: 0; overflow: hidden; max-width: 100%; height: auto; margin-bottom: 0; } 
+.embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.md-nav__link:focus, .md-nav__link:hover { color: #018dc5; }
+.headerlink{ color: #018dc5 !important; }
+.md-footer-links__highlight a{ color: #777 !important; }
+.md-footer-links__highlight a:hover{ color: #ddd !important; }
+.visible{ display: inherit !important; }
+/*.md-tabs { display: none !important; }*/
+.nav__btn, .nav__logo{ transition: 0.3s; }
+.nav__btn:hover{ color: #aaa; }
+.nav__logo:hover{ opacity:.7; }
+.nav__logo {max-width: 225px !important; }
+img:not([src]){visibility:hidden;}
+img.click{opacity: 0.96;box-shadow:rgb(79, 82, 92) -4px 4px}
+img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
+.button { background-color: #36bf2d; border: none; color: white !important; padding: 20px 0px; text-align: center; text-decoration: none; display: block; font-size: 97%; width: 100%; font-weight: bold;}
+.button:hover { background-color: #4CAF50; color: white; }
+.animated.delay-1dot5s {animation-delay: 1.5s;}
+.md-icon--search { display:inline-block!important}
+a.headerlink{ display: none !important; }
+small.edited { display: block; text-align: right; }
+#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
+#cookie-bar-prompt-logo{ display: none !important; }
+div.my-img{text-align:center;margin-top:20px}
+@media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
+@media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
+@media (min-width: 1999.9px){ .md-header-nav__button.md-logo img { height: 40px !important; width: 240px; } }
+/* Rectificación footer en paginas pequeñas de altura */
+@media (max-width: 1599.8px){ .md-container {height: calc(100% - 48px)} }
+@media (min-width: 1599.9px){ .md-container {height: calc(100% - 53px)} }
+@media (min-width: 1999.9px){ .md-container {height: calc(100% - 58px)} }
+@media only screen and (max-width: 959.9px) { .nav__logo { display: block !important; }} 
+@media only screen and (min-width: 960px) and (max-width: 76.1875em) { .nav__logo { display: block !important; }} 
+@media only screen and (min-width: 76.1875em) { .nav__logo { display: none !important; } } 
+@media only screen and (max-width: 76.1875em) { .md-sidebar--primary { left: -26.2rem;; width: 26.2rem; }  [data-md-toggle="drawer"]:checked ~ .md-container .md-sidebar--primary { -webkit-transform: translateX(26.2rem); transform: translateX(26.2rem); } [dir="rtl"] [data-md-toggle="drawer"]:checked ~ .md-container .md-sidebar--primary { -webkit-transform: translateX(-26.2rem); transform: translateX(-26.2rem); } }
+@media (min-width: 1219.9px){ #home__btn { display: none !important; } #cursos__btn{ color: white !important; } [data-md-color-primary="grey"] .md-nav__link--active{ color: rgba(0, 0, 0, 0.87); text-decoration: underline !important; } }
+@media (min-width: 467.9px){ #discord__btn{ display: inline-block !important; } }
+@media only screen and (min-width: 60em){ .md-search__input { background-color: rgb(53, 54, 56); } .md-search__input:hover { background-color: rgb(84, 87, 93); color: white; }}
+@media (max-width: 1219.9px){ .md-header-nav__title{ padding: 0 1rem; } .nav__btn {display:none;} }
+@media (max-width: 875.9px){ #cookie-bar-button{ margin-top: 20px !important; }}
+@media (max-width: 719.9px){ #cookie-bar { padding: 3.25rem 1.25rem; }}
+@media (max-width: 512.9px){ #cookie-bar { padding: 2rem 1.25rem; }}
+
+.tingle-modal { font-size:18px !important;}
+.tingle-modal-box{ width: 80%; max-width: 1100px; }
+.tingle-btn--danger{ background: darkorange !important; }
+.tingle-modal-box__content { padding: 3rem 2rem 3rem 3rem;}
+@media (max-width: 540px){ .tingle-modal-box{ width: auto; } }
+@media (max-width: 849px){ #supermodal{ grid-template-columns:100% !important; }}
+
+.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 275px - 60px)}
+@media (max-width: 1999.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 246px - 60px);margin-right:-1px;}}
+@media (max-width: 1599.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 222px - 60px)}}
+
+    </style>
+  </head>
+  
+    
+    
+    <body dir="ltr"
+          data-md-color-primary="grey"
+          data-md-color-accent="grey">
+    
+      <input class="md-toggle"
+             data-md-toggle="drawer"
+             type="checkbox"
+             id="__drawer"
+             autocomplete="off">
+      <input class="md-toggle"
+             data-md-toggle="search"
+             type="checkbox"
+             id="__search"
+             autocomplete="off">
+      <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+      
+        <a href="#proyecto-api-con-django-rest-framework"
+           tabindex="1"
+           class="md-skip">Saltar a contenido</a>
+      
+      
+        <header class="md-header"
+        data-md-component="header"
+        style="position: inherit !important">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="/"
+           title="Hektor Profe"
+           class="md-header-nav__button md-logo"
+           style="font-size: 0px">
+          <img src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+               width="200px"
+               height="35px"
+               style="margin-top: -5px"
+               alt="Hektor Profe"
+               title="Hektor Profe" />
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title"
+             data-md-component="title"
+             style="text-align: right">
+          <!-- https://fontawesome.com/v4.7.0/ -->
+          <a class="nav__btn"
+             href="https://www.hektorprofe.net/"
+             style="margin-left:0em"
+             title="Cursos de Hektor Profe">Cursos</a>
+          <a class="nav__btn"
+             href="https://docs.hektorprofe.net/"
+             style="margin-left:1.4em"
+             title="Documentos de Hektor Profe">Documentos</a>
+          <a class="nav__btn"
+             href="https://www.hektorprofe.net/portafolio/"
+             style="margin-left:1.4em"
+             title="Portafolio de Hektor Profe">Portafolio</a>
+          <a href="/">
+            <img class="nav__logo"
+                 src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+                 width="200px"
+                 height="35px"
+                 style="margin: 6px auto 0"
+                 alt="Hektor Profe"
+                 title="Hektor Profe" />
+          </a>
+        </div>
+        <style>
+          .md-sidebar[data-md-state="lock"] {
+            top: 0rem !important;
+          }
+          .md-tabs {
+            display: none !important;
+          }
+          .hde {
+            display: inline-block;
+          }
+          .admonition.note > .superfences-tabs > label:hover,
+          .headerlink {
+            color: #018dc5 !important;
+          }
+          .admonition.info {
+            font-size: 100%;
+          }
+          .admonition.info label {
+            font-size: 91%;
+          }
+          .admonition.note > .admonition-title {
+            display: none;
+          }
+          .image {
+            text-align: center;
+            margin-top: 25px;
+          }
+          .contenedor_youtube {
+            position: relative !important;
+            padding-bottom: 56.25% !important; /*panorámico*/
+            padding-top: 0px !important;
+            height: 0 !important;
+            margin-top: -20px;
+            margin-bottom: 25px;
+          }
+          .contenedor_youtube iframe {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+          }
+        </style>
+      </div>
+    </div>
+  </nav>
+</header>
+      
+      <div class="md-container" style="padding-top: 0px !important;">
+        
+          
+        
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list" id="top__tabs">
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+      </ul>
+    </div>
+</nav>
+        
+        <main class="md-main">
+          <div class="md-main__inner md-grid"
+               data-md-component="container"
+               style="padding-top: 8px !important">
+            
+              
+                <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                  <div class="md-sidebar__scrollwrap" id="md__sidebar__scroll">
+                    <div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title" for="__drawer" style="padding:0 !important;max-height:5.5rem;"></label>
+  
+  <ul class="md-nav__list" id="main__list" data-md-scrollfix>
+    
+      
+    
+        <!-- comprobación extra -->
+         
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Academia de programación
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Academia de programación
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../" title="Índice del archivo" class="md-nav__link">
+      Índice del archivo
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../python/introduccion/" title="Python para principiantes" class="md-nav__link">
+      Python para principiantes
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../python/poo-para-interfaces-graficas/" title="Python para interfaces gráficas" class="md-nav__link">
+      Python para interfaces gráficas
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../python/proyecto-gestor-clientes/" title="Gestor de clientes con Python" class="md-nav__link">
+      Gestor de clientes con Python
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../python/tutoriales/" title="Más tutoriales sobre Python" class="md-nav__link">
+      Más tutoriales sobre Python
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../python/modulo-analitico-numpy/" title="Módulo analítico NumPy" class="md-nav__link">
+      Módulo analítico NumPy
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../python/modulo-grafico-matplotlib/" title="Módulo gráfico Matplotlib" class="md-nav__link">
+      Módulo gráfico Matplotlib
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../introduccion/" title="Django para principiantes" class="md-nav__link">
+      Django para principiantes
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Server API pelis en Django Rest
+      </label>
+    
+    <a href="./" title="Server API pelis en Django Rest" class="md-nav__link md-nav__link--active" id="md__active_link">
+      Server API pelis en Django Rest
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creando-nuestro-proyecto" title="Creando nuestro proyecto" class="md-nav__link toc__link">
+    Creando nuestro proyecto
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modelo-de-pelicula-y-serializador" title="Modelo de película y serializador" class="md-nav__link toc__link">
+    Modelo de película y serializador
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#programando-la-viewset-y-las-urls" title="Programando la viewset y las urls" class="md-nav__link toc__link">
+    Programando la viewset y las urls
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion-de-las-dependencias" title="Instalación de las dependencias" class="md-nav__link toc__link">
+    Instalación de las dependencias
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interactuando-usando-curl" title="Interactuando usando cURL" class="md-nav__link toc__link">
+    Interactuando usando cURL
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modelo-de-pelicula-favorita" title="Modelo de película favorita" class="md-nav__link toc__link">
+    Modelo de película favorita
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vista-de-pelicula-favorita" title="Vista de película favorita" class="md-nav__link toc__link">
+    Vista de película favorita
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vista-de-peliculas-favoritas" title="Vista de películas favoritas" class="md-nav__link toc__link">
+    Vista de películas favoritas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#top-de-peliculas-favoritas-y-filtros" title="Top de películas favoritas y filtros" class="md-nav__link toc__link">
+    Top de películas favoritas y filtros
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../tutoriales/" title="Más tutoriales sobre Django" class="md-nav__link">
+      Más tutoriales sobre Django
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../javascript/introduccion/" title="JavaScript para principiantes" class="md-nav__link">
+      JavaScript para principiantes
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../javascript/conversor-divisas/" title="Conversor de divisas en JS" class="md-nav__link">
+      Conversor de divisas en JS
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../javascript/biblioteca-p5js/" title="Introducción a P5.js" class="md-nav__link">
+      Introducción a P5.js
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../javascript/nodejs/" title="Introducción a Node.js" class="md-nav__link">
+      Introducción a Node.js
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../javascript/chat-heroku/" title="Chat online con Node.js" class="md-nav__link">
+      Chat online con Node.js
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../javascript/cliente-nuxt/" title="Cliente API pelis en Nuxt.js" class="md-nav__link">
+      Cliente API pelis en Nuxt.js
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../../gnu-linux/ubuntu-server-web/" title="Configurar Ubuntu Server" class="md-nav__link">
+      Configurar Ubuntu Server
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </ul>
+</nav>
+</div>
+                  </div>
+                </div>
+              
+              
+                <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                  <div class="md-sidebar__scrollwrap">
+                    <div class="md-sidebar__inner">
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creando-nuestro-proyecto" title="Creando nuestro proyecto" class="md-nav__link toc__link">
+    Creando nuestro proyecto
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modelo-de-pelicula-y-serializador" title="Modelo de película y serializador" class="md-nav__link toc__link">
+    Modelo de película y serializador
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#programando-la-viewset-y-las-urls" title="Programando la viewset y las urls" class="md-nav__link toc__link">
+    Programando la viewset y las urls
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion-de-las-dependencias" title="Instalación de las dependencias" class="md-nav__link toc__link">
+    Instalación de las dependencias
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interactuando-usando-curl" title="Interactuando usando cURL" class="md-nav__link toc__link">
+    Interactuando usando cURL
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modelo-de-pelicula-favorita" title="Modelo de película favorita" class="md-nav__link toc__link">
+    Modelo de película favorita
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vista-de-pelicula-favorita" title="Vista de película favorita" class="md-nav__link toc__link">
+    Vista de película favorita
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vista-de-peliculas-favoritas" title="Vista de películas favoritas" class="md-nav__link toc__link">
+    Vista de películas favoritas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#top-de-peliculas-favoritas-y-filtros" title="Top de películas favoritas y filtros" class="md-nav__link toc__link">
+    Top de películas favoritas y filtros
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav></div>
+                  </div>
+                </div>
+              
+            
+            <div class="md-content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+                  
+                  <h1 id="proyecto-api-con-django-rest-framework">Proyecto API con Django Rest Framework<a class="headerlink" href="#proyecto-api-con-django-rest-framework" title="Permanent link">&para;</a></h1>
+<div class="contenedor_youtube">
+  <iframe id="odysee-iframe" width="560" height="315" src="https://odysee.com/$/embed/-Curso--Api-Pelis-Django/d1cc2c76b739f9cb55c99bdecb33df09ff78ae8f?r=3icueB68NV3UEFHyqs2QRfzRUeABmHDU" allowfullscreen></iframe>
+</div>
+
+<p>En este curso haremos uso de algunas apps de Django para implementar una API totalmente funcional utilizando autenticación con Token, muy útil para utilizar en todo tipo de clientes, desde web a aplicaciones móviles, ya que se basa sobre una capa de peticiones con respuestas JSON.</p>
+<p>Os enseñaré que no es necesario ser todo un experto para desarrollar la plataforma y en muy poco tiempo tendremos un genial sistema para gestionar películas.</p>
+<p>En él los usuarios que se registren e identifiquen podrán marcarlas como favoritas, así como ordenar y buscar en los viewsets gracias a las utilidades de Django Rest Framework.</p>
+<p><strong>Repositorio</strong>: <a href="https://github.com/hektorprofe/curso-api-peliculas-django" target="_blank">https://github.com/hektorprofe/curso-api-peliculas-django</a></p>
+<h2 id="creando-nuestro-proyecto">Creando nuestro proyecto<a class="headerlink" href="#creando-nuestro-proyecto" title="Permanent link">&para;</a></h2>
+<p>Partiremos de la base que ya sabéis crear entornos virtuales con <strong>Pipenv</strong> tal como explico en el primer curso de Django, así que trabajaremos en un directorio llamado <strong>proyecto_pelis</strong> :</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>proyecto_pelis
+pipenv<span class="w"> </span>install<span class="w"> </span>django
+</code></pre></div>
+<p>Creamos el proyecto:</p>
+<div class="highlight"><pre><span></span><code>pipenv<span class="w"> </span>run<span class="w"> </span>django-admin<span class="w"> </span>startproject<span class="w"> </span>api_pelis
+</code></pre></div>
+<p>Ahora instalamos todos los módulos de Django para este tutorial, a poder ser con estas versiones para no tener contratiempos:</p>
+<div class="highlight"><pre><span></span><code>pipenv<span class="w"> </span>install<span class="w"> </span>djangorestframework,<span class="w"> </span>markdown,<span class="w"> </span>django-filter
+</code></pre></div>
+<p>Activamos la app <em>rest_framework</em> en el <strong>settings.py</strong>.</p>
+<p>En este punto os recomiendo crear algunos atajos de comandos en el <strong>Pipfile</strong> para agilizar el desarrollo:</p>
+<p><code>Pipfile</code>
+<div class="highlight"><pre><span></span><code>[scripts]
+dev = &quot;python manage.py runserver 127.0.0.1:8844&quot;
+make = &quot;python manage.py makemigrations&quot;
+migrate = &quot;python manage.py migrate&quot;
+</code></pre></div></p>
+<p>Para poner en marcha nuestro proyecto utilizaremos el atajo así:</p>
+<div class="highlight"><pre><span></span><code>pipenv<span class="w"> </span>run<span class="w"> </span>dev
+</code></pre></div>
+<p>Si todo va bien deberíamos tener Django en marcha: <a href="http://127.0.0.1:8844/">http://127.0.0.1:8844/</a>.</p>
+<p>A continuación crearemos la app que manejará la API:</p>
+<div class="highlight"><pre><span></span><code>pipenv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>startapp<span class="w"> </span>api
+</code></pre></div>
+<p>La activaremos en el <strong>settings.py</strong> y haremos la migración inicial:</p>
+<div class="highlight"><pre><span></span><code>pipenv<span class="w"> </span>run<span class="w"> </span>migrate
+</code></pre></div>
+<p>Finalmente crearemos nuestro usuario administrador:</p>
+<div class="highlight"><pre><span></span><code>pipenv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
+</code></pre></div>
+<h2 id="modelo-de-pelicula-y-serializador">Modelo de película y serializador<a class="headerlink" href="#modelo-de-pelicula-y-serializador" title="Permanent link">&para;</a></h2>
+<p>Creamos nuestro modelo <em>Pelicula</em> para la API:</p>
+<p><code>api/models.py</code>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">django.db</span><span class="w"> </span><span class="kn">import</span> <span class="n">models</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Pelicula</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+  <span class="n">titulo</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+  <span class="n">estreno</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+  <span class="n">imagen</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">URLField</span><span class="p">(</span><span class="n">help_text</span><span class="o">=</span><span class="s2">&quot;De imdb mismo&quot;</span><span class="p">)</span>
+  <span class="n">resumen</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">help_text</span><span class="o">=</span><span class="s2">&quot;Descripción corta&quot;</span><span class="p">)</span>
+
+  <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
+    <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;titulo&#39;</span><span class="p">]</span>
+</code></pre></div></p>
+<p>Migramos los cambios:</p>
+<div class="highlight"><pre><span></span><code>pipenv<span class="w"> </span>run<span class="w"> </span>make
+pipenv<span class="w"> </span>run<span class="w"> </span>migrate
+</code></pre></div>
+<p>Ahora vamos a configurar un serializador, éste definirá el contenido de las películas tal como las devolverá la API:</p>
+<p><code>api/serializers.py</code>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pelicula</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework</span><span class="w"> </span><span class="kn">import</span> <span class="n">serializers</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">PeliculaSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+  <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Pelicula</span>
+    <span class="c1"># fields = [&#39;id&#39;, &#39;titulo&#39;, &#39;imagen&#39;, &#39;estreno&#39;, &#39;resumen&#39;]</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+</code></pre></div></p>
+<h2 id="programando-la-viewset-y-las-urls">Programando la viewset y las urls<a class="headerlink" href="#programando-la-viewset-y-las-urls" title="Permanent link">&para;</a></h2>
+<p>Tenemos el modelo y el serializador, ya sólo nos falta programar el viewset de DRF:</p>
+<p><code>api/views.py</code>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pelicula</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.serializers</span><span class="w"> </span><span class="kn">import</span> <span class="n">PeliculaSerializer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework</span><span class="w"> </span><span class="kn">import</span> <span class="n">viewsets</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">PeliculaViewSet</span><span class="p">(</span><span class="n">viewsets</span><span class="o">.</span><span class="n">ModelViewSet</span><span class="p">):</span>
+  <span class="n">queryset</span> <span class="o">=</span> <span class="n">Pelicula</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+  <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">PeliculaSerializer</span>
+</code></pre></div></p>
+<p>Y ahora añadimos a las urls la ruta de la viewset en la API:</p>
+<p><code>api_pelis/urls.py</code>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib</span><span class="w"> </span><span class="kn">import</span> <span class="n">admin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.urls</span><span class="w"> </span><span class="kn">import</span> <span class="n">path</span><span class="p">,</span> <span class="n">include</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">api</span><span class="w"> </span><span class="kn">import</span> <span class="n">views</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework</span><span class="w"> </span><span class="kn">import</span> <span class="n">routers</span>
+
+<span class="n">router</span> <span class="o">=</span> <span class="n">routers</span><span class="o">.</span><span class="n">DefaultRouter</span><span class="p">()</span>
+
+<span class="c1"># En el router vamos añadiendo los endpoints a los viewsets</span>
+<span class="n">router</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s1">&#39;peliculas&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">PeliculaViewSet</span><span class="p">)</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="n">path</span><span class="p">(</span><span class="s1">&#39;api/v1/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="n">router</span><span class="o">.</span><span class="n">urls</span><span class="p">)),</span>
+  <span class="n">path</span><span class="p">(</span><span class="s1">&#39;admin/&#39;</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
+<span class="p">]</span>
+</code></pre></div></p>
+<p>Ahora podemos <a href="http://127.0.0.1:8844/api/v1/peliculas/">navegar a la API</a> para manejar las películas.</p>
+<p>Lamentablemente por defecto las viewsets tienen permisos públicos, así que cualquiera podría manejar las películas. Para solucionarlo simplemente añadiremos un permiso por defecto en el <strong>settings.py</strong>: </p>
+<p><code>api_pelis/settings.py</code>
+<div class="highlight"><pre><span></span><code><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">&#39;DEFAULT_PERMISSION_CLASSES&#39;</span><span class="p">:</span> <span class="p">[</span>                     
+    <span class="s1">&#39;rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly&#39;</span><span class="p">,</span>
+  <span class="p">],</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>Éste hará nuestras viewsets de sólo lectura incluso para visitantes no autenticados. Sólo los usuarios identificados con suficientes permisos podrán acceder a las acciones de creación, modificación y borrado.</p>
+<h2 id="instalacion-de-las-dependencias">Instalación de las dependencias<a class="headerlink" href="#instalacion-de-las-dependencias" title="Permanent link">&para;</a></h2>
+<p>La autenticación con token es un sistema ideal para usar en webs asíncronas. </p>
+<p>El token es un identificador único de la sesión de un usuario que sirve como credenciales de acceso a la API. Si el cliente envía este token en sus peticiones (que generaremos cuando se registra), ésta buscará si tiene los permisos necesarios para acceder a las acciones protegidas.</p>
+<p>Desarrollar esta funcionalidad es tedioso, pero por suerte en DRF tenemos una serie de apps que nos harán la vida mucho más fácil, sólo tenemos que configurarlas adecuadamente y en pocos minutos tendremos un sistema de autenticación básico funcionando.</p>
+<p>Esas apps son <em>django-rest-auth</em> para la autenticación y <em>django-allauth</em> para las cuentas de usuario:</p>
+<div class="highlight"><pre><span></span><code>pipenv<span class="w"> </span>install<span class="w"> </span>django-rest-auth
+pipenv<span class="w"> </span>install<span class="w"> </span>django-allauth
+</code></pre></div>
+<p>Configurarlas conlleva añadir algunas apps y variables al settings y paths a las urls.</p>
+<p>Primero la app <em>django.contrib.sites</em> que maneja los sites requeridos por nuestras dependencias:</p>
+<p><code>api_pelis/settings.py</code>
+<div class="highlight"><pre><span></span><code><span class="n">django</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">sites</span><span class="p">,</span>
+</code></pre></div></p>
+<p>Luego <em>rest_framework.authtoken</em> para añadir la autenticación con tokens:</p>
+<div class="highlight"><pre><span></span><code><span class="n">rest_framework</span><span class="o">.</span><span class="n">authtoken</span><span class="p">,</span>
+</code></pre></div>
+<p>Dos más de <em>django-rest-auth</em>:</p>
+<div class="highlight"><pre><span></span><code><span class="s1">&#39;rest_auth&#39;</span><span class="p">,</span>
+<span class="s1">&#39;rest_auth.registration&#39;</span><span class="p">,</span>
+</code></pre></div>
+<p>Y otras tres para <em>django-allauth</em>:</p>
+<div class="highlight"><pre><span></span><code><span class="s1">&#39;allauth&#39;</span><span class="p">,</span>
+<span class="s1">&#39;allauth.account&#39;</span><span class="p">,</span>
+<span class="s1">&#39;allauth.socialaccount&#39;</span><span class="p">,</span>
+</code></pre></div>
+<p>Justo debajo de las apps pondremos las siguientes variables:</p>
+<div class="highlight"><pre><span></span><code><span class="n">SITE_ID</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">ACCOUNT_EMAIL_VERIFICATION</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span>
+<span class="n">ACCOUNT_AUTHENTICATION_METHOD</span> <span class="o">=</span> <span class="s1">&#39;email&#39;</span>
+<span class="n">ACCOUNT_EMAIL_REQUIRED</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">ACCOUNT_UNIQUE_EMAIL</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">ACCOUNT_USERNAME_REQUIRED</span> <span class="o">=</span> <span class="kc">False</span>
+</code></pre></div>
+<p>En resumen lo que hacemos es añadir la configuración del site actual, simplemente estableciendo un <em>SITE_ID</em>. Luego toda la parte que manejará la cuenta, que configuraremos sin verificación de email porque para esta pequeña API nos lo necesitamos, así como registro con email en lugar de usuario, algo que Django no permite hacer por defecto y la verdad es que es un puntazo.</p>
+<p>Ahora añadiremos el backend de <em>allauth</em> a la configuración de Django, sin ello no nos funcionará nada.</p>
+<div class="highlight"><pre><span></span><code><span class="n">AUTHENTICATION_BACKENDS</span> <span class="o">=</span> <span class="p">(</span>
+   <span class="s2">&quot;django.contrib.auth.backends.ModelBackend&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;allauth.account.auth_backends.AuthenticationBackend&quot;</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>Respecto a las URL añadiremos la parte de la autenticación y registro con <em>rest_auth</em>:</p>
+<p><code>api_pelis/urls.py</code>
+<div class="highlight"><pre><span></span><code><span class="n">path</span><span class="p">(</span><span class="s1">&#39;api/v1/auth/&#39;</span><span class="p">,</span> 
+  <span class="n">include</span><span class="p">(</span><span class="s1">&#39;rest_auth.urls&#39;</span><span class="p">)),</span>
+<span class="n">path</span><span class="p">(</span><span class="s1">&#39;api/v1/auth/registration/&#39;</span><span class="p">,</span> 
+  <span class="n">include</span><span class="p">(</span><span class="s1">&#39;rest_auth.registration.urls&#39;</span><span class="p">)),</span>
+</code></pre></div></p>
+<p>Finalmente migramos de nuevo:</p>
+<div class="highlight"><pre><span></span><code>pipenv<span class="w"> </span>run<span class="w"> </span>migrate
+</code></pre></div>
+<p>Si lo hemos hecho todo correctamente, sin mucho problema podremos acceder <a href="http://127.0.0.1:8844/api/v1/auth/registration/">a la url</a> y registrar un usuario de prueba usando la interfaz web de DRF, de manera que justo después del registro veamos el token generado.</p>
+<p>Por cierto, no es necesario poner un Username, sólo el Email y dos contraseñas iguales, eso sí, deben ser bastante seguras.</p>
+<p>De la misma forma que registramos un usuario podemos conseguir el token haciendo login en la <a href="http://127.0.0.1:8844/api/v1/auth/login/">respectiva URL</a>.</p>
+<h2 id="interactuando-usando-curl">Interactuando usando cURL<a class="headerlink" href="#interactuando-usando-curl" title="Permanent link">&para;</a></h2>
+<p>La API de Django nos proporciona la interfaz web, pero ¿cómo crearíamos un usuario o haríamos el login desde un cliente? </p>
+<p>Para hacer una prueba vamos a usar cURL, una biblioteca que permite hacer peticiones en un montón de protocolos. Normalmente viene instalada en los sistemas operativos, así que sólo tenemos que abrir la terminal para empezar a probar.</p>
+<p>Tanto el registro como el login manejan peticiones con métodos POST, podemos crearlas fácilmente.</p>
+<p>Para registrar un usuario lo haremos así (es muy importante usar doble comillas al pasar los argumentos):</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://127.0.0.1:8844/api/v1/auth/registration/
+-d<span class="w"> </span><span class="s2">&quot;password1=TEST1234A&amp;password2=TEST1234A&amp;email=test2@test2.com&quot;</span>
+</code></pre></div>
+<p>Y para hacer login y conseguir el token:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://127.0.0.1:8844/api/v1/auth/login/
+-d<span class="w"> </span><span class="s2">&quot;password=TEST1234A&amp;email=test2@test2.com&quot;</span><span class="w"> </span>
+</code></pre></div>
+<p>La idea trabajando con clientes es crear estas peticiones y almacenar el token en el localStorage del navegador para más adelante pasarlos en las cabeceras de las peticiones que requieran autenticación.</p>
+<h2 id="modelo-de-pelicula-favorita">Modelo de película favorita<a class="headerlink" href="#modelo-de-pelicula-favorita" title="Permanent link">&para;</a></h2>
+<p>El sistema de películas favoritas constará de dos vistas: una para marcar o desmarcar una película como favorita y otra que devolverá todas las películas favoritas del usuario.</p>
+<p>Obviamente ambas vistas serán de acceso protegido y requerirán pasar el token de autenticación en las cabeceras.</p>
+<p>Sin embargo antes de ponernos con las vistas tenemos que crear el nuevo modelo que relacione las películas con los usuarios en forma de favorito:</p>
+<p><code>api/models.py</code>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib.auth.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">User</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">PeliculaFavorita</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+  <span class="n">pelicula</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Pelicula</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
+  <span class="n">usuario</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
+</code></pre></div></p>
+<p>Si esta relación entre una película y un usuario existe podremos entender que el usuario la tiene como favorita, y si la desmarca simplemente la borraremos de la base de datos.</p>
+<p>Ahora vamos a añadir el serializador del modelo que utilizaremos luego:</p>
+<p><code>api/serializers.py</code>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pelicula</span><span class="p">,</span> <span class="n">PeliculaFavorita</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">PeliculaFavoritaSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+
+  <span class="n">pelicula</span> <span class="o">=</span> <span class="n">PeliculaSerializer</span><span class="p">()</span>
+
+  <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">PeliculaFavorita</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pelicula&#39;</span><span class="p">]</span>
+</code></pre></div></p>
+<p>El punto es que hacemos uso del otro serializador Pelicula dentro de PeliculaFavorita para conseguir que la API devuelva instancias anidadas, ya veréis como es muy útil.</p>
+<p>Por ahora lo dejamos así, vamos a migrar antes de continuar con la siguiente lección:</p>
+<div class="highlight"><pre><span></span><code>pipenv<span class="w"> </span>run<span class="w"> </span>make
+pipenv<span class="w"> </span>run<span class="w"> </span>migrate
+</code></pre></div>
+<h2 id="vista-de-pelicula-favorita">Vista de película favorita<a class="headerlink" href="#vista-de-pelicula-favorita" title="Permanent link">&para;</a></h2>
+<p><strong>Nota</strong>: Las peticiones para crear recursos sin un identificador previo son de tipo POST, mientras que las de tipo PUT se usan para crear/reemplazar las que ya existen a partir de un identificador. En otras palabras, no es no se pueda usar PUT, pero al no tener un identificador explícito es mejor utilizar POST tal como lo encontraréis editado en estos apuntes. Si queréis más información <a href="http://notasjs.blogspot.com/2013/07/http-diferencia-entre-post-y-put.html">echad un vistazo a este enlace</a>.</p>
+<p>La vista para manejar una película favorita se basa en definir un método de petición, que en nuestro caso será de tipo PUT. </p>
+<p>En él detectaremos una id de película que pasaremos como parámetro para recuperar la película que queremos marcar como favorita.</p>
+<p>Una vez la tengamos recuperada crearemos la relación PeliculaFavorita, y si ya existe la borraremos haciendo lo contrario:</p>
+<p><code>api/views.py</code>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pelicula</span><span class="p">,</span> <span class="n">PeliculaFavorita</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.serializers</span><span class="w"> </span><span class="kn">import</span> <span class="n">PeliculaSerializer</span><span class="p">,</span> <span class="n">PeliculaFavoritaSerializer</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.shortcuts</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_object_or_404</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework</span><span class="w"> </span><span class="kn">import</span> <span class="n">viewsets</span><span class="p">,</span> <span class="n">views</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.authentication</span><span class="w"> </span><span class="kn">import</span> <span class="n">TokenAuthentication</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.permissions</span><span class="w"> </span><span class="kn">import</span> <span class="n">IsAuthenticated</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.response</span><span class="w"> </span><span class="kn">import</span> <span class="n">Response</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MarcarPeliculaFavorita</span><span class="p">(</span><span class="n">views</span><span class="o">.</span><span class="n">APIView</span><span class="p">):</span>
+  <span class="n">authentication_classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">TokenAuthentication</span><span class="p">]</span>
+  <span class="n">permission_classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">IsAuthenticated</span><span class="p">]</span>
+
+  <span class="c1"># POST -&gt; Se usa para crear un recurso sin un identificador</span>
+  <span class="c1"># PUT -&gt; Se usa para crear/reemplazar un recurso con un identificador</span>
+
+  <span class="k">def</span><span class="w"> </span><span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+
+    <span class="n">pelicula</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span>
+      <span class="n">Pelicula</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">favorita</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">PeliculaFavorita</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span>
+      <span class="n">pelicula</span><span class="o">=</span><span class="n">pelicula</span><span class="p">,</span> <span class="n">usuario</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Por defecto suponemos que se crea bien</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="n">pelicula</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+      <span class="s1">&#39;favorita&#39;</span><span class="p">:</span> <span class="kc">True</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Si no se ha creado es que ya existe, entonces borramos el favorito</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">created</span><span class="p">:</span>
+      <span class="n">favorita</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+      <span class="n">content</span><span class="p">[</span><span class="s1">&#39;favorita&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+</code></pre></div></p>
+<p>Haciendo uso de una <em>APIView</em> genérica configuraremos el sistema de autenticación y de permisos de la vista para que sea accesible sólo a usuarios autenticados vía token. Ya en la respuesta devolveremos una estructura JSON usando la clase <em>Response</em> de DRF.</p>
+<p>El nuevo path para acceder a la view quedará así:</p>
+<p><code>api_pelis/urls.py</code>
+<div class="highlight"><pre><span></span><code><span class="n">path</span><span class="p">(</span><span class="s1">&#39;api/v1/favorita/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">MarcarPeliculaFavorita</span><span class="o">.</span><span class="n">as_view</span><span class="p">()),</span>
+</code></pre></div></p>
+<p>Una vez configurada, si accedemos <a href="http://127.0.0.1:8844/api/v1/favorita/">a la URL</a> veremos como indica explícitamente la autenticación con token para tener acceso a ella.</p>
+<p>Antes de probar si podemos añadir películas favoritas a través de cURL vamos a crear algunas películas. Normalmente añadiríamos una configuración parael adminitrador, pero ya que tenemos la interfaz de DRF nos la podemos ahorrar. Sólo tenemos que <a href="http://127.0.0.1:8844/admin/">acceder al administrador</a> con nuestro super usuario y luego crear las películas desde la interfaz de DRF.</p>
+<p>Para crear una petición PUT con cURL hay que estructurarla de la siguiente forma, pasando el token del usuario que marcará una película en las cabeceras:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://127.0.0.1:8844/api/v1/favorita/
+-H<span class="w"> </span><span class="s2">&quot;Authorization: Token d0e501a9164b2eeef7f87b62581fb391385fd262&quot;</span>
+-d<span class="w"> </span><span class="s2">&quot;id=1&quot;</span>
+</code></pre></div>
+<p>Se supone que si todo es correcto nos devolverá el estado de la película:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">&quot;favorita&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">}</span>
+</code></pre></div>
+<p>¿Cómo podemos saber si realmente se creó? La forma fácil sería añadir a la base de datos. Usando <a href="https://sqlitebrowser.org/">DB Browser for SQLite</a> es muy fácil abrir el fichero de la base de datos y analizar los datos de las tablas. </p>
+<p>Como hemos comprobado el registro existe, si volvemos a ejecutar la petición debería borrarla:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">&quot;favorita&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">}</span>
+</code></pre></div>
+<h2 id="vista-de-peliculas-favoritas">Vista de películas favoritas<a class="headerlink" href="#vista-de-peliculas-favoritas" title="Permanent link">&para;</a></h2>
+<p>Nuestra siguiente tarea es una vista que devuelva todas las películas favoritas del usuario. Por suerte gracias al serializador que creamos antes es muy fácil:</p>
+<p><code>api/views.py</code>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ListarPeliculasFavoritas</span><span class="p">(</span><span class="n">views</span><span class="o">.</span><span class="n">APIView</span><span class="p">):</span>
+  <span class="n">authentication_classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">TokenAuthentication</span><span class="p">]</span>
+  <span class="n">permission_classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">IsAuthenticated</span><span class="p">]</span>
+
+  <span class="c1"># GET -&gt; Se usa para hacer lecturas</span>
+
+  <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+
+    <span class="n">peliculas_favoritas</span> <span class="o">=</span> <span class="n">PeliculaFavorita</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+      <span class="n">usuario</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+    <span class="n">serializer</span> <span class="o">=</span> <span class="n">PeliculaFavoritaSerializer</span><span class="p">(</span>
+      <span class="n">peliculas_favoritas</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div></p>
+<p>Y el path:</p>
+<p><code>api_pelis/urls.py</code>
+<div class="highlight"><pre><span></span><code><span class="n">path</span><span class="p">(</span><span class="s1">&#39;api/v1/favoritas/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">ListarPeliculasFavoritas</span><span class="o">.</span><span class="n">as_view</span><span class="p">()),</span>
+</code></pre></div></p>
+<p>Se trata de una simple acción de tipo GET donde devolvemos la lista de pelis favoritas serializadas. Para probar si funciona haremos lo propio con cURL:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span>http://127.0.0.1:8844/api/v1/favoritas/
+-H<span class="w"> </span><span class="s2">&quot;Authorization: Token d0e501a9164b2eeef7f87b62581fb391385fd262&quot;</span>
+</code></pre></div>
+<p>Esto debería devolvernos la lista con la información de todas las películas favoritas, gracias a lo que os comenté de los modelos anidados:</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;pelicula&quot;</span><span class="p">:{</span>
+<span class="w">         </span><span class="nt">&quot;titulo&quot;</span><span class="p">:</span><span class="s2">&quot;El Padrino&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;imagen&quot;</span><span class="p">:</span><span class="s2">&quot;https://m.media-amazon.com/images/...&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;estreno&quot;</span><span class="p">:</span><span class="mi">1972</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<p>Como veis no ha sido para nada complejo.</p>
+<h2 id="top-de-peliculas-favoritas-y-filtros">Top de películas favoritas y filtros<a class="headerlink" href="#top-de-peliculas-favoritas-y-filtros" title="Permanent link">&para;</a></h2>
+<p>Esta podría bien ser la parte más compleja del proyecto, pues tenemos que encontrar una forma de contar el número de favoritos de cada película y devolver la lista de películas ordenadas a partir de ese campo.</p>
+<p>Por suerte me sé un truquillo que nos hará la vida mil veces más fácil.</p>
+<p>Lo que vamos a hacer es crear un nuevo campo en la película que almacene el número de favoritos. Este campo lo actualizaremos automáticamente al crearse o borrarse una instancia de PeliculaFavorita.</p>
+<p><code>api/models.py</code>
+<div class="highlight"><pre><span></span><code><span class="n">favoritos</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></p>
+<p>Luego abajo del todo crearemos la señal que hará toda la magia, actualizando el contador a partir de una consulta inversa de esas que tanto me gustan:</p>
+<p><code>api/models.py</code>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">django.db.models.signals</span><span class="w"> </span><span class="kn">import</span> <span class="n">post_save</span><span class="p">,</span> <span class="n">post_delete</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">update_favoritos</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="n">count</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="n">pelicula</span><span class="o">.</span><span class="n">peliculafavorita_set</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+  <span class="n">instance</span><span class="o">.</span><span class="n">pelicula</span><span class="o">.</span><span class="n">favoritos</span> <span class="o">=</span> <span class="n">count</span>
+  <span class="n">instance</span><span class="o">.</span><span class="n">pelicula</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+<span class="c1"># en el post delete se pasa la copia de la instance que ya no existe</span>
+<span class="n">post_save</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">update_favoritos</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">PeliculaFavorita</span><span class="p">)</span>
+<span class="n">post_delete</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">update_favoritos</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">PeliculaFavorita</span><span class="p">)</span>  
+</code></pre></div></p>
+<p>Migramos los cambios:</p>
+<div class="highlight"><pre><span></span><code>pipenv<span class="w"> </span>run<span class="w"> </span>make
+pipenv<span class="w"> </span>run<span class="w"> </span>migrate
+</code></pre></div>
+<p>Como utilizamos el campo <strong>all</strong> en el serializador se supone que ya nos devolverá automáticamente este nuevo campo.</p>
+<p>Y ya lo tenemos, el detalle maestro lo pondremos añadiendo un par de filtros de ordenamiento y búsqueda al ViewSet de películas que DRF maneja automáticamente. Así permitiremos ordenar las películas por número de favoritos y realizar búsquedas a partir del título:</p>
+<p><code>api/views.py</code>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework</span><span class="w"> </span><span class="kn">import</span> <span class="n">viewsets</span><span class="p">,</span> <span class="n">views</span><span class="p">,</span> <span class="n">filters</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">PeliculaViewSet</span><span class="p">(</span><span class="n">viewsets</span><span class="o">.</span><span class="n">ModelViewSet</span><span class="p">):</span>
+  <span class="n">filter_backends</span> <span class="o">=</span> <span class="p">[</span><span class="n">filters</span><span class="o">.</span><span class="n">SearchFilter</span><span class="p">,</span> <span class="n">filters</span><span class="o">.</span><span class="n">OrderingFilter</span><span class="p">]</span>
+  <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;titulo&#39;</span><span class="p">]</span>
+  <span class="n">ordering_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;favoritos&#39;</span><span class="p">]</span>
+</code></pre></div></p>
+<p>Ahora desde <a href="http://127.0.0.1:8844/api/v1/peliculas/">la interfaz web de DRF</a> podemos filtrar y ordenar las películas.</p>
+<hr />
+<p><small class="edited"><i>Última edición: 16 de Marzo de 2021</i></small></p>
+                  
+                    
+                  
+                
+                
+                  
+
+
+                
+              </article>
+            </div>
+          </div>
+        </main>
+        
+          
+<footer class="md-footer">
+  
+  <div class="md-footer-nav">
+    <nav class="md-footer-nav__inner md-grid">
+      
+      <a
+        href="../introduccion/"
+        title="Django para principiantes"
+        class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+        rel="prev"
+      >
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+        </div>
+        <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+          <span class="md-flex__ellipsis">
+            <span class="md-footer-nav__direction">
+              Anterior
+            </span>
+            Django para principiantes
+          </span>
+        </div>
+      </a>
+       
+      <a
+        href="../tutoriales/"
+        title="Más tutoriales sobre Django"
+        class="md-flex md-footer-nav__link md-footer-nav__link--next"
+        rel="next"
+      >
+        <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+          <span class="md-flex__ellipsis">
+            <span class="md-footer-nav__direction">
+              Siguiente
+            </span>
+            Más tutoriales sobre Django
+          </span>
+        </div>
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+        </div>
+      </a>
+      
+    </nav>
+  </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        <!--<div class="md-footer-links__highlight">
+          <a href="/comunidad/">Comunidad</a> · <a href="/politica-de-cookies/">Política de cookies</a> · <a href="/sobre-mi/">Sobre mí</a>
+        </div>-->
+        <div class="md-footer-copyright__highlight">
+          2015 - 2022 &copy; Héctor Costa Guzmán (<u
+            ><a
+              href="https://creativecommons.org/licenses/by/4.0/deed.es"
+              target="_blank"
+              rel="nofollow"
+              >Licencia CC BY 4.0</a
+            ></u
+          >)
+        </div>
+      </div>
+       
+<style>.md-footer-social__link {transition: 0.3s;}</style>
+<div class="md-footer-social" style="font-size: 2.5rem; margin-top: -6px!important; padding: 0px!important; margin-bottom: -6px; overflow: hidden!important;">
+  <a href="https://github.com/hcosta" title="Github" target="_blank" class="md-footer-social__link fa fa-github-square"></a>
+  <a href="https://www.youtube.com/c/HektorProfe" title="Youtube" target="_blank" class="md-footer-social__link fa fa-youtube-square"></a>
+  &nbsp;
+</div>
+ 
+    </div>
+  </div>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i["GoogleAnalyticsObject"] = r;
+      (i[r] =
+        i[r] ||
+        function () {
+          (i[r].q = i[r].q || []).push(arguments);
+        }),
+        (i[r].l = 1 * new Date());
+      (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m);
+    })(
+      window,
+      document,
+      "script",
+      "https://www.google-analytics.com/analytics.js",
+      "ga"
+    );
+    ga("create", "UA-124845547-1", "auto");
+    ga("send", "pageview");
+  </script>
+</footer>
+        
+        <a id="anchorID" href="https://www.hektorprofe.net/" target="_blank"></a>
+      </div>
+      <script type='text/javascript'
+              src="https://hektorprofe.github.io/docs/assets/javascripts/application.a26c1c21.js"></script>
+      <script src="https://hektorprofe.github.io/docs/assets/javascripts/tingle.min.js"></script>
+      <script type='text/javascript'>
+    var modalButtonOnly = new tingle.modal({
+        closeMethods: [],
+        footer: true,
+        stickyFooter: true
+    });
+    var btn5 = document.querySelector('.js-tingle-modal-5');
+
+    // set content
+    modalButtonOnly.setContent(`
+    <div style="display:grid;grid-template-columns:32% 32% 32%;grid-column-gap: 1.33%;" id="supermodal">
+      <div class="course">
+        <a href="https://www.hektorprofe.net/cupon/python" target="_blank"><img src="assets/python.png" style="width:100%;justify-self:center;align-self:center;" /></a>
+      </div>
+      <div class="course">
+        <a href="https://www.hektorprofe.net/cupon/django" target="_blank"><img src="assets/django.png" style="width:100%;justify-self:center;align-self:center;" /></a>
+      </div>
+      <div class="course">
+        <a href="https://www.hektorprofe.net/cupon/pyside" target="_blank"><img src="assets/pyside.png" style="width:100%;justify-self:center;align-self:center;" /></a>
+      </div>
+    </div>`);
+
+    modalButtonOnly.addFooterBtn('Cerrar', 'tingle-btn tingle-btn--default tingle-btn--pull-right', function(){
+      modalButtonOnly.close();
+    });
+
+    app.initialize({version:"1.2.3",url:{base:"../../.."}})
+    var _extends=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(t[o]=n[o])}return t},_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t};!function(t,e){"object"===("undefined"==typeof exports?"undefined":_typeof(exports))&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):t.LazyLoad=e()}(this,function(){"use strict";function t(t,e,n){var o=e._settings;!n&&i(t)||(C(o.callback_enter,t),R.indexOf(t.tagName)>-1&&(N(t,e),I(t,o.class_loading)),E(t,e),a(t),C(o.callback_set,t))}var e={elements_selector:"img",container:document,threshold:300,thresholds:null,data_src:"src",data_srcset:"srcset",data_sizes:"sizes",data_bg:"bg",class_loading:"loading",class_loaded:"loaded",class_error:"error",load_delay:0,callback_load:null,callback_error:null,callback_set:null,callback_enter:null,callback_finish:null,to_webp:!1},n=function(t){return _extends({},e,t)},o=function(t,e){return t.getAttribute("data-"+e)},r=function(t,e,n){var o="data-"+e;null!==n?t.setAttribute(o,n):t.removeAttribute(o)},a=function(t){return r(t,"was-processed","true")},i=function(t){return"true"===o(t,"was-processed")},s=function(t,e){return r(t,"ll-timeout",e)},c=function(t){return o(t,"ll-timeout")},l=function(t){return t.filter(function(t){return!i(t)})},u=function(t,e){return t.filter(function(t){return t!==e})},d=function(t,e){var n,o=new t(e);try{n=new CustomEvent("LazyLoad::Initialized",{detail:{instance:o}})}catch(t){(n=document.createEvent("CustomEvent")).initCustomEvent("LazyLoad::Initialized",!1,!1,{instance:o})}window.dispatchEvent(n)},f=function(t,e){return e?t.replace(/\.(jpe?g|png)/gi,".webp"):t},_="undefined"!=typeof window,v=_&&!("onscroll"in window)||/(gle|ing|ro)bot|crawl|spider/i.test(navigator.userAgent),g=_&&"IntersectionObserver"in window,h=_&&"classList"in document.createElement("p"),b=_&&function(){var t=document.createElement("canvas");return!(!t.getContext||!t.getContext("2d"))&&0===t.toDataURL("image/webp").indexOf("data:image/webp")}(),m=function(t,e,n,r){for(var a,i=0;a=t.children[i];i+=1)if("SOURCE"===a.tagName){var s=o(a,n);p(a,e,s,r)}},p=function(t,e,n,o){n&&t.setAttribute(e,f(n,o))},y=function(t,e){var n=b&&e.to_webp,r=o(t,e.data_src),a=o(t,e.data_bg);if(r){var i=f(r,n);t.style.backgroundImage='url("'+i+'")'}if(a){var s=f(a,n);t.style.backgroundImage=s}},w={IMG:function(t,e){var n=b&&e.to_webp,r=e.data_srcset,a=t.parentNode;a&&"PICTURE"===a.tagName&&m(a,"srcset",r,n);var i=o(t,e.data_sizes);p(t,"sizes",i);var s=o(t,r);p(t,"srcset",s,n);var c=o(t,e.data_src);p(t,"src",c,n)},IFRAME:function(t,e){var n=o(t,e.data_src);p(t,"src",n)},VIDEO:function(t,e){var n=e.data_src,r=o(t,n);m(t,"src",n),p(t,"src",r),t.load()}},E=function(t,e){var n=e._settings,o=t.tagName,r=w[o];if(r)return r(t,n),e._updateLoadingCount(1),void(e._elements=u(e._elements,t));y(t,n)},I=function(t,e){h?t.classList.add(e):t.className+=(t.className?" ":"")+e},L=function(t,e){h?t.classList.remove(e):t.className=t.className.replace(new RegExp("(^|\\s+)"+e+"(\\s+|$)")," ").replace(/^\s+/,"").replace(/\s+$/,"")},C=function(t,e){t&&t(e)},O=function(t,e,n){t.addEventListener(e,n)},k=function(t,e,n){t.removeEventListener(e,n)},x=function(t,e,n){O(t,"load",e),O(t,"loadeddata",e),O(t,"error",n)},A=function(t,e,n){k(t,"load",e),k(t,"loadeddata",e),k(t,"error",n)},z=function(t,e,n){var o=n._settings,r=e?o.class_loaded:o.class_error,a=e?o.callback_load:o.callback_error,i=t.target;L(i,o.class_loading),I(i,r),C(a,i),n._updateLoadingCount(-1)},N=function(t,e){var n=function n(r){z(r,!0,e),A(t,n,o)},o=function o(r){z(r,!1,e),A(t,n,o)};x(t,n,o)},R=["IMG","IFRAME","VIDEO"],S=function(e,n,o){t(e,o),n.unobserve(e)},M=function(t){var e=c(t);e&&(clearTimeout(e),s(t,null))},j=function(t,e,n){var o=n._settings.load_delay,r=c(t);r||(r=setTimeout(function(){S(t,e,n),M(t)},o),s(t,r))},D=function(t){return t.isIntersecting||t.intersectionRatio>0},T=function(t){return{root:t.container===document?null:t.container,rootMargin:t.thresholds||t.threshold+"px"}},U=function(t,e){this._settings=n(t),this._setObserver(),this._loadingCount=0,this.update(e)};return U.prototype={_manageIntersection:function(t){var e=this._observer,n=this._settings.load_delay,o=t.target;n?D(t)?j(o,e,this):M(o):D(t)&&S(o,e,this)},_onIntersection:function(t){t.forEach(this._manageIntersection.bind(this))},_setObserver:function(){g&&(this._observer=new IntersectionObserver(this._onIntersection.bind(this),T(this._settings)))},_updateLoadingCount:function(t){this._loadingCount+=t,0===this._elements.length&&0===this._loadingCount&&C(this._settings.callback_finish)},update:function(t){var e=this,n=this._settings,o=t||n.container.querySelectorAll(n.elements_selector);this._elements=l(Array.prototype.slice.call(o)),!v&&this._observer?this._elements.forEach(function(t){e._observer.observe(t)}):this.loadAll()},destroy:function(){var t=this;this._observer&&(this._elements.forEach(function(e){t._observer.unobserve(e)}),this._observer=null),this._elements=null,this._settings=null},load:function(e,n){t(e,this,n)},loadAll:function(){var t=this;this._elements.forEach(function(e){t.load(e)})}},_&&function(t,e){if(e)if(e.length)for(var n,o=0;n=e[o];o+=1)d(t,n);else d(t,e)}(U,window.lazyLoadOptions),U});
+    var myLazyLoad = new LazyLoad({elements_selector: ".lazy"});
+    const mdMenuItems = document.querySelectorAll('.md-nav__link');
+    function doNav(){ document.getElementById("main__list").innerHTML = '<li class="md-nav__item"><a class="md-nav__link" href="/cursos/">Cursos</a></li><li class="md-nav__item"><a class="md-nav__link" href="/blog/">Blog</a></li>';}
+    for (i = 0; i < mdMenuItems.length; i++) {  var item = mdMenuItems[i]; var htmlstring = item.innerHTML; htmlstring = (htmlstring.trim) ? htmlstring.trim() : htmlstring.replace(/^\s+/,''); if (htmlstring == 'Servidor de encuentro') { item.parentNode.removeChild(item);continue; }  if (htmlstring == 'Política de Cookies') { item.parentNode.removeChild(item);continue; } if (htmlstring == 'Buscador') { item.parentNode.removeChild(item); continue; } }
+    try { var topPos = document.querySelector('#md__active_link').offsetTop; document.querySelector('#md__sidebar__scroll').scrollTop = topPos - 60; } catch (err) {}
+      </script>
+    </body>
+  </html>

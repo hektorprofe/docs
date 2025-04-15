@@ -5,17 +5,13 @@
     
     
     
-
-    
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
         <meta name="description" content="Web de apuntes de programación de Hector Costa Guzman.">
       
-      
-        <link rel="canonical" href="https://hektorprofe.github.io/docs.hektorprofe.net/graficos-3d/23-ficheros-obj-con-texturas/index.html">
-      
+      <link rel="canonical" href="https://hektorprofe.github.io/docs/graficos-3d/23-ficheros-obj-con-texturas/">
       
         <meta name="author" content="Héctor Costa Guzman">
       
@@ -26,18 +22,21 @@
         <title>Ficheros OBJ con texturas | Programación de gráficos 3D | Hektor Profe</title>
       
     
-    <link rel="stylesheet" href="../../assets/stylesheets/application.2.css">
+    <link rel="stylesheet"
+          href="../../assets/stylesheets/application.2.css">
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
     
-    <link rel="stylesheet" href="/assets/stylesheets/tingle.min.css">
-<style>
-@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
+    <link rel="stylesheet"
+          href="https://hektorprofe.github.io/docs/assets/stylesheets/tingle.min.css">
+    <style>
+@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
 [data-md-color-primary="grey"] .md-header { background-color: #191A1D }
 [data-md-color-primary="grey"] .md-tabs { background-color: #222831 }
 .md-footer-nav { background-color: #222831; }
@@ -98,90 +97,79 @@ div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 1999.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 246px - 60px);margin-right:-1px;}}
 @media (max-width: 1599.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 222px - 60px)}}
 
-</style>
+    </style>
   </head>
   
     
     
-    <body dir="ltr" data-md-color-primary="grey" data-md-color-accent="grey">
-  
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    <body dir="ltr"
+          data-md-color-primary="grey"
+          data-md-color-accent="grey">
     
-      <a href="#ficheros-obj-con-texturas" tabindex="1" class="md-skip">
-        Saltar a contenido
-      </a>
-    
-    
-      <header
-  class="md-header"
-  data-md-component="header"
-  style="position: inherit !important"
->
+      <input class="md-toggle"
+             data-md-toggle="drawer"
+             type="checkbox"
+             id="__drawer"
+             autocomplete="off">
+      <input class="md-toggle"
+             data-md-toggle="search"
+             type="checkbox"
+             id="__search"
+             autocomplete="off">
+      <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+      
+        <a href="#ficheros-obj-con-texturas"
+           tabindex="1"
+           class="md-skip">Saltar a contenido</a>
+      
+      
+        <header class="md-header"
+        data-md-component="header"
+        style="position: inherit !important">
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a
-          href="/"
-          title="Hektor Profe"
-          class="md-header-nav__button md-logo"
-          style="font-size: 0px"
-        >
-          <img
-            src="/assets/images/logo.png"
-            width="200px"
-            height="35px"
-            style="margin-top: -5px"
-            alt="Hektor Profe"
-            title="Hektor Profe"
-          />
+        <a href="/"
+           title="Hektor Profe"
+           class="md-header-nav__button md-logo"
+           style="font-size: 0px">
+          <img src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+               width="200px"
+               height="35px"
+               style="margin-top: -5px"
+               alt="Hektor Profe"
+               title="Hektor Profe" />
         </a>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
-        <label
-          class="md-icon md-icon--menu md-header-nav__button"
-          for="__drawer"
-        ></label>
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
-        <div
-          class="md-flex__ellipsis md-header-nav__title"
-          data-md-component="title"
-          style="text-align: right"
-        >
+        <div class="md-flex__ellipsis md-header-nav__title"
+             data-md-component="title"
+             style="text-align: right">
           <!-- https://fontawesome.com/v4.7.0/ -->
-          <a 
-            class="nav__btn" 
-            href="https://www.hektorprofe.net/" 
-            style="margin-left:0em;" 
-            title="Cursos de Hektor Profe">
-            Cursos
+          <a class="nav__btn"
+             href="https://www.hektorprofe.net/"
+             style="margin-left:0em"
+             title="Cursos de Hektor Profe">Cursos</a>
+          <a class="nav__btn"
+             href="https://docs.hektorprofe.net/"
+             style="margin-left:1.4em"
+             title="Documentos de Hektor Profe">Documentos</a>
+          <a class="nav__btn"
+             href="https://www.hektorprofe.net/portafolio/"
+             style="margin-left:1.4em"
+             title="Portafolio de Hektor Profe">Portafolio</a>
+          <a href="/">
+            <img class="nav__logo"
+                 src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+                 width="200px"
+                 height="35px"
+                 style="margin: 6px auto 0"
+                 alt="Hektor Profe"
+                 title="Hektor Profe" />
           </a>
-          <a 
-            class="nav__btn" 
-            href="https://docs.hektorprofe.net/" 
-            style="margin-left:1.4em;" 
-            title="Documentos de Hektor Profe">
-            Documentos
-          </a>
-          <a 
-            class="nav__btn" 
-            href="https://www.hektorprofe.net/portafolio/" 
-            style="margin-left:1.4em;" 
-            title="Portafolio de Hektor Profe">
-            Portafolio
-          </a>
-          <a href="/"
-            ><img
-              class="nav__logo"
-              src="/assets/images/logo.png"
-              width="200px"
-              height="35px"
-              style="margin: 6px auto 0"
-              alt="Hektor Profe"
-              title="Hektor Profe"
-          /></a>
         </div>
         <style>
           .md-sidebar[data-md-state="lock"] {
@@ -230,13 +218,13 @@ div.my-img{text-align:center;margin-top:20px}
     </div>
   </nav>
 </header>
-    
-    <div class="md-container" style="padding-top: 0px !important;">
       
+      <div class="md-container" style="padding-top: 0px !important;">
         
-      
-      
+          
         
+        
+          
 
   
 
@@ -273,15 +261,16 @@ div.my-img{text-align:center;margin-top:20px}
       </ul>
     </div>
 </nav>
-      
-      <main class="md-main">
-        <div class="md-main__inner md-grid" data-md-component="container" style="padding-top: 8px !important;">
-          
+        
+        <main class="md-main">
+          <div class="md-main__inner md-grid"
+               data-md-component="container"
+               style="padding-top: 8px !important">
             
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
-                <div class="md-sidebar__scrollwrap" id="md__sidebar__scroll">
-                  <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
+              
+                <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                  <div class="md-sidebar__scrollwrap" id="md__sidebar__scroll">
+                    <div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title" for="__drawer" style="padding:0 !important;max-height:5.5rem;"></label>
   
   <ul class="md-nav__list" id="main__list" data-md-scrollfix>
@@ -329,7 +318,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../index.html" title="Índice del archivo" class="md-nav__link">
+    <a href="../" title="Índice del archivo" class="md-nav__link">
       Índice del archivo
     </a>
   </li>
@@ -341,7 +330,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../01-configuracion-previa/index.html" title="Configuración previa" class="md-nav__link">
+    <a href="../01-configuracion-previa/" title="Configuración previa" class="md-nav__link">
       Configuración previa
     </a>
   </li>
@@ -353,7 +342,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../02-buffer-de-color/index.html" title="Buffer de color" class="md-nav__link">
+    <a href="../02-buffer-de-color/" title="Buffer de color" class="md-nav__link">
       Buffer de color
     </a>
   </li>
@@ -365,7 +354,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../03-vectores-y-puntos/index.html" title="Vectores y puntos" class="md-nav__link">
+    <a href="../03-vectores-y-puntos/" title="Vectores y puntos" class="md-nav__link">
       Vectores y puntos
     </a>
   </li>
@@ -377,7 +366,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../04-proyeccion-de-puntos/index.html" title="Proyección de puntos" class="md-nav__link">
+    <a href="../04-proyeccion-de-puntos/" title="Proyección de puntos" class="md-nav__link">
       Proyección de puntos
     </a>
   </li>
@@ -389,7 +378,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../05-transformaciones-lineales/index.html" title="Transformaciones lineales" class="md-nav__link">
+    <a href="../05-transformaciones-lineales/" title="Transformaciones lineales" class="md-nav__link">
       Transformaciones lineales
     </a>
   </li>
@@ -401,7 +390,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../06-triangulos-vertices-mallas/index.html" title="Triángulos, vértices y mallas" class="md-nav__link">
+    <a href="../06-triangulos-vertices-mallas/" title="Triángulos, vértices y mallas" class="md-nav__link">
       Triángulos, vértices y mallas
     </a>
   </li>
@@ -413,7 +402,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../07-rasterizacion-de-lineas/index.html" title="Rasterización de líneas" class="md-nav__link">
+    <a href="../07-rasterizacion-de-lineas/" title="Rasterización de líneas" class="md-nav__link">
       Rasterización de líneas
     </a>
   </li>
@@ -425,7 +414,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../08-mallas-en-memoria-dinamica/index.html" title="Mallas en memoria dinámica" class="md-nav__link">
+    <a href="../08-mallas-en-memoria-dinamica/" title="Mallas en memoria dinámica" class="md-nav__link">
       Mallas en memoria dinámica
     </a>
   </li>
@@ -437,7 +426,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../09-ficheros-con-modelos-obj/index.html" title="Ficheros con modelos OBJ" class="md-nav__link">
+    <a href="../09-ficheros-con-modelos-obj/" title="Ficheros con modelos OBJ" class="md-nav__link">
       Ficheros con modelos OBJ
     </a>
   </li>
@@ -449,7 +438,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../10-operaciones-con-vectores/index.html" title="Operaciones con vectores" class="md-nav__link">
+    <a href="../10-operaciones-con-vectores/" title="Operaciones con vectores" class="md-nav__link">
       Operaciones con vectores
     </a>
   </li>
@@ -461,7 +450,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../11-back-face-culling/index.html" title="Back-face Culling" class="md-nav__link">
+    <a href="../11-back-face-culling/" title="Back-face Culling" class="md-nav__link">
       Back-face Culling
     </a>
   </li>
@@ -473,7 +462,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../12-rasterizacion-de-triangulos/index.html" title="Rasterización de triángulos" class="md-nav__link">
+    <a href="../12-rasterizacion-de-triangulos/" title="Rasterización de triángulos" class="md-nav__link">
       Rasterización de triángulos
     </a>
   </li>
@@ -485,7 +474,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../13-interfaz-dear-imgui/index.html" title="Interfaz Dear ImGui" class="md-nav__link">
+    <a href="../13-interfaz-dear-imgui/" title="Interfaz Dear ImGui" class="md-nav__link">
       Interfaz Dear ImGui
     </a>
   </li>
@@ -497,7 +486,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../14-ordenar-caras-por-profundidad/index.html" title="Ordenar caras por profundidad" class="md-nav__link">
+    <a href="../14-ordenar-caras-por-profundidad/" title="Ordenar caras por profundidad" class="md-nav__link">
       Ordenar caras por profundidad
     </a>
   </li>
@@ -509,7 +498,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../15-operaciones-con-matrices/index.html" title="Operaciones con matrices" class="md-nav__link">
+    <a href="../15-operaciones-con-matrices/" title="Operaciones con matrices" class="md-nav__link">
       Operaciones con matrices
     </a>
   </li>
@@ -521,7 +510,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../16-matrices-de-transformacion-3d/index.html" title="Matrices de transformación 3D" class="md-nav__link">
+    <a href="../16-matrices-de-transformacion-3d/" title="Matrices de transformación 3D" class="md-nav__link">
       Matrices de transformación 3D
     </a>
   </li>
@@ -533,7 +522,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../17-matriz-de-proyeccion/index.html" title="Matriz de proyección" class="md-nav__link">
+    <a href="../17-matriz-de-proyeccion/" title="Matriz de proyección" class="md-nav__link">
       Matriz de proyección
     </a>
   </li>
@@ -545,7 +534,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../18-luz-y-sombreado/index.html" title="Luz y sombreado" class="md-nav__link">
+    <a href="../18-luz-y-sombreado/" title="Luz y sombreado" class="md-nav__link">
       Luz y sombreado
     </a>
   </li>
@@ -557,7 +546,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../19-migracion-a-visual-studio/index.html" title="Migración a Visual Studio" class="md-nav__link">
+    <a href="../19-migracion-a-visual-studio/" title="Migración a Visual Studio" class="md-nav__link">
       Migración a Visual Studio
     </a>
   </li>
@@ -569,7 +558,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../20-mapeado-de-texturas/index.html" title="Mapeado de texturas" class="md-nav__link">
+    <a href="../20-mapeado-de-texturas/" title="Mapeado de texturas" class="md-nav__link">
       Mapeado de texturas
     </a>
   </li>
@@ -581,7 +570,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../21-interpolacion-de-perspectiva/index.html" title="Interpolación de perspectiva" class="md-nav__link">
+    <a href="../21-interpolacion-de-perspectiva/" title="Interpolación de perspectiva" class="md-nav__link">
       Interpolación de perspectiva
     </a>
   </li>
@@ -593,7 +582,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../22-decodificacion-de-ficheros-png/index.html" title="Decodificación de ficheros PNG" class="md-nav__link">
+    <a href="../22-decodificacion-de-ficheros-png/" title="Decodificación de ficheros PNG" class="md-nav__link">
       Decodificación de ficheros PNG
     </a>
   </li>
@@ -617,7 +606,7 @@ div.my-img{text-align:center;margin-top:20px}
         Ficheros OBJ con texturas
       </label>
     
-    <a href="index.html" title="Ficheros OBJ con texturas" class="md-nav__link md-nav__link--active" id="md__active_link">
+    <a href="./" title="Ficheros OBJ con texturas" class="md-nav__link md-nav__link--active" id="md__active_link">
       Ficheros OBJ con texturas
     </a>
     
@@ -655,7 +644,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../24-profundidad-con-z-buffer/index.html" title="Profundidad con Z-Buffer" class="md-nav__link">
+    <a href="../24-profundidad-con-z-buffer/" title="Profundidad con Z-Buffer" class="md-nav__link">
       Profundidad con Z-Buffer
     </a>
   </li>
@@ -667,7 +656,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../25-matriz-de-vista-y-camara/index.html" title="Matriz de vista y cámaras" class="md-nav__link">
+    <a href="../25-matriz-de-vista-y-camara/" title="Matriz de vista y cámaras" class="md-nav__link">
       Matriz de vista y cámaras
     </a>
   </li>
@@ -679,7 +668,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../26-renderizado-y-debug-separado/index.html" title="Renderizado y debug separado" class="md-nav__link">
+    <a href="../26-renderizado-y-debug-separado/" title="Renderizado y debug separado" class="md-nav__link">
       Renderizado y debug separado
     </a>
   </li>
@@ -691,7 +680,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../27-clipping/index.html" title="Clipping" class="md-nav__link">
+    <a href="../27-clipping/" title="Clipping" class="md-nav__link">
       Clipping
     </a>
   </li>
@@ -703,7 +692,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 
   <li class="md-nav__item">
-    <a href="../28-multiples-mallas/index.html" title="Múltiples mallas" class="md-nav__link">
+    <a href="../28-multiples-mallas/" title="Múltiples mallas" class="md-nav__link">
       Múltiples mallas
     </a>
   </li>
@@ -728,27 +717,14 @@ div.my-img{text-align:center;margin-top:20px}
     
   </ul>
 </nav>
-
+</div>
                   </div>
                 </div>
-              </div>
-            
-
-            
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                
-                  
-                    <div class="course-offer" style="margin-bottom:25px;padding:0px 10px;">
-                      <a href="https://www.hektorprofe.net/cupon/python" target="_blank">
-                        <img src="/cdn/assets/python.png" style="width:100%;justify-self:center;align-self:center;"/>
-                      </a>
-                    </div>
-                  
-                
-
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
+              
+              
+                <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                  <div class="md-sidebar__scrollwrap">
+                    <div class="md-sidebar__inner">
 <nav class="md-nav md-nav--secondary">
   
   
@@ -771,18 +747,17 @@ div.my-img{text-align:center;margin-top:20px}
       
     </ul>
   
-</nav>
+</nav></div>
                   </div>
                 </div>
-              </div>
-            
-          
-          <div class="md-content">
-            <article class="md-content__inner md-typeset">
               
+            
+            <div class="md-content">
+              <article class="md-content__inner md-typeset">
                 
-                
-                <h1 id="ficheros-obj-con-texturas">Ficheros OBJ con texturas<a class="headerlink" href="#ficheros-obj-con-texturas" title="Permanent link">&para;</a></h1>
+                  
+                  
+                  <h1 id="ficheros-obj-con-texturas">Ficheros OBJ con texturas<a class="headerlink" href="#ficheros-obj-con-texturas" title="Permanent link">&para;</a></h1>
 <p>Tenemos nuestro cubo y la textura cargada pero nos falta las coordenadas UV. </p>
 <p>Según la <a href="https://en.wikipedia.org/wiki/Wavefront_.obj_file">wikipedia</a> en el fichero <strong>obj</strong> encontramos las coordenadas de texturas con el siguiente formato:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># List of texture coordinates, in (u, [v, w]) coordinates, </span>
@@ -821,7 +796,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="k">this</span><span class="o">-&gt;</span><span class="n">triangles</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">Triangle</span><span class="p">(</span><span class="mh">0xFFFFFFFF</span><span class="p">,</span><span class="w"> </span><span class="n">triangleCoords</span><span class="p">));</span>
 </code></pre></div>
 <p>Si ponemos en marcha el programa para probar si funciona...</p>
-<p><img alt="" src="/cdn/graficos3d/image-105.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-105.png" /></p>
 <p>Nos dice que estamos intentando acceder a un luar de la cola fuera del rango, eso es porque en el fichero <strong>obj</strong> los índices empiezan con <code>1</code> y no con <code>0</code>, debemos restarles <code>1</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="n">Texture2</span><span class="w"> </span><span class="n">triangleCoords</span><span class="p">[]{</span><span class="w"> </span>
 <span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">coordinates</span><span class="p">[</span><span class="n">textureIndices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w"> </span>
@@ -829,33 +804,33 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">coordinates</span><span class="p">[</span><span class="n">textureIndices</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">]};</span>
 </code></pre></div>
 <p>Si probamos ahora...</p>
-<p><img alt="" src="/cdn/graficos3d/image-106.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-106.png" /></p>
 <p>¡Parece que nos estamos acercando! El problema es que las coordenadas y la textura no concuerdan. Podemos abrir <strong>Blender</strong> y aplicar nuestra textura a un nuevo cubo.</p>
 <p>Soy un completo novato con Blender pero he encontrado un tutorial donde explican como hacerlo rápido.</p>
 <p>Primero cambiamos al modo <code>Viewport Shading</code>:</p>
-<p><img alt="" src="/cdn/graficos3d/image-107.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-107.png" /></p>
 <p>A continuación seleccionamos el cubo, vamos a <code>Material Properties</code> y cambiamos el <code>Base Color</code> por una <code>Image Texture</code> y buscamos la que queremos aplicar:</p>
-<p><img alt="" src="/cdn/graficos3d/image-108.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-108.png" /></p>
 <p>Al hacerlo veremos que efectivamente las coordenadas UV por defecto del cubo no pintan nuestra textura como nosotros queremos, tenemos que cambiarlas manualmente.</p>
 <p>Abriremos el modo <code>UV Editor</code>:</p>
-<p><img alt="" src="/cdn/graficos3d/image-109.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-109.png" /></p>
 <p>Y cambiaremos a la imagen de nuestro cubo:</p>
-<p><img alt="" src="/cdn/graficos3d/image-110.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-110.png" /></p>
 <p>Si arrastramos desde la esquina superior derecha del editor (aparece una cruz en el puntero) podemos activar dos vistas, nos será útil:</p>
-<p><img alt="" src="/cdn/graficos3d/image-111.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-111.png" /></p>
 <p>Si activamos el modo de selección de caras y seleccionamos una veremos qué parte de la textura se está aplicando:</p>
-<p><img alt="" src="/cdn/graficos3d/image-112.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-112.png" /></p>
 <p>Como se puede apreciar está mal mapeado, nosotros queremos que el cuadrado sea la cara completa.</p>
 <p>Buscaremos la opción <code>UV &gt; Smart UV Project</code> y le daremos a OK:</p>
-<p><img alt="" src="/cdn/graficos3d/image-113.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-113.png" /></p>
 <p>Automáticamente el tamaño de la cara se establecerá al completo, esto debería corregir las coordenadas UV de esa cara:</p>
-<p><img alt="" src="/cdn/graficos3d/image-114.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-114.png" /></p>
 <p>Seguramente hay alguna opción para repetir esto en todos las caras, pero no tengo ni idea(algún día seguro que lo aprenderé), así que repetiré el proceso para cada cara:</p>
-<p><img alt="" src="/cdn/graficos3d/image-115.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-115.png" /></p>
 <p>Una vez las tenga todas corregidas exportaré el cubo en <code>obj</code> con <code>Y</code> creciente hacia abajo, caras triangulares y las nuevas coordenadas UV:</p>
-<p><img alt="" src="/cdn/graficos3d/image-116.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-116.png" /></p>
 <p>El programa debería renderizarlo correctamente:</p>
-<p><img alt="" src="/cdn/graficos3d/image-118.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-118.png" /></p>
 <p>Efectivamente, ya se renderiza, pero todavía tenemos un último problema pendiente... ¿Lo hace de forma volteada?</p>
 <p>El caso es que Blender nos da los valores de las coordenadas V invertidas, deberemos voltearlas. Es muy fácil, simplemente hacemos lo siguiente justo después de ordenar los vértices en el <code>DrawTexturedTriangle</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Flip the V component to account for inverted UV-coordinates</span>
@@ -864,12 +839,12 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="n">uv2</span><span class="p">.</span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">uv2</span><span class="p">.</span><span class="n">v</span><span class="p">;</span>
 </code></pre></div>
 <p>Por fin tendremos nuestra recompensa, un cubo modelado y texturizado en <strong>Blender</strong> cargado perfectamente en nuestro visualizador 3D:</p>
-<p><img alt="" src="/cdn/graficos3d/anim-35.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-35.gif" /></p>
 <h2 id="prevenir-overflow-del-buffer-de-textura">Prevenir overflow del buffer de textura<a class="headerlink" href="#prevenir-overflow-del-buffer-de-textura" title="Permanent link">&para;</a></h2>
 <p>Tenemos que tener en cuenta algo importante a la hora de renderizar los pixels relativos al texel.</p>
 <p>Si por casualidad el cálculo de <code>alpha</code>, <code>beta</code> o <code>gamma</code> es muy pequeño, por ejemplo <code>0.00001</code>, acabaremos con un número negativo muy pequeño implicando que el punto está fuera del triángulo.</p>
 <p>Las coordenadas baricéntricas son puras matemáticas para definir un punto en un triángulo, pero en la realidad tenemos una pantalla con un número limitado de píxels y esa "proyección" que hacemos no concuerda con la realidad, saliéndose del espacio de dibujado y causando potenciales fallos:</p>
-<p><img alt="" src="/cdn/graficos3d/image-117.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-117.png" /></p>
 <p>Esto nos lleva a la conocida como <em>fill convention</em>, la convención de relleno para determinar si un píxel se encuentra dentro o fuera del triángulo para realizar un redondeo al alza (<em>ceil</em>) o a la baja (<em>floor</em>).</p>
 <p>Este tema llevó de calle a los ingenieros del paso pero en mi caso no voy a complicarme demasiado. Pemitiré que un valor se encuentre fuera del triángulo, pero si eso sucede simplemente truncaremos el valor haciendo el módulo del <code>textureWidth</code> y el <code>textureHeight</code> para que el valor no se salga de los límites:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Calculate the texelX and texelY based on the interpolated UV and the texture sizes</span>
@@ -878,33 +853,33 @@ div.my-img{text-align:center;margin-top:20px}
 </code></pre></div>
 <p>Este pequeño <em>hack</em> debería prevenir que ocurra un overflow.</p>
 <p>Así queda este modelo de un <a href="https://sketchfab.com/3d-models/dancing-crab-uca-mjoebergi-280863886fee409ab3c8168f07caa89f">cangrejo</a>:</p>
-<p><img alt="" src="/cdn/graficos3d/anim-36.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-36.gif" /></p>
 <p>Aquí se puede observar cómo todavía tenemos un problema al renderizar la profundidad de los vértices, dibujándose la pinza del cangrejo por detrás del cuerpo.</p>
 <p>En la próxima sección vamos a arreglarlo.</p>
 <hr />
 <p><small class="edited"><i>Última edición: 05 de Junio de 2022</i></small></p>
-                
+                  
+                    
                   
                 
-              
-              
                 
+                  
 
 
-              
-            </article>
+                
+              </article>
+            </div>
           </div>
-        </div>
-      </main>
-      
+        </main>
         
+          
 <footer class="md-footer">
   
   <div class="md-footer-nav">
     <nav class="md-footer-nav__inner md-grid">
       
       <a
-        href="../22-decodificacion-de-ficheros-png/index.html"
+        href="../22-decodificacion-de-ficheros-png/"
         title="Decodificación de ficheros PNG"
         class="md-flex md-footer-nav__link md-footer-nav__link--prev"
         rel="prev"
@@ -923,7 +898,7 @@ div.my-img{text-align:center;margin-top:20px}
       </a>
        
       <a
-        href="../24-profundidad-con-z-buffer/index.html"
+        href="../24-profundidad-con-z-buffer/"
         title="Profundidad con Z-Buffer"
         class="md-flex md-footer-nav__link md-footer-nav__link--next"
         rel="next"
@@ -995,12 +970,13 @@ div.my-img{text-align:center;margin-top:20px}
     ga("send", "pageview");
   </script>
 </footer>
-      
-      <a id="anchorID" href="https://www.hektorprofe.net/" target="_blank"></a>
-    </div>
-  <script type='text/javascript' src="/assets/javascripts/application.a26c1c21.js"></script>
-  <script src="/assets/javascripts/tingle.min.js"></script>
-  <script type='text/javascript'>
+        
+        <a id="anchorID" href="https://www.hektorprofe.net/" target="_blank"></a>
+      </div>
+      <script type='text/javascript'
+              src="https://hektorprofe.github.io/docs/assets/javascripts/application.a26c1c21.js"></script>
+      <script src="https://hektorprofe.github.io/docs/assets/javascripts/tingle.min.js"></script>
+      <script type='text/javascript'>
     var modalButtonOnly = new tingle.modal({
         closeMethods: [],
         footer: true,
@@ -1012,13 +988,13 @@ div.my-img{text-align:center;margin-top:20px}
     modalButtonOnly.setContent(`
     <div style="display:grid;grid-template-columns:32% 32% 32%;grid-column-gap: 1.33%;" id="supermodal">
       <div class="course">
-        <a href="https://www.hektorprofe.net/cupon/python" target="_blank"><img src="/cdn/assets/python.png" style="width:100%;justify-self:center;align-self:center;"/></a>
+        <a href="https://www.hektorprofe.net/cupon/python" target="_blank"><img src="assets/python.png" style="width:100%;justify-self:center;align-self:center;" /></a>
       </div>
       <div class="course">
-        <a href="https://www.hektorprofe.net/cupon/django" target="_blank"><img src="/cdn/assets/django.png" style="width:100%;justify-self:center;align-self:center;"/></a>
+        <a href="https://www.hektorprofe.net/cupon/django" target="_blank"><img src="assets/django.png" style="width:100%;justify-self:center;align-self:center;" /></a>
       </div>
       <div class="course">
-        <a href="https://www.hektorprofe.net/cupon/pyside" target="_blank"><img src="/cdn/assets/pyside.png" style="width:100%;justify-self:center;align-self:center;"/></a>
+        <a href="https://www.hektorprofe.net/cupon/pyside" target="_blank"><img src="assets/pyside.png" style="width:100%;justify-self:center;align-self:center;" /></a>
       </div>
     </div>`);
 
@@ -1033,6 +1009,6 @@ div.my-img{text-align:center;margin-top:20px}
     function doNav(){ document.getElementById("main__list").innerHTML = '<li class="md-nav__item"><a class="md-nav__link" href="/cursos/">Cursos</a></li><li class="md-nav__item"><a class="md-nav__link" href="/blog/">Blog</a></li>';}
     for (i = 0; i < mdMenuItems.length; i++) {  var item = mdMenuItems[i]; var htmlstring = item.innerHTML; htmlstring = (htmlstring.trim) ? htmlstring.trim() : htmlstring.replace(/^\s+/,''); if (htmlstring == 'Servidor de encuentro') { item.parentNode.removeChild(item);continue; }  if (htmlstring == 'Política de Cookies') { item.parentNode.removeChild(item);continue; } if (htmlstring == 'Buscador') { item.parentNode.removeChild(item); continue; } }
     try { var topPos = document.querySelector('#md__active_link').offsetTop; document.querySelector('#md__sidebar__scroll').scrollTop = topPos - 60; } catch (err) {}
-  </script>
-  </body>
-</html>
+      </script>
+    </body>
+  </html>
