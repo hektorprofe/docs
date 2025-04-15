@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -627,17 +625,17 @@ div.my-img{text-align:center;margin-top:20px}
 <p>Sin embargo para desarrollar un juego no basta con los componentes predeterminados, sino que es necesario crear tu propia lógica y eso se consigue creando unos componentes personalizados conocidos como <code>Scripts</code>, en español <code>Guiones</code>, que derivan de un código en lenguaje C# llamado <code>MonoBehaviour</code>.</p>
 <p>En otras palabras, en Unity, para añadir lógica personalizada a un videojuego es necesario saber el lenguaje C#. Pero no os preocupéis, porque en este curso no utilizaremos C# sino <code>Visual Scripting</code>, una interfaz que permite hacer algo parecido mediante diagramas y relaciones. </p>
 <p>Así que vamos a empezar creando una nueva escena <code>Basic (Built-in)</code> en nuestro proyecto <code>Sandbox 3D</code> que llamaremos <code>Experimentos</code>. En ella añadiremos un plano bastante grande (10,1,10) y un cubo, ambos reiniciando préviamente su componente <code>Transform</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_66.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_66.png" /></p>
 <p>Ahora vamos a iniciar con un primer experimento, cuyo propósito es entender qué es el flujo de un videojuego y cómo modificarlo para añadir dinamismo e interactividad.</p>
 <p>Empezaremos añadiendo un componente al cubo llamado <code>Script Machine</code> que significa literalmente <code>Máquina de guiones</code>: </p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_67.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_67.png" /></p>
 <p>Como su nombre indica, el propósito de esta "máquina" es ejecutar <code>scripts</code> o guiones. Estos guiones, pueden definirse en la propia máquina, en cuyo caso se llaman <code>Embed scripts</code> o de forma externa en un recurso de tipo <code>Graph</code>, que en el contexto significa "guión gráfico". Si creamos un guión externo podemos reutilizarlo en diferentes máquinas, y si lo creamos embebido, se enlazará única y exclusivamente a la máquina actual:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_68.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_68.png" /></p>
 <p>Vamos a crear un guión reutilizable, por lo que haremos clic en la propiedad <code>Graph &gt; New</code>. Lo haremos en un nuevo directorio llamado <code>Graphs</code> con el nombre <code>Experimento</code>. </p>
 <p>Un objeto puede tener múltiples <code>Script Machines</code> pero cada una puede ejecutar solo un guión. Establecer un nombre y una descripción a la máquina nos puede servir en el futuro:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_70.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_70.png" /></p>
 <p>Una vez tenemos el guión creado, vamos a editarlo haciendo clic en <code>Edit Graph</code>. La primera vez que hagamos esto se instalará en el proyecto el paquete de <code>Visual Scripting</code>, y luego se desplegará una ventana llamada <code>Visual Scripting Graph</code>. Mi recomendación es añadir esta ventana a la parte inferior porque la vamos a estar utilizando mucho:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_71.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_71.png" /></p>
 <p>Esta ventana, cuyo propósito es diseñar los diagramas de flujo del videojuego se puede maximizar y minimizar de diferentes formas:</p>
 <ul>
 <li>Haciendo clic en <code>Full Screen</code>.</li>
@@ -646,9 +644,9 @@ div.my-img{text-align:center;margin-top:20px}
 </ul>
 <p>Podemos movernos por el gráfico presionando la rueda del ratón y hacer zoom con el mismo botón manteniendo <code>Control</code>.</p>
 <p>Sea como sea en este punto tenemos un <code>visual script</code> (guión visual) enlazado al cubo de la escena, en el cuál encontramos dos cajas, una llamada <code>Start</code> y otra <code>Update</code>, ambas con el texto <code>Event</code> debajo y una flecha verde con un <code>slot</code>, en español <code>ranura</code>.</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_72.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_72.png" /></p>
 <p>Si ponemos en marcha el juego (Control+P) mientras tenemos esta ventana visible notaremos algo interesante, y es que la caja llamada <code>Update</code> se torna de otro color, lo cuál significa que ese evento se está ejecutando:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_73.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_73.png" /></p>
 <p>Y es que los videojuegos se basan en repetir un ciclo muchas veces por segundo para generar la ilusión de movimiento, es lo que se conoce como <code>Game Loop</code> o bucle de juego.</p>
 <p>En la <a href="https://docs.unity3d.com/Manual/ExecutionOrder.html">documentación de Unity</a> podemos encontrar un repaso de todos los eventos que suceden en un objeto desde que empieza su ciclo de vida hasta que termina. Vale la pena repasar esta clasificación aunque sea de forma general:</p>
 <ul>
@@ -665,10 +663,10 @@ div.my-img{text-align:center;margin-top:20px}
 </ul>
 <p>Según lo que acabamos de aprender, el evento <code>Start</code> (empezar) es de inicialización y se ejecuta una única vez al llamar el script, mientras que <code>Update</code> (actualizar) es de lógica de juego y se ejecuta una vez por fotograma.</p>
 <p>La idea es que si configuramos una acción y la enlazamos a un evento, ésta se ejecutará cuando ocurre el evento, así que con eso en mente vamos a hacer clic derecho en el gráfico, escribimos <code>rotate</code> en el buscador y creamos un nodo de tipo <code>Transform:Rotate (X Angle, Y Angle, Z Angle)</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_74.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_74.png" /></p>
 <p>Los nodos del gráfico se denominan unidades y la magia, como podéis suponer, al conectar las unidades entre ellas, configurando el flujo del programa para que se ejecuten unas u otras.</p>
 <p>Si seleccionamos la unidad que hemos creado, veremos la información sobre su utilización en el inspector del gráfico:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_75.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_75.png" /></p>
 <p>Nos explica que este método aplica una rotación a los diferentes ejes X, Y, Z de un componente <code>Transform</code>. </p>
 <p>Además tiene unos inputs:</p>
 <ul>
@@ -681,19 +679,19 @@ div.my-img{text-align:center;margin-top:20px}
 <li><code>Exit</code>: Salida, de tipo <code>Flow</code>, se llamará una vez el método de rotación ha sido invocado.</li>
 </ul>
 <p>Si seleccionamos el evento <code>Update</code> veremos que tiene una salida llamada <code>Trigger</code> (disparador) de tipo <code>Flow</code>, que concuerda con la entrada <code>Invoke</code> de la unidad de rotación, así que vamos a conectar ambas trazando una línea:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_76.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_76.png" /></p>
 <p>Si ejecutamos el juego (Control+P), veremos algo muy interesante:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Record_10.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Record_10.gif" /></p>
 <p>Esta animación nos muestra el flujo del videojuego, como el evento <code>Update</code> se está ejecutando en cada fotograma y su salida está fluyendo hasta la unidad de rotación. </p>
 <p>No está sucediendo nada porque los ángulos están establecidos a 0, pero si los cambiamos...</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Record_11.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Record_11.gif" /></p>
 <p>Como véis el cubo se pone a girar.</p>
 <p>Lo que estamos haciendo es modificar una propiedad en tiempo de juego, generando así una ilusión de movimiento. De hecho podemos ver cómo la propiedad <code>Rotation</code> del componente <code>Transform</code> se está modificando automáticamente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Record_12.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Record_12.gif" /></p>
 <p>Si en lugar de conectar el evento <code>Update</code>, conectamos la unidad de rotación al <code>Start</code>, ésta debería ejecutarse una única vez. Podemos borrar una relación desde uno de los extremos haciendo clic derecho:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_77.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_77.png" /></p>
 <p>Al probar el juego, si la rotación que hemos establecido es muy pequeña no vamos a notar ninguna diferencia, pero si ponemos por ejemplo 45 entonces veremos como el cubo empieza rotado:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_78.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_78.png" /></p>
 <p>Como hemos visto en este pequeño experimento, en los videojuegos existe un "flujo" que podemos utilizar para conectar las unidades del gráfico.</p>
 <p>Este flujo no es más que el bucle de juego, un montón de instrucciones de código ejecutándose unas tras otras, aunque nosotros las veamos representadas gráficamente.</p>
 <p>A partir de la siguiente lección empieza el verdadero curso, descansad un poco y le damos caña.</p>

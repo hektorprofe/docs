@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -624,14 +622,14 @@ div.my-img{text-align:center;margin-top:20px}
                   <h1 id="componentes-y-propiedades">Componentes y propiedades<a class="headerlink" href="#componentes-y-propiedades" title="Permanent link">&para;</a></h1>
 <p>Ahora que hemos aprendido sobre la escena y los objetos, vamos a profundizar en las partes que componen los objetos, me refiero a los componentes y sus propiedades.</p>
 <p>Vamos a empezar escondiendo el banco de trabajo <code>Workbench</code>, lo buscamos en la jeraquía con ese nombre, lo selecionamos y lo desacivamos en el inspector:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_24.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_24.png" /></p>
 <p>Vamos a centrarnos en nuestros cascos, así que nos los vamos a llevar un poco más al medio:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_25.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_25.png" /></p>
 <p>Vamos a fijarnos en el inspector un poco más a fondo al seleccionar uno de los cascos.</p>
 <p>Empezando por arriba tenemos una sección con el nombre del objeto, si está activo o no, la posibilidad de añadir tags (etiquetas) y layers (capas) y otras opciones. Los tags sirven para identificar conjuntos de objetos, mientras que las capas están relacionadas con el orden de renderiado:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_26.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_26.png" /></p>
 <p>A continuación encontramos una sección llamada <code>Transform</code>, este el primer componente de cualquier objeto, encargado de gestionar los vectores de transformación, a partir de los cuáles se basa el renderizado de gráficos. Existen tres transformaciones básicas:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_27.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_27.png" /></p>
 <ul>
 <li><strong>Traslación</strong>: Para mover un objeto en el espacio respecto a un punto de origen (0,0,0).</li>
 <li><strong>Rotación</strong>: Para mover rotar un objeto en el espacio respecto a una rotación de origen (0,0,0).</li>
@@ -639,13 +637,13 @@ div.my-img{text-align:center;margin-top:20px}
 </ul>
 <p>Las transformaciones son tan esenciales que se encuentran integradas en el propio editor y podemos ejecutarlas sobre los objetos seleccionados utilizando las herramientas de movimiento (W), rotación (E) y escalado (R). Siempre que realicemos un cambio en ellas, veremos los valores numéricos establecidos en los vectores del componente <code>Transform</code> mediante tres coordenadas X, Y, Z. Estos valores dentro de los componentes, que podemos modificar, se denominan propiedades.</p>
 <p>Podemos usar las herramientas gráficas o modificar directamente las propiedades para transformar los objetos, o incluso hacer clic en los tres puntitos del componente y reiniciar el componente con los valores iniciales de las propiedades, que para los vectores 3D es la coordenada origen (0,0,0):</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_28.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_28.png" /></p>
 <p>Un lugar que como vemos queda fuera y por debajo de la escena:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_29.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_29.png" /></p>
 <p>Con <code>Control+Z</code> podemos volver a como teníamos antes los valores, y ahora vamos a establecer la rotación del casco azul en (0,0,0):</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_30.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_30.png" /></p>
 <p>Para poner el casco en vertical podemos establecer la coordenada X en 90 o con 270, dependiendo de por qué lado queramos dejar el casco levantado:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_31.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_31.png" /></p>
 <p>Si bien el componente <code>Transform</code> es el más importante y común de todos los objetos, Unity incluye miles de componentes para realizar todo tipo de tareas. Nuestro casco contiene además:</p>
 <ul>
 <li><strong>Mesh Filter</strong>: Para establecer el modelo tridimensional del objeto.</li>
@@ -653,21 +651,21 @@ div.my-img{text-align:center;margin-top:20px}
 <li><strong>Shader</strong>: Un programita que añade efectos gráficos al modelo.</li>
 </ul>
 <p>En cambio el objeto <code>Main Camera</code> está formado por otros componentes diferentes, como uno llamado <code>Camera</code>, un <code>Audio Listener</code> y dos <code>Scripts</code>, además del tag <code>MainCamera</code> para poder identificarlo rápidamente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_32.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_32.png" /></p>
 <p>Vamos a hacer un último experimento, seleccionando el casco azul, vamos a dejarlo flotando en el aire:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_33.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_33.png" /></p>
 <p>Si ponemos el juego en marcha (Control+P), el casco se mantiene en el aire porque no contiene ningún tipo de físicas.</p>
 <p>Vamos a añadir un componente de cuerpo rígido al casco, para ello presionaremos el botón <code>Add Component</code> y buscaremos uno llamado <code>RigidBody</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_34.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_34.png" /></p>
 <p>Solo añadiendo este objetos, si ponemos el juego en marcha, el casco empezará a caer. Eso es porque ahora le afecta la gravedad:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Record_01.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Record_01.gif" /></p>
 <p>Sin embargo no chocará contra el suelo y eso es porque no tenemos colisiones configuradas.</p>
 <p>Si observamos el objeto <code>Ground</code> veremos que contiene un componente de tipo <code>Box Collider</code>, haciendo clic en la propiedad <code>Edit Collider</code> se mostrará el contorno de la colisión del suelo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_35.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_35.png" /></p>
 <p>Como el suelo ya tiene un colisionador, nos falta añadir otro en el casco azul, así que volvamos a él y añadamos un <code>collider</code> de tipo <code>Mesh Collider</code>, activando la opción <code>Convex</code> para que establezca los vértices en el lugar de la malla del modelo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_36.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_36.png" /></p>
 <p>Si ahora probamos de nuevo el juego (Control+P):</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Record_02.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Record_02.gif" /></p>
 <p>Y voalà, ahí tenemos un casco con físicas que colisiona contra el suelo.</p>
 <p>A lo largo de esta unidad hemos adquirido soltura para manejar el programa y unos fundamentos, sabemos movernos por el editor y manejar lo esencial. Entendemos como se compone una escena, los recursos, los objetos, los componentes y las propiedades.</p>
 <p>Estamos preparados para dar el siguiente paso, crear un sandbox 3D.</p>

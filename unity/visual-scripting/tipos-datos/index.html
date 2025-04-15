@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -635,13 +633,13 @@ div.my-img{text-align:center;margin-top:20px}
 <p>Vamos a realizar algunos experimentos visuales para entender mejor cómo trabajar con los datos.</p>
 <p>Cuando nuestro cubo se pone a dar vueltas y a flotar, lo hace porque hay un flujo desde el evento <code>Update</code> hasta las unidades de transformación.</p>
 <p>¿Qué ocurriría si condicionamos el flujo dependiendo de un valor lógico verdadeo o falso? Vamos a hacerlo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_85.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_85.png" /></p>
 <p>Lo que hemos conseguido aquí es un controlador que nos permite activar o desactivar el flujo de las transformaciones mediante una condición lógica llamada <code>if</code>, esn español <code>si</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Record_14.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Record_14.gif" /></p>
 <p>Vamos a mostrar en la consola un mensaje que nos diga si el cubo se mueve o no. Como un mensaje es una cadena de texto haremos uso del tipo <code>string</code> y lo pasaremos a una unidad que ejecute el método <code>Debug.Log</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_86.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_86.png" /></p>
 <p>Dependiendo del valor lógico ahora se muestra un mensaje u otro por la consola:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_87.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_87.png" /></p>
 <p>Como véis con los datos podemos añadir dinamismo y mostrar información, pero hay un problema... Los datos que estamos manejando en nuestro ejemplo son valores literales, y si bien podemos modificarlos desde el <code>Script Graph</code> mientras desarrollamos el juego, en el juego final no vamos a contar con esta herramienta.</p>
 <p>Si queremos manipular los datos de un videojuego necesitamos almacenarlos y ahí es donde entran en juego las variables, de las cuales hablaremos en la próxima lección.</p>
 <hr />

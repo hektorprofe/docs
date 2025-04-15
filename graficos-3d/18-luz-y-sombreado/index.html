@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -778,7 +776,7 @@ div.my-img{text-align:center;margin-top:20px}
                   
                   <h1 id="luz-y-sombreado">Luz y sombreado<a class="headerlink" href="#luz-y-sombreado" title="Permanent link">&para;</a></h1>
 <p>Los objetos en la realidad no se perciben simplemente como entidades de colores sólidos sino que les afectan la iluminación y las sombras del entorno:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-73.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-73.png" /></p>
 <p>Por una parte tenemos la incedencia de la propia luz en el objeto y por otro la sombra proyectada por éste sobre una superficie. Voy a enfocarme en una posible implementación de la primera.</p>
 <p>Podemos entender la luz como un vector con una dirección:</p>
 <div class="highlight"><pre><span></span><code><span class="cp">#ifndef LIGHT_H</span>
@@ -795,12 +793,12 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="cp">#endif</span>
 </code></pre></div>
 <p>Dependiendo de cómo se proyecta la luz encontramos distintos tipos:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-74.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-74.png" /></p>
 <p>Lo que voy a implementar es el tipo más simple, una <strong>fuente global de luz direccional</strong> que afectará a todos los objetos por igual. Esta luz no tiene una posición específica, sino que es más bien como un sol gigantesco que ilumina todo en una dirección.</p>
 <p>Lo siguiente que debemos plantearnos es cómo afectará esta fuente de luz a los objetos y cómo cambiará el rasterizado de sus caras. Para ello haremos uso de diferentes algoritmos de iluminación.</p>
 <h2 id="sombreado-plano">Sombreado plano<a class="headerlink" href="#sombreado-plano" title="Permanent link">&para;</a></h2>
 <p>Uno los algoritmos más sencillos de implementar se conoce como <strong>sombreado plano</strong> (<em>flat shading</em>). Éste dice que dependiendo de la alineación que hay entre el rayo proyectado por la luz y la cara de la malla, más o menos brillante u oscuro será el color de esa cara. En otras palabras, si la <code>normal</code> de la cara está completamente alineada con la dirección de la luz estará completamente iluminada.</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-75.png" /> </p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-75.png" /> </p>
 <p>El siguiente método <code>ApplyIntensity</code> nos permitirá graduar un color en un porcentaje para determinar el color de la cara iluminada:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Light</span>
 <span class="p">{</span>
@@ -826,7 +824,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="cm">/* Light settings */</span>
 <span class="n">Light</span><span class="w"> </span><span class="n">light</span><span class="p">{.</span><span class="n">direction</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">}};</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-76.png" /> </p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-76.png" /> </p>
 <p>Ahora, para visualizar mejor la iluminación cambiaremos los colores de las caras del <code>mock</code> cube a blanco:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">uint32_t</span><span class="w"> </span><span class="n">meshColors</span><span class="p">[]</span>
 <span class="p">{</span>
@@ -903,14 +901,14 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span><span class="w"> </span>
 </code></pre></div>
 <p>Si probamos el resultado observaremos algo interesante:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-24.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-24.gif" /></p>
 <p>Si bien estamos aplicando correctamente el sombreado, parece que lo tenemos negado y en lugar de proyectar luz está proyectando oscuridad, de ahí que si la alineación entre el vector de la luz y la normal de la cara es total se vea completamente oscuro.</p>
 <p>Esto es debido a que el ángulo hay que calcularlo al revés, de la normal hacia el vector de la luz. ¿La razón? La luz se refleja en dirección contraria, así que vamos a negar el producto escalar:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-77.png" /> </p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-77.png" /> </p>
 <div class="highlight"><pre><span></span><code><span class="kt">float</span><span class="w"> </span><span class="n">lightIntensityFactor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">normal</span><span class="p">.</span><span class="n">DotProduct</span><span class="p">(</span><span class="n">light</span><span class="p">.</span><span class="n">direction</span><span class="p">);</span>
 </code></pre></div>
 <p>Ahora sí, aquí tenemos el sombreado funcionando:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-25.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-25.gif" /></p>
 <p>Sin embargo debemos asegurarnos de que el valor del producto escalar se encuentra entre <code>0</code> y <code>1</code>, por lo que tendremos que recortarlo, lo que en inglés se denomina <code>clamp</code> o restricción. </p>
 <p>Si el factor es menor que <code>0</code>, será <code>0</code>. Si es mayor que <code>1</code>, será <code>1</code>. Así nos aseguraremos de que el recoloreado es el correcto:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Clamp percentageFactor between 0 and 1</span>
@@ -921,25 +919,25 @@ div.my-img{text-align:center;margin-top:20px}
 <p>Hemos visto como el sombreado plano se programa sobre los triángulos en base a su normal, de manera que una cara tendrá un color.</p>
 <p>Existen otros algoritmos de sombreado más avanzados, como los de sombreado suavizado. Uno de los más famosos es el <a href="https://es.wikipedia.org/wiki/Sombreado_Gouraud"><strong>Sombreado Gouraud</strong></a>.</p>
 <p>Esta técnica se basa en la interpolación de la luz no para la normal de la cara, sino para cada píxel de la cara en función de los colores en las las normales de los vértices:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-26.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-26.gif" /></p>
 <p>Cuantos más polígonos tenga el modelo, mayor será el suavizado de la sombra:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-27.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-27.gif" /></p>
 <p>Comparado con el algoritmo de sombreado plano es mucho más trabajoso para la CPU así que no lo vamos a implementar, pero vale la pena comentarlo.</p>
 <h2 id="valores-verticales-invertidos">Valores verticales invertidos<a class="headerlink" href="#valores-verticales-invertidos" title="Permanent link">&para;</a></h2>
 <p>En este punto, si cambiamos nuestro <em>mock</em> cube por el modelo <strong>cube.obj</strong> debería funcionarnos todo correctamente:</p>
 <div class="highlight"><pre><span></span><code><span class="n">mesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mesh</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;assets/cube.obj&quot;</span><span class="p">);</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-78.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-78.png" /></p>
 <p>Pero si cargamos el cono, aunque se rasterice bien, veremos que está volteado verticalmente:</p>
 <div class="highlight"><pre><span></span><code><span class="n">mesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mesh</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;assets/cone.obj&quot;</span><span class="p">);</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-79.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-79.png" /></p>
 <p>El problema radica en que, en nuestro sistema hemos considerado que la <code>Y</code> crece hacia abajo, en el color buffer, siendo <code>(0,0)</code> la esquina superior izquierda. Sin embargo, en los modelos de blender la <code>Y</code> crece hacia arriba.</p>
 <p>Así que tendremos que invertir los valores de <code>Y</code> proyectados en la pantalla, antes de trasladarlos:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Invert the y values to account the flipped screen y coord</span>
 <span class="n">triangles</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">projectedVertices</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">y</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-80.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-80.png" /></p>
 <p>Esta era también la razón por la que la luz superior del cubo no funcionaba bien, pero ahora si se renderizará correctamente.</p>
 <hr />
 <p><small class="edited"><i>Última edición: 05 de Junio de 2022</i></small></p>

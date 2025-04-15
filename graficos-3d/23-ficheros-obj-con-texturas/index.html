@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -787,7 +785,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="k">this</span><span class="o">-&gt;</span><span class="n">triangles</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">Triangle</span><span class="p">(</span><span class="mh">0xFFFFFFFF</span><span class="p">,</span><span class="w"> </span><span class="n">triangleCoords</span><span class="p">));</span>
 </code></pre></div>
 <p>Si ponemos en marcha el programa para probar si funciona...</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-105.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-105.png" /></p>
 <p>Nos dice que estamos intentando acceder a un luar de la cola fuera del rango, eso es porque en el fichero <strong>obj</strong> los índices empiezan con <code>1</code> y no con <code>0</code>, debemos restarles <code>1</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="n">Texture2</span><span class="w"> </span><span class="n">triangleCoords</span><span class="p">[]{</span><span class="w"> </span>
 <span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">coordinates</span><span class="p">[</span><span class="n">textureIndices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w"> </span>
@@ -795,33 +793,33 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">coordinates</span><span class="p">[</span><span class="n">textureIndices</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">]};</span>
 </code></pre></div>
 <p>Si probamos ahora...</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-106.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-106.png" /></p>
 <p>¡Parece que nos estamos acercando! El problema es que las coordenadas y la textura no concuerdan. Podemos abrir <strong>Blender</strong> y aplicar nuestra textura a un nuevo cubo.</p>
 <p>Soy un completo novato con Blender pero he encontrado un tutorial donde explican como hacerlo rápido.</p>
 <p>Primero cambiamos al modo <code>Viewport Shading</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-107.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-107.png" /></p>
 <p>A continuación seleccionamos el cubo, vamos a <code>Material Properties</code> y cambiamos el <code>Base Color</code> por una <code>Image Texture</code> y buscamos la que queremos aplicar:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-108.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-108.png" /></p>
 <p>Al hacerlo veremos que efectivamente las coordenadas UV por defecto del cubo no pintan nuestra textura como nosotros queremos, tenemos que cambiarlas manualmente.</p>
 <p>Abriremos el modo <code>UV Editor</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-109.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-109.png" /></p>
 <p>Y cambiaremos a la imagen de nuestro cubo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-110.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-110.png" /></p>
 <p>Si arrastramos desde la esquina superior derecha del editor (aparece una cruz en el puntero) podemos activar dos vistas, nos será útil:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-111.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-111.png" /></p>
 <p>Si activamos el modo de selección de caras y seleccionamos una veremos qué parte de la textura se está aplicando:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-112.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-112.png" /></p>
 <p>Como se puede apreciar está mal mapeado, nosotros queremos que el cuadrado sea la cara completa.</p>
 <p>Buscaremos la opción <code>UV &gt; Smart UV Project</code> y le daremos a OK:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-113.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-113.png" /></p>
 <p>Automáticamente el tamaño de la cara se establecerá al completo, esto debería corregir las coordenadas UV de esa cara:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-114.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-114.png" /></p>
 <p>Seguramente hay alguna opción para repetir esto en todos las caras, pero no tengo ni idea(algún día seguro que lo aprenderé), así que repetiré el proceso para cada cara:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-115.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-115.png" /></p>
 <p>Una vez las tenga todas corregidas exportaré el cubo en <code>obj</code> con <code>Y</code> creciente hacia abajo, caras triangulares y las nuevas coordenadas UV:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-116.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-116.png" /></p>
 <p>El programa debería renderizarlo correctamente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-118.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-118.png" /></p>
 <p>Efectivamente, ya se renderiza, pero todavía tenemos un último problema pendiente... ¿Lo hace de forma volteada?</p>
 <p>El caso es que Blender nos da los valores de las coordenadas V invertidas, deberemos voltearlas. Es muy fácil, simplemente hacemos lo siguiente justo después de ordenar los vértices en el <code>DrawTexturedTriangle</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Flip the V component to account for inverted UV-coordinates</span>
@@ -830,12 +828,12 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="n">uv2</span><span class="p">.</span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">uv2</span><span class="p">.</span><span class="n">v</span><span class="p">;</span>
 </code></pre></div>
 <p>Por fin tendremos nuestra recompensa, un cubo modelado y texturizado en <strong>Blender</strong> cargado perfectamente en nuestro visualizador 3D:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-35.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-35.gif" /></p>
 <h2 id="prevenir-overflow-del-buffer-de-textura">Prevenir overflow del buffer de textura<a class="headerlink" href="#prevenir-overflow-del-buffer-de-textura" title="Permanent link">&para;</a></h2>
 <p>Tenemos que tener en cuenta algo importante a la hora de renderizar los pixels relativos al texel.</p>
 <p>Si por casualidad el cálculo de <code>alpha</code>, <code>beta</code> o <code>gamma</code> es muy pequeño, por ejemplo <code>0.00001</code>, acabaremos con un número negativo muy pequeño implicando que el punto está fuera del triángulo.</p>
 <p>Las coordenadas baricéntricas son puras matemáticas para definir un punto en un triángulo, pero en la realidad tenemos una pantalla con un número limitado de píxels y esa "proyección" que hacemos no concuerda con la realidad, saliéndose del espacio de dibujado y causando potenciales fallos:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-117.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-117.png" /></p>
 <p>Esto nos lleva a la conocida como <em>fill convention</em>, la convención de relleno para determinar si un píxel se encuentra dentro o fuera del triángulo para realizar un redondeo al alza (<em>ceil</em>) o a la baja (<em>floor</em>).</p>
 <p>Este tema llevó de calle a los ingenieros del paso pero en mi caso no voy a complicarme demasiado. Pemitiré que un valor se encuentre fuera del triángulo, pero si eso sucede simplemente truncaremos el valor haciendo el módulo del <code>textureWidth</code> y el <code>textureHeight</code> para que el valor no se salga de los límites:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Calculate the texelX and texelY based on the interpolated UV and the texture sizes</span>
@@ -844,7 +842,7 @@ div.my-img{text-align:center;margin-top:20px}
 </code></pre></div>
 <p>Este pequeño <em>hack</em> debería prevenir que ocurra un overflow.</p>
 <p>Así queda este modelo de un <a href="https://sketchfab.com/3d-models/dancing-crab-uca-mjoebergi-280863886fee409ab3c8168f07caa89f">cangrejo</a>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-36.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-36.gif" /></p>
 <p>Aquí se puede observar cómo todavía tenemos un problema al renderizar la profundidad de los vértices, dibujándose la pinza del cangrejo por detrás del cuerpo.</p>
 <p>En la próxima sección vamos a arreglarlo.</p>
 <hr />

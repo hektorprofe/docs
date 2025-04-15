@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1548,7 +1546,7 @@ div.my-img{text-align:center;margin-top:20px}
                   <h1 id="creando-un-template-tag-para-listar-paginas">Creando un Template Tag para listar páginas<a class="headerlink" href="#creando-un-template-tag-para-listar-paginas" title="Permanent link">&para;</a></h1>
 <p>En esta lección vamos a aprender a crear un template tag para mostrar contenido personalizado, concretamente lo que hará es recuperar la lista de páginas secundarias y devolverla. Es una alternativa más flexible que extender el procesador de contexto, pero también consume algo más de recursos.</p>
 <p>Para crear nuestro propio template tag debemos seguir unos pasos. El primer es crear un directorio llamado <strong>template tags</strong> dentro de la app donde queremos añadir esta funcionalidad. En nuestro caso <strong>pages/templatetags</strong>. Dentro añadiremos un <strong>init</strong>, esto indicará a Python que se trata de un package, y justo al lado crearemos un script para almacenar nuestros template tags, podemos llamarlo como queramos pero yo siguiendo el ejemplo oficial de la documentación le voy a llamar <strong>pages_extras.py</strong>.</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/52.png" style="max-width:190px"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/52.png" style="max-width:190px"/></div>
 
 <p>Ahora vamos a declarar el template tag, para ello debemos registrarlo en la librería de Templates, así que empezaremos importando el módulo de registro de templates: </p>
 <p><code>pages/templatetags/pages_extras.py</code>
@@ -1574,7 +1572,7 @@ div.my-img{text-align:center;margin-top:20px}
 <div class="highlight"><pre><span></span><code>{% load pages_extras %}
 {% get_page_list %}
 </code></pre></div></p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/53.png"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/53.png"/></div>
 
 <p>Ahí tenemos nuestro QuerySet con las páginas, pero claro… así no podemos manejarlo, necesitamos tenerlo en una variable. No es difícil, sólo tenemos que darle un nombre al template tag de la siguiente forma:</p>
 <p><code>core/templates/core/base.html</code>
@@ -1589,7 +1587,7 @@ div.my-img{text-align:center;margin-top:20px}
     {% if not forloop.last %}·{% endif %} 
 {% endfor %}
 </code></pre></div></p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/54.png" style="max-width:400px"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/54.png" style="max-width:400px"/></div>
 
 <p>Si queréis darle un toque más interesante a los enlaces de las páginas, siempre podéis pasar el título en forma de slug:</p>
 <p><code>core/templates/core/base.html</code>
@@ -1611,7 +1609,7 @@ path(&#39;<span class="p">&lt;</span><span class="nt">int:page_id</span><span cl
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">page</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">page_id</span><span class="p">,</span> <span class="n">page_slug</span><span class="p">):</span>
 </code></pre></div></p>
 <p>Pero el resultado es interesante y puede mejorar el SEO de las páginas:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/55.png" style="max-width:275px"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/55.png" style="max-width:275px"/></div>
 
 <p>En fin, con esto habéis aprendido otra forma de inyectar datos comunes en todas las páginas, sólo imaginad la de cosas que podéis llegar a a hacer.</p>
 <hr />

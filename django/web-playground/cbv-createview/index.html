@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1560,7 +1558,7 @@ código.</p>
 <p>Es muy fácil, vamos a crear un nuevo template pages_menu.html dentro de
 un subdirectorio includes. No es obligatorio hacerlo así pero es una
 buena forma de organizar los includes:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image48.png" /> </p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image48.png" /> </p>
 <p>El contenido os lo voy a dar hecho, es básicamente un submenú con varios
 enlaces. Os adjunto el código en un enlace en los recursos, podéis
 copiarlo como yo:
@@ -1568,71 +1566,71 @@ copiarlo como yo:
 <p>Ahora sólo tenemos que incluir este menú en las páginas donde queramos
 mostrarlo, por ahora pages_detail y page_list, justo donde empieza el
 bloque content:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image613.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image613.png" /></p>
 <p>Si recargamos la página y estemos identificados con un usuario miembro
 del staff nos aparecerá este submenú dándonos la opción de crear una
 nueva página:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image119.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image119.png" /></p>
 <p>Ahora nos toca implementar la funcionalidad, para ello vamos a crear una
 nueva CBV de tipo CreateView:</p>
 <p><a href="https://ccbv.co.uk/projects/Django/2.0/django.views.generic.edit/CreateView/">https://ccbv.co.uk/projects/Django/2.0/django.views.generic.edit/CreateView/</a>\
 <a href="https://docs.djangoproject.com/en/dev/ref/class-based-views/generic-editing/#django.views.generic.edit.CreateView">https://docs.djangoproject.com/en/dev/ref/class-based-views/generic-editing/#django.views.generic.edit.CreateView</a> </p>
 <p>Como siempre vamos a tomar el ejemplo de la documentación:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image909.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image909.png" /></p>
 <p>Y lo vamos a adaptar para manejar páginas. En nuestro caso queremos que
 el usuario pueda establecer el título y el contenido así que indicaremos
 esos campos:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image884.png" /><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image232.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image668.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image884.png" /><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image232.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image668.png" /></p>
 <p>Ahora vamos a cambiar la URL en el menú y a ver cuál es el siguiente
 paso:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image550.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image550.png" /></p>
 <p>Como véis en esta ocasión nos devuelve que necesita un template llamado
 page_form:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image367.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image367.png" /></p>
 <p>Así que vamos a crearlo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image486.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image486.png" /></p>
 <p>¿Y qué contenido le ponemos? Lo básico sería lo que nos muestran la
 documentación. También he maquetado el contenido de antemano, así que
 podéis copiar el que os dejo en los recursos, igual que voy a hacer yo:</p>
 <p><a href="https://gist.github.com/hcosta/456df0769f153a2458e711d3f78b75a2">https://gist.github.com/hcosta/456df0769f153a2458e711d3f78b75a2</a></p>
 <p>Si recargamos la página veremos un formulario sencillo, pero creado
 automáticamente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image216.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image216.png" /></p>
 <p>Sé lo que estáis pensando. Mola, ¿pero cómo le añado mis propios
 estilos? Tranquilos, lo haremos más adelante. Por ahora vamos a crear
 una página a ver si funciona o tenemos que hacer algo más:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image705.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image705.png" /></p>
 <p>Al enviar el formulario veréis que da un error:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image639.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image639.png" /></p>
 <p>Lo que nos está diciendo es que no hemos definido una url de
 redirección, pero curiosamente sí vamos manualmente a la lista de
 páginas veremos que se ha creado!</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image169.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image169.png" /></p>
 <p>Así que básicamente tenemos que volver a la View y añadir un atributo
 success_url con la página que queramos redireccionar. Sabéis que me
 gusta hacer las cosas bien así que usaremos reverse para volver a la
 lista de páginas:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image657.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image853.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image657.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image853.png" /></p>
 <p>Sin embargo esto no nos va a funcionar:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image604.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image604.png" /></p>
 <p>Dentro de un CBV de tipo formulario no podemos usar el reverse, la forma
 correcta es redefinir su método get_success_url y devolver la url:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image409.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image409.png" /></p>
 <p>Que buena gente estos de Django eh, siempre poniéndonos las cosas
 fáciles. Por suerte si sois unos vagos y no queréis redefinir el método
 get_success_url siempre podéis hacer lo de antes sustituyendo reverse
 por reverse_lazy:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image381.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image217.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image381.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image217.png" /></p>
 <p>Si ponemos de nuevo el servidor en marcha y creamos otra página ya
 debería funcionarnos:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image171.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image407.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image171.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image407.png" /></p>
 <p>Por cierto, si queréis cambiar el orden de las páginas, podéis hacer uso
 de los TemplateTags dictsort y reversed para cambiarlo a vuestro gusto:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image731.png" /> </p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image731.png" /> </p>
 <p>Y con esto acabamos por ahora. ¿Qué os ha parecido la vista CreateView,
 útil verdad? Pues todavía nos faltan dos más: UpdateView y DeleteView,
 las veremos en la siguiente lección.</p>

@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1565,23 +1563,23 @@ para ir a la vista y enviar un nuestro correo de contacto utilizando la
 función send_mail.</p>
 <p>Primero importaremos la función y el EMAIL que utilizaremos para enviar
 el correo, tomado del propio settings.py:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image79.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image79.png" /></p>
 <p>Luego creamos la estructura del correo utilizando la clase EmailMessage
 (os adjunto la documentación relacionada):\
 <a href="https://docs.djangoproject.com/en/dev/topics/email/#emailmessage-objects">https://docs.djangoproject.com/en/dev/topics/email/#emailmessage-objects</a> </p>
 <p>DONDE EMAIL_HOST_USER -&gt; EMAIL DEL QUE ENVIA</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image288.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image288.png" /></p>
 <p>Cuando la tenemos, utilizamos el método send() para enviarlo. Podemos
 detectar algún fallo con un bloque try except y redireccionar tanto si
 funciona bien como si falla:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image159.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image159.png" /></p>
 <p>Sólo deberíamos modificar el template y detectar si en request.GET está
 el parámetro FAIL para mostrar un mensaje clásico de  “Error enviando el
 formulario, prueba más tarde”, pero eso os lo dejo a vosotros.</p>
 <p>Vamos a probar si se envía el correo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image39.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image432.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image438.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image39.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image432.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image438.png" /></p>
 <p>Y bien, por lo menos a mi me ha funcionado sin problemas.</p>
 <p>Evidentemente en la vida real no se recomienda utilizar un email de
 Google, sobretodo si vamos a enviar muchos correos, pero para una web
@@ -1594,19 +1592,19 @@ prueba, vamos a empezar generando una clave de aplicación. Esto es
 necesario porque por seguridad Gmail no nos deja identificarnos con
 nuestra en aplicaciones externas, necesitamos un token. El primer paso
 es ir a nuestra cuenta de Google desde cualquier web de Google:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image724.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image724.png" /></p>
 <p>Vamos al apartado Inicio de sesión y seguridad &gt; Contraseñas de
 aplicación</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image787.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image787.png" /></p>
 <p>Aquí generaremos una contraseña para Correo, podemos darle el nombre
 Django Test Email:\
-        <img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image305.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image4.png" /></p>
+        <img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image305.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image4.png" /></p>
 <p>Una vez la tengamos la dejáis reservada, luego la utilizaremos.</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image360.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image360.png" /></p>
 <p>El siguiente paso es configurar el email en el fichero  settings.py.
 Debéis poner exactamente esto:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image748.png" /> </p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image748.png" /> </p>
 <p>Ahora viene cuando la matan, tenemos que configurar los campos.</p>
 <p>El problema que tiene esto, es que no es el tipo de información que
 podemos poner en cualquier sitio.</p>
@@ -1621,14 +1619,14 @@ crear en el directorio raíz del proyecto, pero si lo váis a utilizar en
 producción os sugiero ponerlo en otro directorio del equipo, y
 sobretodo, no publicarlo nunca en un repositorio público.</p>
 <p>A este fichero lo llamaremos email_settings.json:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image224.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image224.png" /></p>
 <p>Dentro escribiremos la siguiente estructura, muy similar a un
 diccionario de Python (atención a true y no True):</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image298.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image298.png" /></p>
 <p>Una vez lo tengamos vamos a settings.py y lo cargaremos utilizando el
 módulo json de python de la siguiente forma:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image251.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image739.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image251.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image739.png" /></p>
 <hr />
 <p><small class="edited"><i>Última edición: 25 de Marzo de 2021</i></small></p>
                   

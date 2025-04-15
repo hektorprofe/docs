@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1551,20 +1549,20 @@ email. Carece de toda lógica, pero el registro por defecto de Django no
 sólo considera que el email es un campo optativo, sino que tampoco es
 único. Menudo despropósito...</p>
 <p>Probad a crear otro usuario con el mismo email, ya veréis:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image840.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image840.png" /></p>
 <p>Hay innumerables formas de solucionar este problema, cada una más
 compleja que las demás, por eso vamos a utilizar la más sencilla de
 todas: añadir una validación específica de campo. Sólo tenemos que ir al
 formulario y añadir un método para validar, o mejor dicho “limpiar” el
 campo email:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image3.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image3.png" /></p>
 <p>La lógica es sobreescribir el método clean_\&lt;nombre_del_campo&gt;, de
 manera que a través de self podemos acceder a los campos después de que
 Django los valide y añadir una validación extra.  Si no hay ningún
 Usuario con ese email devolveremos el email validado, pero si existe
 alguno invocaremos un error de tipo ValidationError con el mensaje que
 queremos mostrar en el formulario:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image458.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image458.png" /></p>
 <p>Y con esto acabamos el formulario de registro.</p>
 <hr />
 <p><small class="edited"><i>Última edición: 25 de Marzo de 2021</i></small></p>

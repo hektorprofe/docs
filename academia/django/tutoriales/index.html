@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -764,18 +762,18 @@ server = &quot;python manage.py runserver&quot;
 <h2 id="colorear-sintaxis-y-autocompletar-en-visual-studio-code">Colorear sintaxis y autocompletar en Visual Studio Code<a class="headerlink" href="#colorear-sintaxis-y-autocompletar-en-visual-studio-code" title="Permanent link">&para;</a></h2>
 <p>Cuando trabajemos con templates HTML de Django en Visual Studio Code veremos que la sintaxis de los template tags no se colorea:</p>
 <div class="image">
-    <img src="https://hektorprofe.github.io/docs/cdn//django/django_sintaxis_vsc_1.png"/>
+    <img src="https://hektorprofe.github.io/docs/cdn/django/django_sintaxis_vsc_1.png"/>
 </div>
 
 <p>Hay varias extensiones que vienen a soluciones el problema, pero a menudo si arreglan una cosa rompen otra, como por ejemplo el autocompletado de los tags:</p>
 <div class="image">
-    <img src="https://hektorprofe.github.io/docs/cdn//django/django_sintaxis_vsc_2.png"/>
+    <img src="https://hektorprofe.github.io/docs/cdn/django/django_sintaxis_vsc_2.png"/>
 </div>
 
 <p>La solución es instalar la siguiente extensión llamada <a href="https://marketplace.visualstudio.com/items?itemName=batisteo.vscode-django">Django</a> creada por Baptiste Darthenay, podéis instalarla directamente desde el navegador haciendo clic en el enlace.</p>
 <p>Después de instalarla la clave consiste en configurarla, tendremos que ir a <strong>Archivo &gt; Preferencias &gt; Configuración</strong>, en Windows <strong>Control + ,</strong> y acceder a la configuración JSON en lugar de la interfaz desde el botón superior derecho que luce con dos llaves <strong>{ }</strong>:</p>
 <div class="image">
-    <img src="https://hektorprofe.github.io/docs/cdn//django/django_sintaxis_vsc_3.png"/>
+    <img src="https://hektorprofe.github.io/docs/cdn/django/django_sintaxis_vsc_3.png"/>
 </div>
 
 <p>En nuestra configuración añadiremos las siguientes claves JSON con estos valores:</p>
@@ -789,12 +787,12 @@ server = &quot;python manage.py runserver&quot;
 </code></pre></div></p>
 <p>Una vez lo tengamos reiniciamos Visual Studio Code, abrimos un template de Django y nos aseguramos de tener marcada la opción <strong>Django HTML</strong> en la sintaxis del documento:</p>
 <div class="image">
-    <img src="https://hektorprofe.github.io/docs/cdn//django/django_sintaxis_vsc_4.png"/>
+    <img src="https://hektorprofe.github.io/docs/cdn/django/django_sintaxis_vsc_4.png"/>
 </div>
 
 <p>Una vez lo tengamos ya deberíamos ser capaces de usar los template tags de Django así como el autocompletado, tanto de HTML como de los template tags usando el tabulador:</p>
 <div class="image">
-    <img src="https://hektorprofe.github.io/docs/cdn//django/django_sintaxis_vsc_5.gif"/>
+    <img src="https://hektorprofe.github.io/docs/cdn/django/django_sintaxis_vsc_5.gif"/>
 </div>
 
 <h2 id="filtrar-un-modelo-por-un-campo-utilizando-un-formulario">Filtrar un modelo por un campo utilizando un formulario<a class="headerlink" href="#filtrar-un-modelo-por-un-campo-utilizando-un-formulario" title="Permanent link">&para;</a></h2>
@@ -808,7 +806,7 @@ server = &quot;python manage.py runserver&quot;
   <span class="n">edad</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">()</span>
 </code></pre></div></p>
 <p>Añadimos varias personas a través de nuestro panel de administración:</p>
-<div class="image"><img src="https://hektorprofe.github.io/docs/cdn//django/django_form_filtro_1.png"/></div>
+<div class="image"><img src="https://hektorprofe.github.io/docs/cdn/django/django_form_filtro_1.png"/></div>
 
 <p>Para devolver una lista de nuestras personas utilizaremos una consulta básica al modelo que devuelva todas sus instancias:</p>
 <p><code>views.py</code>
@@ -834,7 +832,7 @@ server = &quot;python manage.py runserver&quot;
 <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 </code></pre></div></p>
 <p>Este sería el resultado:</p>
-<div class="image"><img src="https://hektorprofe.github.io/docs/cdn//django/django_form_filtro_2.png"/></div>
+<div class="image"><img src="https://hektorprofe.github.io/docs/cdn/django/django_form_filtro_2.png"/></div>
 
 <p>Ahora viene lo interesante, ¿cómo podemos añadir un filtro para mostrar sólo las personas que tengan una edad mínima?</p>
 <p>Lo primero sería añadir un formulario que valide contra la propia vista un campo con la edad mínima:</p>
@@ -857,7 +855,7 @@ server = &quot;python manage.py runserver&quot;
 <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 </code></pre></div></p>
 <p>Quedaría así:</p>
-<div class="image"><img src="https://hektorprofe.github.io/docs/cdn//django/django_form_filtro_3.png"/></div>
+<div class="image"><img src="https://hektorprofe.github.io/docs/cdn/django/django_form_filtro_3.png"/></div>
 
 <p>Lo único a comentar sería el uso obligatorio del token csrf entre los tags <strong>form</strong> para proteger el formulario de las peticiones entre sitios cruzados.</p>
 <p>Para procesar el campo con el <strong>name="edad"</strong>, buscaríamos ese campo en el diccionario <strong>POST</strong> de la petición y lo transformaríamos a número entero para poder utilizarlo en el filtro del queryset:</p>
@@ -881,7 +879,7 @@ server = &quot;python manage.py runserver&quot;
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;number&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;edad&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;{{ edad }}&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width:40px&quot;</span> <span class="p">/</span> <span class="p">&gt;</span>
 </code></pre></div>
 <p>Con esto ya tendríamos nuestro sistema de filtrado para la queryset original con todas las personas aplicándole el filter sólo en caso de recibir el parámetro con la edad por POST:</p>
-<div class="image"><img src="https://hektorprofe.github.io/docs/cdn//django/django_form_filtro_4.png"/></div>
+<div class="image"><img src="https://hektorprofe.github.io/docs/cdn/django/django_form_filtro_4.png"/></div>
 
 <h2 id="crear-editar-y-borrar-instancias-de-modelos-con-formularios">Crear, editar y borrar instancias de modelos con formularios<a class="headerlink" href="#crear-editar-y-borrar-instancias-de-modelos-con-formularios" title="Permanent link">&para;</a></h2>
 <p>Una de las necesidades más comunes en Django es proveer una interfaz para crear, editar y borrar datos de un modelo.</p>
@@ -946,7 +944,7 @@ server = &quot;python manage.py runserver&quot;
 </code></pre></div></p>
 <p>El resultado se vería así:</p>
 <div class="image">
-    <img src="https://hektorprofe.github.io/docs/cdn//django/django_modelforms_2.png"/>
+    <img src="https://hektorprofe.github.io/docs/cdn/django/django_modelforms_2.png"/>
 </div>
 
 <p>Para modificar una instancia el proceso es muy similar al de crearlas, con la peculiaridad de que debemos recuperar la instancia y rellenar el formulario con su información. La vista quedaría así:</p>
@@ -1000,12 +998,12 @@ server = &quot;python manage.py runserver&quot;
 </code></pre></div>
 <p>Así quedaría el formulario de edición al editar una instancia:</p>
 <div class="image">
-   <img src="https://hektorprofe.github.io/docs/cdn//django/django_modelforms_4.png"/>
+   <img src="https://hektorprofe.github.io/docs/cdn/django/django_modelforms_4.png"/>
 </div>
 
 <p>Si todo está correcto los cambios quedarán establecidos en la instancia al guardarlos, por eso es buena idea añadir un enlace para visualizar la lista de instancias actualizadas:</p>
 <div class="image">
-   <img src="https://hektorprofe.github.io/docs/cdn//django/django_modelforms_5.png"/>
+   <img src="https://hektorprofe.github.io/docs/cdn/django/django_modelforms_5.png"/>
 </div>
 
 <p>Por último podemos añadir una opción para borrar instancias a partir de su identificador.</p>
@@ -1042,12 +1040,12 @@ server = &quot;python manage.py runserver&quot;
 </code></pre></div>
 <p>Al presionar el enlace de borrado nos aparecerá la ventana emergente de confirmación:</p>
 <div class="image">
-   <img src="https://hektorprofe.github.io/docs/cdn//django/django_modelforms_6.png"/>
+   <img src="https://hektorprofe.github.io/docs/cdn/django/django_modelforms_6.png"/>
 </div>
 
 <p>Y justo después de confirmar volveremos a la lista donde ya habrá desaparecido la instancia borrada:</p>
 <div class="image">
-   <img src="https://hektorprofe.github.io/docs/cdn//django/django_modelforms_7.png"/>
+   <img src="https://hektorprofe.github.io/docs/cdn/django/django_modelforms_7.png"/>
 </div>
 
 <h2 id="mostrar-graficos-generados-con-matplotlib-en-django">Mostrar gráficos generados con Matplotlib en Django<a class="headerlink" href="#mostrar-graficos-generados-con-matplotlib-en-django" title="Permanent link">&para;</a></h2>
@@ -1056,7 +1054,7 @@ server = &quot;python manage.py runserver&quot;
 <p>No voy a enseñar nada de Matplotlib porque eso es harina de otro costal, <a href="https://nbviewer.jupyter.org/github/hcosta/curso-python-udemy/tree/master/Fase%205%20-%20Modulos%20externos/Tema%2018%20-%20Matplotlib/">aquí dejo mis apuntes online</a>, pero sí el proceso para mostrar el gráfico.</p>
 <p>La idea de mostrar gráficos con Django se basa en acceder a una url de nuestro proyecto, por ejemplo <strong>/plot/</strong>, y en lugar de renderizar un template, responder con la imagen del gráfico generada en tiempo de ejecución:</p>
 <div class="image">
-   <img src="https://hektorprofe.github.io/docs/cdn//python/matplotlib_1.png"/>
+   <img src="https://hektorprofe.github.io/docs/cdn/python/matplotlib_1.png"/>
    <div style="font-size:80%">Al acceder a la URL que genera el gráfico, ésta devuelve una imagen PNG en lugar de un documento HTML.</div>
 </div>
 
@@ -1126,7 +1124,7 @@ server = &quot;python manage.py runserver&quot;
 </code></pre></div></p>
 <p>Quedando finalmente la página principal de la siguiente forma:</p>
 <div class="image">
-   <img src="https://hektorprofe.github.io/docs/cdn//python/matplotlib_2.png"/>
+   <img src="https://hektorprofe.github.io/docs/cdn/python/matplotlib_2.png"/>
 </div>
 
 <p>Si a esta idea le sumamos parámetros, ya sea por GET o POST que podemos capturar en la vista, entonces podemos añadir dinamismo y generar los gráficos como nosotros queramos. Por ejemplo pasando un parámetro GET llamado type <strong>/plot/?type=1</strong> donde luego con <strong>request.GET.get['type']</strong> podamos seleccionar el tipo de gráfico o lo que se os ocurra.</p>
@@ -1255,7 +1253,7 @@ server = &quot;python manage.py runserver&quot;
 </code></pre></div></p>
 <p>Con esto ya tendremos implementada la identificación:</p>
 <div class="image">
-    <img src="https://hektorprofe.github.io/docs/cdn//django/django_classic_auth_3.png"/>
+    <img src="https://hektorprofe.github.io/docs/cdn/django/django_classic_auth_3.png"/>
 </div>
 
 <p>Si no tenéis un usuario os recomiendo crear uno desde la terminal para probarlo, pero recordad antes hacer una migración inicial:</p>
@@ -1264,7 +1262,7 @@ python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
 </code></pre></div>
 <p>Además lo interesante es que al ser un formulario integrado soporta la traducción dependiendo del idioma que tenemos configurado en Django y también es capaz de detectar los errores e informar si el usuario no es correcto.</p>
 <div class="image">
-    <img src="https://hektorprofe.github.io/docs/cdn//django/django_classic_auth_2.png"/>
+    <img src="https://hektorprofe.github.io/docs/cdn/django/django_classic_auth_2.png"/>
 </div>
 
 <p>Y por último vamos con la funcionalidad de añadir nuevos usuarios.</p>
@@ -1307,7 +1305,7 @@ python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
 </code></pre></div></p>
 <p>Se verá más o menos así:</p>
 <div class="image">
-    <img src="https://hektorprofe.github.io/docs/cdn//django/django_classic_auth_4.png"/>
+    <img src="https://hektorprofe.github.io/docs/cdn/django/django_classic_auth_4.png"/>
 </div>
 
 <p>Este formulario de registro tiene la peculiaridad de contener mucho texto de ayuda a la hora de crear las cuentas, pero si queremos podemos esconder esa información borrando el atributo <strong>help_text</strong> de los tres campos del formulario:</p>
@@ -1322,14 +1320,14 @@ python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
 </code></pre></div></p>
 <p>Así tendríamos un formulario más limpio, aunque conservaremos los mensajes de error si se introduce un nombre de usuario en uso o si las contraseñas no superan la validación mínima:</p>
 <div class="image">
-    <img src="https://hektorprofe.github.io/docs/cdn//django/django_classic_auth_5.png"/>
+    <img src="https://hektorprofe.github.io/docs/cdn/django/django_classic_auth_5.png"/>
 </div>
 
 <h2 id="extender-el-usercreationform-para-registrarse-con-el-email">Extender el UserCreationForm para registrarse con el email<a class="headerlink" href="#extender-el-usercreationform-para-registrarse-con-el-email" title="Permanent link">&para;</a></h2>
 <p>El sistema de usuarios en Django tiene un problema y es que por defecto utiliza únicamente el usuario y la contraseña. Sin embargo en la actualidad es cada vez más común que los sitios en lugar de un "nick" utilicen el correo electrónico como usuario:</p>
 <p>Ya os enseñé a <a href="/docs/tutorial/django-sistema-registro-login-logout">implementar un sistema clásico de registro, login y logout</a>, así que vamos a extender esa lógica para obligar al usuario a registrarse e iniciar sesión utilizando su correo electrónico:</p>
 <div class="image">
-    <img src="https://hektorprofe.github.io/docs/cdn//django/django_auth_email_1.png"/>
+    <img src="https://hektorprofe.github.io/docs/cdn/django/django_auth_email_1.png"/>
 </div>
 
 <p>La solución más sencilla consiste en engañar al usuario, para que en lugar de registrarse con un nombre utilice su correo electrónico.</p>
@@ -1356,12 +1354,12 @@ python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
 </code></pre></div>
 <p>Y ya lo tendremos:</p>
 <div class="image">
-    <img src="https://hektorprofe.github.io/docs/cdn//django/django_auth_email_1.png"/>
+    <img src="https://hektorprofe.github.io/docs/cdn/django/django_auth_email_1.png"/>
 </div>
 
 <p>Ahora si quisiéramos cambiar el texto <strong>Nombre de usuario</strong> también en el formulario de login:</p>
 <div class="image">
-    <img src="https://hektorprofe.github.io/docs/cdn//django/django_auth_email_3.png"/>
+    <img src="https://hektorprofe.github.io/docs/cdn/django/django_auth_email_3.png"/>
 </div>
 
 <p>Podemos hacer lo mismo extendiendo el formulario <strong>AuthenticationForm</strong> en nuestro propio <strong>AFWithEmail</strong>:</p>
@@ -1387,12 +1385,12 @@ python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
 </code></pre></div>
 <p>Y listo, ya lo tendremos:</p>
 <div class="image">
-    <img src="https://hektorprofe.github.io/docs/cdn//django/django_auth_email_4.png"/>
+    <img src="https://hektorprofe.github.io/docs/cdn/django/django_auth_email_4.png"/>
 </div>
 
 <p>Faltaría sólamente arreglar un detalle durante la validación para que en lugar de <strong>Nombre de usuario</strong> muestre <strong>Correo electrónico</strong>, pero es algo tedioso porque el texto se encuentra dentro de las traducciones de Django, sería más fácil diseñar el formulario manualmente, pero bueno, dejando de banda ese detalle esta forma funciona genial:</p>
 <div class="image">
-    <img src="https://hektorprofe.github.io/docs/cdn//django/django_auth_email_5.png"/>
+    <img src="https://hektorprofe.github.io/docs/cdn/django/django_auth_email_5.png"/>
 </div>
 
 <p>Vamos a ver cómo utilizar <strong>inline forms</strong>, ya sea a través del administrador o en nuestras propias vistas.</p>
@@ -1435,7 +1433,7 @@ python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
 </code></pre></div></p>
 <p>Con esto ya lo tenemos, si vamos al administrador veremos la nueva estructura y podremos crear nuevas tareas en la parte inferior, teniendo siempre dos huecos libres para añadir otras:</p>
 <div class="image">
-    <img src="https://hektorprofe.github.io/docs/cdn//django/django_inlines_1.png"/>
+    <img src="https://hektorprofe.github.io/docs/cdn/django/django_inlines_1.png"/>
 </div>
 
 <p>A parte de la forma <strong>TabularInline</strong> para mostrar los campos horizontalmente también existe <strong>StackedInline</strong> para hacerlo verticalmente:</p>
@@ -1443,7 +1441,7 @@ python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
 </code></pre></div>
 <p>Así es como se vería en nuestro ejemplo de tareas, no se nota mucho porque sólo tenemos un campo:</p>
 <div class="image">
-    <img src="https://hektorprofe.github.io/docs/cdn//django/django_inlines_2.png"/>
+    <img src="https://hektorprofe.github.io/docs/cdn/django/django_inlines_2.png"/>
 </div>
 
 <p>Lo que hemos hecho en el panel de administrador está muy bien, pero ¿sé podrá hacer en nuestras propias vistas? Veamos cómo se hace.</p>
@@ -1461,7 +1459,7 @@ python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
 </code></pre></div></p>
 <p>Lo tengo perfectamente documentado en el otro tutorial y se ve de esta forma:</p>
 <div class="image">
-    <img src="https://hektorprofe.github.io/docs/cdn//django/django_inlines_3.png"/>
+    <img src="https://hektorprofe.github.io/docs/cdn/django/django_inlines_3.png"/>
 </div>
 
 <p>Nuestro objetivo es mostrar debajo los <strong>inline</strong> igual que hacemos en el panel de administrador.</p>
@@ -1543,7 +1541,7 @@ python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
 <p>Es extremadamente importante renderizar el <strong>management_form</strong>, ya que de forma oculta se encarga de manejar todos los subformilarios del inline y sin él no funcionaría nada.</p>
 <p>Sea como sea con esto deberíamos tener los inlines funcionando perfectamente en nuestro formulario de edición:</p>
 <div class="image">
-    <img src="https://hektorprofe.github.io/docs/cdn//django/django_inlines_4.gif"/>
+    <img src="https://hektorprofe.github.io/docs/cdn/django/django_inlines_4.gif"/>
 </div>
 
 <h2 id="django-en-ubuntu-server-con-nginx-gunicorn-y-supervisor">Django en Ubuntu Server con Nginx, Gunicorn y Supervisor<a class="headerlink" href="#django-en-ubuntu-server-con-nginx-gunicorn-y-supervisor" title="Permanent link">&para;</a></h2>

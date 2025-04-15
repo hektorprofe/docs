@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1014,7 +1012,7 @@ div.my-img{text-align:center;margin-top:20px}
 <h2 id="operadores-logicos">Operadores lógicos<a class="headerlink" href="#operadores-logicos" title="Permanent link">&para;</a></h2>
 <p>Otra forma de operar los bits es mediante los operadores lógicos bit a bit <code>&amp;</code> (AND), <code>|</code> (OR), <code>~</code>(NOT) y <code>^</code> (XOR), con sus variantes en asignación <code>&amp;=</code>, <code>|=</code> y <code>^=</code>.</p>
 <p>El resultado de las operaciones lógicas entre dos bits se ilustra en la siguiente tabla:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-63.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-63.png" /></p>
 <div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">bitset</span><span class="o">&lt;</span><span class="mi">16</span><span class="o">&gt;</span><span class="w"> </span><span class="n">b1</span><span class="p">(</span><span class="s">&quot;10101010&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// 170</span>
 <span class="n">std</span><span class="o">::</span><span class="n">bitset</span><span class="o">&lt;</span><span class="mi">16</span><span class="o">&gt;</span><span class="w"> </span><span class="n">b2</span><span class="p">(</span><span class="s">&quot;01010101&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// 85</span>
 
@@ -1023,7 +1021,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">b1</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="n">b2</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; (&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">b1</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="n">b2</span><span class="p">).</span><span class="n">to_ulong</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 255</span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="o">~</span><span class="n">b1</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; (&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="o">~</span><span class="n">b1</span><span class="p">).</span><span class="n">to_ulong</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 65365</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-64.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-64.png" /></p>
 <h2 id="mascaras">Máscaras<a class="headerlink" href="#mascaras" title="Permanent link">&para;</a></h2>
 <p>Una utilidad de los operadores bit a bit es para trabajar mediante máscaras. Una máscara es una secuencia de bits, por ejemplo un byte (8 bits), la cuál podemos aplicar a otro byte para realizar en él distintas operaciones:</p>
 <ul>
@@ -1081,7 +1079,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Azul: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">((</span><span class="n">color</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">blue_mask</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w">   </span><span class="c1">// 239</span>
 </code></pre></div>
 <p>Como curiosidad el color RGB <strong>(255, 18, 239)</strong> o <strong>#FF12EF</strong> es este:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-65.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-65.png" /></p>
 <hr />
 <p><small class="edited"><i>Última edición: 09 de Mayo de 2022</i></small></p>
                   

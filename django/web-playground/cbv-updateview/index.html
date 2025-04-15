@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1553,15 +1551,15 @@ con DetailView.</p>
 <p>Vamos a empezar por UpdateView:</p>
 <p><a href="https://ccbv.co.uk/projects/Django/2.0/django.views.generic.edit/UpdateView/">https://ccbv.co.uk/projects/Django/2.0/django.views.generic.edit/UpdateView/</a>\
 <a href="https://docs.djangoproject.com/en/dev/ref/class-based-views/generic-editing/#django.views.generic.edit.UpdateView">https://docs.djangoproject.com/en/dev/ref/class-based-views/generic-editing/#django.views.generic.edit.UpdateView</a> </p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image674.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image873.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image136.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image674.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image873.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image136.png" /></p>
 <p>Ahora sólo tendríamos que añadir un enlace de edición en la lista de
 páginas para que nos lleve al formulario:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image476.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image898.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image476.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image898.png" /></p>
 <p>Si probamos a editar una página, como veréis funciona directamente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image810.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image810.png" /></p>
 <p>Esto es porque tanto el formulario de creación como el de edición se
 toman del mismo template page_form.html. El problema es que como
 nuestro botón de envío tiene un texto específico “Crear página”. Hay
@@ -1570,31 +1568,31 @@ utilizar otro template con el texto del botón cambiado a “Actualizar
 página”.</p>
 <p>Para indicarle a nuestra UpdateView que utilice un template alternativa
 sólo tenemos que establecer su atributo template_name_suffix:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image320.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image320.png" /></p>
 <p>Esto irá a buscar automáticamente un template page_update_form.html,
 así que vamos a clonar el que tenemos con este nombre y le cambiaremos
 el texto al botón:</p>
 <p>Como en el botón de la parte inferior</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image687.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image808.png" /><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image846.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image687.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image808.png" /><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image846.png" /></p>
 <p>Si intentamos editar de nuevo una página ya nos saldrá bien, y si
 intentamos actualizarla...\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image663.png" /></p>
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image663.png" /></p>
 <p>Veremos como nuevamente nos pide configurar una url de redirección:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image225.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image225.png" /></p>
 <p>En este caso si quisiéramos redireccionar a la lista de páginas bastaría
 con hacer como antes:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image904.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image904.png" /></p>
 <p>Pero si queréis redirigir de nuevo al formulario es un poco más
 complejo. Necesitaríamos extraer la pk de la instancia. Para lograrlo
 esta vez sí debemos redefinir el método get_success_url y, ahí obtener
 la id de self.object y pasarla como argumento a reverse_lazy:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image398.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image398.png" /></p>
 <p>Como esto no le da ninguna retroalimentación al usuario, os sugiero
 añadir un campo GET al final con un ok y capturarlo en el template:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image382.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image672.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image780.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image382.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image672.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image780.png" /></p>
 <p>Y con esto tenemos nuestra UpdateView.</p>
 <p>En la próxima lección veremos como trabajar con DeleteView para borrar
 instancias.</p>

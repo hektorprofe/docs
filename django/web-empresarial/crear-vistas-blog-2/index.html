@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1626,10 +1624,10 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;blog/category.html&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;category&#39;</span><span class="p">:</span><span class="n">category</span><span class="p">})</span>
 </code></pre></div></p>
 <p>Si intentamos acceder a una categoría, por ejemplo la de id 1 que es la primera que se crea, nos la devolverá correctamente:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/36.png" style="max-width:305px"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/36.png" style="max-width:305px"/></div>
 
 <p>Lo malo de utilizar directamente el método get, es que si no se encuentra un resultado Django devolverá un error:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/37.png" style="max-width:375px"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/37.png" style="max-width:375px"/></div>
 
 <p>Para evitar esta situación y devolver un error 404, el típico de no encontrado, podemos utilizar un shortcut llamado <strong>get_object_or_404</strong>:</p>
 <p><code>blog/views.py</code>
@@ -1645,7 +1643,7 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;blog/category.html&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;category&#39;</span><span class="p">:</span><span class="n">category</span><span class="p">})</span>
 </code></pre></div></p>
 <p>Ahora si da error, por lo menos será un error dentro de la nomenclatura, ya que el 404 es el error que por norma hay que devolver si no se encuentra una página. Aunque con el Debug nos salga en forma de información:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/38.png" style="max-width:435px"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/38.png" style="max-width:435px"/></div>
 
 <p>Sea como sea ahora que tenemos la categoría podemos buscar sus entradas. Una forma rudimentaria de hacerlo es crear otra consulta para recuperar las entradas filtrando por categoría:</p>
 <p><code>blog/views.py</code>
@@ -1663,7 +1661,7 @@ div.my-img{text-align:center;margin-top:20px}
         <span class="p">{</span><span class="s1">&#39;category&#39;</span><span class="p">:</span><span class="n">category</span><span class="p">,</span> <span class="s1">&#39;posts&#39;</span><span class="p">:</span><span class="n">posts</span><span class="p">})</span>
 </code></pre></div></p>
 <p>Esto ya nos funcionará:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/39.png" style="max-width:485px"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/39.png" style="max-width:485px"/></div>
 
 <p>Sin embargo como os decía es una forma rudimentaria de hacerlo, y eso es porque Django nos ofrece una forma mucho más fácil de hacerlo gracias a la capacidad de las relaciones de hacer consultas inversas.</p>
 <p>Vamos a dejar la vista como la teníamos, únicamente pasando la categoría:</p>
@@ -1683,7 +1681,7 @@ div.my-img{text-align:center;margin-top:20px}
 <div class="highlight"><pre><span></span><code>{% for post in category.posts_set.all %}
 </code></pre></div>
 <p>Si comprobamos nuestra web veremos que increíblemente funciona:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/40.png" style="max-width:485px"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/40.png" style="max-width:485px"/></div>
 
 <p>¿Cómo puede ser? Pues fácil, las relaciones no sólo existen en un sentido, sino en ambos. Aprovechando ésto, Django implementa una sintaxis genérica con <strong>modelo.modeloRelacionado_set.all</strong> para consultar todas las instancias del modeloRelacionado con el modelo. </p>
 <p>Su limitación es que sólo podemos tener una relación a dos bandas con el mismo nombre genérico, pero no es nada que no se pueda arreglar manualmente. Por ejemplo en nuestro caso, simplemente deberíamos ir a nuestro modelo Post y en la relación Many2Many categories, añadir un campo llamado <strong>related_name</strong>, nombre relacionado:</p>
@@ -1708,7 +1706,7 @@ div.my-img{text-align:center;margin-top:20px}
 </code></pre></div>
 <p><u>Antes de continuar no olvides añadir los enlaces también en el template <strong>blog.html</strong></u>.</p>
 <p>Por último un pequeño detalle que quizá os pasará desapercibido, pero nuestro menú deja de resaltar BLOG cuando filtramos por una categoría:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/42.png" style="max-width:100px"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/42.png" style="max-width:100px"/></div>
 
 <p>Claro, la url ahora ya no es <strong>/blog/</strong> si no <strong>/blog/category/etc</strong>. Por suerte con un poco de ingenio podemos arreglarlo recortando los primeros caracteres del path con el filtro slice (que hace lo mismo que el slicing con las colecciones):</p>
 <p><code>core/templates/core/base.html</code>

@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1552,25 +1550,25 @@ fallará.</p>
 <p>Para crear un test iremos al fichero tests.py de la app registration.
 Ahí veremos que por defecto hay una clase cargada llamada TestCase,
 vamos a cargar nuestros modelos User y Profile.</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image576.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image576.png" /></p>
 <p>Ahora vamos a crear la clase con las pruebas:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image184.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image184.png" /></p>
 <p>El método setUp de TestCase es donde haremos la preparación, y luego
 tenemos un método propio, test_profile_exists, donde definiremos el
 test. Puede tener cualquier nombre siempre que empiece por test_.</p>
 <p>La preparación es muy simple, sólo debemos crear un usuario de pruebas:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image664.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image664.png" /></p>
 <p>Normalmente los objetos se crean con su método create, pero el caso de
 User es especial, ya que contiene un método create_user encargado de
 cifrar la contraseña por nosotros.</p>
 <p>Ahora vamos a definir el test. Se supone que en este punto el usuario
 creado existirá, así que podemos comprobar que haya un perfil con ese
 usuario:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image506.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image506.png" /></p>
 <p>La prueba en sí misma es muy sencilla, solo hacemos un assertEqual para
 comprobar que exists sea True.</p>
 <p>Y ahora ¿como la ejecutamos? Pues desde el manage.py haremos:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image471.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image471.png" /></p>
 <p>Como véis se ha creado una base de datos de prueba, casualmente también
 llamada test, se ha ejecutado 1 test y ha devuelto OK. Luego se ha
 borrado la base de datos de prueba, así que no queda ni rastro del

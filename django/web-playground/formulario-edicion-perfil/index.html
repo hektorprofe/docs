@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1548,13 +1546,13 @@ div.my-img{text-align:center;margin-top:20px}
                   <h1 id="haciendo-editable-el-perfil">Haciendo editable el perfil<a class="headerlink" href="#haciendo-editable-el-perfil" title="Permanent link">&para;</a></h1>
 <p>La razón por la que no hemos creado directamente una UpdateView la vais
 a ver en breve, por ahora vamos a migrar la app registration:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image116.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image757.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image116.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image757.png" /></p>
 <p>A continuación vamos a transformar la TemplateView en una UpdateView,
 importando el modelo Profile:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image326.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image743.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image565.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image326.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image743.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image565.png" /></p>
 <p>Ahora la gran pregunta...¿como conseguimos la primary key del perfil
 para editarlo y enviarla a la CBV UpdateView? Pues os voy a contestar
 con otra pregunta, ¿ sería buena idea pasar una pk del perfil en el
@@ -1569,36 +1567,36 @@ almacena en la propia request.</p>
 id del usuario que hay en request. ¿Cómo haremos esta magia oscura? Pues
 sobreescribiendo el método get_object de nuestra UpdateView, encargada
 de recuperar el objeto que se tiene que modificar:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image899.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image899.png" /></p>
 <p>Get_object debe devolver el objeto que editaremos, así que simplemente
 podemos recuperarlo a partir de self.request.user:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image41.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image41.png" /></p>
 <p>Sin embargo con esto no es suficiente. Y es que estamos intentando
 recuperar un Profile que todavía no existe. Por suerte podemos cambiar
 la consulta para hacer uso del método get_or_create en lugar de get.
 Lo bueno que tiene es que creará la instancia si no existe... y devuelve
 dos valores: la instancia y un booleano indicando si la acaba de crear:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image430.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image430.png" /></p>
 <p>Tened en cuenta que aunque sólo utilicemos el primer valor, debemos
 declarar los dos porque se están devolviendo ambos y hay que guardarlos
 en algún lado.</p>
 <p>Con esto vamos a probar si funciona..</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image7.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image7.png" /></p>
 <p>Parece que sí, incluso podemos modificar la información…</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image927.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image927.png" /></p>
 <p>Lo único que no funciona bien es la imagen. ¿Sabéis por qué? Pues no es
 que tengamos un error ni mucho menos, es sólo que no hemos configurado
 el formulario para aceptar ficheros desde el propio HTML. Hacerlo es muy
 fácil, vamos a nuestro template y...</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image865.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image865.png" /></p>
 <p>Recarguemos el formulario e intentemos enviar de nuevo la imagen:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image511.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image511.png" /></p>
 <p>¡Ahí la tenemos!</p>
 <p>Por cierto, ¿sabéis que tan fácil sería acceder al perfil de cualquier
 usuario? Pues sólo  tendríamos que hacer referencia a su profile como si
 fuera otro campo de User:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image98.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image222.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image98.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image222.png" /></p>
 <p>Esto es gracias a que las relaciones OneToOneField se enlazan
 automáticamente al modelo con su mismo nombre, ni siquiera tenemos que
 definir un related_name, ¿no es genial?</p>

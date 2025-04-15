@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1307,7 +1305,7 @@ Dibujando Cuadrado con costado 3
 <h2 id="especificador-override-en-funciones-virtuales">Especificador override en funciones virtuales<a class="headerlink" href="#especificador-override-en-funciones-virtuales" title="Permanent link">&para;</a></h2>
 <p>Puede ser que mientras estamos definiendo los métodos de la clase base en las derivadas tengamos un despiste y en lugar de referirnos a un método por su nombre lo llamemos distinto, por ejemplo en lugar de <code>draw</code> pongamos por error <code>draW</code>. Esto generará un método nuevo que no substituirá al original.</p>
 <p>Para evitar esta situación, podemos establecer el especificador <code>override</code> como una buena práctica en todos los métodos de las derivadas que estén implementados sobre un método <code>virtual</code>, de esa manera el propio editor o compilador nos avisará de que tengamos cuidado, pues ese método no se encuentra en la clase base:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-60.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-60.png" /></p>
 <div class="admonition warning">
 <p class="admonition-title">Cuidado al sobrescribir funciones virtuales sobrecargadas</p>
 <p>Debemos tener cuidado con esta cláusula cuando utilizamos sobrecarga de las funciones (más de una implementación) porque en ese caso, <strong>si sobrescribimos una sobrecarga de la función virtual en una clase base todas las demás serán ocultadas</strong> y no tendrás otra opción que sobrescribirlas explícitamente para que estén disponibles en las demás clases descendientes.</p>

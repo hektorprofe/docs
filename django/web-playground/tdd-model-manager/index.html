@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1560,39 +1558,39 @@ o Gestor de Modelos.</p>
 user2) donde a partir de dos usuarios se busque el hilo de forma fácil y
 cómoda.</p>
 <p>Vamos a empezar creando un test:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image793.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image793.png" /></p>
 <p>Obviamente no va a pasar porque el método todavía no existe, pero esa es
 la gracia, refactorizar y pasar el test:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image890.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image890.png" /></p>
 <p>Si queremos añadir nuestros propios filtros necesitamos crear un objects
 Manager, y eso lo haremos en models.py, podríamos llamarlo
 ThreadManager:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image729.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image729.png" /></p>
 <p>Ahora asignaremos nuestro Manager al campos objects del modelo Thread:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image659.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image659.png" /></p>
 <p>Con esto ya podemos centrarnos en crear el filtro. Es bien fácil, pues
 dentro de un ThreadManager, la variable self hace referencia al propio
 QuerySet, sólo tenemos que filtrarla así misma y devolver el resultado:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image568.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image568.png" /></p>
 <p>Si encontramos algún Thread lo devolvemos, y en caso contrario pues
 devolvemos None.</p>
 <p>Una vez creado el método, debería funcionarnos:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image875.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image875.png" /></p>
 <p>También podríamos comprobar si devuelve None con un hilo inexistente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image794.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image49.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image794.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image49.png" /></p>
 <p>¿Mucho más fácil que andar haciendo múltiples filtros no?</p>
 <p>¿Qué os parece si añadimos una última funcionalidad, a modo de
 get_or_create, podemos hacer un filtro find_or_create, que si no
 encuentra un Hilo lo cree automáticamente, lo cual sería la guinda del
 pastel y nos facilitaría muchísimo el trabajo. Vamos primero con el
 test:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image351.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image351.png" /></p>
 <p>Que obviamente no pasará:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image265.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image265.png" /></p>
 <p>Vamos a crearlo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image487.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image822.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image487.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image822.png" /></p>
 <p>Con esto estamos listos para implementar las futuras vistas de nuestra
 app con total seguridad. El TDD nos ha llevado de la mano en nuestros
 experimentos y nos ha permito desarrollar las distintas funcionalidades

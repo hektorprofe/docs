@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1551,13 +1549,13 @@ sí que debemos crear una vista y manejar nosotros la lógica, pero Django
 nos ayudará bastante, ya veréis.</p>
 <p>Antes de nada vamos a incluir las URLS de registration en el urls.py
  global y así nos olvidamos de ello:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image466.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image466.png" /></p>
 <p>Fijaros que las añadiremos justo debajo de las que hicimos para la
 autenticación. Esto no es ningún problema, ya que simplemente se
 extenderán las que teníamos antes.</p>
 <p>Bien, ahora vamos a crear nuestra vista SignUp para manejar el registro.
 Fijaros muy bien lo que vamos a hacer:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image53.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image53.png" /></p>
 <p>En lugar de crear un formulario desde cero lo que haremos es importar
 uno genérico (UserCreationForm) y se lo pasaremos a una vista CreateView
 para que lo maneje todo automáticamente, por eso os decía que Django nos
@@ -1565,51 +1563,51 @@ ayudaría bastante.</p>
 <p>Vamos a crear el formulario. En este caso no he preparado un diseño de
 antemano porque quiero enseñaros cómo modificarlo dinámicamente, así que
 vamos a tomar de referencia el de registro y modificarlo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image495.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image495.png" /></p>
 <p>Finalmente configuraremos la URL, vamos a crear un fichero urls.py:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image746.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image746.png" /></p>
 <p>Ahora sólo tenemos que acceder a accounts/signup y ver la magia:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image65.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image388.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image65.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image388.png" /></p>
 <p>¡Increíble! ¿Funcionará?</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image845.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image845.png" /></p>
 <p>Pues parece que sí, porque nos ha redireccionado a login.</p>
 <p>Os aconsejo redireccionar a otra página o hacer la típica modificación
 pasando un parámetro GET, por lo menos así añadimos retroalimentación al
 usuario. Por desgracia no podemos concatenar en el success_url así que
 deberemos sobreescribir el método get_success_url y devolver nuestra
 cadena desde ahí:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image658.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image618.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image658.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image618.png" /></p>
 <p>Probamos de nuevo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image593.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image593.png" /></p>
 <p>Bien, vamos a mejorar la apariencia del formulario. Podríamos editar el
 HTML pero perderíamos un montón de validaciones automáticas, así que
 vamos a aprovecharnos de esta vista que tenemos para modificar los
 widgets en tiempo de ejecución. Para hacerlo debemos saber qué nombre
 tienen los campos, así vamos a observar el formulario generado y los
 atributos name de los inputs:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image578.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image578.png" /></p>
 <p>En nuestro caso el formulario tiene tres: username, password1 y
 password2.</p>
 <p>Sabiendo esto vamos a la vista y haremos lo siguiente para recuperar el
 formulario:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image690.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image690.png" /></p>
 <p>El método get_form obtiene el formulario antes de devolverlo, de manera
 que podemos modificar sus widgets. Fijaros:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image215.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image334.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image334.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image255.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image215.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image334.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image334.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image255.png" /></p>
 <p>Ya sólo tenemos que esconder las labels, podríamos hacerlo de forma
 similar a como hemos cambiado los widgets… pero es mucho más rápido ir
 al template y añadir una tag \&lt;style&gt; para esconderlas todas de golpe:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image696.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image491.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image696.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image491.png" /></p>
 <p>Finalmente para dejarlo perfecto podríamos añadir el enlace al registro
 en el menú superior:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image751.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image115.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image751.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image115.png" /></p>
 <p>Con esto tenemos un registro básico para seguir trabajando en las
 próximas lecciones.</p>
 <hr />

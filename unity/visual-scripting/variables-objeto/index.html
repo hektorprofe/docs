@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -630,32 +628,32 @@ div.my-img{text-align:center;margin-top:20px}
 <li><code>Traslacion</code>: para añadir la traslación al objeto.</li>
 </ul>
 <p>Podemos clonar <code>Assets/Graphs/Experimento</code> un par de veces y cambiar sus nombres:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_97.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_97.png" /></p>
 <p>Ahora configuraremos tres máquinas de guiones, una para cada gráfico. Podemos simplemente copiar el componente y pegarlo como nuevo dos veces y configurarlos así:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_98.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_98.png" /></p>
 <p>Ahora vamos a establecer el código de cada gráfico para hacerlos independientes entre ellos.</p>
 <p><strong>Controlador</strong>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_99.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_99.png" /></p>
 <p><strong>Rotación</strong>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_101.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_101.png" /></p>
 <p><strong>Traslación</strong>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_100.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_100.png" /></p>
 <p>Si probamos el videojuego notaremos que ya no funciona, pese a que el <code>Controlador</code> está funcionando y alterna correctamente la variable <code>Booleana</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Record_15.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Record_15.gif" /></p>
 <p>¿Qué está sucediendo? ¿Por qué no funciona? ¿Recordáis que al principio de la lección os he dicho que íbamos a abordar un problema? Pues aquí tenemos el problema.</p>
 <p>La variable que tenemos en los gráficos, llamada <code>activarMovimiento</code>, en realidad no es una variable, sino tres variables diferentes con el mismo nombre. Cada una existiendo dentro del gráfico y de forma independiente de las demás.</p>
 <p>Por suerte para nosotros, si lo que necesitamos es que las gráficos manipulen una variable común, podemos crearla a nivel del objeto. </p>
 <p>Así que vamos a borrar las tres variables <code>activarMovimiento</code> y luego la vamos a añadir de nuevo pero esta vez a nivel de <code>Objeto</code> desde el componente <code>Variables</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_102.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_102.png" /></p>
 <p>Substituimos la variable a nivel de objeto en los tres gráficos, <u>teniendo en cuenta que ahora en el controlador debemos establecer el valor también a nivel de objeto</u>:</p>
 <p><strong>Controlador</strong>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_106.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_106.png" /></p>
 <p><strong>Rotación</strong>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_104.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_104.png" /></p>
 <p><strong>Traslación</strong>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_105.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_105.png" /></p>
 <p>Y si ahora probamos el juego, al utilizar una variable común del objeto, ya funcionará perfectamente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Record_16.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Record_16.gif" /></p>
 <p>De la misma forma que una variable de gráfico no es común entre objetos, una de objetos no es común en la escena, ni una de escena en la aplicación.</p>
 <p>Así que como véis el ámbito de las variables es un concepto muy importante y no podéis descuidarlo porque sino, dependiendo de lo que intentéis hacer, no podréis acceder a su información.</p>
 <hr />

@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -767,16 +765,16 @@ div.my-img{text-align:center;margin-top:20px}
 <p>Esto lo conseguiremos recorriendo cada <code>scanline</code> (las líneas horizontales que conforman lo que sería la pantalla), determinando si forma parte de un triángulo y activando el color en ese lugar.</p>
 <h2 id="tecnica-flat-bottom-flat-top">Técnica Flat-Bottom Flat-Top<a class="headerlink" href="#tecnica-flat-bottom-flat-top" title="Permanent link">&para;</a></h2>
 <p>El método que vamos a utilizar para rellenar los triángulos consiste en dividir cada cara en dos triángulos, uno con el costado inferior plano y otro con el costado superior plano, de manera que coincidan en ese costado:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-49.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-49.png" /></p>
 <p>Primero deberemos aprender a dividir el triángulo y tan pronto lo tengamos dividido en dos triángulos, uno con inferior plano y otro con superior plano, podremos realizar un bucle de arriba hacia abajo rellenando cada línea de ambos triángulos color.</p>
 <p>Para dividir nuestro triángulo, lo primero que tomaremos son los tres vértices del triángulo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-50.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-50.png" /></p>
 <p>Ahora bien, ¿cómo determinamos cuál es el vértice superior? Tan pronto como empecemos a realizar transformaciones, escalar y rotar el triángulo, ese vértice dejará de ser el superior.</p>
 <p>Pues lo que tenemos que hacer es ir reordenando los vértices en función de su altura, el componente <code>y</code>:</p>
 <div class="highlight"><pre><span></span><code>y0 &lt; y1 &lt; y2
 </code></pre></div>
 <p>Una vez ordenados los vértices debemos pensar cómo identificar los dos triángulos que comparten el lado plano y para ello deberemos identificar el segundo punto que cortará el triángulo desde <code>(x1,y1)</code> al que llamaremos <code>(Mx, My)</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-51.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-51.png" /></p>
 <p>Cuando tengamos el <strong>punto medio</strong> <code>M</code>, podremos utilizar dos funciones para dibujar ambos triángulos rellenos:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Dibujar triángulo con lado inferior plano</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">DrawFlatBottom</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="w"> </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">y1</span><span class="p">,</span><span class="w"> </span><span class="n">Mx</span><span class="p">,</span><span class="w"> </span><span class="n">My</span><span class="p">);</span>
@@ -786,7 +784,7 @@ div.my-img{text-align:center;margin-top:20px}
 </code></pre></div>
 <p>Determinar <code>My</code> es simple, está a la misma altura que <code>y1</code>, sin embargo <code>Mx</code> no es tan fácil a simple vista.</p>
 <p>Para determinar <code>Mx</code> acudiremos a la propiedad de los triángulos similares donde se comparte la misma proporción en sus costados para las bases y las alturas:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-52.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-52.png" /></p>
 <p>La relación quedará:</p>
 <p><img src="https://latex.codecogs.com/png.image?\large&space;\dpi{150}\bg{white}\frac{Mx&space;-&space;x_0}{x_2&space;-&space;x_0}&space;=&space;\frac{y_1&space;-&space;y_0}{y_2&space;-&space;y_0}"/></p>
 <p>Aplicando un poco de álgebra podemos aislar <code>Mx</code>:</p>
@@ -796,7 +794,7 @@ div.my-img{text-align:center;margin-top:20px}
 <div class="highlight"><pre><span></span><code><span class="n">DrawTriangle</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="mi">450</span><span class="p">,</span><span class="w"> </span><span class="mh">0xFF00FFFF</span><span class="p">);</span>
 </code></pre></div>
 <p>Que se vería de esta forma:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-53.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-53.png" /></p>
 <p>Ahora queremos dibujar el triángulo con relleno, para lo cuál empezaremos por dividir el triángulo en dos partes en un nuevo método:</p>
 <div class="highlight"><pre><span></span><code><span class="n">DrawFilledTriangle</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="mi">450</span><span class="p">,</span><span class="w"> </span><span class="mh">0xFF00FFFF</span><span class="p">);</span>
 </code></pre></div>
@@ -872,7 +870,7 @@ div.my-img{text-align:center;margin-top:20px}
 </code></pre></div>
 <p>Ahora nos toca implementar los algoritmos para dibujar ambos triángulos.</p>
 <p>El algoritmo para dibujar el triángulo con lado inferior plano enumera los sigientes pasos:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-54.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-54.png" /></p>
 <ol>
 <li>Empezaremos desde arriba en el vértice <code>(x0, y0)</code>.</li>
 <li>Calcularemos la <code>pendiente 1</code> y la <code>pendiente 2</code>.</li>
@@ -884,7 +882,7 @@ div.my-img{text-align:center;margin-top:20px}
 </li>
 </ol>
 <p>Para calcular las pendientes solo debemos encontrar la relación entre el alto y ancho de los triángulos que se forman:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-55.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-55.png" /></p>
 <p><img alt="" src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}m&space;=&space;\frac{\Delta&space;y}{\Delta&space;x}" /></p>
 <div class="highlight"><pre><span></span><code>m1 = b/a = (y2 - y0) / (x2 - x0) 
 m2 = b/c = (y1 - y0) / (x0 - x1)
@@ -907,7 +905,7 @@ m2 = b/c = (y1 - y0) / (x0 - x1)
 <div class="highlight"><pre><span></span><code><span class="n">DrawTriangle</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="mi">450</span><span class="p">,</span><span class="w"> </span><span class="mh">0xFFFF00FF</span><span class="p">);</span>
 <span class="n">DrawFilledTriangle</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="mi">450</span><span class="p">,</span><span class="w"> </span><span class="mh">0xFF00FF00</span><span class="p">);</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-56.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-56.png" /></p>
 <p>El algoritmo para dibujar el triángulo con lado superior plano enumera los sigientes pasos:</p>
 <ol>
 <li>Empezaremos desde abajo en el vértice <code>(x2, y2)</code>.</li>
@@ -919,9 +917,9 @@ m2 = b/c = (y1 - y0) / (x0 - x1)
 </ol>
 </li>
 </ol>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-57.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-57.png" /></p>
 <p>Quizá en este triángulo no queda muy claro cómo calcular las pendientes, la siguiente figura muestra esas pendientes en base a la altura y anchura marcadas en azul:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-58.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-58.png" /></p>
 <p>Y el código quedará:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">Window::FillFlatTopTriangle</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x0</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x2</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y2</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">color</span><span class="p">)</span>
 <span class="p">{</span>
@@ -936,9 +934,9 @@ m2 = b/c = (y1 - y0) / (x0 - x1)
 <span class="p">}</span>
 </code></pre></div>
 <p>El resultado en este punto será el triángulo inferior:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-59.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-59.png" /></p>
 <p>Con ambos triángulos activos tendremos la cara completa rasterizada:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-60.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-60.png" /></p>
 <p>Así que vamos a probar como queda nuestro nuevo método para pintar las caras del cubo, dibujando los triángulos rasterizados en blanco y por encima los vértices en negro:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">Mesh::Render</span><span class="p">()</span>
 <span class="p">{</span>
@@ -970,12 +968,12 @@ m2 = b/c = (y1 - y0) / (x0 - x1)
 <span class="p">}</span>
 </code></pre></div>
 <p>Si lo probamos...</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-11.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-11.gif" /></p>
 <p>Lo tenemos perfecto pero hay una optimización que debemos añadir lo antes posible para prevenir divisiones entre cero, que en C++ al dividr números flotantes dan lugar a valores potencialmente infinitos.</p>
 <h2 id="evitar-division-entre-cero">Evitar división entre cero<a class="headerlink" href="#evitar-division-entre-cero" title="Permanent link">&para;</a></h2>
 <p>Cuando una cara tiene un lado plano debemos podemos saltataros el dibujado de uno de los dos triángulos, ya que simplemente será una línea recta.</p>
 <p>El primer caso es que la altura del segundo vértice <code>y1</code> y tercero <code>y2</code> sean la misma, por ejemplo en una cara como esta:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-61.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-61.png" /></p>
 <p>En ese caso haremos un by-pass para dibujar únicamente el triángulo superior:</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">y1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">y2</span><span class="p">)</span>
 <span class="p">{</span>
@@ -983,7 +981,7 @@ m2 = b/c = (y1 - y0) / (x0 - x1)
 <span class="p">}</span>
 </code></pre></div>
 <p>En el segundo caso en que la altura del primer vértice <code>y0</code> y la del segundo <code>y1</code> sea la misma:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-62.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-62.png" /></p>
 <p>En este caso haremos un by-pass para dibujar únicamente el triángulo inferior:</p>
 <div class="highlight"><pre><span></span><code><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">y1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">y2</span><span class="p">)</span>
 <span class="p">{</span>
@@ -1004,7 +1002,7 @@ m2 = b/c = (y1 - y0) / (x0 - x1)
 <span class="p">}</span>
 </code></pre></div>
 <p>El resultado será el mismo pero habremos optimizado bastante el código al saltarnos el renderizado y los cálculos del punto medio <code>M</code> cuando no nos hace falta:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-12.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-12.gif" /></p>
 <hr />
 <p><small class="edited"><i>Última edición: 05 de Junio de 2022</i></small></p>
                   

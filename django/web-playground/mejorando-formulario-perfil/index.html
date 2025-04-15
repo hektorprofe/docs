@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1551,12 +1549,12 @@ de perfil, mezclando nuestro propio formulario con widgets y un poco de
 bootstrap.</p>
 <p>En primer lugar vamos a implementar un formulario para nuestro modelo
 Profile:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image376.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image376.png" /></p>
 <p>Fijaros que hemos puesto un ClearableFileInput, eso es para conservar la
 opción de borrar la imagen:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image524.png" /><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image574.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image524.png" /><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image574.png" /></p>
 <p>Sólo con esto nuestro formulario ya tendrá un mejor aspecto:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image183.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image183.png" /></p>
 <p>Pero todavía es muy soso, y esas opciones para la imagen… quedan muy
 mal.</p>
 <p>La única salida que nos queda es maquetar cada campo manualmente, así
@@ -1564,19 +1562,19 @@ que he preparado un diseño de antemano, os adjunto el enlace en los
 recursos:</p>
 <p><a href="https://gist.github.com/hcosta/3302f2cf81b71872c503b405adfb1708">https://gist.github.com/hcosta/3302f2cf81b71872c503b405adfb1708</a></p>
 <p>Una vez pongamos el nuevo template todo tendrá mejor aspecto:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image715.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image715.png" /></p>
 <p>¿Bastante bien no? Pues todavía podemos mejorar una última cosa, y es
 que ahora mismo si nuestro usuario no tiene una imagen de perfil no nos
 aparece nada. ¿Y si ponemos una imagen de avatar genérica? Os adjunto en
 los recursos una imagen llamada no-avatar.jpg, copiadla dentro de los
 ficheros estáticos de la app static/registration/img:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image312.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image312.png" /></p>
 <p>Ahora vamos a modificar ligeramente el código para mostrar esta imagen
 si el usuario no tiene un avatar:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image267.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image267.png" /></p>
 <p>Por último recargamos el servidor para cargar en memoria los nuevos
 ficheros estáticos y...</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image269.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image269.png" /></p>
 <p>Muy bien! En la próxima lección añadiremos un enlace al formulario para
 que el usuario pueda cambiar su email.</p>
 <hr />

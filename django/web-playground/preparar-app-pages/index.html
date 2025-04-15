@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1554,37 +1552,37 @@ proyecto.</p>
 configuraremos las urls.py y a migraremos la base de datos sin olvidar
 crear un superusuario para poder acceder al panel de administrador
 (desde nuestro entorno virtual django2).</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image315.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image781.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image122.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image457.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image30.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image632.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image315.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image781.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image122.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image457.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image30.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image632.png" /></p>
 <p>Ahora para acceder a nuestra app vamos a modificar el enlace a la página
 de prueba por el de esta app pages, simplemente podríamos cambiar el
 enlace a /páginas/ en el menú, ahí tengo una vista que muestra nuestras
 páginas y un pequeño extracto de su contenido (borrar la de ejemplo y
 dejar esta):</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image92.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image135.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image92.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image135.png" /></p>
 <p>Por cierto, si os preguntáis porque he creado esta vista es para
 trabajar un tipo concreto de CBV, luego cuando la adaptemos lo
 veréis. En cualquier caso estoy devolviendo un error 404 si no hay
 ninguna página, por lo que nos dará error si intentamos acceder:\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image522.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image307.png" /></p>
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image522.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image307.png" /></p>
 <p>Vamos a crear algunas páginas de prueba:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image624.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image624.png" /></p>
 <p>Fijaros que al intentar crear una página nos da error de ckeditor,
 claro, aunque la tengamos instalada en el entorno virtual no la hemos
 instalado en settings.py:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image436.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image858.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image436.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image858.png" /></p>
 <p>Ahora sí ya debería funcionar la App:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image223.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image605.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image199.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image70.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image223.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image605.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image199.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image70.png" /></p>
 <p>Con esto tenemos el terreno preparado y en la próxima lección
 aprenderemos cómo utilizar dos nuevas CBV.</p>
 <hr />

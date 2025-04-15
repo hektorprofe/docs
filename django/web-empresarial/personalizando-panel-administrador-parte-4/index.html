@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1575,18 +1573,18 @@ permisos:</p>
 <p>En resumen, dejaremos que el usuario maneje completamente el blog y las
 páginas secundarias, pero los servicios y los enlaces sociales los
 restringimos para que no pueda añadir de nuevos ni borrar los actuales:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image665.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image665.png" /></p>
 <p>Ahora tenemos que crear un usuario y añadirlo a este grupo. Podemos
 llamarlo test:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image891.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image891.png" /></p>
 <p>Deberemos marcarlo como STAFF para que tenga acceso al admin, y añadirlo
 al grupo de Personal:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image141.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image141.png" /></p>
 <p>Como podéis observar se pueden configurar varios campos y permisos
 específicos para el usuario, yo os recomiendo gestionar un grupo porque
 es más cómodo.</p>
 <p>Vamos a entrar con este usuario test a ver qué nos aparece:\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image324.png" /></p>
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image324.png" /></p>
 <p>Todo lo tenemos perfecto excepto por una cosa.</p>
 <p>En la App Social, estamos permitiendo que el usuario pueda cambiar la
 CLAVE y el NOMBRE de la red. Dentro de lo que cabe el nombre no importa
@@ -1601,7 +1599,7 @@ modelo. Claro, esto no podemos hacerlo porque es común para todos los
 usuarios, pero hay una forma de extenderlo: crear un método
 get_readonly_fields capaz de detectar el usuario identificado durante
 la petición y sobreescribir su valor:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image814.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image814.png" /></p>
 <p>De esta manera, si detectamos que el usuario actual forma parte del
 grupo Personal, le cambiamos dinámicamente los campos key y name como
 sólo lectura. Y si no devolvemos una tupla vacía indicando que puede

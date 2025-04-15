@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -835,7 +833,7 @@ div.my-img{text-align:center;margin-top:20px}
 <p>Para realizar las transformaciones de los vectores es necesario utilizar la trigonometría, así que vamos a repasar los conceptos básicos.</p>
 <p>Trigonometría significa <strong>estudio de los trígonos</strong>, polígonos con tres lados y tres ángulos.</p>
 <p>Las razones trigonométricas son las relaciones entre los lados de un triángulo rectángulo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-20.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-20.png" /></p>
 <p><img alt="" src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}sin(\alpha)&space;=&space;\frac{opuesto}{hipotenusa}&space;\rightarrow&space;s&space;=&space;o&space;/&space;h" /></p>
 <p><img alt="" src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}cos(\alpha)&space;=&space;\frac{adyacente}{hipotenusa}&space;\rightarrow&space;c&space;=&space;a&space;/&space;h" /></p>
 <p><img alt="" src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}tan(\alpha)&space;=&space;\frac{opuesto}{adyacente}&space;\rightarrow&space;t&space;=&space;o&space;/&space;a" /></p>
@@ -846,14 +844,14 @@ div.my-img{text-align:center;margin-top:20px}
 <p>Para rotar un vector (x,y) se debe aplicar la fórmula de la rotación de matrices:</p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}\begin{bmatrix}cos&space;(\alpha)&space;&&space;-sin(\alpha)\\sin(\alpha)&space;&&space;cos(\alpha)\\\end{bmatrix}&space;*\begin{bmatrix}x&space;\\y&space;\\\end{bmatrix}"/></p>
 <p>Dado un vector <code>(x, y)</code> queremos aplicarle una rotación (ángulo) para conseguir el nuevo vector rotado <code>(x', y')</code>.</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-21.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-21.png" /></p>
 <p>Tomando el triángulo que forma <code>(x, y)</code> con ángulo <code>β</code> y el triángulo que forma <code>(x', y')</code> con ángulo <code>θ</code> podemos establecer sus relaciones trigonométricas para encontrar los valores del vector rotado <code>(x', y')</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-22.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-22.png" /></p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}\\cos(&space;\theta&space;)&space;=&space;x/r&space;\to&space;x&space;=&space;r&space;*&space;cos(\theta)\\sin(&space;\theta&space;)&space;=&space;y/r&space;\to&space;y&space;=&space;r&space;*&space;sin(\theta)"/></p>
 <p>Para determinar los valores rotados necesitamos asumirlos como la suma de <code>θ</code> y <code>β</code>: </p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}\\cos(&space;\theta&space;&space;&plus;&space;\beta&space;)&space;=&space;x'/r&space;\to&space;x'&space;=&space;r'&space;*&space;cos(\theta&space;&plus;&space;\beta)\\sin(&space;\theta&space;&space;&plus;&space;\beta)&space;=&space;y'/r&space;\to&space;y'&space;=&space;r'&space;*&space;sin(\theta&space;&plus;&space;\beta)"/></p>
 <p>No sabemos el ángulo <code>β</code> pero en trigonometría existen las conocidas <strong>fórmulas de adición</strong> que explican como expandir el seno y el coseno de una suma o resta de dos ángulos:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-24.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-24.png" /></p>
 <p>Aplicando la fórmula de adición del ángulo para el coseno:</p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}\\x'&space;=&space;rcos(\theta&space;&plus;&space;\beta)\\x'&space;=&space;r(cos\theta&space;cos&space;\beta&space;-&space;sin\theta&space;sin\beta)\\x'&space;=&space;rcos\theta&space;cos&space;\beta&space;-&space;rsin\theta&space;sin\beta"/></p>
 <p>Aquí podemos substituir <code>rcosθ</code> por <code>x</code>y <code>rsinθ</code> por <code>y</code> para conseguir finalmente el valor de <code>x'</code>:</p>
@@ -944,7 +942,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="n">window</span><span class="p">.</span><span class="n">Render</span><span class="p">();</span>
 </code></pre></div>
 <p>Como resultado tendremos el cubo rotando:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-01.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-01.gif" /></p>
 <h2 id="refactorizacion-2">Refactorización 2<a class="headerlink" href="#refactorizacion-2" title="Permanent link">&para;</a></h2>
 <p>Tenemos mucho que refactorizar en la ventana y nuestros vectores, así que pongámonos manos a la obra.</p>
 <p>Empezando por las variables del <code>fovFactor</code> y el <code>cameraPosition</code> dentro de la ventana como variables públicas, eso nos permitirá luego, a través de un puntero de <code>window</code>, acceder desde cualquier lugar a ellos.</p>
@@ -1144,7 +1142,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>El resultado final será el mismo de antes:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-02.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-02.gif" /></p>
 <p>Pero al refactorizar el código la función <code>main</code> quedará super limpia:</p>
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;window.h&quot;</span>

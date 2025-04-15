@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1686,28 +1684,28 @@ div.my-img{text-align:center;margin-top:20px}
 <p>Como podéis notar sus campos vienen definidos en el módulo forms en lugar de models y para el nombre se utiliza el atributo <code>label</code> en lugar de <code>verbose_name</code>. Por defecto estos campos se renderizan como tags <code>&lt;input&gt;</code>, pero se pueden cambiar estableciendo un tipo de widget, como en el caso del contenido donde queremos mostrar un tag <code>&lt;textarea&gt;</code>.</p>
 <p>Hay campos para todo: cadenas, numéros, emails, fechas, opciones desplegables, ficheros, etc. Os adjunto <a href="https://docs.djangoproject.com/en/dev/ref/forms/fields/#built-in-field-classes">un enlace</a> por si queréis aprender más.</p>
 <p>Sea como sea ya tenemos diseñado el formulario, así que vamos a utilizarlo, pero antes comentaremos el que tenemos en el template <code>contact.html</code>, porque ese es sólo de prueba. Más adelante lo adaptaremos, pero por ahora nos centraremos en lo importante.</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image296.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image296.png" /></p>
 <p>Importamos el formulario, creamos una instancia en la vista y la
 enviamos al template:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image792.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image711.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image792.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image711.png" /></p>
 <p>Ahora en nuestro template contact.html vamos el dibujar el formulario:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image755.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image521.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image755.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image521.png" /></p>
 <p>¿Habéis visto que fácil es que nos lo dibuje automáticamente?</p>
 <p>Por defecto hemos dibujado en formulario como una tabla, de ahí que lo
 hayamos puesto entre el tag \&lt;table&gt;, pero también se puede dibujar
 como parágrafos o una lista:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image205.png" />                                        </p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image914.png" />        </p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image673.png" />         </p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image204.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image205.png" />                                        </p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image914.png" />        </p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image673.png" />         </p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image204.png" /></p>
 <p>Personalmente prefiero la forma de tabla, así que lo dejaré como estaba:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image838.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image838.png" /></p>
 <p>Sin embargo Django no dibuja todo el formulario, sólo los campos. No hay
 ningún botón para procesarlo, y si inspeccionamos el código veremos
 también falta el tag \&lt;form&gt;, necesario para crear formularios HTML:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image883.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image883.png" /></p>
 <p>Seguimos en la segunda parte.</p>
 <hr />
 <p><small class="edited"><i>Última edición: 25 de Marzo de 2021</i></small></p>

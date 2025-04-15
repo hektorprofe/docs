@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -793,15 +791,15 @@ div.my-img{text-align:center;margin-top:20px}
                   <h1 id="mapeado-de-texturas">Mapeado de texturas<a class="headerlink" href="#mapeado-de-texturas" title="Permanent link">&para;</a></h1>
 <p>El mapeado de texturas corresponde a la parte que se encarga de aplicar texturas sobre los modelos. </p>
 <p>Los colores de la textura se organizan en <strong>texels</strong>, la unidad mínima de una textura aplicada a una superficie. Comúnmente se almacenan en una imagen para luego aplicarla sobre el modelo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-81.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-81.png" /></p>
 <p>Esto nos lleva a pensar en cómo cargar esos <strong>texels</strong> en la memoria,  <em>mapearlos</em> para hacerlos coincidir con los triángulos del modelo y escalarlos, pues no siempre coincidirá el número de <em>texels</em> con los <em>pixels</em>.</p>
 <p>Para mapear las texturas sobre los triángulos debemos otorgar a los vértices la responsabilidad de encuentrar sus coordenadas respecto a las de la textura.</p>
 <p>El sistema de coordenadas de la textura recibe el nombre de <strong>coordenadas UV</strong> y funciona en un rango normalizado de valores entre <code>0</code> y <code>1</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-82.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-82.png" /></p>
 <p>El <strong>mapa UV</strong> de una textura contiene la información que necesita el vértice del modelo, apuntando exactamente al lugar que tiene que aplicar sobre la superficie del triángulo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-83.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-83.png" /></p>
 <p>Será nuestra tarea interpolar los valores de la textura entre los vértices del <strong>mapa UV</strong> para cambiar los píxeles del <strong>color buffer</strong> acordemente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-84.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-84.png" /></p>
 <h2 id="texturas-en-la-memoria">Texturas en la memoria<a class="headerlink" href="#texturas-en-la-memoria" title="Permanent link">&para;</a></h2>
 <p>Vamos a ponernos manos a la obra implementando el texturizador <code>texture.h</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="cp">#ifndef TEXTURE_H</span>
@@ -827,7 +825,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="n">REDBRICK_TEXTURE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">nothrow</span><span class="p">)</span><span class="w"> </span><span class="kt">uint8_t</span><span class="p">[</span><span class="mi">16400</span><span class="p">]</span><span class="w"> </span><span class="p">{};</span>
 <span class="n">meshTexture</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">REDBRICK_TEXTURE</span><span class="p">;</span>
 </code></pre></div>
-<p>El contenido de la textura lo adjunto en <a href="https://hektorprofe.github.io/docs/cdn//graficos3d/REDBRICK_TEXTURE.txt">este enlace</a>.</p>
+<p>El contenido de la textura lo adjunto en <a href="https://hektorprofe.github.io/docs/cdn/graficos3d/REDBRICK_TEXTURE.txt">este enlace</a>.</p>
 <p>Al ser memoria dinámica la vaciaré en el destructor <code>~Window</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="k">delete</span><span class="p">[]</span><span class="w"> </span><span class="n">REDBRICK_TEXTURE</span><span class="p">;</span>
 </code></pre></div>
@@ -956,7 +954,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>Si todo está correcto deberíamos dibujar por ahora los triángulos con parte inferior plana:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-28.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-28.gif" /></p>
 <p>Haremos lo propio con el triángulo con la parte superior plana:</p>
 <div class="highlight"><pre><span></span><code><span class="cm">/*** Render the lower part of the triangle (flat top) ***/</span>
 <span class="p">{</span>
@@ -986,26 +984,26 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>Y ya tendremos los triángulos renderizados pixel a pixel:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-29.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-29.gif" /></p>
 <p>En este punto estamos listos para el siguiente paso, aprender cómo aplicar los texels sobre los píxeles mediante sus coordenadas UV.</p>
 <h2 id="coordenadas-baricentricas">Coordenadas baricéntricas<a class="headerlink" href="#coordenadas-baricentricas" title="Permanent link">&para;</a></h2>
 <p>Para determinar qué texel dibujar en cada píxel tendremos que realizar la interpolación de las coordenadas UV de los triángulos:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-90.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-90.png" /></p>
 <p>Lo que utilizaremos para determinar ese <em>texel</em> son las <strong>coordenadas baricéntricas</strong> del triángulo: </p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-91.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-91.png" /></p>
 <p>De manera que cualquier punto en el interior del triángulo puede ser representado por tres coordenadas baricéntricas <code>(α, β, γ)</code> cuya suma es: <code>α + β + γ = 1</code>.</p>
 <p>La siguiente animación muestra un porcentaje dependiendo del peso que tiene cada área <code>(α, β, γ)</code> para un punto <code>P</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-30.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-30.gif" /></p>
 <p>La fórmula que aplica los pesos de las coordenadas baricéntricas a los vectores <code>A</code>, <code>B</code> y <code>C</code> es:</p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}\overrightarrow{{\color{Orchid}&space;P}}&space;=&space;{\color{Red}&space;\alpha}\overrightarrow{A}&space;&plus;&space;{\color{Green}&space;\beta}\overrightarrow{B}&space;&plus;&space;{\color{Blue}&space;\gamma&space;}\overrightarrow{A}" /></p>
 <p>Con ella podremos encontrar <em>texel</em> pero antes deberemos saber cómo calcular el valor de cada área.</p>
 <h2 id="pesos-baricentricos">Pesos baricéntricos<a class="headerlink" href="#pesos-baricentricos" title="Permanent link">&para;</a></h2>
 <p>Dado el siguiente triángulo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-91.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-91.png" /></p>
 <p>El peso de <code>α</code> es igual al área del triángulo <code>BPC</code> entre el área del triángulo completo <code>ABC</code>:</p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}{\color{Red}&space;\alpha}&space;=&space;\frac{area\_triangulo({\color{Orange}&space;BPC})}{area\_triangulo({\color{Blue}&space;ABC})}&space;"/></p>
 <p>Otra forma de verlo sería como el área del paralelogramo <code>BPC/2</code> entre el área del paralelogramo <code>ABC/2</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-92.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-92.png" /></p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}{\color{Red}&space;\alpha}&space;=&space;\frac{area\_paralelogramo({\color{Red}&space;BPC})/2}{area\_paralelogramo({\color{Orange}&space;ABC})/2}&space;"/></p>
 <p>Según vimos anteriormente el área del paralelogramo se corresponde con el <strong>producto vectorial</strong>, por lo que también podemos encontrar <code>α</code> de esa forma:</p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}&space;{\color{Red}&space;\alpha}=&space;\frac{\left\|&space;{\color{Red}&space;BP}{\color{Orange}&space;x}{\color{Red}&space;BC}&space;\right\|}{\left\|&space;{\color{Black}&space;AB}{\color{Orange}&space;x}{\color{Black}&space;AC}&space;\right\|}&space;"/></p>
@@ -1091,7 +1089,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>El resultado debería ser el texturizado sobre los triángulos con parte inferior plana:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-31.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-31.gif" /></p>
 <p>Si substituimos la parte que nos falta para dibujar el texel en lugar del píxel sólido deberíamos texturizar el cubo completo:</p>
 <div class="highlight"><pre><span></span><code><span class="cm">/*** Render the lower part of the triangle (flat top) ***/</span>
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xStart</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">xEnd</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="o">++</span><span class="p">)</span>
@@ -1100,7 +1098,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="w">    </span><span class="n">DrawTexel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">pA</span><span class="p">,</span><span class="w"> </span><span class="n">pB</span><span class="p">,</span><span class="w"> </span><span class="n">pC</span><span class="p">,</span><span class="w"> </span><span class="n">t0</span><span class="p">,</span><span class="w"> </span><span class="n">t1</span><span class="p">,</span><span class="w"> </span><span class="n">t2</span><span class="p">,</span><span class="w"> </span><span class="n">texture</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-32.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-32.gif" /></p>
 <p>Si nos fijamos notaremos que ocurre un efecto algo extraño en las texturas, la razón es que no estamos aplicando la perspectiva en el texturizado, un tema que trataré próximamente.</p>
 <hr />
 <p><small class="edited"><i>Última edición: 05 de Junio de 2022</i></small></p>

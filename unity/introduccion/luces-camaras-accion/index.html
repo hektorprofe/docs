@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -625,7 +623,7 @@ div.my-img{text-align:center;margin-top:20px}
 <p>El objetivo de esta unidad es familiarizarte con Unity y aprender a moverte por la escena, a manipular objetos, moverlos, rotarlos, escalarlos... Qué son los recursos, los prefabs, los componentes y sus propiedades.</p>
 <p>Así que vamos a dar nuestro primer pasito en el mundo del desarrollo de videojuegos, y qué mejor forma de hacerlo que experimentando de primera mano el potencial del motor Unity mientras aprendemos.</p>
 <p>Vamos a crear un nuevo proyecto <code>Universal Render Pipeline</code> con la versión <code>Unity 2021</code> o mayor, pues es a partir de ésta que encontramos Visual Scripting incluido y más adelante haremos uso de él, y le vamos a llamar <code>Sandbox 3D</code>.</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_1.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_1.png" /></p>
 <p><em>Nota: En caso de que este proyecto se elimina en futuras versiones, dejaré una copia en los recursos de la lección. Se puede abrir desde <code>Unity Hub</code> usando el botón ADD.</em></p>
 <p>Unity está dividido en subventanas llamadas docks. Estas ventanitas se pueden arrastrar y posicionar donde nosotros queramos, podemos añadir de nuevas y quitarlas. Sin embargo existen disposiciones por defecto que nos facilitan el trabajo. Si os habéis hecho un lío, la disposición por defecto se puede recargar desde <code>Window &gt; Layouts &gt; Default</code>. Podemos guardar nuestras disposiciones con un nombre y reutilizarlas en otros proyectos.</p>
 <p>Usando la disposición por defecto, de izquierda a derecha y de arriba hacia abajo, encontramos las ventanas más importantes:</p>
@@ -636,29 +634,29 @@ div.my-img{text-align:center;margin-top:20px}
 <li>El explorador de recursos y la consola</li>
 </ul>
 <p>Estas ventanas son las más esenciales y prácticamente siempre las tendremos abiertas, hablaremos de ellas a medida que las utilicemos.</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_2.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_2.png" /></p>
 <p>Por lo pronto vemos una paqueña escena a lo lejos. Si presionamos el botón <code>Play</code>, aparecerá un pequeño escenario.</p>
 <p>Al presionar este botón entraremos en el modo de reproducción del juego y éste nos mostrará lo que ve la cámara de la escena.</p>
 <p>Notad que cuando el videojueto se pone en marcha puede tardar una cantidad considerable de tiempo, podemos reducir prácticamente la totalidad del tiempo de precarga haciendo una sencilla configuración en el proyecto desde <code>Edit &gt; Project Settings &gt; Edit</code> y hacia abajo activamos la opción <code>Enter Play Mode Options</code> y <code>Reload Scene</code> (para más detalles de qué hacen estas opciones un <a href="https://docs.unity3d.com/2021.1/Documentation/Manual/ConfigurableEnterPlayMode.html">enlace</a>):</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_151.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_151.png" /></p>
 <p>Ahora, lo primero que debéis recordad es que, cualquier cambio realizado en la escena durante el modo de reproducción, se revertirá al salir de él. Os aconsejo tintar la ventana durante este modo para nunca confundiros y luego perder el trabajo. A mi me gusta poner un color que se vea bien, como un azul chillón.</p>
 <p>Para hacerlo vamos a salir del modo de reproducción, iremos a <code>Edit &gt; Preferences &gt; General &gt; Playmode tint</code> y seleccionaremos nuestro color. Así al poner en marcha el juego, la interfaz se mostrará tintada, y creedme que este truco os ahorrará mucho tiempo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_3.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_3.png" /></p>
 <p>Saliendo del modo de reproducción, vapodemos acercarnos un poco a la escena con la rueda del ratón:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_4.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_4.png" /></p>
 <p>¿Véis el escenario de atrezzo que tenemos? Es como el escenario de una película, podemos movernos por ahí libremente utilizando la combinación <code>Clic derecho + AWSD</code>, incluso podemos modificar la velocidad de movimiento con <code>Control + Ruedecita del ratón</code>. Como véis en cierta forma los videojuegos en Unity se crean como una película. Tenemos el escenario, el atrezzo y la cámara enfocando el lugar que mostraremos al jugador.</p>
 <p>Si abrimos la jerarquía de objetos y hacemos doble clic en el objeto <code>Main Camera</code> nos posicionaremos sobre él. Utilizando las <code>flechas azul, roja y verde</code> podemos cambiar su posición. </p>
 <p>Cuando movemos un objeto por la escena estamos haciendo uso de la herramienta de movimiento, representada por una cruz con flechas en el menú superior. Podemos activar esta herramienta presionando la <code>tecla W</code> del teclado. Así mismo podemos volver a la herramienta de vista presionando la manita o la <code>tecla Q</code>. Si activamos la herramienta de rotación, con la <code>tecla E</code> podemos cambiar la dirección de la cámara. Tened en cuenta que tenemos tres rotaciones, una por cada dimensión: horizontal, vertical y profundidad:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_5.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_5.png" /></p>
 <p>Por cierto, si arrastramos la ventana <code>Game</code> a un lado, podemos editar la escena mientras vemos en grande el resultado del juego en funcionamiento. Me gusta posicionar la jeraquía abajo y dejar espacio arriba para las ventanas <code>Game</code> y <code>Scene</code>, esto me permite trabajar con más perspectiva:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_6.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_6.png" /></p>
 <p>De forma similar al objeto cámara, también tenemos las luces de la escena, que nos permite iluminar el escenario. Son fundamentales, sin ellas no veríamos ningún color en el videojuego.</p>
 <p>En esta escena tenemos dos fuentes de luz configuradas, la primera es una luz global en la parte superior. Se corresponde al objeto <code>Directional Light</code>, y si lo desactivamos básicamente veremos la escena mucho más oscura:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_7.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_7.png" /></p>
 <p>Luego tenemos un objeto foco, que podemos seleccionar desde la jerarquía <code>Example Assets &gt; Props &gt; Construction Light Low &gt; Spot Light</code>. A diferencia de una luz direccional que da luz de forma global a la escena, una spot light está dirigida a un punto concreto. Si la desactivamos apreciaremos mejor donde está enfocando:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_8.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_8.png" /></p>
 <p>Por ahora vamos a dejarlo aquí, pero antes activemos de nuevo las luces del escenario:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_9.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_9.png" /></p>
 <hr />
 <p><small class="edited"><i>Última edición: 11 de Abril de 2021</i></small></p>
                   

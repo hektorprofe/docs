@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -764,16 +762,16 @@ div.my-img{text-align:center;margin-top:20px}
                   
                   <h1 id="interpolacion-de-perspectiva-corregida">Interpolación de perspectiva corregida<a class="headerlink" href="#interpolacion-de-perspectiva-corregida" title="Permanent link">&para;</a></h1>
 <p>Actualmente tenemos un problema con la texturización, los texels se renderizan siempre con un tamaño constante generando un efecto extraño en los triángulos:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-94.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-94.png" /></p>
 <p>Para corregir la distorsión de las texturas debemos incorporar la profundidad en la interpolación de los valores:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-93.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-93.png" /></p>
 <p>Tenemos que aplicar la brecha de perspectiva sobre la posición del texel pero la perspectiva no es una transformación lineal, es decir, una vez aplicada la proyección de perspectiva no podemos devolver <code>Z</code> a su valor inicial con una ecuación lineal.</p>
 <p>Entonces, estamos de acuerdo que para arreglar la distorsión creada por la perspectiva necesitamos encontrar la profundidad del punto <code>P</code> en el triángulo, pero desafortunadamente no podemos interpolar <code>z</code> directamente porque <code>z</code> no es lineal para todo el triángulo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-95.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-95.png" /></p>
 <p>Sin embargo, su recíproco <code>1/z</code> sí que es lineal y podemos utilizarlo para encontrar el punto <code>z</code> interpolado de <code>P</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-96.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-96.png" /></p>
 <p>Teniendo en cuenta que contamos con una matriz <code>4x4</code> donde almacenamos en <code>W</code> el valor original de <code>Z</code> antes de proyectarlo, podemos hacer uso de él para nuestro cálculo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-97.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-97.png" /></p>
 <p>Ordenando todas estas ideas, el algoritmo para conseguir la interpolación de perspectiva corregida es:</p>
 <ol>
 <li>Utilizar el recíproco de todos los atributos <code>1/w</code> (ahora lineales en el espacio de pantalla).</li>
@@ -865,7 +863,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="n">interpolatedV</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="n">interpolatedReciprocalW</span><span class="p">;</span>
 </code></pre></div>
 <p>En este punto deberíamos estar realizando correctamente la interpolación corregida con perspectiva:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-33.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-33.gif" /></p>
 <h2 id="optimizar-divisiones-comunes">Optimizar divisiones comunes<a class="headerlink" href="#optimizar-divisiones-comunes" title="Permanent link">&para;</a></h2>
 <p>El caso es que realizar para cada píxel estas divisiones le añade mucho estrés a la CPU:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Calculate the interpolations multipling every U/w and V/w coord per its weight factor per 1/w</span>
@@ -911,13 +909,13 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>Si comprobamos donde se han modificado estos colores es posible que nos encontremos un resultado distinto al esperado:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-99.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-99.png" /></p>
 <p>En lugar de lo que presumiblemente era esperable y aparecer en la esquina superior izquierda, quizá aparecen en otro sitio.</p>
 <p>La verdad es que he codificado manualmente las coordenadas UV de las caras sin prestar mucha atención a la disposición y por eso no aparece correctamente. </p>
 <p>Solucionar esta cara sería tan simple como cambiar las coordenadas UV por las correctas:</p>
 <div class="highlight"><pre><span></span><code><span class="n">Texture2</span><span class="w"> </span><span class="n">meshTextureUVs</span><span class="p">[]{</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">},{</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">},{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">},{</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">},{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">},{</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">},</span><span class="w"> </span><span class="c1">//...</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-100.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-100.png" /></p>
 <p>Evidentemente este problema no lo tendremos con modelos generados en programas como <strong>Blender</strong> porque las coordenadas UV deberían ser siempre las correctas.</p>
 <hr />
 <p><small class="edited"><i>Última edición: 05 de Junio de 2022</i></small></p>

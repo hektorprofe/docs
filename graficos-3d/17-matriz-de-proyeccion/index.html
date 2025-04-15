@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -772,28 +770,28 @@ div.my-img{text-align:center;margin-top:20px}
 <li>Implementará la <strong>normalización</strong> para los valores <code>x</code>, <code>y</code>, <code>z</code> entre <code>-1</code> y <code>1</code>.</li>
 </ul>
 <p>Al tener en cuenta todos estos parámetros, conseguiremos un cubo de valores normalizados, una <strong>imagen del espacio</strong> (<em>image space</em>) o <strong>NDC</strong> (<em>Normalized Device Coordinates</em>):</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-67.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-67.png" /></p>
 <p>Empecemos por el principio, la <strong>relación de aspecto</strong> <code>a</code> es la relación entre la altura <code>h</code> (<em>height</em>) y anchura <code>w</code> (<em>width</em>) de la pantalla.</p>
 <p>Para conseguir la conversión del espacio de mundo (<em>world space</em>) a espacio de pantalla (<em>screen space</em>) adaptaremos el ancho <code>x</code> multiplicándolo por la relación de aspecto:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/latex060.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/latex060.png" /></p>
 <p>En cuanto al <strong>campo de visión</strong> nos requerirá encontrar un factor de escalado. Este lo podemos encontrar mediante la relación entre el cateto opuesto y el adjunto, es decir, la mitad de la tangente (el cateto opuesto mide la mitad):</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-68.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-68.png" /></p>
 <p>Sin embargo encontramos una contradicción y es que cuanto mayor es el ángulo, más elementos vemos pero también serán más pequeños en la pantalla. Por contra, cuanto menor es el ángulo, menos elementos veremos pero serán más grandes en la pantalla. Por esa razón la función que buscamos es opuesta a la tangente de la mitad del ángulo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/latex061.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/latex061.png" /></p>
 <p>Lo último que necesitamos aplicar es la <strong>normalización</strong> del espacio visualizado, para ello buscaremos otro factor de escalado. Delimitaremos la profundidad del <strong>Frustum</strong> entre la <code>Z</code> más alejada <code>zfar</code> y la <code>Z</code> más cercana <code>znear</code>. </p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-69.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-69.png" /></p>
 <p>Podemos llamar al factor de escalado simplemente <code>λ</code>, será la distancia máxima <code>zfar</code> entre la diferencia entre <code>zfar</code> y <code>znear</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/latex062.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/latex062.png" /></p>
 <p>Sin embargo debemos tener en cuenta el <em>offset</em> de <code>znear</code>, pues ésta no parte de cero:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/latex063.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/latex063.png" /></p>
 <p>Sustraemos esa distancia inicial, la cuál conseguiremos multiplicando el factor de escalado y <code>znear</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/latex064.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/latex064.png" /></p>
 <p>Con esto ya tenemos los factores de la <strong>relación de aspecto</strong>, el <strong>campo de visión</strong> y la <strong>normalización de la profundidad</strong>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/latex065.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/latex065.png" /></p>
 <p>Si los aplicamos antes de la brecha de perspectiva (<code>x/z</code>, <code>y/z</code>, <code>z/z</code>) obtendremos la <strong>imagen del espacio</strong> normalizado:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-70.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-70.png" /></p>
 <p>Si trasladamos todos los factores a nuestra matriz de referencia <code>4x4</code> conseguiremos la <strong>matriz de proyección</strong>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/latex066.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/latex066.png" /></p>
 <p>Esta es la <strong>matriz de proyección</strong> pero <strong>sin tener en cuenta la brecha de perspectiva</strong>.</p>
 <p>Por cierto, veremos un número <code>1</code> en la cuarta fila y tercera columna. Al aplicar la multiplicación de matrices nos permitirá guardar el valor original de <code>Z</code> en <code>W</code>, es decir un <em>backup</em> del valor <code>Z</code> sin normalizar. Necesitaremos este valor para aplicar la brecha de perspectiva y también nos hará falta en el futuro para  realizar diferentes operaciones.</p>
 <p>En cualquier caso necesitaremos implementar dos métodos en <code>Matrix4</code>, uno para definir la <strong>matriz de perspectiva</strong>:</p>
@@ -857,7 +855,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">};</span>
 </code></pre></div>
 <p>Si ejecutamos el programa veremos solo un punto en el centro:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-71.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-71.png" /></p>
 <p>El problema está relacionado con el normalizado del espacio proyectado <strong>NDC</strong> (<em>Normalized Device Coordinates</em>). </p>
 <p>Como todo está en el rango <code>(-1, 1)</code> debemos escalar los vértices proyectados por la mitad del ancho y alto de la pantalla, importante hacerlo antes de la traslación (recordar el orden):</p>
 <div class="highlight"><pre><span></span><code><span class="cm">/*** Apply projections for all face vertices ***/</span>
@@ -874,7 +872,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>El resultado será el mismo de antes, pero al haber incorporado la relación de aspecto, el punto de vista y la normalización nos dará mucho juego:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-21.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-21.gif" /></p>
 <p>Por lo pronto deberíamos hacer que si se modifica el <code>POV</code> cambie, además de poder establecerlo en grados:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">float</span><span class="w"> </span><span class="n">fovFactor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">M_PI</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">3.0</span><span class="p">;</span><span class="w">                         </span><span class="c1">// 60º in radians</span>
 <span class="kt">float</span><span class="w"> </span><span class="n">fovFactorInGrades</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">180.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">M_PI</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">fovFactor</span><span class="p">;</span><span class="w"> </span><span class="c1">// 60º en grados</span>
@@ -886,33 +884,33 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="n">projectionMatrix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Matrix4</span><span class="o">::</span><span class="n">PerspectiveMatrix</span><span class="p">(</span>
 <span class="w">    </span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">fovFactorInGrades</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">180.0</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">M_PI</span><span class="p">,</span><span class="w"> </span><span class="n">aspectRatio</span><span class="p">,</span><span class="w"> </span><span class="n">zNear</span><span class="p">,</span><span class="w"> </span><span class="n">zFar</span><span class="p">);</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-22.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-22.gif" /></p>
 <h2 id="proyeccion-de-valores-negativos">Proyección de valores negativos<a class="headerlink" href="#proyeccion-de-valores-negativos" title="Permanent link">&para;</a></h2>
 <p>Ahora que estamos pensando en clave de <strong>NDC</strong> (<em>Normalized Device Coordinates</em>), podemos cuestionarnos a fondo qué ocurrirá cuando un vector se encuentre proyectado por detrás de la cámara, es decir, que no podamos verlo. ¿Qué tipo de resultado obtendremos?</p>
 <p>Al aplicar la brecha de perspectiva:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/latex067.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/latex067.png" /></p>
 <p>Al tener en <code>W</code> un componente <code>Z</code> no transformado y potencialmente negativo, el resultado que obtendremos al proyectarlo será una proyeción volteada del objeto como consecuencia de dividir los componentes <code>x</code>, <code>y</code>, <code>z</code> entre un número negativo.</p>
 <p>El caso es que antes de que esto ocurra, cuando el objeto se encuentre por detrás de la cámara, el programa se bloqueará y finalizará abruptamente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-23.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-23.gif" /></p>
 <p>Esto ocurre porque no hemos implementado ningún tipo de protección al intentar dividir los valores entre cero, como sería el <em>clipping</em>, basado en descartar los objetos fuera del <code>frustum</code> para no renderizarlos:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-72.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-72.png" /></p>
 <p>Este proceso tiene lugar normalmente entre la proyección de la matriz y la brecha de perspectiva, por eso es buena idea dividir esas dos operaciones.</p>
 <p>En cualquier caso implementaré el <em>clipping</em> más adelante, una vez tenga el terreno preparado.</p>
 <h2 id="orden-mayor-de-fila-columna">Orden mayor de fila-columna<a class="headerlink" href="#orden-mayor-de-fila-columna" title="Permanent link">&para;</a></h2>
 <p>Antes de continuar, un breve apunte sobre la representación de vectores. Tenemos dos formas de representarlos.</p>
 <p>Por <strong>orden mayor de columna</strong>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/latex068.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/latex068.png" /></p>
 <p>O por <strong>orden mayor de fila</strong>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/latex069.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/latex069.png" /></p>
 <p>Es importante porque este cambio en la representación no es solo estético, pues hablando de dimensiones no es lo mismo <code>4x1</code> que <code>4x1</code>, algo que afecta directamente a operaciones como la multiplicación de matrices:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/latex070.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/latex070.png" /></p>
 <p>Pues no cumplen la propiedad conmutativa:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/latex071.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/latex071.png" /></p>
 <p>Hay que tenerlo en cuenta pues no es lo mismo trabajar con <strong>OpenGL</strong> que utiliza orden mayor de columna, que con <strong>DirectX</strong> o programas como <strong>Maya</strong> que utilizan orden mayor de fila.</p>
 <p>Con <strong>orden mayor de columna</strong> el vector se opera después de la matriz:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/latex072.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/latex072.png" /></p>
 <p>Con <strong>orden mayor de fila</strong> el vector se opera antes de la matriz:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/latex073.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/latex073.png" /></p>
 <p>Esto afecta directamente a la configuración de las matrices de transformación y el orden:</p>
 <ul>
 <li><strong>Orden mayor de fila</strong>: <code>P' = P * Ry * Rz * T</code></li>

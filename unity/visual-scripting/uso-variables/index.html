@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -624,30 +622,30 @@ div.my-img{text-align:center;margin-top:20px}
                   <h1 id="uso-de-variables">Uso de variables<a class="headerlink" href="#uso-de-variables" title="Permanent link">&para;</a></h1>
 <p>Las variables son la quintaesencia de la programación, son algo tan básico e imprescindible que las llevamos utilizando durante todo el curso sin darnos cuenta.</p>
 <p>¿Recordáis las propiedades de los componentes? Pues son variables, almacenes de datos de un tipo determinado identificados con un nombre y cuyo valor, como su nombre indica, puede variar:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_88.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_88.png" /></p>
 <p>Solo en los componentes actuales del cubo encontramos docenas y docenas de variables. Desde el propio nombre del objeto cubo, que es una <code>string</code>, la casilla de activar o desactivar el objeto, que es la visualización de un dato lógico <code>boolean</code>, los vectores de posición, rotación y escalado formados por varios números que hacen referncia a los ejes X, Y, Z y un largo etcétera. </p>
 <p>En definitiva todos los valores que se pueden modificar son variables.</p>
 <p>Las variables existen dentro de lo que se conoce como <code>scopes</code>, en español ámbitos. Podemos observar esos ámbitos en el inspector del editor de gráficos:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_89.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_89.png" /></p>
 <p>Estos ámbitos pueden ser a nivel de gráfico, objeto, escena, aplicación y de guardado. El ámbito de gráfico es muy restrictivo, pues abarca únicamente el propio gráfico, mientras que las variables de guardado son accesibles desde cualquier lugar y además son persistentes. No vamos a entrar mucho en detalle porque estas cosas se aprenden mejor con la práctica.</p>
 <p>Por lo pronto vamos a crear una variable de gráfico para substituir el literal booleano que controla si se mueve o no el cubo. La vamos a llamar <code>activarMovimiento</code> y será de tipo <code>Boolean</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_90.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_90.png" /></p>
 <p>Los nombres de las variables deben ser autoexplicativos, sino acabaremos con un videojuego repleto de variables que no sabemos qué hacen. </p>
 <p>Algo interesante es que en <code>Visual Scripting</code> no hay restricciones respecto al nombre de las variables, pero igualmente os aconsejo utilizar alguna notación común y ceñiros a ella en el proyecto:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_91.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_91.png" /></p>
 <p>En cualquier caso ya tenemos una variable booleana que puede substituir al valor literal, vamos a arrastrarla al gráfico para utilizarla en lugar de éste:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_93.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_93.png" /></p>
 <p>A efectos prácticos es lo mismo, pero debemos considerar que el valor ahora existe en la memoria bajo el nombre <code>activarMovimiento</code> y eso nos permitirá interactuar con él desde otras unidades dentro del gráfico.</p>
 <p>Vamos a crear un evento para capturar el momento en que el usuario presiona la tecla <code>espacio</code> del teclado. Para ello buscaremos una unidad <code>on keyboard input</code>. </p>
 <p>Este evento es especial y no requiere un flujo previo, se iniciará al interactuar con la tecla que nosotros le digamos, ya sea al presionarla (Down), dejar de presionarla (Up) o mantenerla (Hold):</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_94.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_94.png" /></p>
 <p>Si conectamos a este evento, una unidad que sea capaz de cambiar el valor de la variable <code>activarMovimiento</code> deberíamos ser capaces de controlar cuando empieza a moverse le cubo.</p>
 <p>La unidad que nos interesa se llama <code>set graph variable</code>. Notad que la unidad de la variable arrastrada se llama <code>Get Variable</code>, pues <code>get</code> permite recuperar el valor, mientras que <code>set</code> permite establecerlo. </p>
 <p><strong>Podemos arrastrar la variable al gráfico manteniendo la tecla ALT</strong> para crear la unidad <code>SET</code> en lugar de <code>GET</code>, así que básicamente configuraremos el flujo y estableceremos la variable con un valor literal booleano:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_95.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_95.png" /></p>
 <p>Si probamos el juego, al presionar <code>ESPACIO</code> la variable cambiará su valor a verdadero y el cubo empezará a moverse.</p>
 <p>Pero vamos un paso más allá, en lugar de usar un literal booleano podemos utilizar como fuente la propia variable <code>activarMovimiento</code> negando su valor. Negar un valor lógico da como resultado el contrario y es una operación muy simple, podemos hacerlo mediante una unida <code>negate</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_96.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_96.png" /></p>
 <p>Lo que acabmos de hacer nos permite alternar los valores <code>verdadero</code> y <code>falso</code> de la variable booleana cada vez que presionamos la tecla espacio, pudiendo controlar a voluntad el movimiento del cubo.</p>
 <p>Me gusta este experimento porque ilustra, aunque de forma sencilla, el funcionamiento de los videojuegos jugando con las variables y los eventos.</p>
 <hr />

@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -824,7 +822,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">};</span>
 </code></pre></div>
 <p>Como demuestra la siguiente animación, los colores de las caras se mezclan cuando el **back face culling* está desactivado, no nos es posible apreciar correctamente la profundidad de las caras traseras del cubo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-15.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-15.gif" /></p>
 <h2 id="algoritmo-del-pintor">Algoritmo del pintor<a class="headerlink" href="#algoritmo-del-pintor" title="Permanent link">&para;</a></h2>
 <p>Hay varias formas de resolver nuestro problema, más adelante trataré un sistema llamado <code>Z-Buffer</code> pero por ahora introduciré un mecanismo llamado <strong>algoritmo del pintor</strong>.</p>
 <p>Este algoritmo explica que el dibujado se debe realizar por capas, empezando por las más profundas y luego las más cercanas. Esto implica que deberemos encontrar un valor para la profundidad de cada cara, ordenarlas a partir de ese número y finalmente dibujarlas de atrás hacia adelante.</p>
@@ -837,7 +835,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>¿Cómo sacamos esa profundidad de la cara? ¿Cómo computa si cada vértice puede tener una profundidad <code>z</code> diferente?</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-64.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-64.png" /></p>
 <p>Pues lo que haremos es una asunción muy sencilla, la <strong>profundidad de la cara</strong> será la <strong>media de profundidad de los tres vértices</strong>. Si bien no será la profundidad real sino una aproximación, pero por ahora nos servirá:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Triangle</span>
 <span class="p">{</span>
@@ -907,9 +905,9 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>A diferencia de antes, ahora las caras sin <strong>back face culling</strong> se pintan algo mejor:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-16.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-16.gif" /></p>
 <p>Sin embargo todavía dista de ser perfecto, pues este algoritmo no puede representar algunas composiciones como la de la siguiente figura:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-65.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-65.png" /></p>
 <p>Además nuestra asunción de hacer la media de profundidad entre los puntos quizá no es la mejor de todas.</p>
 <p>En todo caso retomaré el tema más adelante, una vez repasado  lo referente a las matrices, sus operaciones y transformaciones básicas.</p>
 <hr />

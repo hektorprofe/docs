@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1553,27 +1551,27 @@ configurar la restauración de contraseña, y es un tema importante porque
 le añade un plus de calidad a nuestras páginas.</p>
 <p>Podríamos crear el formulario desde cero o extender UserCreationForm. Mi
 pereza me impide trabajar más de la cuenta así que haremos lo segundo.</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image493.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image493.png" /></p>
 <p>Tened en cuenta que el campo email no es adrede, sino que es el nombre
 del campo en el modelo User aunque no se haga uso de él por defecto.</p>
 <p>Ahora tenemos que adaptar la vista:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image562.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image562.png" /></p>
 <p>Y sólo nos faltará extender el método get_form con el nuevo campo
 email:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image402.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image402.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image402.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image402.png" /></p>
 <p>Un apunte importante: Tened en cuenta que estamos extendiendo el
 formulario UserCreationForm y éste contiene sus propias validaciones. La
 única forma de sustituir los widgets sin afectar al resto del formulario
 es modificarlos en tiempo de ejecución desde el método get_form.</p>
 <p>En todo caso nuestro formulario se ve bastante bien… ¿Funcionará? Vamos
 a probarlo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image377.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image377.png" /></p>
 <p>Parece que sí, vamos a verificar su email a través del panel de
 administrador:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image234.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image234.png" /></p>
 <p>Y sí, se ha guardado el correo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image587.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image587.png" /></p>
 <p>Sin embargo todavía tenemos un último problema por solucionar… Lo
 veremos en la próxima lección.</p>
 <hr />

@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1598,9 +1596,9 @@ div.my-img{text-align:center;margin-top:20px}
 <div class="highlight"><pre><span></span><code>(django2) python manage.py makemigrations pages
 (django2) python manage.py migrate pages
 </code></pre></div>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/47.png" style="max-width:175px"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/47.png" style="max-width:175px"/></div>
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/48.png" style="max-width:205px"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/48.png" style="max-width:205px"/></div>
 
 <p>Perfecto, ahora tenemos que desarrollar las vistas. Seguiremos una lógica parecida a la del blog y sus categorías, de manera que estas páginas secundarias tengan el path <strong>/page/&#60;page_id&#62;</strong>.</p>
 <p>Vamos a hacerlo:</p>
@@ -1613,7 +1611,7 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pages/sample.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;page&#39;</span><span class="p">:</span><span class="n">page</span><span class="p">})</span>
 </code></pre></div></p>
 <p>Ahora movemos el template sample.html en la propia app de páginas y <strong>borramos la view y url sample de Core</strong>:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/49.png" style="max-width:165px"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/49.png" style="max-width:165px"/></div>
 
 <p>Creamos las urls:</p>
 <p><code>pages/urls.py</code> 
@@ -1634,7 +1632,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">]</span>
 </code></pre></div></p>
 <p>Probamos si nos aparece alguna página con id 1:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/50.png" style="max-width:400px"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/50.png" style="max-width:400px"/></div>
 
 <p>Perfecto, parece que funciona. Vamos a realizar la fusión, respetando los saltos de línea:</p>
 <p><code>pages/templates/pages/sample.html</code>
@@ -1666,7 +1664,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
 {% endblock %}
 </code></pre></div></p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/51.png" style="max-width:400px"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/51.png" style="max-width:400px"/></div>
 
 <p>Lo tenemos listo, ya sólo falta mostrar los enlaces de las páginas en la parte inferior. Podríamos hacerlo añadiéndolas a un procesador de contexto como con las redes sociales, pero os comenté que se podía hacer de otra forma, os lo explico en la próxima lección.</p>
 <hr />

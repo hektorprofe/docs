@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1564,7 +1562,7 @@ div.my-img{text-align:center;margin-top:20px}
 <div class="highlight"><pre><span></span><code><span class="n">content</span> <span class="o">=</span> <span class="n">RichTextField</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="s2">&quot;Contenido&quot;</span><span class="p">)</span>
 </code></pre></div></p>
 <p>Ahora pondremos el servidor en marcha, vamos a editar una página y...</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/60.png" /></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/60.png" /></div>
 
 <p>¿Qué os parece? Aquí tenemos un editor visual para nuestro campo de texto. En él podemos poner estilos visuales, negritas, cursivas, subrayados, enlaces, etc.</p>
 <p><strong>CKEditor</strong> incluye muchísimas funcionalidades y podríamos estar hablando de él horas y horas, así que por mi parte sólo os voy a enseñar como cambiar la configuración básica. </p>
@@ -1578,7 +1576,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div></p>
 <p>Si establecemos el valor de la toolbar en None le estaremos diciendo que muestre todos los campos posibles:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/61.png"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/61.png"/></div>
 
 <p>Esto es una bestialidad, por eso quizá os interesa más mostrar una versión compacta sólo con negritas y cursivas:</p>
 <p><code>webempresa/settings.py</code>
@@ -1589,9 +1587,9 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/62.png" style="max-width:385px"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/62.png" style="max-width:385px"/></div>
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/63.png"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/63.png"/></div>
 
 <p>En la página de la app django-ckeditor encontraréis la documentación completa y ejemplos para adaptar la barra a vuestras necesidades: <a href="https://github.com/django-ckeditor/django-ckeditor">https://github.com/django-ckeditor/django-ckeditor</a></p>
 <p>Por ejemplo una barra personalizada con nos dan de ejemplo la definiríamos de la siguiente forma:</p>
@@ -1625,16 +1623,16 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/64.png"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/64.png"/></div>
 
 <p>Una vez guardamos el contenido y vamos al frontend, veremos que nos aparece el código HTML no interpretado:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/65.png"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/65.png"/></div>
 
 <p>Le tenemos que decir a Django, tranquilo, este contenido contiene HTML seguro así que interprétalo. Eso lo haremos sustituyendo el template tag <strong>linebreaks</strong> por <strong>safe</strong>:</p>
 <p><code>pages/templates/pages/sample.html</code>
 <div class="highlight"><pre><span></span><code>{{page.content|safe}}
 </code></pre></div></p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/66.png"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/66.png"/></div>
 
 <p>Si queréis practicar un poco más podéis poner el editor WYSIWYG en el contenido de las entradas del blog.</p>
 <hr />

@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -780,25 +778,25 @@ div.my-img{text-align:center;margin-top:20px}
 <p>Este proyecto está prácticamente acabado a falta de implementar una cámara en condiciones para navegar por la escena y la implementación del <em>clipping</em>.</p>
 <p>Actualmente estamos manejando dos transformaciones muy importantes mediante dos matrices, una de mundo y otra de proyección. La primera sitúa un objeto en el mundo tridimensional y la segunda transforma ese espacio 3D a uno 2D para visualizarlo en la pantalla. Sin embargo, nuestra idea actual de una cámara, el lugar desde el que estamos observando, es el origen del mundo 3D <code>(0,0,0)</code> y lo que hacemos es llevarnos el <code>mesh</code> al fondo para visualizarlo.</p>
 <p>Evidentemente esto no es lo que realmente nos interesa, lo ideal es contar con una cámara de verdad que pueda moverse por la escena y visualizar el conjunto del mundo desde su posición: </p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-128.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-128.png" /></p>
 <p>Para conseguir este propósito introduciremos lo que se denomina una <strong>matriz de vista</strong> (<em>view matrix</em>), una transformación que ejecutaremos para establecer el punto de vista desde un lugar concreto. El resultado ya no será el espacio del mundo (<em>world space</em>) sino el espacio de la vista (<em>view space</em>).</p>
 <p>En conjunto si repasamos el ciclo de transformaciones tendremos diferentes espacios:</p>
 <ol>
 <li>
 <p>En primer lugar los vértices se encuentran en el <strong>espacio del modelo</strong>, también llamado sistema de coordenadas local y vienen dadas por el propio modelo al crearlo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-129.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-129.png" /></p>
 </li>
 <li>
 <p>A continuación realizamos la transformación de los vértices al <strong>espacio del mundo</strong> multiplicando el espacio del modelo por la matriz de mundo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-130.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-130.png" /></p>
 </li>
 <li>
 <p>El siguiente paso será aplicar la transformación de los vértices al <strong>espacio de la vista</strong> multiplicando el espacio del mundo por la matriz de vista:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-127.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-127.png" /></p>
 </li>
 <li>
 <p>Finalmente aplicaremos la transformación de proyección al <strong>espacio de la  pantalla</strong> (<em>screen space</em>) multiplicando el espacio de vista por la matriz de proyección:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-131.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-131.png" /></p>
 </li>
 </ol>
 <p>Dependiendo del tipo de cámara que vayamos a implementar aplicaremos una matriz de vista distinta. Por ejemplo, una <strong><em>Look-at Camera</em></strong> es la que mira hacia un lugar concreto, mientras que una cámara de tipo <strong><em>FPS Camera</em></strong> incorpora libertad de movimiento en el espacio.</p>
@@ -821,11 +819,11 @@ div.my-img{text-align:center;margin-top:20px}
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}M_{{\color{Orange}&space;View}}&space;=&space;\begin{bmatrix}r_{11}&space;&&space;r_{12}&space;&&space;r_{13}&space;&&space;(r_{11}t_{x}&space;&plus;&space;r_{12}t_{y}&space;&plus;&space;r_{13}t_{z})&space;\\r_{21}&space;&&space;r_{22}&space;&&space;r_{23}&space;&&space;(r_{21}t_{x}&space;&plus;&space;r_{22}t_{y}&space;&plus;&space;r_{23}t_{z})&space;\\r_{31}&space;&&space;r_{32}&space;&&space;r_{33}&space;&&space;(r_{31}t_{x}&space;&plus;&space;r_{32}t_{y}&space;&plus;&space;r_{33}t_{z})&space;\\0&space;&&space;0&space;&&space;0&space;&&space;1&space;\\\end{bmatrix}" /></p>
 <p>Ahora debemos determinar cuáles son los elementos a aplicar en ambas matrices, así que vamos a diseccionar las dos transformaciones.</p>
 <p>La <strong>matriz de traslación</strong> es sencilla, solo tenemos que mover la posición de la cámara al origen:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-132.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-132.png" /></p>
 <p>Substituiremos la cuarta columna la matriz de traslación <code>MT</code> por la posición del ojo negado (el sistema está basado en la regla de la mano izquierda):</p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}M_{{\color{DarkGreen}&space;T}}&space;=&space;\begin{bmatrix}1&space;&&space;0&space;&&space;0&space;&&space;{\color{Blue}&space;-&space;eye}_{x}&space;\\0&space;&&space;1&space;&&space;0&space;&&space;{\color{Blue}&space;-&space;eye}_{y}&space;\\0&space;&&space;0&space;&&space;1&space;&&space;{\color{Blue}&space;-&space;eye}_{z}&space;\\0&space;&&space;0&space;&&space;0&space;&&space;1&space;\\\end{bmatrix}"/></p>
 <p>La <strong>matriz de rotación</strong> es algo más compleja, debemos empezar computando los vectores <code>(Z adelante, X derecha, Y arriba)</code> de la cámara respecto a donde está mirando:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-133.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-133.png" /></p>
 <p>Estos tres vectores <code>(x, y, z)</code> los utilizaremos para construir la matriz de rotación <code>MR</code>:</p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}M_{{\color{Magenta}&space;R}}&space;=&space;\begin{bmatrix}{\color{Red}&space;x}_{x}&space;&&space;{\color{DarkGreen}&space;y}_{x}&space;&&space;{\color{Cyan}&space;z}_{x}&space;&&space;0&space;\\{\color{Red}&space;x}_{y}&space;&&space;{\color{DarkGreen}&space;y}_{y}&space;&&space;{\color{Cyan}&space;z}_{y}&space;&&space;0&space;\\{\color{Red}&space;x}_{z}&space;&&space;{\color{DarkGreen}&space;y}_{z}&space;&&space;{\color{Cyan}&space;z}_{z}&space;&&space;0&space;\\0&space;&&space;0&space;&&space;0&space;&&space;1&space;\\\end{bmatrix}" /></p>
 <p>Sin emargo esta matriz debe estar invertida. ¿Por qué? Si por ejemplo suponemos que la cámara se encuentra por encima de la escena, toda la escena deberá encontrarse rotada hacia abajo. Si se encuentra a la izquierda de la escena, toda la escena deberá encontrarse rotada hacia la izquierda, lo contrario. Por esa razón debemos computar la matriz inversa:</p>
@@ -844,7 +842,7 @@ div.my-img{text-align:center;margin-top:20px}
 <p>Lo cual se puede simplificar mediante <strong>productos escalares</strong>, en la forma final de nuestra <strong>matriz de la vista</strong> para una cámara <code>lookAt</code>:</p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}M_{{\color{Orange}View}}=\begin{bmatrix}{\color{Red}x}_{x}&&{\color{Red}x}_{y}&&{\color{Red}x}_{z}&&-dot(-{\color{Red}x},&space;{\color{Blue}eye})\\{\color{DarkGreen}y}_{x}&&{\color{DarkGreen}y}_{y}&&{\color{DarkGreen}y}_{z}&&-dot(-{\color{DarkGreen}y},&space;{\color{Blue}eye})\\{\color{Cyan}z}_{x}&&{\color{Cyan}z}_{y}&&{\color{Cyan}z}_{z}&&-dot(-{\color{Cyan}z},&space;{\color{Blue}eye})\\0&&1&&0&&1\\\end{bmatrix}"/></p>
 <p>Ahora que tenemos la matriz podemos al fin codificar el método <code>LookAt</code> en la clase <code>Matrix4</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-134.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-134.png" /></p>
 <div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">Matrix4</span><span class="w"> </span><span class="nf">LookAt</span><span class="p">(</span><span class="n">Vector3</span><span class="w"> </span><span class="n">eye</span><span class="p">,</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">up</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="c1">// Forward (z) vector in new coordinate system</span>
@@ -979,7 +977,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="kt">float</span><span class="w"> </span><span class="n">modelTranslation</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">};</span>
 </code></pre></div>
 <p>El resultado será el mismo que teníamos antes de utilizar la cámara:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-135.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-135.png" /></p>
 <p>A simple vista no parece una gran mejora pero si actualizamos en cada fotograma el vector <code>target</code> a donde se encuentra el modelo y añadimos un pequeño cambio en la posición de la cámara:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">Mesh::Update</span><span class="p">()</span>
 <span class="p">{</span>
@@ -996,7 +994,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>Quedará claro que hemos conseguido algo súmamente importante:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-38.gif" /> </p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-38.gif" /> </p>
 <p>Ya podemos renderizar el escenario desde cualquier posición mirando a un punto concreto.</p>
 <h2 id="variable-delta-time">Variable Delta-time<a class="headerlink" href="#variable-delta-time" title="Permanent link">&para;</a></h2>
 <p>Actualmente estamos realizando un ligero cambio en la posición de la cámara en cada fotograma para simular que ésta se aleja del modelo:</p>
@@ -1026,9 +1024,9 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="n">window</span><span class="o">-&gt;</span><span class="n">cameraPosition</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">window</span><span class="o">-&gt;</span><span class="n">deltaTime</span><span class="p">;</span>
 </code></pre></div>
 <p>Ahora independientemente de si tenemos 5 FPS:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-39.gif" /> </p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-39.gif" /> </p>
 <p>O 300 FPS:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-40.gif" /> </p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-40.gif" /> </p>
 <p>La velocidad de movimiento siempre será 1 unidad del mundo por segundo.</p>
 <h2 id="camara-fps">Cámara FPS<a class="headerlink" href="#camara-fps" title="Permanent link">&para;</a></h2>
 <p>Para implementar una cámara libre tipo <code>FPS</code> que podamos mover a voluntad en el sistema, necesitamos considerar las diferencias respecto a una cámara <code>lookAt</code>:</p>
@@ -1036,7 +1034,7 @@ div.my-img{text-align:center;margin-top:20px}
 <li>Para empezar, como la cámara no tendrá un objetivo sino que apuntará hacia donde nosotros queramos, necesitaremos un <strong>vector con la dirección</strong> a parte de la posición. </li>
 <li>Si podemos mover la cámara hacia adelante y atrás eso necesitamos un <strong>vector de velocidad de velocidad adelante</strong> para el eje <code>Z</code>, otro para moverla a la izquierda y a la derecha que podemos llamar <strong>vector de velocidad lateral</strong> para el eje <code>X</code> y uno para el eje <code>Y</code> para mover el <strong>vector de velocidad vertical</strong> hacia arriba y abajo. </li>
 <li>Finalmente para rotar la cámara tanto horizontalmente como verticalmente necesitaremos <strong>diferentes ángulos</strong> conocidos como <code>yaw</code> y <code>pitch</code>, los cuales se basan en congelar un eje y realizar la rotación en el espacio a su alrededor:
-    <img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-136.png" /></li>
+    <img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-136.png" /></li>
 </ol>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Camera</span><span class="w"> </span><span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
@@ -1126,7 +1124,7 @@ div.my-img{text-align:center;margin-top:20px}
 <p>Esta parte tiene más miga pero no es tan difícil, empezaremos con un <code>Vector3</code> básico para el objetivo. Es importante que tenga una profundidad <code>Z</code> mayor o igual a 1 porque eso implica que nuestro objetivo <code>target</code> estará inicialmente hacia adelante de la cámara (si el sistema utilizará la regla de la mano derecha deberíamos cambiar el número a <code>-1</code>).</p>
 <p>Luego generaremos dos matrices de rotación, la del ángulo <code>yaw</code> a partir de nuestro método <code>Matrix4::RotationYMatrix</code> y la del ángulo <code>pitch</code> a partir del método <code>Matrix4::RotationXMatrix</code> y los multiplicaremos por el <code>target</code> para conseguir la dirección de cámara. </p>
 <p>Una vez tengamos la cámara mirando a la dirección ya rotada en <code>X</code> e <code>Y</code> calcularemos la posición del <code>target</code> simplemente como el offset entre la posición de la cámara y su dirección. Con el <code>target</code> listo calcularemos la matriz de la vista con <code>LookAt</code> y ya estará, podremos rotar la vista mientras h hacemos clic en la ventana:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-41.gif" /> </p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-41.gif" /> </p>
 <p>La segunda parte de la cámara FPS es añadir el movimiento en función de las velocidades en el eje <code>Z</code> y <code>X</code>, para lo cuál he optado por un sistema en torno a la instrucción <code>SDL_GetKeyboardState</code> que genera un mapa de todas las teclas presionadas justo después de procesar el <code>while</code> de los eventos:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Process the WASD movement with a keyState map</span>
 <span class="p">{</span>
@@ -1165,10 +1163,10 @@ div.my-img{text-align:center;margin-top:20px}
 </code></pre></div>
 <p>Primero detectamos si hay movimiento en el eje <code>Z</code>, de manera que tengamos almacenado un factor <code>-1, 0, 1</code>. Si ese factor es distinto de 0 significa que hay que mover la cámara en el eje <code>Z</code>. Ese eje es el de la propia dirección de la cámara <code>camera.direction</code>, solo debemos multiplicar esa dirección por una cantidad de movimiento y tendremos la <code>forwardVelocity</code> para incrementar <code>camera.position</code>.</p>
 <p>Luego haremos exactamente lo mismo para el eje <code>X</code>, pero deberemos calcular al  principio un vector para el eje <code>X</code> de la cámara. Eso es tan fácil como hacer el producto vectorial entre la dirección a la que mira la cámara y un vector genérico hacia arriba <code>{0,1,0}</code>. Este vector en el eje <code>X</code> llamado <code>vectorLeft</code> marcará la dirección y lo multiplicaremos por la cantidad a movernos en ese eje para luego sumarla a la posición:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-42.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-42.png" /></p>
 <p>En cuanto al eje <code>Y</code>es el más sencillo, tan solo debemos aplicar un <code>VectorUp</code> genérico con la respectiva velocidad.</p>
 <p>Luego actualizamos los valores de la interfaz de la cámara <code>cameraPosition</code> con la nueva posición que hemos calculado en <code>camera.position</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-42.gif" /> </p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-42.gif" /> </p>
 <p>Con esto he finalizado el desarrollo de la cámara FPS utilizando teclas <code>WASD</code> y apuntando con dirección del ratón.</p>
 <hr />
 <p><small class="edited"><i>Última edición: 05 de Junio de 2022</i></small></p>

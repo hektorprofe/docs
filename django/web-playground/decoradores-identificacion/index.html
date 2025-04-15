@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1555,18 +1553,18 @@ decoradoras para requerir identificación antes de devolver una vista.</p>
 la parte de comprobar al usuario haciendo uso de la función decoradora
 staff_member_required a través del decorador de métodos
 method_decorator:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image828.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image162.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image828.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image162.png" /></p>
 <p>Lo bueno que tiene este decorador es que redirecciona de nuevo a la
 página donde teníamos que identificarnos para seguir trabajando:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image389.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image389.png" /></p>
 <p>Pero en el fondo esto de la redirección es lo de menos, lo bueno que
 tiene el uso de decoradores es que no estamos obligados a utilizarlos en
 Mixins, sino que se pueden enviar a las CBV directamente, sólo debemos
 definir el method_decorator antes de la CBV e indicarle el decorador y
 el nombre del método donde queremos añadirlo, en nuestro caso el
 dispatch (podemos borrar el mixin porque ya no lo necesitamos):</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image42.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image42.png" /></p>
 <p>Cómo véis ni siquiera necesitábamos un Mixin, pero en el proceso hemos
 aprendido un montón de cosas.</p>
 <p>Existen dos funciones decoradoras más:</p>
@@ -1593,24 +1591,24 @@ ahorrarnos incluso más trabajo? Pues váis a flipar, porque ¿y si os digo
 que podemos trasladar casi todo lo que tenemos sólo a nuestras urls y
 ahorrarnos las vistas os lo creeríais?</p>
 <p>Mirad, vamos a core/urls y haremos la magia ahí:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image695.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image37.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image695.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image37.png" /></p>
 <p>¿Habéis visto? Podemos generar nuestras CBV ahí mismo e incluso enviar
 un diccionario de contexto. ¿Pero podremos hacer lo mismo con las CBV de
 la app Pages? Vamos a probar:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image90.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image90.png" /></p>
 <p>Para las tres primeras no tendremos ningún problema, podemos generarlas
 sin problemas. Lo malo es la UpdateView porque contiene un método. Los
 métodos no podemos redefinirlos aquí, por lo que lo más sensato es
 dejarnos de historias y dejarla como la teníamos:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image400.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image99.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image400.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image99.png" /></p>
 <p>Finalmente la DeleteView si podemos generarla sin problemas:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image800.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image800.png" /></p>
 <p>Así que podemos volver a views.py y borrar todo lo que no necesitamos,
 aunque a vosotros mejor os recomiendo comentarlo por si en un futuro
 queréis analizarlo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image635.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image635.png" /></p>
 <p>Hemos pasado de tener más de 30 líneas a apenas unas 13 definiendo
 nuestras CBV en el propio urls.py. ¿Qué os parece?</p>
 <hr />

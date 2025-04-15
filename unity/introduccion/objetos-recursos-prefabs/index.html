@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -624,40 +622,40 @@ div.my-img{text-align:center;margin-top:20px}
                   <h1 id="objetos-recursos-y-prefabs">Objetos, recursos y prefabs<a class="headerlink" href="#objetos-recursos-y-prefabs" title="Permanent link">&para;</a></h1>
 <p>Antes hemos interactuado con algunos objetos como la cámara y las luces, pero esos no son los únicos objetos de la escena, la realidad es que todo lo que existe en la escena SON objetos.</p>
 <p>Fijémonos en la jeraquía, ¿véis el cubo a la izquierda de cada elemento? Eso nos indica que es un objeto de juego, en inglés <code>GameObject</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_10.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_10.png" /></p>
 <p>¿Y véis que hay objetos que tienen varios niveles? Eso significa que son objetos compuestos de otros objetos, como un padre con muchos hijos enlazados a él:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_37.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_37.png" /></p>
 <p>Muy bien, pues para que estos objetos existan, debemos añadirlos de alguna forma y de algún sitio, ¿no? Pues ese sitio son los recursos del proyecto:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_11.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_11.png" /></p>
 <p>Los recursos, o assets en inglés, contienen todo tipo de información. Desde los modelos 3D de los objetos, los materiales, las texturas, los sonidos, los ficheros de configuración, las bases de datos y un larguísimo etcétera, que incluye incluso, la información de las propias escenas.</p>
 <p>Y es que en un proyecto poemos tener múltiples escenas. La escena actual se llama <code>SampleScene</code> y podemos guardarla con <code>Control+S</code>. El recurso de esta escena se encuentra en la carpeta <code>Assets/Scenes</code>. Otros recursos se encuentran en otras carpetas bien organizadas, como <code>ExampleAssets</code>, <code>Materials</code>, <code>Presets</code>, <code>Scripts</code>, etc.</p>
 <p>Vamos a acercarnos un poco a la mesa de trabajo de la escena, y utilizando la herramienta de movimiento (W), vamos a seleccionar ese casco amarillo. Si os aparecen unas bolas enormes es debido a los iconos de ayuda de la interfaz de Unity conocidos como Gizmos. Podemos hacerlos más pequeños:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_12.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_12.png" /></p>
 <p>Y desactivar esas líneas amarillos que tienen que ver con las luces desactivando los Gizmos de <code>LightProbeGroup</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_13.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_13.png" /></p>
 <p>Así veremos simplemente el casco seleccionado con un borde naranja:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_14.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_14.png" /></p>
 <p>Este casco es, como os comenté al princpio, un <code>GameObject</code>, concretamente uno llamado <code>Safety Hat</code>, y también podemos moverlo mediante las flechas y el cuadrado (W) y rotarlo (E):</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_15.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_15.png" /></p>
 <p>Vamos a crear otro casco a partir de su recurso. Para hacerlo buscaremos en la ventana de recursos, en <code>Models</code> el modelo <code>safetyhat</code> y lo arrastraremos al suelo de la escena:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_16.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_16.png" /></p>
 <p>Como véis por defecto este casco es gris, eso es porque no tiene una textura. En el directorio <code>Textures\Props\HardHat</code> encontramos tres texturas para nuestro casco, vamos a arrastrar la azul al casco:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_17.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_17.png" /></p>
 <p>Como véis, en el momento en que arrastramos un recurso a la escena se crea un objeto para representarlo.</p>
 <p>Si quisiéramos crear otro casco azul, podríamos repetir el proceso o duplicarlo, seleccionando el objeto <code>safetyhat</code> en la jeraquía y presionando <code>Control+D</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_18.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_18.png" /></p>
 <p>Pero quiero que tengáis presente una cosa, estos dos cascos son objetos independientes entre ellos. Si arrastramos la textura rosa a uno de ellos, los cambios no afectan al otro:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_19.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_19.png" /></p>
 <p>Sin embargo ese no es el caso de los <code>Prefabs</code>. ¿Véis en la jerarquía que hay algunos objetos cuyo cubo es de color azul? Eso significa que son <code>Prefabs</code>, plantillas para generar objetos iguales.</p>
 <p>Si navegamos al directorio <code>Assets/Prefabs</code> veremos algunos. Por ejemplo los botes de pintura. Vamos a arrastrar algunos a la escena:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_20.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_20.png" /></p>
 <p>La diferencia entre tener objetos independientes y prefabs, es que éstos últimos están enlazados a una plantilla común, o dicho de otra forma, a un objeto original.</p>
 <p>Si hacemos doble clic en el prefab de los botes de colores, se abrirá de forma independiente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_21.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_21.png" /></p>
 <p>Si modificamos algún elemento de este Prefab, por ejemplo modificando el tamaño de los botes y la brocha (R), rotándolos un poco y moviéndolos de sitio...</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_22.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_22.png" /></p>
 <p>Si ahora volvemos a la escena haciendo clic en <code>Screnes &gt; Paint Supplies</code> de la parte superior, veremos que se han modificado todos los botes de pintura al modificar nosotros el original.</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_23.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_23.png" /></p>
 <p>Después de este experimento queda clara la idea de que los <code>objetos</code> se crean a partir de <code>recursos</code> y pueden ser independientes o estar vinculados a un <code>prefab</code>.</p>
 <p>Poco a poco ahondaremos en estos temas e incluso crearemos nuestros propios prefabs.</p>
 <hr />

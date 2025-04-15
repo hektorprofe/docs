@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -973,9 +971,9 @@ div.my-img{text-align:center;margin-top:20px}
 <p>Empezamos la aventura instalando en Windows diferentes compiladores para código C++.</p>
 <p>En primer lugar MinGW (Minimalist GNU for Windows) y Clang LLVM los podemos encontrar en <a href="https://winlibs.com/">https://winlibs.com/</a>, concretamente en el ZIP para 64 bits <a href="https://github.com/brechtsanders/winlibs_mingw/releases/download/11.2.0-13.0.0-9.0.0-msvcrt-r3/winlibs-x86_64-posix-seh-gcc-11.2.0-llvm-13.0.0-mingw-w64-9.0.0-r3.zip">GCC 11.2.0 + LLVM/Clang/LLD/LLDB 13.0.0 + MinGW-w64 9.0.0 (MSVCRT)</a>.</p>
 <p>Después de descomprimirlo en el disco C:\mingw64 y añadir el directorio C:\mingw64\bin al PATH de sistema puedo comprobar que dispongo tanto del compilador g++ como clang++ en una terminal:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image.png" /></p>
 <p>Así mismo he instalado el compilador MSVC de <a href="https://visualstudio.microsoft.com/es/vs/older-downloads/">Visual Studio Community 2019</a>, que podemos comprobar mediante cl.exe en la Developer PowerShell:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-2.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-2.png" /></p>
 <p>Las diferentes funcionalidades soportadas por cada compilador pueden encontrarse en las tablas comparativas en la web <a href="https://en.cppreference.com/w/cpp/compiler_support">https://en.cppreference.com/w/cpp/compiler_support</a>.</p>
 <p>Sin más, lo próximo será configurar algún editor para empezar a programar código.</p>
 <h2 id="ejecutar-codigo-c-con-vsc">Ejecutar código C++ con VSC<a class="headerlink" href="#ejecutar-codigo-c-con-vsc" title="Permanent link">&para;</a></h2>
@@ -990,7 +988,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>El resultado será la salida por pantalla:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-3.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-3.png" /></p>
 <p>Debemos tener en cuenta que esta extensión probará un compilador automáticamente.</p>
 <p>Si queremos extender la configuración de compilación deberemos crear un directorio <code>.vscode</code> en el proyecto y un fichero <code>settings.json</code> establecer la configuración deseada.</p>
 <p>Por ejemplo para utilizar <code>GCC++20</code>:</p>
@@ -1000,7 +998,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-6.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-6.png" /></p>
 <p>Para utilizar <code>Clang++20</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;code-runner.executorMap&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -1008,7 +1006,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-5.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-5.png" /></p>
 <p>Para utilizar <code>Cl++latest</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;code-runner.executorMap&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -1020,17 +1018,17 @@ div.my-img{text-align:center;margin-top:20px}
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/directorio/proyecto
 code<span class="w"> </span>.
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-4.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-4.png" /></p>
 <p>Por mi parte estaré utilizando generalmente la configuración de GCC+20, por lo que configuraré por defecto el editor de esa forma desde <code>Archivo &gt; Preferencias &gt; Configuración</code>. Buscando la opción <code>code-runner.executorMap</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-7.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-7.png" /></p>
 <p>Y ahí estableciendo una configuración por defecto para ahorrarme el <code>settings.json</code> en cada proyecto:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-8.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-8.png" /></p>
 <p><em>Consejo</em>: Podemos añadir un <code>cls &amp;&amp;</code> justo después de <code>cd $dir</code> para limpiar la terminal (o <code>clear</code> en Linux/Mac):</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-11.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-11.png" /></p>
 <p>En cuanto al intelliSense (remarcador de sintaxis), para que sea compatible con la versión 20 se hace desde <code>Ver &gt; Paleta de comandos &gt; C/C++: Editar configuraciones (UI)</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-9.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-9.png" /></p>
 <p>En la nueva ventana cambiaremos esta opción:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-10.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-10.png" /></p>
 <p>Sin más, con esto deberíamos tenerlo todo listo.</p>
 <h2 id="primer-programa-en-c">Primer programa en C++<a class="headerlink" href="#primer-programa-en-c" title="Permanent link">&para;</a></h2>
 <p>Como es costumbre se puede empezar a aprender creando un programa <code>Hola Mundo</code>:</p>
@@ -1044,7 +1042,7 @@ code<span class="w"> </span>.
 </code></pre></div>
 <p>En la primera línea encontramos la importación de un componente de la biblioteca estándar (STL) de C++ para manejar operaciones de entrada/salida.</p>
 <p>Si no lo importamos el editor se quejará haciendo referencia a que los miembros <code>cout</code> y <code>endl</code> no se encuentran definidos:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-12.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-12.png" /></p>
 <p>El nombre <code>iostream</code> es un acrónimo de <code>Input/Output Stream</code> y es que el flujo de entrada y salida de datos en C++ (y su predecesor C) no se encuentra definida dentro de la sintaxis básica y se provee por medio de librerías de funciones especializadas como ésta, que define los siguientes objetos:</p>
 <ul>
 <li><code>cin</code>: Flujo de entrada</li>
@@ -1072,9 +1070,9 @@ code<span class="w"> </span>.
 <div class="highlight"><pre><span></span><code><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </code></pre></div>
 <p>Como punto interesante comentar que, por defecto este código fuente se ejecuta en la terminal de Windows sin codificación, incapaz de entender los símbolos especiales latinos:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-15.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-15.png" /></p>
 <p>Podemos importar la librería <code>Windows.h</code> y justo antes de mostrar por pantalla el texto establecer la codificación UTF-8 para que la terminal decodifique correctamente los símbolos:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-14.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-14.png" /></p>
 <p>Con esto hemos revisado las instrucciones básicas de un programa con C++.</p>
 <hr />
 <p><small class="edited"><i>Última edición: 07 de Mayo de 2022</i></small></p>

@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -764,12 +762,12 @@ div.my-img{text-align:center;margin-top:20px}
                   
                   <h1 id="back-face-culling">Back-face Culling<a class="headerlink" href="#back-face-culling" title="Permanent link">&para;</a></h1>
 <p>Una vez repasadas las operaciones vectoriales ya podemos introducir la técnica del <strong><em>Back-face Culling</em></strong> basada en desechar las caras invisibles de un modelo para ahorrarnos muchos cálculos de renderizado y aumentar considerablemente la optimización del sistema:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-40.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-40.png" /></p>
 <p>Para determinar si una cara se debe renderizar o no utilizaremos el vector <strong>normal</strong> de cada cara:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-41.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-41.png" /></p>
 <p>Si el ángulo formado entre el rayo de la cámara y el vector normal es menor de 90º consideraremos que la cara es visible por la cámara y la renderizaremos, en caso contrario será invisible y la desecharemos (<em>culling</em>).</p>
 <p>El algoritmo de <em>culling</em> enumera los pasos para determinar si dibujar o no una cara formada por los vértices <code>A, B, C</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-47.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-47.png" /></p>
 <ol>
 <li>Buscar los vectores <code>(B-A)</code> y <code>(C-A)</code>.</li>
 <li>Hacer su <strong>producto vectorial</strong> y buscar la perpendicular normal <code>N</code>.</li>
@@ -855,11 +853,11 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>Si probamos el programa de nuevo deberíamos saltarnos correctamente el dibujado de las caras que no están mirando hacia la cámara:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-10.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-10.gif" /></p>
 <h2 id="normalizacion-de-vectores">Normalización de vectores<a class="headerlink" href="#normalizacion-de-vectores" title="Permanent link">&para;</a></h2>
 <p>Antes de continuar con el siguiente tema hablemos de lo que es y cómo implementar la normalización de vectores.</p>
 <p>El vector normalizado <code>u</code> de un vector <code>v</code> con una magnitud y dirección, es el vector que únicamente indica su dirección:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-48.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-48.png" /></p>
 <p>Si no necesitamos representar la longitud (o magnitud) del vector, lo ideal es normalizarlo, transformándolo en un vector unitario de <code>longitud = 1</code>.</p>
 <p>La fórmula es muy simple:</p>
 <p><img src="https://latex.codecogs.com/png.image?\large&space;\dpi{150}\bg{white}\widehat{u}&space;=&space;&space;\frac{\overrightarrow{v}}{\left\|&space;\overrightarrow{v}&space;\right\|}"/></p>

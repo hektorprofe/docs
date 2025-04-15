@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -707,17 +705,17 @@ div.my-img{text-align:center;margin-top:20px}
 <p>Desde que estoy utilizando <strong>Dear ImGui</strong> notado que el proceso de compilación manual empiez a alargarse y he decidido probar qué tal con <strong>Visual Studio 2019</strong>. El resultado ha sido satisfactorio, la compilación es más rápida y se puede debugear fácilmente, así que he decidido migrar el proyecto.</p>
 <p>Era mi primera vez utilizando este IDE y ha sido un poco confuso por la forma de disponer los ficheros, pero cuando aprendes como funciona es de hecho bastante simple.</p>
 <p>He decidido reorganizar el código del proyecto en la carpeta <code>src</code> y los recursos en la carpeta <code>res</code>. Luego simplemente los arrastras a los filtros de explorador y ya lo tienes preparados:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-85.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-85.png" /></p>
 <p>Como <strong>Dear ImGui</strong> hay que compilarlo, he movido su código al directorio <code>src/vendor/imgui</code> y con un par de filtros lo puedo visualizar cómodamente en el árbol de archivos del proyecto.</p>
 <p>Para hacer funcionar <code>SDL</code> he descargado el fichero <a href="http://sdl2-devel-2.0.22-vc.zip/">SDL2-devel-2.0.22-VC.zip (Visual C++ 32/64-bit)</a>, lo he descomprimido en mi disco <code>C:/vclibs</code> y he añadido la carpeta <code>C:\vclibs\SDL2-2.0.22\lib\x64</code> con la biblioteca <code>SDL2.dll</code> al PATH de mi sistema para no tener que ir copíandolo todo el rato en el directorio de los ejecutables. </p>
 <p>A continuación, ya en el proyecto, he necesitado añadir los directorios <code>include</code> y <code>lib</code> de la librería <code>SDL</code>, haciendo clic derecho <code>Propiedades</code> en el proyecto. Ahí con la plataforma <code>x64</code> en <code>Directorios de VC++</code> en las secciones <code>Directorios de archivos de inclusión</code> y <code>Directorios de archivos de bibliotecas</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-86.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-86.png" /></p>
 <p>Luego en el apartado <code>Vinculador</code> he añadido las dependencias adicionales de compilación <code>SDL2.lib;SDL2main.lib;</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-87.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-87.png" /></p>
 <p>Finalmente hay que decirle donde debe ir a buscar <code>ImGui</code> para compilarlo en el apartado <code>C/C++ &gt; General &gt; Directorios de inclusión adicionales</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-88.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-88.png" /></p>
 <p>He tenido que cambiar algunas cosillas donde el compilador de Visual Studio se quejaba, pero poca cosa:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-89.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-89.png" /></p>
 <hr />
 <p><small class="edited"><i>Última edición: 05 de Junio de 2022</i></small></p>
                   

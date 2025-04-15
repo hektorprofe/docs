@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -624,21 +622,21 @@ div.my-img{text-align:center;margin-top:20px}
                   <h1 id="buscador-de-unidades">Buscador de unidades<a class="headerlink" href="#buscador-de-unidades" title="Permanent link">&para;</a></h1>
 <p>Retomándolo donde lo dejamos en la lección anterior, quiero profundizar un poco en las unidades.</p>
 <p>Y es que cuando vamos a añadir un nodo en el gráfico, aparecen muchas categorías, cada una con infinidad de unidades disponibles:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_79.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_79.png" /></p>
 <p>Empecemos centrándonos en las primeras de la lista, pues hacen referencia a los componentes del <code>GameObject</code> donde se ha asignado la <code>Script Machine</code>. En nuestro caso el cubo tiene un <code>Transform</code>, los <code>Mesh Filter y Render</code>, un <code>Box Collider</code> y el propio <code>Script Machine</code>. Si queremos interactuar con cualquiera de ellos tenemos muchas unidades disponibles. Pero encima de todo también tenemos una categoría llamada <code>Game Object</code>, cuyas unidades nos permiten acceder y gestionar los <code>GameObjects</code> de la escena.</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_80.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_80.png" /></p>
 <p>Volviendo al principio encontramos otras categorías generales, colecciones, controles, eventos, lógica, matemáticas, etc.</p>
 <p>Existen más de 20.000 unidades y eso es porque deben cubrir cualquier acción programable. Es imposible saberlas todas de memoria y la idea es buscarlas y utilizarlas a medida que surja la necesidad. La gracia del <code>Visual Scripting</code>, es que tenemos a nuestra disposición un potente buscador de unidades y eso facilita la tarea a la hora de investigar.</p>
 <p>Por ejemplo, vamos a suponer que después de rotar un grado el eje Y en cada <code>Update</code>, queremos desplazar el cubo hacia arriba.</p>
 <p>Si movemos el cubo hacia arriba en la escena podemos observar que se modifica el eje Y del vector de posición en el componente <code>Transform</code>. Si abrimos el buscador de unidades y buscamos <code>transform translate</code>, encontraremos todas las unidades relacionadas con la traslación, la transformación que permite cambiar la posición:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_82.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_82.png" /></p>
 <p>Fijaros que aparece la misma unidad repetidas veces, esto se conoce como sobrecarga de un método, y sucede cuando tenemos diferentes formas de realizar una acción. En nuestro caso vamos a centrarnos en <code>Transform: Translate (X,Y,Z)</code> que simplemente toma un vector 3D con el valor a incrementar en cada eje:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_83.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_83.png" /></p>
 <p>Notaréis que por defecto esta unidad se muestra transparente, eso es porque no le llega ningún flujo de código y se considera inactiva.</p>
 <p>Podemos unir el flujo de salida en la rotación con la entrada de flujo de la traslación y activarla:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_84.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_84.png" /></p>
 <p>Esto se traduciría como: en cada <code>Update</code> ejecutar una rotación y luego una traslación. Vamos a indicar un número muy pequeño al eje Y, por ejemplo <code>0.1</code> y veamos el resultado:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Record_13.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Record_13.gif" /></p>
 <p>Como véis el cubo empieza a flotar hasta que desaparece. En cada fotograma estamos sumando 0.01 unidades del mundo a su posición Y (recordemos que una unidad del mundo equivale a los cuadrados del escenario), eso son 0.60 unidades de altura cada segundo suponiendo que el videojuego funciona a 60 FPS.</p>
 <p>En definitiva el flujo es la corriente vital del script gráfico y fluye a través de las unidades activándolas para ejecutar sus acciones. </p>
 <hr />

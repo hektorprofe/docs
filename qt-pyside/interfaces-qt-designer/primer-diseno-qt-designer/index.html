@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1264,7 +1262,7 @@ div.my-img{text-align:center;margin-top:20px}
 <li>Le damos por ejemplo el nombre <code>iconos</code>, clic derecho <code>Añadir archivos</code>.</li>
 <li>Buscamos un icono png para ponerlo en nuestra ventan, lo añadimos y aceptamos.</li>
 </ul>
-<p><img src="https://hektorprofe.github.io/docs/cdn//pyside/09-docs/01.png"></p>
+<p><img src="https://hektorprofe.github.io/docs/cdn/pyside/09-docs/01.png"></p>
 <ul>
 <li>
 <p><code>windowIcon</code>: Desplegamos, "Elija recurso" y seleccionamos el icono.</p>
@@ -1284,26 +1282,26 @@ div.my-img{text-align:center;margin-top:20px}
 <li><code>PushButton</code>: Enviar</li>
 </ul>
 <p>Veréis que no quedan muy bien dispuestos, eso es porque nuestra ventana no tiene un layout establecido.</p>
-<p><img src="https://hektorprofe.github.io/docs/cdn//pyside/09-docs/02.png"></p>
+<p><img src="https://hektorprofe.github.io/docs/cdn/pyside/09-docs/02.png"></p>
 <p>Con la ventana seleccionada hacemos clic en el layout vertical de la barra superior, automáticamente los elementos se posicionarán siguiendo esta disposición:</p>
-<p><img src="https://hektorprofe.github.io/docs/cdn//pyside/09-docs/03.png"></p>
+<p><img src="https://hektorprofe.github.io/docs/cdn/pyside/09-docs/03.png"></p>
 <p>Automáticamente se creará un dummy widget con un layout para el <code>centralWidget</code> y los componentes se posicionarán automáticamente. Además ahora encontraremos un nuevo apartado <code>Layout</code>en las propiedades del objeto <code>centralWidget</code> donde podemos cambiar su configuración.</p>
 <p>Sin embargo veréis que nuestros elementos se posicionan raro porque la etiqueta se expande por defecto.</p>
 <p>Para solucionar esto vamos a añadir abajo del todo un widget <code>Vertical Spacer</code>:</p>
-<p><img src="https://hektorprofe.github.io/docs/cdn//pyside/09-docs/04.png"></p>
+<p><img src="https://hektorprofe.github.io/docs/cdn/pyside/09-docs/04.png"></p>
 <p>Como podéis suponer los <code>Spacers</code> rellenan automáticamente el espacio sobrante de un layout.</p>
 <p>Podemos probar otras disposiciones hasta encontrar una que nos guste y utilizar el botón <code>Ajuste de tamaño</code> para redimensionar el tamaño de la ventana acordemente a su contenido:</p>
-<p><img src="https://hektorprofe.github.io/docs/cdn//pyside/09-docs/05.png"></p>
+<p><img src="https://hektorprofe.github.io/docs/cdn/pyside/09-docs/05.png"></p>
 <p>Otra cosa importante es que las ventanas principales vienen con su <code>menuBar</code> y <code>statusBar</code> ya creadas.</p>
 <p>Podemos agregar campos al menú superior simplemente escribiendo ahí. Luego podemos gestionar las acciones mediante el inspector de objetos y de propiedades. Cualquier cosa que debáis configurar de un widget la encontraréis ahí, por ejemplo podemos añadir un acceso directo al botón de &amp;Salir del menú:</p>
-<p><img src="https://hektorprofe.github.io/docs/cdn//pyside/09-docs/06.png"></p>
+<p><img src="https://hektorprofe.github.io/docs/cdn/pyside/09-docs/06.png"></p>
 <p>Y añadir una imagen al botón de salir, siempre que préviamente la añadamos a nuestros recursos:</p>
-<p><img src="https://hektorprofe.github.io/docs/cdn//pyside/09-docs/07.png"></p>
+<p><img src="https://hektorprofe.github.io/docs/cdn/pyside/09-docs/07.png"></p>
 <p>Si añadimos <code>statusTips</code> a nuestros componentes, se mostrarán automáticamente en el previsualizador:</p>
-<p><img src="https://hektorprofe.github.io/docs/cdn//pyside/09-docs/08.png"></p>
+<p><img src="https://hektorprofe.github.io/docs/cdn/pyside/09-docs/08.png"></p>
 <p>También podemos cambiar los estilos del programa haciendo clic derecho en el objeto <code>MainWindow</code> del inspector y con la opción <code>Cambiar Hoja de Estilos</code>.</p>
 <p>Se abrirá un formulario donde podemos pegar todo el contenido de nuestro fichero QSS tradicional:</p>
-<p><img src="https://hektorprofe.github.io/docs/cdn//pyside/09-docs/09.png"></p>
+<p><img src="https://hektorprofe.github.io/docs/cdn/pyside/09-docs/09.png"></p>
 <p>Y creo que ya hemos visto todos los conceptos clave.</p>
 <p>En el segundo bloque del curso diseñaremos algunos programas, pero el mejor maestro es la práctica. Os aconsejo perderos un rato probando layouts, widgets y cambiando sus propiedades para aprender por vuestra cuenta.</p>
 <p>En la próxima lección vamos a transformar este diseño en un fichero Python para empezar a trabajar con él.</p>

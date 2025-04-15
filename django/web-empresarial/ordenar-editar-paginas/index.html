@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1567,9 +1565,9 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;order&#39;</span><span class="p">)</span>
 </code></pre></div></p>
 <p>De vuelta a nuestro panel de administrador podemos establecer un número de orden a cada página, un orden que sin cambiar nada se respetará en el frontend:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/56.png" style="max-width:450px"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/56.png" style="max-width:450px"/></div>
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/57.png" style="max-width:400px"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/57.png" style="max-width:400px"/></div>
 
 <p>Sólo le tenemos que decir al cliente, que si quiere cambiar el orden debe poner un número y que los más pequeños se muestran antes. </p>
 <p>El segundo detalle tiene que ver con la edición directa. Por ejemplo, tenemos al administrador de la página viendo la página de "políticas de privacidad" y detecta un fallo. Pues podríamos añadir un enlace de edición si la web detecta que un usuario ha iniciado sesión. Vamos a hacerlo.</p>
@@ -1587,7 +1585,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div></p>
 <p>Sí, en todos los templates tenemos una variable user que almacena el usuario identificado, y podemos comprobar cómodamente si se encuentra autenticado en el panel de administrador con su método <strong>is_authenticated</strong> para mostrar el enlace de edición.</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/58.png" style="max-width:150px"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/58.png" style="max-width:150px"/></div>
 
 <p>Sólo tenemos que configurar el enlace, ¿a dónde debe apuntar? Obviamente a la dirección donde podemos editar la página. Podríamos ponerla en crudo, pero no es elegante. Lo haremos bien, utilizando <strong>{% urls %}</strong> de la siguiente forma:</p>
 <p><code>pages/templates/pages/sample.html</code>
@@ -1598,7 +1596,7 @@ div.my-img{text-align:center;margin-top:20px}
     {% endif %}
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div></p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/59.png" style="max-width:385px"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/59.png" style="max-width:385px"/></div>
 
 <p>La lógica es simple, <strong>{admin}:{app}&#95;{modelo}&#95;{accion} {id_del_objeto}</strong> (cuando sea necesario). Hay otras acciones a parte de change que la url de edición, como add y delete para añadir y borrar respectivamente.</p>
 <hr />

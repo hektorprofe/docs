@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -775,7 +773,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="n">renderEngine</span><span class="p">.</span><span class="n">SetMeshes</span><span class="p">(</span><span class="n">meshes</span><span class="p">);</span>
 </code></pre></div>
 <p>En lugar de actualizar y dibujar una sola malla ejecuto <code>renderEngine.Update</code> y <code>renderEngine.Render</code> para procesar todos mis modelos de golpe:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-50.gif" /> </p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-50.gif" /> </p>
 <p>Evidentemente lo óptimo sería unificar todo el <em>rendering pipeline</em> pero tengo otros proyectos en mente (como aprender <code>OpenGL</code>) y será en ese momento cuando aproveche para rehacer este experimento de una forma mucho más óptima.</p>
 <p>Por cierto, ¿por qué un <code>&lt;vector&gt;</code> y no una <code>deque</code>? Porque hoy me ha dado por realizar algunos experimentos para determinar qué contenedor es más rápido y este es el resultado:</p>
 <ul>

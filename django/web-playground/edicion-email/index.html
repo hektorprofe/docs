@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1561,51 +1559,51 @@ cambiando tan a la ligera.</p>
 <p>Así que se me ha ocurrido que podemos mostrar un campo con el email pero
 sólo de lectura y debajo un enlace que diga: Si deseas editar tu email
 haz clic aquí. Vamos a hacerlo.</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image191.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image191.png" /></p>
 <p>Este campo es sólo de adorno, fijaros que no tiene un atributo name, por
 lo que no se enviará:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image111.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image111.png" /></p>
 <p>Ahora vamos a diseñar un formulario para editar el email:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image9.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image9.png" /></p>
 <p>Pero con esto no basta, necesitamos validar el email, y en esta ocasión
 debemos comprobar dos cosas: primero si se ha editado el email y si es
 así, comprobar que éste no se repita.</p>
 <p>¿Cómo lo hacemos? Pues por suerte para nosotros hay una lista llamada
 changed_data a la que podemos acceder desde el método clean, desde ahí
 es muy fácil comprobar si ha cambiado el email:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image924.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image924.png" /></p>
 <p>Ahora sólo tenemos que preparar la vista:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image306.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image81.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image306.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image81.png" /></p>
 <p>Vamos a crear una url:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image728.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image728.png" /></p>
 <p>Si accedemos a la URL pese a no haber creado el template, nos dará un
 curioso error:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image463.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image463.png" /></p>
 <p>Al contrario de lo podíamos esperar, no se va a buscar el template en la
 app registration, sino en auth. Eso es porque  Django maneja el modelo
 User en esa app, pero no es nada que no podamos cambiar manualmente con
 el template_name:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image420.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image420.png" /></p>
 <p>Así que vamos a crearlo, podemos tomar de referencia el de
 registro (signup.html) y cambiarlo ligeramente::</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image811.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image811.png" /></p>
 <p>Vamos a ver si funciona:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image427.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image427.png" /></p>
 <p>Sí, ahí lo tenemos. ¿Pero porqué no se añade correctamente el widget que
 hemos establecido?</p>
 <p>Bueno, en este caso volvemos a estar ante un modelo extendido, y es que
 User ya tiene sus propios campos y validaciones. Para sobreescribir sus
 widgets debemos hacerlo en tiempo de ejecución, así que vamos a
 llevarnos el widget a la vista:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image541.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image819.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image541.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image819.png" /></p>
 <p>Una vez hecho esto, ya debería aparecernos bien:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image553.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image553.png" /></p>
 <p>Y si intentamos poner un email ya existente nos mostrará el fallo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image666.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image666.png" /></p>
 <p>Finalmente sólo falta modificar el enlace y ya lo tendremos:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image889.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image889.png" /></p>
 <p>En la siguiente lección haremos algo parecido permitiendo al usuario
 editar su contraseña. Para lograrlo nos serviremos de las vistas
 automatizadas de la app auth, de forma muy similar a como hicimos el

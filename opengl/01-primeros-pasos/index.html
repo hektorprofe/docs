@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -607,7 +605,7 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_caption</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">clock</span><span class="o">.</span><span class="n">get_fps</span><span class="p">()</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> fps&quot;</span><span class="p">)</span>
 <span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/anim01.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim01.gif" /></p>
 <p>Confirmamos que todo funciona y podemos pasar a lo siguiente.</p>
 <h2 id="ventana-basica-con-pygame">Ventana básica con PyGame<a class="headerlink" href="#ventana-basica-con-pygame" title="Permanent link">&para;</a></h2>
 <p>Todo lo que se voy a implementar durante las siguientes prácticas sobre OpenGL utiliza el entorno gráfico de PyGame como base. Tengo unos <a href="/docs/pygame/">apuntes geniales sobre esta biblioteca</a> así que no profundizaré mucho a parte de algunos comentarios de código:</p>
@@ -646,7 +644,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="c1"># Finalmente salimos de PyGame</span>
 <span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/img01.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img01.png" /></p>
 <h2 id="conceptos-basicos-de-opengl">Conceptos básicos de OpenGL<a class="headerlink" href="#conceptos-basicos-de-opengl" title="Permanent link">&para;</a></h2>
 <p>OpenGL es una API gráfica para utilizar la GPU con el objetivo de realizar cálculos de renderizado en tiempo real y devolverlos al buffer de la memoria de vídeo de la máquina.</p>
 <p>Las llamadas ocurren a bajo nivel y se pueden utilizar para programar sistemas gráficos y motores de videojuegos.</p>
@@ -724,7 +722,7 @@ div.my-img{text-align:center;margin-top:20px}
 
 <span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/img02.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img02.png" /></p>
 <p>Puntos importantes a comentar, antes de iniciar el bucle creamos una configuración del espacio de dibujo:</p>
 <ul>
 <li>Establecemos el modo matriz a <code>GL_PROJECTION</code>, eso hará que las posteriores operaciones de matriz se apliquen como proyecciones en el espacio de imagen (2D).</li>
@@ -806,7 +804,7 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="n">app</span> <span class="o">=</span> <span class="n">GLApp</span><span class="p">(</span><span class="s2">&quot;OpenGL en Python&quot;</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
     <span class="n">app</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/img03.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img03.png" /></p>
 <p>En los métodos <code>Setup</code>, <code>Update</code> y <code>Render</code> podemos programar toda la lógica de los ejemplos, además podemos establecer la configuración de la ventana, el título, el tamaño y un límite de FPS que se controlara internamenta y mostrará los FPS medios al lado del título. También contaremos con la variable <code>self.deltaTime</code> para saber en cualquier momento el tiempo en milisegundos que pasa entre cada fotograma, lo cual nos permitirá trabajar en función del tiempo.</p>
 <p>El ejemplo que veníamos haciendo de los puntos quedará de la siguiente forma:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
@@ -880,12 +878,12 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="n">app</span> <span class="o">=</span> <span class="n">GLApp</span><span class="p">(</span><span class="s2">&quot;OpenGL en Python&quot;</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
     <span class="n">app</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/img04.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img04.png" /></p>
 <p>¿Véis por donde va la idea? Podemos ajustar el código de OpenGL para ejecutarlo de la manera que nos convenga.</p>
 <p>Por cierto, ¿recordáis que el espacio se dibuja de la esquina inferior izquierda hacia la esquina superior derecha? Eso es porque hemos configurado el modo ortográfico de esa forma. Si en lugar de <code>GLUtils.InitOrtho(0, 600, 0, 400)</code> establecemos <code>GLUtils.InitOrtho(600, 0, 400, 0)</code> obtendremos el resultado inverso verticalmente, pues se renderiza partiendo de la esquina superior derecha hasta la esquina inferior izquierda:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/img05.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img05.png" /></p>
 <p>Incluso podríamos voltear solo uno de los ejes, por ejemplo el horizontal para empezar en la esquina superior izquierda y crecer en diagonal hasta la esquina inferior derecha GLUtils.<code>InitOrtho(0, 600, 400, 0)</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/img06.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img06.png" /></p>
 <p>Como vemos OpenGL nos permite adaptar el eje de coordenadas de la forma como mejor nos convenga.</p>
 <hr />
 <p><small class="edited"><i>Última edición: 12 de Junio de 2022</i></small></p>

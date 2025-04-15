@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1634,10 +1632,10 @@ div.my-img{text-align:center;margin-top:20px}
                   
                   <h1 id="personalizando-el-administrador-1">Personalizando el administrador (1)<a class="headerlink" href="#personalizando-el-administrador-1" title="Permanent link">&para;</a></h1>
 <p>¡Vamos a crear un proyecto!</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/33.png"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/33.png"/></div>
 
 <p>Ahora le damos a grabar y...</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/34.png"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/34.png"/></div>
 
 <p>Ya lo tenemos creado.</p>
 <p>En este punto seguro que empezáis a tener algunas dudas, por ejemplo. ¿Si todo está en español porque hemos creado el modelo en inglés, no sería mejor hacerlo en español? o ¿Por qué en la lista de proyectos nos aparece <em>Project object (1)</em> en lugar del nombre del proyecto? o ¿Dónde se guarda la imagen que hemos añadido al proyecto? </p>
@@ -1666,7 +1664,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">]</span>
 </code></pre></div>
 <p>Ahora si volvemos a nuestro admin ya nos aparecerá traducido:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/35.png"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/35.png"/></div>
 
 <h2 id="campos-en-espanol">Campos en español<a class="headerlink" href="#campos-en-espanol" title="Permanent link">&para;</a></h2>
 <p>Vamos de vuelta a nuestro fichero de modelos e introduciremos dos nuevos conceptos para nuestros modelos, la subclase Meta y el método especial <strong>&#95;&#95;str&#95;&#95;</strong>.</p>
@@ -1702,7 +1700,7 @@ div.my-img{text-align:center;margin-top:20px}
         <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;-created&quot;</span><span class="p">]</span>  <span class="c1"># &lt;=====</span>
 </code></pre></div></p>
 <p>Ordering es una lista porque permite ordenar con prioridades entre distintos campos. Además si añadimos un guión delante del nombre del campo, es posible ordenar de forma revertida. Al hacer <strong>-created</strong>, le indicamos que nos muestre primero los proyectos de más actuales a más antiguos.</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/36.png"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/36.png"/></div>
 
 <p>Ahora para que nos aparezca el nombre del proyecto en el desplegable simplemente podemos redefinir el método especial <strong>&#95;&#95;str&#95;&#95;</strong> para que devuelva la cadena que nosotros queramos:</p>
 <p><code>portfolio/models.py</code>
@@ -1723,7 +1721,7 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span>  <span class="c1"># &lt;=====</span>
 </code></pre></div></p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/37.png"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/37.png"/></div>
 
 <p>En cuanto a los nombres de los campos, también podemos utilizar el atributo <strong>verbose_name</strong> para cambiarlos:</p>
 <p><code>portfolio/models.py</code>
@@ -1749,7 +1747,7 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span>
 </code></pre></div></p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/38.png"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/38.png"/></div>
 
 <h2 id="campos-especiales">Campos especiales<a class="headerlink" href="#campos-especiales" title="Permanent link">&para;</a></h2>
 <p>Como podréis observar los campos de fecha y hora automatizados no aparecen en el adminstrador, Django los esconde para que no se puedan modificar, pero podemos mostrarlos como campos de tipo "sólo lectura". </p>
@@ -1763,17 +1761,17 @@ div.my-img{text-align:center;margin-top:20px}
 
 <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Project</span><span class="p">,</span> <span class="n">ProjectAdmin</span><span class="p">)</span>
 </code></pre></div></p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/39.png"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/39.png"/></div>
 
 <p>Como véis poco a poco vamos dando forma a nuestro panel de administrador. A medida que avance el curso os iré enseñando más y más funcionalidades. </p>
 <h2 id="servir-ficheros-media">Servir ficheros media<a class="headerlink" href="#servir-ficheros-media" title="Permanent link">&para;</a></h2>
 <p>Por ahora sólo hay una cosa que no tenemos del todo bien, y es la imagen. ¿Dónde habrá ido a parar? Como no hemos configurado un directorio para las subidas, lo más seguro es que esté en la raíz de nuestro proyecto:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/40.png"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/40.png"/></div>
 
 <p>Esto no es nada práctico y además es peligroso. ¿Os imagináis que todas las imágenes y documentos que sube un usuario se guardasen aquí? Al final podríamos tener cientos o miles de ficheros en el mismo directorio.</p>
 <p>Bueno, pues antes de nada una pequeña apreciación. Los ficheros que suben los usuarios no son ficheros "estáticos", no existen desde el principio. Estos se llaman ficheros "media" o multimedia.</p>
 <p>Para que Django pueda servir ficheros Media durante el desarrollo, necesitaremos crear un directorio donde almacenar todos estos archivos. Normalmente le llamaremos <strong>media</strong> y lo crearemos en la raíz de nuestro proyecto.</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/41.png"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/41.png"/></div>
 
 <p>Ahora nos dirigiremos al fichero <strong>settings.py</strong> y abajo del todo añadiremos estas dos variables, una para indicar indicar la URL externa y otra para el directorio interno donde se encuentran los ficheros media (unido al core_dir del proyecto):</p>
 <p><code>webpersonal/settings.py</code>
@@ -1806,10 +1804,10 @@ div.my-img{text-align:center;margin-top:20px}
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span>
 </code></pre></div></p>
 <p>Con esto le diremos a Django que suba todas las imágenes al directorio <strong>media/projects</strong>. Él mismo se encargará de crear el directorio si no existe. Haced la prueba, subid de nuevo la imagen y mirad los directorios:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/42.png"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/42.png"/></div>
 
 <p>Ahora fijaos en una cosa, si abrimos nuestro primer proyecto no podemos acceder a la imagen:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/43.png"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/43.png"/></div>
 
 <p>Esto sucede porque el servidor de desarrollo no puede servir estos ficheros, de eso normalmente se encargaría un servidor de producción como Apache o Nginx ya en la etapa de producción. Sin embargo y como algo temporal podemos hacer que lo haga sólo cuando tengamos el modo <em>DEBUG</em> activo.</p>
 <p>Vamos a nuestro fichero <strong>settings/urls.py</strong> y vamos a editarlo de la siguiente manera:</p>
@@ -1834,7 +1832,7 @@ div.my-img{text-align:center;margin-top:20px}
         <span class="n">document_root</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">MEDIA_ROOT</span><span class="p">)</span>
 </code></pre></div></p>
 <p>Ahora si probamos el enlace de nuevo nos aparecerá la imagen:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/44.png"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/44.png"/></div>
 
 <p>Lo que hemos hecho es cargar el módulo de ficheros estáticos genérico y hacer que Django sirva ficheros como algo excepcional, sólo si tenemos el modo <em>DEBUG</em> activo. Consideradlo un truco para la fase de desarrollo.</p>
 <p>Con nuestro administrador listo y funcionando, el siguiente paso será recuperar nuestros proyectos en la vista <strong>portfolio</strong> y mostrarlos en el template <strong>porfolio.html</strong>.</p>

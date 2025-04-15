@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -624,27 +622,27 @@ div.my-img{text-align:center;margin-top:20px}
                   <h1 id="reutilizacion-de-scripts">Reutilización de scripts<a class="headerlink" href="#reutilizacion-de-scripts" title="Permanent link">&para;</a></h1>
 <p>El objetivo de esta lección es reutilizar nuestros scripts gráficos en diferentes cubos pero logrando un comportamiento ligeramente distinto entre ellos mediante el uso de variables para controlar la velocidad de rotación y traslación.</p>
 <p>Así que vamos a crear un par de variables <code>Vector3</code> en el objeto llamadas <code>vectorRotacion</code> y <code>vectorTraslacion</code>, a las que asignaremos unos valores por defecto como los que estamos usando actualmente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_107.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_107.png" /></p>
 <p>Y utilizaremos estas variables como origen de los datos para transformar el cubo. </p>
 <p>Por eso en lugar de la versión que establece de forma independiente los ejes, cambiaremos a <code>transform rotate eulers</code>, que toma como entrada un vector 3D, asignando su entrada al vector como la salida de nuestra variable <code>velocidadRotacion</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_109.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_109.png" /></p>
 <p>Y haremos exactamente lo mismo para la traslación, cambiando la unidad de transformación a una versión que tome un vector3 como entrada:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_111.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_111.png" /></p>
 <p>Ahora viene la parte divertida, vamos a clonar el cubo con diferentes colores y tamaños. En mi ejemplo he hecho uno naranja 3*3*3, uno azul 2*2*2 y uno rojo 1*1*1:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_112.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_112.png" /></p>
 <p>Si presionamos espacio los tres cubos empezarán a flotar, pero lo interesante es que podemos controla de forma independencia la velocidad de rotación y traslación de cada uno ajustando las variables que hemos creado:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Record_17.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Record_17.gif" /></p>
 <p>Como véis reutilizar scripts es la clave a la hora de impementar funcionalidades comunes en los objetos.</p>
 <p>Pero, ¿y si quisiéramos añadir una pequeña variación a uno de los tres cubos? Por ejemplo, que en lugar de mover el cubo rojo al presionar espacio, tengamos que presionar la tecla R?</p>
 <p>Para conseguir esta variación debemos crear una copia <code>embebida</code> del script <code>Controlador</code> en el cubo rojo y modificarla.</p>
 <p>Esto se consigue presionando el botón <code>Convert</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_113.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_113.png" /></p>
 <p>Al hacerlo el gráfico de los recursos <code>Assets/Graphs/Controlador</code> se copiará como un recurso embebido dentro del propio objeto y podremos editarlo a nuestro gusto, siendo éste independiente de los demás cubos:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_114.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_114.png" /></p>
 <p>Simplemente editaremos el gráfico y cambiaremos la tecla <code>Space</code> por la letra <code>R</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_115.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_115.png" /></p>
 <p>Sin más complicación ahora podremos controlar cuando se mueven los cubos naranja y azul con el espacio, y el rojo con la R:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Record_18.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Record_18.gif" /></p>
 <p>Con esto ya sabemos lo básico sobre reutilizar scripts gráficos y cómo sobreescribir comportamientos específicos.</p>
 <hr />
 <p><small class="edited"><i>Última edición: 14 de Abril de 2021</i></small></p>

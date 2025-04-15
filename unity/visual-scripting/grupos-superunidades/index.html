@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -624,23 +622,23 @@ div.my-img{text-align:center;margin-top:20px}
                   <h1 id="grupos-y-superunidades">Grupos y superunidades<a class="headerlink" href="#grupos-y-superunidades" title="Permanent link">&para;</a></h1>
 <p>En esta última lección vamos a introducir brevemente el uso de los grupos y las superunidades, dos formas de organizar y reutilizar contenido en los scripts gráficos.</p>
 <p>Los grupos son una forma de gestionar conjuntos de unidades, se basa en envolver unas cuantas unidades con el ratón mientras presionamos con la tecla <code>Control</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_116.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_116.png" /></p>
 <p>Una vez tenemos un grupo podemos manipular en conjunto las unidades que lo forman, también podemos asignarle un nombre, una descripción y un color:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_117.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_117.png" /></p>
 <p>Crear grupos es una forma visual de organizar los scripts y comprobar de un vistazo su funcionamiento.</p>
 <p>Por otro lado, con el objetivo de simplificar y reutilizar los gráficos, las superunidades nos permiten agrupar varias unidades en una única maestra identificada con un nombre, vienen a substituir las funciones de código.</p>
 <p>Hagamos un ejemplo para ilustrar el funcionamiento.</p>
 <p>En el script <code>Controlador</code> podemos substituir todo el proceso de alternar la variable en una única <code>superunidad</code> llamada <code>alternarMovimiento</code>. Para crearla hacemos clic derecho y buscamos <code>superunit</code> en el navegador:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_118.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_118.png" /></p>
 <p>Podemos acceder a la superunidad haciendo doble clic en ella y dentro veremos que tiene un <code>input</code> y un <code>output</code>, ahí definiremos los datos que entran y salen de la superunidad.</p>
 <p>La entrada de nuestra superunidad corresponde al flujo que se genera al presionar una tecla, así que vamos a crear un disparador de entrada con el nombre <code>Flujo</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_119.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_119.png" /></p>
 <p>Tenemos que llevarnos las unidades de fuera a la superunidad y configurar el flujo de entrada:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_120.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_120.png" /></p>
 <p>Y desde conectar el flujo del evento a la superunidad:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_121.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_121.png" /></p>
 <p>Como en esta superunidad no tenemos un <code>output</code> de salida, ya la tenemos lista y si probamos el juego hará lo mismo pero habremos simplicado ligeramente el gráfico.</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Record_19.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Record_19.gif" /></p>
 <p>A lo largo del curso trabajaremos activamente con los grupos y las superunidades.</p>
 <p>Sea como sea con esto acabamos el primer bloque donde hemos repasado los conceptos básicos del desarrollo y a partir de ahora toca crear videojuegos.</p>
 <hr />

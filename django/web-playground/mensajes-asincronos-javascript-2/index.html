@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1549,63 +1547,63 @@ div.my-img{text-align:center;margin-top:20px}
 <p>El textarea que almacenará el mensaje tendrá una estructura típica con
 bootstrap, pero en lugar de darle un name, le daremos un id, puesto que
 lo recuperaremos utilizando Javascript:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image148.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image148.png" /></p>
 <p>Ya que estamos podemos modificar el botón y hacer que se vea mejor:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image682.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image682.png" /></p>
 <p>Ahora viene la parte dinámica, pues tenemos que modificar el Script para
 recuperar el contenido del textarea al presionar el botón, y no sólo
 eso, también hay que codificarlo para que no dé problemas al enviarlo
 por GET:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image682.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image682.png" /></p>
 <p>Habiendo hecho esto si enviamos algo desde el formulario debería
 aparecernos en los parámetros GET de la vista:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image915.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image309.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image915.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image309.png" /></p>
 <p>Esto ya va tomando forma, pero faltan bastantes cosas.</p>
 <p>Lo primero una validación que no permita enviar mensajes vacíos, así que
 antes de hacer el fetch() comprobaremos que el mensaje tiene por lo
 menos un carácter:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image327.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image327.png" /></p>
 <p>Esto quedaría aún mejor implementando un Evento con Javascript que
 compruebe si el textarea tiene algún valor mientras se escribe. Si lo
 tiene activamos el botón de envío, y si no lo desactivamos. Eso sí,
 inicialmente tenemos que tener el botón desactivado:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image923.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image302.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image923.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image302.png" /></p>
 <p>Ya sé que no es un curso de JavaScript, pero es que me encanta el
 resultado:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image769.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image769.png" /></p>
 <p>Ahora vamos a lo importante: procesar este contenido que nos llega a la
 vista.</p>
 <p>Lo primero será recuperar al usuario, por lo que necesitaremos que esté
 identificado. En caso de que no lo esté invocaremos un error 404:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image271.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image96.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image271.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image96.png" /></p>
 <p>Lo curioso en este momento,  es que si intentamos enviar un mensaje nos
 va a dar error:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image857.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image857.png" /></p>
 <p>¿Cómo es esto posible? Si se supone que estamos identificados…</p>
 <p>Bueno, esto ocurre porque una petición fetch() no envía las credenciales
 del usuario identificado, para incluirlas en la petición debemos
 indicarlo explícitamente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image628.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image628.png" /></p>
 <p>Habiendo hecho esto la sesión actual se enviará también en la petición
 asíncrona y ahora sí debería detectar correctamente si el usuario está
 identificado para volver a darnos false:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image669.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image669.png" /></p>
 <p>Respecto al backend ya sólo nos falta recuperar el Contenido y el Hilo
 para poder crear el mensaje si hay algún mensaje. Además una vez lo
 creemos modificaremos la clave created y la pondremos a True dando a
 entender que todo ha ido bien:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image537.png" /><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image464.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image537.png" /><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image464.png" /></p>
 <p>Por fin ha llegado el momento de la verdad, ¿funcionará nuestro código?
 Vamos a probarlo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image264.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image264.png" /></p>
 <p>Por lo pronto devuelve True, así que vamos a actualizar la página con F5
 a ver si aparece:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image40.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image40.png" /></p>
 <p>Y ahí lo tenemos, abajo del todo está el nuevo mensaje:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image874.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image874.png" /></p>
 <p>Ya sólo nos falta desarrollar el Javascript para mostrar el mensaje sin
 recargar la página directamente y algún que otro detalle, pero en
 principio el backend lo tenemos listo.</p>

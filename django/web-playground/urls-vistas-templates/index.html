@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1550,14 +1548,14 @@ div.my-img{text-align:center;margin-top:20px}
 añadir algunos datos a nuestros modelos. Podemos hacerlo desde la shell
 o configurando el admin, yo como soy más de terminal utilizaré la
 primera forma.</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image764.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image359.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image805.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image722.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image615.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image577.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image799.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image817.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image764.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image359.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image805.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image722.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image615.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image577.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image799.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image817.png" /></p>
 <p>Ahora sí, vamos con las vistas. Necesitamos por lo menos dos, una para
 mostrar los hilos del usuario, y otra para mostrar un hilo en concreto,
 por lo que podríamos crear:</p>
@@ -1567,45 +1565,45 @@ por lo que podríamos crear:</p>
 <li>Una DetailView para listar todos los mensajes de un hilo en
     /messenger/thread/\&lt;int:pk&gt;/</li>
 </ul>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image60.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image60.png" /></p>
 <p>Evidentemente no podemos dejarlas así. En el caso de la ListView no
 queremos devolver todos los Thread, sólo los del usuario, así que
 debemos filtrarlos. Para conseguirlo sobreescribiremos el método
 get_queryset y filtraremos por el request.user. Esto implica que el
 usuario esté identificado, así que necesitamos decorar la CBV con
 login_required:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image571.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image354.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image571.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image354.png" /></p>
 <p>La lógica normal sería esta, pero dado que nuestro usuarios tienen una
 relación con el modelo Thread a partir del campo Many2Many messages,
 podríamos acceder directamente en el template y ahorrarnos toda el
 ListView, usando en su lugar una simple TemplateView:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image732.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image870.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image732.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image870.png" /></p>
 <p>Respecto a la DetailView debemos sobreescribir el método get_object,
 ahí comprobaremos si el request.user forma parte del hilo, y si no es
 así lanzaremos un error 404:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image386.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image339.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image386.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image339.png" /></p>
 <p>Ahora que tenemos las views vamos a configurar las URL, ponedlas como yo
 porque os facilitaré un par de templates ya preparados y utilizarán esta
 lógica:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image564.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image752.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image118.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image564.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image752.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image118.png" /></p>
 <p>Nuestras vistas cargarán los templates thread_list.html y
 thread_detail.html, como os comentaba os los doy hechos para no alargar
 demasiado la lección, los podéis descargar en los recursos y copiarlos
 en un nuevo directorio templates/messenger en la propia app:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image595.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image517.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image595.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image517.png" /></p>
 <p>He añadido comentarios en los Templates para que podáis analizarlos
 vosotros mismos, si tenéis alguna duda me lo decís.</p>
 <p>Ya sólo nos faltaría añadir la sección message en el menú superior si
 estamos identificados:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image268.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image268.png" /></p>
 <p>Y probar si todo funciona:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image233.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image233.png" /></p>
 <p>En la siguiente lección añadiremos el formulario para enviar mensajes.</p>
 <hr />
 <p><small class="edited"><i>Última edición: 25 de Marzo de 2021</i></small></p>

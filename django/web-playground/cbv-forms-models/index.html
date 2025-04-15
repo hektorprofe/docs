@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1549,47 +1547,47 @@ div.my-img{text-align:center;margin-top:20px}
 <p>Personalizar el formulario enlazado a un modelo es muy fácil. Sólo
 tenemos que crear un formulario como hicimos con el de contacto, dentro
 del fichero forms.py:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image394.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image394.png" /></p>
 <p>Sin embargo en esta ocasión en lugar de definir cada campo a mano, vamos
 a hacer que Django los genere automáticamente. Para ello indicaremos el
 modelo dentro de una clase Meta, así como la lista campos que queremos
 generar y que abstraeremos de la vista:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image768.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image768.png" /></p>
 <p>Ahora de vuelta a las vistas que manejan formularios, simplemente
 indicaremos el atributo form_class y le pasaremos este formulario.
 Además ahora podemos borrar el campo fields porque ya viene incluido en
 el formulario:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image461.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image475.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image461.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image475.png" /></p>
 <p>Si accedemos a la página para crear páginas, valga la redundancia, no
 habrá cambiado nada y continuará funcionando sin problemas:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image735.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image735.png" /></p>
 <p>Ahora viene la parte interesante,pues al estar trabajando en un
 formulario extendido podemos añadir nuestros queridos campos Widget con
 configuraciones extendidas:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image415.png" />\
-          ‘content’: <img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image585.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image156.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image415.png" />\
+          ‘content’: <img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image585.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image156.png" /></p>
 <p>También podemos esconder las labels sobreescribiendo el diccionario
 labels y poniendo sus valores vacíos:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image912.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image912.png" /></p>
 <p>¿Y sabéis lo mejor de todo? Hasta podemos establecer el widget de
 CKeditor:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image586.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image718.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image586.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image718.png" /></p>
 <p>Sin embargo no basta sólo con añadirlo en el form, para que aparezca
 debemos cargar los ficheros estáticos tal como indican en la
 documentación:
 <a href="https://github.com/django-ckeditor/django-ckeditor#outside-of-django-admin">https://github.com/django-ckeditor/django-ckeditor#outside-of-django-admin</a> </p>
 <p>Podríamos hacerlo en el pages_menu.html, a fin de cuentas es sólo
 cargar scripts y así lo tendremos centralizado:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image540.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image540.png" /></p>
 <p>Con esto tenemos un formulario genial funcionando sin problemas:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image313.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image313.png" /></p>
 <p>Sólo nos faltaría corregir pequeños detalles, como poner la disposición
 en parágrafos y cambiar el botón de envío por uno más elegante:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image337.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image177.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image337.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image177.png" /></p>
 <p>Ahora un truco de veterano. ¿Os habéis fijado que el widget de CKeditor
 no es adaptativo en el ancho? ¿Ni en nuestro editor de páginas, ni
 tampoco en el panel de administrador? Para arreglarlo necesitaremos
@@ -1601,31 +1599,31 @@ código que vamos a modificar, no es mucho.</p>
 Simplemente vamos a crear dentro de la app pages un
 directorio static/pages/css con un  fichero llamado por
 ejemplo custom_ckeditor.css. Dentro pondremos lo siguiente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image174.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image174.png" /></p>
 <p>A continuación tendremos que cargar este CSS siempre que mostremos el
 editor. Podemos cargarlo de la forma tradicional justo debajo de los
 scripts de ckeditor en el page_menu.html:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image263.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image263.png" /></p>
 <p>Si reiniciamos el servidor y recargamos veremos que el textarea ya es
 adaptativo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image262.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image262.png" /></p>
 <p>Ahora tenemos que solucionar el del administrador. ¿Habrá alguna forma
 fácil o tendremos que modificar los templates? Pues tranquilos, existe
 una forma extremadamente sencilla que podemos definir en el propio
 admin.py de la app pages:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image123.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image123.png" /></p>
 <p>Ahora si volvemos al admin, veréis que también es adaptativo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image238.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image238.png" /></p>
 <p>Ya sólo nos falta adaptar el formulario de UpdateView para que muestre
 todo igual que esta:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image64.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image64.png" /></p>
 <p>Así como el template (podemos copiar todo el form y sólo cambiar el
 texto del botón):</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image43.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image43.png" /></p>
 <p>Y de igual forma podríamos copiar los estilos del botón para ponerlos en
 el formulario de borrado:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image745.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image36.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image745.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image36.png" /></p>
 <p>Con esto tenemos todas las vistas CRUD bien bonitas y acabamos esta
 interesante lección. En los recursos os dejo los enlaces a la
 documentación sobre Formularios y django-ckeditor por si queréis seguir

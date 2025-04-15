@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1550,15 +1548,15 @@ div.my-img{text-align:center;margin-top:20px}
 seguridad importante en el momento de añadir un mensaje a un Hilo. Os lo
 voy a demostrar con un Test.</p>
 <p>Empezaremos añadiendo un tercer usuario:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image538.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image538.png" /></p>
 <p>Ahora crearemos un test que intente añadir un tercer mensaje al hilo
 creado por user3 pese a que él no forme parte del hilo. Se supone que si
 un usuario no forma parte del hilo no debe ser capaz de añadir un
 mensaje, así que vamos a suponer que no, y por lo tanto éste contendrá
 sólo los dos primeros mensajes:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image352.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image352.png" /></p>
 <p>Como podéis suponer, al ejecutar el test nos fallará:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image452.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image452.png" /></p>
 <p>Estaba claro como el agua que se añadiría, porque en ningún momento
 hemos comprobado lo contrario. Tenemos que refactorizar para
 solucionarlo.</p>
@@ -1571,9 +1569,9 @@ recursos de la lección:
 <p>Esta señal permite detectar cuando un campo Many2Many es modificado, así
 que siguiendo el ejemplo de la documentación podríamos hacer lo
 siguiente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image286.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image286.png" /></p>
 <p>Y abajo del todo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image918.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image918.png" /></p>
 <p>Como véis esta forma de crear la señal es directa y no requiere el uso
 de un decorador @receiver.</p>
 <p>En todo caso, no sabemos muy bien qué nos vamos a encontrar, así que
@@ -1584,34 +1582,34 @@ post_add, indicando el momento justo antes o después de guardar los
 registros. Luego tenemos pk_set, un conjunto donde se pasan las PK de
 los mensaje que se añadirán o han sido añadidos, dependiendo del
 momento:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image903.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image903.png" /></p>
 <p>Vamos a ejecutar sólo el test actual para mostrar estos valores al
 llamarse la señal:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image348.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image112.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image348.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image112.png" /></p>
 <p>Así se ve cómo efectivamente la señal capta dos momentos en el Thread 1,
 pre_add y post_add con las PK de los mensajes.</p>
 <p>A nosotros nos interesa el pre_add, porque en él comprobaremos si algún
 mensaje tiene un usuario que no forma parte del Hilo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image219.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image363.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image219.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image363.png" /></p>
 <p>Ahora sólo tenemos que sacar el mensaje de este usuario del conjunto
 pk_set. Sin embargo no podemos hacerlo dentro de la iteración, ya que
 afectaría al conjunto y quedaría inconsistente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image742.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image429.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image742.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image429.png" /></p>
 <p>En su lugar podemos simplemente almacenar los mensajes fraudulentos en
 otro conjunto:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image239.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image239.png" /></p>
 <p>Los vamos agregando ahí a medida que los encontramos:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image426.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image426.png" /></p>
 <p>Ya al final de todo, fuera de la iteración, hacemos podemos utilizar el
 método difference_update de los conjuntos para encontrar los elementos
 no comunes (1, 2) entre el conjunto pk_set y false_pk_set,
 actualizándolos en pk_set y filtrando así los mensajes:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image798.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image798.png" /></p>
 <p>Si ejecutamos el Test de nuevo, esta vez sí nos debería funcionar:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image455.png" /> <img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image762.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image455.png" /> <img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image762.png" /></p>
 <p>Esto sí que es TDD en toda regla, ya que a fuerza de refactorizar hemos
 conseguido validar un test sin alterar su estructura.</p>
 <p>Si esta lección os ha parecido interesante, entonces la siguiente os

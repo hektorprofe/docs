@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -2210,7 +2208,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="n">monitor</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
 </code></pre></div>
 </div>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//images/tkinter/31.png"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/images/tkinter/31.png"/></div>
 
 <p>Muy bien, ya tenemos el diseño base. Ahora toca la lógica. Vamos a identificar bien todas las funciones que tendrá nuestro editor de texto, y podemos mostrar un mensaje utilizando nuestro monitor:</p>
 <div class="admonition info">
@@ -2235,7 +2233,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="n">filemenu</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Guardar como&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">guardar_como</span><span class="p">)</span>
 </code></pre></div>
 </div>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//images/tkinter/32.png"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/images/tkinter/32.png"/></div>
 
 <p>Perfecto, ahora nos falta implementar la lógica de las funciones.</p>
 <h2 id="nuevo-fichero">Nuevo fichero<a class="headerlink" href="#nuevo-fichero" title="Permanent link">&para;</a></h2>
@@ -2286,7 +2284,7 @@ div.my-img{text-align:center;margin-top:20px}
         <span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">ruta</span> <span class="o">+</span> <span class="s2">&quot; - Mi editor&quot;</span><span class="p">)</span>  <span class="c1"># Cambiamos el título</span>
 </code></pre></div>
 </div>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//images/tkinter/33.png"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/images/tkinter/33.png"/></div>
 
 <p>Muy bien, ya podemos abrir ficheros. Vamos a aprovechar y antes de continuar, importante que reiniciemos el título de ventana y la ruta si hacemos Nuevo. Si no lo hacemos, como mínimo la ruta, a la hora de guardar no podremos distinguir si un fichero es nuevo, o se ha abierto desde el disco duro:</p>
 <div class="admonition info">
@@ -2344,7 +2342,7 @@ div.my-img{text-align:center;margin-top:20px}
         <span class="n">mensaje</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;Guardado cancelado&#39;</span><span class="p">)</span>
 </code></pre></div>
 </div>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//images/tkinter/34.png"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/images/tkinter/34.png"/></div>
 
 <p>Código final:</p>
 <div class="admonition info">

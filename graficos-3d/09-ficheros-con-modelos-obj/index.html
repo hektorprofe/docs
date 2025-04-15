@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -753,9 +751,9 @@ div.my-img{text-align:center;margin-top:20px}
 <p>El formato de fichero elegido para importar los modelos es <a href="https://en.wikipedia.org/wiki/Wavefront_.obj_file">Wavefront OBJ</a>. Es el más simple y contiene la información necesaria para que nuestro programa pueda dibujar los objetos.</p>
 <p>Sinceramente no tengo ni idea de utilizat <a href="https://www.blender.org/">Blender</a> pero quiero crear algunos modelos y guardarlos para poder trabajar con ellos, así que lo he descargado e instalado.</p>
 <p>Este programa es complejo pero por suerte para mí un proyecto empieza con un cubo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-34.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-34.png" /></p>
 <p>Así que simplemente voy a seleccionarlo y exportarlo como <code>obj</code> en <code>File &gt; Export &gt; Wavefront .obj</code>, lo llamaré <code>Cube.obj</code> y lo guardaré en el diretorio <code>assets</code> de mi proyecto, pero atención, debemos asegurarnos de que exporte el modelo con caras triangulares ya que por defecto lo hace en caras cuadradas y nuestro sistema no es compatible:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-35.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-35.png" /></p>
 <p>El contenido de este fichero es el siguiente:</p>
 <div class="highlight"><pre><span></span><code># Blender v3.1.2 OBJ File: &#39;&#39;
 # www.blender.org
@@ -892,17 +890,17 @@ f 5/1/1 3/2/1 1/3/1
 <span class="p">}</span>
 </code></pre></div>
 <p>Si funciona, el resultado pues será el aburrido cubo de siempre...</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-37.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-37.png" /></p>
 <p>Pero ahora podemos hacer algo más divertido, podemos crear alguna forma interesante en blender y exportarla.</p>
 <p>Simplemente podemos crear un proyecto vacío, borrar el cubo y en <code>Add &gt; Mesh</code> añadir alguna forma que nos guste, como un cono:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-38.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-38.png" /></p>
 <p>O el mono de blender:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-39.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-39.png" /></p>
 <p>Ahora si todo va bien, solo cambiando el nombre del fichero deberíamos ser capaces de cargar los distintos modelos.</p>
 <p>Por ejemplo el cono de <code>cone.obj</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-06.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-06.gif" /></p>
 <p>Y el mono de <code>monkey.obj</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-07.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-07.gif" /></p>
 <p>En esta sección hemos dado un paso adelante enorme y ya no estamos limitados a trabajar simplemente con cubos.</p>
 <hr />
 <p><small class="edited"><i>Última edición: 05 de Junio de 2022</i></small></p>

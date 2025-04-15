@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -710,7 +708,7 @@ div.my-img{text-align:center;margin-top:20px}
 <div class="highlight"><pre><span></span><code><span class="n">fopen_s</span><span class="p">(</span><span class="o">&amp;</span><span class="n">file</span><span class="p">,</span><span class="w"> </span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;rb&quot;</span><span class="p">);</span>
 </code></pre></div>
 <p>Tengo esta textura en un png llamado <code>cube.png</code> guardado en el directorio <code>res</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-101.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-101.png" /></p>
 <p>Lo que haré es inicializar el mesh <code>cube.obj</code> pasándole también la ruta de la textura, todo lo demás referente a la textura actual puedo borrarlo de la ventana:</p>
 <div class="highlight"><pre><span></span><code><span class="cm">/* Mesh loading */</span>
 <span class="n">mesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mesh</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;res/cube.obj&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;res/cube.png&quot;</span><span class="p">);</span>
@@ -790,10 +788,10 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>Si ejecutamos el programa notaremos algo extraño:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-102.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-102.png" /></p>
 <p>La verdad es que nos falta configurar las coordenadas UV y por eso se rellena todo el cubo con el color del primer píxel.</p>
 <p>En la próxima sección voy a implementar la lectura de las coordenadas UV desde ficheros obj, pero antes fijémonos en el color del primer píxel, no concuerda con el de la textura:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-103.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-103.png" /></p>
 <p>Esto es debido a que la biblioteca <code>upng</code> únicamente soporta colores RGB, RGBA. escala de grises y escala de grises con transparencia alpha. Sin embargo nuestro buffer de color está configurado sobre una textura SDL con formato de píxel <code>SDL_PIXELFORMAT_RGBA8888</code>. </p>
 <p>Según la <a href="https://wiki.libsdl.org/SDL_PixelFormatEnum">wiki de SDL</a> un formato compatible con el que lee <code>upng</code> sería <code>SDL_PIXELFORMAT_RGBA32</code>, así que vamos a cambiarlo:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">Window::Setup</span><span class="p">()</span>
@@ -803,7 +801,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>Con esto ya deberíamos dibujar el color correcto del primer píxel:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-104.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-104.png" /></p>
 <hr />
 <p><small class="edited"><i>Última edición: 05 de Junio de 2022</i></small></p>
                   

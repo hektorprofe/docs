@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -780,11 +778,11 @@ div.my-img{text-align:center;margin-top:20px}
 <p>En estos momentos estamos controlando la profundidad realizando una media entre los vértices de un triángulo. </p>
 <p>En lugar de aplicar la profunidad a nivel de triángulo debemos calcularla para cada píxel que se va a renderizar y para ello haremos uso de la técnica del <strong>Z-Buffer</strong>, también llamado <em>buffer</em> de profundidad.</p>
 <p>Como su nombre indica se basa en crear una array del tamaño de píxeles de la pantalla y almacenar en él la profundidad para cada uno de ellos.</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-119.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-119.png" /></p>
 <p>Mediante un <em>zbuffer</em> podemos dibujar correctamente situaciones que el algoritmo del pintor no es capaz de manejar:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-65.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-65.png" /></p>
 <p>A menudo se representa con valores en escala de grises. Los colores brillantes y oscuros son opuestos en cercanía y lejanía o viceversa, dependiendo de lo que se decida:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-120.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-120.png" /></p>
 <p>El caso es que como los valores interpolados de <code>Z</code> no son lineales en el triángulo no los podemos utilizar para almacenar la profundidad. ¿Qué utilizaremos entonces? Pues el recíproco de la profundidad <code>1/W</code> que tenemos guardado. De hecho podríamos llamarlo <strong>W-Buffer</strong>.</p>
 <p>En cualquier caso para implementar este buffer vamos a crearlo a la par que el <code>colorBuffer</code> pero público para tener acceso en otras clases:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="o">:</span>
@@ -817,7 +815,7 @@ div.my-img{text-align:center;margin-top:20px}
 </code></pre></div>
 <p>La profundidad inicial de cada píxel será <code>1.0</code> porque actualizaremos el valor al detectar otro píxel con un valor menor que el actual, y que al estar normalizado siempre será un valor entre 0 y 1. </p>
 <p>Esto es por el hecho de que en nuestro sistema la <code>Z</code> crece hacia dentro de la pantalla y cuanto menor sea más cerca estará (está basado en la regla de la mano izquierda):</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-121.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-121.png" /></p>
 <p>Una vez dibujamos un píxel de la textura en <code>DrawTexel</code>, justo al final de todo, actualizaremos la profundidad de ese píxel en el <code>depthBuffer</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">Window::DrawTexel</span><span class="p">(</span><span class="n">Window</span><span class="w"> </span><span class="o">*</span><span class="n">window</span><span class="p">,</span><span class="w"> </span><span class="c1">//...</span>
 <span class="p">{</span>
@@ -844,7 +842,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">interpolatedReciprocalW</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">depthBuffer</span><span class="p">[(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">windowWidth</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="p">])</span><span class="w"> </span><span class="c1">// ...</span>
 </code></pre></div>
 <p>Con esto tendremos el buffer de profundidad funcionando perfectamente y las pinzas del cangrejo ya no se verán por delante:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-37.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-37.gif" /></p>
 <p>Y ya lo tenemos, aunque personalmente todavía añadiría una pequeña comprobación para no dibujar fuera del tamaño de los buffers:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Security check to not draw outside the buffers size</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">bufferPosition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">windowWidth</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
@@ -989,7 +987,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>Con esto ya tendremos los triángulos sin texturas rasterizados con profundidad:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-122.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-122.png" /></p>
 <p>Ya no necesitamos calcular la profundidad media ni ordenar los triángulos:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">Mesh::Update</span><span class="p">()</span>
 <span class="p">{</span>
@@ -1008,7 +1006,7 @@ div.my-img{text-align:center;margin-top:20px}
 <p>Tendremos que cambiar todas las referencias a los triángulos ordenados <code>sortedTriangles</code> de nuevo por <code>triangles</code> a secas.</p>
 <h2 id="rasterizado-de-lineas-3d">Rasterizado de líneas 3D<a class="headerlink" href="#rasterizado-de-lineas-3d" title="Permanent link">&para;</a></h2>
 <p>El problema que tenemos actualmente es que las líneas no tienen en cuenta la profundidad y el <em>wireframe</em> se ve muy raro:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-123.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-123.png" /></p>
 <p>¿Qué tal si también creamos un método que permita dibujar líneas con profundidad? O lo que es lo mismo, líneas 3D. Podemos crear una nueva versión <code>DrawTriangle3D</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">Window::DrawTriangle3D</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x0</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">w0</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y1</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">w1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x2</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y2</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">w2</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">color</span><span class="p">)</span>
 <span class="p">{</span>
@@ -1069,7 +1067,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>En principio con esto las líneas 3D harán uso del <em>buffer</em> de profundidad:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-124.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-124.png" /></p>
 <h2 id="rasterizado-de-las-normales">Rasterizado de las normales<a class="headerlink" href="#rasterizado-de-las-normales" title="Permanent link">&para;</a></h2>
 <p>Ahora que contamos con una función para dibujar líneas 3D sería interesante añadir una opción en la interfaz para dibujar las normales de los triángulo y ver su dirección:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Window</span>
@@ -1140,7 +1138,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>El resultado es genial, como las líneas 3D están transformadas y proyectadas se comportan en conjunto con la malla.</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-125.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-125.png" /></p>
 <hr />
 <p><small class="edited"><i>Última edición: 05 de Junio de 2022</i></small></p>
                   

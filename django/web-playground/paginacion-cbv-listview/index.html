@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1557,15 +1555,15 @@ páginas para navegar sin saturarnos de datos.</p>
 hablando en plata, un coñazo, pero con las ListView es mega fácil. Sólo
 debemos definir un atributo llamado “paginate_by” donde estableceremos
 el número de registros por página:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image448.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image448.png" /></p>
 <p>Si volvemos a la lista de perfiles ahora veremos que nos aparecen solo
 dos:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image413.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image413.png" /></p>
 <p>Esto es debido a que estamos mostrando la primera página del paginador.
 Para cargar la segunda página debemos añadir un parámetro GET llamado
 page con el número 2 en la url:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image206.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image502.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image206.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image502.png" /></p>
 <p>Bueno, pues así es como gestiona automáticamente nuestra ListView la
 paginación. Sólo debemos maquetar un menú de paginación en la parte
 inferior ayudándonos de los Template Tags del paginador. Esto sí que es
@@ -1573,8 +1571,8 @@ un poco pesado, por eso os lo voy a dar hecho, podéis copiar el que
 tengo en mi Gist. Lo he creado tomando como base la paginación de
 Bootstrap:</p>
 <p><a href="https://gist.github.com/hcosta/1c29ac407b6d23afab505ab8cb1ccb36">https://gist.github.com/hcosta/1c29ac407b6d23afab505ab8cb1ccb36</a> </p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image314.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image196.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image314.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image196.png" /></p>
 <p>Empezando por arriba, el Tag is_paginated nos sirve para saber si
 debemos mostrar la paginación. Si por ejemplo paginásemos a 10
 resultados no nos aparecería porque sólo tenemos 4 perfiles.</p>
@@ -1590,11 +1588,11 @@ al número. Sólo hay que jugar un poco con todos estos elementos para
 maquetar un paginador la mar de interesante.</p>
 <p>Por cierto, no sé si os habréis fijado pero tenemos un warning al usar
 el paginador:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image556.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image556.png" /></p>
 <p>Esto es debido a que no tenemos una ordenación por defecto para nuestros
 perfiles. Solucionarlo es tan fácil como volver a registration/models y
 añadir un campo Meta order:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image836.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image836.png" /></p>
 <p>Si queréis más información os dejo enlaces a la documentación oficial,
 tanto de Django como de Bootstrap: \
 <a href="https://docs.djangoproject.com/en/dev/topics/pagination/">https://docs.djangoproject.com/en/dev/topics/pagination/</a> \

@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1553,19 +1551,19 @@ detallado en la documentación, como siempre os comparto el enlace en los
 recursos.</p>
 <p><a href="https://docs.djangoproject.com/en/dev/topics/forms/#rendering-fields-manually">https://docs.djangoproject.com/en/dev/topics/forms/#rendering-fields-manually</a> </p>
 <p>Vamos a sustituir la parte del renderizado por nuestro código:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image489.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image489.png" /></p>
 <p>Ahora vamos a sustituir los campos Nombre, Email y Mensaje por lo
 siguiente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image256.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image256.png" /></p>
 <p>Obviamente hacerlo de esta forma es más trabajoso pero también más
 elegante, ya que podemos añadir estilos a la validación de errores.
 Justo después de cada campo podemos mostrar sus errores específicos con
 {{ form.campo.errors }}. Si existen errores Django genera una lista con
 la clase ‘errorList’ (ver código fuente). Como yo ya he maquetado de
 antemano los estilos de esa clase nos saldrá bien:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image397.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image397.png" /></p>
 <p>Vamos a ver como queda:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image303.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image303.png" /></p>
 <p>Va tomando forma, pero todavía nos faltan unos pequeños detalles: los
 atributos internos de los inputs y el textarea.</p>
 <p>Estas configuraciones nos permitirán modificar las longitudes mínimas y
@@ -1573,10 +1571,10 @@ máximas, o cualquier atributo del campo sobreescribiendo el diccionario
 attrs a partir del widget, lo cual es útil para añadir una clase css al
 campo y darle la apariencia que tenía en nuestra maqueta, entre otras
 muchas cosas:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image783.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image783.png" /></p>
 <p>Y con esto ahora sí tenemos el formulario perfecto, sólo nos faltará
 implementar el envío de emails:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image278.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image278.png" /></p>
 <hr />
 <p><small class="edited"><i>Última edición: 25 de Marzo de 2021</i></small></p>
                   

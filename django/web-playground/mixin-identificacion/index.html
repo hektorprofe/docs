@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1552,7 +1550,7 @@ Probad lo siguiente.</p>
 <p>Si vamos al panel de admin y cerramos la sesión, al volver al apartado
 de páginas está claro que no nos aparece el menú de administrar páginas.
 ¿Todo bien no? Pero y si accedemos manualmente a la url /pages/create/ ?</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image594.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image594.png" /></p>
 <p>Pues que cosas… parece que carga el formulario ¿Nos dejará crear una
 página?</p>
 <p>Sí, y no sólo podemos crear, también podemos editar y borrar.</p>
@@ -1566,11 +1564,11 @@ lugar de controlar la respuesta permite controlar la petición. Ese
 método es dispatch.</p>
 <p>Si redefinimos dispatch podremos comprobar la request, y dentro de la
 request si hay un usuario identificado:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image654.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image67.png" /> <img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image67.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image654.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image67.png" /> <img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image67.png" /></p>
 <p>Pero esto es sólo un debug, lo que deberíamos hacer es redireccionar al
 visitante al LOGIN para que se identifique:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image558.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image558.png" /></p>
 <p>Y ahora viene la gran pregunta. ¿Debemos sobreescribir el dispatch en
 toooooodas las vistas donde queramos que el usuario se identifique? Y la
 respuesta es: por supuesto que no! Para eso existen los Mixins.</p>
@@ -1580,15 +1578,15 @@ queramos dándole prioridad a su implementación antes que la de otra
 clase.</p>
 <p>Fijaros, vamos a trasladar nuestro dispatch a un nuevo mixin, podemos
 crearlo en el propio views.py:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image530.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image530.png" /></p>
 <p>Esta es nuestra funcionalidad especial, ahora sólo debemos hacer que
 nuestras CBV hereden de él dándole prioridad durante la herencia, es
 decir, poniendo más a la izquierda:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image513.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image513.png" /></p>
 <p>Esto básicamente sobreescribirá el méotod dispath del CreateView con el
 dispath de nuestro Mixin, y así tendremos nuestra funcionalidad
 implementada. Vamos a probarlo…</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image584.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image584.png" /></p>
 <p>Con esto hemos aprendido como se crea y utiliza un Mixin, si queréis más
 información os dejaré documentación al respecto, tened en cuenta que
 podéis sobreescribir cualquier atributo o método, por lo que son muy

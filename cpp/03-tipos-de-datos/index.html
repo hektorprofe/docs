@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1119,7 +1117,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-28.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-28.png" /></p>
 <p>En conclusión:</p>
 <ul>
 <li>En la memoria los datos se almacenan en grupos de bits con 0 y 1.</li>
@@ -1146,7 +1144,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="kt">int</span><span class="w"> </span><span class="n">numero</span><span class="w"> </span><span class="p">{</span><span class="mi">100</span><span class="p">};</span><span class="w">  </span><span class="c1">// Inicialización uniforme</span>
 </code></pre></div>
 <p>Por defecto un entero sin asignar tiene un valor de 0:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-29.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-29.png" /></p>
 <p>Ya que hablamos de asignaciones, podemos asignar múltiples variables en una única línea:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">num1</span><span class="p">{</span><span class="mi">100</span><span class="p">},</span><span class="w"> </span><span class="n">num2</span><span class="p">{</span><span class="mi">200</span><span class="p">};</span>
 </code></pre></div>
@@ -1155,10 +1153,10 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">res</span><span class="p">;</span>
 </code></pre></div>
 <p>Si intentamos asignar un valor mayor de 4 bytes o un número fraccionario (mediante una coma), dará error:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-30.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-31.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-30.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-31.png" /></p>
 <p>Sin embargo sí es posible realizar una conversión de tipo fraccionario a entero con redondeo de medio decimal implícito mediante el operador <code>=</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-32.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-32.png" /></p>
 <p>Todavía hay mucho que hablar sobre los números, seguiremos próximamente.</p>
 <h2 id="modificadores-de-enteros">Modificadores de enteros<a class="headerlink" href="#modificadores-de-enteros" title="Permanent link">&para;</a></h2>
 <p>En el lenguaje C++ encontramos una serie de funcionalidades conocidas como modificadores que permiten cambiar el funcionamiento de un tipo de dato.</p>
@@ -1179,7 +1177,7 @@ div.my-img{text-align:center;margin-top:20px}
 </code></pre></div>
 <p>También existen dos tipos que pueden utilizarse como modificadores llamados <code>short</code> y <code>long</code> para optimizar el uso de la memoria dependiendo del rango de números que necesitemos almacenar.</p>
 <p>En la web <a href="https://es.cppreference.com/w/cpp/language/types">https://es.cppreference.com/w/cpp/language/types</a> podemos consultar la siguiente tabla donde se muestran todas las combinaciones de <code>short</code>, <code>int</code>, <code>long</code> con y sin signo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-33.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-33.png" /></p>
 <h2 id="numeros-fraccionarios">Números fraccionarios<a class="headerlink" href="#numeros-fraccionarios" title="Permanent link">&para;</a></h2>
 <p>Dejando de lado los números enteros, también podemos trabajar con números fraccionarios, cuyos tipos se conocen como tipos de punto flotante y encontramos esencialmente tres dependiendo de la precisión decimal que necesitemos:</p>
 <ul>
@@ -1207,13 +1205,13 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">num2</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w">  </span><span class="c1">// 1.0011223344556678949</span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">num3</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w">  </span><span class="c1">// 1.0011223344556677889</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-36.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-36.png" /></p>
 <p>En realidad no son aleatorios, pero para entender la razón por la que sucede esto habría que remitirnos al estándar <a href="https://es.wikipedia.org/wiki/IEEE_754">IEEE 754</a> donde se explica el funcionamiento y gestión de los números en coma flotante, algo demasiado complejo como para explicarlo aquí.</p>
 <p>Cabe mencionar que a parte de la notación fija, los números fraccionarios también permiten la notación científica con exponentes, tanto positivos como negativos:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">num1</span><span class="p">{</span><span class="mf">123e6</span><span class="p">};</span><span class="w">  </span><span class="c1">// 123 * 10^6 =&gt; 123000000</span>
 <span class="kt">double</span><span class="w"> </span><span class="n">num2</span><span class="p">{</span><span class="mf">123e-6</span><span class="p">};</span><span class="w"> </span><span class="c1">// 123 * 10^-6 =&gt; 0.000123</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-37.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-37.png" /></p>
 <p>Un par de curiosidades para terminar.</p>
 <p>Ya vimos que dividir un número entero entre cero provoca un error que finaliza la ejecución:</p>
 <div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w">  </span><span class="c1">// Error</span>
@@ -1227,7 +1225,7 @@ div.my-img{text-align:center;margin-top:20px}
 <p>Por último, si dividimos 0 entre 0.0, el sistema devolverá <code>nan</code> (not a number), entendible ahora sí como un resultado indeterminado:</p>
 <div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w">  </span><span class="c1">// nan</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-38.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-38.png" /></p>
 <p>Para más información echad un vistazo a <a href="https://es.wikipedia.org/wiki/IEEE_754">https://es.wikipedia.org/wiki/IEEE_754</a>.</p>
 <h2 id="valores-booleanos">Valores booleanos<a class="headerlink" href="#valores-booleanos" title="Permanent link">&para;</a></h2>
 <p>Otro tipo de dato esencial en la programación es el que sirve para representar un valor lógico o racional con únicamente dos opciones: <strong>verdadero</strong> y <strong>falso</strong>.</p>
@@ -1257,7 +1255,7 @@ div.my-img{text-align:center;margin-top:20px}
 <div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 </code></pre></div>
 <p>Los caracteres que se pueden representar no son adrede, sino que se encuentran establecidos en el código ASCII <a href="https://en.cppreference.com/w/cpp/language/ascii">https://en.cppreference.com/w/cpp/language/ascii</a>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-39.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-39.png" /></p>
 <p>Cada símbolo tiene un número entero asociado, a través del cuál podemos consultar el respectivo carácter:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">char</span><span class="w"> </span><span class="n">valor</span><span class="p">{</span><span class="mi">65</span><span class="p">};</span><span class="w"> </span><span class="c1">// Código ASCII del carácter &#39;A&#39;</span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">valor</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
@@ -1289,7 +1287,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>Cuyo resultado sería el siguiente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-40.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-40.png" /></p>
 <p>¿Y cómo se almacena no solo un carácter sino varios para representar un texto? Pues los textos, conocidos como  <strong>cadenas de caracteres</strong>, son tradicionalmente <strong>arreglos</strong> (sucesiones) de múltiples caracteres, un tema que exploraré más adelante.</p>
 <h2 id="tipo-automatico">Tipo automático<a class="headerlink" href="#tipo-automatico" title="Permanent link">&para;</a></h2>
 <p>Siempre que definimos una variable debemos indicar el tipo de dato para almacenar el espacio necesario en la memoria, sin embargo desde C++11 podemos dejar al propio lenguaje deducir el tipo de dato a partir del valor literal asignado durante la definición.</p>
@@ -1315,20 +1313,20 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">var8</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">var8</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; bytes&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 </code></pre></div>
 <p>Este sería el resultado:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-42.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-42.png" /></p>
 <p>Cabe mencionar que si dejamos que el sistema defina el tipo y le asignamos un sufijo <code>unsigned</code>, si sobrescribimos el valor con un negativo, resultará en un funcionamiento no espero del dato:</p>
 <div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">numero</span><span class="p">{</span><span class="mi">10u</span><span class="p">};</span>
 <span class="n">numero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-21</span><span class="p">;</span><span class="w">  </span><span class="c1">// ¡Cuidado!</span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">numero</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-43.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-43.png" /></p>
 <p>También si establecemos un tipo como un carácter y luego lo sobrescribimos por algo como un flotante:</p>
 <div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">valor</span><span class="p">{</span><span class="sc">&#39;A&#39;</span><span class="p">};</span>
 <span class="n">valor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14f</span><span class="p">;</span><span class="w"> </span><span class="c1">// ¡Cuidado!</span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">valor</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 </code></pre></div>
 <p>En este caso se devolvería lo siguiente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-44.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-44.png" /></p>
 <p>En conclusión este tipo es muy cómodo, pero debemos tener cuidado con sus valores de sobreescritura.</p>
 <h2 id="ambito-de-las-variables">Ámbito de las variables<a class="headerlink" href="#ambito-de-las-variables" title="Permanent link">&para;</a></h2>
 <p>El ámbito de una variable es el espacio donde se encuentra accesible dentro del programa. Básicamente hay dos tipos de ámbito: <code>local</code> y <code>global</code>.</p>
@@ -1455,7 +1453,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>Lo que ocurre es ni más ni menos que un <strong>overflow</strong>, un reinicio a 0 para el 256 y así sucesivamente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-61.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-61.png" /></p>
 <p>El mismo caso pero por abajo ocurrirá a la inversa, un <strong>underflow</strong>, pasando de 0 a 255:</p>
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 
@@ -1471,7 +1469,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-62.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-62.png" /></p>
 <p>Es muy importante tener en cuenta esta situación en las conversiones entre tipo ya que en estos casos no ocurrirá un error y simplemente se tratará el desbordamiento como un reinicio del tamaño.</p>
 <hr />
 <p><small class="edited"><i>Última edición: 08 de Mayo de 2022</i></small></p>

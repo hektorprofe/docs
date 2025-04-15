@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1611,7 +1609,7 @@ div.my-img{text-align:center;margin-top:20px}
 </code></pre></div></p>
 <p>Hecho esto ya podemos borrar el código de referencia que teníamos arriba comentado, sino nos dará error porque detectar bloques repetidos.</p>
 <p>Vamos a probar qué tal se ve nuestra página:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/24.png"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/24.png"/></div>
 
 <p>Bueno, parece que ha cambiado un poco, pero claramente no es lo que estábamos esperando. ¿Qué está sucediendo? Pues que nos se están cargando los recursos estáticos.</p>
 <p>Los recursos estáticos son esos contenidos que forman parte del maquetado frontend, por ejemplo los css, los javascripts y las imágenes, de ahí que no se vea nada. ¿Por qué sucede esto?</p>
@@ -1621,7 +1619,7 @@ div.my-img{text-align:center;margin-top:20px}
 <p>Es sólo un servicio para utilizar durante el desarrollo y no está pensado para manejar ficheros estáticos. De esto se encargaría por ejemplo Nginx o Apache que son servidores pensados para la fase de producción. </p>
 <p>¿Entonces no podemos ver como queda nuestra web en la fase de desarrollo? Pues sí, sí que podemos, pero debemos realizar algunas configuraciones.</p>
 <p>Lo primero es crear un directorio en nuestra app core para almacenar los contenidos estáticos, la lógica es la misma que con el directorio templates, asi que crearemos un directorio <strong>static</strong> y dentro otro llamado <strong>core</strong>, el nombre de la app, y dentro vamos a copiar todos los directorios de la maqueta que incluyen este tipo de ficheros:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/25.png"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/25.png"/></div>
 
 <p>Ahora sólo nos falta decirle a nuestro template que cargue los ficheros estáticos. Vamos de vuelta a nuestro <strong>base.html</strong>, y justo antes de llamar nuestros css y javascripts ejecutaremos el siguiente template tag:</p>
 <p><code>core/templates/core/base.html</code>
@@ -1651,7 +1649,7 @@ div.my-img{text-align:center;margin-top:20px}
 &lt;script src=&quot;{% static &#39;core/js/clean-blog.min.js&#39; %}&quot;&gt;&lt;/script&gt;
 </code></pre></div></p>
 <p>Una vez lo tenemos vamos a probar de nuevo nuestra web:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/26.png"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/26.png"/></div>
 
 <p>Ahora ya nos carga los recursos, menos la imagen de la cabecera que no la hemos adaptado. Podríamos hacerlo ahora, pero como se nos alargaría mucho la lección lo haremos en la siguiente.</p>
 <hr />

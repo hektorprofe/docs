@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1549,7 +1547,7 @@ div.my-img{text-align:center;margin-top:20px}
 <p>Ahora mismo nuestra app Pages tiene dos vistas, una para mostrar un
 resumen de las páginas (pages) y otra para cada página individual
 (page).</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image180.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image180.png" /></p>
 <p>Pues os gustará saber que existen dos CBV pensadas para ambas
 situaciones, ya sea devolver una instancia o una lista, y son ni más ni
 menos que DetailView y ListView, vamos a utilizarlas.</p>
@@ -1560,33 +1558,33 @@ la cual llegamos fácilmente desde
 <a href="https://ccbv.co.uk/projects/Django/2.0/django.views.generic.list/ListView/">https://ccbv.co.uk/projects/Django/2.0/django.views.generic.list/ListView/</a> \
 <a href="https://docs.djangoproject.com/en/dev/ref/class-based-views/generic-display/#django.views.generic.list.ListView">https://docs.djangoproject.com/en/dev/ref/class-based-views/generic-display/#django.views.generic.list.ListView</a> </p>
 <p>Sirviéndonos del ejemplo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image104.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image470.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image462.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image104.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image470.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image462.png" /></p>
 <p>Ahora adaptamos la URL…</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image147.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image147.png" /></p>
 <p>Ahora vamos a recargar la web y veremos un error:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image209.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image209.png" /></p>
 <p>Como véis de forma automática está esperando un template llamado
 page_list.html en lugar de pages.html. Tenemos dos opciones, o
 redefinir el atributo template_name o cambiar el nombre del template
 directamente, vamos a hacer la segunda:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image825.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image825.png" /></p>
 <p>Si ahora actualizamos la /pages/ veremos que no aparece ninguna página:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image405.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image405.png" /></p>
 <p>Tranquilos, esto no significa que no lo hayamos hecho bien, sino que por
 defecto nuestra lista de páginas no se envía con el nombre “pages”, sino
 con uno genérico de las ListView, y que tal como pone en el ejemplo de
 la documentación es:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image567.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image567.png" /></p>
 <p>Por tanto sólo debemos ir a nuestro template y cambiar el nombre de esta
 variable:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image260.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image260.png" /></p>
 <p>Aunque también se acepta por defecto el nombre del modelo seguido de
  _list:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image178.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image178.png" /></p>
 <p>Actualizamos de nuevo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image322.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image322.png" /></p>
 <p>Y ahí tenemos nuestra ListView. ¿Habéis visto cómo utilizando una
 ListView nos hemos ahorrado un montón de código? E ahí la gran utilidad
 de las CBV.</p>
@@ -1594,32 +1592,32 @@ de las CBV.</p>
 individual:</p>
 <p><a href="https://ccbv.co.uk/projects/Django/2.0/django.views.generic.detail/DetailView/">https://ccbv.co.uk/projects/Django/2.0/django.views.generic.detail/DetailView/</a> \
 <a href="https://docs.djangoproject.com/en/dev/ref/class-based-views/generic-display/#django.views.generic.detail.DetailView">https://docs.djangoproject.com/en/dev/ref/class-based-views/generic-display/#django.views.generic.detail.DetailView</a> </p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image421.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image905.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image421.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image905.png" /></p>
 <p>Y la URL:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image101.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image101.png" /></p>
 <p>Evidentemente ahora tendremos que cambiar algunas cosas para que
 funcione. Si visitamos una página y analizamos el error veremos como
 solucionarlo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image446.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image446.png" /></p>
 <p>Lo que nos está indicando es que nuestra DetailView está esperando un
 campo pj o un campo slug para buscar la página. Nuestro objeto no tiene
 un campo slug, sólo lo estamos utilizando de adorno, así que pasaremos
 la clave primaria, pk, que no es más que el id. De hecho ya lo estamos
 pasando, pero no con el nombre que él espera que es pk:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image170.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image170.png" /></p>
 <p>Si todo va bien el siguiente paso será cambiarle el nombre al template
 por uno genérico:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image203.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image203.png" /></p>
 <p>Así que vamos a cambiarlo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image710.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image710.png" /></p>
 <p>Si actualizamos la página veremos que esta vez ya nos funciona sin
 cambiar el nombre de la variable:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image137.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image137.png" /></p>
 <p>Esto es porque de forma similar a la ListView, en su template se acepta
 tanto la variable {{ object }} como el nombre del modelo para hacer
 referencia al objeto, y como tenemos {{ page }} pues ya funciona:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image291.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image291.png" /></p>
 <p>Y de esta forma hemos vuelta a ahorrarnos 3 líneas apenas poniendo dos
 palabras: model = Page</p>
 <p>¿Supongo que ya empezáis a tener otra visión de las CBV no? Pues esto no

@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -628,24 +626,24 @@ div.my-img{text-align:center;margin-top:20px}
 <p>Crea una esfera de color rojo, reinicia su componente <code>Transform</code> y haz que flote encima del borde del cubo.</p>
 </div>
 <p>Más o menos así:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_49.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_49.png" /></p>
 <p>Venga, otro reto:</p>
 <div class="admonition warning">
 <p class="admonition-title">Ejercicio</p>
 <p>Añade un componente <code>RigidBody</code> a la esfera para activar sus físicas y luego prueba el juego para ver qué ocurre.</p>
 </div>
 <p>Tal que así:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Record_03.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Record_03.gif" /></p>
 <p>El caso es que la esfera choca contra el borde del cubo y empieza a rodar hasta caer y desaparecer.</p>
 <p>Tengo una idea, para evitar que la bola caiga por los bordes vamos a bordear el suelo para hacer un tope, pero antes haremos el suelo el doble de grande, escalando su tamaño a (2,2,2), así tendremos más espacio para jugar.</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_50.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_50.png" /></p>
 <p>Para crear los topes usaremos como base un cubo, que alargándolos y rotaremos hasta conseguir el tamaño deseado.</p>
 <div class="admonition warning">
 <p class="admonition-title">Ejercicio</p>
 <p>Crea un cubo, estíralo y posiciónalo a los lados del suelo para evitar que la esfera caiga al vacío. Luego clónalo y bordea el suelo en sus cuatro lados.</p>
 </div>
 <p>Al final debería quedarnos algo así, con 4 cubos haciendo de topes:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_51.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_51.png" /></p>
 <p>Las propiedades de <code>Transformación</code> de cada cubo pueden establecerse manualmente para conseguir una alineación y tamaño perfectos:</p>
 <ul>
 <li>(0.0, 0.5, 0.0) (0,0,0) (20,1,1)</li>
@@ -654,22 +652,22 @@ div.my-img{text-align:center;margin-top:20px}
 <li>(-9.5, 0.5, 0.0) (0,90,0) (20,1,1)</li>
 </ul>
 <p>Con esto conseguiremos que el cubo no caiga:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Record_04.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Record_04.gif" /></p>
 <p>Vamos a hacer algo interesante, demos al cubo la posición de origen y hagámoslo mucho más alto y el doble de grande, como si fuera una columna en medio del escenario:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_52.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_52.png" /></p>
 <p>Si dejamos caer la esfera desde el borde, ¿os habéis fijado que no rebota contra el suelo? Eso es porque si bien, tiene un material para manejar el aspecto, no tiene un material físico establecido.</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Record_05.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Record_05.gif" /></p>
 <p>Para crear un material físico haremos clic derecho en <code>Assets/Materials &gt; Create &gt; Physic Material</code> y le daremos el nombre <code>Goma</code>.</p>
 <p>Arrastraremos el material a la esfera y se añadirá al componente <code>Sphere Collider</code> en su propiedad <code>Material</code> automáticamente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_53.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_53.png" /></p>
 <p>Si bien este material está configurado para tener una fricción, tenemos que añadir un coheficiente de rebote. Este número debe establecerse entre 0 y 1, siendo 0 un rebote nulo y 1 el máximo, pongamos 1 para ver como queda:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_54.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_54.png" /></p>
 <p>Si probamos de nuevo, ahora la esfera rebotará contra el suelo como si fuera de goma:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Record_06.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Record_06.gif" /></p>
 <p>El problema es que ahora la "pelota" no frena hasta toparse de nuevo con el pilar. Para solucionarlo debemos indicarle a la "pelota" que debe tener en cuenta una resistencia al movimiento, esta se puede configurar en la propiedad <code>Angular Drag</code> del <code>RigidBody</code>. Un arrastre angular de 0.05 es muy pequeño, pero si lo subimos por ejemplo a 2.5, el resultado será algo diferente: </p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_55.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_55.png" /></p>
 <p>Y este será el nuevo resutado:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Record_07.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Record_07.gif" /></p>
 <p>Con esto hemos visto cómo afectan los <code>materiales físicos</code> a los objetos y también cómo la propiedad <code>Angular Drag</code> resta aceleración a los cuerpos en movimiento.</p>
 <p>Poco a poco nos vamos intoduciendo en el sistema de físicas, en la siguiente lección vamos a profundizar un poco más.</p>
 <hr />

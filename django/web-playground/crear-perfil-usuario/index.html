@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1561,7 +1559,7 @@ perfiles públicos, pero esta parte privada la manejaremos en
 registration.</p>
 <p>En este modelo no necesitamos darle nombre a los campos porque no vamos
 a usarlos desde el panel de administrador:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image497.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image497.png" /></p>
 <p>Lo más remarcable es el uso de la relación OneToOneField. Esta es la
 tercera relación que podemos crear en Django y le indica al modelo que
 sólo puede haber perfil para cada usuario, no se pueden tener dos
@@ -1580,28 +1578,28 @@ Django tenemos tres tipos de relaciones:</p>
 tener instalado Pillow en el entorno virtual y configurar el servidor
 para servir ficheros MEDIA. En mi caso ya tengo Pillow, así que sólo
 tengo que configurar el servidor:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image11.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image634.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image282.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image11.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image634.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image282.png" /></p>
 <p>Perfecto.</p>
 <p>Ahora necesitamos crear una página para editar el perfil. Por ahora
 vamos a crearla como una simple TemplateView, luego os explico porqué.
 También utilizaremos el decorador login_required en el dispatch, ya que
 no se puede editar un perfil sin estar identificado:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image900.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image877.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image900.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image877.png" /></p>
 <p>El template vamos a copiarlo de page_form y lo adaptaremos un poco:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image385.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image385.png" /></p>
 <p>Y configuraremos el enlace en urls.py:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image453.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image453.png" /></p>
 <p>Finalmente pondremos el enlace en nuestro menú cuando el usuario inicia
 la sesión:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image138.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image138.png" /></p>
 <p>Y comentamos la redirección de settings para el login:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image194.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image194.png" /></p>
 <p>Una vez hecho todo esto vamos a identificarnos con un usuario a ver si
 nos lleva al perfil:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image766.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image766.png" /></p>
 <p>Bien, con esto bastará, vamos a tomarnos un descanso y continuamos en la
 siguiente lección.</p>
 <hr />

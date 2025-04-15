@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -897,21 +895,21 @@ div.my-img{text-align:center;margin-top:20px}
 <h2 id="producto-vectorial">Producto vectorial<a class="headerlink" href="#producto-vectorial" title="Permanent link">&para;</a></h2>
 <p>El producto vectorial (<em>cross product</em>) <code>a×b</code> es el vector perpendicular resultante de <code>a</code> y <code>b</code>, también llamado vector normal <code>N</code>. </p>
 <p>Una manera de visualizarlo es como la dirección resultante del pulgar en la mano derecha tomando los dedos índice y  corazón como dos vectores <code>a</code> y <code>b</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-42.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-42.png" /></p>
 <p>Para encontrar el resultado del producto vectorial <code>(Nx, Ny, Nz)</code> entre los vectores <code>a</code> y <code>b</code> aplicaremos la siguiente fórmula:</p>
 <p><img src="https://latex.codecogs.com/png.image?\large&space;\dpi{150}\bg{white}\\&space;Nx&space;=&space;a_yb_z&space;-&space;a_zb_y\\&space;Ny&space;=&space;a_zb_x&space;-&space;a_xb_z\\&space;Nz&space;=&space;a_xb_y&space;-&space;a_yb_x&space;"/></p>
 <p>Debemos tener en cuenta que el resultado del producto vectorial no es el mismo si cambiamos el orden:</p>
 <p><img src="https://latex.codecogs.com/png.image?\large&space;\dpi{150}\bg{white}\overrightarrow{A}x\overrightarrow{B}&space;\neq&space;\overrightarrow{B}&space;x&space;\overrightarrow{A}"/></p>
 <p>Esto tiene que ver con la dirección del sistema, pues si suponemos que la dirección es con sentido antihorario <code>a x b</code>, el vector normal resultante es perpendicular hacia arriba (se aleja), pero si es con sentido horario <code>b x a</code> es perpendicular hacia abajo (se acerca):</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-43.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-43.png" /></p>
 <p>La siguiente figura muestra una animación del resultado del producto vectorial dependiendo de dos vectores:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-08.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-08.gif" /></p>
 <p>En ella podemos ver como al final todo tiene que ver con el área del paralelogramo formado por ambos vectores. Cuanto más alineados menor es el producto vectorial, cuanto más alineados mayor es y si están completamente alineados (son la misma línea) el producto vectorial es cero.</p>
 <h2 id="vector-normal-de-una-cara">Vector normal de una cara<a class="headerlink" href="#vector-normal-de-una-cara" title="Permanent link">&para;</a></h2>
 <p>Así que pongamos en práctica lo aprendido para calcular el vector normal de una cara de nuestro modelo, la cuál nos permitirá saber hacia donde mira:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-44.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-44.png" /></p>
 <p>El producto vectorial entre dos vectores <code>(B-A)</code> y <code>(C-A)</code> da como resultado el vector <strong>perpendicular</strong> que forma un ángulo de 90º respecto a la cara del triángulo, pues es lo mismo que si trazamos el vector desde el centro de la cara:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-45.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-45.png" /></p>
 <p>El método para calcular el producto vectorial quedaría de la siguiente forma:</p>
 <div class="highlight"><pre><span></span><code><span class="n">Vector3</span><span class="w"> </span><span class="nf">Vector3::CrossProduct</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="o">&amp;</span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
 <span class="p">{</span>
@@ -925,9 +923,9 @@ div.my-img{text-align:center;margin-top:20px}
 <h2 id="producto-escalar">Producto escalar<a class="headerlink" href="#producto-escalar" title="Permanent link">&para;</a></h2>
 <p>La última operación que nos resta ver es el producto escalar (<em>dot product</em>) <code>a·b</code> y su peculiaridad es que si bien el producto vectorial tenía como resultado un nuevo vector (llamado <strong>normal</strong>), el resultado del producto escalar tiene como resultado un único número llamado <strong>escalar</strong>. </p>
 <p>Podemos visualizar este número como la proyección del vector <code>b</code> en <code>a</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-46.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-46.png" /></p>
 <p>La siguiente animación muestra un ejemplo del producto escalar entre dos vectores: </p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-09.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-09.gif" /></p>
 <p>Podemos enumerar algunas propiedades del producto escalar:</p>
 <ul>
 <li>Cuando los vectores se encuentran completamente alineados y tienen la misma longitud, el producto escalar es <code>1</code>.</li>

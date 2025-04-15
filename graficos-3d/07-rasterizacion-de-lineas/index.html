@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -752,14 +750,14 @@ div.my-img{text-align:center;margin-top:20px}
 <p>Una línea, o mejor dicho un segmente de una línea, es una colección infinita de puntos contínuos que conectas un punto <code>A</code> y un punto <code>B</code>.</p>
 <p>Desde una perspectiva matemática, una línea se puede representar mediante una función, eso es una función lineal.</p>
 <p>Dado un punto <code>A(x0,y0)</code> y un punto <code>B(x1,y1)</code> la <strong>ecuación de una línea</strong> es <code>y = mx + c</code>, donde <code>m</code> es el coheficiente para la pendiente del segmento y <code>c</code> es el valor interceptor de <code>y</code> que modifica la altura del segmento.</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-29.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-29.png" /></p>
 <p>La pendiente <code>m</code> de una línea, es la relación entre la diferencia de la altura <code>y1-y0</code> y la diferencia de anchura <code>x1-x0</code>:</p>
 <p><img alt="" src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}m&space;=&space;\frac{\Delta&space;y}{\Delta&space;x}" /></p>
 <p>Si la dierencia de altura <code>Δy</code> es pequeña para el ancho recorrido <code>Δx</code>, la pendiente crecerá lentamente, si la diferencia es muy grande, la pendiente crecerá rápidamente.</p>
 <p>La pendiente <code>m</code> es exactamente lo mismo que la tangente del ángulo agudo (<code>&lt;90º</code>) si suponemos que <code>Δy</code> es su lado opuesto y <code>Δy</code> el lado adyacente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-30.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-30.png" /></p>
 <p>La siguiente animación ilustra la línea de la tangente dependiendo de la pendiente, tendiendo ésta a <code>0</code> cuando no hay pendiente y a <code>infinito</code> cuando es completamente vertical:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-04.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-04.gif" /></p>
 <p>A través del signo de la pendiente podemos hacer deducciones sobre <code>x</code> e <code>y</code>:</p>
 <ul>
 <li>Si <code>m &gt; 1</code> la pendiente es muy pronunciada &gt;45º (<code>y</code> &gt; <code>x</code>).</li>
@@ -777,7 +775,7 @@ div.my-img{text-align:center;margin-top:20px}
 </ul>
 <p>El algoritmo <strong>DDA</strong> es más sencillo de entender que el <strong>Bresenham</strong>, pero tambien más lento. Así que como estamos aprendidendo vamos a elegir el primero. </p>
 <p>Para trazar una línea sobre la trama con DDA, debemos calcular la aproximación de cada punto de rasterizado mediante el cálculo de la pendiente en cada punto <code>(Δy/Δx)</code> y redondear el resultado arriba o abajo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-31.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-31.png" /></p>
 <p>Por ejemplo, para rasterizar la línea que va de <code>(0,0)</code> a <code>(4, 3)</code> calcularemos la pendiente, que es <code>3:4 = 0.75</code>. Como es menor de <code>1</code> sabemos que es poco pronunciada así que empezaremos iterando <code>x</code> uno a uno (puesto que hay más puntos de ancho que de alto) y calcularemos la <code>y</code> con la fórmula de la línea redoneando al alza o a la baja:</p>
 <ul>
 <li><code>y1</code> = 0.75 * (0) = 0 ~ 0 -&gt; <code>(0, 0)</code></li>
@@ -786,7 +784,7 @@ div.my-img{text-align:center;margin-top:20px}
 <li><code>y4</code> = 0.75 * (3) = 2.25 ~ 2 -&gt; <code>(3, 2)</code></li>
 <li><code>y5</code> = 0.75 * (4) = 3 ~ 3 -&gt; <code>(4, 3)</code></li>
 </ul>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-32.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-32.png" /></p>
 <p>En caso de que la pendiente sea mayor que <code>1</code> sabemos que es muy pronunciada, por tanto habrá más puntos de alto que ancho y esta diferencia es importante a la hora de implementar el algoritmo:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">Window::DrawLine</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x0</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y1</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">color</span><span class="p">)</span>
 <span class="p">{</span>
@@ -830,7 +828,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="w">        </span><span class="n">window</span><span class="o">-&gt;</span><span class="n">windowWidth</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">window</span><span class="o">-&gt;</span><span class="n">windowWidth</span><span class="p">,</span><span class="w"> </span><span class="n">window</span><span class="o">-&gt;</span><span class="n">windowHeight</span><span class="p">,</span><span class="w"> </span><span class="mh">0xFF00FFFF</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-33.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-33.png" /></p>
 <p>Dado que funciona sin aparentes problemas, vamo a crear un método para dibujar triángulos a partir de sus tres vértices.</p>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">Window::DrawTriangle</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x0</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x2</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y2</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">color</span><span class="p">)</span>
 <span class="p">{</span>
@@ -857,7 +855,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>El resultado es simplemente maravilloso:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-05.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-05.gif" /></p>
 <hr />
 <p><small class="edited"><i>Última edición: 05 de Junio de 2022</i></small></p>
                   

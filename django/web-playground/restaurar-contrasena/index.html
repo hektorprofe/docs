@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1560,7 +1558,7 @@ ocasión os voy a mostrar una alternativa por si algún día no contáis con
 Internet, se trata de configurar un servidor SMTP para pruebas, éste
 hará ver que envía los correos pero en realidad los guardará en forma de
 ficheros dentro de un directorio, vamos a configurarlo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image161.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image161.png" /></p>
 <p>De esta forma nuestros emails se crearán en un nuevo directorio llamado
 sent_emails, obviamente podéis poner cualquier otro nombre. Por cierto,
 si en lugar de crear ficheros queréis mostrar los correos por la
@@ -1573,47 +1571,47 @@ configuración:
 proceso de restauración ya nos funciona, lo está gestionando el panel de
 administrador automáticamente. Probad a acceder la URL de restauración
 /accounts/password_reset/:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image637.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image637.png" /></p>
 <p>Si ya os está bien que aparezca el admin podríais dejarlo así, pero creo
 que es más interesante utilizar nuestros propios templates. Así que
 tendremos que empezar diciéndole a Django que dé prioridad a los
 templates de la app Registration antes que los del panel de admin.
 Simplemente debemos poner nuestra app por delante en settings.py:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image248.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image248.png" /></p>
 <p>Si no hacéis este cambio nunca os aparecerán vuestros propios templates.</p>
 <p>Bien, vamos a por esta primera página password_reset. Lo único que
 debemos hacer es crear nuestra propia versión del template bajo el
 nombre password_reset_form.html. Como tendremos que crear varios os
 los voy a adjuntar todos en un descargable descargar este y todos los
 demás en los recursos.</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image531.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image531.png" /></p>
 <p>Una vez tengáis los nuevos templates en el
 directorio /templates/registration/ si accedemos de nuevo….</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image860.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image860.png" /></p>
 <p>Ahora si introducimos un correo, esté o no enlazado a un usuario, se
 redireccionará a una página de confirmación en la url
 <a href="password_reset/done/">password_reset/done/</a>,
 probad con uno de mentira:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image844.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image736.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image844.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image736.png" /></p>
 <p>Ahora repetid el proceso pero utilizando un email real que hayáis
 utilizado para registraros anteriormente, se os debería crear el
 directorio sent_mails en la raíz del proyecto:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image737.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image737.png" /></p>
 <p>Lo que tendremos dentro es un fichero con el email que “en teoría” se ha
 enviado al usuario. Si lo abrimos podremos seguir las instrucciones:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image336.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image336.png" /></p>
 <p>Como véis se envía un enlace con un token para recuperar la contraseña,
 así como un recordatorio del nombre del usuario. Vamos a abrir ese
 enlace a ver qué nos aparece:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image789.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image789.png" /></p>
 <p>Como véis aquí tenemos el formulario de restauración que se toma del
 template password_reset_confirm.html, en él debemos introducir la
 contraseña nueva dos veces. Probad a poner una contraseña numérica o
 equivocaros aposta, os deberían aparecer los errores de validación, y si
 ponéis una correcta nos llevará a la última pantalla que nos falta por
 ver, password_reset_complete:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image349.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image349.png" /></p>
 <p>Si tenéis curiosidad sobre cómo son los templates originales os voy a
 dejar un enlace al repositorio oficial:
 <a href="https://github.com/django/django/tree/master/django/contrib/admin/templates/registration">https://github.com/django/django/tree/master/django/contrib/admin/templates/registration</a> </p>
@@ -1621,8 +1619,8 @@ dejar un enlace al repositorio oficial:
 usuario autenticado, pero esas las veremos cuando creemos los perfiles.</p>
 <p>Lo único que nos falta es añadir el enlace de restauración en el
 formulario de autenticación:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image812.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image279.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image812.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image279.png" /></p>
 <p>Con esto acabamos la parte de la autenticación y el registro.</p>
 <hr />
 <p><small class="edited"><i>Última edición: 25 de Marzo de 2021</i></small></p>

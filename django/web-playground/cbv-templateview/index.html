@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1563,7 +1561,7 @@ extender a voluntad.</p>
 <a href="https://www.google.com/url?q=https://ccbv.co.uk/&amp;sa=D&amp;source=editors&amp;ust=1616715294446000&amp;usg=AOvVaw2cOWk0e6YNkZrfsadNU9Wh">https://ccbv.co.uk/</a> donde
 podemos encontrar un resumen y documentación de todas ellas (entrar y
 comentarlas):</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image406.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image406.png" /></p>
 <p>A lo largo de esta web playground haremos uso de un montón de ellas, ya
 veréis.</p>
 <p>Vamos a empezar con la app Core, ¿cómo se traduciría lo que tenemos
@@ -1577,30 +1575,30 @@ TemplateView.</p>
 Y de ahí a la documentación de Django:
 <a href="https://www.google.com/url?q=https://docs.djangoproject.com/en/dev/ref/class-based-views/base/%23django.views.generic.base.TemplateView&amp;sa=D&amp;source=editors&amp;ust=1616715294448000&amp;usg=AOvVaw38UanB32DO3CBOMrosHuJF">https://docs.djangoproject.com/en/dev/ref/class-based-views/...</a> </p>
 <p>En la documentación encontraremos cómo manejar las TemplateView:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image69.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image69.png" /></p>
 <p>En este ejemplo nos muestran como crear una CBV TemplateView, pasar
 valores al diccionario de contexto y cómo llamarla en urls. Nosotros no
 tenemos que enviar nada, así que nos será más fácil:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image308.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image189.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image308.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image189.png" /></p>
 <p>Como véis ya no estamos creando funciones que devuelven el template con
 la lógica, sino clases que heredan de TemplateView y que por defecto
 tienen un atributo llamado template_name. Luego a la hora de llamarlas
 en el urls tienen un método llamado as_view() que las devuelve como una
 vista. Vamos a probar:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image335.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image335.png" /></p>
 <p>Cómo veis está todo igual. ¿Por qué no probamos a enviar algún dato al
 diccionario de contexto? Para ello sobreescribiremos el método
 get_context_data que debe devolver un diccionario de contexto después
 de recuperarlo de la superclase:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image207.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image851.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image55.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image207.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image851.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image55.png" /></p>
 <p>Pero como esto es un poco complejo, en lugar de modificar el contexto es
 posible sobreescribir el método get que es el encargado de devolver la
 respuesta:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image228.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image55.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image228.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image55.png" /></p>
 <p>¿Esto ya se parece más a una FBV no?</p>
 <p>Por cierto, ¿se os ocurre alguna razón por la que este método se llame
 get? Pues sí, se llama GET ni más ni menos porque se encarga de

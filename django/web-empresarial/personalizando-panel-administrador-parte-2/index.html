@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1548,7 +1546,7 @@ div.my-img{text-align:center;margin-top:20px}
                   <h1 id="personalizando-el-administrador-2">Personalizando el administrador (2)<a class="headerlink" href="#personalizando-el-administrador-2" title="Permanent link">&para;</a></h1>
 <p>Toca un intermedio para seguir aprendiendo cómo personalizar el administrador. Hay un montón de cosas que podemos hacer con nuestros modelos, por ejemplo añadirles columnas de visualización, campos de ordenación y de búsqueda.</p>
 <p>Vamos a practicar con las entradas de nuestro blog. Por defecto sólo nos aparece el título:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/21.png" style="max-width:220px"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/21.png" style="max-width:220px"/></div>
 
 <p>Pero podemos mostrar casi todos los campos. Vamos al fichero admin.py para personalizar qué columnas queremos mostrar. </p>
 <p><code>blog/admin.py</code>
@@ -1556,7 +1554,7 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="n">readonly_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;created&#39;</span><span class="p">,</span> <span class="s1">&#39;updated&#39;</span><span class="p">)</span>
     <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;author&#39;</span><span class="p">,</span> <span class="s1">&#39;published&#39;</span><span class="p">)</span>
 </code></pre></div></p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/22.png" style="max-width:625px"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/22.png" style="max-width:625px"/></div>
 
 <p>Como véis así es mucho mejor, y además podemos ordenar por columnas.</p>
 <p>También podemos indicar una tupla de ordenación, ésta indicará las prioridades de ordenación al mostrarse la tabla inicialmente. </p>
@@ -1567,7 +1565,7 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="n">ordering</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">,</span> <span class="s1">&#39;published&#39;</span><span class="p">)</span>
 </code></pre></div></p>
 <p>Esto nos agrupará las entradas por autor y las ordenará por fecha de publicación:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/23.png"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/23.png"/></div>
 
 <p>Si quisiéramos indicar sólo un campo de ordenación igualmente debéis crear una tupla con por lo menos un campo y una coma, sino Django no entenderá que es una tupla.</p>
 <p>Otra cosa interesante es mostrar un formulario de búsqueda a partir de algunos campos. Es fácil y además podemos indicar campos de los modelos relacionados:</p>
@@ -1579,7 +1577,7 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="n">search_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span><span class="s1">&#39;content&#39;</span><span class="p">,</span><span class="s1">&#39;author__username&#39;</span><span class="p">,</span> 
         <span class="s1">&#39;categories__name&#39;</span><span class="p">)</span>
 </code></pre></div></p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/24.png" style="max-width:450px"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/24.png" style="max-width:450px"/></div>
 
 <p>También cuando trabajamos con modelos que tengan campos de fechas y horas es posible activar el filtro avanzado con date_hierarchy, una imagen vale más que mil palabras:</p>
 <p><code>blog/admin.py</code>
@@ -1591,7 +1589,7 @@ div.my-img{text-align:center;margin-top:20px}
         <span class="s1">&#39;categories__name&#39;</span><span class="p">)</span>
     <span class="n">date_hierarchy</span> <span class="o">=</span> <span class="s1">&#39;published&#39;</span>
 </code></pre></div></p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/25.png" style="max-width:190px"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/25.png" style="max-width:190px"/></div>
 
 <p>Y ya que hablamos de filtros no podemos olvidar la tupla list_filter, gracias a la cual podemos agrupar por campos directamente en la tabla:</p>
 <p><code>blog/admin.py</code>
@@ -1604,7 +1602,7 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="n">date_hierarchy</span> <span class="o">=</span> <span class="s1">&#39;published&#39;</span>
     <span class="n">list_filter</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;author__username&#39;</span><span class="p">,</span><span class="s1">&#39;categories__name&#39;</span><span class="p">)</span>
 </code></pre></div></p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/26.png" style="max-width:225px"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/26.png" style="max-width:225px"/></div>
 
 <p>o ya para poner la guinda al pastel, quizá os estáis preguntando si es posible mostrar la lista de categorías:</p>
 <p><code>blog/admin.py</code>
@@ -1663,7 +1661,7 @@ div.my-img{text-align:center;margin-top:20px}
             <span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">categories</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)])</span>
 </code></pre></div></p>
 <p>Y ahí lo tenemos:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/27.png" style="max-width:150px"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/27.png" style="max-width:150px"/></div>
 
 <p>Ya seguro estáis pensando…¿Pero que hacemos con el nombre de la columna? ¿Cómo lo cambiamos? Pues sólo tenemos que modificar el atributo <strong>short_description</strong> del método de esta forma:</p>
 <p><code>blog/admin.py</code>
@@ -1681,7 +1679,7 @@ div.my-img{text-align:center;margin-top:20px}
             <span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">categories</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)])</span>
     <span class="n">post_categories</span><span class="o">.</span><span class="n">short_description</span> <span class="o">=</span> <span class="s2">&quot;Categorías&quot;</span>
 </code></pre></div></p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn//django/webempresa/28.png" style="max-width:150px"/></div>
+<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/28.png" style="max-width:150px"/></div>
 
 <p>Con esto acabamos el intermedio. Si os interesa saber cómo generar código HTML en lugar de simple texto os dejo un enlace a StackOverflow donde lo explican muy bien haciendo uso de la función mark_safe:</p>
 <p><a href="https://stackoverflow.com/questions/47953705/how-do-i-use-allow-tags-in-django-2-0-admin">https://stackoverflow.com/questions/47953705/how-do-i-use-allow-tags-in-django-2-0-admin</a></p>

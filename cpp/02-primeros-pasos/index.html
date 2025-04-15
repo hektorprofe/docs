@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1016,15 +1014,15 @@ div.my-img{text-align:center;margin-top:20px}
 <li>Advertencias.</li>
 </ul>
 <p>Un <code>error de compilación</code> es un fallo en el código que impide que éste se pueda compilar, por ejemplo olvidarnos una instrucción o escribir mal la sintaxis. Estos errores normalmente los detectan los propios editores de código antes de intentar la compilación:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-17.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-17.png" /></p>
 <p>Si intentamos compilar con un error de compilación no nos dejará:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-18.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-18.png" /></p>
 <p>Por otro lado los <code>errores en tiempo de ejecución</code> solo se pueden prevenir con experiencia. Como el editor y el compilador no pueden identificarlos, generalmente el programa compilará sin problemas pero ocurrirá algún tipo de malfuncionamiento durante la ejecución.</p>
 <p>Por ejemplo cuando tenemos una variable con un cero almacenada en la memoria y la dividimos de otro número (ya veremos lo que es una variable):</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-20.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-20.png" /></p>
 <p>En este ejemplo se compila sin ningún error pero al ejecutar el programa éste finaliza súbitamente, algo que podemos deducir pues nunca llega a ejecutarse la línea 8.</p>
 <p>Por último las <code>advertencias</code> tampoco impiden la compilación pero el compilador sí es capaz de entender que puede ocurrir algo inconsistente. Por ejemplo, si intentamos una división entre cero de forma literal (sin usar una variable) el compilador puede analizar el código fuente, identificar esa situación y lanzarnos un aviso:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-21.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-21.png" /></p>
 <h2 id="sentencias-y-funciones-en-c">Sentencias y funciones en C++<a class="headerlink" href="#sentencias-y-funciones-en-c" title="Permanent link">&para;</a></h2>
 <p>Seguimos repasando los conceptos básicos del lenguaje C++ antes de entrar de lleno en él.</p>
 <p>Como todos los lenguajes de programación, C++ se fundamenta en sentencias que suponen las unidades básicas de computación ejecutables por el procesador. Así mismo un <code>programa</code> es una colección de sentencias organizadas de tal manera que permiten lograr un objetivo.</p>
@@ -1072,9 +1070,9 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>En este código debemos notar varias cosas. En primer lugar la definición de una variable debe ser antes del uso, como es lógico. Luego notamos que el operador de inserción está al revés <code>&gt;&gt;</code>, esto indica que la entrada (o lectura) se inserta hacia la variable, mientras que en la salida <code>&lt;&lt;</code> se inserta el valor a mostrar en el flujo de salida:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-24.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-24.png" /></p>
 <p>Por cierto, si escribimos en la terminal algo que no sea un número entero fijaros en el resultado:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-25.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-25.png" /></p>
 <p>Este <code>0</code> es el valor por defecto que tiene una variable de tipo número entero, por lo que podemos entender que realmente no se ha almacenado nada en ella.</p>
 <p>Si quisiéramos leer un texto podemos utilizar el tipo de dato <code>std::string</code> (cadena) mediante la función <code>std::getline</code> (conseguir línea) que debemos importar de la librería <code>&lt;string&gt;</code> de la siguiente forma:</p>
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
@@ -1090,7 +1088,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>Cuyo resultado sería el siguiente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//cpp/image-26.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-26.png" /></p>
 <p>Debemos tener en cuenta que en este punto lo que estamos leyendo es un texto y eso significa que no podemos operarlo matemáticamente, aunque de eso hablaremos cuando profundicemos en las variables y tipos de datos.</p>
 <h2 id="biblioteca-estandar-y-stl-en-c">Biblioteca estándar y STL en C++<a class="headerlink" href="#biblioteca-estandar-y-stl-en-c" title="Permanent link">&para;</a></h2>
 <p>El lenguaje C++ cuenta con una serie de funcionalidades por defecto conocidas como <code>características del núcleo</code> o en inglés <code>core features</code>.</p>

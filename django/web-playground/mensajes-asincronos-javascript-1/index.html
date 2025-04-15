@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1586,13 +1584,13 @@ enviarlos a una vista clásica:</p>
 <p>Podríamos enviarlo en una petición POST, pero como requiere el token
 csrf es más fácil hacerlo por GET.</p>
 <p>Así que vamos a crear la vista:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image68.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image68.png" /></p>
 <p>El respectivo PATH quedaría así:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image580.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image906.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image580.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image906.png" /></p>
 <p>Si accedemos a nuestra nueva vista nos dará error porque no estamos
 devolviendo nada:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image18.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image18.png" /></p>
 <p>¿Qué tenemos que devolver en una petición asíncrona? Pues lo que
 queramos, puede ser texto plano, un snippet HTML para inyectarlo
 directamente en la página, o una estructura bien organizada en formato
@@ -1604,13 +1602,13 @@ en Javascript, la respuesta se puede manejar al vuelo sin hacer
 conversiones.</p>
 <p>Para poder devolver una respuesta JSON necesitamos importar el módulo
 JsonResponse:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image869.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image869.png" /></p>
 <p>Ahora crearemos la respuesta como si fuera un diccionario Python
 indicando que inicialmente no se ha creado el mensaje y la
 transformaremos a JSON para devolverla:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image130.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image130.png" /></p>
 <p>Si actualizamos la página funcionará mostrando nuestro diccionario:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image227.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image227.png" /></p>
 <p>Sin embargo fijaros bien en el resultado, pues se trata de un objeto
 JSON y no un diccionario de Python. Es prácticamente igual pero cambia
 el booleano False con la f en minúscula porque en Javascript se escribe
@@ -1627,21 +1625,21 @@ hacer malabarismos ni utilizar librerías como jQuery.  Sólo debemos
 utilizar la función fetch, la cual toma una url para hacer la petición y
 también es capaz de manejar la respuesta:</p>
 <p>Explicar línea a línea el experimento, separar fetch de .then, .then:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image791.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image442.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image669.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image791.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image442.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image669.png" /></p>
 <p>¡Perfecto! Como véis obtenemos el valor de created en una alerta.</p>
 <p>Ahora viene lo bueno, necesitemos capturar el contenido del mensaje y
 enviarlo a la vista al presionar el botón.</p>
 <p>Todo eso lo haremos en la siguiente lección que es una continuación de
 esta, pero para que os hagáis una idea vamos a hacer una simulación. En
 nuestra vista mostraremos un print de los parámetros GET:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image882.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image882.png" /></p>
 <p>Y crearemos un contenido de prueba que concatenaremos como parámetro GET
 a la url:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image38.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image38.png" /></p>
 <p>Al presionar el botón nos aparecerá en el debug:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image479.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image479.png" /></p>
 <p>Bueno, pues como os decía, en la siguiente lección crearemos un textarea
 y tomaremos este contenido de ahí.</p>
 <hr />

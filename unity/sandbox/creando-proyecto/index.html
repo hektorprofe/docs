@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -624,31 +622,31 @@ div.my-img{text-align:center;margin-top:20px}
                   <h1 id="sandbox-3d-en-unity">Sandbox 3D en Unity<a class="headerlink" href="#sandbox-3d-en-unity" title="Permanent link">&para;</a></h1>
 <p>En esta unidad vamos a crear un sandbox (o caja de arena), un entorno para experimentar con muchos objetos, físicas, materiales y colisiones. Si sois nuevos en Unity os va a resultar muy revelador y si ya tenéis experiencia os vendrá bien para repasar todo.</p>
 <p>Utilizando como base el proyecto del escenario, que por algo le pusimos <code>Sandbox 3D</code>, vamos a crear una nueva escena con una cámara y una luz en <code>File &gt; New Scene &gt; Basic (Built In)</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_38.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_38.png" /></p>
 <p>Lo primero será guardar la escena (Control+S) con el nombre <code>Sandbox</code>, dentro del directorio <code>Scenes</code> del proyecto.</p>
 <p>Si hacemos clic en la <code>Main Camera</code> y desplegamos su componente <code>Camera</code> observaremos que por defecto se encuentra en la posición (0,1,-10). Ese -10 en el eje Z nos indica que está un poco por delante del punto de origen (0,0,0). En Unity cuanto más grande es el eje Z más profundo y cuanto más pequeño más cerca de nosotros, como si el objeto se saliera de la pantalla:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_39.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_39.png" /></p>
 <p>Vamos a añadir un cubo 3D a la escena <code>GameObject &gt; 3D Object &gt; Cube</code>. Al hacerlo un cubo enorme se creará:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_40.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_40.png" /></p>
 <p>En realidad no es tan grande, es solo que se ha añadido muy cerca de la cámara. Si reiniciamos su componente <code>Transform</code> volverá a la posición (0,0,0) y lo veremos con más perspectiva:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_41.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_41.png" /></p>
 <p>A todo esto, ¿véis los cuadros que forman el suelo virtual de la escena? Eso son las unidades en las que se divide el mundo. Nuestro cubo tiene un tamaño escalado de (1,1,1) y eso significa que ocupa unida unidad del mundo de ancho, de alto y de profundo. Si lo movemos a la coordenada (0, 0.5, 0) lo posicionaremos perfectamente sobre una de esas unidades del mundo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_42.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_42.png" /></p>
 <p>¿Por qué 0.5? Pues eso está relacionado con el origen del cubo, que está justo en su centro, que es el lugar desde donde salen las flechas de movimiento. Por lo tanto si lo movemos media unidad en cada dimensión lo alinearemos con las unidades del mundo.</p>
 <p>Ok, tenemos un cubo flotando en un suelo virtual, vamos a añadir uno de verdad <code>GameObject &gt; 3D Object &gt; Plane</code>. Le reiniciamos la posición a (0,0,0) y lo tendremos justo debajo del cubo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_43.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_43.png" /></p>
 <p>Por cierto, espero que estéis de acuerdo conmigo en que el fondo por defecto de Unity es feísimo, para cambiarlo por un color sólido más elegante seleccionaremos la cámara y estableceremos la propiedad <code>Environment</code> en <code>Solid Color</code> y pondremos el color que más os guste, yo pondré un gris oscuro:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_44.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_44.png" /></p>
 <p>Sin embargo este cambio solo afectará a la vista de juego, si queremos que el fondo también sea de un color sólido en el espacio, deberemos configurar las luces del proyecto en <code>Window &gt; Rendering &gt; Lighting &gt; Environment</code>, donde pondremos <code>Skybox Material</code> en <code>None</code>.</p>
 <p>Acto seguido iremos a <code>Edit &gt; Peferences</code> y en el color <code>Background</code> pondremos el color que nos guste más para el fondo, usando el cuentagotas podemos establecer el que pusimos en la cámara.</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_45.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_45.png" /></p>
 <p>Nuestra escena se ve muy gris, vamos a dar color a los objetos mediante materiales. Así que vamos a crear uno para el suelo y otro para el cubo.</p>
 <p>Abrimos el directorio <code>Assets/Materials</code> y ahí clic derecho <code>Create &gt; Material</code>, le damos el nombre <code>Suelo</code> y lo arrastramos al suelo de la escena:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_46.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_46.png" /></p>
 <p>Por defecto el material tiene el color blanco pero aparece amarillo en el juego debido a la luz. Si seleccionamos el objeto <code>Directional Light</code> veremos que ésta tiene un color amarillento ligero. Para lograr una fidelidad completa del color del material deberemos establecer la luz de colorn blanco:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_47.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_47.png" /></p>
 <p>En cuanto al cubo podemos crear un material de otro color y asignarlo, yo le llamaré <code>Cubo</code> y tendrá un color anaranjado:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//unity/Screenshot_48.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_48.png" /></p>
 <p>Bien, con estos elementos tenemos algo básico para empezar a trabajar.</p>
 <hr />
 <p><small class="edited"><i>Última edición: 12 de Abril de 2021</i></small></p>

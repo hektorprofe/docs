@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -502,10 +500,10 @@ div.my-img{text-align:center;margin-top:20px}
                   
                   <h1 id="trabajando-con-mallas-con-opengl">Trabajando con mallas con OpenGL<a class="headerlink" href="#trabajando-con-mallas-con-opengl" title="Permanent link">&para;</a></h1>
 <p>Las mallas son conjuntos de primitivas (triángulos o quads) conocidos como caras que permiten modelar formas en el espacio. Cuantas más caras tenga el modelo más nivel de detalle representará:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/img32.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img32.png" /></p>
 <p>Con el objetivo de optimizar el espacio, como muchas caras comparten vértices, todos estos vértices se definen en un array conocido como <strong>Vertex Array</strong>. A partir de los índices de esos vértices se crea otro array, "Triangle Array** o **Quad Array** dependiendo del tipo de cara, que enumera conjuntos de <code>3</code> o <code>4</code> vértices para reconstruir las primitivas.</p>
 <p>Cada vértice y tambien las propias caras en su centro, tienen un vector llamado <strong>normal</strong>. Este vector se encuentra normalizado en un rango de <code>-1</code> a <code>1</code> y representa la dirección hacia donde "miran" los vértices y la cara:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/img33.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img33.png" /></p>
 <p>La normal es muy importante porque permite <a href="/docs/graficos-3d/11-back-face-culling/">descartar el renderizado</a> de las caras no visibles por la cámara (<em>back-face culling</em>), así como añadir efectos de <a href="/docs/graficos-3d/18-luz-y-sombreado/">luz y sombra</a> a las texturas en función del ángulo formado por la normal y la dirección del foco de luz.</p>
 <h2 id="estructura-de-una-malla">Estructura de una malla<a class="headerlink" href="#estructura-de-una-malla" title="Permanent link">&para;</a></h2>
 <p>En esta práctica vamos a implementar nuestra propia clase <code>Mesh</code> para almacenar la información de una malla y dibujarla:</p>
@@ -557,7 +555,7 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="n">app</span> <span class="o">=</span> <span class="n">OpenGLApp</span><span class="p">(</span><span class="s2">&quot;OpenGL en Python&quot;</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
     <span class="n">app</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/img34.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img34.png" /></p>
 <h2 id="creando-una-clase-cubo">Creando una clase cubo<a class="headerlink" href="#creando-una-clase-cubo" title="Permanent link">&para;</a></h2>
 <p>En esta práctica vamos a extender la clase <code>Mesh</code> para construir y dibujar un cubo:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Cube</span><span class="p">(</span><span class="n">Mesh</span><span class="p">):</span>
@@ -595,7 +593,7 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="n">app</span> <span class="o">=</span> <span class="n">OpenGLApp</span><span class="p">(</span><span class="s2">&quot;OpenGL en Python&quot;</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
     <span class="n">app</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/img35.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img35.png" /></p>
 <p>A diferencia de antes ahora el cubo lo cruza otra línea diagonal. Claro, debemos tener en cuenta que este cubo ahora son tres dimensiones, necesitaremos rotarlo un poco para visualizar su perspectiva. Por ejemplo 15 grados en <code>x</code> e <code>y</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">PrepareRender</span><span class="p">():</span>
@@ -604,9 +602,9 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="c1"># https://docs.microsoft.com/es-es/windows/win32/opengl/glRotatef</span>
     <span class="n">glRotatef</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/img36.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img36.png" /></p>
 <p>Ahora ya podemos percibir la profundidad, pero... ¿No parece un poco raro? El tamaño de las caras del fondo es igual que las de adelante. Esto es debido a que no estamos aplicando una <a href="/docs/graficos-3d/04-proyeccion-de-puntos/#proyeccion-perspectiva">brecha de perspectiva</a>, es lo que se conoce como <a href="https://en.wikipedia.org/wiki/Oblique_projection">proyección paralela oblícua</a>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/img36b.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img36b.png" /></p>
 <p>Lo que nosotros buscamos es establecer una proyección de perspectiva para simular esa profundidad en base a varios factores: un ángulo de punto de vista (<em>fov</em>), una relación de aspecto (<em>aspect ratio</em>) y las distancias del visor desde el <a href="/docs/graficos-3d/27-clipping/#planos-del-frustum">plano cercano del frustum</a> (<em>znear</em>) hasta el plano alejado (<em>zfar</em>).</p>
 <p>Es <strong>muy importante</strong> que configuremos la proyección antes de rotar el cubo:</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
@@ -617,7 +615,7 @@ div.my-img{text-align:center;margin-top:20px}
         <span class="n">gluPerspective</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="p">(</span><span class="mi">600</span> <span class="o">/</span> <span class="mi">600</span><span class="p">),</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
         <span class="n">glRotatef</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/img37.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img37.png" /></p>
 <p>Al aplicar la proyección en perspectiva inevitablemente tendremos en cuenta la profundidad de los elementos. Como OpenGL está dibujando el cubo en el origen del espacio <code>(0,0,0)</code> lo que estamos viendo es solo su cara trasera después de rotarlo ligeramente.</p>
 <p>Si <strong>después de rotarlo</strong> trasladamos los vértices al fondo restando algo de profundidad y los centramos un poco deberíamos percibirlo proyectado con perspectiva:</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
@@ -629,7 +627,7 @@ div.my-img{text-align:center;margin-top:20px}
         <span class="c1"># https://docs.microsoft.com/es-es/windows/win32/opengl/glTranslate</span>
         <span class="n">glTranslate</span><span class="p">(</span><span class="mf">0.33</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.33</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/img38.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img38.png" /></p>
 <p>La verdad es que tampoco necesitamos configurar la perspectiva, la rotación y la traslación en cada fotograma, podemos establecerlas una sola vez en la inicialización. Eso sí, no necesitamos cargar la matriz de identidad en cada fotograma porque al hacerlo reiniciaremos las transformaciones:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">GLUtils</span><span class="p">:</span>
     <span class="nd">@staticmethod</span>
@@ -663,14 +661,14 @@ div.my-img{text-align:center;margin-top:20px}
         <span class="n">glRotatef</span><span class="p">(</span><span class="mi">15</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">deltaTime</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># &lt;----</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cube</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/anim19.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim19.gif" /></p>
 <p>Y cambiando el modo a <code>GL_POLYGON</code> podremos dibujar el relleno del cubo de un color sólido:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">OpenGLApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">Init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">GLUtils</span><span class="o">.</span><span class="n">InitRender</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cube</span> <span class="o">=</span> <span class="n">Cube</span><span class="p">(</span><span class="n">GL_POLYGON</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/anim20.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim20.gif" /></p>
 <p>Si añadimos un método <code>Debug</code> a nuestra clase Mesh podríamos dibujar unas líneas para visualizar las caras:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Mesh</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">Debug</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -692,7 +690,7 @@ div.my-img{text-align:center;margin-top:20px}
         <span class="bp">self</span><span class="o">.</span><span class="n">cube</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cube</span><span class="o">.</span><span class="n">Debug</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/anim21.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim21.gif" /></p>
 <p>Fijaros que se dibujan también los vértices traseros, eso es porque no hay un buffer de profundidad activado por defecto. Podemos activar el de pruebas mediante <code>glEnable(GL_DEPTH_TEST)</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">GLUtils</span><span class="p">:</span>
     <span class="nd">@staticmethod</span>
@@ -700,7 +698,7 @@ div.my-img{text-align:center;margin-top:20px}
         <span class="c1"># https://docs.microsoft.com/es-es/windows/win32/opengl/glenable</span>
         <span class="n">glEnable</span><span class="p">(</span><span class="n">GL_DEPTH_TEST</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/anim21b.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim21b.gif" /></p>
 <h2 id="cargando-mallas-desde-ficheros">Cargando mallas desde ficheros<a class="headerlink" href="#cargando-mallas-desde-ficheros" title="Permanent link">&para;</a></h2>
 <p>El siguiente paso lógico es cargar un modelo desde un fichero externo. En mis apuntes sobre gráficos 3D <a href="/docs/graficos-3d/09-ficheros-con-modelos-obj/">explico a fondo</a> el formato Wavefront OBJ, cómo se organiza y cómo hacer un parser para extraer la información. Así que me voy a ahorrar los detalles e iré directamente a la implementación.</p>
 <p>Si pasamos un primer argumento con la ruta a un fichero durante la creación del <code>mesh</code> significa que hay que cargarlo a partir de sus datos en lugar de crearlo en crudo:</p>
@@ -776,7 +774,7 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="n">app</span> <span class="o">=</span> <span class="n">OpenGLApp</span><span class="p">(</span><span class="s2">&quot;OpenGL en Python&quot;</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
     <span class="n">app</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/anim22.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim22.gif" /></p>
 <p>Vamos a probar otros modelos, quizá tenemos que hacer algunos ajustes a la traslación.</p>
 <p>Por ejemplo el <code>donut.obj</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">GLUtils</span><span class="p">:</span>
@@ -794,7 +792,7 @@ div.my-img{text-align:center;margin-top:20px}
         <span class="n">glRotatef</span><span class="p">(</span><span class="mi">15</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">deltaTime</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/anim23.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim23.gif" /></p>
 <p>Teniendo en cuenta que el proceso no esta optimizado y Python tampoco es la panacea en cuanto a velocidad, 60 FPS para un modelo de 1000 triángulos no me parece mal.</p>
 <p>Veamos un par más de modelos y pasemos a otra cosa:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">GLUtils</span><span class="p">:</span>
@@ -812,7 +810,7 @@ div.my-img{text-align:center;margin-top:20px}
         <span class="n">glRotatef</span><span class="p">(</span><span class="mi">15</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">deltaTime</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/anim25.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim25.gif" /></p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">GLUtils</span><span class="p">:</span>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">InitRender</span><span class="p">():</span>
@@ -828,7 +826,7 @@ div.my-img{text-align:center;margin-top:20px}
         <span class="n">glRotatef</span><span class="p">(</span><span class="mi">15</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">deltaTime</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/anim24.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim24.gif" /></p>
 <hr />
 <p><small class="edited"><i>Última edición: 12 de Junio de 2022</i></small></p>
                   

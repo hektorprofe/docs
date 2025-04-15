@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1557,33 +1555,33 @@ empezaremos creando nueva app llamada registration (se le suele dar este
 nombre). Esta app manejará tanto la autenticación como el registro y
 vamos a estar bastantes lecciones con ella.</p>
 <p>Así que como siempre, vamos a empezar creando esta nueva app:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image443.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image443.png" /></p>
 <p>En esta app no vamos a programar casi nada, sólo se va a encargar de
 almacenar algunos templates.</p>
 <p>A continuación vamos a dirigirnos al fichero urls.py del proyecto base y
 vamos a configurar un nuevo apartado /accounts/, debe ser ese nombre
 pues es el que las CBV de Django implementan por defecto:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image533.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image533.png" /></p>
 <p>Sólo con esto se nos han dado de alta varias URLS para manejar la
 autenticación. Podemos ver exactamente cuales accediendo al servidor
 /accounts/:\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image774.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image14.png" /></p>
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image774.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image14.png" /></p>
 <p>Básicamente tenemos el login, el logout y varias vistas para manejar la
 gestión de contraseñas. Por ahora centrémonos en las dos primeras. Son
 todas las AUTH VIEWS que podemos ver en nuestra web favorita:</p>
 <p><a href="https://ccbv.co.uk/">https://ccbv.co.uk/</a>\
- <img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image671.png" /></p>
+ <img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image671.png" /></p>
 <p>Podríamos haber creado todas una a una manualmente, pero al haber hecho
 el include directo nos lo hemos ahorrado.</p>
 <p>Sea como sea si intentamos acceder a /accounts/login/ cargaremos una
 LoginView genérica:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image652.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image652.png" /></p>
 <p>Y obviamente nos dará error de template:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image753.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image753.png" /></p>
 <p>Tenemos que crear el template login.html en el directorio
 templates/registration de la app que hemos creado antes:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image182.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image182.png" /></p>
 <p>Dentro sólo debemos preparar y mostrar un formulario de la forma
 clásica, pero como quiero ahorraros trabajo he preparado un diseño de
 antemano. Simplemente he copiado el código HTML generado por defecto, he
@@ -1592,23 +1590,23 @@ añadido los atributos class y placeholder a los inputs.</p>
 <p><a href="https://gist.github.com/hcosta/7c3a46d5e5d061d936031ad5a6654acd">https://gist.github.com/hcosta/7c3a46d5e5d061d936031ad5a6654acd</a> </p>
 <p>Una vez creado el template tenemos que activar la app registration para
 que se cargue y reiniciar el servidor:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image13.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image13.png" /></p>
 <p>Y si actualizamos la página deberías ser capaces de verla correctamente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image124.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image124.png" /></p>
 <p>Si intentamos acceder, veréis que nos da un fallo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image797.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image797.png" /></p>
 <p>Esto ocurre porque Django está redireccionandonos automáticamente a una
 supuesta página de perfil en /accounts/profile. Más adelante crearemos
 un perfil de usuario, así que por ahora nos interesa cambiar de alguna
 forma esta redirección. ¿Cómo lo hacemos? Pues yendo a settings.py y
 añadiendo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image714.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image714.png" /></p>
 <p>Ahora si nos identificamos correctamente podréis notar como nos
 redirecciona a la vista portada que tiene ese nombre:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image602.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image602.png" /></p>
 <p>Si en lugar de home quisiéramos redirigir al usuario a la lista de
 páginas podríamos hacer con:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image913.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image913.png" /></p>
 <p>Ya que esta opción actúa como la función reverse.</p>
 <p>Vamos a tomarnos una pausa y luego hacemos el logout en la próxima
 lección.</p>

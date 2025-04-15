@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -590,11 +588,11 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="n">app</span> <span class="o">=</span> <span class="n">OpenGLApp</span><span class="p">(</span><span class="s2">&quot;OpenGL en Python&quot;</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
     <span class="n">app</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/img07.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img07.png" /></p>
 <p>El caso es que el seno y el coseno son funciones cuya posición <code>y</code> siempre está entre <code>0</code> y <code>1</code>. Además estamos generando valores para <code>x</code> entre <code>0</code> y <code>15</code>, ajustemos el espacio de visualización para dibujarlo más de cerca:</p>
 <div class="highlight"><pre><span></span><code><span class="n">GLUtils</span><span class="o">.</span><span class="n">InitOrtho</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/img08.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img08.png" /></p>
 <h2 id="visualizando-puntos">Visualizando puntos<a class="headerlink" href="#visualizando-puntos" title="Permanent link">&para;</a></h2>
 <p>En el siguiente ejemplo vamos a capturar la posición del ratón en la pantalla <code>(x,y)</code> al hacer clic y en ella vamos a dibujar un punto. Para almacenarlo definiremos una nueva clase <code>Point</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Point</span><span class="p">:</span>
@@ -663,7 +661,7 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="n">app</span> <span class="o">=</span> <span class="n">OpenGLApp</span><span class="p">(</span><span class="s2">&quot;OpenGL en Python&quot;</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
     <span class="n">app</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/anim02.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim02.gif" /></p>
 <p>Os fijaréis que el punto clicado y el dibujado no concuerdan, evidentemente el problema está en que el tamaño de la ventana de PyGame y el espacio de dibujo de <code>OpenGL</code> son distintos, podríamos equipararlos:</p>
 <div class="highlight"><pre><span></span><code><span class="n">GLUtils</span><span class="o">.</span><span class="n">InitOrtho</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
@@ -702,7 +700,7 @@ div.my-img{text-align:center;margin-top:20px}
         <span class="n">GLUtils</span><span class="o">.</span><span class="n">DrawPoints</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </code></pre></div>
 <p>Es importante separar la función de dibujar un punto y la de dibujar muchos de golpe para optimizar el renderizado.</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/anim03.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim03.gif" /></p>
 <h2 id="mapeado-de-puntos">Mapeado de puntos<a class="headerlink" href="#mapeado-de-puntos" title="Permanent link">&para;</a></h2>
 <p>En el ejemplo anterior hemos visto cómo adaptar el espacio de renderizado a la ventana de PyGame solventaba el problema de dibujar los puntos en el lugar adecuado, sin embargo en el mundo de los gráficos los vectores suelen venir normalizados con valores entre <code>-1</code> y <code>1</code>.</p>
 <p>En este ejemplo vamos a mapear los valores del clic del ratón para dibujar sobre un espacio normalizado entre <code>0</code> y <code>1</code>, así que tomando el ejemplo anterior podemos establecer ese espacio:</p>
@@ -727,7 +725,7 @@ div.my-img{text-align:center;margin-top:20px}
             <span class="c1"># Lo añadimos a la lista de puntos</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/anim04.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim04.gif" /></p>
 <p>Sería muy útil almacenar el tamaño del espacio ortográfico en la clase para añadir flexibilidad al código. Podemos hacerlo sobreescribiendo el <code>Init</code> que se llama antes del <code>Setup</code> y está pensado como lugar para inicializar valores:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">OpenGLApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
 
@@ -758,15 +756,15 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="n">GLUtils</span><span class="o">.</span><span class="n">DrawPoints</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
     <span class="n">GLUtils</span><span class="o">.</span><span class="n">DrawLines</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/anim05.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim05.gif" /></p>
 <p>Sin embargo, si cambiamos el modo a <code>GL_LINE_LOOP</code> trazará líneas contínuas entre cada nuevo vértice y el anterior:</p>
 <div class="highlight"><pre><span></span><code><span class="n">glBegin</span><span class="p">(</span><span class="n">GL_LINE_LOOP</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/anim06.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim06.gif" /></p>
 <p>Siempre unirá el último vértice con el primero para intentar crear una especie de polígono, pero eso podemos evitarlo cambiando el modo a <code>GL_LINE_STRIP</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="n">glBegin</span><span class="p">(</span><span class="n">GL_LINE_STRIP</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/anim07.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim07.gif" /></p>
 <p>Con algo de ingenio, detectando cuando estamos presionando un botón del ratón con <code>MOUSEBUTTONDOWN</code> y <code>MOUSEBUTTONUP</code> más el evento <code>MOUSEMOTION</code> para detectar el movimiento, podemos crear una pequeña aplicación para dibujar:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">OpenGLApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
 
@@ -788,7 +786,7 @@ div.my-img{text-align:center;margin-top:20px}
                               <span class="n">GLUtils</span><span class="o">.</span><span class="n">MapValue</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">screenHeight</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ortoHeight</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/anim08.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim08.gif" /></p>
 <p>El problema que al dejar de presionar y volver a hacerlo el último punto y el nuevo también se unen. ¿Cómo podríamos evitar que se unan? Pues podríamos crear un nuevo tipo llamado <code>Line</code> formado por una lista independiente con puntos:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Line</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -830,7 +828,7 @@ div.my-img{text-align:center;margin-top:20px}
             <span class="n">glVertex2f</span><span class="p">(</span><span class="n">point</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">point</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
         <span class="n">glEnd</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/anim09.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim09.gif" /></p>
 <h2 id="guardado-y-carga-en-un-fichero">Guardado y carga en un fichero<a class="headerlink" href="#guardado-y-carga-en-un-fichero" title="Permanent link">&para;</a></h2>
 <p>En esta práctica vamos a extender el código anterior para guardar y cargar el dibujo en un fichero siguiendo una estructura específica.</p>
 <p>Hay mil y una formas de escribir y leer datos, yo me voy a decantar por guardar la información en un fichero <code>json</code>:</p>
@@ -881,7 +879,7 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="bp">self</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 </code></pre></div>
 <p>Ya tendremos una aplicación para dibujar, guardar y recuperar el dibujo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/anim10.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim10.gif" /></p>
 <h2 id="poligonos-triangulos-y-quads">Polígonos, triángulos y quads<a class="headerlink" href="#poligonos-triangulos-y-quads" title="Permanent link">&para;</a></h2>
 <p>Retomando el anterior ejemplo del dibujado de líneas, vamos a aprovecharlo para introducir el dibujado de polígonos.</p>
 <p>De hecho ya vimos que si activamos el modo <code>GL_LINE_LOOP</code> OpenGL cierra siempre el espacio entre el último vértice y el primero.</p>
@@ -917,7 +915,7 @@ div.my-img{text-align:center;margin-top:20px}
         <span class="n">GLUtils</span><span class="o">.</span><span class="n">PrepareRender</span><span class="p">()</span>
         <span class="n">GLUtils</span><span class="o">.</span><span class="n">DrawPolygon</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/anim11.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim11.gif" /></p>
 <p>Podríamos dibujar el polígono, los puntos y las líneas con otros colores:</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">DrawPoints</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
@@ -948,7 +946,7 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="n">GLUtils</span><span class="o">.</span><span class="n">DrawLine</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
     <span class="n">GLUtils</span><span class="o">.</span><span class="n">DrawPoints</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/anim12.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim12.gif" /></p>
 <p>Es interesante observar ese efecto que se genera al no poder "encerrar" el polígono.</p>
 <p>La verdad es que en lugar de un polígono podríamos decirle a OpenGL que intente dibujar primitivas como triángulos y cuadrados:</p>
 <ul>
@@ -959,7 +957,7 @@ div.my-img{text-align:center;margin-top:20px}
 <li><code>GL_QUADS_STRIP</code></li>
 </ul>
 <p>Si probamos con <code>GL_TRIANGLES</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/anim13.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim13.gif" /></p>
 <p>OpenGL supone que cada tres vértices se forma un triángulo, pero estos triángulos son independientes y como las líneas se dibujan en un bucle unas tras otras no se ajustan a ellos.</p>
 <p>Lo podemos resolver dibujando las líneas en subconjuntos de tres vértices generados con <code>numpy</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
@@ -975,7 +973,7 @@ div.my-img{text-align:center;margin-top:20px}
         <span class="n">GLUtils</span><span class="o">.</span><span class="n">DrawLine</span><span class="p">([</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">points</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">points</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]],</span> <span class="mi">3</span><span class="p">)</span>
     <span class="n">GLUtils</span><span class="o">.</span><span class="n">DrawPoints</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/anim14.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim14.gif" /></p>
 <p>Otro modo interesante es <code>GL_TRIANGLE_FAN</code>, éste intentará generar triángulos en forma de aspas de ventilador. No hace falta que dibujemos las líneas, solo observemos el resultado:</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">DrawPolygon</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
@@ -987,7 +985,7 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="n">glEnd</span><span class="p">()</span>
     <span class="n">GLUtils</span><span class="o">.</span><span class="n">DrawPoints</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/anim15.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim15.gif" /></p>
 <p>De forma similar funciona el renderizado de cuadrados <code>GL_QUADS</code>, en estos deberíamos dibujar las líneas en subconjuntos de 4 vértices:</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">DrawPolygon</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
@@ -1003,7 +1001,7 @@ div.my-img{text-align:center;margin-top:20px}
             <span class="p">[</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">points</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">points</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">],</span> <span class="n">points</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]],</span> <span class="mi">3</span><span class="p">)</span>
     <span class="n">GLUtils</span><span class="o">.</span><span class="n">DrawPoints</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//opengl/anim16.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim16.gif" /></p>
 <p>Los triángulos y los cuadrados son las primitivas básicas para el dibujado de mallas y constituyen la parte más esencial del renderizado de modelos tridimensionales.</p>
 <hr />
 <p><small class="edited"><i>Última edición: 12 de Junio de 2022</i></small></p>

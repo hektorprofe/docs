@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1164,7 +1162,7 @@ div.my-img{text-align:center;margin-top:20px}
                   <h1 id="gestion-de-multiples-disenos">Gestión de múltiples diseños<a class="headerlink" href="#gestion-de-multiples-disenos" title="Permanent link">&para;</a></h1>
 <p>Supongamos que en lugar de mostrar un cuadro de diálogo queremos crear una subventana un diseñada con Qt Designer.</p>
 <p>Vamos a crear algo sencillo tomando como base la clase <code>QWidget</code>:</p>
-<p><img src="https://hektorprofe.github.io/docs/cdn//pyside/09-docs/10.png"></p>
+<p><img src="https://hektorprofe.github.io/docs/cdn/pyside/09-docs/10.png"></p>
 <p>Compilamos el diseñode la subventana:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span><span class="m">1</span>-9-4/interfaces
 uic.exe<span class="w"> </span>-g<span class="w"> </span>python<span class="w"> </span>mainwindow.ui<span class="w"> </span>-o<span class="w"> </span>mainwindow.py
@@ -1217,7 +1215,7 @@ uic.exe<span class="w"> </span>-g<span class="w"> </span>python<span class="w"> 
         <span class="c1"># y mostramos la subventana</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">subventana</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-<p><img src="https://hektorprofe.github.io/docs/cdn//pyside/09-docs/11.png"></p>
+<p><img src="https://hektorprofe.github.io/docs/cdn/pyside/09-docs/11.png"></p>
 <p>Y ya lo tenemos.</p>
 <p>Solo comentar algo, si hubiéramos creado un diálogo en Qt Designer deberíamos haber heredado de la clase <code>QDialog</code> en lugar de <code>QWidget</code>, tenedlo presento.</p>
 <hr />

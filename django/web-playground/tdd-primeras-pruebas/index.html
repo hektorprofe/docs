@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1561,64 +1559,64 @@ Pruebas). Es una forma de programar muy interesante que se basa en crear
 primero la prueba y luego desarrollar la funcionalidad. Cuando el TDD se
 hace bien las pruebas te llevan de la mano y desvelan nuevas formas de
 hacer las cosas, ya lo veréis.</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image16.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image16.png" /></p>
 <p>Cuando no tengamos muy claro por dónde empezar, siempre podemos simular
 situaciones básicas, como la creación de y consulta de los modelos, así
 que vamos a hacerlo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image172.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image172.png" /></p>
 <p>Al crear los usuarios y el hilo como variables de instancia con self,
 podemos hacer uso de ellos en cualquier método de la clase, por ejemplo
 en un test_add_users_to_thread:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image284.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image284.png" /></p>
 <p>Añadir valores a un campo Many2Many es tan fácil como utilizar su método
 add y pasarlos separados por comas. Pero ésto no podemos dejarlo así,
 nos falta comprobar si se han añadido correctamente, así que podemos
 hacer una simple aserción y comparar si el hilo tiene dos usuarios:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image772.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image772.png" /></p>
 <p>Ahora podemos ejecutar el tests de diferentes formas. Por ejemplo, si
 queremos ejecutar todos los Tests dentro del fichero tests.py de la app
 messenger haríamos:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image401.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image401.png" /></p>
 <p>Si en cambio queremos ejecutar sólo los de la clase ThreadTestCase
 haríamos:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image369.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image369.png" /></p>
 <p>Y si sólo quisiéramos ejecutar el test que acabamos de crear haríamos:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image592.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image592.png" /></p>
 <p>Esto es útil cuando tenemos muchas Clases y tests diferentes, pero en
 nuestro caso tendremos poquitos, así que utilizaremos siempre la primera
 forma.</p>
 <p>Sea como sea el Test valida correctamente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image771.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image771.png" /></p>
 <p>Por lo que sabemos que en efecto, esta forma de añadir Usuarios a un
 Hilo funciona.</p>
 <p>¿Qué os parece ahora crear un test para recuperar un hilo ya existente a
 partir de sus usuarios? La forma más fácil de filtrar por dos usuarios,
 es simplemente anidar dos filtros de la siguiente forma:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image922.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image922.png" /></p>
 <p>Ahora podemos hacer una aserción que compruebe si el Hilo donde hemos
 añadido los usuarios, el que es de instancia, es el mismo al que en
 teoría hay en la primera posición del QuerySet que devuelve filter:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image358.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image482.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image358.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image482.png" /></p>
 <p>Pues parece que sí, que de esta forma se puede recuperar el hilo. Por
 cierto, no sé si os habéis percatado, pero para cada Test (método que
 empieza por test_) se crea de nuevo la base de datos y se ejecuta el
 SetUp, esa es la razón por la que se nos muestra varias veces el
 mensaje...</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image186.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image186.png" /></p>
 <p>Deberíamos comentar esta línea del modelo Profile de “registration” para
 que no moleste.</p>
 <p>A todo esto, ¿y si intentamos recuperar un hilo que no existe qué
 pasaría? ¿El QuerySet que devuelve filter debería estar vacío no? Vamos
 a probarlo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image437.png" /><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image653.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image437.png" /><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image653.png" /></p>
 <p>¿Y qué hay de los mensajes? Vamos a trabajar un poco con ellos. Podemos
 crearlos y añadirlos prácticamente igual que los usuarios:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image579.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image59.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image579.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image59.png" /></p>
 <p>Si queremos hasta podemos mostrar la conversación:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image83.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image295.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image83.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image295.png" /></p>
 <p>Con estos 4 tests hemos experimentado las acciones esenciales:</p>
 <ul>
 <li>Crear hilos</li>

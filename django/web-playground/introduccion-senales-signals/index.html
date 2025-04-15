@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -1568,30 +1566,30 @@ al modelo User justo después de crear un usuario, tiene que recibir un
 sender, una instance y los kwargs. Instance hace referencia al objeto
 que envía la señal, y que en nuestro caso será el usuario recién creado,
 así que simplemente creamos el perfil y nos quedamos tan anchos:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image648.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image648.png" /></p>
 <p>Ahora debemos debemos transformar la función en una señal. Lo haremos
 con el decorador @receiver, al cual le pasaremos un tipo de señal, en
 nuestro caso post_save (después del guardado),  y un sender, que
 corresponderá al modelo encargado de enviar la señal, en nuestro caso
 User:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image894.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image499.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image894.png" />\
+<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image499.png" /></p>
 <p>Con esto ya lo tenemos, pero hay que tener en cuenta que esta señal se
 ejecutará siempre que se guarde la instancia, ¿habrá alguna forma de
 ejecutar la consulta sólo cuando se crea por primera vez? Pues sí. Si
 comprobamos del diccionario kwargs la clave created, esta debería
 devolver True si justo después de crearse la instancia se ha llamada a
 la señal. Si no existe devolveremos False por defecto:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image507.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image507.png" /></p>
 <p>Vamos a registrar un nuevo usuario a ver si funciona ha creado su
 perfil...</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image802.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image612.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image802.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image612.png" /></p>
 <p>Pues parece que sí, pero para estar seguros vamos a meternos un momento
 en la shell y a consultarlo manualmente. La shell es un entorno python y
 django dentro de nuestro proyecto, de manera que podemos interactuar en
 tiempo real a través de instrucciones:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//django/images/image483.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image483.png" /></p>
 <p>Como véis el objeto existe, por lo que podemos afirmar que efectivamente
 se ha creado el perfil.</p>
 <p>Sin embargo utilizar la shell para hacer estas comprobaciones muy

@@ -64,8 +64,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -808,7 +806,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="n">io</span><span class="p">.</span><span class="n">ConfigWindowsMoveFromTitleBarOnly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 </code></pre></div>
 <p>Con esto en principio tendremos las dos partes por separado:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/image-137.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-137.png" /></p>
 <p>Por desgracia si hacemos clic en cualquier parte seguiremos modificando la cámara, pero ahora podemos hacer algo muy interesante. Podemos definir una variable para detectar si nuestra subventana se encuentra activa con el ratón encima:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Window</span>
 <span class="p">{</span>
@@ -836,7 +834,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="o">*</span><span class="w"> </span><span class="n">keystate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SDL_GetKeyboardState</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
 </code></pre></div>
 <p>Todavía quedan algunos bugs y se puede pulir más pero creo que empieza a dar el pego:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-43.gif" /> </p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-43.gif" /> </p>
 <p>Algo que podemos hacer es que mientras se arrastra la subventana de <code>Rendering</code> tampoco se pueda interactuar con la cámara. Para ello podemos definir:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Window</span>
 <span class="p">{</span>
@@ -883,7 +881,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="w">    </span><span class="k">break</span><span class="p">;</span>
 </code></pre></div>
 <p>El resultado final es todo lo que podía esperar:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn//graficos3d/anim-44.gif" /> </p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-44.gif" /> </p>
 <hr />
 <p><small class="edited"><i>Última edición: 05 de Junio de 2022</i></small></p>
                   
