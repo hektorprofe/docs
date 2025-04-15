@@ -1546,7 +1546,7 @@ div.my-img{text-align:center;margin-top:20px}
                   <h1 id="creando-las-vistas-del-blog-1">Creando las vistas del Blog (1)<a class="headerlink" href="#creando-las-vistas-del-blog-1" title="Permanent link">&para;</a></h1>
 <p>Bien, ya tenemos los modelos listos así que nos toca desarrollar las vistas. Vamos a crear vistas, una para mostrar todas las noticias, y otra para filtrar por categorías. En el próximo proyecto os enseñaré a crear paginadores y otras cosas interesantes, pero por ahora lo vamos a mantener lo más simple posible.</p>
 <p>Vamos a prepararlo todo, trasladando el template blog.html y su respectiva vista a la app Blog y poniendo bien las urls:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/28-5.png" style="max-width:150px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/webempresa/28-5.png" style="max-width:150px"/></div>
 
 <p><code>blog/views.py</code>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">django.shortcuts</span><span class="w"> </span><span class="kn">import</span> <span class="n">render</span>
@@ -1571,7 +1571,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">]</span>
 </code></pre></div></p>
 <p>Ya debería funcionar:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/29.png" style="max-width:350px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/webempresa/29.png" style="max-width:350px"/></div>
 
 <p>Vamos a recuperar las noticias y a fusionar su template:</p>
 <p><code>blog/views.py</code>
@@ -1623,21 +1623,21 @@ div.my-img{text-align:center;margin-top:20px}
 {% endblock %}
 </code></pre></div></p>
 <p>Si echamos un vistazo al resultado todo está correcto, fijaros como el autor hace referencia al Usuario y nos lo muestra bien:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/30.png" style="max-width:350px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/webempresa/30.png" style="max-width:350px"/></div>
 
 <p>Sin embargo la fecha de publicación no está en el formato que necesitamos, según nuestro frontend sólo necesitamos mostrar DIA/MES/AÑO separados con barras. Para conseguir este resultado podemos utilizar el template tag date y darle el formato deseado. En nuestro caso nos interesa uno predeterminado llamado <strong>SHORT_DATE_FORMAT</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;section-heading-upper&quot;</span><span class="p">&gt;</span>
     {{post.published|date:&quot;SHORT_DATE_FORMAT&quot;}}
 <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
 </code></pre></div>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/31.png" style="max-width:120px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/webempresa/31.png" style="max-width:120px"/></div>
 
 <p>Otra cosa importante es que por defecto no se respetan los saltos de línea en el cuerpo de la noticia, para activarlos debemos indicar el template tag <strong>linebreaks</strong> en el contenido:</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;mb-0 mbt&quot;</span><span class="p">&gt;</span>
     {{post.content|linebreaks}}
 <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </code></pre></div>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/32.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/webempresa/32.png"/></div>
 
 <p>Y por último vamos a por las categorías. Si comentamos lo que tenemos en el diseño y simplemente mostramos la relación many2many nos aparecerá algo muy raro:</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;mb-0 mbt&quot;</span><span class="p">&gt;</span>
@@ -1647,7 +1647,7 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </code></pre></div>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/33.png" style="max-width:380px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/webempresa/33.png" style="max-width:380px"/></div>
 
 <p>Esto es porque categories se comporta como una consulta a la base de datos, tenemos que indicarle exactamente qué queremos mostrar, normalmente añadiendo <strong>.all</strong> para en nuestro caso hacer referencia a todas las categorías de la entrada:</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;mb-0 mbt&quot;</span><span class="p">&gt;</span>
@@ -1657,7 +1657,7 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </code></pre></div>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/34.png" style="max-width:700px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/webempresa/34.png" style="max-width:700px"/></div>
 
 <p>Esto hará la consulta y nos devolverá un QuerySet, evidentemente eso no lo queremos. Podemos hacer algo más fácil, utilizar un templatetag join para mostrar las categorías separadas por comas:</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;mb-0 mbt&quot;</span><span class="p">&gt;</span>
@@ -1667,7 +1667,7 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </code></pre></div>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/35.png" style="max-width:385px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/webempresa/35.png" style="max-width:385px"/></div>
 
 <p>Por ahora vamos a dejarlo así, luego cuando tengamos la vista para filtrar por categoría volveremos para poner los enlaces.</p>
 <hr />

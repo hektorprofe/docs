@@ -2100,7 +2100,7 @@ div.my-img{text-align:center;margin-top:20px}
 <div class="highlight"><pre><span></span><code><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;¡Hola Mundo!&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span> 
 </code></pre></div>
 </div>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/images/tkinter/05.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/images/tkinter/05.png"/></div>
 
 <p>Vamos a crear más etiquetas:</p>
 <div class="admonition info">
@@ -2112,7 +2112,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span> 
 </code></pre></div>
 </div>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/images/tkinter/06.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/images/tkinter/06.png"/></div>
 
 <p>Como véis las tres etiquetas se muestran una encima de otra porque al hacer pack() por defecto se posicionan así, pero podemos cambiar su distribución:</p>
 <div class="admonition info">
@@ -2121,7 +2121,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;¡Última etiqueta!&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">anchor</span><span class="o">=</span><span class="n">SE</span><span class="p">)</span>
 </code></pre></div>
 </div>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/images/tkinter/07.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/images/tkinter/07.png"/></div>
 
 <p>Evidentemente también tienen distintos parámetros visuales, para cambiar el color en primer plano, el del fondo, la fuente y su tamaño...:</p>
 <div class="admonition info">
@@ -2132,7 +2132,7 @@ div.my-img{text-align:center;margin-top:20px}
              <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Verdana&quot;</span><span class="p">,</span><span class="mi">24</span><span class="p">))</span> 
 </code></pre></div>
 </div>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/images/tkinter/08.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/images/tkinter/08.png"/></div>
 
 <p>Pero una de las cosas más interesantes que nos permiten hacer es cambiar el texto sobre la marcha utilizando un objeto llamado StringVar() y su propiedad textvariable:</p>
 <div class="admonition info">
@@ -2141,7 +2141,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="n">label</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">textvariable</span><span class="o">=</span><span class="n">texto</span><span class="p">)</span>  <span class="c1"># añadimos una variable de texto</span>
 </code></pre></div>
 </div>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/images/tkinter/09.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/images/tkinter/09.png"/></div>
 
 <p>Quizá ahora no parece muy útil, pero más adelante veremos cómo capturar el momento en que apretamos un botón y entonces cambiaremos el texto de una etiqueta.</p>
 <p>Por cierto, algo que os va a gustar es que las etiquetas pueden contener imágenes, lo malo es que tkinter sólo acepta dos formatos de imagen a través de la clase PhotoImage: pgm y gif. </p>
@@ -2150,7 +2150,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="n">imagen</span><span class="p">,</span> <span class="n">bd</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
 </code></pre></div>
 </div>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/images/tkinter/10.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/images/tkinter/10.png"/></div>
 
 <p>Si quisiéramos trabajar con otros formatos de imágen deberíamos utilizar un módulo externo como PIL, pero eso me lo reservo por si más adelante os interesa profundizar en el mundo de las interfaces.</p>
 <p>Código final:</p>

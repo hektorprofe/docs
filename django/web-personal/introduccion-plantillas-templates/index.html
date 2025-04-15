@@ -1548,7 +1548,7 @@ div.my-img{text-align:center;margin-top:20px}
 <p>Para utilizar una plantilla lo primero es crearla, pero no la podemos crearla donde nos apetezca, debemos hacerlo siguiendo una lógica. Lo primero es crear un directorio <strong>templates</strong> en nuestra app, que dentro debe contener otro directorio con el mismo nombre que la app, en nuestro caso <strong>core</strong>.</p>
 <p>Tenemos que hacerlo así porque Django funciona mezclando los directorios templates de las apps, de manera que al final él tiene un solo directorio <strong>templates</strong> y dentro otro para cada app. </p>
 <p>Dentro de este subdirectorio <strong>templates/core</strong> de la app vamos a comenzar creando un fichero <strong>home.html</strong>:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/17.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/17.png"/></div>
 
 <p>Dentro vamos a poner todo el código HTML tal cual será devuelto al llamar la vista home, algo más o menos así:</p>
 <p><code>core/templates/core/home.html</code></p>
@@ -1571,7 +1571,7 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;core/home.html&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>Una vez hecho vamos a probar si carga la portada, pero como podréis observar no funcionará:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/18.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/18.png"/></div>
 
 <p>Por defecto Django optimiza el uso de la memoria así que no carga las plantillas de una app que no esté instalada en <strong>settings.py</strong>. Para cargar la app core y sus plantillas en memoria debemos ir al fichero <strong>webpersonal/settings.py</strong> y añadir la app en la lista <em>INSTALLED_APPS</em> justo abajo del todo:</p>
 <p><code>webpersonal/settings.py</code></p>

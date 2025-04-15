@@ -1546,10 +1546,10 @@ div.my-img{text-align:center;margin-top:20px}
                   <h1 id="patron-mvt-modelo-vista-template">Patrón MVT: Modelo-Vista-Template<a class="headerlink" href="#patron-mvt-modelo-vista-template" title="Permanent link">&para;</a></h1>
 <p>Si tenéis experiencia en el mundo de la programación seguro que habéis oído hablar del famoso patrón MVC: Modelo-Vista-Controlador. Django redefine este modelo como MVT: Modelo-Vista-Template.</p>
 <p>Hasta ahora lo que hemos hecho no requería de interactuar con la base de datos. Podríamos decir que simplemente se recibe una petición del navegador, se ejecuta la vista correspondiente y se renderiza el Template para que el navegador muestre el HTML resultante:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/45.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/45.png"/></div>
 
 <p>Sin embargo en el momento en que aparecen las base de datos y los modelos, este proceso se extendiende. Ahora se recibirá la petición, se pasará a la vista, en la vista recuperaremos los datos del modelo correspondiente, y finalmente la renderizaremos el Template pero esta vez integrando los datos dinámicos recuperados del modelo, antes de enviar el HTML final al navegador:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/46.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/46.png"/></div>
 
 <p>Vamos a hacerlo, ya veréis como en la práctica es bastante fácil.</p>
 <p>Como la lista de proyectos la enviaremos al template <strong>portofolio.html</strong> a través de su view <strong>porfolio</strong>, vamos a recuperar los datos ahí. Pero en lugar de definirla en la app Core, la vamos a trasladar al views de su propia app <strong>portfolio/views.py</strong>:</p>
@@ -1560,7 +1560,7 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;core/portfolio.html&quot;</span><span class="p">)</span>
 </code></pre></div></p>
 <p>También crearemos una carpeta <strong>templates/portfolio</strong> y pondremos el template de la página <strong>portfolio</strong> ahí:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/54.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/54.png"/></div>
 
 <p>Y actualizamos la ruta al template:</p>
 <p><code>portfolio/views.py</code>
@@ -1676,23 +1676,23 @@ div.my-img{text-align:center;margin-top:20px}
     {% endfor %}
 {% endblock %}
 </code></pre></div></p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/49.png" style="max-width: 500px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/49.png" style="max-width: 500px"/></div>
 
 <p>¿No es fantástico? Lo malo es que la imagen no se muestra. Si analizamos el código generado veremos la causa:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/53.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/53.png"/></div>
 
 <p>Como véis no añade la URL de los ficheros que se supone están en /media/, pero no os preocupéis. El campo ImageField tiene un atributo llamado url que nos generará su ruta correcta automáticamente teniendo en cuenta la variable <strong>MEDIA_URL</strong> que tenemos en <strong>settings.py</strong>:</p>
 <p><code>portfolio/templates/portfolio/porfolio.html</code>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">img</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;img-fluid&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{{project.image.url}}&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">&gt;</span>
 </code></pre></div></p>
 <p>Con esto debería funcionar la imagen:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/50.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/50.png"/></div>
 
 <p>En este punto si queréis podemos volver al panel de administrador y añadir otro proyecto de prueba:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/51.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/51.png"/></div>
 
 <p>Una vez creado el proyecto nos aparecerá en la parte superior, recordad que se nos ordenan de más recientes amás antiguos:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/52.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/52.png"/></div>
 
 <p>Fijaros en muy poco tiempo hemos transformado un template estático en una web con una sección Portafolio dinámica, donde a través de un panel de administrador nuestros clientes pueden manejar proyectos de forma simple y cómoda, incluso a través de su teléfono móvil. Sólo nos faltaría crear un usuario para nuestro cliente desde el administrador, pero esto lo trabajaremos más a fondo en el siguiente proyecto. </p>
 <p>Por ahora damos la web personal acabada, lo que resta de sección lo dedicaremos a algunos ejercicios prácticos.</p>

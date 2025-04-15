@@ -1582,25 +1582,25 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">]</span>
 </code></pre></div></p>
 <p>Vamos a probar en nuestro proyecto:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/03.png" style="max-width: 550px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/webempresa/03.png" style="max-width: 550px"/></div>
 
 <p>Como véis no funciona. ¿Por qué? Bueno fijaros que estamos definiendo un path global llamado core/ para incluir en él las URLS de la app <strong>core</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="n">path</span><span class="p">(</span><span class="s1">&#39;core/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;core.urls&#39;</span><span class="p">)),</span>
 </code></pre></div>
 <p>En otras palabras, todos nuestros Paths dependen de la raíz core/, representando el propio core/ la portada que tenemos en core:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/04.png" style="max-width: 350px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/webempresa/04.png" style="max-width: 350px"/></div>
 
 <p>Como  este path no tiene una URL, representa la propia raíz:</p>
 <div class="highlight"><pre><span></span><code><span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">home</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;home&#39;</span><span class="p">),</span>
 </code></pre></div>
 <p>¿Como entraríamos en las otras páginas? Pues simplemente añadiendo después de core/ su path:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/05.png" style="max-width: 450px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/webempresa/05.png" style="max-width: 450px"/></div>
 
 <p>Por ahora no queremos esto, así que vamos a hacer que la raíz de las URLS de <strong>core</strong> esté vacía:</p>
 <div class="highlight"><pre><span></span><code><span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;core.urls&#39;</span><span class="p">)),</span>
 </code></pre></div>
 <p>Así replicaremos el funcionamiento que teníamos antes:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/06.png" style="max-width: 350px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/webempresa/06.png" style="max-width: 350px"/></div>
 
 <p>Y con esto ya sabéis manejar URLS de una forma mucho más cómoda.</p>
 <hr />

@@ -1596,10 +1596,10 @@ div.my-img{text-align:center;margin-top:20px}
 </div>
 <h2 id="solucion">Solución<a class="headerlink" href="#solucion" title="Permanent link">&para;</a></h2>
 <p>Empezamos por ejemplo creando los directorio <strong>static/core/</strong> en nuestra app y copiamos ahí todos los recursos del frontend:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/07.png" style="max-width: 300px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/webempresa/07.png" style="max-width: 300px"/></div>
 
 <p>Ahora vamos a hacer lo mismo pero para los templates en el directorio <strong>templates/core/</strong>:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/08.png" style="max-width: 335px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/webempresa/08.png" style="max-width: 335px"/></div>
 
 <p>Ahora vamos a decirle a Django que cargue los ficheros estáticos y los templates de la app <strong>core</strong>, así que lo añadiremos en <strong>settings.py</strong>.</p>
 <p>Acto seguido en lugar de seguir devolviendo un HttpResponse en las vistas vamos a renderizar nuestros templates. Voy a empezar por home y el template index.html al que cambiaré el nombre a home.html para que todo concuerde:</p>
@@ -1608,7 +1608,7 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;core/home.html&quot;</span><span class="p">)</span>
 </code></pre></div></p>
 <p>Ahora pruebo a ver si funciona:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/09.png" style="max-width: 300px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/webempresa/09.png" style="max-width: 300px"/></div>
 
 <p>Parece que carga bien, pero los recursos estáticos no funcionan. Vamos a utilizar el template tag <em>load_static</em> y a adaptar sus urls en home.html:</p>
 <p><code>core/templates/core/home.html</code>
@@ -1630,7 +1630,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{% static &#39;core/vendor/bootstrap/js/bootstrap.bundle.min.js&#39; %}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div></p>
 <p>Probamos de nuevo:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/10.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/webempresa/10.png"/></div>
 
 <p>Más o menos funciona, pero como la  imágen de la cabecera no se está mostrando todo se descuadra. Vamos a poner bien su enlace estático:</p>
 <p><code>core/templates/core/home.html</code>
@@ -1638,7 +1638,7 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="na">src</span><span class="o">=</span><span class="s">&quot;{% static &#39;core/img/intro.jpg&#39; %}&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">&gt;</span>
 </code></pre></div></p>
 <p>Ahora sí:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/webempresa/11.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/webempresa/11.png"/></div>
 
 <p>Ahora que tenemos nuestra portada vamos a crear la plantilla base.html. Podemos simplemente copiar home.html y llamarla base.html porque lo tenemos todo ahí.</p>
 <p>Vamos a echar un vistazo al diseño general de todas ellas para identificar la parte común y la parte que cambia...</p>

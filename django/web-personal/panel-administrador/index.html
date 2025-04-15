@@ -1546,7 +1546,7 @@ div.my-img{text-align:center;margin-top:20px}
                   <h1 id="panel-de-administrador">Panel de administrador<a class="headerlink" href="#panel-de-administrador" title="Permanent link">&para;</a></h1>
 <p>Bien, como recordaréis nos quedamos en que había dos formas de añadir registros a nuestra base de datos. Una era crear las instancias manualmente a través de formularios en vistas y la otra utilizar el panel de administrador. Evidentemente vamos a utilizar la segunda, la primera la reservaremos para más adelante.</p>
 <p>El panel de administrador de Django es una funcionalidad que viene creada por defecto. Para acceder tenemos que entrar a la dirección <strong>/admin</strong> de nuestra página:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/28.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/28.png"/></div>
 
 <p>Esto no es casual, si abrís el <strong>urls.py</strong> del proyecto veréis que ya está configurado por defecto para abrirse en esa dirección como si se tratara de otra app:</p>
 <p><code>webpersonal/urls.py</code> </p>
@@ -1556,11 +1556,11 @@ div.my-img{text-align:center;margin-top:20px}
 <div class="highlight"><pre><span></span><code>(django2) python manage.py createsuperuser
 </code></pre></div>
 <p>También es buena idea poner un email real. Una vez hecho ponemos de nuevo el servidor en marcha, nos identificamos y...</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/29.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/29.png"/></div>
 
 <p>¡Ahí estamos! Os presento al panel de administrador, la razón por la que me enamoré de Django, y que además desde Django 2.0 es 100% adaptativo, así que vuestros clientes podrán acceder desde su móvil o tablet sin ningún problema.</p>
 <p>Al identificados como super usuario podemos editar cualquier tabla de la base de datos a voluntad, aunque por ahora sólo nos aparecen las tablas de grupos y usuarios. </p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/30.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/30.png"/></div>
 
 <p>Muy bonito... pero ¿dónde está nuestro modelo de proyectos?</p>
 <p>Para que nuestro modelo aparezca en el administrador tenemos que registrarlo en el fichero <strong>portfolio/admin.py</strong>:</p>
@@ -1572,10 +1572,10 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Project</span><span class="p">)</span>
 </code></pre></div>
 <p>Ahora actualizamos de nuevo… y ahí lo tenemos ¿qué os parece?</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/31.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/31.png"/></div>
 
 <p>Ahora desde este menú podemos añadir, modificar y borrar proyectos a nuestro antojo:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/32.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/32.png"/></div>
 
 <p>Sé que os dan muchas ganas de crear algo pero esperad un momento, vamos a tomarnos un descanso y a la vuelta le damos duro.</p>
 <hr />

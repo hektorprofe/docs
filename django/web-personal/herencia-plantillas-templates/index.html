@@ -1627,7 +1627,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Bienvenidos.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </code></pre></div></p>
 <p>Muy bien, si ahora probamos de mostrar la portada evidentemente no nos aparecerá ni el título ni el menú:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/19.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/19.png"/></div>
 
 <p>No os preocupéis, sólo debemos hacer un pequeño ajuste para decirle que sea hija de la plantilla base.html. Vamos a poner justo encima el template tag extends de la siguiente forma:</p>
 <p><code>core/templates/core/home.html</code>
@@ -1637,7 +1637,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Bienvenidos.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </code></pre></div></p>
 <p>Esto le indicará que es hija de base. Si ahora ejecutamos la portada:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/20.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/20.png"/></div>
 
 <p>Vaya, parece que esta vez sólo se muestra el título y el menú. El caso es que no está funcionando como debería, pero vamos bien. ¿Sabéis qué nos falta? Decirle que nuestra portada se dibuje justo dentro del bloque content de la base, y eso lo haremos creando de nuevo el bloque content y poniendo nuestro HTML dentro:</p>
 <p><code>core/templates/core/home.html</code>
@@ -1649,7 +1649,7 @@ div.my-img{text-align:center;margin-top:20px}
 {% endblock %}
 </code></pre></div></p>
 <p>Una vez rectificado esto, ya nos debería funcionar como era de esperar:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/21.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/21.png"/></div>
 
 <p>Así es como se utiliza la herencia con plantillas, con los template tags <strong>block</strong> y <strong>extends</strong>. En la siguiente lección tendrás que poner en práctica lo aprendido adaptando las demás páginas a este sistema.</p>
 <hr />

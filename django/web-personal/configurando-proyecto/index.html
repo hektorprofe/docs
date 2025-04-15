@@ -1548,20 +1548,20 @@ div.my-img{text-align:center;margin-top:20px}
 <p>Dejando de banda el directorio <strong>.vscode</strong>, que crea nuestro editor, lo primero que notaréis es que la propia carpeta webpersonal contiene a su vez otra carpeta webpersonal junto a un fichero llamado <strong>manage.py</strong>. Este fichero es un script que sirve para gestionar todo nuestro proyecto desde la terminal, y lo vamos a estar utilizando un montón.</p>
 <p>Por otro lado el subdirectorio <em>webpersonal</em> es el que contiene los scripts base del proyecto, los cuales tienen toda la configuración inicial y de despliegue.</p>
 <p>Resumiendo mucho, el fichero <strong>__init.py__</strong> nos indica que la carpeta es un paquete, <strong>settings.py</strong> es el que contiene la configuración del proyecto, <strong>urls.py</strong> es el fichero encargado de manejar las direcciones de la web (sí esas que se escribirán en la barra del navegador) y por último <strong>wsgi.py</strong>, un script que contiene la información para desplegar el proyecto en producción, algo que trataremos en la <em>Sección 5. Despliegue</em>.</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/03.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/03.png"/></div>
 
 <p>Creo que es mejor que descubramos sobre la marcha estos ficheros, así que por ahora vamos a centrarnos sólo en el manage. Desde Visual Studio Code, vamos abrir el directorio donde se encuentra <strong>manage.py</strong>.</p>
 <p>Lo vamos a ejecutar abriéndolo y ejecutando el script con clic derecho, de esa forma el propio Visual Studio Code nos activará el entorno virtual, es un pequeño truco.</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/04.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/04.png"/></div>
 
 <p>Ahora vamos a ejecutar el script junto con el comando runserver, que significa correr o poner en marcha el servidor:</p>
 <div class="highlight"><pre><span></span><code>(django2) python manage.py runserver
 </code></pre></div>
 <p>Esto pondrá en marcha el servidor de desarrollo de Django y podremos acceder a la web que se ha generado haciendo clic en la dirección mientras presionamos <em>Control</em>:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/05.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/05.png"/></div>
 
 <p>Así veremos nuestro primer proyecto y cómo Django nos da la bienvenida. Fijaros que nos muestra un mensaje:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/06.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/06.png"/></div>
 
 <blockquote>
 <p>Estás viendo esta página porque el DEBUG está en True en tu settings y no has configurado ninguna URL.</p>
@@ -1578,7 +1578,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="n">LANGUAGE_CODE</span> <span class="o">=</span> <span class="s1">&#39;es&#39;</span>
 </code></pre></div>
 <p>Sólo habiendo hecho este cambio el servidor de Django se reiniciará aplicando los cambios, y si recargamos la pantalla de antes… ¡Sorpresa! Ahora nos sale en español:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/07.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/07.png"/></div>
 
 <p>El siguiente paso que tenemos que llevar a cabo, justo después de crear un proyecto, es crear la base de datos inicial. Lo tenemos que hacer para que Django pueda gestionar un montón de cosas por nosotros, como por ejemplo las sesiones, los usuarios o los grupos. Para hacerlo vamos de vuelta al fichero <strong>settings.py</strong> y buscaremos el diccionario llamado <em>DATABASES</em>.</p>
 <p><code>webpersonal/settings.py</code></p>
@@ -1591,7 +1591,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>Lo que tenemos aquí es una configuración predeterminada utilizando la base de datos SQLite3. Sí, Django trabaja con bases de datos SQL, y es compatible con unas cuantas. Si accedemos al enlace de la documentación veremos exactamente cuales en el apartado <em>ENGINES</em>:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/08.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/08.png"/></div>
 
 <p>PostgreSQL, MySQL, SQLite3 y Oracle. ¿Y qué pasa con SQL Server de Microsoft? Pues no está soportada por defecto, aunque sí existen módulos externos como Django-MSSQL, pero claro, ya requiere una configuración más avanzada.</p>
 <p>Nosotros vamos a trabajar siempre con bases de datos SQLite3. Este motor se maneja en un fichero y no requiere instalar ningún servidor de base de datos, es lo mejor para ir aprendiendo.</p>
@@ -1610,7 +1610,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>Así pues vamos a sincronizar la base de datos inicialmente, ¿cómo lo hacemos? Pues fijaros que si volvemos a nuestra terminal, justo en el momento que hemos puesto en marcha el servidor nos aparece un mensaje:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/09.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/09.png"/></div>
 
 <blockquote>
 <p><i>Tienes 14 migraciones sin aplicar. Tu proyecto puede no funcionar correctamente hasta que apliques las migraciones para las apps admin, auth, contenttypes y sessions. Ejecuta 'python manage migrate' para aplicarlas.</i></p>

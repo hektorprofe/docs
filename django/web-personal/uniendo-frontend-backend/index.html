@@ -1609,7 +1609,7 @@ div.my-img{text-align:center;margin-top:20px}
 </code></pre></div></p>
 <p>Hecho esto ya podemos borrar el código de referencia que teníamos arriba comentado, sino nos dará error porque detectar bloques repetidos.</p>
 <p>Vamos a probar qué tal se ve nuestra página:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/24.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/24.png"/></div>
 
 <p>Bueno, parece que ha cambiado un poco, pero claramente no es lo que estábamos esperando. ¿Qué está sucediendo? Pues que nos se están cargando los recursos estáticos.</p>
 <p>Los recursos estáticos son esos contenidos que forman parte del maquetado frontend, por ejemplo los css, los javascripts y las imágenes, de ahí que no se vea nada. ¿Por qué sucede esto?</p>
@@ -1619,7 +1619,7 @@ div.my-img{text-align:center;margin-top:20px}
 <p>Es sólo un servicio para utilizar durante el desarrollo y no está pensado para manejar ficheros estáticos. De esto se encargaría por ejemplo Nginx o Apache que son servidores pensados para la fase de producción. </p>
 <p>¿Entonces no podemos ver como queda nuestra web en la fase de desarrollo? Pues sí, sí que podemos, pero debemos realizar algunas configuraciones.</p>
 <p>Lo primero es crear un directorio en nuestra app core para almacenar los contenidos estáticos, la lógica es la misma que con el directorio templates, asi que crearemos un directorio <strong>static</strong> y dentro otro llamado <strong>core</strong>, el nombre de la app, y dentro vamos a copiar todos los directorios de la maqueta que incluyen este tipo de ficheros:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/25.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/25.png"/></div>
 
 <p>Ahora sólo nos falta decirle a nuestro template que cargue los ficheros estáticos. Vamos de vuelta a nuestro <strong>base.html</strong>, y justo antes de llamar nuestros css y javascripts ejecutaremos el siguiente template tag:</p>
 <p><code>core/templates/core/base.html</code>
@@ -1649,7 +1649,7 @@ div.my-img{text-align:center;margin-top:20px}
 &lt;script src=&quot;{% static &#39;core/js/clean-blog.min.js&#39; %}&quot;&gt;&lt;/script&gt;
 </code></pre></div></p>
 <p>Una vez lo tenemos vamos a probar de nuevo nuestra web:</p>
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="https://hektorprofe.github.io/docs/cdn/django/26.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="https://hektorprofe.github.io/docs/cdn/django/26.png"/></div>
 
 <p>Ahora ya nos carga los recursos, menos la imagen de la cabecera que no la hemos adaptado. Podríamos hacerlo ahora, pero como se nos alargaría mucho la lección lo haremos en la siguiente.</p>
 <hr />
