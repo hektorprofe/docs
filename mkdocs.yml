@@ -1,26 +1,24 @@
-site_name: Hektor Profe
-site_description: 'Web de apuntes de programación de Hector Costa Guzman.'
-site_author: 'Héctor Costa Guzman'
-dev_addr: '127.0.0.1:8080'
-site_url: 'https://docs.hektorprofe.net/'
+site_name: Archivo de Hektor Profe
+site_description: "Archivo con apuntes de programación de Hector Costa Guzman."
+site_author: "Héctor Costa Guzman"
+dev_addr: "127.0.0.1:8080"
+site_url: https://hektorprofe.github.io/docs/
+
 plugins:
   - markdownextradata
 theme:
-  name: 'material'
-  custom_dir: 'theme'
+  name: "material"
+  custom_dir: "theme"
   palette:
-    primary: 'grey'
-    accent: 'grey'
-  favicon: '/favicon.ico'
-  language: 'es'
+    primary: "grey"
+    accent: "grey"
+  favicon: "/favicon.ico"
+  language: "es"
   feature:
     tabs: true
   font:
-    text: 'Roboto'
-    code: 'Roboto Mono'
-google_analytics:
-  - 'UA-124845547-1'
-  - 'auto'
+    text: "Roboto"
+    code: "Roboto Mono"
 markdown_extensions:
   - admonition
   - codehilite
@@ -29,511 +27,510 @@ markdown_extensions:
   - pymdownx.tabbed
   - pymdownx.superfences
   - pymdownx.betterem:
-      smart_enable: 'all'
+      smart_enable: "all"
   - toc:
       permalink: true
 extra:
   social:
-    - type: 'github'
-      link: 'https://github.com/hcosta'
-    - type: 'youtube'
-      link: 'https://www.youtube.com/c/HektorProfe'
-  cdn: "/cdn"
+    - type: "github"
+      link: "https://github.com/hcosta"
+  cdn: "https://hektorprofe.github.io/docs/cdn"
 nav:
-
-  - Menús: 
-    - 'buscador.md'
+  - Menús:
+      - "buscador.md"
 
   - Academia de programación:
-    - Índice del archivo:               'academia/index.md'
-    - Python para principiantes:        'academia/python/introduccion.md'
-    - Python para interfaces gráficas:  'academia/python/poo-para-interfaces-graficas.md'
-    - Gestor de clientes con Python:    'academia/python/proyecto-gestor-clientes.md'
-    - Más tutoriales sobre Python:      'academia/python/tutoriales.md'
-    - Módulo analítico NumPy:           'academia/python/modulo-analitico-numpy.md'
-    - Módulo gráfico Matplotlib:        'academia/python/modulo-grafico-matplotlib.md'
-    - Django para principiantes:        'academia/django/introduccion.md'
-    - Server API pelis en Django Rest:  'academia/django/api-rest-framework.md'
-    - Más tutoriales sobre Django:      'academia/django/tutoriales.md'
-    - JavaScript para principiantes:    'academia/javascript/introduccion.md'
-    - Conversor de divisas en JS:       'academia/javascript/conversor-divisas.md'
-    - Introducción a P5.js:             'academia/javascript/biblioteca-p5js.md'
-    - Introducción a Node.js:           'academia/javascript/nodejs.md'  
-    - Chat online con Node.js:          'academia/javascript/chat-heroku.md'
-    - Cliente API pelis en Nuxt.js:     'academia/javascript/cliente-nuxt.md'    
-    - Configurar Ubuntu Server:         'academia/gnu-linux/ubuntu-server-web.md'
+      - Índice del archivo: "academia/index.md"
+      - Python para principiantes: "academia/python/introduccion.md"
+      - Python para interfaces gráficas: "academia/python/poo-para-interfaces-graficas.md"
+      - Gestor de clientes con Python: "academia/python/proyecto-gestor-clientes.md"
+      - Más tutoriales sobre Python: "academia/python/tutoriales.md"
+      - Módulo analítico NumPy: "academia/python/modulo-analitico-numpy.md"
+      - Módulo gráfico Matplotlib: "academia/python/modulo-grafico-matplotlib.md"
+      - Django para principiantes: "academia/django/introduccion.md"
+      - Server API pelis en Django Rest: "academia/django/api-rest-framework.md"
+      - Más tutoriales sobre Django: "academia/django/tutoriales.md"
+      - JavaScript para principiantes: "academia/javascript/introduccion.md"
+      - Conversor de divisas en JS: "academia/javascript/conversor-divisas.md"
+      - Introducción a P5.js: "academia/javascript/biblioteca-p5js.md"
+      - Introducción a Node.js: "academia/javascript/nodejs.md"
+      - Chat online con Node.js: "academia/javascript/chat-heroku.md"
+      - Cliente API pelis en Nuxt.js: "academia/javascript/cliente-nuxt.md"
+      - Configurar Ubuntu Server: "academia/gnu-linux/ubuntu-server-web.md"
 
-  - Apuntes de Python:                    
-    - Índice del archivo:                 'python/index.md'
-    - Introducción informal:                                    
-      - Presentación:                     'python/introduccion-informal/index.md'
-      - Números:                          'python/introduccion-informal/numeros.md'
-      - Textos:                           'python/introduccion-informal/cadenas-de-texto.md'
-      - Listas:                           'python/introduccion-informal/listas.md'
-      - Lectura por teclado:              'python/introduccion-informal/lectura-por-teclado.md'
-      - Ejercicios:                       'python/introduccion-informal/ejercicios.md'
-    - Operadores y expresiones:                                 
-      - Introducción:                     'python/operadores-y-expresiones/index.md'
-      - El tipo lógico:                   'python/operadores-y-expresiones/el-tipo-logico.md'
-      - Operadores relacionales:          'python/operadores-y-expresiones/operadores-relacionales.md'
-      - Operadores lógicos:               'python/operadores-y-expresiones/operadores-logicos.md'
-      - Expresiones anidadas:             'python/operadores-y-expresiones/expresiones-anidadas.md'
-      - Operadores de asignación:         'python/operadores-y-expresiones/operadores-en-asignacion.md'
-      - Ejercicios:                       'python/operadores-y-expresiones/ejercicios.md'
-    - Controlando el flujo:                                     
-      - Introducción:                     'python/controlando-el-flujo/index.md'
-      - Condiciones:                      'python/controlando-el-flujo/condiciones.md'
-      - Iteraciones:                      'python/controlando-el-flujo/iteraciones.md'
-      - Ejercicios:                       'python/controlando-el-flujo/ejercicios.md'
-    - Colecciones de datos:                                     
-      - Introducción:                     'python/colecciones-de-datos/index.md'
-      - Tuplas:                           'python/colecciones-de-datos/tuplas.md'
-      - Conjuntos:                        'python/colecciones-de-datos/conjuntos.md'
-      - Diccionarios:                     'python/colecciones-de-datos/diccionarios.md'
-      - Pilas:                            'python/colecciones-de-datos/pilas.md'
-      - Colas:                            'python/colecciones-de-datos/colas.md'
-      - Ejercicios:                       'python/colecciones-de-datos/ejercicios.md'
-    - Entradas y salidas:                                       
-      - Introducción:                     'python/entradas-y-salidas/index.md'
-      - Entrada por teclado:              'python/entradas-y-salidas/entrada-por-teclado.md'
-      - Entrada por script:               'python/entradas-y-salidas/entrada-por-script.md'
-      - Salida por pantalla:              'python/entradas-y-salidas/salida-por-pantalla.md'
-      - Ejercicios:                       'python/entradas-y-salidas/ejercicios.md'
-    - Programación de funciones:                                
-      - Introducción:                     'python/programacion-de-funciones/index.md'
-      - Definición y llamada:             'python/programacion-de-funciones/definicion-y-llamada.md'
-      - Retorno de valores:               'python/programacion-de-funciones/retorno-de-valores.md'
-      - Envío de valores:                 'python/programacion-de-funciones/envio-de-valores.md'
-      - Argumentos y parámetros:          'python/programacion-de-funciones/argumentos-y-parametros.md'
-      - Paso por valor y referencia:      'python/programacion-de-funciones/paso-por-valor-y-referencia.md'
-      - Argumentos indeterminados:        'python/programacion-de-funciones/argumentos-indeterminados.md'
-      - Funciones recursivas:             'python/programacion-de-funciones/funciones-recursivas.md'
-      - Funciones integradas:             'python/programacion-de-funciones/funciones-integradas.md'
-      - Ejercicios:                       'python/programacion-de-funciones/ejercicios.md'
-    - Errores y excepciones:                                    
-      - Introducción:                     'python/errores-y-excepciones/index.md'
-      - Errores:                          'python/errores-y-excepciones/errores.md'
-      - Excepciones:                      'python/errores-y-excepciones/excepciones.md'
-      - Excepciones múltiples:            'python/errores-y-excepciones/excepciones-multiples.md'
-      - Invocación de excepciones:        'python/errores-y-excepciones/invocacion-de-excepciones.md'
-      - Ejercicios:                       'python/errores-y-excepciones/ejercicios.md'
-    - Orientación a objetos (POO):
-      - Introducción:                     'python/programacion-orientada-a-objetos/index.md'
-      - Primer contacto:                  'python/programacion-orientada-a-objetos/primer-contacto.md'
-      - Clases y objetos:                 'python/programacion-orientada-a-objetos/clases-y-objetos.md'
-      - Atributos y métodos:              'python/programacion-orientada-a-objetos/atributos-y-metodos.md'
-      - Objetos dentro de objetos:        'python/programacion-orientada-a-objetos/objetos-dentro-de-objetos.md'
-      - Encapsulación:                    'python/programacion-orientada-a-objetos/encapsulacion.md'
-      - Ejercicios:                       'python/programacion-orientada-a-objetos/ejercicios.md'
-    - Herencia en la POO:
-      - Introducción:                     'python/herencia-en-la-poo/index.md'
-      - Herencia:                         'python/herencia-en-la-poo/herencia.md'
-      - Copia de objetos:                 'python/herencia-en-la-poo/copia-de-objetos.md'
-      - Herencia múltiple:                'python/herencia-en-la-poo/herencia-multiple.md'
-      - Ejercicios:                       'python/herencia-en-la-poo/ejercicios.md'
-    - Métodos de las colecciones:
-      - Introducción:                     'python/metodos-de-las-colecciones/index.md'
-      - Métodos de las cadenas:           'python/metodos-de-las-colecciones/metodos-de-las-cadenas.md'
-      - Métodos de las listas:            'python/metodos-de-las-colecciones/metodos-de-las-listas.md'
-      - Métodos de los conjuntos:         'python/metodos-de-las-colecciones/metodos-de-los-conjuntos.md'
-      - Métodos de los diccionarios:      'python/metodos-de-las-colecciones/metodos-de-los-diccionarios.md'
-      - Ejercicios :                      'python/metodos-de-las-colecciones/ejercicios.md'
-    - Módulos y paquetes:
-      - Introducción:                     'python/modulos-y-paquetes/index.md'
-      - Módulos:                          'python/modulos-y-paquetes/modulos.md'
-      - Paquetes:                         'python/modulos-y-paquetes/paquetes.md'
-      - Módulos estándar:                 'python/modulos-y-paquetes/modulos-estandar.md'
-      - Módulo collections:               'python/modulos-y-paquetes/modulo-collections.md'
-      - Módulo datetime:                  'python/modulos-y-paquetes/modulo-datetime.md'
-      - Módulo math:                      'python/modulos-y-paquetes/modulo-math.md'
-      - Módulo random:                    'python/modulos-y-paquetes/modulo-random.md'
-      - Ejercicios:                       'python/modulos-y-paquetes/ejercicios.md'
-    - Manejo de ficheros:
-      - Introducción:                     'python/manejo-de-ficheros/index.md'
-      - Ficheros de texto:                'python/manejo-de-ficheros/ficheros-de-texto.md'
-      - Módulo pickle:                    'python/manejo-de-ficheros/modulo-pickle.md'
-      - Ficheros CSV:                     'python/manejo-de-ficheros/ficheros-csv.md'
-      - Ficheros JSON:                    'python/manejo-de-ficheros/ficheros-json.md'
-      - Ejercicios:                       'python/manejo-de-ficheros/ejercicios.md'
-    - Interfaces gráficas Tkinter:
-      - Introducción:                     'python/interfaces-graficas-con-tkinter/index.md'
-      - Tk (Raíz):                        'python/interfaces-graficas-con-tkinter/widget-tk-raiz.md'
-      - Frame (Marco):                    'python/interfaces-graficas-con-tkinter/widget-frame-marco.md'
-      - Label (Etiqueta de texto):        'python/interfaces-graficas-con-tkinter/widget-label-etiqueta-de-texto.md'
-      - Entry (Texto corto):              'python/interfaces-graficas-con-tkinter/widget-entry-texto-corto.md'
-      - Text (Texto largo):               'python/interfaces-graficas-con-tkinter/widget-text-texto-largo.md'
-      - Button (Botón):                   'python/interfaces-graficas-con-tkinter/widget-button-boton.md'
-      - Radiobutton (Radial):             'python/interfaces-graficas-con-tkinter/widget-radiobutton-radial.md'
-      - Checkbutton (Seleccionable):      'python/interfaces-graficas-con-tkinter/widget-checkbutton-seleccionable.md'
-      - Menu (Menú):                      'python/interfaces-graficas-con-tkinter/widget-menu.md'
-      - Dialogs (Diálogos):               'python/interfaces-graficas-con-tkinter/dialogs-dialogos.md'
-      - Editor de texto:                  'python/interfaces-graficas-con-tkinter/editor-de-texto.md'
-    - Bases de datos SQLite:
-      - Introducción:                     'python/bases-de-datos-sqlite/index.md'
-      - Consultas SQL básicas:            'python/bases-de-datos-sqlite/consultas-sql-basicas.md'
-      - Claves SQL básicas:               'python/bases-de-datos-sqlite/claves-sql-basicas.md'
-      - Consultas SQL intermedias:        'python/bases-de-datos-sqlite/consultas-sql-intermedias.md'
-      - Ejercicios:                       'python/bases-de-datos-sqlite/ejercicios.md'
-    - Funcionalidades avanzadas:
-      - Operadores encadenados:           'python/funcionalidades-avanzadas/operadores-encadenados.md'
-      - Comprensión de listas:            'python/funcionalidades-avanzadas/comprension-de-listas.md'
-      - Funciones decoradoras:            'python/funcionalidades-avanzadas/funciones-decoradoras.md'
-      - Funciones generadoras:            'python/funcionalidades-avanzadas/funciones-generadoras.md'
-      - Funciones lambda:                 'python/funcionalidades-avanzadas/funciones-lambda.md'
-      - Función filter():                 'python/funcionalidades-avanzadas/funcion-filter.md'
-      - Función map():                    'python/funcionalidades-avanzadas/funcion-map.md'
-      - Expresiones regulares:            'python/funcionalidades-avanzadas/expresiones-regulares.md'
-    - Documentación y pruebas:
-      - Docstrings:                       'python/documentacion-y-pruebas/docstrings.md'
-      - Pydoc:                            'python/documentacion-y-pruebas/pydoc.md'
-      - Doctest:                          'python/documentacion-y-pruebas/doctest.md'
-      - Unittest:                         'python/documentacion-y-pruebas/unittest.md'
-    - Distribución:
-      - Setuptools:                       'python/distribucion/setuptools.md'
-      - Pyinstaller:                      'python/distribucion/pyinstaller.md'
+  - Apuntes de Python:
+      - Índice del archivo: "python/index.md"
+      - Introducción informal:
+          - Presentación: "python/introduccion-informal/index.md"
+          - Números: "python/introduccion-informal/numeros.md"
+          - Textos: "python/introduccion-informal/cadenas-de-texto.md"
+          - Listas: "python/introduccion-informal/listas.md"
+          - Lectura por teclado: "python/introduccion-informal/lectura-por-teclado.md"
+          - Ejercicios: "python/introduccion-informal/ejercicios.md"
+      - Operadores y expresiones:
+          - Introducción: "python/operadores-y-expresiones/index.md"
+          - El tipo lógico: "python/operadores-y-expresiones/el-tipo-logico.md"
+          - Operadores relacionales: "python/operadores-y-expresiones/operadores-relacionales.md"
+          - Operadores lógicos: "python/operadores-y-expresiones/operadores-logicos.md"
+          - Expresiones anidadas: "python/operadores-y-expresiones/expresiones-anidadas.md"
+          - Operadores de asignación: "python/operadores-y-expresiones/operadores-en-asignacion.md"
+          - Ejercicios: "python/operadores-y-expresiones/ejercicios.md"
+      - Controlando el flujo:
+          - Introducción: "python/controlando-el-flujo/index.md"
+          - Condiciones: "python/controlando-el-flujo/condiciones.md"
+          - Iteraciones: "python/controlando-el-flujo/iteraciones.md"
+          - Ejercicios: "python/controlando-el-flujo/ejercicios.md"
+      - Colecciones de datos:
+          - Introducción: "python/colecciones-de-datos/index.md"
+          - Tuplas: "python/colecciones-de-datos/tuplas.md"
+          - Conjuntos: "python/colecciones-de-datos/conjuntos.md"
+          - Diccionarios: "python/colecciones-de-datos/diccionarios.md"
+          - Pilas: "python/colecciones-de-datos/pilas.md"
+          - Colas: "python/colecciones-de-datos/colas.md"
+          - Ejercicios: "python/colecciones-de-datos/ejercicios.md"
+      - Entradas y salidas:
+          - Introducción: "python/entradas-y-salidas/index.md"
+          - Entrada por teclado: "python/entradas-y-salidas/entrada-por-teclado.md"
+          - Entrada por script: "python/entradas-y-salidas/entrada-por-script.md"
+          - Salida por pantalla: "python/entradas-y-salidas/salida-por-pantalla.md"
+          - Ejercicios: "python/entradas-y-salidas/ejercicios.md"
+      - Programación de funciones:
+          - Introducción: "python/programacion-de-funciones/index.md"
+          - Definición y llamada: "python/programacion-de-funciones/definicion-y-llamada.md"
+          - Retorno de valores: "python/programacion-de-funciones/retorno-de-valores.md"
+          - Envío de valores: "python/programacion-de-funciones/envio-de-valores.md"
+          - Argumentos y parámetros: "python/programacion-de-funciones/argumentos-y-parametros.md"
+          - Paso por valor y referencia: "python/programacion-de-funciones/paso-por-valor-y-referencia.md"
+          - Argumentos indeterminados: "python/programacion-de-funciones/argumentos-indeterminados.md"
+          - Funciones recursivas: "python/programacion-de-funciones/funciones-recursivas.md"
+          - Funciones integradas: "python/programacion-de-funciones/funciones-integradas.md"
+          - Ejercicios: "python/programacion-de-funciones/ejercicios.md"
+      - Errores y excepciones:
+          - Introducción: "python/errores-y-excepciones/index.md"
+          - Errores: "python/errores-y-excepciones/errores.md"
+          - Excepciones: "python/errores-y-excepciones/excepciones.md"
+          - Excepciones múltiples: "python/errores-y-excepciones/excepciones-multiples.md"
+          - Invocación de excepciones: "python/errores-y-excepciones/invocacion-de-excepciones.md"
+          - Ejercicios: "python/errores-y-excepciones/ejercicios.md"
+      - Orientación a objetos (POO):
+          - Introducción: "python/programacion-orientada-a-objetos/index.md"
+          - Primer contacto: "python/programacion-orientada-a-objetos/primer-contacto.md"
+          - Clases y objetos: "python/programacion-orientada-a-objetos/clases-y-objetos.md"
+          - Atributos y métodos: "python/programacion-orientada-a-objetos/atributos-y-metodos.md"
+          - Objetos dentro de objetos: "python/programacion-orientada-a-objetos/objetos-dentro-de-objetos.md"
+          - Encapsulación: "python/programacion-orientada-a-objetos/encapsulacion.md"
+          - Ejercicios: "python/programacion-orientada-a-objetos/ejercicios.md"
+      - Herencia en la POO:
+          - Introducción: "python/herencia-en-la-poo/index.md"
+          - Herencia: "python/herencia-en-la-poo/herencia.md"
+          - Copia de objetos: "python/herencia-en-la-poo/copia-de-objetos.md"
+          - Herencia múltiple: "python/herencia-en-la-poo/herencia-multiple.md"
+          - Ejercicios: "python/herencia-en-la-poo/ejercicios.md"
+      - Métodos de las colecciones:
+          - Introducción: "python/metodos-de-las-colecciones/index.md"
+          - Métodos de las cadenas: "python/metodos-de-las-colecciones/metodos-de-las-cadenas.md"
+          - Métodos de las listas: "python/metodos-de-las-colecciones/metodos-de-las-listas.md"
+          - Métodos de los conjuntos: "python/metodos-de-las-colecciones/metodos-de-los-conjuntos.md"
+          - Métodos de los diccionarios: "python/metodos-de-las-colecciones/metodos-de-los-diccionarios.md"
+          - Ejercicios: "python/metodos-de-las-colecciones/ejercicios.md"
+      - Módulos y paquetes:
+          - Introducción: "python/modulos-y-paquetes/index.md"
+          - Módulos: "python/modulos-y-paquetes/modulos.md"
+          - Paquetes: "python/modulos-y-paquetes/paquetes.md"
+          - Módulos estándar: "python/modulos-y-paquetes/modulos-estandar.md"
+          - Módulo collections: "python/modulos-y-paquetes/modulo-collections.md"
+          - Módulo datetime: "python/modulos-y-paquetes/modulo-datetime.md"
+          - Módulo math: "python/modulos-y-paquetes/modulo-math.md"
+          - Módulo random: "python/modulos-y-paquetes/modulo-random.md"
+          - Ejercicios: "python/modulos-y-paquetes/ejercicios.md"
+      - Manejo de ficheros:
+          - Introducción: "python/manejo-de-ficheros/index.md"
+          - Ficheros de texto: "python/manejo-de-ficheros/ficheros-de-texto.md"
+          - Módulo pickle: "python/manejo-de-ficheros/modulo-pickle.md"
+          - Ficheros CSV: "python/manejo-de-ficheros/ficheros-csv.md"
+          - Ficheros JSON: "python/manejo-de-ficheros/ficheros-json.md"
+          - Ejercicios: "python/manejo-de-ficheros/ejercicios.md"
+      - Interfaces gráficas Tkinter:
+          - Introducción: "python/interfaces-graficas-con-tkinter/index.md"
+          - Tk (Raíz): "python/interfaces-graficas-con-tkinter/widget-tk-raiz.md"
+          - Frame (Marco): "python/interfaces-graficas-con-tkinter/widget-frame-marco.md"
+          - Label (Etiqueta de texto): "python/interfaces-graficas-con-tkinter/widget-label-etiqueta-de-texto.md"
+          - Entry (Texto corto): "python/interfaces-graficas-con-tkinter/widget-entry-texto-corto.md"
+          - Text (Texto largo): "python/interfaces-graficas-con-tkinter/widget-text-texto-largo.md"
+          - Button (Botón): "python/interfaces-graficas-con-tkinter/widget-button-boton.md"
+          - Radiobutton (Radial): "python/interfaces-graficas-con-tkinter/widget-radiobutton-radial.md"
+          - Checkbutton (Seleccionable): "python/interfaces-graficas-con-tkinter/widget-checkbutton-seleccionable.md"
+          - Menu (Menú): "python/interfaces-graficas-con-tkinter/widget-menu.md"
+          - Dialogs (Diálogos): "python/interfaces-graficas-con-tkinter/dialogs-dialogos.md"
+          - Editor de texto: "python/interfaces-graficas-con-tkinter/editor-de-texto.md"
+      - Bases de datos SQLite:
+          - Introducción: "python/bases-de-datos-sqlite/index.md"
+          - Consultas SQL básicas: "python/bases-de-datos-sqlite/consultas-sql-basicas.md"
+          - Claves SQL básicas: "python/bases-de-datos-sqlite/claves-sql-basicas.md"
+          - Consultas SQL intermedias: "python/bases-de-datos-sqlite/consultas-sql-intermedias.md"
+          - Ejercicios: "python/bases-de-datos-sqlite/ejercicios.md"
+      - Funcionalidades avanzadas:
+          - Operadores encadenados: "python/funcionalidades-avanzadas/operadores-encadenados.md"
+          - Comprensión de listas: "python/funcionalidades-avanzadas/comprension-de-listas.md"
+          - Funciones decoradoras: "python/funcionalidades-avanzadas/funciones-decoradoras.md"
+          - Funciones generadoras: "python/funcionalidades-avanzadas/funciones-generadoras.md"
+          - Funciones lambda: "python/funcionalidades-avanzadas/funciones-lambda.md"
+          - Función filter(): "python/funcionalidades-avanzadas/funcion-filter.md"
+          - Función map(): "python/funcionalidades-avanzadas/funcion-map.md"
+          - Expresiones regulares: "python/funcionalidades-avanzadas/expresiones-regulares.md"
+      - Documentación y pruebas:
+          - Docstrings: "python/documentacion-y-pruebas/docstrings.md"
+          - Pydoc: "python/documentacion-y-pruebas/pydoc.md"
+          - Doctest: "python/documentacion-y-pruebas/doctest.md"
+          - Unittest: "python/documentacion-y-pruebas/unittest.md"
+      - Distribución:
+          - Setuptools: "python/distribucion/setuptools.md"
+          - Pyinstaller: "python/distribucion/pyinstaller.md"
 
-  - Apuntes de Django:                    
-    - Índice del archivo:                 'django/index.md'
-    - Proyecto Web Personal:
-      - Introducción:                     'django/web-personal/index.md'
-      - Creando el proyecto:              'django/web-personal/creando-proyecto.md'
-      - Configurando el proyecto:         'django/web-personal/configurando-proyecto.md'
-      - App 1 [Core] Vistas:              'django/web-personal/app-core-vistas.md'
-      - Extendiendo la App [Core]:        'django/web-personal/extendiendo-app-core.md'
-      - Páginas portafolio y contacto:    'django/web-personal/paginas-portafolio-contacto.md'
-      - Introducción a los templates:     'django/web-personal/introduccion-plantillas-templates.md'
-      - Templates about y portfolio:      'django/web-personal/templates-about-portfolio-contact.md'
-      - Herencia en las plantillas:       'django/web-personal/herencia-plantillas-templates.md'
-      - Adaptar plantillas y herencia:    'django/web-personal/adaptar-plantillas-herencia.md'
-      - El template tag url:              'django/web-personal/template-tag-url.md'
-      - Uniendo frontend y backend:       'django/web-personal/uniendo-frontend-backend.md'
-      - Creando cabecera dinámica:        'django/web-personal/creando-cabecera-dinamica.md'
-      - Adaptar los demás templates:      'django/web-personal/adaptar-demas-templates.md'
-      - App 2 [Portfolio] Modelos:        'django/web-personal/app-portfolio-modelos.md'
-      - Panel de administrador:           'django/web-personal/panel-administrador.md'
-      - Personalizando el admin (1):      'django/web-personal/personalizando-panel-administrador-parte-1.md'
-      - Patrón MVC:                       'django/web-personal/patron-mvt-modelo-vista-template.md'
-      - Añadir enlace a los proyectos:    'django/web-personal/anadir-enlace-proyectos.md'
-    - Proyecto Web Empresarial:
-      - Introducción:                     'django/web-empresarial/index.md'
-      - Preparar la app [Core]:           'django/web-empresarial/preparar-app-core.md'
-      - Organizando nuestras URLs:        'django/web-empresarial/organizar-mejor-nuestras-urls.md'
-      - Fusión frontend y backend:     'django/web-empresarial/fusion-frontend-y-backend.md'
-      - Resaltando la sección actual:     'django/web-empresarial/resaltar-seccion-actual.md'
-      - App 3 [Services] Modelos:         'django/web-empresarial/app-services-modelo-admin.md'
-      - App 3 [Services] Vistas:          'django/web-empresarial/app-services-vista-template.md'
-      - App 4 [Blog] Relaciones:          'django/web-empresarial/app-blog-relaciones.md'
-      - Personalizando el admin (2):      'django/web-empresarial/personalizando-panel-administrador-parte-2.md'
-      - Creando vistas del Blog (1):      'django/web-empresarial/crear-vistas-blog-1.md'
-      - Creando vistas del Blog (2):      'django/web-empresarial/crear-vistas-blog-2.md'
-      - App 5 [Social] Redes sociales:    'django/web-empresarial/app-social-enlaces-redes.md'
-      - Procesadores de contexto:         'django/web-empresarial/procesadores-contexto.md'
-      - App 6 [Pages] Páginas:            'django/web-empresarial/app-pages-gestor-paginas.md'
-      - Template tags propios:            'django/web-empresarial/template-tags-propios.md'
-      - Ordenar y editar páginas:         'django/web-empresarial/ordenar-editar-paginas.md'
-      - Personalizando el admin (3):      'django/web-empresarial/personalizando-panel-administrador-parte-3.md'
-      - App 7 [Contact] Formularios:      'django/web-empresarial/app-contact-formularios.md'
-      - Procesar validar formularios:     'django/web-empresarial/formularios-procesado-validacion.md'
-      - Fusionando el formulario:         'django/web-empresarial/fusion-formulario.md'
-      - Enviando emails de prueba:        'django/web-empresarial/enviar-emails-prueba.md'
-      - Personalizando el admin (4):      'django/web-empresarial/personalizando-panel-administrador-parte-4.md'
-    - Proyecto Web Playground:
-      - Introducción:                     'django/web-playground/index.md'
-      - Preparar la app [Core]:           'django/web-playground/preparar-app-core.md'
-      - CBV y TemplateView:               'django/web-playground/cbv-templateview.md'
-      - Preparando la App [Pages]:        'django/web-playground/preparar-app-pages.md'
-      - ListView y DetailView:            'django/web-playground/cbv-listview-detailview.md'
-      - CBV CRUD CreateView:              'django/web-playground/cbv-createview.md'
-      - CBV CRUD UpdateView:              'django/web-playground/cbv-updateview.md'
-      - CBV CRUD DeleteView:              'django/web-playground/cbv-deleteview.md'
-      - CBV Forms para Modelos :          'django/web-playground/cbv-forms-models.md'
-      - Mixin de identificación:          'django/web-playground/mixin-identificacion.md'
-      - Decorador identificación:         'django/web-playground/decoradores-identificacion.md'
-      - App 8 [Registration] Sesión:      'django/web-playground/app-registration-sesiones.md'
-      - Cerrando la sesión:               'django/web-playground/cerrar-sesion.md'
-      - Registro con CBV:                 'django/web-playground/cbv-registro.md'
-      - Email de registro obligatorio:    'django/web-playground/email-registro-obligatorio.md'
-      - Validando un email único:         'django/web-playground/validar-email-unico.md'
-      - Restauración de contraseña:       'django/web-playground/restaurar-contrasena.md'
-      - Creando un perfil de usuario:     'django/web-playground/crear-perfil-usuario.md'
-      - Haciendo editable el perfil:      'django/web-playground/formulario-edicion-perfil.md'
-      - Mejorando el form de perfil:      'django/web-playground/mejorando-formulario-perfil.md'
-      - Edición de email:                 'django/web-playground/edicion-email.md'
-      - Edición de contraseña:            'django/web-playground/edicion-contrasena.md'
-      - Introducción a las señales:       'django/web-playground/introduccion-senales-signals.md'
-      - Introducción a las unittest:      'django/web-playground/introduccion-pruebas-unitarias-unittest.md'
-      - Optimizando el avatar:            'django/web-playground/optimizar-almacenamiento-avatar.md'
-      - App 9 [Profiles] Perfiles:        'django/web-playground/app-profiles-perfiles-publicos.md'
-      - Paginación en ListView:           'django/web-playground/paginacion-cbv-listview.md'
-      - App 10 [Messenger] Análisis:      'django/web-playground/app-messenger-mensajeria.md'
-      - TDD (1) Primeras pruebas:         'django/web-playground/tdd-primeras-pruebas.md'
-      - TDD (2) Refactorización:          'django/web-playground/tdd-refactorizacion.md'
-      - TDD (3) Model Manager:            'django/web-playground/tdd-model-manager.md'
-      - URLs, vistas y templates:         'django/web-playground/urls-vistas-templates.md'
-      - Mensajes asíncronos JS (1):       'django/web-playground/mensajes-asincronos-javascript-1.md'
-      - Mensajes asíncronos JS (2):       'django/web-playground/mensajes-asincronos-javascript-2.md'
-      - Mensajes asíncronos JS (3):       'django/web-playground/mensajes-asincronos-javascript-3.md'
-      - Programar conversaciones:         'django/web-playground/programando-conversaciones.md'
-      - El detalle final:                 'django/web-playground/detalle-final.md'
-    - Proyecto API Rest:
-      - Introducción:                     'django/api-django-rest/index.md'
-      - Sistema de autenticación:         'django/api-django-rest/sistema-autenticacion-registro.md'
-      - Sistema de películas:             'django/api-django-rest/sistema-peliculas-generos.md'
-      - Sistema de búsqueda:              'django/api-django-rest/sistema-busqueda-filtro.md'
-      - Sistema de perfiles de usuario:   'django/api-django-rest/sistema-perfiles-usuario.md'
-      - Sistema de películas de usuario:  'django/api-django-rest/sistema-peliculas-usuario.md'
-    - Producción:
-      - Entornos de producción:           'django/produccion/index.md'
-      - Repositorios y SCV:               'django/produccion/repositorios-controles-de-versiones.md'
-      - Creando repositorio en Github:    'django/produccion/creando-repositorio-github.md'
-      - Desplegar proyecto de prueba:     'django/produccion/desplegar-proyecto-prueba.md'
-  
+  - Apuntes de Django:
+      - Índice del archivo: "django/index.md"
+      - Proyecto Web Personal:
+          - Introducción: "django/web-personal/index.md"
+          - Creando el proyecto: "django/web-personal/creando-proyecto.md"
+          - Configurando el proyecto: "django/web-personal/configurando-proyecto.md"
+          - App 1 [Core] Vistas: "django/web-personal/app-core-vistas.md"
+          - Extendiendo la App [Core]: "django/web-personal/extendiendo-app-core.md"
+          - Páginas portafolio y contacto: "django/web-personal/paginas-portafolio-contacto.md"
+          - Introducción a los templates: "django/web-personal/introduccion-plantillas-templates.md"
+          - Templates about y portfolio: "django/web-personal/templates-about-portfolio-contact.md"
+          - Herencia en las plantillas: "django/web-personal/herencia-plantillas-templates.md"
+          - Adaptar plantillas y herencia: "django/web-personal/adaptar-plantillas-herencia.md"
+          - El template tag url: "django/web-personal/template-tag-url.md"
+          - Uniendo frontend y backend: "django/web-personal/uniendo-frontend-backend.md"
+          - Creando cabecera dinámica: "django/web-personal/creando-cabecera-dinamica.md"
+          - Adaptar los demás templates: "django/web-personal/adaptar-demas-templates.md"
+          - App 2 [Portfolio] Modelos: "django/web-personal/app-portfolio-modelos.md"
+          - Panel de administrador: "django/web-personal/panel-administrador.md"
+          - Personalizando el admin (1): "django/web-personal/personalizando-panel-administrador-parte-1.md"
+          - Patrón MVC: "django/web-personal/patron-mvt-modelo-vista-template.md"
+          - Añadir enlace a los proyectos: "django/web-personal/anadir-enlace-proyectos.md"
+      - Proyecto Web Empresarial:
+          - Introducción: "django/web-empresarial/index.md"
+          - Preparar la app [Core]: "django/web-empresarial/preparar-app-core.md"
+          - Organizando nuestras URLs: "django/web-empresarial/organizar-mejor-nuestras-urls.md"
+          - Fusión frontend y backend: "django/web-empresarial/fusion-frontend-y-backend.md"
+          - Resaltando la sección actual: "django/web-empresarial/resaltar-seccion-actual.md"
+          - App 3 [Services] Modelos: "django/web-empresarial/app-services-modelo-admin.md"
+          - App 3 [Services] Vistas: "django/web-empresarial/app-services-vista-template.md"
+          - App 4 [Blog] Relaciones: "django/web-empresarial/app-blog-relaciones.md"
+          - Personalizando el admin (2): "django/web-empresarial/personalizando-panel-administrador-parte-2.md"
+          - Creando vistas del Blog (1): "django/web-empresarial/crear-vistas-blog-1.md"
+          - Creando vistas del Blog (2): "django/web-empresarial/crear-vistas-blog-2.md"
+          - App 5 [Social] Redes sociales: "django/web-empresarial/app-social-enlaces-redes.md"
+          - Procesadores de contexto: "django/web-empresarial/procesadores-contexto.md"
+          - App 6 [Pages] Páginas: "django/web-empresarial/app-pages-gestor-paginas.md"
+          - Template tags propios: "django/web-empresarial/template-tags-propios.md"
+          - Ordenar y editar páginas: "django/web-empresarial/ordenar-editar-paginas.md"
+          - Personalizando el admin (3): "django/web-empresarial/personalizando-panel-administrador-parte-3.md"
+          - App 7 [Contact] Formularios: "django/web-empresarial/app-contact-formularios.md"
+          - Procesar validar formularios: "django/web-empresarial/formularios-procesado-validacion.md"
+          - Fusionando el formulario: "django/web-empresarial/fusion-formulario.md"
+          - Enviando emails de prueba: "django/web-empresarial/enviar-emails-prueba.md"
+          - Personalizando el admin (4): "django/web-empresarial/personalizando-panel-administrador-parte-4.md"
+      - Proyecto Web Playground:
+          - Introducción: "django/web-playground/index.md"
+          - Preparar la app [Core]: "django/web-playground/preparar-app-core.md"
+          - CBV y TemplateView: "django/web-playground/cbv-templateview.md"
+          - Preparando la App [Pages]: "django/web-playground/preparar-app-pages.md"
+          - ListView y DetailView: "django/web-playground/cbv-listview-detailview.md"
+          - CBV CRUD CreateView: "django/web-playground/cbv-createview.md"
+          - CBV CRUD UpdateView: "django/web-playground/cbv-updateview.md"
+          - CBV CRUD DeleteView: "django/web-playground/cbv-deleteview.md"
+          - CBV Forms para Modelos: "django/web-playground/cbv-forms-models.md"
+          - Mixin de identificación: "django/web-playground/mixin-identificacion.md"
+          - Decorador identificación: "django/web-playground/decoradores-identificacion.md"
+          - App 8 [Registration] Sesión: "django/web-playground/app-registration-sesiones.md"
+          - Cerrando la sesión: "django/web-playground/cerrar-sesion.md"
+          - Registro con CBV: "django/web-playground/cbv-registro.md"
+          - Email de registro obligatorio: "django/web-playground/email-registro-obligatorio.md"
+          - Validando un email único: "django/web-playground/validar-email-unico.md"
+          - Restauración de contraseña: "django/web-playground/restaurar-contrasena.md"
+          - Creando un perfil de usuario: "django/web-playground/crear-perfil-usuario.md"
+          - Haciendo editable el perfil: "django/web-playground/formulario-edicion-perfil.md"
+          - Mejorando el form de perfil: "django/web-playground/mejorando-formulario-perfil.md"
+          - Edición de email: "django/web-playground/edicion-email.md"
+          - Edición de contraseña: "django/web-playground/edicion-contrasena.md"
+          - Introducción a las señales: "django/web-playground/introduccion-senales-signals.md"
+          - Introducción a las unittest: "django/web-playground/introduccion-pruebas-unitarias-unittest.md"
+          - Optimizando el avatar: "django/web-playground/optimizar-almacenamiento-avatar.md"
+          - App 9 [Profiles] Perfiles: "django/web-playground/app-profiles-perfiles-publicos.md"
+          - Paginación en ListView: "django/web-playground/paginacion-cbv-listview.md"
+          - App 10 [Messenger] Análisis: "django/web-playground/app-messenger-mensajeria.md"
+          - TDD (1) Primeras pruebas: "django/web-playground/tdd-primeras-pruebas.md"
+          - TDD (2) Refactorización: "django/web-playground/tdd-refactorizacion.md"
+          - TDD (3) Model Manager: "django/web-playground/tdd-model-manager.md"
+          - URLs, vistas y templates: "django/web-playground/urls-vistas-templates.md"
+          - Mensajes asíncronos JS (1): "django/web-playground/mensajes-asincronos-javascript-1.md"
+          - Mensajes asíncronos JS (2): "django/web-playground/mensajes-asincronos-javascript-2.md"
+          - Mensajes asíncronos JS (3): "django/web-playground/mensajes-asincronos-javascript-3.md"
+          - Programar conversaciones: "django/web-playground/programando-conversaciones.md"
+          - El detalle final: "django/web-playground/detalle-final.md"
+      - Proyecto API Rest:
+          - Introducción: "django/api-django-rest/index.md"
+          - Sistema de autenticación: "django/api-django-rest/sistema-autenticacion-registro.md"
+          - Sistema de películas: "django/api-django-rest/sistema-peliculas-generos.md"
+          - Sistema de búsqueda: "django/api-django-rest/sistema-busqueda-filtro.md"
+          - Sistema de perfiles de usuario: "django/api-django-rest/sistema-perfiles-usuario.md"
+          - Sistema de películas de usuario: "django/api-django-rest/sistema-peliculas-usuario.md"
+      - Producción:
+          - Entornos de producción: "django/produccion/index.md"
+          - Repositorios y SCV: "django/produccion/repositorios-controles-de-versiones.md"
+          - Creando repositorio en Github: "django/produccion/creando-repositorio-github.md"
+          - Desplegar proyecto de prueba: "django/produccion/desplegar-proyecto-prueba.md"
+
   - Apuntes de PySide:
-    - Índice del archivo:                 'qt-pyside/index.md'
-    - Preparación prévia:                 
-      - Requisitos básicos:               'qt-pyside/preparacion-previa/requisitos-basicos.md'
-      - Instalación de Python:            'qt-pyside/preparacion-previa/instalacion-python.md'
-      - Extensiones de VSC:               'qt-pyside/preparacion-previa/extensiones-vsc.md'
-      - Instalación de PySide:            'qt-pyside/preparacion-previa/instalacion-pyside.md'
-    - Conceptos básicos:
-      - Qt, PySide y PyQt:                'qt-pyside/conceptos-basicos/qt-pyside-pyqt.md'
-      - Aplicación base (QApplication):   'qt-pyside/conceptos-basicos/aplicacion-base-qapplication.md'
-      - Superclases y subclases:          'qt-pyside/conceptos-basicos/superclases-subclases.md'
-      - Aplicación base usando POO:       'qt-pyside/conceptos-basicos/aplicacion-base-poo.md'
-      - Tamaño de los widgets (QSize):    'qt-pyside/conceptos-basicos/tamano-widgets-qsize.md'
-      - Señales (Signals y Slots):        'qt-pyside/conceptos-basicos/senales-receptos-signals-slots.md'
-      - Componentes manipulables:         'qt-pyside/conceptos-basicos/componentes-manipulables.md'   
-    - Widgets de formularios:
-      - Etiquetas (QLabel):               'qt-pyside/widgets-formularios/etiquetas-qlabel.md'  
-      - Casillas (QCheckBox):             'qt-pyside/widgets-formularios/casillas-qcheckbox.md'  
-      - Botón radial (QRadioButton):      'qt-pyside/widgets-formularios/botones-radiales-qradiobutton.md'  
-      - Desplegables (QComboBox):         'qt-pyside/widgets-formularios/desplegables-qcombobox.md'  
-      - Listas (QListWidget):             'qt-pyside/widgets-formularios/listas-qlistwidget.md'  
-      - Campos de texto (QLineEdit):      'qt-pyside/widgets-formularios/campos-de-texto-qlineedit.md'  
-      - Campos numéricos (QSpinBox):      'qt-pyside/widgets-formularios/campos-numericos-qspinbox.md'  
-    - Formas de organización:             
-      - Widget básico (QWidget):          'qt-pyside/formas-organizacion/widget-personalizado-qwidget.md'  
-      - Layout vertical y horizontal:     'qt-pyside/formas-organizacion/layout-basico-qvboxlayaout.md'  
-      - Layout en cuadrícula:             'qt-pyside/formas-organizacion/layout-cuadricula-qgridlayout.md'  
-      - Layout en formulario:             'qt-pyside/formas-organizacion/layout-formulario-qformlayout.md'  
-      - Layout apilado:                   'qt-pyside/formas-organizacion/layout-apilado-qstackedlayout.md'  
-      - Layout con pestañas:              'qt-pyside/formas-organizacion/layout-pestanas-qtabwidget.md'  
-    - Cuadros de diálogo:                 
-      - Diálogos personalizados:          'qt-pyside/cuadros-dialogo/dialogos-personalizados.md' 
-      - Diálogos de mensajes:             'qt-pyside/cuadros-dialogo/dialogos-de-mensajes.md' 
-      - Diálogos predeterminados:         'qt-pyside/cuadros-dialogo/dialogos-predeterminados.md' 
-      - Activando las traducciones:       'qt-pyside/cuadros-dialogo/activando-traducciones.md' 
-      - Diálogos específicos:             'qt-pyside/cuadros-dialogo/dialogos-especificos.md' 
-    - Ventana principal:                  
-      - Barras de menú y estado:          'qt-pyside/ventana-principal/barras-menu-estado.md'
-      - Barra de herramientas:            'qt-pyside/ventana-principal/barra-herramientas.md'
-      - Docks flotantes:                  'qt-pyside/ventana-principal/docks-flotantes.md'
-    - Control de subventanas:             
-      - Creación de subventanas:          'qt-pyside/control-subventanas/creacion-manejo-subventanas.md'
-      - Subventanas persistentes:         'qt-pyside/control-subventanas/subventanas-persistentes.md'
-    - Tematización:                       
-      - Estilos de aplicación:            'qt-pyside/tematizacion/estilos-aplicacion.md'   
-      - Paletas de colores:               'qt-pyside/tematizacion/paletas-colores-qpalette.md'
-      - Utilización de iconos:            'qt-pyside/tematizacion/utilizacion-de-iconos.md'
-      - QSS (Qt Style Sheets):            'qt-pyside/tematizacion/qss-qt-style-sheets.md'
-      - Cargando ficheros QSS:            'qt-pyside/tematizacion/cargando-ficheros-qss.md'
-    - Interfaces con Qt Designer:         
-      - Primer diseño en Qt Designer:     'qt-pyside/interfaces-qt-designer/primer-diseno-qt-designer.md'
-      - Usando diseños y recursos:        'qt-pyside/interfaces-qt-designer/usando-disenos-y-recursos.md'
-      - Añadiendo la lógica al diseño:    'qt-pyside/interfaces-qt-designer/anadiendo-logica-diseno.md'
-      - Gestión de múltiples diseños:     'qt-pyside/interfaces-qt-designer/gestion-multiples-disenos.md'
-    - Ejecutables en Windows:             
-      - Ejecutables auto-py-to-exe:       'qt-pyside/ejecutables-windows/ejecutabes-auto-py-to-exe.md'
-      - Comprensión del distribuible:     'qt-pyside/ejecutables-windows/comprension-distribuible.md'
-    - Desarrollo de proyectos:            'qt-pyside/desarrollo-proyectos/index.md'
+      - Índice del archivo: "qt-pyside/index.md"
+      - Preparación prévia:
+          - Requisitos básicos: "qt-pyside/preparacion-previa/requisitos-basicos.md"
+          - Instalación de Python: "qt-pyside/preparacion-previa/instalacion-python.md"
+          - Extensiones de VSC: "qt-pyside/preparacion-previa/extensiones-vsc.md"
+          - Instalación de PySide: "qt-pyside/preparacion-previa/instalacion-pyside.md"
+      - Conceptos básicos:
+          - Qt, PySide y PyQt: "qt-pyside/conceptos-basicos/qt-pyside-pyqt.md"
+          - Aplicación base (QApplication): "qt-pyside/conceptos-basicos/aplicacion-base-qapplication.md"
+          - Superclases y subclases: "qt-pyside/conceptos-basicos/superclases-subclases.md"
+          - Aplicación base usando POO: "qt-pyside/conceptos-basicos/aplicacion-base-poo.md"
+          - Tamaño de los widgets (QSize): "qt-pyside/conceptos-basicos/tamano-widgets-qsize.md"
+          - Señales (Signals y Slots): "qt-pyside/conceptos-basicos/senales-receptos-signals-slots.md"
+          - Componentes manipulables: "qt-pyside/conceptos-basicos/componentes-manipulables.md"
+      - Widgets de formularios:
+          - Etiquetas (QLabel): "qt-pyside/widgets-formularios/etiquetas-qlabel.md"
+          - Casillas (QCheckBox): "qt-pyside/widgets-formularios/casillas-qcheckbox.md"
+          - Botón radial (QRadioButton): "qt-pyside/widgets-formularios/botones-radiales-qradiobutton.md"
+          - Desplegables (QComboBox): "qt-pyside/widgets-formularios/desplegables-qcombobox.md"
+          - Listas (QListWidget): "qt-pyside/widgets-formularios/listas-qlistwidget.md"
+          - Campos de texto (QLineEdit): "qt-pyside/widgets-formularios/campos-de-texto-qlineedit.md"
+          - Campos numéricos (QSpinBox): "qt-pyside/widgets-formularios/campos-numericos-qspinbox.md"
+      - Formas de organización:
+          - Widget básico (QWidget): "qt-pyside/formas-organizacion/widget-personalizado-qwidget.md"
+          - Layout vertical y horizontal: "qt-pyside/formas-organizacion/layout-basico-qvboxlayaout.md"
+          - Layout en cuadrícula: "qt-pyside/formas-organizacion/layout-cuadricula-qgridlayout.md"
+          - Layout en formulario: "qt-pyside/formas-organizacion/layout-formulario-qformlayout.md"
+          - Layout apilado: "qt-pyside/formas-organizacion/layout-apilado-qstackedlayout.md"
+          - Layout con pestañas: "qt-pyside/formas-organizacion/layout-pestanas-qtabwidget.md"
+      - Cuadros de diálogo:
+          - Diálogos personalizados: "qt-pyside/cuadros-dialogo/dialogos-personalizados.md"
+          - Diálogos de mensajes: "qt-pyside/cuadros-dialogo/dialogos-de-mensajes.md"
+          - Diálogos predeterminados: "qt-pyside/cuadros-dialogo/dialogos-predeterminados.md"
+          - Activando las traducciones: "qt-pyside/cuadros-dialogo/activando-traducciones.md"
+          - Diálogos específicos: "qt-pyside/cuadros-dialogo/dialogos-especificos.md"
+      - Ventana principal:
+          - Barras de menú y estado: "qt-pyside/ventana-principal/barras-menu-estado.md"
+          - Barra de herramientas: "qt-pyside/ventana-principal/barra-herramientas.md"
+          - Docks flotantes: "qt-pyside/ventana-principal/docks-flotantes.md"
+      - Control de subventanas:
+          - Creación de subventanas: "qt-pyside/control-subventanas/creacion-manejo-subventanas.md"
+          - Subventanas persistentes: "qt-pyside/control-subventanas/subventanas-persistentes.md"
+      - Tematización:
+          - Estilos de aplicación: "qt-pyside/tematizacion/estilos-aplicacion.md"
+          - Paletas de colores: "qt-pyside/tematizacion/paletas-colores-qpalette.md"
+          - Utilización de iconos: "qt-pyside/tematizacion/utilizacion-de-iconos.md"
+          - QSS (Qt Style Sheets): "qt-pyside/tematizacion/qss-qt-style-sheets.md"
+          - Cargando ficheros QSS: "qt-pyside/tematizacion/cargando-ficheros-qss.md"
+      - Interfaces con Qt Designer:
+          - Primer diseño en Qt Designer: "qt-pyside/interfaces-qt-designer/primer-diseno-qt-designer.md"
+          - Usando diseños y recursos: "qt-pyside/interfaces-qt-designer/usando-disenos-y-recursos.md"
+          - Añadiendo la lógica al diseño: "qt-pyside/interfaces-qt-designer/anadiendo-logica-diseno.md"
+          - Gestión de múltiples diseños: "qt-pyside/interfaces-qt-designer/gestion-multiples-disenos.md"
+      - Ejecutables en Windows:
+          - Ejecutables auto-py-to-exe: "qt-pyside/ejecutables-windows/ejecutabes-auto-py-to-exe.md"
+          - Comprensión del distribuible: "qt-pyside/ejecutables-windows/comprension-distribuible.md"
+      - Desarrollo de proyectos: "qt-pyside/desarrollo-proyectos/index.md"
 
-  - Apuntes C++:                    
-    - Índice del archivo:                 'cpp/index.md'               
-    - Entorno de desarrollo:              'cpp/01-entorno-desarrollo/index.md'
-    - Primeros pasos:                     'cpp/02-primeros-pasos/index.md'
-    - Tipos de datos:                     'cpp/03-tipos-de-datos/index.md'
-    - Modificadores:                      'cpp/04-modificadores/index.md'
-    - Control del flujo:                  'cpp/05-control-de-flujo/index.md'
-    - Arreglos clásicos:                  'cpp/06-arreglos-clasicos/index.md'
-    - Punteros y memoria:             
-      - Primeros pasos:                   'cpp/07-punteros-memoria/01-primeros-pasos.md'
-      - Nullptr, void* y ((void*)0):      'cpp/07-punteros-memoria/02-null-nullptr-void0.md'
-      - Punteros constantes:              'cpp/07-punteros-memoria/03-punteros-constantes.md'
-      - Arreglos y punteros:              'cpp/07-punteros-memoria/04-arreglos-punteros.md'           # con intercambio de punteros
-      - Aritmética de punteros:           'cpp/07-punteros-memoria/05-aritmetica-punteros.md'
-      - Gestión de la memoria:            'cpp/07-punteros-memoria/06-tipos-memoria-stack-heap.md' 
-      - Memoria dinámica (Heap):          'cpp/07-punteros-memoria/07-memoria-dinamica.md'            # hasta referencias
-      - Referencias y arreglos:           'cpp/07-punteros-memoria/08-referencias-arreglos.md'
-    - Cadenas de caracteres:              'cpp/08-cadenas-caracteres/index.md'
-    - Programación de funciones:          
-      - Primeros pasos:                   'cpp/09-funciones/01-primeros-pasos.md'
-      - Sobrecarga de funciones:          'cpp/09-funciones/02-sobrecarga-funciones.md'
-      - Funciones Lambda:                 'cpp/09-funciones/03-funciones-lambda.md'
-      - Funciones Inline:                 'cpp/09-funciones/04-funciones-inline.md'
-    - Function Templates:                 'cpp/10-function-templates/index.md'
-    - Programación de clases:             
-      - Primeros pasos:                   'cpp/11-clases/01-primeros-pasos.md'
-      - Funciones y clases amigas:        'cpp/11-clases/02-funciones-clases-amigas.md'
-      - Miembros estáticos:               'cpp/11-clases/03-miembros-estaticos.md'
-      - Sobrecarga de operadores:         'cpp/11-clases/04-sobrecarga-operadores.md'
-      - Herencia de clases:               'cpp/11-clases/05-herencia-clases.md'
-      - Polimorfismo de clases:           'cpp/11-clases/06-polimorfismo-clases.md'
-      - Class templates:                  'cpp/11-clases/07-class-templates.md'
-      - Semánticas de movimiento:         'cpp/11-clases/08-semanticas-movimiento.md'
-    - Punteros inteligentes:              'cpp/12-punteros-inteligentes/index.md'
-    - Manejo de excepciones:              'cpp/13-manejo-excepciones/index.md'
-    - Biblioteca STL:                     'cpp/14-biblioteca-stl/index.md'
-    - Miscelánea:                         
-      - Operadores bit a bit:             'cpp/30-miscelanea/01-operadores-bit-a-bit.md'
-      - Enumeradores y alias:             'cpp/30-miscelanea/02-enumeradores-alias.md'
-      - Números aleatorios:               'cpp/30-miscelanea/03-numeros-aleatorios.md'
-      - Tiempo de ejecución:              'cpp/30-miscelanea/04-tiempo-ejecucion.md'
-      - Espacio de nombres:               'cpp/30-miscelanea/05-espacio-nombres.md'
+  - Apuntes C++:
+      - Índice del archivo: "cpp/index.md"
+      - Entorno de desarrollo: "cpp/01-entorno-desarrollo/index.md"
+      - Primeros pasos: "cpp/02-primeros-pasos/index.md"
+      - Tipos de datos: "cpp/03-tipos-de-datos/index.md"
+      - Modificadores: "cpp/04-modificadores/index.md"
+      - Control del flujo: "cpp/05-control-de-flujo/index.md"
+      - Arreglos clásicos: "cpp/06-arreglos-clasicos/index.md"
+      - Punteros y memoria:
+          - Primeros pasos: "cpp/07-punteros-memoria/01-primeros-pasos.md"
+          - Nullptr, void* y ((void*)0): "cpp/07-punteros-memoria/02-null-nullptr-void0.md"
+          - Punteros constantes: "cpp/07-punteros-memoria/03-punteros-constantes.md"
+          - Arreglos y punteros: "cpp/07-punteros-memoria/04-arreglos-punteros.md" # con intercambio de punteros
+          - Aritmética de punteros: "cpp/07-punteros-memoria/05-aritmetica-punteros.md"
+          - Gestión de la memoria: "cpp/07-punteros-memoria/06-tipos-memoria-stack-heap.md"
+          - Memoria dinámica (Heap): "cpp/07-punteros-memoria/07-memoria-dinamica.md" # hasta referencias
+          - Referencias y arreglos: "cpp/07-punteros-memoria/08-referencias-arreglos.md"
+      - Cadenas de caracteres: "cpp/08-cadenas-caracteres/index.md"
+      - Programación de funciones:
+          - Primeros pasos: "cpp/09-funciones/01-primeros-pasos.md"
+          - Sobrecarga de funciones: "cpp/09-funciones/02-sobrecarga-funciones.md"
+          - Funciones Lambda: "cpp/09-funciones/03-funciones-lambda.md"
+          - Funciones Inline: "cpp/09-funciones/04-funciones-inline.md"
+      - Function Templates: "cpp/10-function-templates/index.md"
+      - Programación de clases:
+          - Primeros pasos: "cpp/11-clases/01-primeros-pasos.md"
+          - Funciones y clases amigas: "cpp/11-clases/02-funciones-clases-amigas.md"
+          - Miembros estáticos: "cpp/11-clases/03-miembros-estaticos.md"
+          - Sobrecarga de operadores: "cpp/11-clases/04-sobrecarga-operadores.md"
+          - Herencia de clases: "cpp/11-clases/05-herencia-clases.md"
+          - Polimorfismo de clases: "cpp/11-clases/06-polimorfismo-clases.md"
+          - Class templates: "cpp/11-clases/07-class-templates.md"
+          - Semánticas de movimiento: "cpp/11-clases/08-semanticas-movimiento.md"
+      - Punteros inteligentes: "cpp/12-punteros-inteligentes/index.md"
+      - Manejo de excepciones: "cpp/13-manejo-excepciones/index.md"
+      - Biblioteca STL: "cpp/14-biblioteca-stl/index.md"
+      - Miscelánea:
+          - Operadores bit a bit: "cpp/30-miscelanea/01-operadores-bit-a-bit.md"
+          - Enumeradores y alias: "cpp/30-miscelanea/02-enumeradores-alias.md"
+          - Números aleatorios: "cpp/30-miscelanea/03-numeros-aleatorios.md"
+          - Tiempo de ejecución: "cpp/30-miscelanea/04-tiempo-ejecucion.md"
+          - Espacio de nombres: "cpp/30-miscelanea/05-espacio-nombres.md"
 
-  - Apuntes de PyGame:                    
-    - Índice del archivo:                 'pygame/index.md'               
-    - Funciones de renderizado:
-      - Creación de la superficie:        'pygame/renderizado/creacion-superficie.md'
-      - Dibujando en la superficie:       'pygame/renderizado/dibujo-superficie.md'
-      - Blitting de Imágenes (copia):     'pygame/renderizado/blitting-imagenes.md'
-      - Blitting de Textos (copia):       'pygame/renderizado/blitting-textos.md'
-      - Transformación de superficie:     'pygame/renderizado/transformacion-superficie.md'
-      - Delta time y FPS:                 'pygame/renderizado/delta-time-fps.md'
-      - Iconos de ventana y bandeja:      'pygame/renderizado/icono-ventana-bandeja.md'               
-    - Control de eventos:
-      - Movimiento de ratón:              'pygame/eventos/movimiento-raton.md'
-      - Movimiento de teclado discreto:   'pygame/eventos/movimiento-teclado-discreto.md'
-      - Movimiento de teclado contínuo:   'pygame/eventos/movimiento-teclado-continuo.md'
-      - Movimiento limitado:              'pygame/eventos/movimiento-limitado.md'
-      - Detección de colisiones:          'pygame/eventos/deteccion-colisiones.md'
-      - Debugeando las colisiones:        'pygame/eventos/debug-colisiones.md'
-      - Máscaras de colisión:             'pygame/eventos/mascaras-colision.md'
-      - Debugeando las máscaras:          'pygame/eventos/debug-mascaras-colision.md'
-      - Efectos de sonido y música:       'pygame/eventos/efectos-sonido-musica.md'
-      - Modo ventana y fullscreen:        'pygame/eventos/modo-ventana-fullscreen.md'               
-    - Sprites y grupos:
-      - Repaso de clases:                 'pygame/sprites/clases.md'
-      - Repaso de herencia:               'pygame/sprites/herencia.md'
-      - Clase sprite y grupos:            'pygame/sprites/grupos.md'
-      - Actualización por fotograma:      'pygame/sprites/actualizacion-frame.md'
-      - Actualización por tiempo:         'pygame/sprites/actualizacion-time.md'
-      - Colisiones de sprites:            'pygame/sprites/colisiones.md'
-      - Colisiones de grupos:             'pygame/sprites/grupos-colision.md'
-      - Máscaras en sprites:              'pygame/sprites/mascaras-colision.md'
-      - Máscaras en grupos:               'pygame/sprites/mascaras-grupos-colision.md'
-      - Animaciones estáticas:            'pygame/sprites/animaciones-estaticas.md'
-      - Animaciones en movimiento:        'pygame/sprites/animaciones-movimiento.md'               
-    - Organización modular:
-      - Estructura de un proyecto:        'pygame/organizacion/estructura-proyecto.md'
-      - Estructura principal:             'pygame/organizacion/estructura-principal.md'
-      - Adaptando un ejemplo:             'pygame/organizacion/adaptar-ejemplo.md'            
-    - Escenas y GUI:
-      - Gestor de escenas:                'pygame/escenas-gui/gestor-escenas.md'
-      - Cambio de escena:                 'pygame/escenas-gui/cambio-escenas.md'
-      - Menú con flechas:                 'pygame/escenas-gui/menu-flechas.md'
-      - Menú clicable:                    'pygame/escenas-gui/menu-clicable.md'
-      - Botón animado:                    'pygame/escenas-gui/boton-animado.md'
-      - Múltiples botones:                'pygame/escenas-gui/multiples-botones.md'
-      - PyGame GUI:                       'pygame/escenas-gui/pygame-gui.md'
-      - Ejemplo de integración:           'pygame/escenas-gui/integracion.md'
-    - Creación de ejecutables:
-      - AutoPytoExe:                      'pygame/ejecutables/autopytoexe.md'
+  - Apuntes de PyGame:
+      - Índice del archivo: "pygame/index.md"
+      - Funciones de renderizado:
+          - Creación de la superficie: "pygame/renderizado/creacion-superficie.md"
+          - Dibujando en la superficie: "pygame/renderizado/dibujo-superficie.md"
+          - Blitting de Imágenes (copia): "pygame/renderizado/blitting-imagenes.md"
+          - Blitting de Textos (copia): "pygame/renderizado/blitting-textos.md"
+          - Transformación de superficie: "pygame/renderizado/transformacion-superficie.md"
+          - Delta time y FPS: "pygame/renderizado/delta-time-fps.md"
+          - Iconos de ventana y bandeja: "pygame/renderizado/icono-ventana-bandeja.md"
+      - Control de eventos:
+          - Movimiento de ratón: "pygame/eventos/movimiento-raton.md"
+          - Movimiento de teclado discreto: "pygame/eventos/movimiento-teclado-discreto.md"
+          - Movimiento de teclado contínuo: "pygame/eventos/movimiento-teclado-continuo.md"
+          - Movimiento limitado: "pygame/eventos/movimiento-limitado.md"
+          - Detección de colisiones: "pygame/eventos/deteccion-colisiones.md"
+          - Debugeando las colisiones: "pygame/eventos/debug-colisiones.md"
+          - Máscaras de colisión: "pygame/eventos/mascaras-colision.md"
+          - Debugeando las máscaras: "pygame/eventos/debug-mascaras-colision.md"
+          - Efectos de sonido y música: "pygame/eventos/efectos-sonido-musica.md"
+          - Modo ventana y fullscreen: "pygame/eventos/modo-ventana-fullscreen.md"
+      - Sprites y grupos:
+          - Repaso de clases: "pygame/sprites/clases.md"
+          - Repaso de herencia: "pygame/sprites/herencia.md"
+          - Clase sprite y grupos: "pygame/sprites/grupos.md"
+          - Actualización por fotograma: "pygame/sprites/actualizacion-frame.md"
+          - Actualización por tiempo: "pygame/sprites/actualizacion-time.md"
+          - Colisiones de sprites: "pygame/sprites/colisiones.md"
+          - Colisiones de grupos: "pygame/sprites/grupos-colision.md"
+          - Máscaras en sprites: "pygame/sprites/mascaras-colision.md"
+          - Máscaras en grupos: "pygame/sprites/mascaras-grupos-colision.md"
+          - Animaciones estáticas: "pygame/sprites/animaciones-estaticas.md"
+          - Animaciones en movimiento: "pygame/sprites/animaciones-movimiento.md"
+      - Organización modular:
+          - Estructura de un proyecto: "pygame/organizacion/estructura-proyecto.md"
+          - Estructura principal: "pygame/organizacion/estructura-principal.md"
+          - Adaptando un ejemplo: "pygame/organizacion/adaptar-ejemplo.md"
+      - Escenas y GUI:
+          - Gestor de escenas: "pygame/escenas-gui/gestor-escenas.md"
+          - Cambio de escena: "pygame/escenas-gui/cambio-escenas.md"
+          - Menú con flechas: "pygame/escenas-gui/menu-flechas.md"
+          - Menú clicable: "pygame/escenas-gui/menu-clicable.md"
+          - Botón animado: "pygame/escenas-gui/boton-animado.md"
+          - Múltiples botones: "pygame/escenas-gui/multiples-botones.md"
+          - PyGame GUI: "pygame/escenas-gui/pygame-gui.md"
+          - Ejemplo de integración: "pygame/escenas-gui/integracion.md"
+      - Creación de ejecutables:
+          - AutoPytoExe: "pygame/ejecutables/autopytoexe.md"
 
-  - Apuntes de Gráficos 3D:                    
-    - Índice del archivo:                 'graficos-3d/index.md'  
-    - Configuración previa:               'graficos-3d/01-configuracion-previa/index.md' 
-    - Buffer de color:                    'graficos-3d/02-buffer-de-color/index.md' 
-    - Vectores y puntos:                  'graficos-3d/03-vectores-y-puntos/index.md' 
-    - Proyección de puntos:               'graficos-3d/04-proyeccion-de-puntos/index.md' 
-    - Transformaciones lineales:          'graficos-3d/05-transformaciones-lineales/index.md' 
-    - Triángulos, vértices y mallas:      'graficos-3d/06-triangulos-vertices-mallas/index.md' 
-    - Rasterización de líneas:            'graficos-3d/07-rasterizacion-de-lineas/index.md' 
-    - Mallas en memoria dinámica:         'graficos-3d/08-mallas-en-memoria-dinamica/index.md' 
-    - Ficheros con modelos OBJ:           'graficos-3d/09-ficheros-con-modelos-obj/index.md' 
-    - Operaciones con vectores:           'graficos-3d/10-operaciones-con-vectores/index.md' 
-    - Back-face Culling:                  'graficos-3d/11-back-face-culling/index.md' 
-    - Rasterización de triángulos:        'graficos-3d/12-rasterizacion-de-triangulos/index.md' 
-    - Interfaz Dear ImGui:                'graficos-3d/13-interfaz-dear-imgui/index.md' 
-    - Ordenar caras por profundidad:      'graficos-3d/14-ordenar-caras-por-profundidad/index.md' 
-    - Operaciones con matrices:           'graficos-3d/15-operaciones-con-matrices/index.md' 
-    - Matrices de transformación 3D:      'graficos-3d/16-matrices-de-transformacion-3d/index.md' 
-    - Matriz de proyección:               'graficos-3d/17-matriz-de-proyeccion/index.md' 
-    - Luz y sombreado:                    'graficos-3d/18-luz-y-sombreado/index.md' 
-    - Migración a Visual Studio:          'graficos-3d/19-migracion-a-visual-studio/index.md' 
-    - Mapeado de texturas:                'graficos-3d/20-mapeado-de-texturas/index.md' 
-    - Interpolación de perspectiva:       'graficos-3d/21-interpolacion-de-perspectiva/index.md' 
-    - Decodificación de ficheros PNG:     'graficos-3d/22-decodificacion-de-ficheros-png/index.md' 
-    - Ficheros OBJ con texturas:          'graficos-3d/23-ficheros-obj-con-texturas/index.md' 
-    - Profundidad con Z-Buffer:           'graficos-3d/24-profundidad-con-z-buffer/index.md' 
-    - Matriz de vista y cámaras:          'graficos-3d/25-matriz-de-vista-y-camara/index.md' 
-    - Renderizado y debug separado:       'graficos-3d/26-renderizado-y-debug-separado/index.md' 
-    - Clipping:                           'graficos-3d/27-clipping/index.md' 
-    - Múltiples mallas:                   'graficos-3d/28-multiples-mallas/index.md' 
-  
-  - Apuntes de OpenGL:                    
-    - Índice del archivo:                 'opengl/index.md'  
-    - Primeros pasos:                     'opengl/01-primeros-pasos.md'  
-    - Gráficos primitivos:                'opengl/02-graficos-primitivos.md'  
-    - Tortuga y fractales:                'opengl/03-programando-una-tortuga.md'  
-    - Trabajando con mallas:              'opengl/04-trabajando-con-mallas.md'
-    - Dibujando el espacio 3D:            'opengl/05-dibujando-el-espacio-3d.md'
+  - Apuntes de Gráficos 3D:
+      - Índice del archivo: "graficos-3d/index.md"
+      - Configuración previa: "graficos-3d/01-configuracion-previa/index.md"
+      - Buffer de color: "graficos-3d/02-buffer-de-color/index.md"
+      - Vectores y puntos: "graficos-3d/03-vectores-y-puntos/index.md"
+      - Proyección de puntos: "graficos-3d/04-proyeccion-de-puntos/index.md"
+      - Transformaciones lineales: "graficos-3d/05-transformaciones-lineales/index.md"
+      - Triángulos, vértices y mallas: "graficos-3d/06-triangulos-vertices-mallas/index.md"
+      - Rasterización de líneas: "graficos-3d/07-rasterizacion-de-lineas/index.md"
+      - Mallas en memoria dinámica: "graficos-3d/08-mallas-en-memoria-dinamica/index.md"
+      - Ficheros con modelos OBJ: "graficos-3d/09-ficheros-con-modelos-obj/index.md"
+      - Operaciones con vectores: "graficos-3d/10-operaciones-con-vectores/index.md"
+      - Back-face Culling: "graficos-3d/11-back-face-culling/index.md"
+      - Rasterización de triángulos: "graficos-3d/12-rasterizacion-de-triangulos/index.md"
+      - Interfaz Dear ImGui: "graficos-3d/13-interfaz-dear-imgui/index.md"
+      - Ordenar caras por profundidad: "graficos-3d/14-ordenar-caras-por-profundidad/index.md"
+      - Operaciones con matrices: "graficos-3d/15-operaciones-con-matrices/index.md"
+      - Matrices de transformación 3D: "graficos-3d/16-matrices-de-transformacion-3d/index.md"
+      - Matriz de proyección: "graficos-3d/17-matriz-de-proyeccion/index.md"
+      - Luz y sombreado: "graficos-3d/18-luz-y-sombreado/index.md"
+      - Migración a Visual Studio: "graficos-3d/19-migracion-a-visual-studio/index.md"
+      - Mapeado de texturas: "graficos-3d/20-mapeado-de-texturas/index.md"
+      - Interpolación de perspectiva: "graficos-3d/21-interpolacion-de-perspectiva/index.md"
+      - Decodificación de ficheros PNG: "graficos-3d/22-decodificacion-de-ficheros-png/index.md"
+      - Ficheros OBJ con texturas: "graficos-3d/23-ficheros-obj-con-texturas/index.md"
+      - Profundidad con Z-Buffer: "graficos-3d/24-profundidad-con-z-buffer/index.md"
+      - Matriz de vista y cámaras: "graficos-3d/25-matriz-de-vista-y-camara/index.md"
+      - Renderizado y debug separado: "graficos-3d/26-renderizado-y-debug-separado/index.md"
+      - Clipping: "graficos-3d/27-clipping/index.md"
+      - Múltiples mallas: "graficos-3d/28-multiples-mallas/index.md"
 
-  - Apuntes de Unity:                    
-    - Índice del archivo:                 'unity/index.md'               
-    - Introducción:                     
-      - Luces, cámaras y acción:          'unity/introduccion/luces-camaras-accion.md'
-      - Objetos, recursos y prefabs:      'unity/introduccion/objetos-recursos-prefabs.md'
-      - Componentes y propiedades:        'unity/introduccion/componentes-propiedades.md'
-    - Sandbox 3D:                       
-      - Creando el proyecto:              'unity/sandbox/creando-proyecto.md'
-      - Físicas y materiales:             'unity/sandbox/fisicas-materiales.md'
-      - Diseñando un circuito:            'unity/sandbox/disenando-circuito.md'
-      - Paquete Cinemachine:              'unity/sandbox/paquete-cinemachine.md'
-      - Generando un ejecutable:          'unity/sandbox/generando-ejecutable.md'
-    - Visual Scripting:                 
-      - Flujo del videojuego:             'unity/visual-scripting/flujo-videojuego.md'
-      - Buscador de unidades:             'unity/visual-scripting/buscador-unidades.md'
-      - Tipos de datos:                   'unity/visual-scripting/tipos-datos.md'
-      - Uso de variables:                 'unity/visual-scripting/uso-variables.md'
-      - Variables de objeto:              'unity/visual-scripting/variables-objeto.md'
-      - Reutilización de scripts:         'unity/visual-scripting/reutilizacion-scripts.md'
-      - Grupos y superunidades:           'unity/visual-scripting/grupos-superunidades.md'
+  - Apuntes de OpenGL:
+      - Índice del archivo: "opengl/index.md"
+      - Primeros pasos: "opengl/01-primeros-pasos.md"
+      - Gráficos primitivos: "opengl/02-graficos-primitivos.md"
+      - Tortuga y fractales: "opengl/03-programando-una-tortuga.md"
+      - Trabajando con mallas: "opengl/04-trabajando-con-mallas.md"
+      - Dibujando el espacio 3D: "opengl/05-dibujando-el-espacio-3d.md"
+      - Transformaciones afines: "opengl/06-transformaciones-afines.md"
+      - Renderizado con shaders: "opengl/07-renderizado-con-shaders.md"
+
+  - Apuntes de Unity:
+      - Índice del archivo: "unity/index.md"
+      - Introducción:
+          - Luces, cámaras y acción: "unity/introduccion/luces-camaras-accion.md"
+          - Objetos, recursos y prefabs: "unity/introduccion/objetos-recursos-prefabs.md"
+          - Componentes y propiedades: "unity/introduccion/componentes-propiedades.md"
+      - Sandbox 3D:
+          - Creando el proyecto: "unity/sandbox/creando-proyecto.md"
+          - Físicas y materiales: "unity/sandbox/fisicas-materiales.md"
+          - Diseñando un circuito: "unity/sandbox/disenando-circuito.md"
+          - Paquete Cinemachine: "unity/sandbox/paquete-cinemachine.md"
+          - Generando un ejecutable: "unity/sandbox/generando-ejecutable.md"
+      - Visual Scripting:
+          - Flujo del videojuego: "unity/visual-scripting/flujo-videojuego.md"
+          - Buscador de unidades: "unity/visual-scripting/buscador-unidades.md"
+          - Tipos de datos: "unity/visual-scripting/tipos-datos.md"
+          - Uso de variables: "unity/visual-scripting/uso-variables.md"
+          - Variables de objeto: "unity/visual-scripting/variables-objeto.md"
+          - Reutilización de scripts: "unity/visual-scripting/reutilizacion-scripts.md"
+          - Grupos y superunidades: "unity/visual-scripting/grupos-superunidades.md"
 
   - Escuela de Videojuegos:
-    - Índice del archivo:                 'escueladevideojuegos/index.md'
-    - Academia de Unity Engine:           'escueladevideojuegos/academia-unity.md'
-    - "Academia de GM: Studio":           'escueladevideojuegos/academia-gamemaker.md'
-    - Artículos destacados:
-      - ¿Qué son los videojuegos?:        'escueladevideojuegos/articulos/que-es-un-videojuego.md'
-      - ¿Cómo funcionan?:                 'escueladevideojuegos/articulos/funciona-videojuego-fases-logicas.md'
-      - ¿Cómo se crean?:                  'escueladevideojuegos/articulos/fases-del-desarrollo-de-videojuegos.md'
-      - ¿Cómo trabajar en el sector?:     'escueladevideojuegos/articulos/trabajar-en-el-mundo-de-los-videojuegos.md'
-      - ¿Cómo mejorar los juegos 2D?:     'escueladevideojuegos/articulos/mejorar-la-jugabilidad-en-videojuegos-2d.md'
-      - ¿Qué es el Motion Blur?:          'escueladevideojuegos/articulos/que-es-el-motion-blur.md'
-    - Matemáticas y geometría:
-      - El eje de coordenadas:            'escueladevideojuegos/articulos/el-eje-de-coordenadas.md'
-      - Funciones, sistemas y puntos:     'escueladevideojuegos/articulos/funciones-sistemas-puntos-teoria-matematicas.md'
-      - Líneas (ecuaciones lineales):     'escueladevideojuegos/articulos/lineas-ecuaciones-lineales-teoria-matematicas.md'
-      - Colisiones entre líneas:          'escueladevideojuegos/articulos/deteccion-de-colisiones-entre-lineas.md'
-      - Distancia entre dos puntos:       'escueladevideojuegos/articulos/distancia-entre-dos-puntos-teoria.md'
-      - Parábolas (ecuaciones):           'escueladevideojuegos/articulos/parabolas-teoria.md'
-      - Circulos y esferas (ecuaciones):  'escueladevideojuegos/articulos/circulos-y-esferas-teoria.md'
-    - Recopilaciones de software:
-      - 12 frameworks y librerías:        'escueladevideojuegos/articulos/frameworks-librerias-bibliotecas-recopilacion.md'
-      - 10 engines y motores:             'escueladevideojuegos/articulos/engines-motores-recopilacion-programas.md'
-      - 10 editores de audio:             'escueladevideojuegos/articulos/audio-sfx-y-musica-recopilacion-de-programas.md'
-      - 8 editores gráficos 2D:           'escueladevideojuegos/articulos/edicion-graficos-2d-recopilacion-programas.md'
-      - 5 editores de mapas y fuentes:    'escueladevideojuegos/articulos/editores-de-mapas-y-generadores-de-fuentes-recopilacion-de-programas.md'
-      - 3 editores de modelaje 3D:        'escueladevideojuegos/articulos/edicion-graficos-3d-recopilacion-programas.md'
+      - Índice del archivo: "escueladevideojuegos/index.md"
+      - Academia de Unity Engine: "escueladevideojuegos/academia-unity.md"
+      - "Academia de GM: Studio": "escueladevideojuegos/academia-gamemaker.md"
+      - Artículos destacados:
+          - ¿Qué son los videojuegos?: "escueladevideojuegos/articulos/que-es-un-videojuego.md"
+          - ¿Cómo funcionan?: "escueladevideojuegos/articulos/funciona-videojuego-fases-logicas.md"
+          - ¿Cómo se crean?: "escueladevideojuegos/articulos/fases-del-desarrollo-de-videojuegos.md"
+          - ¿Cómo trabajar en el sector?: "escueladevideojuegos/articulos/trabajar-en-el-mundo-de-los-videojuegos.md"
+          - ¿Cómo mejorar los juegos 2D?: "escueladevideojuegos/articulos/mejorar-la-jugabilidad-en-videojuegos-2d.md"
+          - ¿Qué es el Motion Blur?: "escueladevideojuegos/articulos/que-es-el-motion-blur.md"
+      - Matemáticas y geometría:
+          - El eje de coordenadas: "escueladevideojuegos/articulos/el-eje-de-coordenadas.md"
+          - Funciones, sistemas y puntos: "escueladevideojuegos/articulos/funciones-sistemas-puntos-teoria-matematicas.md"
+          - Líneas (ecuaciones lineales): "escueladevideojuegos/articulos/lineas-ecuaciones-lineales-teoria-matematicas.md"
+          - Colisiones entre líneas: "escueladevideojuegos/articulos/deteccion-de-colisiones-entre-lineas.md"
+          - Distancia entre dos puntos: "escueladevideojuegos/articulos/distancia-entre-dos-puntos-teoria.md"
+          - Parábolas (ecuaciones): "escueladevideojuegos/articulos/parabolas-teoria.md"
+          - Circulos y esferas (ecuaciones): "escueladevideojuegos/articulos/circulos-y-esferas-teoria.md"
+      - Recopilaciones de software:
+          - 12 frameworks y librerías: "escueladevideojuegos/articulos/frameworks-librerias-bibliotecas-recopilacion.md"
+          - 10 engines y motores: "escueladevideojuegos/articulos/engines-motores-recopilacion-programas.md"
+          - 10 editores de audio: "escueladevideojuegos/articulos/audio-sfx-y-musica-recopilacion-de-programas.md"
+          - 8 editores gráficos 2D: "escueladevideojuegos/articulos/edicion-graficos-2d-recopilacion-programas.md"
+          - 5 editores de mapas y fuentes: "escueladevideojuegos/articulos/editores-de-mapas-y-generadores-de-fuentes-recopilacion-de-programas.md"
+          - 3 editores de modelaje 3D: "escueladevideojuegos/articulos/edicion-graficos-3d-recopilacion-programas.md"
 
   - Videoteca:
-    - Índice del archivo:                 'videoteca/index.md'
-    - Tutoriales Python:
-      - Cómo añadir Python al PATH:       'videoteca/2022/tutorial-python-001-anadir-python-path-windows.md'
-      - Ejecutar scripts en terminal:     'videoteca/2022/tutorial-python-002-ejecutar-scripts-terminal.md'
-      - Cambiar la terminal de VSC:       'videoteca/2022/tutorial-python-003-cambiar-terminal-vsc.md'
-      - Scripts relativos en VSC:         'videoteca/2022/tutorial-python-004-scripts-relativos-vsc.md'
-      - Tipos de datos esenciales:        'videoteca/2022/tutorial-python-005-tipos-esenciales.md'
-      - Uso del operador ternario:        'videoteca/2022/tutorial-python-006-operador-ternario.md'
+      - Índice del archivo: "videoteca/index.md"
+      - Tutoriales Python:
+          - Cómo añadir Python al PATH: "videoteca/2022/tutorial-python-001-anadir-python-path-windows.md"
+          - Ejecutar scripts en terminal: "videoteca/2022/tutorial-python-002-ejecutar-scripts-terminal.md"
+          - Cambiar la terminal de VSC: "videoteca/2022/tutorial-python-003-cambiar-terminal-vsc.md"
+          - Scripts relativos en VSC: "videoteca/2022/tutorial-python-004-scripts-relativos-vsc.md"
+          - Tipos de datos esenciales: "videoteca/2022/tutorial-python-005-tipos-esenciales.md"
+          - Uso del operador ternario: "videoteca/2022/tutorial-python-006-operador-ternario.md"
 
-  - Política de Cookies:                  'politica-de-cookies.md'
+  - Política de Cookies: "politica-de-cookies.md"

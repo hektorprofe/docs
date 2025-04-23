@@ -43,7 +43,7 @@ La cual también se puede expresar de la siguiente forma:
 
 **RECORDATORIO:** Al utilizar operadores encadenados, estos se basan en comprobar el resultado de cada mínima expresión y  relacionarlos con AND. No confundir con la comparación del resultado de cada expresión con el siguiente:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/figura_1.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/figura_1.png"/></div>
 
 Veamos en ejemplo mucho más útil, donde queremos comprobar si un número se encuentra entre 0 y 100 (ambos incluidos):
 

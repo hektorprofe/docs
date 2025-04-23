@@ -7,7 +7,7 @@ Bien, ya tenemos los modelos listos así que nos toca desarrollar las vistas. Va
 
 Vamos a prepararlo todo, trasladando el template blog.html y su respectiva vista a la app Blog y poniendo bien las urls:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/28-5.png" style="max-width:150px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/28-5.png" style="max-width:150px"/></div>
 
 `blog/views.py`
 ```python
@@ -39,7 +39,7 @@ urlpatterns = [
 
 Ya debería funcionar:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/29.png" style="max-width:350px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/29.png" style="max-width:350px"/></div>
 
 Vamos a recuperar las noticias y a fusionar su template:
 
@@ -98,7 +98,7 @@ Fusionaremos todo menos las categorías:
 
 Si echamos un vistazo al resultado todo está correcto, fijaros como el autor hace referencia al Usuario y nos lo muestra bien:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/30.png" style="max-width:350px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/30.png" style="max-width:350px"/></div>
 
 Sin embargo la fecha de publicación no está en el formato que necesitamos, según nuestro frontend sólo necesitamos mostrar DIA/MES/AÑO separados con barras. Para conseguir este resultado podemos utilizar el template tag date y darle el formato deseado. En nuestro caso nos interesa uno predeterminado llamado **SHORT_DATE_FORMAT**:
 
@@ -108,7 +108,7 @@ Sin embargo la fecha de publicación no está en el formato que necesitamos, seg
 </span>{% endraw %}
 ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/31.png" style="max-width:120px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/31.png" style="max-width:120px"/></div>
 
 Otra cosa importante es que por defecto no se respetan los saltos de línea en el cuerpo de la noticia, para activarlos debemos indicar el template tag **linebreaks** en el contenido:
 
@@ -118,7 +118,7 @@ Otra cosa importante es que por defecto no se respetan los saltos de línea en e
 </p>{% endraw %}
 ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/32.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/32.png"/></div>
 
 Y por último vamos a por las categorías. Si comentamos lo que tenemos en el diseño y simplemente mostramos la relación many2many nos aparecerá algo muy raro:
 
@@ -131,7 +131,7 @@ Y por último vamos a por las categorías. Si comentamos lo que tenemos en el di
 </p>{% endraw %}
 ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/33.png" style="max-width:380px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/33.png" style="max-width:380px"/></div>
 
 Esto es porque categories se comporta como una consulta a la base de datos, tenemos que indicarle exactamente qué queremos mostrar, normalmente añadiendo **.all** para en nuestro caso hacer referencia a todas las categorías de la entrada:
 
@@ -144,7 +144,7 @@ Esto es porque categories se comporta como una consulta a la base de datos, tene
 </p>{% endraw %}
 ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/34.png" style="max-width:700px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/34.png" style="max-width:700px"/></div>
 
 Esto hará la consulta y nos devolverá un QuerySet, evidentemente eso no lo queremos. Podemos hacer algo más fácil, utilizar un templatetag join para mostrar las categorías separadas por comas:
 
@@ -157,7 +157,7 @@ Esto hará la consulta y nos devolverá un QuerySet, evidentemente eso no lo que
 </p>{% endraw %}
 ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/35.png" style="max-width:385px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/35.png" style="max-width:385px"/></div>
 
 Por ahora vamos a dejarlo así, luego cuando tengamos la vista para filtrar por categoría volveremos para poner los enlaces.
 

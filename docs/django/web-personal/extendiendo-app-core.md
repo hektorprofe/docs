@@ -34,7 +34,7 @@ urlpatterns = [
 
 Si ahora ponemos de nuevo el servidor en marchay probamos la dirección **/about/** debería salirnos:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/14.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/14.png"/></div>
 
 En este punto, sabiendo un poco de HTML y con algo de imaginación, podemos crear una pequeña web con un menú de enlaces:
 `core/views.py`
@@ -60,7 +60,7 @@ def about(request):
     """)
 ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/15.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/15.png"/></div>
 
 Como véis es una forma bien interesante de ir estructurando nuestras páginas.
 

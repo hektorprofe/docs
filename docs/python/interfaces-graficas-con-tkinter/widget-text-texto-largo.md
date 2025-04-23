@@ -32,7 +32,7 @@ También acepta propiedades visuales para los colores o la fuente:
 	texto.config(font=("Consolas",12), selectbackground="red", padx=5, pady=5)
     ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/tkinter/12.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/tkinter/12.png"/></div>
 
 Código final:
 

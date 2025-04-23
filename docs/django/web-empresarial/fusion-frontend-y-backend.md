@@ -13,11 +13,11 @@ En esta lección deberás realizar la fusión. Identifica las partes comunes en 
 
 Empezamos por ejemplo creando los directorio **static/core/** en nuestra app y copiamos ahí todos los recursos del frontend:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/07.png" style="max-width: 300px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/07.png" style="max-width: 300px"/></div>
 
 Ahora vamos a hacer lo mismo pero para los templates en el directorio **templates/core/**:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/08.png" style="max-width: 335px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/08.png" style="max-width: 335px"/></div>
 
 Ahora vamos a decirle a Django que cargue los ficheros estáticos y los templates de la app **core**, así que lo añadiremos en **settings.py**.
 
@@ -31,7 +31,7 @@ def home(request):
 
 Ahora pruebo a ver si funciona:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/09.png" style="max-width: 300px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/09.png" style="max-width: 300px"/></div>
 
 Parece que carga bien, pero los recursos estáticos no funcionan. Vamos a utilizar el template tag *load_static* y a adaptar sus urls en home.html:
 
@@ -58,7 +58,7 @@ Parece que carga bien, pero los recursos estáticos no funcionan. Vamos a utiliz
 
 Probamos de nuevo:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/10.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/10.png"/></div>
 
 Más o menos funciona, pero como la  imágen de la cabecera no se está mostrando todo se descuadra. Vamos a poner bien su enlace estático:
 
@@ -70,7 +70,7 @@ Más o menos funciona, pero como la  imágen de la cabecera no se está mostrand
 
 Ahora sí:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/11.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/11.png"/></div>
 
 Ahora que tenemos nuestra portada vamos a crear la plantilla base.html. Podemos simplemente copiar home.html y llamarla base.html porque lo tenemos todo ahí.
 

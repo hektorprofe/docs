@@ -16,7 +16,7 @@ sys.path.append('..')
 from res.Cube import wireCube
 ```
 
-Es importante tenerlo en cuenta porque editores como *VSC* formatean al guardar los ficheros y modifican el orden de las importaciones. Esto se puede evitar con un par de clásulas:
+Es importante tenerlo en cuenta porque editores como _VSC_ formatean al guardar los ficheros y modifican el orden de las importaciones. Esto se puede evitar con un par de clásulas:
 
 ```json
 "python.formatting.autopep8Args": ["--ignore","E402"],
@@ -25,7 +25,7 @@ Es importante tenerlo en cuenta porque editores como *VSC* formatean al guardar 
 
 ## Hola mundo cúbico
 
-Empecemos con una prueba, en lugar de hacer un *Hola mundo* voy a importar un cubo cuyos vértices y triángulos se han definido en el fichero `Cube.py`:
+Empecemos con una prueba, en lugar de hacer un _Hola mundo_ voy a importar un cubo cuyos vértices y triángulos se han definido en el fichero `Cube.py`:
 
 ```python
 from OpenGL.GL import *
@@ -117,7 +117,7 @@ Confirmamos que todo funciona y podemos pasar a lo siguiente.
 
 ## Ventana básica con PyGame
 
-Todo lo que se voy a implementar durante las siguientes prácticas sobre OpenGL utiliza el entorno gráfico de PyGame como base. Tengo unos [apuntes geniales sobre esta biblioteca](https://docs.hektorprofe.net/pygame/) así que no profundizaré mucho a parte de algunos comentarios de código:
+Todo lo que se voy a implementar durante las siguientes prácticas sobre OpenGL utiliza el entorno gráfico de PyGame como base. Tengo unos [apuntes geniales sobre esta biblioteca](/docs/pygame/) así que no profundizaré mucho a parte de algunos comentarios de código:
 
 ```python
 # Importamos la biblioteca gráfica
@@ -162,7 +162,7 @@ pygame.quit()
 
 OpenGL es una API gráfica para utilizar la GPU con el objetivo de realizar cálculos de renderizado en tiempo real y devolverlos al buffer de la memoria de vídeo de la máquina.
 
-Las llamadas ocurren a bajo nivel y se pueden utilizar para programar sistemas gráficos y motores de videojuegos. 
+Las llamadas ocurren a bajo nivel y se pueden utilizar para programar sistemas gráficos y motores de videojuegos.
 
 Si comparamos el código para dibujar un simple rectángulo con PyGame:
 
@@ -186,7 +186,7 @@ Pues ya vemos que el proceso es mucho más largo, requiere establecer el color, 
 
 Evidentemente es más difícil de aprender pero tiene la ventaja de que el programador tiene total control sobre lo que quiere dibujar. Conocer cómo funciona el renderizado a bajo nivel abre las puertas a todo tipo de posibilidades, introduciendo construcciones matemáticas que constituyen los fundamentos de todos los motores gráficos y los programas de modelado.
 
-Lo bueno de la **estructura de las instrucciones** de OpenGL es que sus nombres son autoexplicativos. Solo con leer `glVertex2i` podemos determinar la librería `gl` (hay otras como `glu`), el comando `Vertex` para crear un vértice, el número `2` hace referencia a la cantidad de argumentos de la función y por último `i` es el tipo del argumento (en este caso enteros *integer*). Como vemos la utilización viene en cierta forma explicada en el propio nombre.
+Lo bueno de la **estructura de las instrucciones** de OpenGL es que sus nombres son autoexplicativos. Solo con leer `glVertex2i` podemos determinar la librería `gl` (hay otras como `glu`), el comando `Vertex` para crear un vértice, el número `2` hace referencia a la cantidad de argumentos de la función y por último `i` es el tipo del argumento (en este caso enteros _integer_). Como vemos la utilización viene en cierta forma explicada en el propio nombre.
 
 En cuanto a la **estructura de un programa** que utiliza OpenGL, el proceso se gestiona en serie y el bucle gráfico sería:
 
@@ -255,23 +255,23 @@ pygame.quit()
 
 Puntos importantes a comentar, antes de iniciar el bucle creamos una configuración del espacio de dibujo:
 
-* Establecemos el modo matriz a `GL_PROJECTION`, eso hará que las posteriores operaciones de matriz se apliquen como proyecciones en el espacio de imagen (2D). 
-* Establecemos la matriz de identidad, que pese a no ser necesario es una buena práctica. Recordemos que las transformaciones se realizan multiplicando matrices, establecer inicialmente la matriz de identidad equivale a establecer el número `1`. 
-* Finalmente configuramos el espacio ortográfico 2D con un tamaño de 600x400 píxeles. 
+- Establecemos el modo matriz a `GL_PROJECTION`, eso hará que las posteriores operaciones de matriz se apliquen como proyecciones en el espacio de imagen (2D).
+- Establecemos la matriz de identidad, que pese a no ser necesario es una buena práctica. Recordemos que las transformaciones se realizan multiplicando matrices, establecer inicialmente la matriz de identidad equivale a establecer el número `1`.
+- Finalmente configuramos el espacio ortográfico 2D con un tamaño de 600x400 píxeles.
 
 Durante el bucle gráfico, en cada iteración:
 
-* Reiniciamos el buffer de color y el de profundidad. Por ahora no es estrictamente necesario pero es importante. El primero maneja los píxeles a dibujar en la pantalla (como un lienzo), el segundo la profundidad de cada vértice para poder realizar la brecha de perspectiva.
-* Luego cargamos el modo matriz `GL_MODELVIEW` para aplicar las posteriores operaciones de matrices en la vista de modelo, es decir, que afecten al espacio tridimensional.
-* Reiniciamos de nuevo a la matriz de identidad, aunque no es necesario.
-* Preparamos el tamaño del radio de un punto en píxeles.
-* Empezamos el ciclo de dibujado de los puntos, los dibujamos y lo finalizamos.
+- Reiniciamos el buffer de color y el de profundidad. Por ahora no es estrictamente necesario pero es importante. El primero maneja los píxeles a dibujar en la pantalla (como un lienzo), el segundo la profundidad de cada vértice para poder realizar la brecha de perspectiva.
+- Luego cargamos el modo matriz `GL_MODELVIEW` para aplicar las posteriores operaciones de matrices en la vista de modelo, es decir, que afecten al espacio tridimensional.
+- Reiniciamos de nuevo a la matriz de identidad, aunque no es necesario.
+- Preparamos el tamaño del radio de un punto en píxeles.
+- Empezamos el ciclo de dibujado de los puntos, los dibujamos y lo finalizamos.
 
 Es importando comentar también como el OpenGL maneja las coordenadas. Éstas empiezan con el punto `(0,0)` en la esquina inferior izquierda y crecen en diagonal hasta la esquina superior derecha. Además el tamaño del espacio de dibujo se escala al de la ventana de PyGame, razón por la cuál los puntos se encuentran en ambas esquinas.
 
 ## Aplicación reutilizable con clases
 
-Como hemos visto un programa con OpenGL escala de tamaño muy rápido, por eso he decidido implementar una estructura de aplicación reutilizable donde podamos centrarnos en la implementación de la lógica y abstraer todo el tema de gestionar la ventana de PyGame. Es algo que muestro en [mis apuntes](https://docs.hektorprofe.net/pygame) así que me limitaré a facilit el cascarón y explicar su uso:
+Como hemos visto un programa con OpenGL escala de tamaño muy rápido, por eso he decidido implementar una estructura de aplicación reutilizable donde podamos centrarnos en la implementación de la lógica y abstraer todo el tema de gestionar la ventana de PyGame. Es algo que muestro en [mis apuntes](/docs/pygame) así que me limitaré a facilit el cascarón y explicar su uso:
 
 La clase `App` contiene la información de la aplicación, su objeto es servir como clase base o interfaz sobre la que crear nuestra aplicación gráfica:
 
@@ -439,5 +439,6 @@ Incluso podríamos voltear solo uno de los ejes, por ejemplo el horizontal para 
 
 Como vemos OpenGL nos permite adaptar el eje de coordenadas de la forma como mejor nos convenga.
 
-___
+---
+
 <small class="edited"><i>Última edición: 12 de Junio de 2022</i></small>

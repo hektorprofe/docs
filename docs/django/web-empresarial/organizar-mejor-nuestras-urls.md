@@ -54,7 +54,7 @@ urlpatterns = [
 
 Vamos a probar en nuestro proyecto:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/03.png" style="max-width: 550px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/03.png" style="max-width: 550px"/></div>
 
 Como véis no funciona. ¿Por qué? Bueno fijaros que estamos definiendo un path global llamado core/ para incluir en él las URLS de la app **core**:
 
@@ -64,7 +64,7 @@ path('core/', include('core.urls')),
 
 En otras palabras, todos nuestros Paths dependen de la raíz core/, representando el propio core/ la portada que tenemos en core:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/04.png" style="max-width: 350px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/04.png" style="max-width: 350px"/></div>
 
 Como  este path no tiene una URL, representa la propia raíz:
 
@@ -74,7 +74,7 @@ path('', views.home, name='home'),
 
 ¿Como entraríamos en las otras páginas? Pues simplemente añadiendo después de core/ su path:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/05.png" style="max-width: 450px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/05.png" style="max-width: 450px"/></div>
 
 Por ahora no queremos esto, así que vamos a hacer que la raíz de las URLS de **core** esté vacía:
 
@@ -84,7 +84,7 @@ path('', include('core.urls')),
 
 Así replicaremos el funcionamiento que teníamos antes:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/06.png" style="max-width: 350px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/06.png" style="max-width: 350px"/></div>
 
 Y con esto ya sabéis manejar URLS de una forma mucho más cómoda.
 

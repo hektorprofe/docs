@@ -3,7 +3,7 @@ description: Apuntes del curso de desarrollo de videojuegos con PyGame en Python
 
 # Efectos de sonido y música
 
-<div class='embed-container'><iframe width="560" height="315" src="/cdn/pygame/015.mp4" title="Video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div class='embed-container'><iframe width="560" height="315" src="/docs/cdn/pygame/015.mp4" title="Video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 ```python
 import sys

@@ -61,7 +61,7 @@ Pero esto no es algo único de los Frames, todos los widgets aceptan estos pará
 
 De esta forma podéis apreciar como se diferencia claramente el espacio de la raíz y el frame. 
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/tkinter/03.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/tkinter/03.png"/></div>
 
 Sin embargo, fijaros que curiosamente si hacemos la ventana grande, el frame se encuentra centrado arriba al medio, eso es porque el método pack alinea el widget arriba al medio.Esta posición se conoce como la distribución del Widget y podemos cambiarla de dos formas posibles justo al empacar el frame. Con alineación [arriba, abajo, izquierda, derecha] o con anclaje [N,S,E,W,NE…]:
 
@@ -72,7 +72,7 @@ Sin embargo, fijaros que curiosamente si hacemos la ventana grande, el frame se 
 	frame.pack(anchor=SE)    # sudeste, abajo a la derecha
     ```
     
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/tkinter/04.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/tkinter/04.png"/></div>
 
 Y no sólo eso, también podemos redimensionar un widget:
 

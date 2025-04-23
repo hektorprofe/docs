@@ -47,7 +47,7 @@ Según el código HTML de la maqueta para resaltar un elemento del menú hay que
 
 Y con esto lo tenemos:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/12.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/12.png"/></div>
 
 No es que sea muy elegante porque si cambiamos la URL dejará de funcionar, pero es lo más fácil que podemos hacer para lograrlo.
 

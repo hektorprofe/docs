@@ -105,7 +105,7 @@ Ahora viene la magia, vamos de vuelta por ejemplo a nuestro template home.html y
 
 Muy bien, si ahora probamos de mostrar la portada evidentemente no nos aparecerá ni el título ni el menú:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/19.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/19.png"/></div>
 
 No os preocupéis, sólo debemos hacer un pequeño ajuste para decirle que sea hija de la plantilla base.html. Vamos a poner justo encima el template tag extends de la siguiente forma:
 
@@ -119,7 +119,7 @@ No os preocupéis, sólo debemos hacer un pequeño ajuste para decirle que sea h
 
 Esto le indicará que es hija de base. Si ahora ejecutamos la portada:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/20.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/20.png"/></div>
 
 Vaya, parece que esta vez sólo se muestra el título y el menú. El caso es que no está funcionando como debería, pero vamos bien. ¿Sabéis qué nos falta? Decirle que nuestra portada se dibuje justo dentro del bloque content de la base, y eso lo haremos creando de nuevo el bloque content y poniendo nuestro HTML dentro:
 
@@ -135,7 +135,7 @@ Vaya, parece que esta vez sólo se muestra el título y el menú. El caso es que
 
 Una vez rectificado esto, ya nos debería funcionar como era de esperar:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/21.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/21.png"/></div>
 
 Así es como se utiliza la herencia con plantillas, con los template tags **block** y **extends**. En la siguiente lección tendrás que poner en práctica lo aprendido adaptando las demás páginas a este sistema.
 

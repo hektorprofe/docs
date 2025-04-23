@@ -22,7 +22,7 @@ La app Services es en esencia lo mismo que la app portafolio de la web personal 
 
 Creamos el directorio media en la raíz del proyecto:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/13.png" style="max-width:200px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/13.png" style="max-width:200px"/></div>
 
 Añadimos la configuración *MEDIA* al **settings.py**:
 
@@ -107,7 +107,7 @@ admin.site.register(Service, ServiceAdmin)
 
 Ya podemos acceder al admin:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/14.png" style="max-width:200px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/14.png" style="max-width:200px"/></div>
 
 Finalmente tocaría acabar de traducir el nombre de la app y configurar django en español:
 
@@ -143,7 +143,7 @@ INSTALLED_APPS = [
 
 Y ya lo tenemos:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/15.png" style="max-width:200px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/15.png" style="max-width:200px"/></div>
 
 ___
 <small class="edited"><i>Última edición: 29 de Octubre de 2018</i></small>

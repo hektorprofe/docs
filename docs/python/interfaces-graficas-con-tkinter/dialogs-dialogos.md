@@ -32,7 +32,7 @@ Sirve para mostrar un diálogo de más información:
     root.mainloop()
     ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/tkinter/20.png" width="171" height="164"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/tkinter/20.png" width="171" height="164"/></div>
 
 ## ShowWarning
 
@@ -44,7 +44,7 @@ Sirve para mostrar un diálogo con un mensaje de alerta:
         "Sección sólo para administradores.")
     ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/tkinter/21.png" width="288" height="165"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/tkinter/21.png" width="288" height="165"/></div>
 
 ## ShowError
 
@@ -56,7 +56,7 @@ Sirve para mostrar un diálogo con un mensaje de error:
         "Ha ocurrido un error inesperado.")
     ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/tkinter/22.png" width="277" height="168"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/tkinter/22.png" width="277" height="168"/></div>
 
 ## AskQuestion
 
@@ -71,7 +71,7 @@ Sirve para mostrar un diálogo con una pregunta de Sí/No al usuario:
         root.destroy()  # Destruir, alternativa a quit
     ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/tkinter/23.png" width="325" height="165"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/tkinter/23.png" width="325" height="165"/></div>
 
 ## AskOkCancel
 
@@ -86,7 +86,7 @@ Sirve para mostrar un diálogo con una pregunta de Ok/Cancelar al usuario:
 		# Hacer algo
     ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/tkinter/24.png" width="259" height="165"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/tkinter/24.png" width="259" height="165"/></div>
 
 ## AskRetryCancel
 
@@ -101,7 +101,7 @@ Sirve para mostrar un diálogo con una pregunta de Reintenar/Cancelar al usuario
 		# Hacer algo
     ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/tkinter/26.png" width="238" height="163"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/tkinter/26.png" width="238" height="163"/></div>
 
 ## AskColor
 
@@ -116,7 +116,7 @@ Imaginad que queréis crear una aplicación y necesitáis que el usuario selecci
         print(color)
     ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/tkinter/27.png" width="448"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/tkinter/27.png" width="448"/></div>
 
 Como véis nos muestra el cuadro de diálogo del sistema operativo y como resultado conseguimos una cómoda tupla con el color en dos formatos, RGB y Hexadecimal. En caso de no seleccionar ningún color la tupla tendrá dos valores nulos None por defecto.
 
@@ -133,7 +133,7 @@ Y por último, un vistazo a la clase FileDialog, que nos permite realizar varias
         print(fichero)
     ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/tkinter/28.png" width="946"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/tkinter/28.png" width="946"/></div>
 
 Como véis nos abre el cuadro de diálogo para gestionar ficheros en modo Abrir y nos devuelve la ruta. Y si no elegimos un fichero, se devuelve un valor vacío.
 
@@ -151,7 +151,7 @@ Sin embargo lo más interesante es que también podemos establecer otras opcione
     )
     ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/tkinter/29.png" width="821"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/tkinter/29.png" width="821"/></div>
 
 ## AskSaveAsFile
 
@@ -179,7 +179,7 @@ En cuanto a los parámetros que podemos enviar tenemos por ejemplo para establec
 			fichero.close()
     ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/tkinter/30.png" width="567"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/tkinter/30.png" width="567"/></div>
 
 ___
 <small class="edited"><i>Última edición: 4 de Octubre de 2018</i></small>

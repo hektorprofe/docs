@@ -69,9 +69,9 @@ urlpatterns = [
 
 Pongo el servidor en marcha y pruebo algunas urls a ver si funcionan:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/01.png" style="max-width: 350px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/01.png" style="max-width: 350px"/></div>
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/02.png" style="max-width: 425px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/02.png" style="max-width: 425px"/></div>
 
 Listo.
 

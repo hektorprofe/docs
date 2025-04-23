@@ -100,11 +100,11 @@ def category(request, category_id):
 
 Si intentamos acceder a una categoría, por ejemplo la de id 1 que es la primera que se crea, nos la devolverá correctamente:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/36.png" style="max-width:305px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/36.png" style="max-width:305px"/></div>
 
 Lo malo de utilizar directamente el método get, es que si no se encuentra un resultado Django devolverá un error:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/37.png" style="max-width:375px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/37.png" style="max-width:375px"/></div>
 
 Para evitar esta situación y devolver un error 404, el típico de no encontrado, podemos utilizar un shortcut llamado **get_object_or_404**:
 
@@ -124,7 +124,7 @@ def category(request, category_id):
 
 Ahora si da error, por lo menos será un error dentro de la nomenclatura, ya que el 404 es el error que por norma hay que devolver si no se encuentra una página. Aunque con el Debug nos salga en forma de información:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/38.png" style="max-width:435px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/38.png" style="max-width:435px"/></div>
 
 Sea como sea ahora que tenemos la categoría podemos buscar sus entradas. Una forma rudimentaria de hacerlo es crear otra consulta para recuperar las entradas filtrando por categoría:
 
@@ -146,7 +146,7 @@ def category(request, category_id):
 
 Esto ya nos funcionará:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/39.png" style="max-width:485px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/39.png" style="max-width:485px"/></div>
 
 Sin embargo como os decía es una forma rudimentaria de hacerlo, y eso es porque Django nos ofrece una forma mucho más fácil de hacerlo gracias a la capacidad de las relaciones de hacer consultas inversas.
 
@@ -174,7 +174,7 @@ Ahora vamos a nuestro template, y en lugar de recorrer las entradas, que no tene
 
 Si comprobamos nuestra web veremos que increíblemente funciona:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/40.png" style="max-width:485px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/40.png" style="max-width:485px"/></div>
 
 ¿Cómo puede ser? Pues fácil, las relaciones no sólo existen en un sentido, sino en ambos. Aprovechando ésto, Django implementa una sintaxis genérica con **modelo.modeloRelacionado_set.all** para consultar todas las instancias del modeloRelacionado con el modelo. 
 
@@ -209,7 +209,7 @@ Ahora que tenemos la página de categorías vamos a finalizar la app añadiendo 
 
 Por último un pequeño detalle que quizá os pasará desapercibido, pero nuestro menú deja de resaltar BLOG cuando filtramos por una categoría:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/42.png" style="max-width:100px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/42.png" style="max-width:100px"/></div>
 
 Claro, la url ahora ya no es **/blog/** si no **/blog/category/etc**. Por suerte con un poco de ingenio podemos arreglarlo recortando los primeros caracteres del path con el filtro slice (que hace lo mismo que el slicing con las colecciones):
 

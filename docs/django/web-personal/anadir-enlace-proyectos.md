@@ -44,7 +44,7 @@ class Project(models.Model):
 (django2) python manage.py migrate portfolio
 ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/55.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/55.png"/></div>
 
 `portfolio/templates/portfolio/porfolio.html`
 
@@ -81,7 +81,7 @@ class Project(models.Model):
 {% endblock %}{% endraw %}
 ``` 
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/56.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/56.png"/></div>
 
 ___
 <small class="edited"><i>Última edición: 25 de Octubre de 2018</i></small>

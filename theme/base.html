@@ -1,11 +1,9 @@
 {% import "partials/language.html" as lang with context %}{% set feature = config.theme.feature %}{% set palette = config.theme.palette %}{% set font = config.theme.font %}<!DOCTYPE html>
-<html lang="{{ lang.t('language') }}" class="no-js">
+<html lang="{{ lang.t("language") }}" class="no-js">
   <head>
-    
-    {% set python_dc = '2522EB41FF2C2033D661' %}
-    {% set django_dc = 'E17DBAD5E52D963F824D' %}
-    {% set pyside_dc = '7C3871B53669F4129BE9' %}
-
+    {% set python_dc = "2522EB41FF2C2033D661" %}
+    {% set django_dc = "E17DBAD5E52D963F824D" %}
+    {% set pyside_dc = "7C3871B53669F4129BE9" %}
     {% block site_meta %}
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -15,9 +13,7 @@
       {% elif config.site_description %}
         <meta name="description" content="{{ config.site_description }}">
       {% endif %}
-      {% if page.canonical_url %}
-        <link rel="canonical" href="{{ page.canonical_url }}">
-      {% endif %}
+      {% if page.canonical_url %}<link rel="canonical" href="{{ page.canonical_url }}">{% endif %}
       {% if page and page.meta and page.meta.author %}
         <meta name="author" content="{{ page.meta.author | first }}">
       {% elif config.site_author %}
@@ -34,21 +30,21 @@
         <title>{{ config.site_name }}</title>
       {% endif %}
     {% endblock %}
-    <link rel="stylesheet" href="{{ 'assets/stylesheets/application.2.css' | url }}">
+    <link rel="stylesheet"
+          href="{{ 'assets/stylesheets/application.2.css' | url }}">
     {% block fonts %}
       {% if font != false %}
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{
-              font.text | replace(' ', '+')  + ':300,400,400i,700|' +
-              font.code | replace(' ', '+')
-            }}">
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family={{ font.text | replace(' ', '+') + ':300,400,400i,700|' + font.code | replace(' ', '+') }}">
         <style>body,input{font-family:"{{ font.text }}","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"{{ font.code }}","Courier New",Courier,monospace}</style>
       {% endif %}
     {% endblock %}
     {% block extrahead %}{% endblock %}
-    <link rel="stylesheet" href="/assets/stylesheets/tingle.min.css">
-<style>
-@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
+    <link rel="stylesheet"
+          href="{{ config.site_url }}assets/stylesheets/tingle.min.css">
+    <style>
+@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("{{ config.site_url }}assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("{{ config.site_url }}assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("{{ config.site_url }}assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
 [data-md-color-primary="grey"] .md-header { background-color: #191A1D }
 [data-md-color-primary="grey"] .md-tabs { background-color: #222831 }
 .md-footer-nav { background-color: #222831; }
@@ -76,8 +72,6 @@ img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
 .md-icon--search { display:inline-block!important}
 a.headerlink{ display: none !important; }
 small.edited { display: block; text-align: right; }
-#cookie-bar { padding: 1.8rem 1.25rem !important; background: #191A1D  !important; box-shadow:rgba(0, 0, 0, 0.2) 4px 4px 8px 8px; }
-#cookie-bar-prompt-logo{ display: none !important; }
 div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
 @media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
@@ -109,170 +103,106 @@ div.my-img{text-align:center;margin-top:20px}
 @media (max-width: 1999.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 246px - 60px);margin-right:-1px;}}
 @media (max-width: 1599.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 222px - 60px)}}
 
-</style>
+    </style>
   </head>
   {% if palette.primary or palette.accent %}
     {% set primary = palette.primary | replace(" ", "-") | lower %}
-    {% set accent  = palette.accent  | replace(" ", "-") | lower %}
-    <body dir="{{ lang.t('direction') }}" data-md-color-primary="{{ primary }}" data-md-color-accent="{{ accent }}">
-  {% else %}
-    <body dir="{{ lang.t('direction') }}">
-  {% endif %}
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-    {% if page.toc | first is defined %}
-      <a href="{{ (page.toc | first).url | url }}" tabindex="1" class="md-skip">
-        {{ lang.t('skip.link.title') }}
-      </a>
-    {% endif %}
-    {% block header %}
-      {% include "partials/header.html" %}
-    {% endblock %}
-    <div class="md-container" style="padding-top: 0px !important;">
-      {% block hero %}
-        {% if page and page.meta and page.meta.hero %}
-          {% include "partials/hero.html" with context %}
-        {% endif %}
-      {% endblock %}
-      {% if feature.tabs %}
-        {% include "partials/tabs.html" %}
+    {% set accent = palette.accent  | replace(" ", "-") | lower %}
+    <body dir="{{ lang.t("direction") }}"
+          data-md-color-primary="{{ primary }}"
+          data-md-color-accent="{{ accent }}">
+    {% else %}
+      <body dir="{{ lang.t("direction") }}">
       {% endif %}
-      <main class="md-main">
-        <div class="md-main__inner md-grid" data-md-component="container" style="padding-top: 8px !important;">
-          {% block site_nav %}
-            {% if nav %}
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
-                <div class="md-sidebar__scrollwrap" id="md__sidebar__scroll">
-                  <div class="md-sidebar__inner">
-                    {% include "partials/nav.html" %}
-                  </div>
-                </div>
-              </div>
-            {% endif %}
-
-            {% if page.toc %}
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                {% if not page.is_homepage %}
-                  {% if "django" in page.canonical_url %}
-                    <div class="course-offer" style="margin-bottom:25px;padding:0px 10px;">
-                      <a href="https://www.hektorprofe.net/cupon/django" target="_blank">
-                        <img src="/cdn/assets/django.png" style="width:100%;justify-self:center;align-self:center;"/>
-                      </a>
-                    </div>
-                  {% elif "pyside" in page.canonical_url %}
-                    <div class="course-offer" style="margin-bottom:25px;padding:0px 10px;">
-                      <a href="https://www.hektorprofe.net/cupon/pyside" target="_blank">
-                        <img src="/cdn/assets/pyside.png" style="width:100%;justify-self:center;align-self:center;"/>
-                      </a>
-                    </div>
-                  {% elif "tkinter" in page.canonical_url %}
-                    <div class="course-offer" style="margin-bottom:25px;padding:0px 10px;">
-                      <a href="https://www.hektorprofe.net/cupon/pyside" target="_blank">
-                        <img src="/cdn/assets/pyside.png" style="width:100%;justify-self:center;align-self:center;"/>
-                      </a>
-                    </div>
-                  {% elif "escueladevideojuegos" in page.canonical_url %}
-                    <div class="course-offer" style="margin-bottom:25px;padding:0px 10px;">
-                      <a href="https://www.hektorprofe.net/cupon/unity" target="_blank">
-                        <img src="/cdn/assets/unity.png" style="width:100%;justify-self:center;align-self:center;"/>
-                      </a>
-                    </div>
-                  {% elif "unity" in page.canonical_url %}
-                    <div class="course-offer" style="margin-bottom:25px;padding:0px 10px;">
-                      <a href="https://www.hektorprofe.net/cupon/unity" target="_blank">
-                        <img src="/cdn/assets/unity.png" style="width:100%;justify-self:center;align-self:center;"/>
-                      </a>
-                    </div>
-                  {% else %}
-                    <div class="course-offer" style="margin-bottom:25px;padding:0px 10px;">
-                      <a href="https://www.hektorprofe.net/cupon/python" target="_blank">
-                        <img src="/cdn/assets/python.png" style="width:100%;justify-self:center;align-self:center;"/>
-                      </a>
-                    </div>
-                  {% endif %}
-                {% endif %}
-
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    {% include "partials/toc.html" %}
-                  </div>
-                </div>
-              </div>
-            {% endif %}
-          {% endblock %}
-          <div class="md-content">
-            <article class="md-content__inner md-typeset">
-              {% block content %}
-                {% if page.edit_url %}
-                  <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}" class="md-icon md-content__icon">&#xE3C9;</a>
-                {% endif %}
-                {% if not "\x3ch1" in page.content %}
-                  <h1>{{ page.title | default(config.site_name, true)}}</h1>
-                {% endif %}
-                {{ page.content }}
-                {% block source %}
-                  {% if page and page.meta and page.meta.source %}
-                    <h2 id="__source">{{ lang.t("meta.source") }}</h2>
-                    {% set repo = config.repo_url %}
-                    {% if repo | last == "/" %}
-                      {% set repo = repo[:-1] %}
-                    {% endif %}
-                    {% set path = page.meta.path | default([""]) %}
-                    {% set file = page.meta.source %}
-                    <a href="{{ [repo, path, file] | join('/') }}" title="{{ file }}" class="md-source-file">
-                      {{ file }}
-                    </a>
-                  {% endif %}
-                {% endblock %}
-              {% endblock %}
-              {% block disqus %}
-                {% include "partials/integrations/disqus.html" %}
-              {% endblock %}
-            </article>
-          </div>
-        </div>
-      </main>
-      {% block footer %}
-        {% include "partials/footer.html" %}
+      <input class="md-toggle"
+             data-md-toggle="drawer"
+             type="checkbox"
+             id="__drawer"
+             autocomplete="off">
+      <input class="md-toggle"
+             data-md-toggle="search"
+             type="checkbox"
+             id="__search"
+             autocomplete="off">
+      <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+      {% if page.toc | first is defined %}
+        <a href="{{ (page.toc | first).url | url }}"
+           tabindex="1"
+           class="md-skip">{{ lang.t("skip.link.title") }}</a>
+      {% endif %}
+      {% block header %}
+        {% include "partials/header.html" %}
       {% endblock %}
-      <a id="anchorID" href="https://www.hektorprofe.net/" target="_blank"></a>
-    </div>
-  <script type='text/javascript' src="/assets/javascripts/application.a26c1c21.js"></script>
-  <script src="/assets/javascripts/tingle.min.js"></script>
-  <script type='text/javascript'>
-    var modalButtonOnly = new tingle.modal({
-        closeMethods: [],
-        footer: true,
-        stickyFooter: true
-    });
-    var btn5 = document.querySelector('.js-tingle-modal-5');
-
-    // set content
-    modalButtonOnly.setContent(`
-    <div style="display:grid;grid-template-columns:32% 32% 32%;grid-column-gap: 1.33%;" id="supermodal">
-      <div class="course">
-        <a href="https://www.hektorprofe.net/cupon/python" target="_blank"><img src="/cdn/assets/python.png" style="width:100%;justify-self:center;align-self:center;"/></a>
+      <div class="md-container" style="padding-top: 0px !important;">
+        {% block hero %}
+          {% if page and page.meta and page.meta.hero %}
+            {% include "partials/hero.html" with context %}
+          {% endif %}
+        {% endblock %}
+        {% if feature.tabs %}
+          {% include "partials/tabs.html" %}
+        {% endif %}
+        <main class="md-main">
+          <div class="md-main__inner md-grid"
+               data-md-component="container"
+               style="padding-top: 8px !important">
+            {% block site_nav %}
+              {% if nav %}
+                <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                  <div class="md-sidebar__scrollwrap" id="md__sidebar__scroll">
+                    <div class="md-sidebar__inner">{% include "partials/nav.html" %}</div>
+                  </div>
+                </div>
+              {% endif %}
+              {% if page.toc %}
+                <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                  <div class="md-sidebar__scrollwrap">
+                    <div class="md-sidebar__inner">{% include "partials/toc.html" %}</div>
+                  </div>
+                </div>
+              {% endif %}
+            {% endblock %}
+            <div class="md-content">
+              <article class="md-content__inner md-typeset">
+                {% block content %}
+                  {% if page.edit_url %}
+                    <a href="{{ page.edit_url }}"
+                       title="{{ lang.t("edit.link.title") }}"
+                       class="md-icon md-content__icon">&#xE3C9;</a>
+                  {% endif %}
+                  {% if not "\x3ch1" in page.content %}<h1>{{ page.title | default(config.site_name, true) }}</h1>{% endif %}
+                  {{ page.content }}
+                  {% block source %}
+                    {% if page and page.meta and page.meta.source %}
+                      <h2 id="__source">{{ lang.t("meta.source") }}</h2>
+                      {% set repo = config.repo_url %}
+                      {% if repo | last == "/" %}
+                        {% set repo = repo[:-1] %}
+                      {% endif %}
+                      {% set path = page.meta.path | default([""]) %}
+                      {% set file = page.meta.source %}
+                      <a href="{{ [repo, path, file] | join("/") }}" title="{{ file }}" class="md-source-file">{{ file }}</a>
+                    {% endif %}
+                  {% endblock %}
+                {% endblock %}
+                {% block disqus %}
+                  {% include "partials/integrations/disqus.html" %}
+                {% endblock %}
+              </article>
+            </div>
+          </div>
+        </main>
+        {% block footer %}
+          {% include "partials/footer.html" %}
+        {% endblock %}
+        <a id="anchorID" href="/docs/" target="_blank"></a>
       </div>
-      <div class="course">
-        <a href="https://www.hektorprofe.net/cupon/django" target="_blank"><img src="/cdn/assets/django.png" style="width:100%;justify-self:center;align-self:center;"/></a>
-      </div>
-      <div class="course">
-        <a href="https://www.hektorprofe.net/cupon/pyside" target="_blank"><img src="/cdn/assets/pyside.png" style="width:100%;justify-self:center;align-self:center;"/></a>
-      </div>
-    </div>`);
-
-    modalButtonOnly.addFooterBtn('Cerrar', 'tingle-btn tingle-btn--default tingle-btn--pull-right', function(){
-      modalButtonOnly.close();
-    });
-
+      <script type='text/javascript'
+              src="{{ config.site_url }}assets/javascripts/application.a26c1c21.js"></script>
+      <script src="{{ config.site_url }}assets/javascripts/tingle.min.js"></script>
+      <script type='text/javascript'>
     app.initialize({version:"{{ mkdocs_version }}",url:{base:"{{ base_url }}"}})
     var _extends=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(t[o]=n[o])}return t},_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t};!function(t,e){"object"===("undefined"==typeof exports?"undefined":_typeof(exports))&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):t.LazyLoad=e()}(this,function(){"use strict";function t(t,e,n){var o=e._settings;!n&&i(t)||(C(o.callback_enter,t),R.indexOf(t.tagName)>-1&&(N(t,e),I(t,o.class_loading)),E(t,e),a(t),C(o.callback_set,t))}var e={elements_selector:"img",container:document,threshold:300,thresholds:null,data_src:"src",data_srcset:"srcset",data_sizes:"sizes",data_bg:"bg",class_loading:"loading",class_loaded:"loaded",class_error:"error",load_delay:0,callback_load:null,callback_error:null,callback_set:null,callback_enter:null,callback_finish:null,to_webp:!1},n=function(t){return _extends({},e,t)},o=function(t,e){return t.getAttribute("data-"+e)},r=function(t,e,n){var o="data-"+e;null!==n?t.setAttribute(o,n):t.removeAttribute(o)},a=function(t){return r(t,"was-processed","true")},i=function(t){return"true"===o(t,"was-processed")},s=function(t,e){return r(t,"ll-timeout",e)},c=function(t){return o(t,"ll-timeout")},l=function(t){return t.filter(function(t){return!i(t)})},u=function(t,e){return t.filter(function(t){return t!==e})},d=function(t,e){var n,o=new t(e);try{n=new CustomEvent("LazyLoad::Initialized",{detail:{instance:o}})}catch(t){(n=document.createEvent("CustomEvent")).initCustomEvent("LazyLoad::Initialized",!1,!1,{instance:o})}window.dispatchEvent(n)},f=function(t,e){return e?t.replace(/\.(jpe?g|png)/gi,".webp"):t},_="undefined"!=typeof window,v=_&&!("onscroll"in window)||/(gle|ing|ro)bot|crawl|spider/i.test(navigator.userAgent),g=_&&"IntersectionObserver"in window,h=_&&"classList"in document.createElement("p"),b=_&&function(){var t=document.createElement("canvas");return!(!t.getContext||!t.getContext("2d"))&&0===t.toDataURL("image/webp").indexOf("data:image/webp")}(),m=function(t,e,n,r){for(var a,i=0;a=t.children[i];i+=1)if("SOURCE"===a.tagName){var s=o(a,n);p(a,e,s,r)}},p=function(t,e,n,o){n&&t.setAttribute(e,f(n,o))},y=function(t,e){var n=b&&e.to_webp,r=o(t,e.data_src),a=o(t,e.data_bg);if(r){var i=f(r,n);t.style.backgroundImage='url("'+i+'")'}if(a){var s=f(a,n);t.style.backgroundImage=s}},w={IMG:function(t,e){var n=b&&e.to_webp,r=e.data_srcset,a=t.parentNode;a&&"PICTURE"===a.tagName&&m(a,"srcset",r,n);var i=o(t,e.data_sizes);p(t,"sizes",i);var s=o(t,r);p(t,"srcset",s,n);var c=o(t,e.data_src);p(t,"src",c,n)},IFRAME:function(t,e){var n=o(t,e.data_src);p(t,"src",n)},VIDEO:function(t,e){var n=e.data_src,r=o(t,n);m(t,"src",n),p(t,"src",r),t.load()}},E=function(t,e){var n=e._settings,o=t.tagName,r=w[o];if(r)return r(t,n),e._updateLoadingCount(1),void(e._elements=u(e._elements,t));y(t,n)},I=function(t,e){h?t.classList.add(e):t.className+=(t.className?" ":"")+e},L=function(t,e){h?t.classList.remove(e):t.className=t.className.replace(new RegExp("(^|\\s+)"+e+"(\\s+|$)")," ").replace(/^\s+/,"").replace(/\s+$/,"")},C=function(t,e){t&&t(e)},O=function(t,e,n){t.addEventListener(e,n)},k=function(t,e,n){t.removeEventListener(e,n)},x=function(t,e,n){O(t,"load",e),O(t,"loadeddata",e),O(t,"error",n)},A=function(t,e,n){k(t,"load",e),k(t,"loadeddata",e),k(t,"error",n)},z=function(t,e,n){var o=n._settings,r=e?o.class_loaded:o.class_error,a=e?o.callback_load:o.callback_error,i=t.target;L(i,o.class_loading),I(i,r),C(a,i),n._updateLoadingCount(-1)},N=function(t,e){var n=function n(r){z(r,!0,e),A(t,n,o)},o=function o(r){z(r,!1,e),A(t,n,o)};x(t,n,o)},R=["IMG","IFRAME","VIDEO"],S=function(e,n,o){t(e,o),n.unobserve(e)},M=function(t){var e=c(t);e&&(clearTimeout(e),s(t,null))},j=function(t,e,n){var o=n._settings.load_delay,r=c(t);r||(r=setTimeout(function(){S(t,e,n),M(t)},o),s(t,r))},D=function(t){return t.isIntersecting||t.intersectionRatio>0},T=function(t){return{root:t.container===document?null:t.container,rootMargin:t.thresholds||t.threshold+"px"}},U=function(t,e){this._settings=n(t),this._setObserver(),this._loadingCount=0,this.update(e)};return U.prototype={_manageIntersection:function(t){var e=this._observer,n=this._settings.load_delay,o=t.target;n?D(t)?j(o,e,this):M(o):D(t)&&S(o,e,this)},_onIntersection:function(t){t.forEach(this._manageIntersection.bind(this))},_setObserver:function(){g&&(this._observer=new IntersectionObserver(this._onIntersection.bind(this),T(this._settings)))},_updateLoadingCount:function(t){this._loadingCount+=t,0===this._elements.length&&0===this._loadingCount&&C(this._settings.callback_finish)},update:function(t){var e=this,n=this._settings,o=t||n.container.querySelectorAll(n.elements_selector);this._elements=l(Array.prototype.slice.call(o)),!v&&this._observer?this._elements.forEach(function(t){e._observer.observe(t)}):this.loadAll()},destroy:function(){var t=this;this._observer&&(this._elements.forEach(function(e){t._observer.unobserve(e)}),this._observer=null),this._elements=null,this._settings=null},load:function(e,n){t(e,this,n)},loadAll:function(){var t=this;this._elements.forEach(function(e){t.load(e)})}},_&&function(t,e){if(e)if(e.length)for(var n,o=0;n=e[o];o+=1)d(t,n);else d(t,e)}(U,window.lazyLoadOptions),U});
-    var myLazyLoad = new LazyLoad({elements_selector: ".lazy"});
-    const mdMenuItems = document.querySelectorAll('.md-nav__link');
-    function doNav(){ document.getElementById("main__list").innerHTML = '<li class="md-nav__item"><a class="md-nav__link" href="/cursos/">Cursos</a></li><li class="md-nav__item"><a class="md-nav__link" href="/blog/">Blog</a></li>';}
-    for (i = 0; i < mdMenuItems.length; i++) {  var item = mdMenuItems[i]; var htmlstring = item.innerHTML; htmlstring = (htmlstring.trim) ? htmlstring.trim() : htmlstring.replace(/^\s+/,''); if (htmlstring == 'Servidor de encuentro') { item.parentNode.removeChild(item);continue; }  if (htmlstring == 'Política de Cookies') { item.parentNode.removeChild(item);continue; } if (htmlstring == 'Buscador') { item.parentNode.removeChild(item); continue; } }
-    try { var topPos = document.querySelector('#md__active_link').offsetTop; document.querySelector('#md__sidebar__scroll').scrollTop = topPos - 60; } catch (err) {}
-  </script>
-  </body>
-</html>
+      </script>
+    </body>
+  </html>

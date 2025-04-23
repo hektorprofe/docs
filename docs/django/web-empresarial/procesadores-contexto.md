@@ -11,7 +11,7 @@ Así que tenemos que recuperar los enlaces sociales para enviarlos a todas las p
 
 Para crear un procesador de contexto vamos a crear un nuevo fichero llamado **processors.py** en nuestra app Social:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/46.png" style="max-width:275px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/46.png" style="max-width:275px"/></div>
 
 Dentro vamos a definir una función que devuelva un diccionario de la siguiente forma:
 

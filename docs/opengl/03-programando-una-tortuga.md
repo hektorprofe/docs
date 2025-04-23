@@ -3,11 +3,11 @@ description: Programando una tortuga con OpenGL en Python
 
 # Programando una tortuga con OpenGL
 
-Unas de las prácticas más interesantes que he tenido el placer de realizar con el fin de aprender OpenGL ha sido crear mi propia tortuga y dibujar fractales con ellas. 
+Unas de las prácticas más interesantes que he tenido el placer de realizar con el fin de aprender OpenGL ha sido crear mi propia tortuga y dibujar fractales con ellas.
 
 **Turtle** es un módulo de Python para dibujar primitivas que también se puede encontrar como entorno aislado en [https://pythonturtle.org/](https://pythonturtle.org/).
 
-La tortuga es esencialmente una pluma para dibujar sobre un lienzo mediante instrucciones. Implementa diferentes funciones para avanzar hacia adelante, rotar sobre si misma, cambiar el color, levantar la pluma, etc. 
+La tortuga es esencialmente una pluma para dibujar sobre un lienzo mediante instrucciones. Implementa diferentes funciones para avanzar hacia adelante, rotar sobre si misma, cambiar el color, levantar la pluma, etc.
 
 Es una forma genial de aprender a programar visualmente y crear un programa que sirva para ello es una de las mejores prácticas posibles.
 
@@ -61,7 +61,6 @@ if __name__ == '__main__':
 
 ![]({{cdn}}/opengl/img09.png)
 
-
 Vamos a implementar la tortuga en su propia clase `Turtle` que contará con una posición que será un punto `(0,0)`. Le añadiremos un método de clase `LineTo` para trazar una línea desde su posición actual hasta la nueva posición que pasemos al método y luego cambiaremos su posición actual a la nueva posición:
 
 ```python
@@ -90,7 +89,7 @@ class OpenGLApp(App):
     def Render(self):
         GLUtils.PrepareRender()
         Turtle.LineTo(100, 100)
-``` 
+```
 
 Si ejecutamos el programa se trazará una pequeña línea desde el centro pero rápidamente desaparecerá. Esto se debe a que en el primer ciclo del bucle la tortuga se mueve de `(0,0)` a `(10,10)` pero después ya se encuentra en `(10, 10)` y por tanto no se mueve ni se dibuja nada.
 
@@ -185,11 +184,11 @@ Para rotar la tortuga debemos rotar el vector de dirección formado por tres com
 
 Para rotar la tortuga en nuestro espacio lo que tenemos que hacer es aplicar la rotación sobre el eje `z`. Este eje representa la profundidad y apunta directamente hacia nosotros como saliendo de la pantalla, sería la flecha azul en la figura de la avisón.
 
-La rotación es una transformación lineal que explico en detalle en [mis apuntes sobre gráficos 3D](https://docs.hektorprofe.net/graficos-3d/05-transformaciones-lineales/#rotacion-de-vectores). Me limitaré a recuperar la fórmula, si queréis más detalles echad un vistazo a mis apuntes:
+La rotación es una transformación lineal que explico en detalle en [mis apuntes sobre gráficos 3D](/docs/graficos-3d/05-transformaciones-lineales/#rotacion-de-vectores). Me limitaré a recuperar la fórmula, si queréis más detalles echad un vistazo a mis apuntes:
 
 ![]({{cdn}}/opengl/img14.png)
 
-Sería perfecto que la propia clase `Vector3` tenga un método para rotar sobre su eje `z` un cierto ángulo, que por cierto debe ser aplicado en radianos, por lo que realizaremos una conversión al ángulo con grados enviado: 
+Sería perfecto que la propia clase `Vector3` tenga un método para rotar sobre su eje `z` un cierto ángulo, que por cierto debe ser aplicado en radianos, por lo que realizaremos una conversión al ángulo con grados enviado:
 
 ```python
 class Vector3:
@@ -222,7 +221,7 @@ def Render(self):
 
 ![]({{cdn}}/opengl/img15.png)
 
-Bien, pero ¿notáis algo extraño? Bueno, al rotar estamos haciéndolo en sentido antihorario. ¿Por qué sucede esto? OpenGL se implementa sobre la conocida regla de la mano izquierda, donde el eje `z` aumenta  hacia adentro de la pantalla (esto también lo explico más en detalle en [mis apuntes](https://docs.hektorprofe.net/graficos-3d/04-proyeccion-de-puntos/#regla-de-la-mano) sobre gráficos 3D):
+Bien, pero ¿notáis algo extraño? Bueno, al rotar estamos haciéndolo en sentido antihorario. ¿Por qué sucede esto? OpenGL se implementa sobre la conocida regla de la mano izquierda, donde el eje `z` aumenta hacia adentro de la pantalla (esto también lo explico más en detalle en [mis apuntes](/docs/graficos-3d/04-proyeccion-de-puntos/#regla-de-la-mano) sobre gráficos 3D):
 
 ![]({{cdn}}/opengl/img16.png)
 
@@ -370,11 +369,11 @@ Resultado:  F[+F]F[+F[+F]F]F[+F]F[+F[+F]F[+F[+F]F]F[+F]F]F[+F]F[+F[+F]F]F[+F]F
 
 Nuestro objetivo ahora es parsear la cadena resultante de manera que la tortuga sepa interpretar cada carácter, cuyos significados serán:
 
-* `F`: Moverse hacia adelante una cantidad determinada.
-* `[`: Almacenar la posición y rotación actual en una pila.
-* `+`: Rotar la dirección una cantidad determinada en sentido horario.
-* `-`: Rotar la dirección una cantidad determinada en sentido antihorario.
-* `]`: Recuperar la última posición y rotación de la pila.
+- `F`: Moverse hacia adelante una cantidad determinada.
+- `[`: Almacenar la posición y rotación actual en una pila.
+- `+`: Rotar la dirección una cantidad determinada en sentido horario.
+- `-`: Rotar la dirección una cantidad determinada en sentido antihorario.
+- `]`: Recuperar la última posición y rotación de la pila.
 
 Podemos añadir un método `ExecuteLSystem` a nuestra tortuga y procesar desde ahí cada instrucción de la cadena generada:
 
@@ -422,7 +421,7 @@ class OpenGLApp(App):
 
 Como el resultado se sale de la ventana podemos rectificar las coordenadas `(0,0)` del espacio ortogonal para centrarlo verticalmente en la base de la ventana:
 
-```python    
+```python
 def Setup(self):
     GLUtils.InitOrtho(-300, 300, 0, 600)
 ```
@@ -466,7 +465,7 @@ En la [Wikipedia](https://en.wikipedia.org/wiki/L-system) se explica cómo imple
 
 ## Sistemas iterativos de funciones
 
-Otra forma de construir fractales es mediante **IFSs** (*Iterated Function Systems*). Esencialmente se trata de utilizar una función que a una coordenada le aplica cierta función y devuelve una nueva coordenada, toma la nueva coordenada y le aplica de nuevo la función y así sucesivamente.
+Otra forma de construir fractales es mediante **IFSs** (_Iterated Function Systems_). Esencialmente se trata de utilizar una función que a una coordenada le aplica cierta función y devuelve una nueva coordenada, toma la nueva coordenada y le aplica de nuevo la función y así sucesivamente.
 
 Partiremos de un sencillo ejemplo donde en lugar de utilizar la tortuga nos limitaremos a renderizar unos cuantos puntos generados con `numpy`:
 
@@ -629,5 +628,6 @@ def PrepareRender():
 
 Por ahora dejamos los fractales, si queréis más información sobre el triángulo de Sierpiński podéis la tenéis en la [Wikipedia](https://en.wikipedia.org/wiki/Sierpi%C5%84ski_triangle).
 
-___
+---
+
 <small class="edited"><i>Última edición: 12 de Junio de 2022</i></small>

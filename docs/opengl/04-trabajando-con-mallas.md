@@ -3,18 +3,17 @@ description: Trabajando con mallas en OpenGL con Python
 
 # Trabajando con mallas con OpenGL
 
-
 Las mallas son conjuntos de primitivas (triángulos o quads) conocidos como caras que permiten modelar formas en el espacio. Cuantas más caras tenga el modelo más nivel de detalle representará:
 
 ![]({{cdn}}/opengl/img32.png)
 
-Con el objetivo de optimizar el espacio, como muchas caras comparten vértices, todos estos vértices se definen en un array conocido como **Vertex Array**. A partir de los índices de esos vértices se crea otro array, "Triangle Array** o **Quad Array** dependiendo del tipo de cara, que enumera conjuntos de `3` o `4` vértices para reconstruir las primitivas.
+Con el objetivo de optimizar el espacio, como muchas caras comparten vértices, todos estos vértices se definen en un array conocido como **Vertex Array**. A partir de los índices de esos vértices se crea otro array, "Triangle Array** o **Quad Array\*\* dependiendo del tipo de cara, que enumera conjuntos de `3` o `4` vértices para reconstruir las primitivas.
 
 Cada vértice y tambien las propias caras en su centro, tienen un vector llamado **normal**. Este vector se encuentra normalizado en un rango de `-1` a `1` y representa la dirección hacia donde "miran" los vértices y la cara:
 
 ![]({{cdn}}/opengl/img33.png)
 
-La normal es muy importante porque permite [descartar el renderizado](https://docs.hektorprofe.net/graficos-3d/11-back-face-culling/) de las caras no visibles por la cámara (*back-face culling*), así como añadir efectos de [luz y sombra](https://docs.hektorprofe.net/graficos-3d/18-luz-y-sombreado/) a las texturas en función del ángulo formado por la normal y la dirección del foco de luz.
+La normal es muy importante porque permite [descartar el renderizado](/docs/graficos-3d/11-back-face-culling/) de las caras no visibles por la cámara (_back-face culling_), así como añadir efectos de [luz y sombra](/docs/graficos-3d/18-luz-y-sombreado/) a las texturas en función del ángulo formado por la normal y la dirección del foco de luz.
 
 ## Estructura de una malla
 
@@ -134,11 +133,11 @@ def PrepareRender():
 
 ![]({{cdn}}/opengl/img36.png)
 
-Ahora ya podemos percibir la profundidad, pero... ¿No parece un poco raro? El tamaño de las caras del fondo es igual que las de adelante. Esto es debido a que no estamos aplicando una [brecha de perspectiva](https://docs.hektorprofe.net/graficos-3d/04-proyeccion-de-puntos/#proyeccion-perspectiva), es lo que se conoce como [proyección paralela oblícua](https://en.wikipedia.org/wiki/Oblique_projection):
+Ahora ya podemos percibir la profundidad, pero... ¿No parece un poco raro? El tamaño de las caras del fondo es igual que las de adelante. Esto es debido a que no estamos aplicando una [brecha de perspectiva](/docs/graficos-3d/04-proyeccion-de-puntos/#proyeccion-perspectiva), es lo que se conoce como [proyección paralela oblícua](https://en.wikipedia.org/wiki/Oblique_projection):
 
 ![]({{cdn}}/opengl/img36b.png)
 
-Lo que nosotros buscamos es establecer una proyección de perspectiva para simular esa profundidad en base a varios factores: un ángulo de punto de vista (*fov*), una relación de aspecto (*aspect ratio*) y las distancias del visor desde el [plano cercano del frustum](https://docs.hektorprofe.net/graficos-3d/27-clipping/#planos-del-frustum) (*znear*) hasta el plano alejado (*zfar*).
+Lo que nosotros buscamos es establecer una proyección de perspectiva para simular esa profundidad en base a varios factores: un ángulo de punto de vista (_fov_), una relación de aspecto (_aspect ratio_) y las distancias del visor desde el [plano cercano del frustum](/docs/graficos-3d/27-clipping/#planos-del-frustum) (_znear_) hasta el plano alejado (_zfar_).
 
 Es **muy importante** que configuremos la proyección antes de rotar el cubo:
 
@@ -154,7 +153,7 @@ Es **muy importante** que configuremos la proyección antes de rotar el cubo:
 
 ![]({{cdn}}/opengl/img37.png)
 
-Al aplicar la proyección en perspectiva inevitablemente tendremos en cuenta la profundidad de los elementos. Como OpenGL está dibujando el cubo en el origen del espacio `(0,0,0)` lo que estamos viendo es solo su cara trasera después de rotarlo ligeramente. 
+Al aplicar la proyección en perspectiva inevitablemente tendremos en cuenta la profundidad de los elementos. Como OpenGL está dibujando el cubo en el origen del espacio `(0,0,0)` lo que estamos viendo es solo su cara trasera después de rotarlo ligeramente.
 
 Si **después de rotarlo** trasladamos los vértices al fondo restando algo de profundidad y los centramos un poco deberíamos percibirlo proyectado con perspectiva:
 
@@ -252,7 +251,7 @@ class OpenGLApp(App):
 
 ![]({{cdn}}/opengl/anim21.gif)
 
-Fijaros que se dibujan también los vértices traseros, eso es porque no hay un buffer de profundidad activado por defecto. Podemos activar el de pruebas mediante `glEnable(GL_DEPTH_TEST)`: 
+Fijaros que se dibujan también los vértices traseros, eso es porque no hay un buffer de profundidad activado por defecto. Podemos activar el de pruebas mediante `glEnable(GL_DEPTH_TEST)`:
 
 ```python
 class GLUtils:
@@ -266,7 +265,7 @@ class GLUtils:
 
 ## Cargando mallas desde ficheros
 
-El siguiente paso lógico es cargar un modelo desde un fichero externo. En mis apuntes sobre gráficos 3D [explico a fondo](https://docs.hektorprofe.net/graficos-3d/09-ficheros-con-modelos-obj/) el formato Wavefront OBJ, cómo se organiza y cómo hacer un parser para extraer la información. Así que me voy a ahorrar los detalles e iré directamente a la implementación.
+El siguiente paso lógico es cargar un modelo desde un fichero externo. En mis apuntes sobre gráficos 3D [explico a fondo](/docs/graficos-3d/09-ficheros-con-modelos-obj/) el formato Wavefront OBJ, cómo se organiza y cómo hacer un parser para extraer la información. Así que me voy a ahorrar los detalles e iré directamente a la implementación.
 
 Si pasamos un primer argumento con la ruta a un fichero durante la creación del `mesh` significa que hay que cargarlo a partir de sus datos en lugar de crearlo en crudo:
 
@@ -284,9 +283,9 @@ class Mesh:
         pass
 ```
 
-Del fichero vamos a leer cada línea y extraeremos los vértices y los índices de los triángulos. La línea de los vértices empieza con una `v` y los vértices vienen separados por espacios. Los triángulos, o mejor dicho las caras (*faces*) empiezan con una `f` y tienen diferente información.
+Del fichero vamos a leer cada línea y extraeremos los vértices y los índices de los triángulos. La línea de los vértices empieza con una `v` y los vértices vienen separados por espacios. Los triángulos, o mejor dicho las caras (_faces_) empiezan con una `f` y tienen diferente información.
 
-Una cara puede contener los vértices (*vertex index*), sus coordenadas UV para aplicar la textura (*vertex texture coordinate index*) y el vértice normalizado (*vertex normal index*), estos valores se encuentran separados por barras:
+Una cara puede contener los vértices (_vertex index_), sus coordenadas UV para aplicar la textura (_vertex texture coordinate index_) y el vértice normalizado (_vertex normal index_), estos valores se encuentran separados por barras:
 
 ```
 f v1/vt1/vn3 v1/vt3/vn3 v3/vt3/vn3
@@ -313,7 +312,7 @@ def LoadMesh(self, objPath):
     print(f"Mesh {objPath} cargado en la memoria")
 ```
 
-En este punto tengo varios modelos en formato *obj* en el directorio [res](./res), voy a ver si funciona la carga por ejemplo del `cube.obj`:
+En este punto tengo varios modelos en formato _obj_ en el directorio [res](./res), voy a ver si funciona la carga por ejemplo del `cube.obj`:
 
 ```python
 import sys
@@ -356,7 +355,7 @@ if __name__ == '__main__':
 
 ![]({{cdn}}/opengl/anim22.gif)
 
-Vamos a probar otros modelos, quizá tenemos que hacer algunos ajustes a la traslación. 
+Vamos a probar otros modelos, quizá tenemos que hacer algunos ajustes a la traslación.
 
 Por ejemplo el `donut.obj`:
 
@@ -421,5 +420,6 @@ class OpenGLApp(App):
 
 ![]({{cdn}}/opengl/anim24.gif)
 
-___
+---
+
 <small class="edited"><i>Última edición: 12 de Junio de 2022</i></small>

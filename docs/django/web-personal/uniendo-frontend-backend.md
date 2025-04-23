@@ -89,7 +89,7 @@ Hecho esto ya podemos borrar el código de referencia que teníamos arriba comen
 
 Vamos a probar qué tal se ve nuestra página:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/24.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/24.png"/></div>
 
 Bueno, parece que ha cambiado un poco, pero claramente no es lo que estábamos esperando. ¿Qué está sucediendo? Pues que nos se están cargando los recursos estáticos.
 
@@ -107,7 +107,7 @@ Es sólo un servicio para utilizar durante el desarrollo y no está pensado para
 
 Lo primero es crear un directorio en nuestra app core para almacenar los contenidos estáticos, la lógica es la misma que con el directorio templates, asi que crearemos un directorio **static** y dentro otro llamado **core**, el nombre de la app, y dentro vamos a copiar todos los directorios de la maqueta que incluyen este tipo de ficheros:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/25.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/25.png"/></div>
 
 Ahora sólo nos falta decirle a nuestro template que cargue los ficheros estáticos. Vamos de vuelta a nuestro **base.html**, y justo antes de llamar nuestros css y javascripts ejecutaremos el siguiente template tag:
 
@@ -145,7 +145,7 @@ No olvidemos los Javascripts de la parte inferior:
 
 Una vez lo tenemos vamos a probar de nuevo nuestra web:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/26.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/26.png"/></div>
 
 Ahora ya nos carga los recursos, menos la imagen de la cabecera que no la hemos adaptado. Podríamos hacerlo ahora, pero como se nos alargaría mucho la lección lo haremos en la siguiente.
 

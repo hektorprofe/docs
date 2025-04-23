@@ -77,7 +77,7 @@ class LinkAdmin(admin.ModelAdmin):
 admin.site.register(Link, LinkAdmin)    
 ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/44.png" style="max-width:150px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/44.png" style="max-width:150px"/></div>
 
 Y algunas redes básicas:
 
@@ -87,7 +87,7 @@ Y algunas redes básicas:
 |  			LINK_FACEBOOK 		  |  			Facebook 		  |  			facebook.com 		  |   |   |
 |  			LINK_INSTAGRAM 		 |  			Instagram 		 |  			instagram.com 		 |   |   |
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/45.png" style="max-width:125px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/45.png" style="max-width:125px"/></div>
 
 Vosotros podéis añadir las que queráis, aunque tened en cuenta que si son muy raras tal vez la librería Fontawesome no tenga un icono para mostrarlas.
 

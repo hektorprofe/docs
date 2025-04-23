@@ -10,7 +10,7 @@ Slug: academia-gamemaker
 
 ## Tu Primer Videojuego
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/curso-primer-juego-gamemaker.jpg"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/curso-primer-juego-gamemaker.jpg"/></div>
 
 Bienvenido al primer peldaño de tu aprendizaje en este magnífico mundo de la creación de videojuegos. Este curso está planteado como una toma de contacto con GameMaker: Studio 1.4. El objetivo es crear un juego sin programar ni una línea de código, sólo arrastrando componentes y dibujando nosotros mismos todo a mano. Se trata de manejar una avioneta arriba y abajo para esquivar una serie de bombas que nos aparecerán por el cielo y así llegar lo más lejos posible. Un apasionante viaje descubriendo de forma progresiva las distintas acciones lógicas que esconden los videojuegos.
 
@@ -38,7 +38,7 @@ Bienvenido al primer peldaño de tu aprendizaje en este magnífico mundo de la c
 
 ## El Lenguaje GML
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/curso-gml-gamemaker.jpg"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/curso-gml-gamemaker.jpg"/></div>
 
 Ahora que ya sabes cómo funciona un juego es hora de dar un paso adelante y explorar el mundo de la programación. Este segundo curso está pensado como toma de contacto con el lenguaje GML de GameMaker: Studio 1.4. Empezaremos repasando las bases fundamentales de la programación (variables, operadores, expresiones, condicionales…) y luego se introducirán nuevos conceptos como los eventos, inputs, rooms, sonidos… Con estos conocimientos estarás preparado para todo lo que viene a partir de ahora. Te sugiero practicar por tu cuenta la programación básica antes de empezar con GML.
 
@@ -67,7 +67,7 @@ Ahora que ya sabes cómo funciona un juego es hora de dar un paso adelante y exp
 
 ## Serie de Minijuegos
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/curso-9-juegos-gamemaker.jpg"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/curso-9-juegos-gamemaker.jpg"/></div>
 
 Ya has creado tu primer videojuego completo y tienes conocimientos de lógica de videojuegos en GML. Ahora te planteo una serie de videotalleres preparados para que aprendas a programar las mecánicas de 9 juegos diferentes. Empezando por un clásico retro, el rompe bloques, pasando por un plataformas simple, un horizontal runner de saltar, un vertical shooter de naves, el clásico Flappy Bird, un juego de coches y derrapes e incluso el siempre eterno Snake. Sin duda todo lo que necesitas para aprender lógica de videojuegos 2D lo encontrarás en esta cuarta sección.
 
@@ -88,7 +88,7 @@ Ya has creado tu primer videojuego completo y tienes conocimientos de lógica de
 
 ## Juego Arcade PONG
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/curso-pong-gamemaker.jpg"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/curso-pong-gamemaker.jpg"/></div>
 
 Después de aprender los conceptos fundamentales del GML y practicar con algunos minijuegos, ¿qué mejor manera de ponerlos en práctica que creando uno completoo? ¿Y qué mejor videojuego que el clásico PONG, el primero de la historia? Desde el menú hasta los modos de juego, con sonidos e incluso una inteligencia artifical. ¿Creías que este juego era demasiado sencillo? Pues no, es el mejor para profundizar en la lógica de los videojuegos y te lo voy a demostrar paso a paso. Agárrate que vienen curvas.
 
@@ -112,7 +112,7 @@ Después de aprender los conceptos fundamentales del GML y practicar con algunos
 
 ## Juego Shooter TDS
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/curso-shooter-gamemaker.jpg"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/curso-shooter-gamemaker.jpg"/></div>
 
 Después de mucho esfuerzo puedo traeros una nueva serie. Esta vez se trata de enseñaros a crear un juego TDS (Top Down Shooter), un Survival de Zombies con un toque de suspense. Aprenderás a crear las animaciones de los personajes utilizando patrones de estados, a disparar con metralletas, mirilla láser, partículas para la sangre, efecto de iluminación y muchísimo más. Es un curso ideal para repasar tus conocimientos en GML y aprender a crear un juego profesional que perfectamente podría encontrarse en cualquier tienda de aplicaciones.
 
@@ -149,7 +149,7 @@ Después de mucho esfuerzo puedo traeros una nueva serie. Esta vez se trata de e
 
 ## Juego Action RPG
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/curso-rpg-action-gamemaker.jpg"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/curso-rpg-action-gamemaker.jpg"/></div>
 
 Después del TDS el listón estaba muy alto, pero lo hemos vuelto a superar con esta genial serie. ¿Nunca has soñado con programar tu propio RPG completamente desde cero? Pues ahora puedes aprender aquí en Escuela de Videojuegos porque te traigo una serie bastante completa para introducir las diferentes mecánicas de un juego RPG de acción sin turnos. Desde importar los recursos, desarrollar el movimiento con estados, ataques, diseño de escenarios, cambios entre rooms, diálogos con carteles y NPCs, interfaz gráfica, hierbas, conejos y enemigos atacables con inteligencia artificial básica, corazones de vidas y un sistema de guardado para no perder el progreso. Uno de mis mejores proyectos.
 
@@ -174,7 +174,7 @@ Después del TDS el listón estaba muy alto, pero lo hemos vuelto a superar con 
 
 ## Juego Beat'em Up
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/curso-juego-peleas-gamemaker.jpg"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/curso-juego-peleas-gamemaker.jpg"/></div>
 
 Última serie específica sobre un género de videojuegos en GameMaker: Studio 1.4 en la que os comparto las mecánicas básicas de un clásico Beat’Em Up. Veremos como implementar una máquina de estados muy avanzada y haciendo uso de sus estados y propiedades gestionaremos todos los movimientos y animaciones de Billy, nuestro protagonista. Añadiremos enemigos con Inteligencia Artificial sencilla, crearemos una interfaz para gestionar puntos de vida y aprenderemos a diseñar escenas en el tiempo con planificación de enemigos y avance por el escenario. Sin dudas una serie que si te gusta el tema será toda un revelación para ti.
 

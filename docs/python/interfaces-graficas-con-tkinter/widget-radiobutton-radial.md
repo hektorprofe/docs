@@ -43,7 +43,7 @@ Si quisiéramos reiniciar el formulario podríamos añadir un botón y establece
     Button(root, text="Reiniciar", command=reset).pack()
     ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/tkinter/14.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/tkinter/14.png"/></div>
 
 Código final:
 

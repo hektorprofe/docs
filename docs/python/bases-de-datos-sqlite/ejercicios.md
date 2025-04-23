@@ -65,7 +65,7 @@ En este ejercicios debes crear una interfaz gráfica con tkinter (menu.py) que m
 * Tú eliges el nombre del restaurante y el precio del menú, así como las tipografías, colores, adornos y tamaño de la ventana.
 * El único requisito es que el programa se conectará a la base de datos para buscar la lista categorías y platos.
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/tkinter/menu.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/tkinter/menu.png"/></div>
 
 ## Soluciones
 

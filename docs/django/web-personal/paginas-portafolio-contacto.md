@@ -59,7 +59,7 @@ urlpatterns = [
 ]
 ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/16.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/16.png"/></div>
 
 ___
 <small class="edited"><i>Última edición: 25 de Octubre de 2018</i></small>

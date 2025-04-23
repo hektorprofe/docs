@@ -9,7 +9,7 @@ Como sabéis este es un curso sobre Django 2.0. El caso es que tanto esta versi�
 
 Por suerte la última actualización de esta serie, la 2.2, tendrá soporte extendido hasta 2022, eso significa que seguirán arreglando bugs y fallos de seguridad pero no añadirán nuevas funcionalidades. A medida que se publiquen las actualizaciones de la versión 2 (la 2.1 y la 2.2) os compartiré los cambios más importantes en la *Sección 6. Anexo* del curso. 
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/01b.png" /></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/01b.png" /></div>
 
 Ahora sí, dando por hecho que todos podemos crear entornos virtuales y tenemos un editor, voy a proceder abrir una terminal y a crear un nuevo entorno. Lo voy a llamar **django2** haciendo referencia a que en él instalaré esta versión. Tened en cuenta que Django 2 requiere Python 3.4 o superior, así que mientras utilicéis una versión mayor a esa no deberíais tener problemas. Actualmente la versión más actual de Python es la 3.6.4 así que utilizaré esa, vosotros podéis utilizar la más actual:
 
@@ -41,7 +41,7 @@ Ahora, estando en el directorio **CursoDjango** y siempre con nuestro entorno vi
 
 Si no ocurre nada es buena señal, porque si abrimos nuestro directorio ahí tendremos creada una jerarquía de carpetas cuya raíz es el nombre que le hemos puesto **webpersonal**:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/02.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/02.png"/></div>
 
 Una vez tenemos nuestro primer proyecto vamos a abrir el directorio en Visual Studio Code desde **Archivo > Abrir carpeta** o arrastrándolo al programa.
 

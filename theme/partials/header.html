@@ -1,71 +1,41 @@
-<header
-  class="md-header"
-  data-md-component="header"
-  style="position: inherit !important"
->
+<header class="md-header"
+        data-md-component="header"
+        style="position: inherit !important">
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a
-          href="/"
-          title="{{ config.site_name }}"
-          class="md-header-nav__button md-logo"
-          style="font-size: 0px"
-        >
-          <img
-            src="/assets/images/logo.png"
-            width="200px"
-            height="35px"
-            style="margin-top: -5px"
-            alt="Hektor Profe"
-            title="Hektor Profe"
-          />
+        <a href="{{ config.site_url }}"
+           title="Archivo - {{ config.site_name }} Docs"
+           class="md-header-nav__button md-logo"
+           style="font-size: 0px">
+          <img src="{{ config.site_url }}assets/images/logo.png"
+               width="200px"
+               height="35px"
+               style="margin-top: -5px"
+               alt="Hektor Profe"
+               title="Hektor Profe" />
         </a>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
-        <label
-          class="md-icon md-icon--menu md-header-nav__button"
-          for="__drawer"
-        ></label>
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
-        <div
-          class="md-flex__ellipsis md-header-nav__title"
-          data-md-component="title"
-          style="text-align: right"
-        >
-          <!-- https://fontawesome.com/v4.7.0/ -->
-          <a 
-            class="nav__btn" 
-            href="https://www.hektorprofe.net/" 
-            style="margin-left:0em;" 
-            title="Cursos de Hektor Profe">
-            Cursos
+        <div class="md-flex__ellipsis md-header-nav__title"
+             data-md-component="title"
+             style="text-align: right">
+          <a class="nav__btn"
+             href="https://hektorprofe.github.io/docs/"
+             style="margin-left:1.4em"
+             title="Buscador de documentos">Buscador</a>
+          <a href="{{ config.site_url }}">
+            <img class="nav__logo"
+                 src="{{ config.site_url }}assets/images/logo.png"
+                 width="200px"
+                 height="35px"
+                 style="margin: 6px auto 0"
+                 alt="Hektor Profe"
+                 title="Hektor Profe" />
           </a>
-          <a 
-            class="nav__btn" 
-            href="https://docs.hektorprofe.net/" 
-            style="margin-left:1.4em;" 
-            title="Documentos de Hektor Profe">
-            Documentos
-          </a>
-          <a 
-            class="nav__btn" 
-            href="https://www.hektorprofe.net/portafolio/" 
-            style="margin-left:1.4em;" 
-            title="Portafolio de Hektor Profe">
-            Portafolio
-          </a>
-          <a href="/"
-            ><img
-              class="nav__logo"
-              src="/assets/images/logo.png"
-              width="200px"
-              height="35px"
-              style="margin: 6px auto 0"
-              alt="Hektor Profe"
-              title="Hektor Profe"
-          /></a>
         </div>
         <style>
           .md-sidebar[data-md-state="lock"] {

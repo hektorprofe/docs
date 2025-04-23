@@ -5,11 +5,11 @@ description: Lo que tenemos hasta ahora es sólo la configuración base del admi
 
 ¡Vamos a crear un proyecto!
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/33.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/33.png"/></div>
 
 Ahora le damos a grabar y...
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/34.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/34.png"/></div>
 
 Ya lo tenemos creado.
 
@@ -52,7 +52,7 @@ INSTALLED_APPS = [
 
 Ahora si volvemos a nuestro admin ya nos aparecerá traducido:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/35.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/35.png"/></div>
 
 ## Campos en español
 
@@ -97,7 +97,7 @@ class Project(models.Model):
 
 Ordering es una lista porque permite ordenar con prioridades entre distintos campos. Además si añadimos un guión delante del nombre del campo, es posible ordenar de forma revertida. Al hacer **-created**, le indicamos que nos muestre primero los proyectos de más actuales a más antiguos.
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/36.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/36.png"/></div>
 
 Ahora para que nos aparezca el nombre del proyecto en el desplegable simplemente podemos redefinir el método especial **&#95;&#95;str&#95;&#95;** para que devuelva la cadena que nosotros queramos:
 
@@ -121,7 +121,7 @@ class Project(models.Model):
         return self.title  # <=====
 ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/37.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/37.png"/></div>
 
 En cuanto a los nombres de los campos, también podemos utilizar el atributo **verbose_name** para cambiarlos:
 
@@ -150,7 +150,7 @@ class Project(models.Model):
         return self.title
 ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/38.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/38.png"/></div>
 
 ## Campos especiales
 
@@ -170,7 +170,7 @@ class ProjectAdmin(admin.ModelAdmin):
 admin.site.register(Project, ProjectAdmin)
 ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/39.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/39.png"/></div>
 
 Como véis poco a poco vamos dando forma a nuestro panel de administrador. A medida que avance el curso os iré enseñando más y más funcionalidades. 
 
@@ -178,7 +178,7 @@ Como véis poco a poco vamos dando forma a nuestro panel de administrador. A med
 
 Por ahora sólo hay una cosa que no tenemos del todo bien, y es la imagen. ¿Dónde habrá ido a parar? Como no hemos configurado un directorio para las subidas, lo más seguro es que esté en la raíz de nuestro proyecto:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/40.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/40.png"/></div>
 
 Esto no es nada práctico y además es peligroso. ¿Os imagináis que todas las imágenes y documentos que sube un usuario se guardasen aquí? Al final podríamos tener cientos o miles de ficheros en el mismo directorio.
 
@@ -186,7 +186,7 @@ Bueno, pues antes de nada una pequeña apreciación. Los ficheros que suben los 
 
 Para que Django pueda servir ficheros Media durante el desarrollo, necesitaremos crear un directorio donde almacenar todos estos archivos. Normalmente le llamaremos **media** y lo crearemos en la raíz de nuestro proyecto.
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/41.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/41.png"/></div>
 
 Ahora nos dirigiremos al fichero **settings.py** y abajo del todo añadiremos estas dos variables, una para indicar indicar la URL externa y otra para el directorio interno donde se encuentran los ficheros media (unido al core_dir del proyecto):
 
@@ -226,11 +226,11 @@ class Project(models.Model):
 
 Con esto le diremos a Django que suba todas las imágenes al directorio **media/projects**. Él mismo se encargará de crear el directorio si no existe. Haced la prueba, subid de nuevo la imagen y mirad los directorios:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/42.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/42.png"/></div>
 
 Ahora fijaos en una cosa, si abrimos nuestro primer proyecto no podemos acceder a la imagen:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/43.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/43.png"/></div>
 
 Esto sucede porque el servidor de desarrollo no puede servir estos ficheros, de eso normalmente se encargaría un servidor de producción como Apache o Nginx ya en la etapa de producción. Sin embargo y como algo temporal podemos hacer que lo haga sólo cuando tengamos el modo *DEBUG* activo.
 
@@ -260,7 +260,7 @@ if settings.DEBUG:
 
 Ahora si probamos el enlace de nuevo nos aparecerá la imagen:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/44.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/44.png"/></div>
 
 Lo que hemos hecho es cargar el módulo de ficheros estáticos genérico y hacer que Django sirva ficheros como algo excepcional, sólo si tenemos el modo *DEBUG* activo. Consideradlo un truco para la fase de desarrollo.
 

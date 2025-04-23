@@ -39,9 +39,9 @@ class PageAdmin(admin.ModelAdmin):
 
 De vuelta a nuestro panel de administrador podemos establecer un número de orden a cada página, un orden que sin cambiar nada se respetará en el frontend:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/56.png" style="max-width:450px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/56.png" style="max-width:450px"/></div>
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/57.png" style="max-width:400px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/57.png" style="max-width:400px"/></div>
 
 Sólo le tenemos que decir al cliente, que si quiere cambiar el orden debe poner un número y que los más pequeños se muestran antes. 
 
@@ -68,7 +68,7 @@ Como este procesador de contexto viene activado por defecto, podemos ir al templ
 
 Sí, en todos los templates tenemos una variable user que almacena el usuario identificado, y podemos comprobar cómodamente si se encuentra autenticado en el panel de administrador con su método **is_authenticated** para mostrar el enlace de edición.
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/58.png" style="max-width:150px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/58.png" style="max-width:150px"/></div>
 
 Sólo tenemos que configurar el enlace, ¿a dónde debe apuntar? Obviamente a la dirección donde podemos editar la página. Podríamos ponerla en crudo, pero no es elegante. Lo haremos bien, utilizando **{% raw %}{% urls %}{% endraw %}** de la siguiente forma:
 
@@ -82,7 +82,7 @@ Sólo tenemos que configurar el enlace, ¿a dónde debe apuntar? Obviamente a la
 </div>{% endraw %}
 ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/59.png" style="max-width:385px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/59.png" style="max-width:385px"/></div>
 
 La lógica es simple, **{% raw %}{admin}:{app}&#95;{modelo}&#95;{accion} {id_del_objeto}{% endraw %}** (cuando sea necesario). Hay otras acciones a parte de change que la url de edición, como add y delete para añadir y borrar respectivamente.
 

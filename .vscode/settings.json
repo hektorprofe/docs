@@ -1,0 +1,10 @@
+{
+  "i18n-ally.localesPaths": [
+    "theme/partials/language",
+    "docs/assets/javascripts/lang",
+    "site/assets/images/langs",
+    "site/assets/javascripts/lang",
+    "theme/assets/images/langs",
+    "theme/assets/javascripts/lang",
+  ]
+}

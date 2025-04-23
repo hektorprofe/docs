@@ -19,7 +19,7 @@ Recordad que la raíz es el contenedor base de todos los widgets que forman la i
 	root.mainloop()  
     ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/tkinter/01.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/tkinter/01.png"/></div>
 
 Un par de opciones interesantes:
 
@@ -38,7 +38,7 @@ Un par de opciones interesantes:
     root.iconbitmap('@hola.xbm')
     ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/tkinter/02.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/tkinter/02.png"/></div>
 
 !!! tip "Tip Windows: Abrir los scripts gráficos con doble clic"
     Si cambiamos la extensión de nuestros scripts gráficos a **.pyw** y asignamos el ejecutable **pythonw.exe** como aplicación por defecto para abrirlos podremos ejecutarlos haciendo doble clic. Podéis encontrar el ejeuctable en la carpeta de Anaconda. Por cierto, la 'w' significa 'windowed' (modo ventana) y esconde la terminal de fondo.

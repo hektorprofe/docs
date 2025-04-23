@@ -73,7 +73,7 @@ Bien, entonces ¿cómo podemos recuperar los valores de nuestros botones de sele
     monitor.pack()
     ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/tkinter/15.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/tkinter/15.png"/></div>
 
 Código final:
 

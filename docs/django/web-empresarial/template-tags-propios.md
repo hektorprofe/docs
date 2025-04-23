@@ -7,7 +7,7 @@ En esta lección vamos a aprender a crear un template tag para mostrar contenido
 
 Para crear nuestro propio template tag debemos seguir unos pasos. El primer es crear un directorio llamado **template tags** dentro de la app donde queremos añadir esta funcionalidad. En nuestro caso **pages/templatetags**. Dentro añadiremos un **init**, esto indicará a Python que se trata de un package, y justo al lado crearemos un script para almacenar nuestros template tags, podemos llamarlo como queramos pero yo siguiendo el ejemplo oficial de la documentación le voy a llamar **pages_extras.py**.
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/52.png" style="max-width:190px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/52.png" style="max-width:190px"/></div>
 
 Ahora vamos a declarar el template tag, para ello debemos registrarlo en la librería de Templates, así que empezaremos importando el módulo de registro de templates: 
 
@@ -42,7 +42,7 @@ Ahora muy importante, <u>reiniciamos el servidor para que incluya los nuevos tem
 {% get_page_list %}{% endraw %}
 ``` 
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/53.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/53.png"/></div>
 
 Ahí tenemos nuestro QuerySet con las páginas, pero claro… así no podemos manejarlo, necesitamos tenerlo en una variable. No es difícil, sólo tenemos que darle un nombre al template tag de la siguiente forma:
 
@@ -63,7 +63,7 @@ Una vez ejecutada esta línea podemos recorrer page_list con un for y mostrar la
 {% endfor %}{% endraw %}
 ``` 
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/54.png" style="max-width:400px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/54.png" style="max-width:400px"/></div>
 
 Si queréis darle un toque más interesante a los enlaces de las páginas, siempre podéis pasar el título en forma de slug:
 
@@ -91,7 +91,7 @@ def page(request, page_id, page_slug):
 
 Pero el resultado es interesante y puede mejorar el SEO de las páginas:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/55.png" style="max-width:275px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/55.png" style="max-width:275px"/></div>
 
 En fin, con esto habéis aprendido otra forma de inyectar datos comunes en todas las páginas, sólo imaginad la de cosas que podéis llegar a a hacer.
 

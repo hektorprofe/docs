@@ -50,7 +50,7 @@ Es muy importante que dejemos el bloque background en una línea y sin utilizar 
 
 Hecho esto ya deberíamos ver como nuestra portada aparece perfecta:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/27.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/27.png"/></div>
 
 Ahora es tu turno de adaptar los demás templates con los contenidos de prueba de las maquetas.
 

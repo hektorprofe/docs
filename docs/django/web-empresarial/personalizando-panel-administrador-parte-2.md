@@ -7,7 +7,7 @@ Toca un intermedio para seguir aprendiendo cómo personalizar el administrador. 
 
 Vamos a practicar con las entradas de nuestro blog. Por defecto sólo nos aparece el título:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/21.png" style="max-width:220px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/21.png" style="max-width:220px"/></div>
 
 Pero podemos mostrar casi todos los campos. Vamos al fichero admin.py para personalizar qué columnas queremos mostrar. 
 
@@ -18,7 +18,7 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'published')
 ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/22.png" style="max-width:625px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/22.png" style="max-width:625px"/></div>
 
 Como véis así es mucho mejor, y además podemos ordenar por columnas.
 
@@ -34,7 +34,7 @@ class PostAdmin(admin.ModelAdmin):
 
 Esto nos agrupará las entradas por autor y las ordenará por fecha de publicación:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/23.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/23.png"/></div>
 
 Si quisiéramos indicar sólo un campo de ordenación igualmente debéis crear una tupla con por lo menos un campo y una coma, sino Django no entenderá que es una tupla.
 
@@ -50,7 +50,7 @@ class PostAdmin(admin.ModelAdmin):
         'categories__name')
 ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/24.png" style="max-width:450px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/24.png" style="max-width:450px"/></div>
 
 También cuando trabajamos con modelos que tengan campos de fechas y horas es posible activar el filtro avanzado con date_hierarchy, una imagen vale más que mil palabras:
 
@@ -65,7 +65,7 @@ class PostAdmin(admin.ModelAdmin):
     date_hierarchy = 'published'
 ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/25.png" style="max-width:190px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/25.png" style="max-width:190px"/></div>
 
 Y ya que hablamos de filtros no podemos olvidar la tupla list_filter, gracias a la cual podemos agrupar por campos directamente en la tabla:
 
@@ -81,7 +81,7 @@ class PostAdmin(admin.ModelAdmin):
     list_filter = ('author__username','categories__name')
 ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/26.png" style="max-width:225px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/26.png" style="max-width:225px"/></div>
 
 o ya para poner la guinda al pastel, quizá os estáis preguntando si es posible mostrar la lista de categorías:
 
@@ -154,7 +154,7 @@ class PostAdmin(admin.ModelAdmin):
 
 Y ahí lo tenemos:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/27.png" style="max-width:150px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/27.png" style="max-width:150px"/></div>
 
 Ya seguro estáis pensando…¿Pero que hacemos con el nombre de la columna? ¿Cómo lo cambiamos? Pues sólo tenemos que modificar el atributo **short_description** del método de esta forma:
 
@@ -175,7 +175,7 @@ class PostAdmin(admin.ModelAdmin):
     post_categories.short_description = "Categorías"
 ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/28.png" style="max-width:150px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/28.png" style="max-width:150px"/></div>
 
 Con esto acabamos el intermedio. Si os interesa saber cómo generar código HTML en lugar de simple texto os dejo un enlace a StackOverflow donde lo explican muy bien haciendo uso de la función mark_safe:
 

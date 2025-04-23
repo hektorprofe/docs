@@ -97,13 +97,13 @@ admin.site.register(Post, PostAdmin)
 
 Con esto ya podemos entrar al admin y experimentar el potencial de las relaciones de nuestros modelos:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/18.png" style="max-width:150px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/18.png" style="max-width:150px"/></div>
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/19.png" style="max-width:750px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/19.png" style="max-width:750px"/></div>
 
 Podemos seleccionar un autor de entre los usuarios registrados en nuestra web gracias a la relación ForeignKey de 1 a muchos. Y varias categorías (incluso crearlas in-situ) aprovechando el potencial de las relaciones Many2Many de Muchos a Muchos:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/20.png" style="max-width:450px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/20.png" style="max-width:450px"/></div>
 
 No me diréis que no es genial, esta es una de las razones por las que me enamoré de Django.
 

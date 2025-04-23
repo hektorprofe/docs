@@ -56,7 +56,7 @@ urlpatterns = [
 
 Sin cambiar absolutamente nada en el template, la url del menú se habrá actualizado y seguirá funcionando perfecto:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/23.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/23.png"/></div>
 
 Por tanto la enseñanza de la lección es:
 

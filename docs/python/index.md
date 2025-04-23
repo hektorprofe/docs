@@ -3,7 +3,7 @@ description: Recopilación de apuntes de mi curso sobre el lenguaje Python para 
 
 # Apuntes del curso de Python
 
-<div class='embed-container'><iframe width="560" height="315" src="/cdn/videoteca/2021/trailer-python.mp4" title="Video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div class='embed-container'><iframe width="560" height="315" src="/docs/cdn/videoteca/2021/trailer-python.mp4" title="Video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 Estos apuntes son un material de apoyo para los alumnos de mi curso de Python en Udemy publicados bajo una [Licencia CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es). Si decides utilizarlos o compartirlos asegúrate de cumplir las normas de atribución.
 

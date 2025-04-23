@@ -141,7 +141,7 @@ Como véis estoy introduciendo conceptos poco a poco para no saturaros demasiado
 	show="*"			          # para contraseñas mostrar * o lo que sea
     ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/tkinter/11.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/tkinter/11.png"/></div>
 
 Código final:
 

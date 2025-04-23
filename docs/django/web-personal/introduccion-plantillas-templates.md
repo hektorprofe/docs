@@ -11,7 +11,7 @@ Tenemos que hacerlo así porque Django funciona mezclando los directorios templa
 
 Dentro de este subdirectorio **templates/core** de la app vamos a comenzar creando un fichero **home.html**:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/17.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/17.png"/></div>
 
 Dentro vamos a poner todo el código HTML tal cual será devuelto al llamar la vista home, algo más o menos así:
 
@@ -44,7 +44,7 @@ def home(request):
 
 Una vez hecho vamos a probar si carga la portada, pero como podréis observar no funcionará:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/18.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/18.png"/></div>
 
 Por defecto Django optimiza el uso de la memoria así que no carga las plantillas de una app que no esté instalada en **settings.py**. Para cargar la app core y sus plantillas en memoria debemos ir al fichero **webpersonal/settings.py** y añadir la app en la lista *INSTALLED_APPS* justo abajo del todo:
 

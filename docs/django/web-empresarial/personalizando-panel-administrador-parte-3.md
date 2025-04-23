@@ -34,7 +34,7 @@ content = RichTextField(verbose_name="Contenido")
 
 Ahora pondremos el servidor en marcha, vamos a editar una página y...
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/60.png" /></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/60.png" /></div>
 
 ¿Qué os parece? Aquí tenemos un editor visual para nuestro campo de texto. En él podemos poner estilos visuales, negritas, cursivas, subrayados, enlaces, etc.
 
@@ -54,7 +54,7 @@ CKEDITOR_CONFIGS = {
 
 Si establecemos el valor de la toolbar en None le estaremos diciendo que muestre todos los campos posibles:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/61.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/61.png"/></div>
 
 Esto es una bestialidad, por eso quizá os interesa más mostrar una versión compacta sólo con negritas y cursivas:
 
@@ -68,9 +68,9 @@ CKEDITOR_CONFIGS = {
 }
 ``` 
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/62.png" style="max-width:385px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/62.png" style="max-width:385px"/></div>
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/63.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/63.png"/></div>
 
 En la página de la app django-ckeditor encontraréis la documentación completa y ejemplos para adaptar la barra a vuestras necesidades: [https://github.com/django-ckeditor/django-ckeditor](https://github.com/django-ckeditor/django-ckeditor)
 
@@ -111,11 +111,11 @@ CKEDITOR_CONFIGS = {
 }
 ``` 
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/64.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/64.png"/></div>
 
 Una vez guardamos el contenido y vamos al frontend, veremos que nos aparece el código HTML no interpretado:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/65.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/65.png"/></div>
 
 Le tenemos que decir a Django, tranquilo, este contenido contiene HTML seguro así que interprétalo. Eso lo haremos sustituyendo el template tag **linebreaks** por **safe**:
 
@@ -124,7 +124,7 @@ Le tenemos que decir a Django, tranquilo, este contenido contiene HTML seguro as
 {% raw %}{{page.content|safe}}{% endraw %}
 ``` 
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/66.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/66.png"/></div>
 
 Si queréis practicar un poco más podéis poner el editor WYSIWYG en el contenido de las entradas del blog.
 ___

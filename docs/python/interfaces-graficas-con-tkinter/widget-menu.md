@@ -40,7 +40,7 @@ Ya tenemos los submenús, pero todavía nos falta añadirlos a la barra de menú
 	menubar.add_cascade(label="Ayuda", menu=helpmenu)
     ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/tkinter/16.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/tkinter/16.png"/></div>
 
 Bien ya tenemos nuestra barra con los 3 submenús funcionando bien, pero ocurre algo raro, nos aparece una especie de elemento por defecto. Podemos hacer que desaparezca si indicamos el parámetro tearoff=0:
 
@@ -52,7 +52,7 @@ Bien ya tenemos nuestra barra con los 3 submenús funcionando bien, pero ocurre 
 	helpmenu = Menu(menubar, tearoff=0)
     ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/tkinter/17.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/tkinter/17.png"/></div>
 
 Ahora  sí que lo tenemos bien, ¿pero está demasiado vacío no? Vamos a añadir comandos de ejemplo en nuestros submenús:
 
@@ -75,7 +75,7 @@ También podemos agregar un separador y un comando de salir con root.quit:
     filemenu.add_command(label="Salir", command=root.quit)
     ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/tkinter/18.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/tkinter/18.png"/></div>
 
 Tened en cuenta que debéis crear una funcionalidad para cada comando, pero como sólo estamos haciendo una prueba vamos a crear algunas opciones más de ejemplo:
 
@@ -93,7 +93,7 @@ Tened en cuenta que debéis crear una funcionalidad para cada comando, pero como
     helpmenu.add_command(label="Acerca de...")
     ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/tkinter/19.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/tkinter/19.png"/></div>
 
 Código final:
 

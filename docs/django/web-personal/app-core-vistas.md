@@ -41,7 +41,7 @@ python manage.py startapp core
 
 Al hacerlo podréis observar como se ha creado un nuevo directorio core en nuestro proyecto:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/11.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/11.png"/></div>
 
 Vamos a ir descubriendo los ficheros que conforman la app core sobre la marcha, no tiene mucho sentido explicar cosas que no utilizaremos hasta dentro de varias horas. 
 
@@ -84,7 +84,7 @@ urlpatterns = [
 
 Ahora guardamos el fichero, ponemos el servidor en marcha y comprobamos la portada de nuestra web:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/12.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/12.png"/></div>
 
 ¡Vaya! Ahora en lugar de aparecernos la bienvenida genérica de Django nos muestra el HTML que hemos devuelto en vista home. ¿Vais captando como fluye la información? Dentro del fichero **urls.py** establecemos un path indicando la URL donde vamos a enlazar una vista de la **app core** que a su vez estará devolviendo una respuesta HTML.
 
@@ -99,7 +99,7 @@ def home(request):
     return HttpResponse(html_response)
 ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/13.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/13.png"/></div>
 
 Pues esto estimados alumnos es el backend, la parte oculta que gracias a la programación es capaz de otorgar dinamismo al frontend.
 

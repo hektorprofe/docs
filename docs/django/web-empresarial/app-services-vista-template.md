@@ -15,11 +15,11 @@ En esta segunda parte te enfocarás en crear la vista y su respectivo template:
 
 Básicamente voy a hacer un copiar y pegar de lo que tengo en el frontend:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/16.png" style="max-width:220px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/16.png" style="max-width:220px"/></div>
 
 Me llevo el template a su propio directorio de la app:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/43.png" style="max-width:200px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/43.png" style="max-width:200px"/></div>
 
 Me llevo la vista a la nueva app y muestro el nuevo template:
 `services/views.py`
@@ -52,7 +52,7 @@ urlpatterns = [
 
 Compruebo que todo funcione:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/17.png" style="max-width:400px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/17.png" style="max-width:400px"/></div>
 
 Finalmente realizo la fusión, tomando los servicios en la vista y pasándolos al template:
 `services/views.py`

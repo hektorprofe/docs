@@ -830,7 +830,7 @@ Así tendríamos un formulario más limpio, aunque conservaremos los mensajes de
 
 El sistema de usuarios en Django tiene un problema y es que por defecto utiliza únicamente el usuario y la contraseña. Sin embargo en la actualidad es cada vez más común que los sitios en lugar de un "nick" utilicen el correo electrónico como usuario:
 
-Ya os enseñé a [implementar un sistema clásico de registro, login y logout](https://www.hektorprofe.net/tutorial/django-sistema-registro-login-logout), así que vamos a extender esa lógica para obligar al usuario a registrarse e iniciar sesión utilizando su correo electrónico:
+Ya os enseñé a [implementar un sistema clásico de registro, login y logout](/docs/tutorial/django-sistema-registro-login-logout), así que vamos a extender esa lógica para obligar al usuario a registrarse e iniciar sesión utilizando su correo electrónico:
 
 <div class="image">
     <img src="{{cdn}}/django/django_auth_email_1.png"/>
@@ -920,7 +920,7 @@ Vamos a ver cómo utilizar **inline forms**, ya sea a través del administrador 
 
 Los **inlines** son formularios que surgen al crear modelos relacionados, normalmente de tipo **Foreign Key**.
 
-El concepto se ve muy fácilmente en un ejemplo, así que vamos a utilizar como base el tutorial de [crear, editar y borrar instancias de modelos con formularios](https://www.hektorprofe.net/tutorial/django-formularios-crear-editar-instancias) y lo extenderemos un poco.
+El concepto se ve muy fácilmente en un ejemplo, así que vamos a utilizar como base el tutorial de [crear, editar y borrar instancias de modelos con formularios](/docs/tutorial/django-formularios-crear-editar-instancias) y lo extenderemos un poco.
 
 Supongamos que tenemos este modelo **Persona**:
 
@@ -1247,7 +1247,7 @@ En este punto deberías poder hacer una petición con **cURL** y ver que efectiv
 curl http://127.0.0.1:8000
 ```
 
-Os voy a dejar la configuración genérica del sitio funcionando en un dominio en el puerto 80 no seguro y sirviendo los ficheros estáticos. Es vuestra tarea adaptarla y añadir un certificado tal como explico en el [curso de configuración básica de Ubuntu Server](https://www.hektorprofe.net/curso/guia-configuracion-ubuntu-server).
+Os voy a dejar la configuración genérica del sitio funcionando en un dominio en el puerto 80 no seguro y sirviendo los ficheros estáticos. Es vuestra tarea adaptarla y añadir un certificado tal como explico en el [curso de configuración básica de Ubuntu Server](/docs/academia/gnu-linux/ubuntu-server-web/).
 
 Primero vamos a crear un directorio para almacenar los **logs** de **nginx**:
 

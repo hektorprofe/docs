@@ -75,9 +75,9 @@ Migramos:
 (django2) python manage.py migrate pages
 ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/47.png" style="max-width:175px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/47.png" style="max-width:175px"/></div>
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/48.png" style="max-width:205px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/48.png" style="max-width:205px"/></div>
 
 Perfecto, ahora tenemos que desarrollar las vistas. Seguiremos una lógica parecida a la del blog y sus categorías, de manera que estas páginas secundarias tengan el path **/page/&#60;page_id&#62;**.
 
@@ -95,7 +95,7 @@ def page(request, page_id):
 
 Ahora movemos el template sample.html en la propia app de páginas y **borramos la view y url sample de Core**:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/49.png" style="max-width:165px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/49.png" style="max-width:165px"/></div>
 
 Creamos las urls:
 
@@ -122,7 +122,7 @@ urlpatterns = [
 
 Probamos si nos aparece alguna página con id 1:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/50.png" style="max-width:400px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/50.png" style="max-width:400px"/></div>
 
 Perfecto, parece que funciona. Vamos a realizar la fusión, respetando los saltos de línea:
 
@@ -157,7 +157,7 @@ Perfecto, parece que funciona. Vamos a realizar la fusión, respetando los salto
 {% endblock %}{% endraw %}
 ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/webempresa/51.png" style="max-width:400px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/webempresa/51.png" style="max-width:400px"/></div>
 
 Lo tenemos listo, ya sólo falta mostrar los enlaces de las páginas en la parte inferior. Podríamos hacerlo añadiéndolas a un procesador de contexto como con las redes sociales, pero os comenté que se podía hacer de otra forma, os lo explico en la próxima lección.
 

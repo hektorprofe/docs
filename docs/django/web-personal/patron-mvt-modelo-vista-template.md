@@ -7,11 +7,11 @@ Si tenéis experiencia en el mundo de la programación seguro que habéis oído 
 
 Hasta ahora lo que hemos hecho no requería de interactuar con la base de datos. Podríamos decir que simplemente se recibe una petición del navegador, se ejecuta la vista correspondiente y se renderiza el Template para que el navegador muestre el HTML resultante:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/45.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/45.png"/></div>
 
 Sin embargo en el momento en que aparecen las base de datos y los modelos, este proceso se extendiende. Ahora se recibirá la petición, se pasará a la vista, en la vista recuperaremos los datos del modelo correspondiente, y finalmente la renderizaremos el Template pero esta vez integrando los datos dinámicos recuperados del modelo, antes de enviar el HTML final al navegador:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/46.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/46.png"/></div>
 
 Vamos a hacerlo, ya veréis como en la práctica es bastante fácil.
 
@@ -27,7 +27,7 @@ def portfolio(request):
 
 También crearemos una carpeta **templates/portfolio** y pondremos el template de la página **portfolio** ahí:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/54.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/54.png"/></div>
 
 Y actualizamos la ruta al template:
 
@@ -167,11 +167,11 @@ Si esto lo adaptamos un poco, podemos transformar cada iteración en el proyecto
 {% endblock %}{% endraw %}
 ``` 
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/49.png" style="max-width: 500px"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/49.png" style="max-width: 500px"/></div>
 
 ¿No es fantástico? Lo malo es que la imagen no se muestra. Si analizamos el código generado veremos la causa:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/53.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/53.png"/></div>
 
 Como véis no añade la URL de los ficheros que se supone están en /media/, pero no os preocupéis. El campo ImageField tiene un atributo llamado url que nos generará su ruta correcta automáticamente teniendo en cuenta la variable **MEDIA_URL** que tenemos en **settings.py**:
 
@@ -182,15 +182,15 @@ Como véis no añade la URL de los ficheros que se supone están en /media/, per
 
 Con esto debería funcionar la imagen:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/50.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/50.png"/></div>
 
 En este punto si queréis podemos volver al panel de administrador y añadir otro proyecto de prueba:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/51.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/51.png"/></div>
 
 Una vez creado el proyecto nos aparecerá en la parte superior, recordad que se nos ordenan de más recientes amás antiguos:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/52.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/52.png"/></div>
 
 Fijaros en muy poco tiempo hemos transformado un template estático en una web con una sección Portafolio dinámica, donde a través de un panel de administrador nuestros clientes pueden manejar proyectos de forma simple y cómoda, incluso a través de su teléfono móvil. Sólo nos faltaría crear un usuario para nuestro cliente desde el administrador, pero esto lo trabajaremos más a fondo en el siguiente proyecto. 
 

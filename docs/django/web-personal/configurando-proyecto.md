@@ -11,13 +11,13 @@ Por otro lado el subdirectorio _webpersonal_ es el que contiene los scripts base
 
 Resumiendo mucho, el fichero **\_\_init.py\_\_** nos indica que la carpeta es un paquete, **settings.py** es el que contiene la configuración del proyecto, **urls.py** es el fichero encargado de manejar las direcciones de la web (sí esas que se escribirán en la barra del navegador) y por último **wsgi.py**, un script que contiene la información para desplegar el proyecto en producción, algo que trataremos en la _Sección 5. Despliegue_.
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/03.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/03.png"/></div>
 
 Creo que es mejor que descubramos sobre la marcha estos ficheros, así que por ahora vamos a centrarnos sólo en el manage. Desde Visual Studio Code, vamos abrir el directorio donde se encuentra **manage.py**.
 
 Lo vamos a ejecutar abriéndolo y ejecutando el script con clic derecho, de esa forma el propio Visual Studio Code nos activará el entorno virtual, es un pequeño truco.
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/04.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/04.png"/></div>
 
 Ahora vamos a ejecutar el script junto con el comando runserver, que significa correr o poner en marcha el servidor:
 
@@ -27,11 +27,11 @@ Ahora vamos a ejecutar el script junto con el comando runserver, que significa c
 
 Esto pondrá en marcha el servidor de desarrollo de Django y podremos acceder a la web que se ha generado haciendo clic en la dirección mientras presionamos _Control_:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/05.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/05.png"/></div>
 
 Así veremos nuestro primer proyecto y cómo Django nos da la bienvenida. Fijaros que nos muestra un mensaje:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/06.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/06.png"/></div>
 
 > Estás viendo esta página porque el DEBUG está en True en tu settings y no has configurado ninguna URL.
 
@@ -56,7 +56,7 @@ LANGUAGE_CODE = 'es'
 
 Sólo habiendo hecho este cambio el servidor de Django se reiniciará aplicando los cambios, y si recargamos la pantalla de antes… ¡Sorpresa! Ahora nos sale en español:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/07.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/07.png"/></div>
 
 El siguiente paso que tenemos que llevar a cabo, justo después de crear un proyecto, es crear la base de datos inicial. Lo tenemos que hacer para que Django pueda gestionar un montón de cosas por nosotros, como por ejemplo las sesiones, los usuarios o los grupos. Para hacerlo vamos de vuelta al fichero **settings.py** y buscaremos el diccionario llamado _DATABASES_.
 
@@ -74,7 +74,7 @@ DATABASES = {
 
 Lo que tenemos aquí es una configuración predeterminada utilizando la base de datos SQLite3. Sí, Django trabaja con bases de datos SQL, y es compatible con unas cuantas. Si accedemos al enlace de la documentación veremos exactamente cuales en el apartado _ENGINES_:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/08.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/08.png"/></div>
 
 PostgreSQL, MySQL, SQLite3 y Oracle. ¿Y qué pasa con SQL Server de Microsoft? Pues no está soportada por defecto, aunque sí existen módulos externos como Django-MSSQL, pero claro, ya requiere una configuración más avanzada.
 
@@ -100,7 +100,7 @@ DATABASES = {
 
 Así pues vamos a sincronizar la base de datos inicialmente, ¿cómo lo hacemos? Pues fijaros que si volvemos a nuestra terminal, justo en el momento que hemos puesto en marcha el servidor nos aparece un mensaje:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/django/09.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/django/09.png"/></div>
 
 > <i>Tienes 14 migraciones sin aplicar. Tu proyecto puede no funcionar correctamente hasta que apliques las migraciones para las apps admin, auth, contenttypes y sessions. Ejecuta 'python manage migrate' para aplicarlas.</i>
 

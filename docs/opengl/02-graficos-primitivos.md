@@ -73,7 +73,7 @@ class Point:
     def __init__(self, x=0, y=0):
         self.x = x
         self.y = y
-``` 
+```
 
 Partiendo del ejemplo de haces un par de lecciones, definiremos un punto a nivel de instancia en el `Setup` cuyo valor asignaremos al detectar el clic del ratón sobrescribiendo el mètodo `Inputs`:
 
@@ -107,7 +107,7 @@ class GLUtils:
         glBegin(GL_POINTS)
         glVertex2f(point.x, point.y)
         glEnd()
-        
+
 
 class OpenGLApp(App):
 
@@ -308,7 +308,7 @@ class OpenGLApp(App):
                 point = Point(GLUtils.MapValue(0, self.screenWidth, 0, self.ortoWidth, x),
                               GLUtils.MapValue(0, self.screenHeight, 0, self.ortoHeight, y))
                 self.points.append(point)
-``` 
+```
 
 ![]({{cdn}}/opengl/anim08.gif)
 
@@ -519,17 +519,17 @@ Es interesante observar ese efecto que se genera al no poder "encerrar" el polí
 
 La verdad es que en lugar de un polígono podríamos decirle a OpenGL que intente dibujar primitivas como triángulos y cuadrados:
 
-* `GL_TRIANGLES`
-* `GL_TRIANGLES_STRIP`
-* `GL_TRIANGLES_FAN`
-* `GL_QUADS`
-* `GL_QUADS_STRIP`
+- `GL_TRIANGLES`
+- `GL_TRIANGLES_STRIP`
+- `GL_TRIANGLES_FAN`
+- `GL_QUADS`
+- `GL_QUADS_STRIP`
 
 Si probamos con `GL_TRIANGLES`:
 
 ![]({{cdn}}/opengl/anim13.gif)
 
-OpenGL supone que cada tres vértices se forma un triángulo, pero estos triángulos son independientes y como las líneas se dibujan en un bucle unas tras otras no se ajustan a ellos. 
+OpenGL supone que cada tres vértices se forma un triángulo, pero estos triángulos son independientes y como las líneas se dibujan en un bucle unas tras otras no se ajustan a ellos.
 
 Lo podemos resolver dibujando las líneas en subconjuntos de tres vértices generados con `numpy`:
 
@@ -588,5 +588,6 @@ def DrawPolygon(points, size):
 
 Los triángulos y los cuadrados son las primitivas básicas para el dibujado de mallas y constituyen la parte más esencial del renderizado de modelos tridimensionales.
 
-___
+---
+
 <small class="edited"><i>Última edición: 12 de Junio de 2022</i></small>

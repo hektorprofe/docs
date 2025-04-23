@@ -16,11 +16,11 @@ Voy a explicar brevemente los conceptos básicos por si alguien necesita un repa
 
 Representa un espacio bidimensional (en 2 dimensiones), formado por dos rectas perpendiculares, una horizontal y otra vertical que se cortan en un punto. La recta horizontal se denomina eje de las abscisas o **eje X**, mientras que la vertical recibe el nombre de eje de las ordenadas o simplemente **eje Y**. En cuanto al punto donde se cortan, se conoce como el **punto de origen O**.
 
-<div style="text-align:center;"><img class="lazy" data-src="{{cdn}}/ejemplos_edv/python/eje.jpg" width="350" /></div>
+<div style="text-align:center;"><img src="{{cdn}}/ejemplos_edv/python/eje.jpg" width="350" /></div>
 
 Es importante remarcar que el plano se divide en 4 cuadrantes:
 
-<div style="text-align:center;"><img class="lazy" data-src="{{cdn}}/ejemplos_edv/python/cuadrante.jpg" width="350" /></div>
+<div style="text-align:center;"><img src="{{cdn}}/ejemplos_edv/python/cuadrante.jpg" width="350" /></div>
 
 ### Puntos y coordenadas
 
@@ -28,7 +28,7 @@ El objetivo de todo esto es describir la posición de **puntos** sobre el plano 
 
 La representación de un punto es sencilla: **P(X,Y)** dónde X y la Y son la distancia horizontal (izquierda o derecha) y vertical (arriba o abajo) respectivamente, utilizando como referencia el punto de origen (0,0), justo en el centro del plano.
 
-<div style="text-align:center;"><img class="lazy" data-src="{{cdn}}/ejemplos_edv/python/Cartesian-coordinate-system.svg.png" width="300" /></div>
+<div style="text-align:center;"><img src="{{cdn}}/ejemplos_edv/python/Cartesian-coordinate-system.svg.png" width="300" /></div>
 
 ### Vectores en el plano
 
@@ -36,7 +36,7 @@ Finalmente, un vector en el plano hace referencia a un segmento orientado, gener
 
 A efectos prácticos no deja de ser una línea formada desde un punto inicial en dirección a otro punto final, por lo que se entiende que un vector tiene longitud y dirección/sentido.
 
-<div style="text-align:center;"><img class="lazy" data-src="{{cdn}}/ejemplos_edv/python/vector3.png" width="300" /></div>
+<div style="text-align:center;"><img src="{{cdn}}/ejemplos_edv/python/vector3.png" width="300" /></div>
 
 En esta figura, podemos observar dos puntos A y B que podríamos definir de la siguiente forma:
 
@@ -60,7 +60,7 @@ Y con esto finalizamos este mini repaso.
 * Añade un método llamado **vector**, que tome otro punto y calcule el vector resultante entre los dos puntos.
 * (Optativo) Añade un método llamado **distancia**, que tome otro punto y calcule la distancia entre los dos puntos y la muestre por pantalla. La fórmula es la siguiente:
 
-<div style="text-align:center;"><img class="lazy" data-src="{{cdn}}/ejemplos_edv/python/distancia.png" width="250" /></div>
+<div style="text-align:center;"><img src="{{cdn}}/ejemplos_edv/python/distancia.png" width="250" /></div>
 
 !!! hint "Nota"
     La función raíz cuadrada en Python sqrt() se debe importar del módulo math y utilizarla de la siguiente forma:

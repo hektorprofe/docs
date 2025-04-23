@@ -236,7 +236,7 @@ OK
 Esta aplicación permite generar archivos .exe de tus proyectos, ya sea un archivo .py o varios. Tiene una interfaz gráfica de usuario que se se ve así:
 
 <div class="img-content">
-    <img class="lazy" data-src="{{cdn}}/tutoriales/autopytoexe/01.png"/>
+    <img src="{{cdn}}/tutoriales/autopytoexe/01.png"/>
 </div>
 
 **1) Instalación y ejecución**
@@ -268,7 +268,7 @@ Si tiene varios archivos, seleccionar el que inicie el programa.
 2.2) "One Directory"
 
 <div class="img-content">
-    <img class="lazy" data-src="{{cdn}}/tutoriales/autopytoexe/02.JPG"/>
+    <img src="{{cdn}}/tutoriales/autopytoexe/02.JPG"/>
 </div>
 
 Al elegir la opción <strong>"Un directorio",</strong> Auto PY to EXE colocará todas las dependencias en una carpeta. Puede elegir el directorio de salida en el menú "Avanzado". Si tiene archivos multimedia como iconos y fondos, no debería tener problemas para usarlos dentro de su .exe si coloca archivos / carpetas multimedia en el directorio de salida.
@@ -276,7 +276,7 @@ Al elegir la opción <strong>"Un directorio",</strong> Auto PY to EXE colocará 
 2.3) "One File"
 
 <div class="img-content">
-    <img class="lazy" data-src="{{cdn}}/tutoriales/autopytoexe/04.JPG"/>
+    <img src="{{cdn}}/tutoriales/autopytoexe/04.JPG"/>
 </div>
 
 Al elegir la opción <strong>"Un archivo",</strong> Auto PY to EXE creará un archivo .exe que contiene todas las dependencias, pero <strong>NO LOS ARCHIVOS DE MEDIOS</strong>. Si tu programa solo tiene la interfaz gráfica de usuario predeterminada de Windows sin iconos, fondos, archivos multimedia o si prefieres colocar la carpeta con los recursos multimedia adjunta al archivo .exe omite la siguiente explicación. Para aquellos que quieran empaquetar archivos multimedia en el archivo .exe, continua con el paso 2.4.
@@ -327,13 +327,13 @@ Y después de usar la función **resource_path()**:
 Ahora presiona <strong>CONVERT .PY TO .EXE</strong></p>
 
 <div class="img-content">
-    <img class="lazy" data-src="{{cdn}}/tutoriales/autopytoexe/05.png"/>
+    <img src="{{cdn}}/tutoriales/autopytoexe/05.png"/>
 </div>
 
 Espera:
 
 <div class="img-content">
-    <img class="lazy" data-src="{{cdn}}/tutoriales/autopytoexe/06.png"/>
+    <img src="{{cdn}}/tutoriales/autopytoexe/06.png"/>
 </div>
 
 **3) Ejecuta el programa**
@@ -449,7 +449,7 @@ print("Esquina inferior derecha", t.pos())
 ```
 
 <div class="img-content">
-    <img class="lazy" data-src="{{cdn}}/turtle/img01.jpg"/>
+    <img src="{{cdn}}/turtle/img01.jpg"/>
 </div>
 
 **Segundo dibujo**
@@ -477,7 +477,7 @@ t.forward(150)  # última mitad hacia arriba
 ```
 
 <div class="img-content">
-    <img class="lazy" data-src="{{cdn}}/turtle/img02.jpg"/>
+    <img src="{{cdn}}/turtle/img02.jpg"/>
 </div>
 
 **Tercer dibujo**
@@ -540,7 +540,7 @@ poligono_regular(0, 0, 100, 7)
 ```
 
 <div class="img-content">
-    <img class="lazy" data-src="{{cdn}}/turtle/img04.jpg"/>
+    <img src="{{cdn}}/turtle/img04.jpg"/>
 </div>
 
 Ahora tenemos que calcular los grados que debemos girar y trazar nuestras líneas. En el caso del cuadrado era muy fácil, pues sabemos que hay que girar 90 grados. ¿Pero cómo lo haremos aquí? Bueno, sabemos que 90º es una cuarta parte de 360, así que extrapolando eso podemos calcular el ángulo dividiendo 360 entre el número de lados del polígono regular:
@@ -564,7 +564,7 @@ for i in range(lados):
 ```
 
 <div class="img-content">
-    <img class="lazy" data-src="{{cdn}}/turtle/img05.jpg"/>
+    <img src="{{cdn}}/turtle/img05.jpg"/>
 </div>
 
 Woo! Que bonito quesito nos ha quedado eh? Pero lo más importante es que tenemos todas las coordenadas de los vértices de nuestro polígono:
@@ -599,7 +599,7 @@ for v in vertices:
 ```
 
 <div class="img-content">
-    <img class="lazy" data-src="{{cdn}}/turtle/img07.jpg"/>
+    <img src="{{cdn}}/turtle/img07.jpg"/>
 </div>
 
 ¡Siiii y ahí lo tenemos!
@@ -637,7 +637,7 @@ def poligono_regular(px, py, radio, lados):
 ```
 
 <div class="img-content">
-    <img class="lazy" data-src="{{cdn}}/turtle/img08.jpg"/>
+    <img src="{{cdn}}/turtle/img08.jpg"/>
 </div>
 
 ¡Genial!
@@ -655,7 +655,7 @@ for n in range(3, 21):
 ```
 
 <div class="img-content">
-    <img class="lazy" data-src="{{cdn}}/turtle/img09.jpg"/>
+    <img src="{{cdn}}/turtle/img09.jpg"/>
 </div>
 
 Sin duda nuestra tortuga está hecha toda una artista.
@@ -696,7 +696,7 @@ t.bye()
 ```
 
 <div class="img-content">
-    <img class="lazy" data-src="{{cdn}}/turtle/img10.jpg"/>
+    <img src="{{cdn}}/turtle/img10.jpg"/>
 </div>
 
 Al añadir interactividad somos nosotros quienes controlamos a la tortuga en tiempo real, hemos creado un videojuego sin saberlo! ¿Qué os parece?
@@ -746,7 +746,7 @@ t.bye()
 ```
 
 <div class="img-content">
-    <img class="lazy" data-src="{{cdn}}/turtle/img11.jpg"/>
+    <img src="{{cdn}}/turtle/img11.jpg"/>
 </div>
 
 **Bibliografía**

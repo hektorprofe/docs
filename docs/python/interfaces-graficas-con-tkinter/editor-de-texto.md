@@ -45,7 +45,7 @@ También he pensado, que de cara a abrir y guardar ficheros estaría bien mostra
 	monitor.pack(side='left')
     ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/tkinter/31.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/tkinter/31.png"/></div>
 
 Muy bien, ya tenemos el diseño base. Ahora toca la lógica. Vamos a identificar bien todas las funciones que tendrá nuestro editor de texto, y podemos mostrar un mensaje utilizando nuestro monitor:
 
@@ -74,7 +74,7 @@ Ahora ya podemos dejarlas enlazadas:
 	filemenu.add_command(label="Guardar como", command=guardar_como)
     ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/tkinter/32.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/tkinter/32.png"/></div>
 
 Perfecto, ahora nos falta implementar la lógica de las funciones.
 
@@ -136,7 +136,7 @@ Ahora tenemos que programar toda la lógica:
             root.title(ruta + " - Mi editor")  # Cambiamos el título
     ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/tkinter/33.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/tkinter/33.png"/></div>
 
 Muy bien, ya podemos abrir ficheros. Vamos a aprovechar y antes de continuar, importante que reiniciemos el título de ventana y la ruta si hacemos Nuevo. Si no lo hacemos, como mínimo la ruta, a la hora de guardar no podremos distinguir si un fichero es nuevo, o se ha abierto desde el disco duro:
 
@@ -207,7 +207,7 @@ Ya sólo nos falta crear la última opción:
             mensaje.set('Guardado cancelado')
     ```
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/tkinter/34.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/tkinter/34.png"/></div>
 
 Código final:
 

@@ -24,7 +24,7 @@ def minify():
     #             html = html_minify(f.read())
     #             f.close()
     #             f = io.open(y, mode="w", encoding="utf-8")
-    #             html = html.replace("http://localhost:8080/cdn", "https://docs.hektorprofe.net/docs")
+    #             html = html.replace("http://localhost:8080/cdn", "/docs/docs")
     #             f.write(html)
     #             f.close()
     #         except:
@@ -129,7 +129,7 @@ def gh_deploy(config, message=None, force=False, ignore_version=False):
         # Does this repository have a CNAME set for GitHub pages?
         if os.path.isfile(cname_file):
             # This GitHub pages repository has a CNAME configured.
-            with(open(cname_file, 'r')) as f:
+            with (open(cname_file, 'r')) as f:
                 cname_host = f.read().strip()
             log.info('Based on your CNAME file, your documentation should be '
                      'available shortly at: http://%s', cname_host)

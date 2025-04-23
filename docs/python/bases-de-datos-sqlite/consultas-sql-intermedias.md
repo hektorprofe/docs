@@ -139,7 +139,7 @@ Finalmente, para borrar un registro a partir de su id o campo único:
 
 En SQL es posible realizar actualizaciones y borrados en masa, pero las dos últimas son un poco peligrosas. Sin embargo realizarlas es tan sencillo como olvidarnos la cláusula WHERE en el UPDATE o el DELETE.
 
-<div class='embed-container'><iframe class="lazy" data-src='https://www.youtube.com/embed/i_cVJgIz_Cs?showinfo=0' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+<div class='embed-container'><iframe src='https://www.youtube.com/embed/i_cVJgIz_Cs?showinfo=0' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 !!! info "" 
     

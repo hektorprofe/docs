@@ -50,7 +50,7 @@ Si ya cuentas con conocimientos de programación orientada a objetos y te intere
 
 ## Primer videojuego 2D
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/curso-primer-juego-unity.jpg"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/curso-primer-juego-unity.jpg"/></div>
 
 ¿Te gustaría aprender a crear un videojuego completo en Unity 5?
 ¿Quieres conectar todos esos conocimientos que tienes y finalizar un
@@ -60,9 +60,6 @@ alumnos y seguidores desde una perspectiva práctica, para demostraros
 que es posible aprender de verdad creando un simple pero interesante
 videojuego tomando sólo recursos gratuitos y programando con el lenguaje
 C\#. 
-
-!!! error "Actualización disponible"
-    Mi nuevo <a href="https://www.hektorprofe.net/cupon/unity" target="_blank" style="text-decoration:underline">Curso de Introducción a Unity</a> en Udemy incluye un remake mejorado de esta serie con buenas prácticas y componentes reutilizables (a fecha Noviembre de 2021).
 
 !!! info "Recursos"
     Puedes descargar todos los recursos de la sección aquí: <u><a href="https://drive.google.com/file/d/1TSzB35zu5FrY032IKKno03bgVbBGm8B8/view" target="_blank">03_Juego completo.zip</a></u>
@@ -90,7 +87,7 @@ C\#.
 
 ## Juego de plataformas 2D
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/curso-plataformas-2d-unity.jpg"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/curso-plataformas-2d-unity.jpg"/></div>
 
 A lo largo de esta serie
 practicaremos los aspectos más básicos de un plataformas, centrándonos
@@ -119,7 +116,7 @@ simples.
 
 ## Tutoriales intermedios
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/curso-intermedio-unity.jpg"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/curso-intermedio-unity.jpg"/></div>
 
 Durante este bloque vamos a tomarnos un descanso del desarrollo de
 juegos para aprender distintas mecánicas y técnicas. Veremos todo tipo
@@ -151,7 +148,7 @@ conocimientos.
 
 ## Juego RPG 2D estilo Zelda
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/curso-rpg-2d-unity.jpg"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/curso-rpg-2d-unity.jpg"/></div>
 
 Ha pasado casi un año desde que empecé mi andadura en Unity y creo que estoy
 más que preparado para crear esta nueva serie tan ansiada por todos los

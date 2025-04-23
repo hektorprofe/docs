@@ -9,7 +9,7 @@ En este ejercicio vas a trabajar el concepto de herencia un poco más en profund
 
 Hasta ahora sabemos que una clase heredada puede fácilmente extender algunas funcionalidades, simplemente añadiendo nuevos atributos y métodos, o sobreescribiendo los ya existentes. Como en el siguiente ejemplo:
 
-<div style="text-align:center;"><img class="lazy" data-src="{{cdn}}/ejemplos_edv/python/EjemploClases.png" /></div>
+<div style="text-align:center;"><img src="{{cdn}}/ejemplos_edv/python/EjemploClases.png" /></div>
 
 !!! info "" 
     
@@ -119,7 +119,7 @@ Hacerlo de esta forma además nos permite llamar cómodamente los métodos o atr
 
 Utilizando esta nueva técnica extiende la clase Vehiculo y realiza la siguiente implementación:
 
-<div style="text-align:center;"><img class="lazy" data-src="{{cdn}}/ejemplos_edv/python/EjercicioClases.png" /></div>
+<div style="text-align:center;"><img src="{{cdn}}/ejemplos_edv/python/EjercicioClases.png" /></div>
 
 * Crea al menos un objeto de cada subclase y añádelos a una lista llamada vehiculos.
 * Realiza una función llamada **catalogar()** que reciba la lista de vehiculos y los recorra mostrando el nombre de su clase y sus atributos.

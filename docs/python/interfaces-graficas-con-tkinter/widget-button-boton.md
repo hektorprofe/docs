@@ -96,7 +96,7 @@ Como véis ya podemos hacer cosas bastante interesantes. Lo mejor de todo es que
 
 Y así de la nada hemos creado una calculadora, ¿qué os parece?:
 
-<div style="text-align:center;margin-top:25px"><img class="lazy" data-src="{{cdn}}/images/tkinter/13.png"/></div>
+<div style="text-align:center;margin-top:25px"><img src="{{cdn}}/images/tkinter/13.png"/></div>
 
 Código final:
 
