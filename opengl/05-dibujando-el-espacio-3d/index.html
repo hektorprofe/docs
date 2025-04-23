@@ -402,6 +402,27 @@ div.my-img{text-align:center;margin-top:20px}
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#moviendo-la-camara" title="Moviendo la cámara" class="md-nav__link toc__link">
+    Moviendo la cámara
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rotando-la-camara" title="Rotando la cámara" class="md-nav__link toc__link">
+    Rotando la cámara
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visualizando-la-orientacion" title="Visualizando la orientación" class="md-nav__link toc__link">
+    Visualizando la orientación
+  </a>
+  
+</li>
+      
       
       
       
@@ -410,6 +431,30 @@ div.my-img{text-align:center;margin-top:20px}
   
 </nav>
     
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../06-transformaciones-afines/" title="Transformaciones afines" class="md-nav__link">
+      Transformaciones afines
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../07-renderizado-con-shaders/" title="Renderizado con shaders" class="md-nav__link">
+      Renderizado con shaders
+    </a>
   </li>
 
         
@@ -454,6 +499,27 @@ div.my-img{text-align:center;margin-top:20px}
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#moviendo-la-camara" title="Moviendo la cámara" class="md-nav__link toc__link">
+    Moviendo la cámara
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rotando-la-camara" title="Rotando la cámara" class="md-nav__link toc__link">
+    Rotando la cámara
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visualizando-la-orientacion" title="Visualizando la orientación" class="md-nav__link toc__link">
+    Visualizando la orientación
+  </a>
+  
+</li>
+      
       
       
       
@@ -475,9 +541,570 @@ div.my-img{text-align:center;margin-top:20px}
 <p>También es un buen momento para dejar por aquí este esquema sobre el <em>pipeline de transformación</em> de los vértices (imagen tomada de <a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/perspective-and-orthographic-projection-matrix/projection-matrix-GPU-rendering-pipeline-clipping">este genial artículo de Scratch a pixel</a>):</p>
 <p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img39.png" /></p>
 <h2 id="transformaciones-basicas">Transformaciones básicas<a class="headerlink" href="#transformaciones-basicas" title="Permanent link">&para;</a></h2>
-<p>Próximamente.</p>
+<p>En esta práctica vamos a explorar las view transformations, para ello partiremos de un ejemplo básico cargando el mesh de un cubo sin aplicar ninguna rectificación:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+  <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">res.App</span><span class="w"> </span><span class="kn">import</span> <span class="n">App</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">res.Mesh</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">OpenGL.GL</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">OpenGL.GLU</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+
+  <span class="k">class</span><span class="w"> </span><span class="nc">GLUtils</span><span class="p">:</span>
+      <span class="nd">@staticmethod</span>
+      <span class="k">def</span><span class="w"> </span><span class="nf">InitRender</span><span class="p">():</span>
+          <span class="c1"># Projection</span>
+          <span class="n">glMatrixMode</span><span class="p">(</span><span class="n">GL_PROJECTION</span><span class="p">)</span>
+          <span class="n">glLoadIdentity</span><span class="p">()</span>
+          <span class="n">gluPerspective</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="p">(</span><span class="mi">600</span> <span class="o">/</span> <span class="mi">600</span><span class="p">),</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+
+      <span class="nd">@staticmethod</span>
+      <span class="k">def</span><span class="w"> </span><span class="nf">PrepareRender</span><span class="p">():</span>
+          <span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span> <span class="o">|</span> <span class="n">GL_DEPTH_BUFFER_BIT</span><span class="p">)</span>
+
+
+  <span class="k">class</span><span class="w"> </span><span class="nc">OpenGLApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+      <span class="k">def</span><span class="w"> </span><span class="nf">Init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <span class="n">GLUtils</span><span class="o">.</span><span class="n">InitRender</span><span class="p">()</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">(</span><span class="s2">&quot;../res/models/cube.obj&quot;</span><span class="p">)</span>
+
+      <span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <span class="n">GLUtils</span><span class="o">.</span><span class="n">PrepareRender</span><span class="p">()</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
+
+
+  <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+      <span class="n">app</span> <span class="o">=</span> <span class="n">OpenGLApp</span><span class="p">(</span><span class="s2">&quot;OpenGL en Python&quot;</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+      <span class="n">app</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img40.png" /></p>
+<p>Como ya comentamos anteriormente, por defecto la cámara se encuentra el eje Z=0, como el cubo se está dibugando en la matriz de mundo con el centro en el origen (0,0,0), lo que vemos aquí es simplemente la cara del fondo del cubo, pues la cámara está justo sobre esa cara.</p>
+<p>Para visualizar el cubo completo debemos aplicarle una transformación de traslación y empujarlo al fondo. Podemos establer el modo modelview, configurar el espacio y activar el bufer de profundidad (si queremos) y configurar la traslación con glTranslate:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">GLUtils</span><span class="p">:</span>
+      <span class="nd">@staticmethod</span>
+      <span class="k">def</span><span class="w"> </span><span class="nf">InitRender</span><span class="p">():</span>
+
+          <span class="c1"># Projection</span>
+          <span class="n">glMatrixMode</span><span class="p">(</span><span class="n">GL_PROJECTION</span><span class="p">)</span>
+          <span class="n">glLoadIdentity</span><span class="p">()</span>
+          <span class="n">gluPerspective</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="p">(</span><span class="mi">600</span> <span class="o">/</span> <span class="mi">600</span><span class="p">),</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+
+          <span class="c1"># Model View</span>
+          <span class="n">glMatrixMode</span><span class="p">(</span><span class="n">GL_MODELVIEW</span><span class="p">)</span>
+          <span class="n">glLoadIdentity</span><span class="p">()</span>
+          <span class="n">glViewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span>
+          <span class="n">glEnable</span><span class="p">(</span><span class="n">GL_DEPTH_TEST</span><span class="p">)</span>
+          <span class="c1"># Traslación de la cámara del modelo 1 hacia atrás</span>
+          <span class="n">glTranslate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<p>Al mover la cámara del modelo -1 unidad del mundo hacia atrás estará exactamente sobre la otra cara, la del frente del cubo:</p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img41.png" /></p>
+<p>Si posicionamos la cámara a -2 unidades, la cara frontal del cubo estará a 1 unidad de distancia de la cámara:</p>
+<p>glTranslate(0, 0, -2)</p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img42.png" /></p>
+<p>Nota: Debemos recordar que el cubo está normalizado y cada cara mide exactamente 1 unidad del mundo.</p>
+<p>En cuanto a los ejes x e y dependen de cómo hemos configurado que crezca el espacio. Por ejemplo, trasladar la cámara del modelo 1 unidad hacia arriba ocasionará que veamos solo la mitad inferior del cubo:</p>
+<p>glTranslate(0, 1, -2)</p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img43.png" /></p>
+<p>Si en lugar de configurar inicialmente la traslación la establecemos en cada fotograma, ésta se acumulará:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="n">GLUtils</span><span class="o">.</span><span class="n">PrepareRender</span><span class="p">()</span>
+      <span class="n">glTranslate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">deltaTime</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim26.gif" /></p>
+<p>Sin embargo, si utilizamos las instrucciones glPushMatrix y glPopMatrix antes y después de la transformación y el renderizado:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="n">GLUtils</span><span class="o">.</span><span class="n">PrepareRender</span><span class="p">()</span>
+      <span class="n">glPushMatrix</span><span class="p">()</span>
+      <span class="n">glTranslate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
+      <span class="n">glPopMatrix</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img43.png" /></p>
+<p>Podemos insertar la matriz actual en una pila, es decir en la memoria. Metemos las matrices de transformación en la memoria, las ejecutamos y las sacamos de la memoria. Al hacerlo reiniciamos la matriz de la modelview para el próximo fotograma y ya no se acumulan.</p>
+<p>Si intentamos dibujar dos cubos, ambos lo harán en la misma posición y no los percibiremos:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="n">GLUtils</span><span class="o">.</span><span class="n">PrepareRender</span><span class="p">()</span>
+      <span class="n">glPushMatrix</span><span class="p">()</span>
+      <span class="n">glTranslate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
+      <span class="n">glPopMatrix</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img43.png" /></p>
+<p>Sin embargo, si reiniciamos cargamos la identidad despueés de dibujar el primer cubo (recordemos que equivale a multipliar por 1):</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="n">GLUtils</span><span class="o">.</span><span class="n">PrepareRender</span><span class="p">()</span>
+      <span class="n">glPushMatrix</span><span class="p">()</span>
+      <span class="n">glTranslate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
+      <span class="n">glLoadIdentity</span><span class="p">()</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
+      <span class="n">glPopMatrix</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img44.png" /></p>
+<p>El segundo cubo se dibujará de nuevo en el origen. Eso ya nos da la pista de que podemos modificar la posición de la subsiguiente malla si primero reiniciamos la transformación con la matriz de identidad:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="n">GLUtils</span><span class="o">.</span><span class="n">PrepareRender</span><span class="p">()</span>
+      <span class="n">glPushMatrix</span><span class="p">()</span>
+      <span class="n">glTranslate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
+      <span class="n">glLoadIdentity</span><span class="p">()</span>
+      <span class="n">glTranslate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
+      <span class="n">glPopMatrix</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img45.png" /></p>
+<p>Exactamente lo mismo ocurrirá con las transformaciones de escalado y rotación</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="n">GLUtils</span><span class="o">.</span><span class="n">PrepareRender</span><span class="p">()</span>
+      <span class="n">glPushMatrix</span><span class="p">()</span>
+
+      <span class="c1"># Cube 1: Translate - Rotate - Scale</span>
+      <span class="n">glTranslate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+      <span class="n">glRotated</span><span class="p">(</span><span class="mi">45</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="n">glScalef</span><span class="p">(</span><span class="mf">1.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
+
+      <span class="n">glLoadIdentity</span><span class="p">()</span>
+
+      <span class="c1"># Cube 2: Translate - Rotate - Scale</span>
+      <span class="n">glTranslate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+      <span class="n">glRotated</span><span class="p">(</span><span class="o">-</span><span class="mi">45</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="n">glScalef</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
+
+      <span class="n">glPopMatrix</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img46.png" /></p>
+<p>Nota: OpenGL lee las matrices en orden mayor de columna, por lo que las transformaciones deben ser:</p>
+<ul>
+<li>Traslación</li>
+<li>Rotación</li>
+<li>Escalado</li>
+</ul>
+<p>Si el sistema utilizase orden mayor de fila, las transformaciones serían en el orden inverso:</p>
+<ul>
+<li>Escalado</li>
+<li>Rotación</li>
+<li>Traslación</li>
+</ul>
+<p>Este concepto lo explico más en profundidad en mis apuntes de renderizado 3D.</p>
+<h2 id="moviendo-la-camara">Moviendo la cámara<a class="headerlink" href="#moviendo-la-camara" title="Permanent link">&para;</a></h2>
+<p>En esta práctica vamos a crear una clase para gestionar nuestra propia cámara. Vamos a partir del siguiente programa:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+  <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">res.App</span><span class="w"> </span><span class="kn">import</span> <span class="n">App</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">res.Mesh</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">OpenGL.GL</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">OpenGL.GLU</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+  <span class="k">class</span><span class="w"> </span><span class="nc">OpenGLApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+      <span class="k">def</span><span class="w"> </span><span class="nf">Init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <span class="c1"># Projection</span>
+          <span class="n">glMatrixMode</span><span class="p">(</span><span class="n">GL_PROJECTION</span><span class="p">)</span>
+          <span class="n">glLoadIdentity</span><span class="p">()</span>
+          <span class="n">gluPerspective</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="p">(</span><span class="mi">600</span> <span class="o">/</span> <span class="mi">600</span><span class="p">),</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+          <span class="c1"># Model View</span>
+          <span class="n">glMatrixMode</span><span class="p">(</span><span class="n">GL_MODELVIEW</span><span class="p">)</span>
+          <span class="n">glLoadIdentity</span><span class="p">()</span>
+          <span class="n">glViewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span>
+          <span class="n">glEnable</span><span class="p">(</span><span class="n">GL_DEPTH_TEST</span><span class="p">)</span>
+          <span class="c1"># Mesh Loading</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">(</span><span class="s2">&quot;../res/models/cube.obj&quot;</span><span class="p">)</span>
+
+      <span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span> <span class="o">|</span> <span class="n">GL_DEPTH_BUFFER_BIT</span><span class="p">)</span>
+          <span class="n">glPushMatrix</span><span class="p">()</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
+          <span class="n">glPopMatrix</span><span class="p">()</span>
+
+
+  <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+      <span class="n">app</span> <span class="o">=</span> <span class="n">OpenGLApp</span><span class="p">(</span><span class="s2">&quot;OpenGL en Python&quot;</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+      <span class="n">app</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
+</code></pre></div>
+<p>La clase cámara establecerá en cada fotograma la transformación de visualización de OpenGL. Básicamente contaremos con distintos vectores para manejar la posición y mover la cámara:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pygame</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pg</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">OpenGL.GLU</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+  <span class="k">class</span><span class="w"> </span><span class="nc">Camera</span><span class="p">:</span>
+      <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <span class="c1"># Posición del ojo (origen)</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">eye</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">Vector3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+          <span class="c1"># Vectores de dirección Y, X, Z</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">up</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">Vector3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">Vector3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">forward</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">Vector3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+          <span class="c1"># Dirección hacia donde mira la cámara (adelante)</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">look</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">eye</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span>
+
+      <span class="k">def</span><span class="w"> </span><span class="nf">Update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deltaTime</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+          <span class="n">keys</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">get_pressed</span><span class="p">()</span>
+          <span class="c1"># Si presionamos la letra W moveremos la cámara adelante</span>
+          <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="n">pg</span><span class="o">.</span><span class="n">K_w</span><span class="p">]:</span>
+              <span class="bp">self</span><span class="o">.</span><span class="n">eye</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span> <span class="o">*</span> <span class="n">deltaTime</span>
+          <span class="c1"># Si presionamos la letra S moveremos la cámara atrás</span>
+          <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="n">pg</span><span class="o">.</span><span class="n">K_s</span><span class="p">]:</span>
+              <span class="bp">self</span><span class="o">.</span><span class="n">eye</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span> <span class="o">*</span> <span class="n">deltaTime</span>
+          <span class="c1"># Si presionamos la letra D moveremos la cámara a la derecha</span>
+          <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="n">pg</span><span class="o">.</span><span class="n">K_d</span><span class="p">]:</span>
+              <span class="bp">self</span><span class="o">.</span><span class="n">eye</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">*</span> <span class="n">deltaTime</span>
+          <span class="c1"># Si presionamos la letra A moveremos la cámara a la izquierda</span>
+          <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="n">pg</span><span class="o">.</span><span class="n">K_a</span><span class="p">]:</span>
+              <span class="bp">self</span><span class="o">.</span><span class="n">eye</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">*</span> <span class="n">deltaTime</span>
+          <span class="c1"># Actualizamos la dirección a donde mira la cámara</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">look</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">eye</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span>
+          <span class="c1"># Estableceremos la transformación de visualización</span>
+          <span class="c1"># https://docs.microsoft.com/eu-es/windows/win32/opengl/glulookat</span>
+          <span class="n">gluLookAt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eye</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eye</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eye</span><span class="o">.</span><span class="n">z</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">look</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">look</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">look</span><span class="o">.</span><span class="n">z</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">up</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">up</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">up</span><span class="o">.</span><span class="n">z</span><span class="p">)</span>
+</code></pre></div>
+<p>Para usar la clase creamos una instancia de Camera y trasladaremos la configuración del model view junto con la actualización de la cámara a su propio método que llamaremos cada fotograma :</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">res.Camera</span><span class="w"> </span><span class="kn">import</span> <span class="n">Camera</span>
+
+  <span class="k">class</span><span class="w"> </span><span class="nc">OpenGLApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+      <span class="k">def</span><span class="w"> </span><span class="nf">Init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <span class="c1"># Configure the projection</span>
+          <span class="n">glMatrixMode</span><span class="p">(</span><span class="n">GL_PROJECTION</span><span class="p">)</span>
+          <span class="n">glLoadIdentity</span><span class="p">()</span>
+          <span class="n">gluPerspective</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="p">(</span><span class="mi">600</span> <span class="o">/</span> <span class="mi">600</span><span class="p">),</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+          <span class="c1"># Setup the mesh</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">(</span><span class="s2">&quot;../res/models/cube.obj&quot;</span><span class="p">)</span>
+          <span class="c1"># Setup the camera</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">Camera</span><span class="p">()</span>
+
+      <span class="k">def</span><span class="w"> </span><span class="nf">UpdateCamera</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <span class="c1"># Model View</span>
+          <span class="n">glMatrixMode</span><span class="p">(</span><span class="n">GL_MODELVIEW</span><span class="p">)</span>
+          <span class="n">glLoadIdentity</span><span class="p">()</span>
+          <span class="n">glViewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span>
+          <span class="n">glEnable</span><span class="p">(</span><span class="n">GL_DEPTH_TEST</span><span class="p">)</span>
+          <span class="c1"># Camera Updating</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">Update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">deltaTime</span><span class="p">)</span>
+
+      <span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span> <span class="o">|</span> <span class="n">GL_DEPTH_BUFFER_BIT</span><span class="p">)</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">UpdateCamera</span><span class="p">()</span>
+          <span class="n">glPushMatrix</span><span class="p">()</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
+          <span class="n">glPopMatrix</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim27.gif" /></p>
+<p>Listo, ya tenemos una cámara que podemos mover en tiempo real con el teclado.</p>
+<h2 id="rotando-la-camara">Rotando la cámara<a class="headerlink" href="#rotando-la-camara" title="Permanent link">&para;</a></h2>
+<p>Un objeto tridimensional puede rotar a partir de uno de sus tres ejes. El ángulo de rotación recibe un nombre distinto para cada eje:</p>
+<ul>
+<li>Pitch para la rotación congelando el eje X.</li>
+<li>Yaw para la rotación congelando el eje Y.</li>
+<li>Roll para la rotación congelando el eje Z.</li>
+</ul>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img47.png" /></p>
+<p>En esta práctica vamos a mapear los ángulos pitch y yaw en función del cursor del ratón para rotar la cámara en el espacio 3D, consiguiendo un efecto similar al de una cámara en primera persona.</p>
+<p>Continuando con la cámara en movimiento, vamos a añadirle dos atributos para controlar los ángulos:</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">pitch</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">yaw</span> <span class="o">=</span> <span class="mi">0</span>
+</code></pre></div>
+<p>Un tercer atributo será un Vector2 para almacenar la última posición del ratón, inicialmente estará justo en el centro de la pantalla:</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">lastMouse</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">Vector2</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+</code></pre></div>
+<p>Durante la actualización de la cámara recuperaremos la posición del ratón y calcularemos la diferencia respecto a la posición anterior:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">Update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deltaTime</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+      <span class="n">mousePos</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">get_pos</span><span class="p">()</span>
+      <span class="n">mouseChange</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lastMouse</span> <span class="o">-</span> <span class="n">pg</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">Vector2</span><span class="p">(</span><span class="n">mousePos</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">lastMouse</span> <span class="o">=</span> <span class="n">mousePos</span>
+</code></pre></div>
+<p>Aplicando trigonometría podemos aplicar los nuevos ángulos de rotación en función de la posición del ratón, para mas detalles sobre esto aquí dejo mis apuntes sobre rotación de vectores. Una vez la tenemos aplicada al vector forward, recalculamos los vectores right y up mediante el producto vectorial, siempre normalizados:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">Rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">yaw</span><span class="p">,</span> <span class="n">pitch</span><span class="p">):</span>
+      <span class="c1"># Incrementamos los ángulos de rotación</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">yaw</span> <span class="o">+=</span> <span class="n">yaw</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">pitch</span> <span class="o">+=</span> <span class="n">pitch</span>
+      <span class="c1"># Aplicamos las rotaciones mediante trigonometría</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">yaw</span><span class="p">))</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pitch</span><span class="p">))</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pitch</span><span class="p">))</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">yaw</span><span class="p">))</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pitch</span><span class="p">))</span>
+      <span class="c1"># Normalizamos el vector adelante</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">forward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+      <span class="c1"># Recalculamos el vector derecho haciendo el producto vectorial</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">Vector3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+      <span class="c1"># Recalculamos el vector arriba haciendo el producto vectorial</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">up</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">)</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+</code></pre></div>
+<p>Nota: Para evitar un futuro bug deberíamos establecer la posición inicial del vector forward de la misma forma durante el constructor de la clase Camera:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Camera</span><span class="p">:</span>
+      <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">pitch</span> <span class="o">=</span> <span class="mi">0</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">yaw</span> <span class="o">=</span> <span class="mi">0</span>
+          <span class="c1"># Valor inicial del vector forward normalizado</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">yaw</span><span class="p">))</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pitch</span><span class="p">))</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pitch</span><span class="p">))</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">yaw</span><span class="p">))</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pitch</span><span class="p">))</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">forward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+</code></pre></div>
+<p>Ya podremos llamar al método después de actualizar la última posición del ratón:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">Update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deltaTime</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+      <span class="n">mousePos</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">get_pos</span><span class="p">()</span>
+      <span class="n">mouseChange</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lastMouse</span> <span class="o">-</span> <span class="n">pg</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">Vector2</span><span class="p">(</span><span class="n">mousePos</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">lastMouse</span> <span class="o">=</span> <span class="n">mousePos</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">Rotate</span><span class="p">(</span><span class="n">mouseChange</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">mouseChange</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+</code></pre></div>
+<p>En este punto si queremos que al movernos horizontalmente la rotación sea acorde con el ratón debemos negar el ángulo X, también podemos reducir la sensibilidad del mouse usando un deltaTime por una cantidad de unidades del mundo por segundo:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Camera</span><span class="p">:</span>
+      <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">mouseSensitivity</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">Vector2</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+
+      <span class="k">def</span><span class="w"> </span><span class="nf">Update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deltaTime</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">Rotate</span><span class="p">(</span>
+              <span class="o">-</span><span class="n">mouseChange</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">mouseSensitivity</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">deltaTime</span><span class="p">,</span>
+               <span class="n">mouseChange</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">mouseSensitivity</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">deltaTime</span><span class="p">)</span>
+</code></pre></div>
+<p>Podemos añadir una rectificación al ángulo pitch para establecer un ángulo mínimo y máximo y no permitir una rotación vertical sobre el propio eje X:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">Rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">yaw</span><span class="p">,</span> <span class="n">pitch</span><span class="p">):</span>
+      <span class="c1"># Incrementamos los ángulos de rotación</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">pitch</span> <span class="o">+=</span> <span class="n">pitch</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">yaw</span> <span class="o">+=</span> <span class="n">yaw</span>
+      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pitch</span> <span class="o">&gt;</span> <span class="mf">89.0</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">pitch</span> <span class="o">=</span> <span class="mi">89</span>
+      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pitch</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">89.0</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">pitch</span> <span class="o">=</span> <span class="o">-</span><span class="mi">89</span>
+</code></pre></div>
+<p>En este punto si salimos del espacio de la ventana la rotación dejará de funcionar, podemos establecer la configuración de PyGame para que el ratón se quede dentro, además podemos esconderlo:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">OpenGLApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+      <span class="k">def</span><span class="w"> </span><span class="nf">Init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <span class="c1"># Configure Window</span>
+          <span class="n">pg</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">set_grab</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+          <span class="n">pg</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<p>Esto implicará que no se pueda clicar el botón de salir, podemos implementar que mediante la tecla ESC se cierre el juego en App:</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+      <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">:</span>
+          <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">pg</span><span class="o">.</span><span class="n">QUIT</span><span class="p">:</span>
+              <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+          <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">KEYDOWN</span><span class="p">:</span>
+              <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">K_ESCAPE</span><span class="p">:</span>
+                  <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+</code></pre></div>
+<p>En este punto la cámara funcionará bastante bien:</p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim28.gif" /></p>
+<p>Lamentablemente seguimos limitados por el espacio de la ventana y no podemos seguir rotando la vista, debemos encontrar una forma de solucionarlo.</p>
+<p>Lo que haremos es que la cámara sea consciente del tamaño de la ventana y reinicie la posición del ratón justo al centro después de mover el ratón en cada fotograma. Luego actualizaremos la última posición, pero en lugar de la posición inicial utilizaremos la que hemos establecido en medio de la pantalla:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">UpdateCamera</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="c1"># Camera Updating</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">Update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">deltaTime</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">screenWidth</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">screenHeight</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">Update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deltaTime</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">screenWidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">screenHeight</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+      <span class="n">mousePos</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">get_pos</span><span class="p">()</span>
+      <span class="n">mouseChange</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lastMouse</span> <span class="o">-</span> <span class="n">pg</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">Vector2</span><span class="p">(</span><span class="n">mousePos</span><span class="p">)</span>
+      <span class="n">pg</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">set_pos</span><span class="p">(</span><span class="n">screenWidth</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">screenHeight</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># &lt;-----</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">lastMouse</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">get_pos</span><span class="p">()</span>              <span class="c1"># &lt;-----</span>
+</code></pre></div>
+<p>Ahora ya podemos rotar indefinidamente la cámara:</p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim29.gif" /></p>
+<p>Solo nos falta encontrar una forma de alternar si queremos mover/rotar la cámara o no. Para mí la mejor forma de hacerlo es cuando el clic derecho del ratón está clicado. Quitaremos que el ratón desaparezca inicialmente y en su lugar detectaremos el clic derecho para activar el modo grab y ratón invisible:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">OpenGLApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+      <span class="k">def</span><span class="w"> </span><span class="nf">Inputs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">:</span>
+              <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">MOUSEBUTTONDOWN</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">button</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                  <span class="n">pg</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">set_pos</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">screenWidth</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">screenHeight</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+                  <span class="n">pg</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+                  <span class="n">pg</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">set_grab</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+              <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">MOUSEBUTTONUP</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">button</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                  <span class="n">pg</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">set_pos</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">screenWidth</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">screenHeight</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+                  <span class="n">pg</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+                  <span class="n">pg</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">set_grab</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<p>Notar que reiniciaremos la posición al centro de la pantalla antes y después de dejar clicado el botón, eso suavizará la transición entre el modo "movimiento" y el normal.</p>
+<p>Simplemente haremos una comprobación a nivel del Camera.Update, inidicándole que sólo actualice la rotación si éste no es visible:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">Update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deltaTime</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">screenWidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">screenHeight</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+      <span class="k">if</span> <span class="ow">not</span> <span class="n">pg</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">get_visible</span><span class="p">():</span>
+
+          <span class="c1"># Procesamiento de la dirección</span>
+          <span class="n">mouseChange</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lastMouse</span> <span class="o">-</span> <span class="n">pg</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">Vector2</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">get_pos</span><span class="p">())</span>
+          <span class="n">pg</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">set_pos</span><span class="p">(</span><span class="n">screenWidth</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">screenHeight</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">Rotate</span><span class="p">(</span><span class="o">-</span><span class="n">mouseChange</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">mouseSensitivity</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">deltaTime</span><span class="p">,</span>
+                      <span class="n">mouseChange</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">mouseSensitivity</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">deltaTime</span><span class="p">)</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">lastMouse</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">get_pos</span><span class="p">()</span>
+
+      <span class="c1"># Precesamiento del movimiento</span>
+      <span class="n">keys</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">get_pressed</span><span class="p">()</span>
+      <span class="c1"># Si presionamos la letra W moveremos la cámara adelante</span>
+      <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="n">pg</span><span class="o">.</span><span class="n">K_w</span><span class="p">]:</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">eye</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span> <span class="o">*</span> <span class="n">deltaTime</span>
+      <span class="c1"># Si presionamos la letra S moveremos la cámara atrás</span>
+      <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="n">pg</span><span class="o">.</span><span class="n">K_s</span><span class="p">]:</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">eye</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span> <span class="o">*</span> <span class="n">deltaTime</span>
+      <span class="c1"># Si presionamos la letra D moveremos la cámara a la derecha</span>
+      <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="n">pg</span><span class="o">.</span><span class="n">K_d</span><span class="p">]:</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">eye</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">*</span> <span class="n">deltaTime</span>
+      <span class="c1"># Si presionamos la letra A moveremos la cámara a la izquierda</span>
+      <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="n">pg</span><span class="o">.</span><span class="n">K_a</span><span class="p">]:</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">eye</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">*</span> <span class="n">deltaTime</span>
+      <span class="c1"># Si presionamos el espacio moveremos la cámara hacia arriba</span>
+      <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="n">pg</span><span class="o">.</span><span class="n">K_SPACE</span><span class="p">]:</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">eye</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">up</span> <span class="o">*</span> <span class="n">deltaTime</span>
+      <span class="c1"># Si presionamos el ALT izquierdo moveremos la cámara abajo</span>
+      <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="n">pg</span><span class="o">.</span><span class="n">K_LALT</span><span class="p">]:</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">eye</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">up</span> <span class="o">*</span> <span class="n">deltaTime</span>
+
+      <span class="c1"># Actualizamos la dirección a donde mira la cámara</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">look</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">eye</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span>
+      <span class="c1"># Estableceremos la transformación de visualización</span>
+      <span class="c1"># https://docs.microsoft.com/eu-es/windows/win32/opengl/glulookat</span>
+      <span class="n">gluLookAt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eye</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eye</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eye</span><span class="o">.</span><span class="n">z</span><span class="p">,</span>
+                  <span class="bp">self</span><span class="o">.</span><span class="n">look</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">look</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">look</span><span class="o">.</span><span class="n">z</span><span class="p">,</span>
+                  <span class="bp">self</span><span class="o">.</span><span class="n">up</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">up</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">up</span><span class="o">.</span><span class="n">z</span><span class="p">)</span>
+</code></pre></div>
+<p>El resultado será simplemente perfecto:</p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim30.gif" /></p>
+<h2 id="visualizando-la-orientacion">Visualizando la orientación<a class="headerlink" href="#visualizando-la-orientacion" title="Permanent link">&para;</a></h2>
+<p>En esta práctica vamos a dibujar unas líneas representando el punto de origen del mundo tridimensional y sus vectores con dirección arriba, derecha y adelante.</p>
+<p>Utilizaremos como base el programa anterior:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+  <span class="kn">import</span><span class="w"> </span><span class="nn">pygame</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pg</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">pygame.locals</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+  <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">res.App</span><span class="w"> </span><span class="kn">import</span> <span class="n">App</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">res.Camera</span><span class="w"> </span><span class="kn">import</span> <span class="n">Camera</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">res.Mesh</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">OpenGL.GL</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">OpenGL.GLU</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+
+  <span class="k">class</span><span class="w"> </span><span class="nc">OpenGLApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+      <span class="k">def</span><span class="w"> </span><span class="nf">Init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <span class="c1"># Configure the projection</span>
+          <span class="n">glMatrixMode</span><span class="p">(</span><span class="n">GL_PROJECTION</span><span class="p">)</span>
+          <span class="n">glLoadIdentity</span><span class="p">()</span>
+          <span class="n">gluPerspective</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="p">(</span><span class="mi">600</span> <span class="o">/</span> <span class="mi">600</span><span class="p">),</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+          <span class="c1"># Setup the mesh</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">(</span><span class="s2">&quot;../res/models/cube.obj&quot;</span><span class="p">)</span>
+          <span class="c1"># Setup the camera</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">Camera</span><span class="p">()</span>
+
+      <span class="k">def</span><span class="w"> </span><span class="nf">Inputs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">:</span>
+              <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">MOUSEBUTTONDOWN</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">button</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                  <span class="n">pg</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">set_pos</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">screenWidth</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">screenHeight</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+                  <span class="n">pg</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+                  <span class="n">pg</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">set_grab</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+              <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">MOUSEBUTTONUP</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">button</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                  <span class="n">pg</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">set_pos</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">screenWidth</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">screenHeight</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+                  <span class="n">pg</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+                  <span class="n">pg</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">set_grab</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+      <span class="k">def</span><span class="w"> </span><span class="nf">UpdateCamera</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <span class="c1"># Model View</span>
+          <span class="n">glMatrixMode</span><span class="p">(</span><span class="n">GL_MODELVIEW</span><span class="p">)</span>
+          <span class="n">glLoadIdentity</span><span class="p">()</span>
+          <span class="n">glViewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span>
+          <span class="n">glEnable</span><span class="p">(</span><span class="n">GL_DEPTH_TEST</span><span class="p">)</span>
+          <span class="c1"># Camera Updating</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">Update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">deltaTime</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">screenWidth</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">screenHeight</span><span class="p">)</span>
+
+      <span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span> <span class="o">|</span> <span class="n">GL_DEPTH_BUFFER_BIT</span><span class="p">)</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">UpdateCamera</span><span class="p">()</span>
+          <span class="n">glPushMatrix</span><span class="p">()</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
+          <span class="n">glPopMatrix</span><span class="p">()</span>
+
+
+  <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+      <span class="n">app</span> <span class="o">=</span> <span class="n">OpenGLApp</span><span class="p">(</span><span class="s2">&quot;OpenGL en Python&quot;</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+      <span class="n">app</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
+</code></pre></div>
+<p>Empecemos dibujando unas líneas para representar los ejes x, y, z:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">OpenGLApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+      <span class="k">def</span><span class="w"> </span><span class="nf">DrawWorldAxes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <span class="n">glLineWidth</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+          <span class="n">glBegin</span><span class="p">(</span><span class="n">GL_LINES</span><span class="p">)</span>
+          <span class="n">glVertex3d</span><span class="p">(</span><span class="o">-</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># X Axis</span>
+          <span class="n">glVertex3d</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+          <span class="n">glVertex3d</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># Y Axis</span>
+          <span class="n">glVertex3d</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+          <span class="n">glVertex3d</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1000</span><span class="p">)</span> <span class="c1"># Z Axis</span>
+          <span class="n">glVertex3d</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+          <span class="n">glEnd</span><span class="p">()</span>
+          <span class="n">glLineWidth</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+      <span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span> <span class="o">|</span> <span class="n">GL_DEPTH_BUFFER_BIT</span><span class="p">)</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">DrawWorldAxes</span><span class="p">()</span> <span class="c1"># &lt;-----</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">UpdateCamera</span><span class="p">()</span>
+          <span class="n">glPushMatrix</span><span class="p">()</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
+          <span class="n">glPopMatrix</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img48.png" /></p>
+<p>Podemos hacerlas de distintos colores:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">DrawWorldAxes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="n">glLineWidth</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+      <span class="n">glBegin</span><span class="p">(</span><span class="n">GL_LINES</span><span class="p">)</span>
+      <span class="n">glColor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="n">glVertex3d</span><span class="p">(</span><span class="o">-</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># X Axis</span>
+      <span class="n">glVertex3d</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="n">glColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="n">glVertex3d</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># Y Axis</span>
+      <span class="n">glVertex3d</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="n">glColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="n">glVertex3d</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1000</span><span class="p">)</span>  <span class="c1"># Z Axis</span>
+      <span class="n">glVertex3d</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+      <span class="n">glEnd</span><span class="p">()</span>
+      <span class="n">glColor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="n">glLineWidth</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img49.png" /></p>
+<p>Ahora podemos dibujar en la longitud 1 de cada eje una esfera. Para ello crearemos un objeto cuádrico de OpenGL. De paso modificaremos la longitud de las líneas a una sola unidad:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">DrawWorldAxes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+      <span class="c1"># Dibujamos las líneas para los ejes</span>
+      <span class="n">glLineWidth</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+      <span class="n">glBegin</span><span class="p">(</span><span class="n">GL_LINES</span><span class="p">)</span>
+      <span class="n">glColor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="n">glVertex3d</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># Eje X</span>
+      <span class="n">glVertex3d</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="n">glColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="n">glVertex3d</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># Eje Y</span>
+      <span class="n">glVertex3d</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="n">glColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="n">glVertex3d</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># Eje Z</span>
+      <span class="n">glVertex3d</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+      <span class="n">glEnd</span><span class="p">()</span>
+
+      <span class="c1"># Creamos un objeto cuádrico en OpenGL para una esfera</span>
+      <span class="c1"># https://docs.microsoft.com/es-es/windows/win32/opengl/glunewquadric</span>
+      <span class="n">sphere</span> <span class="o">=</span> <span class="n">gluNewQuadric</span><span class="p">()</span>
+
+      <span class="c1"># Dibujamos una esfera para el eje X</span>
+      <span class="n">glColor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="n">glPushMatrix</span><span class="p">()</span>
+      <span class="n">glTranslated</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="n">gluSphere</span><span class="p">(</span><span class="n">sphere</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+      <span class="n">glPopMatrix</span><span class="p">()</span>
+
+      <span class="c1"># Dibujamos una esfera para el eje Y</span>
+      <span class="n">glColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="n">glPushMatrix</span><span class="p">()</span>
+      <span class="n">glTranslated</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="n">gluSphere</span><span class="p">(</span><span class="n">sphere</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+      <span class="n">glPopMatrix</span><span class="p">()</span>
+
+      <span class="c1"># Dibujamos una esfera para el eje Z</span>
+      <span class="n">glColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="n">glPushMatrix</span><span class="p">()</span>
+      <span class="n">glTranslated</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="n">gluSphere</span><span class="p">(</span><span class="n">sphere</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+      <span class="n">glPopMatrix</span><span class="p">()</span>
+
+      <span class="n">glColor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="n">glLineWidth</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<p>Si modificamos el ángulo inicial yaw a -90 para alinear la cámara con el origen para el eje x moviéndonos hacia atrás veremos los ejes del cubo en el mundo en el punto de origen:</p>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img50.png" /></p>
 <hr />
-<p><small class="edited"><i>Última edición: 12 de Junio de 2022</i></small></p>
+<p><small class="edited"><i>Última edición: 3 de Octubre de 2022</i></small></p>
                   
                     
                   
@@ -518,8 +1145,8 @@ div.my-img{text-align:center;margin-top:20px}
       </a>
        
       <a
-        href="../../unity/"
-        title="Índice del archivo"
+        href="../06-transformaciones-afines/"
+        title="Transformaciones afines"
         class="md-flex md-footer-nav__link md-footer-nav__link--next"
         rel="next"
       >
@@ -528,7 +1155,7 @@ div.my-img{text-align:center;margin-top:20px}
             <span class="md-footer-nav__direction">
               Siguiente
             </span>
-            Índice del archivo
+            Transformaciones afines
           </span>
         </div>
         <div class="md-flex__cell md-flex__cell--shrink">

@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+  <head>
+    
+    
+    
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Renderizado con shaders en OpenGL con Python">
+      
+      <link rel="canonical" href="https://hektorprofe.github.io/docs/opengl/07-renderizado-con-shaders/">
+      
+        <meta name="author" content="Héctor Costa Guzman">
+      
+      <link rel="shortcut icon" href="/favicon.ico">
+    
+    
+      
+        <title>Renderizado con shaders | OpenGL en Python | Hektor Profe</title>
+      
+    
+    <link rel="stylesheet"
+          href="../../assets/stylesheets/application.2.css">
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    
+    <link rel="stylesheet"
+          href="https://hektorprofe.github.io/docs/assets/stylesheets/tingle.min.css">
+    <style>
+@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
+[data-md-color-primary="grey"] .md-header { background-color: #191A1D }
+[data-md-color-primary="grey"] .md-tabs { background-color: #222831 }
+.md-footer-nav { background-color: #222831; }
+.md-footer-meta { background-color: #191A1D }
+html [data-md-color-primary="grey"] .md-nav--primary .md-nav__title--site { background-color: #191A1D; }
+.mini{ display: none; } .maxi{ display: block; }
+.embed-container { position: relative; padding-bottom: 56.25%;height: 0; overflow: hidden; max-width: 100%; height: auto; margin-bottom: 0; } 
+.embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.md-nav__link:focus, .md-nav__link:hover { color: #018dc5; }
+.headerlink{ color: #018dc5 !important; }
+.md-footer-links__highlight a{ color: #777 !important; }
+.md-footer-links__highlight a:hover{ color: #ddd !important; }
+.visible{ display: inherit !important; }
+/*.md-tabs { display: none !important; }*/
+.nav__btn, .nav__logo{ transition: 0.3s; }
+.nav__btn:hover{ color: #aaa; }
+.nav__logo:hover{ opacity:.7; }
+.nav__logo {max-width: 225px !important; }
+img:not([src]){visibility:hidden;}
+img.click{opacity: 0.96;box-shadow:rgb(79, 82, 92) -4px 4px}
+img.click:hover{opacity: 1;box-shadow:rgb(10, 172, 237) -4px 4px}
+.button { background-color: #36bf2d; border: none; color: white !important; padding: 20px 0px; text-align: center; text-decoration: none; display: block; font-size: 97%; width: 100%; font-weight: bold;}
+.button:hover { background-color: #4CAF50; color: white; }
+.animated.delay-1dot5s {animation-delay: 1.5s;}
+.md-icon--search { display:inline-block!important}
+a.headerlink{ display: none !important; }
+small.edited { display: block; text-align: right; }
+div.my-img{text-align:center;margin-top:20px}
+@media (max-width: 76.1875em){ .mini{ display: block; } .maxi{ display: none;} /*.md-nav__link[for="nav-1"] { display: none; }*/ }
+@media (min-width: 1599.9px){ .md-header-nav__button.md-logo img { height: 37.5px !important; width: 220px; } }
+@media (min-width: 1999.9px){ .md-header-nav__button.md-logo img { height: 40px !important; width: 240px; } }
+/* Rectificación footer en paginas pequeñas de altura */
+@media (max-width: 1599.8px){ .md-container {height: calc(100% - 48px)} }
+@media (min-width: 1599.9px){ .md-container {height: calc(100% - 53px)} }
+@media (min-width: 1999.9px){ .md-container {height: calc(100% - 58px)} }
+@media only screen and (max-width: 959.9px) { .nav__logo { display: block !important; }} 
+@media only screen and (min-width: 960px) and (max-width: 76.1875em) { .nav__logo { display: block !important; }} 
+@media only screen and (min-width: 76.1875em) { .nav__logo { display: none !important; } } 
+@media only screen and (max-width: 76.1875em) { .md-sidebar--primary { left: -26.2rem;; width: 26.2rem; }  [data-md-toggle="drawer"]:checked ~ .md-container .md-sidebar--primary { -webkit-transform: translateX(26.2rem); transform: translateX(26.2rem); } [dir="rtl"] [data-md-toggle="drawer"]:checked ~ .md-container .md-sidebar--primary { -webkit-transform: translateX(-26.2rem); transform: translateX(-26.2rem); } }
+@media (min-width: 1219.9px){ #home__btn { display: none !important; } #cursos__btn{ color: white !important; } [data-md-color-primary="grey"] .md-nav__link--active{ color: rgba(0, 0, 0, 0.87); text-decoration: underline !important; } }
+@media (min-width: 467.9px){ #discord__btn{ display: inline-block !important; } }
+@media only screen and (min-width: 60em){ .md-search__input { background-color: rgb(53, 54, 56); } .md-search__input:hover { background-color: rgb(84, 87, 93); color: white; }}
+@media (max-width: 1219.9px){ .md-header-nav__title{ padding: 0 1rem; } .nav__btn {display:none;} }
+@media (max-width: 875.9px){ #cookie-bar-button{ margin-top: 20px !important; }}
+@media (max-width: 719.9px){ #cookie-bar { padding: 3.25rem 1.25rem; }}
+@media (max-width: 512.9px){ #cookie-bar { padding: 2rem 1.25rem; }}
+
+.tingle-modal { font-size:18px !important;}
+.tingle-modal-box{ width: 80%; max-width: 1100px; }
+.tingle-btn--danger{ background: darkorange !important; }
+.tingle-modal-box__content { padding: 3rem 2rem 3rem 3rem;}
+@media (max-width: 540px){ .tingle-modal-box{ width: auto; } }
+@media (max-width: 849px){ #supermodal{ grid-template-columns:100% !important; }}
+
+.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 275px - 60px)}
+@media (max-width: 1999.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 246px - 60px);margin-right:-1px;}}
+@media (max-width: 1599.9px){.md-sidebar--secondary .md-sidebar__scrollwrap {max-height: calc(100% - 222px - 60px)}}
+
+    </style>
+  </head>
+  
+    
+    
+    <body dir="ltr"
+          data-md-color-primary="grey"
+          data-md-color-accent="grey">
+    
+      <input class="md-toggle"
+             data-md-toggle="drawer"
+             type="checkbox"
+             id="__drawer"
+             autocomplete="off">
+      <input class="md-toggle"
+             data-md-toggle="search"
+             type="checkbox"
+             id="__search"
+             autocomplete="off">
+      <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+      
+        <a href="#renderizado-con-shaders"
+           tabindex="1"
+           class="md-skip">Saltar a contenido</a>
+      
+      
+        <header class="md-header"
+        data-md-component="header"
+        style="position: inherit !important">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://hektorprofe.github.io/docs/"
+           title="Archivo - Archivo de Hektor Profe Docs"
+           class="md-header-nav__button md-logo"
+           style="font-size: 0px">
+          <img src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+               width="200px"
+               height="35px"
+               style="margin-top: -5px"
+               alt="Hektor Profe"
+               title="Hektor Profe" />
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title"
+             data-md-component="title"
+             style="text-align: right">
+          <a class="nav__btn"
+             href="https://hektorprofe.github.io/docs/"
+             style="margin-left:1.4em"
+             title="Buscador de documentos">Buscador</a>
+          <a href="https://hektorprofe.github.io/docs/">
+            <img class="nav__logo"
+                 src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+                 width="200px"
+                 height="35px"
+                 style="margin: 6px auto 0"
+                 alt="Hektor Profe"
+                 title="Hektor Profe" />
+          </a>
+        </div>
+        <style>
+          .md-sidebar[data-md-state="lock"] {
+            top: 0rem !important;
+          }
+          .md-tabs {
+            display: none !important;
+          }
+          .hde {
+            display: inline-block;
+          }
+          .admonition.note > .superfences-tabs > label:hover,
+          .headerlink {
+            color: #018dc5 !important;
+          }
+          .admonition.info {
+            font-size: 100%;
+          }
+          .admonition.info label {
+            font-size: 91%;
+          }
+          .admonition.note > .admonition-title {
+            display: none;
+          }
+          .image {
+            text-align: center;
+            margin-top: 25px;
+          }
+          .contenedor_youtube {
+            position: relative !important;
+            padding-bottom: 56.25% !important; /*panorámico*/
+            padding-top: 0px !important;
+            height: 0 !important;
+            margin-top: -20px;
+            margin-bottom: 25px;
+          }
+          .contenedor_youtube iframe {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+          }
+        </style>
+      </div>
+    </div>
+  </nav>
+</header>
+      
+      <div class="md-container" style="padding-top: 0px !important;">
+        
+          
+        
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list" id="top__tabs">
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+          <li class="md-tabs__item"><a href="javascript://" class="md-tabs__link">&nbsp;</a></li>
+        
+      </ul>
+    </div>
+</nav>
+        
+        <main class="md-main">
+          <div class="md-main__inner md-grid"
+               data-md-component="container"
+               style="padding-top: 8px !important">
+            
+              
+                <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                  <div class="md-sidebar__scrollwrap" id="md__sidebar__scroll">
+                    <div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title" for="__drawer" style="padding:0 !important;max-height:5.5rem;"></label>
+  
+  <ul class="md-nav__list" id="main__list" data-md-scrollfix>
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+        <!-- comprobación extra -->
+         
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9" checked>
+    
+    <label class="md-nav__link" for="nav-9">
+      Apuntes de OpenGL
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        Apuntes de OpenGL
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../" title="Índice del archivo" class="md-nav__link">
+      Índice del archivo
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../01-primeros-pasos/" title="Primeros pasos" class="md-nav__link">
+      Primeros pasos
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../02-graficos-primitivos/" title="Gráficos primitivos" class="md-nav__link">
+      Gráficos primitivos
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../03-programando-una-tortuga/" title="Tortuga y fractales" class="md-nav__link">
+      Tortuga y fractales
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../04-trabajando-con-mallas/" title="Trabajando con mallas" class="md-nav__link">
+      Trabajando con mallas
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../05-dibujando-el-espacio-3d/" title="Dibujando el espacio 3D" class="md-nav__link">
+      Dibujando el espacio 3D
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+
+  <li class="md-nav__item">
+    <a href="../06-transformaciones-afines/" title="Transformaciones afines" class="md-nav__link">
+      Transformaciones afines
+    </a>
+  </li>
+
+        
+            
+            
+            
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Renderizado con shaders
+      </label>
+    
+    <a href="./" title="Renderizado con shaders" class="md-nav__link md-nav__link--active" id="md__active_link">
+      Renderizado con shaders
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#refactorizando-el-motor" title="Refactorizando el motor" class="md-nav__link toc__link">
+    Refactorizando el motor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compilador-de-shaders" title="Compilador de shaders" class="md-nav__link toc__link">
+    Compilador de shaders
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nuestro-primer-shader" title="Nuestro primer shader" class="md-nav__link toc__link">
+    Nuestro primer shader
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shader-con-multiples-vertices" title="Shader con múltiples vértices" class="md-nav__link toc__link">
+    Shader con múltiples vértices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estrella-de-colores" title="Estrella de colores" class="md-nav__link toc__link">
+    Estrella de colores
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#renderizando-un-modelo" title="Renderizando un modelo" class="md-nav__link toc__link">
+    Renderizando un modelo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traslacion-en-el-modelo" title="Traslación en el modelo" class="md-nav__link toc__link">
+    Traslación en el modelo
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </ul>
+</nav>
+</div>
+                  </div>
+                </div>
+              
+              
+                <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                  <div class="md-sidebar__scrollwrap">
+                    <div class="md-sidebar__inner">
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#refactorizando-el-motor" title="Refactorizando el motor" class="md-nav__link toc__link">
+    Refactorizando el motor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compilador-de-shaders" title="Compilador de shaders" class="md-nav__link toc__link">
+    Compilador de shaders
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nuestro-primer-shader" title="Nuestro primer shader" class="md-nav__link toc__link">
+    Nuestro primer shader
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shader-con-multiples-vertices" title="Shader con múltiples vértices" class="md-nav__link toc__link">
+    Shader con múltiples vértices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estrella-de-colores" title="Estrella de colores" class="md-nav__link toc__link">
+    Estrella de colores
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#renderizando-un-modelo" title="Renderizando un modelo" class="md-nav__link toc__link">
+    Renderizando un modelo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traslacion-en-el-modelo" title="Traslación en el modelo" class="md-nav__link toc__link">
+    Traslación en el modelo
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav></div>
+                  </div>
+                </div>
+              
+            
+            <div class="md-content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+                  
+                  <h1 id="renderizado-con-shaders">Renderizado con shaders<a class="headerlink" href="#renderizado-con-shaders" title="Permanent link">&para;</a></h1>
+<p>En este momento, para cada fotograma del escenario, la CPU debe recorrer y procesar individualmente cada uno de los vértices de los modelos.</p>
+<p>Mediante el uso de shaders, en OpenGL podemos almacenar esos mismos vértices en la memoria de la tarjera gráfica y procesarlos sacando partido a su potencia, multiplicando exponencialmente la capacidad de renderizado.</p>
+<h2 id="refactorizando-el-motor">Refactorizando el motor<a class="headerlink" href="#refactorizando-el-motor" title="Permanent link">&para;</a></h2>
+<p>Voy a crear una nueva versión del motor preparándolo para hacer uso de los shaders.</p>
+<p>Un "vertex shader" es una pieza de código que define cómo debe la gráfica renderizar un conjunto de los vértices almacenados en el buffer de su memoria. Pero más allá de la posición en el espacio tridimensional, este "vertex shader" se complementa con un "fragment shader" que trabaja a nivel de píxel en el área de las mallas formadas por los vértices, y especifica entre otras cosas, cómo colorear ese espacio.</p>
+<p>Empezaremos con la implementación de la App:</p>
+<p><code>engine/PyOGLApp.py</code></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pygame</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pg</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pygame.locals</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">OpenGL.GL</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">OpenGL.GLU</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.Camera</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">PyOGLApp</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">maxFps</span><span class="p">):</span>
+        <span class="n">pg</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+
+        <span class="c1"># OpenGL Shaders Configurations</span>
+        <span class="n">pg</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">gl_set_attribute</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">GL_MULTISAMPLEBUFFERS</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">pg</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">gl_set_attribute</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">GL_MULTISAMPLESAMPLES</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+        <span class="n">pg</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">gl_set_attribute</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">GL_CONTEXT_PROFILE_MASK</span><span class="p">,</span> <span class="n">pg</span><span class="o">.</span><span class="n">GL_CONTEXT_PROFILE_CORE</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">maxFps</span> <span class="o">=</span> <span class="n">title</span><span class="p">,</span> <span class="n">maxFps</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">screenWidth</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">screenHeight</span> <span class="o">=</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">display</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">),</span> <span class="n">DOUBLEBUF</span> <span class="o">|</span> <span class="n">OPENGL</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clock</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">Clock</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">Camera</span><span class="p">()</span>
+
+        <span class="c1"># Vertex Array Object reference</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vao_ref</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># Program Id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program_id</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># Number of vertex to render</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vertex_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">Init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">Inputs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">MOUSEBUTTONDOWN</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">button</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">pg</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">set_pos</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">screenWidth</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">screenHeight</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+                <span class="n">pg</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+                <span class="n">pg</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">set_grab</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">MOUSEBUTTONUP</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">button</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">pg</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">set_pos</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">screenWidth</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">screenHeight</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+                <span class="n">pg</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">pg</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">set_grab</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">Update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">CameraInit</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">Run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Init</span><span class="p">()</span>   <span class="c1"># initial members</span>
+        <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">pg</span><span class="o">.</span><span class="n">QUIT</span><span class="p">:</span>
+                    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">KEYDOWN</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">K_ESCAPE</span><span class="p">:</span>
+                        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">deltaTime</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clock</span><span class="o">.</span><span class="n">tick</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">maxFps</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1000</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Inputs</span><span class="p">()</span>  <span class="c1"># frame inputs</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Update</span><span class="p">()</span>  <span class="c1"># frame logic</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Render</span><span class="p">()</span>  <span class="c1"># frame drawing</span>
+            <span class="n">pg</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">flip</span><span class="p">()</span>
+            <span class="n">pg</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_caption</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">clock</span><span class="o">.</span><span class="n">get_fps</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> fps)&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">CameraInit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">WorldAxes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Dibujamos las líneas para los ejes</span>
+        <span class="n">glLineWidth</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">glBegin</span><span class="p">(</span><span class="n">GL_LINES</span><span class="p">)</span>
+        <span class="n">glColor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">glVertex3d</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># Eje X</span>
+        <span class="n">glVertex3d</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">glColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">glVertex3d</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># Eje Y</span>
+        <span class="n">glVertex3d</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">glColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">glVertex3d</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># Eje Z</span>
+        <span class="n">glVertex3d</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="n">glEnd</span><span class="p">()</span>
+
+        <span class="c1"># Creamos un objeto cuádrico en OpenGL para una esfera</span>
+        <span class="c1"># https://docs.microsoft.com/es-es/windows/win32/opengl/glunewquadric</span>
+        <span class="n">sphere</span> <span class="o">=</span> <span class="n">gluNewQuadric</span><span class="p">()</span>
+        <span class="c1"># Dibujamos una esfera para el eje X</span>
+        <span class="n">glColor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">glPushMatrix</span><span class="p">()</span>
+        <span class="n">glTranslated</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">gluSphere</span><span class="p">(</span><span class="n">sphere</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="n">glPopMatrix</span><span class="p">()</span>
+
+        <span class="c1"># Dibujamos una esfera para el eje Y</span>
+        <span class="n">glColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">glPushMatrix</span><span class="p">()</span>
+        <span class="n">glTranslated</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">gluSphere</span><span class="p">(</span><span class="n">sphere</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="n">glPopMatrix</span><span class="p">()</span>
+
+        <span class="c1"># Dibujamos una esfera para el eje Z</span>
+        <span class="n">glColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">glPushMatrix</span><span class="p">()</span>
+        <span class="n">glTranslated</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">gluSphere</span><span class="p">(</span><span class="n">sphere</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="n">glPopMatrix</span><span class="p">()</span>
+
+        <span class="n">glColor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">glLineWidth</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<p>Esta tomará la configuración de la clase Camera:</p>
+<p><code>engine/Camera.py</code></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pygame</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pg</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">OpenGL.GLU</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Camera</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Posición del ojo (origen)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eye</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">Vector3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="c1"># Vectores de dirección Y, X, Z</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">up</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">Vector3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">Vector3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">forward</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">Vector3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># Dirección hacia donde mira la cámara (adelante)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">look</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">eye</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span>
+        <span class="c1"># Rotaciones de la cámara a partir del ratón</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mouseSensitivity</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">Vector2</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lastMouse</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">Vector2</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pitch</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">yaw</span> <span class="o">=</span> <span class="o">-</span><span class="mi">90</span>
+        <span class="c1"># Valor inicial del vector forward normalizado</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">yaw</span><span class="p">))</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pitch</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pitch</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">yaw</span><span class="p">))</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pitch</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">forward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">Rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">yaw</span><span class="p">,</span> <span class="n">pitch</span><span class="p">):</span>
+        <span class="c1"># Incrementamos los ángulos de rotación</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pitch</span> <span class="o">+=</span> <span class="n">pitch</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">yaw</span> <span class="o">+=</span> <span class="n">yaw</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pitch</span> <span class="o">&gt;</span> <span class="mf">89.0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pitch</span> <span class="o">=</span> <span class="mi">89</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pitch</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">89.0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pitch</span> <span class="o">=</span> <span class="o">-</span><span class="mi">89</span>
+        <span class="c1"># Aplicamos las rotaciones mediante trigonometría</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">yaw</span><span class="p">))</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pitch</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pitch</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">yaw</span><span class="p">))</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pitch</span><span class="p">))</span>
+        <span class="c1"># Normalizamos el vector adelante</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">forward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+        <span class="c1"># Recalculamos el vector derecho haciendo el producto vectorial</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">Vector3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+        <span class="c1"># Recalculamos el vector arriba haciendo el producto vectorial</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">up</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">)</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">Update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deltaTime</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">screenWidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">screenHeight</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">pg</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">get_visible</span><span class="p">():</span>
+            <span class="c1"># Procesamiento de la dirección</span>
+            <span class="n">mouseChange</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lastMouse</span> <span class="o">-</span> <span class="n">pg</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">Vector2</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">get_pos</span><span class="p">())</span>
+            <span class="n">pg</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">set_pos</span><span class="p">(</span><span class="n">screenWidth</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">screenHeight</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Rotate</span><span class="p">(</span><span class="o">-</span><span class="n">mouseChange</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">mouseSensitivity</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">deltaTime</span><span class="p">,</span>
+                        <span class="n">mouseChange</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">mouseSensitivity</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">deltaTime</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lastMouse</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">get_pos</span><span class="p">()</span>
+        <span class="c1"># Precesamiento del movimiento</span>
+        <span class="n">keys</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">get_pressed</span><span class="p">()</span>
+        <span class="c1"># Si presionamos la letra W moveremos la cámara adelante</span>
+        <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="n">pg</span><span class="o">.</span><span class="n">K_w</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">eye</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span> <span class="o">*</span> <span class="n">deltaTime</span>
+        <span class="c1"># Si presionamos la letra S moveremos la cámara atrás</span>
+        <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="n">pg</span><span class="o">.</span><span class="n">K_s</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">eye</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span> <span class="o">*</span> <span class="n">deltaTime</span>
+        <span class="c1"># Si presionamos la letra D moveremos la cámara a la derecha</span>
+        <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="n">pg</span><span class="o">.</span><span class="n">K_d</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">eye</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">*</span> <span class="n">deltaTime</span>
+        <span class="c1"># Si presionamos la letra A moveremos la cámara a la izquierda</span>
+        <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="n">pg</span><span class="o">.</span><span class="n">K_a</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">eye</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">*</span> <span class="n">deltaTime</span>
+        <span class="c1"># Si presionamos el espacio moveremos la cámara hacia arriba</span>
+        <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="n">pg</span><span class="o">.</span><span class="n">K_SPACE</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">eye</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">up</span> <span class="o">*</span> <span class="n">deltaTime</span>
+        <span class="c1"># Si presionamos el ALT izquierdo moveremos la cámara abajo</span>
+        <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="n">pg</span><span class="o">.</span><span class="n">K_LALT</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">eye</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">up</span> <span class="o">*</span> <span class="n">deltaTime</span>
+        <span class="c1"># Actualizamos la dirección a donde mira la cámara</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">look</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">eye</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span>
+        <span class="c1"># Estableceremos la transformación de visualización</span>
+        <span class="c1"># https://docs.microsoft.com/eu-es/windows/win32/opengl/glulookat</span>
+        <span class="n">gluLookAt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eye</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eye</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eye</span><span class="o">.</span><span class="n">z</span><span class="p">,</span>
+                  <span class="bp">self</span><span class="o">.</span><span class="n">look</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">look</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">look</span><span class="o">.</span><span class="n">z</span><span class="p">,</span>
+                  <span class="bp">self</span><span class="o">.</span><span class="n">up</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">up</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">up</span><span class="o">.</span><span class="n">z</span><span class="p">)</span>
+</code></pre></div>
+<p>Para hacer uso de nuestro motor crearemos una instancia de la aplicación:</p>
+<p><code>refactortest.py</code></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">res.engine.PyOGLApp</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">RefactorTest</span><span class="p">(</span><span class="n">PyOGLApp</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">Init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">bgColor</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">drawingColor</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">glClearColor</span><span class="p">(</span><span class="n">bgColor</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bgColor</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">bgColor</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">bgColor</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+        <span class="n">glColor</span><span class="p">(</span><span class="n">drawingColor</span><span class="p">)</span>
+        <span class="c1"># Projection</span>
+        <span class="n">glMatrixMode</span><span class="p">(</span><span class="n">GL_PROJECTION</span><span class="p">)</span>
+        <span class="n">glLoadIdentity</span><span class="p">()</span>
+        <span class="n">gluPerspective</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">screenWidth</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">screenHeight</span><span class="p">),</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1000.0</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">CameraInit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Model View</span>
+        <span class="n">glMatrixMode</span><span class="p">(</span><span class="n">GL_MODELVIEW</span><span class="p">)</span>
+        <span class="n">glLoadIdentity</span><span class="p">()</span>
+        <span class="n">glViewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">screenWidth</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">screenHeight</span><span class="p">)</span>
+        <span class="n">glEnable</span><span class="p">(</span><span class="n">GL_DEPTH_TEST</span><span class="p">)</span>
+        <span class="c1"># Camera Updating</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">Update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">deltaTime</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">screenWidth</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">screenHeight</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span> <span class="o">|</span> <span class="n">GL_DEPTH_BUFFER_BIT</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">WorldAxes</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">RefactorTest</span><span class="p">(</span><span class="s2">&quot;OpenGL en Python&quot;</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
+</code></pre></div>
+<p>Hasta aquí sin más, tenemos lo mismo que anteriormente.</p>
+<h2 id="compilador-de-shaders">Compilador de shaders<a class="headerlink" href="#compilador-de-shaders" title="Permanent link">&para;</a></h2>
+<p>Para poder utilizar un shader debemos compilarlo, este proceso podemos programarlo en una función de utilidades:</p>
+<p><code>engine/Utils.py</code></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">OpenGL.GL</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">compile_shader</span><span class="p">(</span><span class="n">shader_type</span><span class="p">,</span> <span class="n">shader_source</span><span class="p">):</span>
+    <span class="c1"># Create a shader object</span>
+    <span class="n">shader_id</span> <span class="o">=</span> <span class="n">glCreateShader</span><span class="p">(</span><span class="n">shader_type</span><span class="p">)</span>
+    <span class="c1"># Replace the source code in a shader object</span>
+    <span class="n">glShaderSource</span><span class="p">(</span><span class="n">shader_id</span><span class="p">,</span> <span class="n">shader_source</span><span class="p">)</span>
+    <span class="c1"># Compile a shader object</span>
+    <span class="n">glCompileShader</span><span class="p">(</span><span class="n">shader_id</span><span class="p">)</span>
+    <span class="c1"># Return a parameter from a shader object</span>
+    <span class="n">compile_success</span> <span class="o">=</span> <span class="n">glGetShaderiv</span><span class="p">(</span><span class="n">shader_id</span><span class="p">,</span> <span class="n">GL_COMPILE_STATUS</span><span class="p">)</span>
+    <span class="c1"># If anything fails...</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">compile_success</span><span class="p">:</span>
+        <span class="c1"># Return the information log for a shader object</span>
+        <span class="n">error_message</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">glGetShaderInfoLog</span><span class="p">(</span><span class="n">shader_id</span><span class="p">)</span>
+        <span class="c1"># Delete a shader object</span>
+        <span class="n">glDeleteShader</span><span class="p">(</span><span class="n">shader_id</span><span class="p">)</span>
+        <span class="c1"># Invoke an exception with the error</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">error_message</span><span class="p">)</span>
+    <span class="c1"># Finally return the compiled shader id</span>
+    <span class="k">return</span> <span class="n">shader_id</span>
+</code></pre></div>
+<p>Los shaders compilados forman parte del programa que se ejecutará en la gráfica, tenemos que crear uno y asignarle los shaders de vértices y fragmentos:</p>
+<p><code>engine/Utils.py</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_program</span><span class="p">(</span><span class="n">vertex_shader_code</span><span class="p">,</span> <span class="n">fragment_shader_code</span><span class="p">):</span>
+    <span class="c1"># Return the compiled vertex shader id</span>
+    <span class="n">vertex_shader_id</span> <span class="o">=</span> <span class="n">compile_shader</span><span class="p">(</span><span class="n">GL_VERTEX_SHADER</span><span class="p">,</span> <span class="n">vertex_shader_code</span><span class="p">)</span>
+    <span class="c1"># Return the compiled fragment shader id</span>
+    <span class="n">frag_shader_id</span> <span class="o">=</span> <span class="n">compile_shader</span><span class="p">(</span><span class="n">GL_FRAGMENT_SHADER</span><span class="p">,</span> <span class="n">fragment_shader_code</span><span class="p">)</span>
+    <span class="c1"># Create the program object</span>
+    <span class="n">program_id</span> <span class="o">=</span> <span class="n">glCreateProgram</span><span class="p">()</span>
+    <span class="c1"># Attach the vertex shader object to the program object</span>
+    <span class="n">glAttachShader</span><span class="p">(</span><span class="n">program_id</span><span class="p">,</span> <span class="n">vertex_shader_id</span><span class="p">)</span>
+    <span class="c1"># Attach the fragment shader object to the program object</span>
+    <span class="n">glAttachShader</span><span class="p">(</span><span class="n">program_id</span><span class="p">,</span> <span class="n">frag_shader_id</span><span class="p">)</span>
+    <span class="c1"># Link the program object to process it</span>
+    <span class="n">glLinkProgram</span><span class="p">(</span><span class="n">program_id</span><span class="p">)</span>
+    <span class="c1"># Return a parameter from a program object</span>
+    <span class="n">link_success</span> <span class="o">=</span> <span class="n">glGetProgramiv</span><span class="p">(</span><span class="n">program_id</span><span class="p">,</span> <span class="n">GL_LINK_STATUS</span><span class="p">)</span>
+    <span class="c1"># If anything fails...</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">link_success</span><span class="p">:</span>
+        <span class="c1"># Return the information log for a program object</span>
+        <span class="n">info</span> <span class="o">=</span> <span class="n">glGetProgramInfoLog</span><span class="p">(</span><span class="n">program_id</span><span class="p">)</span>
+        <span class="c1"># Invoke an exception with the error</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
+    <span class="c1"># If all its fine delete the vertex shader object</span>
+    <span class="n">glDeleteShader</span><span class="p">(</span><span class="n">vertex_shader_id</span><span class="p">)</span>
+    <span class="c1"># And the fragment shader object</span>
+    <span class="n">glDeleteShader</span><span class="p">(</span><span class="n">frag_shader_id</span><span class="p">)</span>
+    <span class="c1"># Finally return the compiled program id</span>
+    <span class="k">return</span> <span class="n">program_id</span>
+</code></pre></div>
+<h2 id="nuestro-primer-shader">Nuestro primer shader<a class="headerlink" href="#nuestro-primer-shader" title="Permanent link">&para;</a></h2>
+<p>Ahora que tenemos el motor preparado para procesar shaders veamos como implementarlos. Teniendo en cuenta que un shader es una pieza de código tenemos la posibilidad de crearlos en un fichero de texto o directamente como una variable, por ahora vamos a por la segunda opción.</p>
+<p>Empecemos con algo muy simple, dibujar un único vértice con un color en la pantalla:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">venv</span><span class="w"> </span><span class="kn">import</span> <span class="n">create</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">res.engine.PyOGLApp</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">res.engine.Utils</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">vertex_shader</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">#version 330 core</span>
+<span class="s2">void main()</span>
+<span class="s2">{</span>
+<span class="s2">    // posición del vértice de prueba</span>
+<span class="s2">    gl_Position = vec4(0.5, 0, 0, 1);</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">fragment_shader</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">#version 330 core</span>
+<span class="s2">out vec4 frag_color;</span>
+<span class="s2">void main()</span>
+<span class="s2">{</span>
+<span class="s2">    // color del vértice de prueba</span>
+<span class="s2">    frag_color = vec4(0, 1, 0, 1);</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyApp</span><span class="p">(</span><span class="n">PyOGLApp</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">Init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Creamos el programa pasándole ambos shaders</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program_id</span> <span class="o">=</span> <span class="n">create_program</span><span class="p">(</span><span class="n">vertex_shader</span><span class="p">,</span> <span class="n">fragment_shader</span><span class="p">)</span>
+        <span class="c1"># Generate a Vertex Array Object names</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vao_ref</span> <span class="o">=</span> <span class="n">glGenVertexArrays</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># Bind a vertex array object</span>
+        <span class="n">glBindVertexArray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vao_ref</span><span class="p">)</span>
+        <span class="c1"># Specify the diameter of rasterized points</span>
+        <span class="n">glPointSize</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Clear buffers to preset values</span>
+        <span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span> <span class="o">|</span> <span class="n">GL_DEPTH_BUFFER_BIT</span><span class="p">)</span>
+        <span class="c1"># Install a program object as part of current rendering state</span>
+        <span class="n">glUseProgram</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">program_id</span><span class="p">)</span>
+        <span class="c1"># Render primitives from array data</span>
+        <span class="n">glDrawArrays</span><span class="p">(</span><span class="n">GL_POINTS</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">MyApp</span><span class="p">(</span><span class="s2">&quot;Primer Shader&quot;</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img77.png" /></p>
+<h2 id="shader-con-multiples-vertices">Shader con múltiples vértices<a class="headerlink" href="#shader-con-multiples-vertices" title="Permanent link">&para;</a></h2>
+<p>Para procesar más de un vértice debemos almacenarlos en el buffer de la gráfica. Almacenar datos significa que necesitamos definirlos y empaquetarlos en variables y para ello haremos uso de nuestra propia clase GraphicsData:</p>
+<p><code>engine/GraphicsData.py</code></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">OpenGL.GL</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">GraphicsData</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_type</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="c1"># Store the data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="c1"># Set the data type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_type</span> <span class="o">=</span> <span class="n">data_type</span>
+        <span class="c1"># Generate a Buffer Object Names</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">buffer_ref</span> <span class="o">=</span> <span class="n">glGenBuffers</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># Load the data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Create an array of float32 type to represent positions</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="c1"># Bind the named buffer object</span>
+        <span class="n">glBindBuffer</span><span class="p">(</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer_ref</span><span class="p">)</span>
+        <span class="c1"># Creates and initialize a buffer object&#39;s data store</span>
+        <span class="c1"># data.ravel() -&gt; toma los datos del array de numpy y lo transforma a</span>
+        <span class="c1"># un array unidimensional de números, que es lo que espera OpenGL</span>
+        <span class="n">glBufferData</span><span class="p">(</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">GL_STATIC_DRAW</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_variable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program_id</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">):</span>
+        <span class="c1"># Return the location of an attribute variable</span>
+        <span class="n">variable_id</span> <span class="o">=</span> <span class="n">glGetAttribLocation</span><span class="p">(</span><span class="n">program_id</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">)</span>
+        <span class="c1"># Bind the named buffer object</span>
+        <span class="n">glBindBuffer</span><span class="p">(</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer_ref</span><span class="p">)</span>
+        <span class="c1"># If data is a vector3...</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_type</span> <span class="o">==</span> <span class="s2">&quot;vec3&quot;</span><span class="p">:</span>
+            <span class="c1"># Define an array of generic vertex attribute data</span>
+            <span class="c1"># 3        -&gt; Size</span>
+            <span class="c1"># GL_FLOAT -&gt; Type</span>
+            <span class="c1"># False    -&gt; Not normalized</span>
+            <span class="c1"># 0        -&gt; Stride size</span>
+            <span class="c1"># None     -&gt; Mixed data pointer</span>
+            <span class="n">glVertexAttribPointer</span><span class="p">(</span><span class="n">variable_id</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">GL_FLOAT</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="c1"># Enable or disable a generic vertex attribute array</span>
+        <span class="n">glEnableVertexAttribArray</span><span class="p">(</span><span class="n">variable_id</span><span class="p">)</span>
+</code></pre></div>
+<p>Ahora ya podemos definir una lista de múltiples vértices en nuestra aplicación en porciones de 3 números (las posiciones x, y, z):</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">res.engine.PyOGLApp</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">res.engine.GraphicsData</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">res.engine.Utils</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">vertex_shader</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">#version 330 core</span>
+<span class="s2">// Variable que toma datos externos</span>
+<span class="s2">in vec3 position;</span>
+<span class="s2">void main()</span>
+<span class="s2">{</span>
+<span class="s2">    // posición del vértice tomado del exterior</span>
+<span class="s2">    gl_Position = vec4(position.x, position.y, position.z, 1);</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">fragment_shader</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">#version 330 core</span>
+<span class="s2">out vec4 frag_color;</span>
+<span class="s2">void main()</span>
+<span class="s2">{</span>
+<span class="s2">    // color del vértice de prueba</span>
+<span class="s2">    frag_color = vec4(0, 1, 0, 1);</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyApp</span><span class="p">(</span><span class="n">PyOGLApp</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">Init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program_id</span> <span class="o">=</span> <span class="n">create_program</span><span class="p">(</span><span class="n">vertex_shader</span><span class="p">,</span> <span class="n">fragment_shader</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vao_ref</span> <span class="o">=</span> <span class="n">glGenVertexArrays</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">glBindVertexArray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vao_ref</span><span class="p">)</span>
+        <span class="n">glPointSize</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+        <span class="c1"># Define multiple vertices</span>
+        <span class="n">position_data</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">.9</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="p">[</span><span class="o">-</span><span class="mf">.6</span><span class="p">,</span> <span class="mf">.8</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">.9</span><span class="p">,</span> <span class="o">-</span><span class="mf">.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="p">[</span><span class="o">-</span><span class="mf">.9</span><span class="p">,</span> <span class="o">-</span><span class="mf">.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">.6</span><span class="p">,</span> <span class="mf">.8</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="p">]</span>
+        <span class="c1"># Save the number of vertices</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vertex_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">position_data</span><span class="p">)</span>
+        <span class="c1"># Define the variable for the vec3 chunks using the vertices list</span>
+        <span class="n">position_variable</span> <span class="o">=</span> <span class="n">GraphicsData</span><span class="p">(</span><span class="s2">&quot;vec3&quot;</span><span class="p">,</span> <span class="n">position_data</span><span class="p">)</span>
+        <span class="c1"># Create the variable in the memory buffer</span>
+        <span class="n">position_variable</span><span class="o">.</span><span class="n">create_variable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">program_id</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Clear buffers to preset values</span>
+        <span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span> <span class="o">|</span> <span class="n">GL_DEPTH_BUFFER_BIT</span><span class="p">)</span>
+        <span class="c1"># Install a program object as part of current rendering state</span>
+        <span class="n">glUseProgram</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">program_id</span><span class="p">)</span>
+        <span class="c1"># Render primitives from array data passing the counter</span>
+        <span class="n">glDrawArrays</span><span class="p">(</span><span class="n">GL_POINTS</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertex_count</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">MyApp</span><span class="p">(</span><span class="s2">&quot;Segundo Shader&quot;</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img78.png" /></p>
+<h2 id="estrella-de-colores">Estrella de colores<a class="headerlink" href="#estrella-de-colores" title="Permanent link">&para;</a></h2>
+<p>En este tercer shader vamos a utilizar una segunda lista con colores para los puntos, deberemos crear la variable y almacenarla en el buffer.</p>
+<p>Respecto al "fragment shader", éste toma como entradas las salidas del "vertex shader", razón por la cuál tendremos un <code>out vec3 color;</code> que retomaremos <code>in vec3 color;</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">venv</span><span class="w"> </span><span class="kn">import</span> <span class="n">create</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">res.engine.PyOGLApp</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">res.engine.GraphicsData</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">res.engine.Utils</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">vertex_shader</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">#version 330 core</span>
+<span class="s2">// Variable que toma datos externos</span>
+<span class="s2">in vec3 position;</span>
+<span class="s2">// Variable con un color para el fragment shader</span>
+<span class="s2">in vec3 vertex_color;</span>
+<span class="s2">out vec3 color;</span>
+<span class="s2">void main()</span>
+<span class="s2">{</span>
+<span class="s2">    // posición del vértice tomado del exterior</span>
+<span class="s2">    gl_Position = vec4(position.x, position.y, position.z, 1);</span>
+<span class="s2">    // Devolvemos el mismo color</span>
+<span class="s2">    color = vertex_color;</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">fragment_shader</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">#version 330 core</span>
+<span class="s2">in vec3 color;</span>
+<span class="s2">out vec4 frag_color;</span>
+<span class="s2">void main()</span>
+<span class="s2">{</span>
+<span class="s2">    // color del vértice de prueba</span>
+<span class="s2">    frag_color = vec4(color, 1);</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyApp</span><span class="p">(</span><span class="n">PyOGLApp</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">Init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program_id</span> <span class="o">=</span> <span class="n">create_program</span><span class="p">(</span><span class="n">vertex_shader</span><span class="p">,</span> <span class="n">fragment_shader</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vao_ref</span> <span class="o">=</span> <span class="n">glGenVertexArrays</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">glBindVertexArray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vao_ref</span><span class="p">)</span>
+
+        <span class="c1"># Variable que controla las posiciones</span>
+        <span class="n">position_data</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">.8</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="p">[</span><span class="o">-</span><span class="mf">.6</span><span class="p">,</span> <span class="mf">.8</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">.8</span><span class="p">,</span> <span class="o">-</span><span class="mf">.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="p">[</span><span class="o">-</span><span class="mf">.8</span><span class="p">,</span> <span class="o">-</span><span class="mf">.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">.6</span><span class="p">,</span> <span class="mf">.8</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="p">]</span>
+        <span class="n">position_variable</span> <span class="o">=</span> <span class="n">GraphicsData</span><span class="p">(</span><span class="s2">&quot;vec3&quot;</span><span class="p">,</span> <span class="n">position_data</span><span class="p">)</span>
+        <span class="n">position_variable</span><span class="o">.</span><span class="n">create_variable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">program_id</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Variable que controla los colores</span>
+        <span class="n">color_data</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="p">]</span>
+        <span class="n">color_variable</span> <span class="o">=</span> <span class="n">GraphicsData</span><span class="p">(</span><span class="s2">&quot;vec3&quot;</span><span class="p">,</span> <span class="n">color_data</span><span class="p">)</span>
+        <span class="n">color_variable</span><span class="o">.</span><span class="n">create_variable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">program_id</span><span class="p">,</span> <span class="s2">&quot;vertex_color&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Save the number of vertices</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vertex_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">position_data</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span> <span class="o">|</span> <span class="n">GL_DEPTH_BUFFER_BIT</span><span class="p">)</span>
+        <span class="n">glUseProgram</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">program_id</span><span class="p">)</span>
+        <span class="n">glDrawArrays</span><span class="p">(</span><span class="n">GL_LINE_LOOP</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertex_count</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">MyApp</span><span class="p">(</span><span class="s2">&quot;Tercer Shader&quot;</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img79.png" /></p>
+<h2 id="renderizando-un-modelo">Renderizando un modelo<a class="headerlink" href="#renderizando-un-modelo" title="Permanent link">&para;</a></h2>
+<p>Nuestro siguiente objetivo es dibujar un modelo mediante shaders y para ello definiremos nuestra propia implementación de la clase Mesh que podremos extender para crear diferentes formas:</p>
+<p><code>engine/Mesh.py</code></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">OpenGL</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.GraphicsData</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.Uniform</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pygame</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pg</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Mesh</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program_id</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">vertex_colors</span><span class="p">,</span> <span class="n">draw_type</span><span class="p">):</span>
+        <span class="c1"># Lista con los vértices</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span> <span class="o">=</span> <span class="n">vertices</span>
+        <span class="c1"># Tipo de dibujado</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">draw_type</span> <span class="o">=</span> <span class="n">draw_type</span>
+        <span class="c1"># Creamos un VAO para el mesh</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vao_ref</span> <span class="o">=</span> <span class="n">glGenVertexArrays</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># Enlazamos el VAO del mesh</span>
+        <span class="n">glBindVertexArray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vao_ref</span><span class="p">)</span>
+        <span class="c1"># Creamos una variable para la posición de los vértices</span>
+        <span class="n">position</span> <span class="o">=</span> <span class="n">GraphicsData</span><span class="p">(</span><span class="s2">&quot;vec3&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="p">)</span>
+        <span class="n">position</span><span class="o">.</span><span class="n">create_variable</span><span class="p">(</span><span class="n">program_id</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="p">)</span>
+        <span class="c1"># Creamos una variable para el color de los vértices</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="n">GraphicsData</span><span class="p">(</span><span class="s2">&quot;vec3&quot;</span><span class="p">,</span> <span class="n">vertex_colors</span><span class="p">)</span>
+        <span class="n">colors</span><span class="o">.</span><span class="n">create_variable</span><span class="p">(</span><span class="n">program_id</span><span class="p">,</span> <span class="s2">&quot;vertex_color&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Enlazamos el VAO del mesh</span>
+        <span class="n">glBindVertexArray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vao_ref</span><span class="p">)</span>
+        <span class="c1"># Dibujamos el VAO</span>
+        <span class="n">glDrawArrays</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">draw_type</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="p">))</span>
+</code></pre></div>
+<p>Esta clase podemos extenderla en nuestras propias clases Triangle y Square sin complicación:</p>
+<p><code>engine/Triangle.py</code></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">.Mesh</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Triangle</span><span class="p">(</span><span class="n">Mesh</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program_id</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">vertices</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">],</span>
+            <span class="p">[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">]</span>
+        <span class="p">]</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span>
+        <span class="p">]</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">program_id</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">GL_TRIANGLE_FAN</span><span class="p">,</span> <span class="n">location</span><span class="p">)</span>
+</code></pre></div>
+<p><code>engine/Square.py</code></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">.Mesh</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Square</span><span class="p">(</span><span class="n">Mesh</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program_id</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">vertices</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">],</span>
+            <span class="p">[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">],</span>
+            <span class="p">[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">]</span>
+        <span class="p">]</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="p">]</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">program_id</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">GL_TRIANGLE_FAN</span><span class="p">,</span> <span class="n">location</span><span class="p">)</span>
+</code></pre></div>
+<p>Y ya podremos hacer uso de ellas en nuestra aplicación:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">venv</span><span class="w"> </span><span class="kn">import</span> <span class="n">create</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">res.engine.PyOGLApp</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">res.engine.Utils</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">res.engine.Square</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">res.engine.Triangle</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">res.engine.GraphicsData</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">vertex_shader</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">#version 330 core</span>
+<span class="s2">// Variable que toma datos externos</span>
+<span class="s2">in vec3 position;</span>
+<span class="s2">// Variable con un color para el fragment shader</span>
+<span class="s2">in vec3 vertex_color;</span>
+<span class="s2">out vec3 color;</span>
+<span class="s2">void main()</span>
+<span class="s2">{</span>
+<span class="s2">    // posición del vértice tomado del exterior</span>
+<span class="s2">    gl_Position = vec4(position.x, position.y, position.z, 1);</span>
+<span class="s2">    // Devolvemos el mismo color</span>
+<span class="s2">    color = vertex_color;</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">fragment_shader</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">#version 330 core</span>
+<span class="s2">in vec3 color;</span>
+<span class="s2">out vec4 frag_color;</span>
+<span class="s2">void main()</span>
+<span class="s2">{</span>
+<span class="s2">    // color del vértice de prueba</span>
+<span class="s2">    frag_color = vec4(color, 1);</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyApp</span><span class="p">(</span><span class="n">PyOGLApp</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">Init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Creamos el programa con los shaders</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program_id</span> <span class="o">=</span> <span class="n">create_program</span><span class="p">(</span><span class="n">vertex_shader</span><span class="p">,</span> <span class="n">fragment_shader</span><span class="p">)</span>
+        <span class="c1"># Creamos un cuadrado y un triángulo</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">square</span> <span class="o">=</span> <span class="n">Square</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">program_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">triangle</span> <span class="o">=</span> <span class="n">Triangle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">program_id</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span> <span class="o">|</span> <span class="n">GL_DEPTH_BUFFER_BIT</span><span class="p">)</span>
+        <span class="n">glUseProgram</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">program_id</span><span class="p">)</span>
+        <span class="c1"># Dibujamos ambas formas de abajo hacia arriba</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">square</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">triangle</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">MyApp</span><span class="p">(</span><span class="s2">&quot;Cuarto Shader&quot;</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img80.png" /></p>
+<h2 id="traslacion-en-el-modelo">Traslación en el modelo<a class="headerlink" href="#traslacion-en-el-modelo" title="Permanent link">&para;</a></h2>
+<p>Por último en esta sección veamos cómo enviar un movimiento de traslación a la hora de dibujar un modelo con los shaders.</p>
+<p>Como debemos representar la traslación en una posición necesitaremos almacenarla en la gráfica y hacer uso de ella en los shaders. Con ese objetivo crearemos una implementación de la clase Uniform que nos permitirá crear variables y buscarlas cómodamente.</p>
+<p>A uniform is a global Shader variable declared with the "uniform" storage qualifier. These act as parameters that the user of a shader program can pass to that program. Their values are stored in a program object.</p>
+<p><code>engine/Uniform.py</code></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">OpenGL.GL</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Uniform</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_type</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">variable_id</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_type</span> <span class="o">=</span> <span class="n">data_type</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">find_variable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program_id</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">):</span>
+        <span class="c1"># Return the location of a uniform variable</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">variable_id</span> <span class="o">=</span> <span class="n">glGetUniformLocation</span><span class="p">(</span><span class="n">program_id</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_type</span> <span class="o">==</span> <span class="s2">&quot;vec3&quot;</span><span class="p">:</span>
+            <span class="c1"># Set the value of a uniform variable for the current program object</span>
+            <span class="n">glUniform3f</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">variable_id</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+            <span class="p">)</span>
+</code></pre></div>
+<p>Estableceremos una traslación para modificar el offset del centro del modelo, por eso lo podemos pasar como un pg.Vector3 al crearlo. En caso de que lo establezcamos crearemos la variable uniform y la cargaremos en el shader antes de realizar el dibujado:</p>
+<p><code>engine/Mesh.py</code></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">OpenGL</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.GraphicsData</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.Uniform</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pygame</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pg</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Mesh</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program_id</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">vertex_colors</span><span class="p">,</span> <span class="n">draw_type</span><span class="p">,</span> <span class="n">translation</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span> <span class="o">=</span> <span class="n">vertices</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">draw_type</span> <span class="o">=</span> <span class="n">draw_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vao_ref</span> <span class="o">=</span> <span class="n">glGenVertexArrays</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">glBindVertexArray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vao_ref</span><span class="p">)</span>
+        <span class="n">position</span> <span class="o">=</span> <span class="n">GraphicsData</span><span class="p">(</span><span class="s2">&quot;vec3&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="p">)</span>
+        <span class="n">position</span><span class="o">.</span><span class="n">create_variable</span><span class="p">(</span><span class="n">program_id</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="p">)</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="n">GraphicsData</span><span class="p">(</span><span class="s2">&quot;vec3&quot;</span><span class="p">,</span> <span class="n">vertex_colors</span><span class="p">)</span>
+        <span class="n">colors</span><span class="o">.</span><span class="n">create_variable</span><span class="p">(</span><span class="n">program_id</span><span class="p">,</span> <span class="s2">&quot;vertex_color&quot;</span><span class="p">)</span>
+        <span class="c1"># Si pasamos una posición de traslación inicial</span>
+        <span class="k">if</span> <span class="n">translation</span><span class="p">:</span>
+            <span class="c1"># Creamos la variable en el programa</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">translation</span> <span class="o">=</span> <span class="n">Uniform</span><span class="p">(</span><span class="s2">&quot;vec3&quot;</span><span class="p">,</span> <span class="n">translation</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">translation</span><span class="o">.</span><span class="n">find_variable</span><span class="p">(</span><span class="n">program_id</span><span class="p">,</span> <span class="s2">&quot;translation&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Si tenemos la traslación la cargamos en el shader</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">translation</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">translation</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+        <span class="c1"># Luego realizamos el dibujado de forma normal</span>
+        <span class="n">glBindVertexArray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vao_ref</span><span class="p">)</span>
+        <span class="n">glDrawArrays</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">draw_type</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="p">))</span>
+</code></pre></div>
+<p>La clave es tomar esta cantidad traslación como una variable unform en el "vertex shader" y sumarla a la posición actual:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">venv</span><span class="w"> </span><span class="kn">import</span> <span class="n">create</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">res.engine.PyOGLApp</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">res.engine.Utils</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">res.engine.Square</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">res.engine.Triangle</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">res.engine.GraphicsData</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">vertex_shader</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">#version 330 core</span>
+<span class="s2">// Variable que toma datos externos</span>
+<span class="s2">in vec3 position;</span>
+<span class="s2">// Variable con un color para el fragment shader</span>
+<span class="s2">in vec3 vertex_color;</span>
+<span class="s2">out vec3 color;</span>
+<span class="s2">// Variable para manejar una traslación</span>
+<span class="s2">uniform vec3 translation;</span>
+<span class="s2">void main()</span>
+<span class="s2">{</span>
+<span class="s2">    // Sumamos la posición trasladada a la actual</span>
+<span class="s2">    vec3 pos = position + translation;</span>
+<span class="s2">    // Posición del vértice tomado del exterior</span>
+<span class="s2">    gl_Position = vec4(pos, 1);</span>
+<span class="s2">    // Devolvemos el mismo color</span>
+<span class="s2">    color = vertex_color;</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">fragment_shader</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">#version 330 core</span>
+<span class="s2">in vec3 color;</span>
+<span class="s2">out vec4 frag_color;</span>
+<span class="s2">void main()</span>
+<span class="s2">{</span>
+<span class="s2">    // color del vértice de prueba</span>
+<span class="s2">    frag_color = vec4(color, 1);</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyApp</span><span class="p">(</span><span class="n">PyOGLApp</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">Init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program_id</span> <span class="o">=</span> <span class="n">create_program</span><span class="p">(</span><span class="n">vertex_shader</span><span class="p">,</span> <span class="n">fragment_shader</span><span class="p">)</span>
+        <span class="c1"># Creamos el modelo pasando un vector de traslación inicial</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">square</span> <span class="o">=</span> <span class="n">Square</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">program_id</span><span class="p">,</span> <span class="n">pg</span><span class="o">.</span><span class="n">Vector3</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">triangle</span> <span class="o">=</span> <span class="n">Triangle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">program_id</span><span class="p">,</span> <span class="n">pg</span><span class="o">.</span><span class="n">Vector3</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span> <span class="o">|</span> <span class="n">GL_DEPTH_BUFFER_BIT</span><span class="p">)</span>
+        <span class="n">glUseProgram</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">program_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">square</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">triangle</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">MyApp</span><span class="p">(</span><span class="s2">&quot;Quinto Shader&quot;</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img81.png" /></p>
+<p>Como vemos estamos renderizando dos modelos, pero en lugar de en cada iteración realizar el proceso de dibujado de los vértices, los almacenamos en la memoria de la tarjeta gráfica en una referencia VAO (Vertex Array Object) y simplemente los dibujamos.</p>
+<p>Este concepto de "guardar" información en la memoria de la gráfica y utilizarla cuando lo necesitemos es muy conveniente y abre la puerta a realizar innumerables experimentos, permitiéndose renderizar complejos modelos tridimensionales con un lenguaje poco potente como es Python.</p>
+<hr />
+<p><small class="edited"><i>Última edición: 12 de Octubre de 2022</i></small></p>
+                  
+                    
+                  
+                
+                
+                  
+
+
+                
+              </article>
+            </div>
+          </div>
+        </main>
+        
+          
+<footer class="md-footer">
+  
+  <div class="md-footer-nav">
+    <nav class="md-footer-nav__inner md-grid">
+      
+      <a
+        href="../06-transformaciones-afines/"
+        title="Transformaciones afines"
+        class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+        rel="prev"
+      >
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+        </div>
+        <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+          <span class="md-flex__ellipsis">
+            <span class="md-footer-nav__direction">
+              Anterior
+            </span>
+            Transformaciones afines
+          </span>
+        </div>
+      </a>
+       
+      <a
+        href="../../unity/"
+        title="Índice del archivo"
+        class="md-flex md-footer-nav__link md-footer-nav__link--next"
+        rel="next"
+      >
+        <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+          <span class="md-flex__ellipsis">
+            <span class="md-footer-nav__direction">
+              Siguiente
+            </span>
+            Índice del archivo
+          </span>
+        </div>
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+        </div>
+      </a>
+      
+    </nav>
+  </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        <!--<div class="md-footer-links__highlight">
+          <a href="/comunidad/">Comunidad</a> · <a href="/politica-de-cookies/">Política de cookies</a> · <a href="/sobre-mi/">Sobre mí</a>
+        </div>-->
+        <div class="md-footer-copyright__highlight">
+          2015 - 2022 &copy; Héctor Costa Guzmán (<u
+            ><a
+              href="https://creativecommons.org/licenses/by/4.0/deed.es"
+              target="_blank"
+              rel="nofollow"
+              >Licencia CC BY 4.0</a
+            ></u
+          >)
+        </div>
+      </div>
+       
+<style>.md-footer-social__link {transition: 0.3s;}</style>
+<div class="md-footer-social" style="font-size: 2.5rem; margin-top: -6px!important; padding: 0px!important; margin-bottom: -6px; overflow: hidden!important;">
+  <a href="https://github.com/hcosta" title="Github" target="_blank" class="md-footer-social__link fa fa-github-square"></a>
+  &nbsp;
+</div>
+ 
+    </div>
+  </div>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i["GoogleAnalyticsObject"] = r;
+      (i[r] =
+        i[r] ||
+        function () {
+          (i[r].q = i[r].q || []).push(arguments);
+        }),
+        (i[r].l = 1 * new Date());
+      (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m);
+    })(
+      window,
+      document,
+      "script",
+      "https://www.google-analytics.com/analytics.js",
+      "ga"
+    );
+    ga("create", "UA-124845547-1", "auto");
+    ga("send", "pageview");
+  </script>
+</footer>
+        
+        <a id="anchorID" href="/docs/" target="_blank"></a>
+      </div>
+      <script type='text/javascript'
+              src="https://hektorprofe.github.io/docs/assets/javascripts/application.a26c1c21.js"></script>
+      <script src="https://hektorprofe.github.io/docs/assets/javascripts/tingle.min.js"></script>
+      <script type='text/javascript'>
+    app.initialize({version:"1.2.3",url:{base:"../.."}})
+    var _extends=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(t[o]=n[o])}return t},_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t};!function(t,e){"object"===("undefined"==typeof exports?"undefined":_typeof(exports))&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):t.LazyLoad=e()}(this,function(){"use strict";function t(t,e,n){var o=e._settings;!n&&i(t)||(C(o.callback_enter,t),R.indexOf(t.tagName)>-1&&(N(t,e),I(t,o.class_loading)),E(t,e),a(t),C(o.callback_set,t))}var e={elements_selector:"img",container:document,threshold:300,thresholds:null,data_src:"src",data_srcset:"srcset",data_sizes:"sizes",data_bg:"bg",class_loading:"loading",class_loaded:"loaded",class_error:"error",load_delay:0,callback_load:null,callback_error:null,callback_set:null,callback_enter:null,callback_finish:null,to_webp:!1},n=function(t){return _extends({},e,t)},o=function(t,e){return t.getAttribute("data-"+e)},r=function(t,e,n){var o="data-"+e;null!==n?t.setAttribute(o,n):t.removeAttribute(o)},a=function(t){return r(t,"was-processed","true")},i=function(t){return"true"===o(t,"was-processed")},s=function(t,e){return r(t,"ll-timeout",e)},c=function(t){return o(t,"ll-timeout")},l=function(t){return t.filter(function(t){return!i(t)})},u=function(t,e){return t.filter(function(t){return t!==e})},d=function(t,e){var n,o=new t(e);try{n=new CustomEvent("LazyLoad::Initialized",{detail:{instance:o}})}catch(t){(n=document.createEvent("CustomEvent")).initCustomEvent("LazyLoad::Initialized",!1,!1,{instance:o})}window.dispatchEvent(n)},f=function(t,e){return e?t.replace(/\.(jpe?g|png)/gi,".webp"):t},_="undefined"!=typeof window,v=_&&!("onscroll"in window)||/(gle|ing|ro)bot|crawl|spider/i.test(navigator.userAgent),g=_&&"IntersectionObserver"in window,h=_&&"classList"in document.createElement("p"),b=_&&function(){var t=document.createElement("canvas");return!(!t.getContext||!t.getContext("2d"))&&0===t.toDataURL("image/webp").indexOf("data:image/webp")}(),m=function(t,e,n,r){for(var a,i=0;a=t.children[i];i+=1)if("SOURCE"===a.tagName){var s=o(a,n);p(a,e,s,r)}},p=function(t,e,n,o){n&&t.setAttribute(e,f(n,o))},y=function(t,e){var n=b&&e.to_webp,r=o(t,e.data_src),a=o(t,e.data_bg);if(r){var i=f(r,n);t.style.backgroundImage='url("'+i+'")'}if(a){var s=f(a,n);t.style.backgroundImage=s}},w={IMG:function(t,e){var n=b&&e.to_webp,r=e.data_srcset,a=t.parentNode;a&&"PICTURE"===a.tagName&&m(a,"srcset",r,n);var i=o(t,e.data_sizes);p(t,"sizes",i);var s=o(t,r);p(t,"srcset",s,n);var c=o(t,e.data_src);p(t,"src",c,n)},IFRAME:function(t,e){var n=o(t,e.data_src);p(t,"src",n)},VIDEO:function(t,e){var n=e.data_src,r=o(t,n);m(t,"src",n),p(t,"src",r),t.load()}},E=function(t,e){var n=e._settings,o=t.tagName,r=w[o];if(r)return r(t,n),e._updateLoadingCount(1),void(e._elements=u(e._elements,t));y(t,n)},I=function(t,e){h?t.classList.add(e):t.className+=(t.className?" ":"")+e},L=function(t,e){h?t.classList.remove(e):t.className=t.className.replace(new RegExp("(^|\\s+)"+e+"(\\s+|$)")," ").replace(/^\s+/,"").replace(/\s+$/,"")},C=function(t,e){t&&t(e)},O=function(t,e,n){t.addEventListener(e,n)},k=function(t,e,n){t.removeEventListener(e,n)},x=function(t,e,n){O(t,"load",e),O(t,"loadeddata",e),O(t,"error",n)},A=function(t,e,n){k(t,"load",e),k(t,"loadeddata",e),k(t,"error",n)},z=function(t,e,n){var o=n._settings,r=e?o.class_loaded:o.class_error,a=e?o.callback_load:o.callback_error,i=t.target;L(i,o.class_loading),I(i,r),C(a,i),n._updateLoadingCount(-1)},N=function(t,e){var n=function n(r){z(r,!0,e),A(t,n,o)},o=function o(r){z(r,!1,e),A(t,n,o)};x(t,n,o)},R=["IMG","IFRAME","VIDEO"],S=function(e,n,o){t(e,o),n.unobserve(e)},M=function(t){var e=c(t);e&&(clearTimeout(e),s(t,null))},j=function(t,e,n){var o=n._settings.load_delay,r=c(t);r||(r=setTimeout(function(){S(t,e,n),M(t)},o),s(t,r))},D=function(t){return t.isIntersecting||t.intersectionRatio>0},T=function(t){return{root:t.container===document?null:t.container,rootMargin:t.thresholds||t.threshold+"px"}},U=function(t,e){this._settings=n(t),this._setObserver(),this._loadingCount=0,this.update(e)};return U.prototype={_manageIntersection:function(t){var e=this._observer,n=this._settings.load_delay,o=t.target;n?D(t)?j(o,e,this):M(o):D(t)&&S(o,e,this)},_onIntersection:function(t){t.forEach(this._manageIntersection.bind(this))},_setObserver:function(){g&&(this._observer=new IntersectionObserver(this._onIntersection.bind(this),T(this._settings)))},_updateLoadingCount:function(t){this._loadingCount+=t,0===this._elements.length&&0===this._loadingCount&&C(this._settings.callback_finish)},update:function(t){var e=this,n=this._settings,o=t||n.container.querySelectorAll(n.elements_selector);this._elements=l(Array.prototype.slice.call(o)),!v&&this._observer?this._elements.forEach(function(t){e._observer.observe(t)}):this.loadAll()},destroy:function(){var t=this;this._observer&&(this._elements.forEach(function(e){t._observer.unobserve(e)}),this._observer=null),this._elements=null,this._settings=null},load:function(e,n){t(e,this,n)},loadAll:function(){var t=this;this._elements.forEach(function(e){t.load(e)})}},_&&function(t,e){if(e)if(e.length)for(var n,o=0;n=e[o];o+=1)d(t,n);else d(t,e)}(U,window.lazyLoadOptions),U});
+      </script>
+    </body>
+  </html>
