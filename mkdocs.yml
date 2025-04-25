@@ -2,7 +2,7 @@ site_name: Archivo de Hektor Profe
 site_description: "Archivo con apuntes de programación de Hector Costa Guzman."
 site_author: "Héctor Costa Guzman"
 dev_addr: "127.0.0.1:8080"
-site_url: https://hektorprofe.github.io/docs/
+site_url: https://hektorprofe.github.io/
 
 plugins:
   - markdownextradata
@@ -34,7 +34,7 @@ extra:
   social:
     - type: "github"
       link: "https://github.com/hcosta"
-  cdn: "https://hektorprofe.github.io/docs/cdn"
+  cdn: "https://hektorprofe.github.io/cdn"
 nav:
   - Menús:
       - "buscador.md"

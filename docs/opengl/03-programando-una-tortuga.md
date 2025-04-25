@@ -184,7 +184,7 @@ Para rotar la tortuga debemos rotar el vector de dirección formado por tres com
 
 Para rotar la tortuga en nuestro espacio lo que tenemos que hacer es aplicar la rotación sobre el eje `z`. Este eje representa la profundidad y apunta directamente hacia nosotros como saliendo de la pantalla, sería la flecha azul en la figura de la avisón.
 
-La rotación es una transformación lineal que explico en detalle en [mis apuntes sobre gráficos 3D](/docs/graficos-3d/05-transformaciones-lineales/#rotacion-de-vectores). Me limitaré a recuperar la fórmula, si queréis más detalles echad un vistazo a mis apuntes:
+La rotación es una transformación lineal que explico en detalle en [mis apuntes sobre gráficos 3D](/graficos-3d/05-transformaciones-lineales/#rotacion-de-vectores). Me limitaré a recuperar la fórmula, si queréis más detalles echad un vistazo a mis apuntes:
 
 ![]({{cdn}}/opengl/img14.png)
 
@@ -221,7 +221,7 @@ def Render(self):
 
 ![]({{cdn}}/opengl/img15.png)
 
-Bien, pero ¿notáis algo extraño? Bueno, al rotar estamos haciéndolo en sentido antihorario. ¿Por qué sucede esto? OpenGL se implementa sobre la conocida regla de la mano izquierda, donde el eje `z` aumenta hacia adentro de la pantalla (esto también lo explico más en detalle en [mis apuntes](/docs/graficos-3d/04-proyeccion-de-puntos/#regla-de-la-mano) sobre gráficos 3D):
+Bien, pero ¿notáis algo extraño? Bueno, al rotar estamos haciéndolo en sentido antihorario. ¿Por qué sucede esto? OpenGL se implementa sobre la conocida regla de la mano izquierda, donde el eje `z` aumenta hacia adentro de la pantalla (esto también lo explico más en detalle en [mis apuntes](/graficos-3d/04-proyeccion-de-puntos/#regla-de-la-mano) sobre gráficos 3D):
 
 ![]({{cdn}}/opengl/img16.png)
 

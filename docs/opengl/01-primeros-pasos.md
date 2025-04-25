@@ -117,7 +117,7 @@ Confirmamos que todo funciona y podemos pasar a lo siguiente.
 
 ## Ventana básica con PyGame
 
-Todo lo que se voy a implementar durante las siguientes prácticas sobre OpenGL utiliza el entorno gráfico de PyGame como base. Tengo unos [apuntes geniales sobre esta biblioteca](/docs/pygame/) así que no profundizaré mucho a parte de algunos comentarios de código:
+Todo lo que se voy a implementar durante las siguientes prácticas sobre OpenGL utiliza el entorno gráfico de PyGame como base. Tengo unos [apuntes geniales sobre esta biblioteca](/pygame/) así que no profundizaré mucho a parte de algunos comentarios de código:
 
 ```python
 # Importamos la biblioteca gráfica
@@ -271,7 +271,7 @@ Es importando comentar también como el OpenGL maneja las coordenadas. Éstas em
 
 ## Aplicación reutilizable con clases
 
-Como hemos visto un programa con OpenGL escala de tamaño muy rápido, por eso he decidido implementar una estructura de aplicación reutilizable donde podamos centrarnos en la implementación de la lógica y abstraer todo el tema de gestionar la ventana de PyGame. Es algo que muestro en [mis apuntes](/docs/pygame) así que me limitaré a facilit el cascarón y explicar su uso:
+Como hemos visto un programa con OpenGL escala de tamaño muy rápido, por eso he decidido implementar una estructura de aplicación reutilizable donde podamos centrarnos en la implementación de la lógica y abstraer todo el tema de gestionar la ventana de PyGame. Es algo que muestro en [mis apuntes](/pygame) así que me limitaré a facilit el cascarón y explicar su uso:
 
 La clase `App` contiene la información de la aplicación, su objeto es servir como clase base o interfaz sobre la que crear nuestra aplicación gráfica:
 

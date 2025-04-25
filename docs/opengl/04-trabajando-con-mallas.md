@@ -13,7 +13,7 @@ Cada vértice y tambien las propias caras en su centro, tienen un vector llamado
 
 ![]({{cdn}}/opengl/img33.png)
 
-La normal es muy importante porque permite [descartar el renderizado](/docs/graficos-3d/11-back-face-culling/) de las caras no visibles por la cámara (_back-face culling_), así como añadir efectos de [luz y sombra](/docs/graficos-3d/18-luz-y-sombreado/) a las texturas en función del ángulo formado por la normal y la dirección del foco de luz.
+La normal es muy importante porque permite [descartar el renderizado](/graficos-3d/11-back-face-culling/) de las caras no visibles por la cámara (_back-face culling_), así como añadir efectos de [luz y sombra](/graficos-3d/18-luz-y-sombreado/) a las texturas en función del ángulo formado por la normal y la dirección del foco de luz.
 
 ## Estructura de una malla
 
@@ -133,11 +133,11 @@ def PrepareRender():
 
 ![]({{cdn}}/opengl/img36.png)
 
-Ahora ya podemos percibir la profundidad, pero... ¿No parece un poco raro? El tamaño de las caras del fondo es igual que las de adelante. Esto es debido a que no estamos aplicando una [brecha de perspectiva](/docs/graficos-3d/04-proyeccion-de-puntos/#proyeccion-perspectiva), es lo que se conoce como [proyección paralela oblícua](https://en.wikipedia.org/wiki/Oblique_projection):
+Ahora ya podemos percibir la profundidad, pero... ¿No parece un poco raro? El tamaño de las caras del fondo es igual que las de adelante. Esto es debido a que no estamos aplicando una [brecha de perspectiva](/graficos-3d/04-proyeccion-de-puntos/#proyeccion-perspectiva), es lo que se conoce como [proyección paralela oblícua](https://en.wikipedia.org/wiki/Oblique_projection):
 
 ![]({{cdn}}/opengl/img36b.png)
 
-Lo que nosotros buscamos es establecer una proyección de perspectiva para simular esa profundidad en base a varios factores: un ángulo de punto de vista (_fov_), una relación de aspecto (_aspect ratio_) y las distancias del visor desde el [plano cercano del frustum](/docs/graficos-3d/27-clipping/#planos-del-frustum) (_znear_) hasta el plano alejado (_zfar_).
+Lo que nosotros buscamos es establecer una proyección de perspectiva para simular esa profundidad en base a varios factores: un ángulo de punto de vista (_fov_), una relación de aspecto (_aspect ratio_) y las distancias del visor desde el [plano cercano del frustum](/graficos-3d/27-clipping/#planos-del-frustum) (_znear_) hasta el plano alejado (_zfar_).
 
 Es **muy importante** que configuremos la proyección antes de rotar el cubo:
 
@@ -265,7 +265,7 @@ class GLUtils:
 
 ## Cargando mallas desde ficheros
 
-El siguiente paso lógico es cargar un modelo desde un fichero externo. En mis apuntes sobre gráficos 3D [explico a fondo](/docs/graficos-3d/09-ficheros-con-modelos-obj/) el formato Wavefront OBJ, cómo se organiza y cómo hacer un parser para extraer la información. Así que me voy a ahorrar los detalles e iré directamente a la implementación.
+El siguiente paso lógico es cargar un modelo desde un fichero externo. En mis apuntes sobre gráficos 3D [explico a fondo](/graficos-3d/09-ficheros-con-modelos-obj/) el formato Wavefront OBJ, cómo se organiza y cómo hacer un parser para extraer la información. Así que me voy a ahorrar los detalles e iré directamente a la implementación.
 
 Si pasamos un primer argumento con la ruta a un fichero durante la creación del `mesh` significa que hay que cargarlo a partir de sus datos en lugar de crearlo en crudo:
 
