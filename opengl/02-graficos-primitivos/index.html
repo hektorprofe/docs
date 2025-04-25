@@ -11,7 +11,7 @@
       
         <meta name="description" content="Gráficos primitivos con OpenGL en Python">
       
-      <link rel="canonical" href="https://hektorprofe.github.io/docs/opengl/02-graficos-primitivos/">
+      <link rel="canonical" href="https://hektorprofe.github.io/opengl/02-graficos-primitivos/">
       
         <meta name="author" content="Héctor Costa Guzman">
       
@@ -34,9 +34,9 @@
     
     
     <link rel="stylesheet"
-          href="https://hektorprofe.github.io/docs/assets/stylesheets/tingle.min.css">
+          href="https://hektorprofe.github.io/assets/stylesheets/tingle.min.css">
     <style>
-@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
+@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
 [data-md-color-primary="grey"] .md-header { background-color: #191A1D }
 [data-md-color-primary="grey"] .md-tabs { background-color: #222831 }
 .md-footer-nav { background-color: #222831; }
@@ -127,11 +127,11 @@ div.my-img{text-align:center;margin-top:20px}
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://hektorprofe.github.io/docs/"
+        <a href="https://hektorprofe.github.io/"
            title="Archivo - Archivo de Hektor Profe Docs"
            class="md-header-nav__button md-logo"
            style="font-size: 0px">
-          <img src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+          <img src="https://hektorprofe.github.io/assets/images/logo.png"
                width="200px"
                height="35px"
                style="margin-top: -5px"
@@ -150,9 +150,9 @@ div.my-img{text-align:center;margin-top:20px}
              href="https://hektorprofe.github.io/docs/"
              style="margin-left:1.4em"
              title="Buscador de documentos">Buscador</a>
-          <a href="https://hektorprofe.github.io/docs/">
+          <a href="https://hektorprofe.github.io/">
             <img class="nav__logo"
-                 src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+                 src="https://hektorprofe.github.io/assets/images/logo.png"
                  width="200px"
                  height="35px"
                  style="margin: 6px auto 0"
@@ -612,11 +612,11 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="n">app</span> <span class="o">=</span> <span class="n">OpenGLApp</span><span class="p">(</span><span class="s2">&quot;OpenGL en Python&quot;</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
     <span class="n">app</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img07.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/img07.png" /></p>
 <p>El caso es que el seno y el coseno son funciones cuya posición <code>y</code> siempre está entre <code>0</code> y <code>1</code>. Además estamos generando valores para <code>x</code> entre <code>0</code> y <code>15</code>, ajustemos el espacio de visualización para dibujarlo más de cerca:</p>
 <div class="highlight"><pre><span></span><code><span class="n">GLUtils</span><span class="o">.</span><span class="n">InitOrtho</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img08.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/img08.png" /></p>
 <h2 id="visualizando-puntos">Visualizando puntos<a class="headerlink" href="#visualizando-puntos" title="Permanent link">&para;</a></h2>
 <p>En el siguiente ejemplo vamos a capturar la posición del ratón en la pantalla <code>(x,y)</code> al hacer clic y en ella vamos a dibujar un punto. Para almacenarlo definiremos una nueva clase <code>Point</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Point</span><span class="p">:</span>
@@ -685,7 +685,7 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="n">app</span> <span class="o">=</span> <span class="n">OpenGLApp</span><span class="p">(</span><span class="s2">&quot;OpenGL en Python&quot;</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
     <span class="n">app</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim02.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/anim02.gif" /></p>
 <p>Os fijaréis que el punto clicado y el dibujado no concuerdan, evidentemente el problema está en que el tamaño de la ventana de PyGame y el espacio de dibujo de <code>OpenGL</code> son distintos, podríamos equipararlos:</p>
 <div class="highlight"><pre><span></span><code><span class="n">GLUtils</span><span class="o">.</span><span class="n">InitOrtho</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
@@ -724,7 +724,7 @@ div.my-img{text-align:center;margin-top:20px}
         <span class="n">GLUtils</span><span class="o">.</span><span class="n">DrawPoints</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </code></pre></div>
 <p>Es importante separar la función de dibujar un punto y la de dibujar muchos de golpe para optimizar el renderizado.</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim03.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/anim03.gif" /></p>
 <h2 id="mapeado-de-puntos">Mapeado de puntos<a class="headerlink" href="#mapeado-de-puntos" title="Permanent link">&para;</a></h2>
 <p>En el ejemplo anterior hemos visto cómo adaptar el espacio de renderizado a la ventana de PyGame solventaba el problema de dibujar los puntos en el lugar adecuado, sin embargo en el mundo de los gráficos los vectores suelen venir normalizados con valores entre <code>-1</code> y <code>1</code>.</p>
 <p>En este ejemplo vamos a mapear los valores del clic del ratón para dibujar sobre un espacio normalizado entre <code>0</code> y <code>1</code>, así que tomando el ejemplo anterior podemos establecer ese espacio:</p>
@@ -749,7 +749,7 @@ div.my-img{text-align:center;margin-top:20px}
             <span class="c1"># Lo añadimos a la lista de puntos</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim04.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/anim04.gif" /></p>
 <p>Sería muy útil almacenar el tamaño del espacio ortográfico en la clase para añadir flexibilidad al código. Podemos hacerlo sobreescribiendo el <code>Init</code> que se llama antes del <code>Setup</code> y está pensado como lugar para inicializar valores:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">OpenGLApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
 
@@ -780,15 +780,15 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="n">GLUtils</span><span class="o">.</span><span class="n">DrawPoints</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
     <span class="n">GLUtils</span><span class="o">.</span><span class="n">DrawLines</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim05.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/anim05.gif" /></p>
 <p>Sin embargo, si cambiamos el modo a <code>GL_LINE_LOOP</code> trazará líneas contínuas entre cada nuevo vértice y el anterior:</p>
 <div class="highlight"><pre><span></span><code><span class="n">glBegin</span><span class="p">(</span><span class="n">GL_LINE_LOOP</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim06.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/anim06.gif" /></p>
 <p>Siempre unirá el último vértice con el primero para intentar crear una especie de polígono, pero eso podemos evitarlo cambiando el modo a <code>GL_LINE_STRIP</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="n">glBegin</span><span class="p">(</span><span class="n">GL_LINE_STRIP</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim07.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/anim07.gif" /></p>
 <p>Con algo de ingenio, detectando cuando estamos presionando un botón del ratón con <code>MOUSEBUTTONDOWN</code> y <code>MOUSEBUTTONUP</code> más el evento <code>MOUSEMOTION</code> para detectar el movimiento, podemos crear una pequeña aplicación para dibujar:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">OpenGLApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
 
@@ -810,7 +810,7 @@ div.my-img{text-align:center;margin-top:20px}
                               <span class="n">GLUtils</span><span class="o">.</span><span class="n">MapValue</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">screenHeight</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ortoHeight</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim08.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/anim08.gif" /></p>
 <p>El problema que al dejar de presionar y volver a hacerlo el último punto y el nuevo también se unen. ¿Cómo podríamos evitar que se unan? Pues podríamos crear un nuevo tipo llamado <code>Line</code> formado por una lista independiente con puntos:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Line</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -852,7 +852,7 @@ div.my-img{text-align:center;margin-top:20px}
             <span class="n">glVertex2f</span><span class="p">(</span><span class="n">point</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">point</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
         <span class="n">glEnd</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim09.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/anim09.gif" /></p>
 <h2 id="guardado-y-carga-en-un-fichero">Guardado y carga en un fichero<a class="headerlink" href="#guardado-y-carga-en-un-fichero" title="Permanent link">&para;</a></h2>
 <p>En esta práctica vamos a extender el código anterior para guardar y cargar el dibujo en un fichero siguiendo una estructura específica.</p>
 <p>Hay mil y una formas de escribir y leer datos, yo me voy a decantar por guardar la información en un fichero <code>json</code>:</p>
@@ -903,7 +903,7 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="bp">self</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 </code></pre></div>
 <p>Ya tendremos una aplicación para dibujar, guardar y recuperar el dibujo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim10.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/anim10.gif" /></p>
 <h2 id="poligonos-triangulos-y-quads">Polígonos, triángulos y quads<a class="headerlink" href="#poligonos-triangulos-y-quads" title="Permanent link">&para;</a></h2>
 <p>Retomando el anterior ejemplo del dibujado de líneas, vamos a aprovecharlo para introducir el dibujado de polígonos.</p>
 <p>De hecho ya vimos que si activamos el modo <code>GL_LINE_LOOP</code> OpenGL cierra siempre el espacio entre el último vértice y el primero.</p>
@@ -939,7 +939,7 @@ div.my-img{text-align:center;margin-top:20px}
         <span class="n">GLUtils</span><span class="o">.</span><span class="n">PrepareRender</span><span class="p">()</span>
         <span class="n">GLUtils</span><span class="o">.</span><span class="n">DrawPolygon</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim11.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/anim11.gif" /></p>
 <p>Podríamos dibujar el polígono, los puntos y las líneas con otros colores:</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">DrawPoints</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
@@ -970,7 +970,7 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="n">GLUtils</span><span class="o">.</span><span class="n">DrawLine</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
     <span class="n">GLUtils</span><span class="o">.</span><span class="n">DrawPoints</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim12.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/anim12.gif" /></p>
 <p>Es interesante observar ese efecto que se genera al no poder "encerrar" el polígono.</p>
 <p>La verdad es que en lugar de un polígono podríamos decirle a OpenGL que intente dibujar primitivas como triángulos y cuadrados:</p>
 <ul>
@@ -981,7 +981,7 @@ div.my-img{text-align:center;margin-top:20px}
 <li><code>GL_QUADS_STRIP</code></li>
 </ul>
 <p>Si probamos con <code>GL_TRIANGLES</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim13.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/anim13.gif" /></p>
 <p>OpenGL supone que cada tres vértices se forma un triángulo, pero estos triángulos son independientes y como las líneas se dibujan en un bucle unas tras otras no se ajustan a ellos.</p>
 <p>Lo podemos resolver dibujando las líneas en subconjuntos de tres vértices generados con <code>numpy</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
@@ -997,7 +997,7 @@ div.my-img{text-align:center;margin-top:20px}
         <span class="n">GLUtils</span><span class="o">.</span><span class="n">DrawLine</span><span class="p">([</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">points</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">points</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]],</span> <span class="mi">3</span><span class="p">)</span>
     <span class="n">GLUtils</span><span class="o">.</span><span class="n">DrawPoints</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim14.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/anim14.gif" /></p>
 <p>Otro modo interesante es <code>GL_TRIANGLE_FAN</code>, éste intentará generar triángulos en forma de aspas de ventilador. No hace falta que dibujemos las líneas, solo observemos el resultado:</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">DrawPolygon</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
@@ -1009,7 +1009,7 @@ div.my-img{text-align:center;margin-top:20px}
     <span class="n">glEnd</span><span class="p">()</span>
     <span class="n">GLUtils</span><span class="o">.</span><span class="n">DrawPoints</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim15.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/anim15.gif" /></p>
 <p>De forma similar funciona el renderizado de cuadrados <code>GL_QUADS</code>, en estos deberíamos dibujar las líneas en subconjuntos de 4 vértices:</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">DrawPolygon</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
@@ -1025,7 +1025,7 @@ div.my-img{text-align:center;margin-top:20px}
             <span class="p">[</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">points</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">points</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">],</span> <span class="n">points</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]],</span> <span class="mi">3</span><span class="p">)</span>
     <span class="n">GLUtils</span><span class="o">.</span><span class="n">DrawPoints</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim16.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/anim16.gif" /></p>
 <p>Los triángulos y los cuadrados son las primitivas básicas para el dibujado de mallas y constituyen la parte más esencial del renderizado de modelos tridimensionales.</p>
 <hr />
 <p><small class="edited"><i>Última edición: 12 de Junio de 2022</i></small></p>
@@ -1144,8 +1144,8 @@ div.my-img{text-align:center;margin-top:20px}
         <a id="anchorID" href="/docs/" target="_blank"></a>
       </div>
       <script type='text/javascript'
-              src="https://hektorprofe.github.io/docs/assets/javascripts/application.a26c1c21.js"></script>
-      <script src="https://hektorprofe.github.io/docs/assets/javascripts/tingle.min.js"></script>
+              src="https://hektorprofe.github.io/assets/javascripts/application.a26c1c21.js"></script>
+      <script src="https://hektorprofe.github.io/assets/javascripts/tingle.min.js"></script>
       <script type='text/javascript'>
     app.initialize({version:"1.2.3",url:{base:"../.."}})
     var _extends=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(t[o]=n[o])}return t},_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t};!function(t,e){"object"===("undefined"==typeof exports?"undefined":_typeof(exports))&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):t.LazyLoad=e()}(this,function(){"use strict";function t(t,e,n){var o=e._settings;!n&&i(t)||(C(o.callback_enter,t),R.indexOf(t.tagName)>-1&&(N(t,e),I(t,o.class_loading)),E(t,e),a(t),C(o.callback_set,t))}var e={elements_selector:"img",container:document,threshold:300,thresholds:null,data_src:"src",data_srcset:"srcset",data_sizes:"sizes",data_bg:"bg",class_loading:"loading",class_loaded:"loaded",class_error:"error",load_delay:0,callback_load:null,callback_error:null,callback_set:null,callback_enter:null,callback_finish:null,to_webp:!1},n=function(t){return _extends({},e,t)},o=function(t,e){return t.getAttribute("data-"+e)},r=function(t,e,n){var o="data-"+e;null!==n?t.setAttribute(o,n):t.removeAttribute(o)},a=function(t){return r(t,"was-processed","true")},i=function(t){return"true"===o(t,"was-processed")},s=function(t,e){return r(t,"ll-timeout",e)},c=function(t){return o(t,"ll-timeout")},l=function(t){return t.filter(function(t){return!i(t)})},u=function(t,e){return t.filter(function(t){return t!==e})},d=function(t,e){var n,o=new t(e);try{n=new CustomEvent("LazyLoad::Initialized",{detail:{instance:o}})}catch(t){(n=document.createEvent("CustomEvent")).initCustomEvent("LazyLoad::Initialized",!1,!1,{instance:o})}window.dispatchEvent(n)},f=function(t,e){return e?t.replace(/\.(jpe?g|png)/gi,".webp"):t},_="undefined"!=typeof window,v=_&&!("onscroll"in window)||/(gle|ing|ro)bot|crawl|spider/i.test(navigator.userAgent),g=_&&"IntersectionObserver"in window,h=_&&"classList"in document.createElement("p"),b=_&&function(){var t=document.createElement("canvas");return!(!t.getContext||!t.getContext("2d"))&&0===t.toDataURL("image/webp").indexOf("data:image/webp")}(),m=function(t,e,n,r){for(var a,i=0;a=t.children[i];i+=1)if("SOURCE"===a.tagName){var s=o(a,n);p(a,e,s,r)}},p=function(t,e,n,o){n&&t.setAttribute(e,f(n,o))},y=function(t,e){var n=b&&e.to_webp,r=o(t,e.data_src),a=o(t,e.data_bg);if(r){var i=f(r,n);t.style.backgroundImage='url("'+i+'")'}if(a){var s=f(a,n);t.style.backgroundImage=s}},w={IMG:function(t,e){var n=b&&e.to_webp,r=e.data_srcset,a=t.parentNode;a&&"PICTURE"===a.tagName&&m(a,"srcset",r,n);var i=o(t,e.data_sizes);p(t,"sizes",i);var s=o(t,r);p(t,"srcset",s,n);var c=o(t,e.data_src);p(t,"src",c,n)},IFRAME:function(t,e){var n=o(t,e.data_src);p(t,"src",n)},VIDEO:function(t,e){var n=e.data_src,r=o(t,n);m(t,"src",n),p(t,"src",r),t.load()}},E=function(t,e){var n=e._settings,o=t.tagName,r=w[o];if(r)return r(t,n),e._updateLoadingCount(1),void(e._elements=u(e._elements,t));y(t,n)},I=function(t,e){h?t.classList.add(e):t.className+=(t.className?" ":"")+e},L=function(t,e){h?t.classList.remove(e):t.className=t.className.replace(new RegExp("(^|\\s+)"+e+"(\\s+|$)")," ").replace(/^\s+/,"").replace(/\s+$/,"")},C=function(t,e){t&&t(e)},O=function(t,e,n){t.addEventListener(e,n)},k=function(t,e,n){t.removeEventListener(e,n)},x=function(t,e,n){O(t,"load",e),O(t,"loadeddata",e),O(t,"error",n)},A=function(t,e,n){k(t,"load",e),k(t,"loadeddata",e),k(t,"error",n)},z=function(t,e,n){var o=n._settings,r=e?o.class_loaded:o.class_error,a=e?o.callback_load:o.callback_error,i=t.target;L(i,o.class_loading),I(i,r),C(a,i),n._updateLoadingCount(-1)},N=function(t,e){var n=function n(r){z(r,!0,e),A(t,n,o)},o=function o(r){z(r,!1,e),A(t,n,o)};x(t,n,o)},R=["IMG","IFRAME","VIDEO"],S=function(e,n,o){t(e,o),n.unobserve(e)},M=function(t){var e=c(t);e&&(clearTimeout(e),s(t,null))},j=function(t,e,n){var o=n._settings.load_delay,r=c(t);r||(r=setTimeout(function(){S(t,e,n),M(t)},o),s(t,r))},D=function(t){return t.isIntersecting||t.intersectionRatio>0},T=function(t){return{root:t.container===document?null:t.container,rootMargin:t.thresholds||t.threshold+"px"}},U=function(t,e){this._settings=n(t),this._setObserver(),this._loadingCount=0,this.update(e)};return U.prototype={_manageIntersection:function(t){var e=this._observer,n=this._settings.load_delay,o=t.target;n?D(t)?j(o,e,this):M(o):D(t)&&S(o,e,this)},_onIntersection:function(t){t.forEach(this._manageIntersection.bind(this))},_setObserver:function(){g&&(this._observer=new IntersectionObserver(this._onIntersection.bind(this),T(this._settings)))},_updateLoadingCount:function(t){this._loadingCount+=t,0===this._elements.length&&0===this._loadingCount&&C(this._settings.callback_finish)},update:function(t){var e=this,n=this._settings,o=t||n.container.querySelectorAll(n.elements_selector);this._elements=l(Array.prototype.slice.call(o)),!v&&this._observer?this._elements.forEach(function(t){e._observer.observe(t)}):this.loadAll()},destroy:function(){var t=this;this._observer&&(this._elements.forEach(function(e){t._observer.unobserve(e)}),this._observer=null),this._elements=null,this._settings=null},load:function(e,n){t(e,this,n)},loadAll:function(){var t=this;this._elements.forEach(function(e){t.load(e)})}},_&&function(t,e){if(e)if(e.length)for(var n,o=0;n=e[o];o+=1)d(t,n);else d(t,e)}(U,window.lazyLoadOptions),U});

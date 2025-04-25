@@ -11,7 +11,7 @@
       
         <meta name="description" content="Archivo con apuntes de programación de Hector Costa Guzman.">
       
-      <link rel="canonical" href="https://hektorprofe.github.io/docs/django/web-playground/cbv-listview-detailview/">
+      <link rel="canonical" href="https://hektorprofe.github.io/django/web-playground/cbv-listview-detailview/">
       
         <meta name="author" content="Héctor Costa Guzman">
       
@@ -34,9 +34,9 @@
     
     
     <link rel="stylesheet"
-          href="https://hektorprofe.github.io/docs/assets/stylesheets/tingle.min.css">
+          href="https://hektorprofe.github.io/assets/stylesheets/tingle.min.css">
     <style>
-@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
+@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
 [data-md-color-primary="grey"] .md-header { background-color: #191A1D }
 [data-md-color-primary="grey"] .md-tabs { background-color: #222831 }
 .md-footer-nav { background-color: #222831; }
@@ -127,11 +127,11 @@ div.my-img{text-align:center;margin-top:20px}
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://hektorprofe.github.io/docs/"
+        <a href="https://hektorprofe.github.io/"
            title="Archivo - Archivo de Hektor Profe Docs"
            class="md-header-nav__button md-logo"
            style="font-size: 0px">
-          <img src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+          <img src="https://hektorprofe.github.io/assets/images/logo.png"
                width="200px"
                height="35px"
                style="margin-top: -5px"
@@ -150,9 +150,9 @@ div.my-img{text-align:center;margin-top:20px}
              href="https://hektorprofe.github.io/docs/"
              style="margin-left:1.4em"
              title="Buscador de documentos">Buscador</a>
-          <a href="https://hektorprofe.github.io/docs/">
+          <a href="https://hektorprofe.github.io/">
             <img class="nav__logo"
-                 src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+                 src="https://hektorprofe.github.io/assets/images/logo.png"
                  width="200px"
                  height="35px"
                  style="margin: 6px auto 0"
@@ -1547,7 +1547,7 @@ div.my-img{text-align:center;margin-top:20px}
 <p>Ahora mismo nuestra app Pages tiene dos vistas, una para mostrar un
 resumen de las páginas (pages) y otra para cada página individual
 (page).</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image180.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image180.png" /></p>
 <p>Pues os gustará saber que existen dos CBV pensadas para ambas
 situaciones, ya sea devolver una instancia o una lista, y son ni más ni
 menos que DetailView y ListView, vamos a utilizarlas.</p>
@@ -1558,33 +1558,33 @@ la cual llegamos fácilmente desde
 <a href="https://ccbv.co.uk/projects/Django/2.0/django.views.generic.list/ListView/">https://ccbv.co.uk/projects/Django/2.0/django.views.generic.list/ListView/</a> \
 <a href="https://docs.djangoproject.com/en/dev/ref/class-based-views/generic-display/#django.views.generic.list.ListView">https://docs.djangoproject.com/en/dev/ref/class-based-views/generic-display/#django.views.generic.list.ListView</a> </p>
 <p>Sirviéndonos del ejemplo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image104.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image470.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image462.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image104.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image470.png" />\
+<img alt="" src="https://hektorprofe.github.io/cdn/django/images/image462.png" /></p>
 <p>Ahora adaptamos la URL…</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image147.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image147.png" /></p>
 <p>Ahora vamos a recargar la web y veremos un error:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image209.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image209.png" /></p>
 <p>Como véis de forma automática está esperando un template llamado
 page_list.html en lugar de pages.html. Tenemos dos opciones, o
 redefinir el atributo template_name o cambiar el nombre del template
 directamente, vamos a hacer la segunda:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image825.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image825.png" /></p>
 <p>Si ahora actualizamos la /pages/ veremos que no aparece ninguna página:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image405.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image405.png" /></p>
 <p>Tranquilos, esto no significa que no lo hayamos hecho bien, sino que por
 defecto nuestra lista de páginas no se envía con el nombre “pages”, sino
 con uno genérico de las ListView, y que tal como pone en el ejemplo de
 la documentación es:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image567.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image567.png" /></p>
 <p>Por tanto sólo debemos ir a nuestro template y cambiar el nombre de esta
 variable:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image260.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image260.png" /></p>
 <p>Aunque también se acepta por defecto el nombre del modelo seguido de
  _list:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image178.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image178.png" /></p>
 <p>Actualizamos de nuevo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image322.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image322.png" /></p>
 <p>Y ahí tenemos nuestra ListView. ¿Habéis visto cómo utilizando una
 ListView nos hemos ahorrado un montón de código? E ahí la gran utilidad
 de las CBV.</p>
@@ -1592,32 +1592,32 @@ de las CBV.</p>
 individual:</p>
 <p><a href="https://ccbv.co.uk/projects/Django/2.0/django.views.generic.detail/DetailView/">https://ccbv.co.uk/projects/Django/2.0/django.views.generic.detail/DetailView/</a> \
 <a href="https://docs.djangoproject.com/en/dev/ref/class-based-views/generic-display/#django.views.generic.detail.DetailView">https://docs.djangoproject.com/en/dev/ref/class-based-views/generic-display/#django.views.generic.detail.DetailView</a> </p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image421.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image905.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image421.png" />\
+<img alt="" src="https://hektorprofe.github.io/cdn/django/images/image905.png" /></p>
 <p>Y la URL:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image101.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image101.png" /></p>
 <p>Evidentemente ahora tendremos que cambiar algunas cosas para que
 funcione. Si visitamos una página y analizamos el error veremos como
 solucionarlo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image446.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image446.png" /></p>
 <p>Lo que nos está indicando es que nuestra DetailView está esperando un
 campo pj o un campo slug para buscar la página. Nuestro objeto no tiene
 un campo slug, sólo lo estamos utilizando de adorno, así que pasaremos
 la clave primaria, pk, que no es más que el id. De hecho ya lo estamos
 pasando, pero no con el nombre que él espera que es pk:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image170.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image170.png" /></p>
 <p>Si todo va bien el siguiente paso será cambiarle el nombre al template
 por uno genérico:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image203.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image203.png" /></p>
 <p>Así que vamos a cambiarlo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image710.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image710.png" /></p>
 <p>Si actualizamos la página veremos que esta vez ya nos funciona sin
 cambiar el nombre de la variable:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image137.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image137.png" /></p>
 <p>Esto es porque de forma similar a la ListView, en su template se acepta
 tanto la variable {{ object }} como el nombre del modelo para hacer
 referencia al objeto, y como tenemos {{ page }} pues ya funciona:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image291.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image291.png" /></p>
 <p>Y de esta forma hemos vuelta a ahorrarnos 3 líneas apenas poniendo dos
 palabras: model = Page</p>
 <p>¿Supongo que ya empezáis a tener otra visión de las CBV no? Pues esto no
@@ -1741,8 +1741,8 @@ utilizar el panel de administrador, ya veréis que útil.</p>
         <a id="anchorID" href="/docs/" target="_blank"></a>
       </div>
       <script type='text/javascript'
-              src="https://hektorprofe.github.io/docs/assets/javascripts/application.a26c1c21.js"></script>
-      <script src="https://hektorprofe.github.io/docs/assets/javascripts/tingle.min.js"></script>
+              src="https://hektorprofe.github.io/assets/javascripts/application.a26c1c21.js"></script>
+      <script src="https://hektorprofe.github.io/assets/javascripts/tingle.min.js"></script>
       <script type='text/javascript'>
     app.initialize({version:"1.2.3",url:{base:"../../.."}})
     var _extends=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(t[o]=n[o])}return t},_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t};!function(t,e){"object"===("undefined"==typeof exports?"undefined":_typeof(exports))&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):t.LazyLoad=e()}(this,function(){"use strict";function t(t,e,n){var o=e._settings;!n&&i(t)||(C(o.callback_enter,t),R.indexOf(t.tagName)>-1&&(N(t,e),I(t,o.class_loading)),E(t,e),a(t),C(o.callback_set,t))}var e={elements_selector:"img",container:document,threshold:300,thresholds:null,data_src:"src",data_srcset:"srcset",data_sizes:"sizes",data_bg:"bg",class_loading:"loading",class_loaded:"loaded",class_error:"error",load_delay:0,callback_load:null,callback_error:null,callback_set:null,callback_enter:null,callback_finish:null,to_webp:!1},n=function(t){return _extends({},e,t)},o=function(t,e){return t.getAttribute("data-"+e)},r=function(t,e,n){var o="data-"+e;null!==n?t.setAttribute(o,n):t.removeAttribute(o)},a=function(t){return r(t,"was-processed","true")},i=function(t){return"true"===o(t,"was-processed")},s=function(t,e){return r(t,"ll-timeout",e)},c=function(t){return o(t,"ll-timeout")},l=function(t){return t.filter(function(t){return!i(t)})},u=function(t,e){return t.filter(function(t){return t!==e})},d=function(t,e){var n,o=new t(e);try{n=new CustomEvent("LazyLoad::Initialized",{detail:{instance:o}})}catch(t){(n=document.createEvent("CustomEvent")).initCustomEvent("LazyLoad::Initialized",!1,!1,{instance:o})}window.dispatchEvent(n)},f=function(t,e){return e?t.replace(/\.(jpe?g|png)/gi,".webp"):t},_="undefined"!=typeof window,v=_&&!("onscroll"in window)||/(gle|ing|ro)bot|crawl|spider/i.test(navigator.userAgent),g=_&&"IntersectionObserver"in window,h=_&&"classList"in document.createElement("p"),b=_&&function(){var t=document.createElement("canvas");return!(!t.getContext||!t.getContext("2d"))&&0===t.toDataURL("image/webp").indexOf("data:image/webp")}(),m=function(t,e,n,r){for(var a,i=0;a=t.children[i];i+=1)if("SOURCE"===a.tagName){var s=o(a,n);p(a,e,s,r)}},p=function(t,e,n,o){n&&t.setAttribute(e,f(n,o))},y=function(t,e){var n=b&&e.to_webp,r=o(t,e.data_src),a=o(t,e.data_bg);if(r){var i=f(r,n);t.style.backgroundImage='url("'+i+'")'}if(a){var s=f(a,n);t.style.backgroundImage=s}},w={IMG:function(t,e){var n=b&&e.to_webp,r=e.data_srcset,a=t.parentNode;a&&"PICTURE"===a.tagName&&m(a,"srcset",r,n);var i=o(t,e.data_sizes);p(t,"sizes",i);var s=o(t,r);p(t,"srcset",s,n);var c=o(t,e.data_src);p(t,"src",c,n)},IFRAME:function(t,e){var n=o(t,e.data_src);p(t,"src",n)},VIDEO:function(t,e){var n=e.data_src,r=o(t,n);m(t,"src",n),p(t,"src",r),t.load()}},E=function(t,e){var n=e._settings,o=t.tagName,r=w[o];if(r)return r(t,n),e._updateLoadingCount(1),void(e._elements=u(e._elements,t));y(t,n)},I=function(t,e){h?t.classList.add(e):t.className+=(t.className?" ":"")+e},L=function(t,e){h?t.classList.remove(e):t.className=t.className.replace(new RegExp("(^|\\s+)"+e+"(\\s+|$)")," ").replace(/^\s+/,"").replace(/\s+$/,"")},C=function(t,e){t&&t(e)},O=function(t,e,n){t.addEventListener(e,n)},k=function(t,e,n){t.removeEventListener(e,n)},x=function(t,e,n){O(t,"load",e),O(t,"loadeddata",e),O(t,"error",n)},A=function(t,e,n){k(t,"load",e),k(t,"loadeddata",e),k(t,"error",n)},z=function(t,e,n){var o=n._settings,r=e?o.class_loaded:o.class_error,a=e?o.callback_load:o.callback_error,i=t.target;L(i,o.class_loading),I(i,r),C(a,i),n._updateLoadingCount(-1)},N=function(t,e){var n=function n(r){z(r,!0,e),A(t,n,o)},o=function o(r){z(r,!1,e),A(t,n,o)};x(t,n,o)},R=["IMG","IFRAME","VIDEO"],S=function(e,n,o){t(e,o),n.unobserve(e)},M=function(t){var e=c(t);e&&(clearTimeout(e),s(t,null))},j=function(t,e,n){var o=n._settings.load_delay,r=c(t);r||(r=setTimeout(function(){S(t,e,n),M(t)},o),s(t,r))},D=function(t){return t.isIntersecting||t.intersectionRatio>0},T=function(t){return{root:t.container===document?null:t.container,rootMargin:t.thresholds||t.threshold+"px"}},U=function(t,e){this._settings=n(t),this._setObserver(),this._loadingCount=0,this.update(e)};return U.prototype={_manageIntersection:function(t){var e=this._observer,n=this._settings.load_delay,o=t.target;n?D(t)?j(o,e,this):M(o):D(t)&&S(o,e,this)},_onIntersection:function(t){t.forEach(this._manageIntersection.bind(this))},_setObserver:function(){g&&(this._observer=new IntersectionObserver(this._onIntersection.bind(this),T(this._settings)))},_updateLoadingCount:function(t){this._loadingCount+=t,0===this._elements.length&&0===this._loadingCount&&C(this._settings.callback_finish)},update:function(t){var e=this,n=this._settings,o=t||n.container.querySelectorAll(n.elements_selector);this._elements=l(Array.prototype.slice.call(o)),!v&&this._observer?this._elements.forEach(function(t){e._observer.observe(t)}):this.loadAll()},destroy:function(){var t=this;this._observer&&(this._elements.forEach(function(e){t._observer.unobserve(e)}),this._observer=null),this._elements=null,this._settings=null},load:function(e,n){t(e,this,n)},loadAll:function(){var t=this;this._elements.forEach(function(e){t.load(e)})}},_&&function(t,e){if(e)if(e.length)for(var n,o=0;n=e[o];o+=1)d(t,n);else d(t,e)}(U,window.lazyLoadOptions),U});

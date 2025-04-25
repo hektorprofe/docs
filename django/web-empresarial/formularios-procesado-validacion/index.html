@@ -11,7 +11,7 @@
       
         <meta name="description" content="Archivo con apuntes de programación de Hector Costa Guzman.">
       
-      <link rel="canonical" href="https://hektorprofe.github.io/docs/django/web-empresarial/formularios-procesado-validacion/">
+      <link rel="canonical" href="https://hektorprofe.github.io/django/web-empresarial/formularios-procesado-validacion/">
       
         <meta name="author" content="Héctor Costa Guzman">
       
@@ -34,9 +34,9 @@
     
     
     <link rel="stylesheet"
-          href="https://hektorprofe.github.io/docs/assets/stylesheets/tingle.min.css">
+          href="https://hektorprofe.github.io/assets/stylesheets/tingle.min.css">
     <style>
-@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
+@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
 [data-md-color-primary="grey"] .md-header { background-color: #191A1D }
 [data-md-color-primary="grey"] .md-tabs { background-color: #222831 }
 .md-footer-nav { background-color: #222831; }
@@ -127,11 +127,11 @@ div.my-img{text-align:center;margin-top:20px}
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://hektorprofe.github.io/docs/"
+        <a href="https://hektorprofe.github.io/"
            title="Archivo - Archivo de Hektor Profe Docs"
            class="md-header-nav__button md-logo"
            style="font-size: 0px">
-          <img src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+          <img src="https://hektorprofe.github.io/assets/images/logo.png"
                width="200px"
                height="35px"
                style="margin-top: -5px"
@@ -150,9 +150,9 @@ div.my-img{text-align:center;margin-top:20px}
              href="https://hektorprofe.github.io/docs/"
              style="margin-left:1.4em"
              title="Buscador de documentos">Buscador</a>
-          <a href="https://hektorprofe.github.io/docs/">
+          <a href="https://hektorprofe.github.io/">
             <img class="nav__logo"
-                 src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+                 src="https://hektorprofe.github.io/assets/images/logo.png"
                  width="200px"
                  height="35px"
                  style="margin: 6px auto 0"
@@ -1548,7 +1548,7 @@ div.my-img{text-align:center;margin-top:20px}
 poder funcionar, vamos a ello.</p>
 <p>Lo primero es configurarlo correctamente, así que vamos a envolver un
 tag \&lt;form&gt; y a configurar su acción y método:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image371.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image371.png" /></p>
 <p>Hay dos métodos para enviar un formulario: POST y GET. El método GET es
 visible a simple vista, se añade a la URL de la petición con un
 interrogante al final. A nosotros no nos interesa que las peticiones se
@@ -1561,9 +1561,9 @@ caso será /contact/ de la web.</p>
 <p>Si intentamos enviar el formulario, como hemos indicado que los campos
 son obligatorios (con el atributo required=True) algunos navegadores nos
 maneja una prevalidación automática:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image908.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image908.png" /></p>
 <p>Cuando consigamos enviar el formulario nos aparecerá un error:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image504.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image504.png" /></p>
 <p>Nos devuelve un error de verificación CSRF fallida (el token CSRF se ha
 perdido o es incorrecto). ¿Qué es esto del token CSRF? Pues ni más ni
 menos que un sistema de seguridad. CSRF son las siglas de Cross-site
@@ -1576,21 +1576,21 @@ explicación más
 detallada. <a href="https://es.wikipedia.org/wiki/Cross-site_request_forgery">https://es.wikipedia.org/wiki/Cross-site_request_forgery</a></p>
 <p>Para solucionar el error debemos generar un token CSRF dentro del
 formulario de la siguiente forma:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image20.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image20.png" /></p>
 <p>Si recargamos la página a simple vista no habrá cambiado nada, pero si
 observamos el código veremos un campo hidden (oculto) con el token:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image44.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image44.png" /></p>
 <p>Ahora si volvemos a enviar el formulario, como podréis observar no
 ocurre nada, pero eso no significa que no se esté enviando, sólo que no
 lo vemos porque el método es POST. Si cambiamos un momento a GET veréis
 como se envíanen la barra de direcciones:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image416.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image416.png" /></p>
 <p>Vamos a dejarlo como estaba:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image129.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image129.png" /></p>
 <p>Para que veais que no os miento, haced lo siguiente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image84.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image84.png" /></p>
 <p>Así debugearemos los datos POST de la petición:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image647.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image647.png" /></p>
 <p>Queda demostrado entonces que estamos enviando datos a la vista a través
 de la petición, ahora sólo nos falta manipularlos en nuestra vista para
 procesarlos y enviar el email.</p>
@@ -1599,33 +1599,33 @@ request en la primera posición? Pues, de la misma forma que hemos hecho
 en el template también podemos acceder a los datos POST.</p>
 <p>Sin embargo, antes de lanzarnos a manipular estos datos  debemos estar
 seguros de que ha ocurrido una petición POST. Poned esto en la vista:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image680.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image680.png" /></p>
 <p>Ahora si cargamos nuestra página y observamos la terminal, veremos el
 tipo de petición que se realiza. Si es la página normal recibimos una
 petición GET:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image754.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image754.png" /></p>
 <p>En cambio si enviamos el formulario:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image649.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image649.png" /></p>
 <p>Por tanto la respuesta a la pregunta, ¿cuándo procesaremos el
 formulario? está clara “Sólo cuando detectemos una petición POST”:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image721.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image721.png" /></p>
 <p>Una vez estamos seguros de que se ha enviado el formulario, lo que
 haremos es rellenarlo con los datos que se envían. Es fácil, sólo
 debemos hacer lo siguiente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image237.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image237.png" /></p>
 <p>Únicamente habiendo hecho este cambio, si enviamos el formulario, veréis
 que éste queda rellenado con los campos que se le envían:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image86.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image86.png" /></p>
 <p>Una utilidad relacionada con ésto es que si algún campo no valida bien,
 por lo menos el usuario no deberá introducir de nuevo todo desde el
 principio, pero esa no es su razón de ser.</p>
 <p>Haber rellenado el formulario nos permite comprobar si todos los campos
 son válidos:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image741.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image741.png" /></p>
 <p>Si todos los campos son válidos procederemos a recuperarlos. Como
 request.POST no deja de ser un diccionario, una forma segura de hacerlo
 es utilizar su método get que permite devolver un valor por defecto:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image459.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image459.png" /></p>
 <p>En este punto ya tenemos la información recuperada en la vista, así que
 procederemos a enviar el email, pero esto lo dejo para más adelante.</p>
 <p>Por ahora vamos a suponer que todo ha ido bien y debemos informar al
@@ -1634,24 +1634,24 @@ hacer fácilmente. En lugar de renderizar el template de contacto podemos
 hacer un redireccionamiento enviando una variable OK por GET a la propia
 página /contact/.</p>
 <p>Para redireccionar tenemos a nuestra disposición la función redirect:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image675.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image675.png" /></p>
 <p>Y podríamos simplemente hacer lo siguiente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image610.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image610.png" /></p>
 <p>Esto está bien, pero ya sabéis que no me gusta poner cadenas en crudo,
 es una mala práctica. Por ello voy a introducirs brevemente la función
 reverse(), que es igual que <code>{% url %}</code> en los templates:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image758.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image390.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image758.png" />\
+<img alt="" src="https://hektorprofe.github.io/cdn/django/images/image390.png" /></p>
 <p>Hacedme caso, parece tedioso pero es una muy buena práctica dejar que
 Django resuelva él mismo las URL que tenemos definidas en los Paths.</p>
 <p>Ahora que tenemos la redirección, vamos a enviar el formulario y como
 véis nos recarga la página pasando este OK en la parte superior.</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image573.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image573.png" /></p>
 <p>Ahora en el template podemos comprobar si existe esta variable GET ‘ok’
 en el diccionario request.GET, y si es así mostrar un mensaje que diga
 “Su mensaje se ha enviado correctamente etc.”:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image109.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image744.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image109.png" />\
+<img alt="" src="https://hektorprofe.github.io/cdn/django/images/image744.png" /></p>
 <p>El formulario está casi listo, pero visualmente no tiene nada que ver
 con el que teníamos maquetado. En la siguiente lección os enseñaré como
 adaptar un diseño en lugar de utilizar el que genera Django
@@ -1773,8 +1773,8 @@ automáticamente.</p>
         <a id="anchorID" href="/docs/" target="_blank"></a>
       </div>
       <script type='text/javascript'
-              src="https://hektorprofe.github.io/docs/assets/javascripts/application.a26c1c21.js"></script>
-      <script src="https://hektorprofe.github.io/docs/assets/javascripts/tingle.min.js"></script>
+              src="https://hektorprofe.github.io/assets/javascripts/application.a26c1c21.js"></script>
+      <script src="https://hektorprofe.github.io/assets/javascripts/tingle.min.js"></script>
       <script type='text/javascript'>
     app.initialize({version:"1.2.3",url:{base:"../../.."}})
     var _extends=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(t[o]=n[o])}return t},_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t};!function(t,e){"object"===("undefined"==typeof exports?"undefined":_typeof(exports))&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):t.LazyLoad=e()}(this,function(){"use strict";function t(t,e,n){var o=e._settings;!n&&i(t)||(C(o.callback_enter,t),R.indexOf(t.tagName)>-1&&(N(t,e),I(t,o.class_loading)),E(t,e),a(t),C(o.callback_set,t))}var e={elements_selector:"img",container:document,threshold:300,thresholds:null,data_src:"src",data_srcset:"srcset",data_sizes:"sizes",data_bg:"bg",class_loading:"loading",class_loaded:"loaded",class_error:"error",load_delay:0,callback_load:null,callback_error:null,callback_set:null,callback_enter:null,callback_finish:null,to_webp:!1},n=function(t){return _extends({},e,t)},o=function(t,e){return t.getAttribute("data-"+e)},r=function(t,e,n){var o="data-"+e;null!==n?t.setAttribute(o,n):t.removeAttribute(o)},a=function(t){return r(t,"was-processed","true")},i=function(t){return"true"===o(t,"was-processed")},s=function(t,e){return r(t,"ll-timeout",e)},c=function(t){return o(t,"ll-timeout")},l=function(t){return t.filter(function(t){return!i(t)})},u=function(t,e){return t.filter(function(t){return t!==e})},d=function(t,e){var n,o=new t(e);try{n=new CustomEvent("LazyLoad::Initialized",{detail:{instance:o}})}catch(t){(n=document.createEvent("CustomEvent")).initCustomEvent("LazyLoad::Initialized",!1,!1,{instance:o})}window.dispatchEvent(n)},f=function(t,e){return e?t.replace(/\.(jpe?g|png)/gi,".webp"):t},_="undefined"!=typeof window,v=_&&!("onscroll"in window)||/(gle|ing|ro)bot|crawl|spider/i.test(navigator.userAgent),g=_&&"IntersectionObserver"in window,h=_&&"classList"in document.createElement("p"),b=_&&function(){var t=document.createElement("canvas");return!(!t.getContext||!t.getContext("2d"))&&0===t.toDataURL("image/webp").indexOf("data:image/webp")}(),m=function(t,e,n,r){for(var a,i=0;a=t.children[i];i+=1)if("SOURCE"===a.tagName){var s=o(a,n);p(a,e,s,r)}},p=function(t,e,n,o){n&&t.setAttribute(e,f(n,o))},y=function(t,e){var n=b&&e.to_webp,r=o(t,e.data_src),a=o(t,e.data_bg);if(r){var i=f(r,n);t.style.backgroundImage='url("'+i+'")'}if(a){var s=f(a,n);t.style.backgroundImage=s}},w={IMG:function(t,e){var n=b&&e.to_webp,r=e.data_srcset,a=t.parentNode;a&&"PICTURE"===a.tagName&&m(a,"srcset",r,n);var i=o(t,e.data_sizes);p(t,"sizes",i);var s=o(t,r);p(t,"srcset",s,n);var c=o(t,e.data_src);p(t,"src",c,n)},IFRAME:function(t,e){var n=o(t,e.data_src);p(t,"src",n)},VIDEO:function(t,e){var n=e.data_src,r=o(t,n);m(t,"src",n),p(t,"src",r),t.load()}},E=function(t,e){var n=e._settings,o=t.tagName,r=w[o];if(r)return r(t,n),e._updateLoadingCount(1),void(e._elements=u(e._elements,t));y(t,n)},I=function(t,e){h?t.classList.add(e):t.className+=(t.className?" ":"")+e},L=function(t,e){h?t.classList.remove(e):t.className=t.className.replace(new RegExp("(^|\\s+)"+e+"(\\s+|$)")," ").replace(/^\s+/,"").replace(/\s+$/,"")},C=function(t,e){t&&t(e)},O=function(t,e,n){t.addEventListener(e,n)},k=function(t,e,n){t.removeEventListener(e,n)},x=function(t,e,n){O(t,"load",e),O(t,"loadeddata",e),O(t,"error",n)},A=function(t,e,n){k(t,"load",e),k(t,"loadeddata",e),k(t,"error",n)},z=function(t,e,n){var o=n._settings,r=e?o.class_loaded:o.class_error,a=e?o.callback_load:o.callback_error,i=t.target;L(i,o.class_loading),I(i,r),C(a,i),n._updateLoadingCount(-1)},N=function(t,e){var n=function n(r){z(r,!0,e),A(t,n,o)},o=function o(r){z(r,!1,e),A(t,n,o)};x(t,n,o)},R=["IMG","IFRAME","VIDEO"],S=function(e,n,o){t(e,o),n.unobserve(e)},M=function(t){var e=c(t);e&&(clearTimeout(e),s(t,null))},j=function(t,e,n){var o=n._settings.load_delay,r=c(t);r||(r=setTimeout(function(){S(t,e,n),M(t)},o),s(t,r))},D=function(t){return t.isIntersecting||t.intersectionRatio>0},T=function(t){return{root:t.container===document?null:t.container,rootMargin:t.thresholds||t.threshold+"px"}},U=function(t,e){this._settings=n(t),this._setObserver(),this._loadingCount=0,this.update(e)};return U.prototype={_manageIntersection:function(t){var e=this._observer,n=this._settings.load_delay,o=t.target;n?D(t)?j(o,e,this):M(o):D(t)&&S(o,e,this)},_onIntersection:function(t){t.forEach(this._manageIntersection.bind(this))},_setObserver:function(){g&&(this._observer=new IntersectionObserver(this._onIntersection.bind(this),T(this._settings)))},_updateLoadingCount:function(t){this._loadingCount+=t,0===this._elements.length&&0===this._loadingCount&&C(this._settings.callback_finish)},update:function(t){var e=this,n=this._settings,o=t||n.container.querySelectorAll(n.elements_selector);this._elements=l(Array.prototype.slice.call(o)),!v&&this._observer?this._elements.forEach(function(t){e._observer.observe(t)}):this.loadAll()},destroy:function(){var t=this;this._observer&&(this._elements.forEach(function(e){t._observer.unobserve(e)}),this._observer=null),this._elements=null,this._settings=null},load:function(e,n){t(e,this,n)},loadAll:function(){var t=this;this._elements.forEach(function(e){t.load(e)})}},_&&function(t,e){if(e)if(e.length)for(var n,o=0;n=e[o];o+=1)d(t,n);else d(t,e)}(U,window.lazyLoadOptions),U});

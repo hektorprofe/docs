@@ -11,7 +11,7 @@
       
         <meta name="description" content="Archivo con apuntes de programación de Hector Costa Guzman.">
       
-      <link rel="canonical" href="https://hektorprofe.github.io/docs/unity/visual-scripting/flujo-videojuego/">
+      <link rel="canonical" href="https://hektorprofe.github.io/unity/visual-scripting/flujo-videojuego/">
       
         <meta name="author" content="Héctor Costa Guzman">
       
@@ -34,9 +34,9 @@
     
     
     <link rel="stylesheet"
-          href="https://hektorprofe.github.io/docs/assets/stylesheets/tingle.min.css">
+          href="https://hektorprofe.github.io/assets/stylesheets/tingle.min.css">
     <style>
-@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
+@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
 [data-md-color-primary="grey"] .md-header { background-color: #191A1D }
 [data-md-color-primary="grey"] .md-tabs { background-color: #222831 }
 .md-footer-nav { background-color: #222831; }
@@ -127,11 +127,11 @@ div.my-img{text-align:center;margin-top:20px}
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://hektorprofe.github.io/docs/"
+        <a href="https://hektorprofe.github.io/"
            title="Archivo - Archivo de Hektor Profe Docs"
            class="md-header-nav__button md-logo"
            style="font-size: 0px">
-          <img src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+          <img src="https://hektorprofe.github.io/assets/images/logo.png"
                width="200px"
                height="35px"
                style="margin-top: -5px"
@@ -150,9 +150,9 @@ div.my-img{text-align:center;margin-top:20px}
              href="https://hektorprofe.github.io/docs/"
              style="margin-left:1.4em"
              title="Buscador de documentos">Buscador</a>
-          <a href="https://hektorprofe.github.io/docs/">
+          <a href="https://hektorprofe.github.io/">
             <img class="nav__logo"
-                 src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+                 src="https://hektorprofe.github.io/assets/images/logo.png"
                  width="200px"
                  height="35px"
                  style="margin: 6px auto 0"
@@ -625,17 +625,17 @@ div.my-img{text-align:center;margin-top:20px}
 <p>Sin embargo para desarrollar un juego no basta con los componentes predeterminados, sino que es necesario crear tu propia lógica y eso se consigue creando unos componentes personalizados conocidos como <code>Scripts</code>, en español <code>Guiones</code>, que derivan de un código en lenguaje C# llamado <code>MonoBehaviour</code>.</p>
 <p>En otras palabras, en Unity, para añadir lógica personalizada a un videojuego es necesario saber el lenguaje C#. Pero no os preocupéis, porque en este curso no utilizaremos C# sino <code>Visual Scripting</code>, una interfaz que permite hacer algo parecido mediante diagramas y relaciones. </p>
 <p>Así que vamos a empezar creando una nueva escena <code>Basic (Built-in)</code> en nuestro proyecto <code>Sandbox 3D</code> que llamaremos <code>Experimentos</code>. En ella añadiremos un plano bastante grande (10,1,10) y un cubo, ambos reiniciando préviamente su componente <code>Transform</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_66.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/unity/Screenshot_66.png" /></p>
 <p>Ahora vamos a iniciar con un primer experimento, cuyo propósito es entender qué es el flujo de un videojuego y cómo modificarlo para añadir dinamismo e interactividad.</p>
 <p>Empezaremos añadiendo un componente al cubo llamado <code>Script Machine</code> que significa literalmente <code>Máquina de guiones</code>: </p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_67.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/unity/Screenshot_67.png" /></p>
 <p>Como su nombre indica, el propósito de esta "máquina" es ejecutar <code>scripts</code> o guiones. Estos guiones, pueden definirse en la propia máquina, en cuyo caso se llaman <code>Embed scripts</code> o de forma externa en un recurso de tipo <code>Graph</code>, que en el contexto significa "guión gráfico". Si creamos un guión externo podemos reutilizarlo en diferentes máquinas, y si lo creamos embebido, se enlazará única y exclusivamente a la máquina actual:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_68.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/unity/Screenshot_68.png" /></p>
 <p>Vamos a crear un guión reutilizable, por lo que haremos clic en la propiedad <code>Graph &gt; New</code>. Lo haremos en un nuevo directorio llamado <code>Graphs</code> con el nombre <code>Experimento</code>. </p>
 <p>Un objeto puede tener múltiples <code>Script Machines</code> pero cada una puede ejecutar solo un guión. Establecer un nombre y una descripción a la máquina nos puede servir en el futuro:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_70.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/unity/Screenshot_70.png" /></p>
 <p>Una vez tenemos el guión creado, vamos a editarlo haciendo clic en <code>Edit Graph</code>. La primera vez que hagamos esto se instalará en el proyecto el paquete de <code>Visual Scripting</code>, y luego se desplegará una ventana llamada <code>Visual Scripting Graph</code>. Mi recomendación es añadir esta ventana a la parte inferior porque la vamos a estar utilizando mucho:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_71.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/unity/Screenshot_71.png" /></p>
 <p>Esta ventana, cuyo propósito es diseñar los diagramas de flujo del videojuego se puede maximizar y minimizar de diferentes formas:</p>
 <ul>
 <li>Haciendo clic en <code>Full Screen</code>.</li>
@@ -644,9 +644,9 @@ div.my-img{text-align:center;margin-top:20px}
 </ul>
 <p>Podemos movernos por el gráfico presionando la rueda del ratón y hacer zoom con el mismo botón manteniendo <code>Control</code>.</p>
 <p>Sea como sea en este punto tenemos un <code>visual script</code> (guión visual) enlazado al cubo de la escena, en el cuál encontramos dos cajas, una llamada <code>Start</code> y otra <code>Update</code>, ambas con el texto <code>Event</code> debajo y una flecha verde con un <code>slot</code>, en español <code>ranura</code>.</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_72.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/unity/Screenshot_72.png" /></p>
 <p>Si ponemos en marcha el juego (Control+P) mientras tenemos esta ventana visible notaremos algo interesante, y es que la caja llamada <code>Update</code> se torna de otro color, lo cuál significa que ese evento se está ejecutando:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_73.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/unity/Screenshot_73.png" /></p>
 <p>Y es que los videojuegos se basan en repetir un ciclo muchas veces por segundo para generar la ilusión de movimiento, es lo que se conoce como <code>Game Loop</code> o bucle de juego.</p>
 <p>En la <a href="https://docs.unity3d.com/Manual/ExecutionOrder.html">documentación de Unity</a> podemos encontrar un repaso de todos los eventos que suceden en un objeto desde que empieza su ciclo de vida hasta que termina. Vale la pena repasar esta clasificación aunque sea de forma general:</p>
 <ul>
@@ -663,10 +663,10 @@ div.my-img{text-align:center;margin-top:20px}
 </ul>
 <p>Según lo que acabamos de aprender, el evento <code>Start</code> (empezar) es de inicialización y se ejecuta una única vez al llamar el script, mientras que <code>Update</code> (actualizar) es de lógica de juego y se ejecuta una vez por fotograma.</p>
 <p>La idea es que si configuramos una acción y la enlazamos a un evento, ésta se ejecutará cuando ocurre el evento, así que con eso en mente vamos a hacer clic derecho en el gráfico, escribimos <code>rotate</code> en el buscador y creamos un nodo de tipo <code>Transform:Rotate (X Angle, Y Angle, Z Angle)</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_74.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/unity/Screenshot_74.png" /></p>
 <p>Los nodos del gráfico se denominan unidades y la magia, como podéis suponer, al conectar las unidades entre ellas, configurando el flujo del programa para que se ejecuten unas u otras.</p>
 <p>Si seleccionamos la unidad que hemos creado, veremos la información sobre su utilización en el inspector del gráfico:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_75.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/unity/Screenshot_75.png" /></p>
 <p>Nos explica que este método aplica una rotación a los diferentes ejes X, Y, Z de un componente <code>Transform</code>. </p>
 <p>Además tiene unos inputs:</p>
 <ul>
@@ -679,19 +679,19 @@ div.my-img{text-align:center;margin-top:20px}
 <li><code>Exit</code>: Salida, de tipo <code>Flow</code>, se llamará una vez el método de rotación ha sido invocado.</li>
 </ul>
 <p>Si seleccionamos el evento <code>Update</code> veremos que tiene una salida llamada <code>Trigger</code> (disparador) de tipo <code>Flow</code>, que concuerda con la entrada <code>Invoke</code> de la unidad de rotación, así que vamos a conectar ambas trazando una línea:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_76.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/unity/Screenshot_76.png" /></p>
 <p>Si ejecutamos el juego (Control+P), veremos algo muy interesante:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Record_10.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/unity/Record_10.gif" /></p>
 <p>Esta animación nos muestra el flujo del videojuego, como el evento <code>Update</code> se está ejecutando en cada fotograma y su salida está fluyendo hasta la unidad de rotación. </p>
 <p>No está sucediendo nada porque los ángulos están establecidos a 0, pero si los cambiamos...</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Record_11.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/unity/Record_11.gif" /></p>
 <p>Como véis el cubo se pone a girar.</p>
 <p>Lo que estamos haciendo es modificar una propiedad en tiempo de juego, generando así una ilusión de movimiento. De hecho podemos ver cómo la propiedad <code>Rotation</code> del componente <code>Transform</code> se está modificando automáticamente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Record_12.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/unity/Record_12.gif" /></p>
 <p>Si en lugar de conectar el evento <code>Update</code>, conectamos la unidad de rotación al <code>Start</code>, ésta debería ejecutarse una única vez. Podemos borrar una relación desde uno de los extremos haciendo clic derecho:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_77.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/unity/Screenshot_77.png" /></p>
 <p>Al probar el juego, si la rotación que hemos establecido es muy pequeña no vamos a notar ninguna diferencia, pero si ponemos por ejemplo 45 entonces veremos como el cubo empieza rotado:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/unity/Screenshot_78.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/unity/Screenshot_78.png" /></p>
 <p>Como hemos visto en este pequeño experimento, en los videojuegos existe un "flujo" que podemos utilizar para conectar las unidades del gráfico.</p>
 <p>Este flujo no es más que el bucle de juego, un montón de instrucciones de código ejecutándose unas tras otras, aunque nosotros las veamos representadas gráficamente.</p>
 <p>A partir de la siguiente lección empieza el verdadero curso, descansad un poco y le damos caña.</p>
@@ -812,8 +812,8 @@ div.my-img{text-align:center;margin-top:20px}
         <a id="anchorID" href="/docs/" target="_blank"></a>
       </div>
       <script type='text/javascript'
-              src="https://hektorprofe.github.io/docs/assets/javascripts/application.a26c1c21.js"></script>
-      <script src="https://hektorprofe.github.io/docs/assets/javascripts/tingle.min.js"></script>
+              src="https://hektorprofe.github.io/assets/javascripts/application.a26c1c21.js"></script>
+      <script src="https://hektorprofe.github.io/assets/javascripts/tingle.min.js"></script>
       <script type='text/javascript'>
     app.initialize({version:"1.2.3",url:{base:"../../.."}})
     var _extends=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(t[o]=n[o])}return t},_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t};!function(t,e){"object"===("undefined"==typeof exports?"undefined":_typeof(exports))&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):t.LazyLoad=e()}(this,function(){"use strict";function t(t,e,n){var o=e._settings;!n&&i(t)||(C(o.callback_enter,t),R.indexOf(t.tagName)>-1&&(N(t,e),I(t,o.class_loading)),E(t,e),a(t),C(o.callback_set,t))}var e={elements_selector:"img",container:document,threshold:300,thresholds:null,data_src:"src",data_srcset:"srcset",data_sizes:"sizes",data_bg:"bg",class_loading:"loading",class_loaded:"loaded",class_error:"error",load_delay:0,callback_load:null,callback_error:null,callback_set:null,callback_enter:null,callback_finish:null,to_webp:!1},n=function(t){return _extends({},e,t)},o=function(t,e){return t.getAttribute("data-"+e)},r=function(t,e,n){var o="data-"+e;null!==n?t.setAttribute(o,n):t.removeAttribute(o)},a=function(t){return r(t,"was-processed","true")},i=function(t){return"true"===o(t,"was-processed")},s=function(t,e){return r(t,"ll-timeout",e)},c=function(t){return o(t,"ll-timeout")},l=function(t){return t.filter(function(t){return!i(t)})},u=function(t,e){return t.filter(function(t){return t!==e})},d=function(t,e){var n,o=new t(e);try{n=new CustomEvent("LazyLoad::Initialized",{detail:{instance:o}})}catch(t){(n=document.createEvent("CustomEvent")).initCustomEvent("LazyLoad::Initialized",!1,!1,{instance:o})}window.dispatchEvent(n)},f=function(t,e){return e?t.replace(/\.(jpe?g|png)/gi,".webp"):t},_="undefined"!=typeof window,v=_&&!("onscroll"in window)||/(gle|ing|ro)bot|crawl|spider/i.test(navigator.userAgent),g=_&&"IntersectionObserver"in window,h=_&&"classList"in document.createElement("p"),b=_&&function(){var t=document.createElement("canvas");return!(!t.getContext||!t.getContext("2d"))&&0===t.toDataURL("image/webp").indexOf("data:image/webp")}(),m=function(t,e,n,r){for(var a,i=0;a=t.children[i];i+=1)if("SOURCE"===a.tagName){var s=o(a,n);p(a,e,s,r)}},p=function(t,e,n,o){n&&t.setAttribute(e,f(n,o))},y=function(t,e){var n=b&&e.to_webp,r=o(t,e.data_src),a=o(t,e.data_bg);if(r){var i=f(r,n);t.style.backgroundImage='url("'+i+'")'}if(a){var s=f(a,n);t.style.backgroundImage=s}},w={IMG:function(t,e){var n=b&&e.to_webp,r=e.data_srcset,a=t.parentNode;a&&"PICTURE"===a.tagName&&m(a,"srcset",r,n);var i=o(t,e.data_sizes);p(t,"sizes",i);var s=o(t,r);p(t,"srcset",s,n);var c=o(t,e.data_src);p(t,"src",c,n)},IFRAME:function(t,e){var n=o(t,e.data_src);p(t,"src",n)},VIDEO:function(t,e){var n=e.data_src,r=o(t,n);m(t,"src",n),p(t,"src",r),t.load()}},E=function(t,e){var n=e._settings,o=t.tagName,r=w[o];if(r)return r(t,n),e._updateLoadingCount(1),void(e._elements=u(e._elements,t));y(t,n)},I=function(t,e){h?t.classList.add(e):t.className+=(t.className?" ":"")+e},L=function(t,e){h?t.classList.remove(e):t.className=t.className.replace(new RegExp("(^|\\s+)"+e+"(\\s+|$)")," ").replace(/^\s+/,"").replace(/\s+$/,"")},C=function(t,e){t&&t(e)},O=function(t,e,n){t.addEventListener(e,n)},k=function(t,e,n){t.removeEventListener(e,n)},x=function(t,e,n){O(t,"load",e),O(t,"loadeddata",e),O(t,"error",n)},A=function(t,e,n){k(t,"load",e),k(t,"loadeddata",e),k(t,"error",n)},z=function(t,e,n){var o=n._settings,r=e?o.class_loaded:o.class_error,a=e?o.callback_load:o.callback_error,i=t.target;L(i,o.class_loading),I(i,r),C(a,i),n._updateLoadingCount(-1)},N=function(t,e){var n=function n(r){z(r,!0,e),A(t,n,o)},o=function o(r){z(r,!1,e),A(t,n,o)};x(t,n,o)},R=["IMG","IFRAME","VIDEO"],S=function(e,n,o){t(e,o),n.unobserve(e)},M=function(t){var e=c(t);e&&(clearTimeout(e),s(t,null))},j=function(t,e,n){var o=n._settings.load_delay,r=c(t);r||(r=setTimeout(function(){S(t,e,n),M(t)},o),s(t,r))},D=function(t){return t.isIntersecting||t.intersectionRatio>0},T=function(t){return{root:t.container===document?null:t.container,rootMargin:t.thresholds||t.threshold+"px"}},U=function(t,e){this._settings=n(t),this._setObserver(),this._loadingCount=0,this.update(e)};return U.prototype={_manageIntersection:function(t){var e=this._observer,n=this._settings.load_delay,o=t.target;n?D(t)?j(o,e,this):M(o):D(t)&&S(o,e,this)},_onIntersection:function(t){t.forEach(this._manageIntersection.bind(this))},_setObserver:function(){g&&(this._observer=new IntersectionObserver(this._onIntersection.bind(this),T(this._settings)))},_updateLoadingCount:function(t){this._loadingCount+=t,0===this._elements.length&&0===this._loadingCount&&C(this._settings.callback_finish)},update:function(t){var e=this,n=this._settings,o=t||n.container.querySelectorAll(n.elements_selector);this._elements=l(Array.prototype.slice.call(o)),!v&&this._observer?this._elements.forEach(function(t){e._observer.observe(t)}):this.loadAll()},destroy:function(){var t=this;this._observer&&(this._elements.forEach(function(e){t._observer.unobserve(e)}),this._observer=null),this._elements=null,this._settings=null},load:function(e,n){t(e,this,n)},loadAll:function(){var t=this;this._elements.forEach(function(e){t.load(e)})}},_&&function(t,e){if(e)if(e.length)for(var n,o=0;n=e[o];o+=1)d(t,n);else d(t,e)}(U,window.lazyLoadOptions),U});

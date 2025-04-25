@@ -11,7 +11,7 @@
       
         <meta name="description" content="Repaso a los tipos de datos esenciales del lenguaje C++.">
       
-      <link rel="canonical" href="https://hektorprofe.github.io/docs/cpp/03-tipos-de-datos/">
+      <link rel="canonical" href="https://hektorprofe.github.io/cpp/03-tipos-de-datos/">
       
         <meta name="author" content="Héctor Costa Guzman">
       
@@ -34,9 +34,9 @@
     
     
     <link rel="stylesheet"
-          href="https://hektorprofe.github.io/docs/assets/stylesheets/tingle.min.css">
+          href="https://hektorprofe.github.io/assets/stylesheets/tingle.min.css">
     <style>
-@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
+@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
 [data-md-color-primary="grey"] .md-header { background-color: #191A1D }
 [data-md-color-primary="grey"] .md-tabs { background-color: #222831 }
 .md-footer-nav { background-color: #222831; }
@@ -127,11 +127,11 @@ div.my-img{text-align:center;margin-top:20px}
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://hektorprofe.github.io/docs/"
+        <a href="https://hektorprofe.github.io/"
            title="Archivo - Archivo de Hektor Profe Docs"
            class="md-header-nav__button md-logo"
            style="font-size: 0px">
-          <img src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+          <img src="https://hektorprofe.github.io/assets/images/logo.png"
                width="200px"
                height="35px"
                style="margin-top: -5px"
@@ -150,9 +150,9 @@ div.my-img{text-align:center;margin-top:20px}
              href="https://hektorprofe.github.io/docs/"
              style="margin-left:1.4em"
              title="Buscador de documentos">Buscador</a>
-          <a href="https://hektorprofe.github.io/docs/">
+          <a href="https://hektorprofe.github.io/">
             <img class="nav__logo"
-                 src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+                 src="https://hektorprofe.github.io/assets/images/logo.png"
                  width="200px"
                  height="35px"
                  style="margin: 6px auto 0"
@@ -1117,7 +1117,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-28.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/cpp/image-28.png" /></p>
 <p>En conclusión:</p>
 <ul>
 <li>En la memoria los datos se almacenan en grupos de bits con 0 y 1.</li>
@@ -1144,7 +1144,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="kt">int</span><span class="w"> </span><span class="n">numero</span><span class="w"> </span><span class="p">{</span><span class="mi">100</span><span class="p">};</span><span class="w">  </span><span class="c1">// Inicialización uniforme</span>
 </code></pre></div>
 <p>Por defecto un entero sin asignar tiene un valor de 0:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-29.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/cpp/image-29.png" /></p>
 <p>Ya que hablamos de asignaciones, podemos asignar múltiples variables en una única línea:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">num1</span><span class="p">{</span><span class="mi">100</span><span class="p">},</span><span class="w"> </span><span class="n">num2</span><span class="p">{</span><span class="mi">200</span><span class="p">};</span>
 </code></pre></div>
@@ -1153,10 +1153,10 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">res</span><span class="p">;</span>
 </code></pre></div>
 <p>Si intentamos asignar un valor mayor de 4 bytes o un número fraccionario (mediante una coma), dará error:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-30.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-31.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/cpp/image-30.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/cpp/image-31.png" /></p>
 <p>Sin embargo sí es posible realizar una conversión de tipo fraccionario a entero con redondeo de medio decimal implícito mediante el operador <code>=</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-32.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/cpp/image-32.png" /></p>
 <p>Todavía hay mucho que hablar sobre los números, seguiremos próximamente.</p>
 <h2 id="modificadores-de-enteros">Modificadores de enteros<a class="headerlink" href="#modificadores-de-enteros" title="Permanent link">&para;</a></h2>
 <p>En el lenguaje C++ encontramos una serie de funcionalidades conocidas como modificadores que permiten cambiar el funcionamiento de un tipo de dato.</p>
@@ -1177,7 +1177,7 @@ div.my-img{text-align:center;margin-top:20px}
 </code></pre></div>
 <p>También existen dos tipos que pueden utilizarse como modificadores llamados <code>short</code> y <code>long</code> para optimizar el uso de la memoria dependiendo del rango de números que necesitemos almacenar.</p>
 <p>En la web <a href="https://es.cppreference.com/w/cpp/language/types">https://es.cppreference.com/w/cpp/language/types</a> podemos consultar la siguiente tabla donde se muestran todas las combinaciones de <code>short</code>, <code>int</code>, <code>long</code> con y sin signo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-33.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/cpp/image-33.png" /></p>
 <h2 id="numeros-fraccionarios">Números fraccionarios<a class="headerlink" href="#numeros-fraccionarios" title="Permanent link">&para;</a></h2>
 <p>Dejando de lado los números enteros, también podemos trabajar con números fraccionarios, cuyos tipos se conocen como tipos de punto flotante y encontramos esencialmente tres dependiendo de la precisión decimal que necesitemos:</p>
 <ul>
@@ -1205,13 +1205,13 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">num2</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w">  </span><span class="c1">// 1.0011223344556678949</span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">num3</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w">  </span><span class="c1">// 1.0011223344556677889</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-36.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/cpp/image-36.png" /></p>
 <p>En realidad no son aleatorios, pero para entender la razón por la que sucede esto habría que remitirnos al estándar <a href="https://es.wikipedia.org/wiki/IEEE_754">IEEE 754</a> donde se explica el funcionamiento y gestión de los números en coma flotante, algo demasiado complejo como para explicarlo aquí.</p>
 <p>Cabe mencionar que a parte de la notación fija, los números fraccionarios también permiten la notación científica con exponentes, tanto positivos como negativos:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">num1</span><span class="p">{</span><span class="mf">123e6</span><span class="p">};</span><span class="w">  </span><span class="c1">// 123 * 10^6 =&gt; 123000000</span>
 <span class="kt">double</span><span class="w"> </span><span class="n">num2</span><span class="p">{</span><span class="mf">123e-6</span><span class="p">};</span><span class="w"> </span><span class="c1">// 123 * 10^-6 =&gt; 0.000123</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-37.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/cpp/image-37.png" /></p>
 <p>Un par de curiosidades para terminar.</p>
 <p>Ya vimos que dividir un número entero entre cero provoca un error que finaliza la ejecución:</p>
 <div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w">  </span><span class="c1">// Error</span>
@@ -1225,7 +1225,7 @@ div.my-img{text-align:center;margin-top:20px}
 <p>Por último, si dividimos 0 entre 0.0, el sistema devolverá <code>nan</code> (not a number), entendible ahora sí como un resultado indeterminado:</p>
 <div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w">  </span><span class="c1">// nan</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-38.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/cpp/image-38.png" /></p>
 <p>Para más información echad un vistazo a <a href="https://es.wikipedia.org/wiki/IEEE_754">https://es.wikipedia.org/wiki/IEEE_754</a>.</p>
 <h2 id="valores-booleanos">Valores booleanos<a class="headerlink" href="#valores-booleanos" title="Permanent link">&para;</a></h2>
 <p>Otro tipo de dato esencial en la programación es el que sirve para representar un valor lógico o racional con únicamente dos opciones: <strong>verdadero</strong> y <strong>falso</strong>.</p>
@@ -1255,7 +1255,7 @@ div.my-img{text-align:center;margin-top:20px}
 <div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 </code></pre></div>
 <p>Los caracteres que se pueden representar no son adrede, sino que se encuentran establecidos en el código ASCII <a href="https://en.cppreference.com/w/cpp/language/ascii">https://en.cppreference.com/w/cpp/language/ascii</a>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-39.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/cpp/image-39.png" /></p>
 <p>Cada símbolo tiene un número entero asociado, a través del cuál podemos consultar el respectivo carácter:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">char</span><span class="w"> </span><span class="n">valor</span><span class="p">{</span><span class="mi">65</span><span class="p">};</span><span class="w"> </span><span class="c1">// Código ASCII del carácter &#39;A&#39;</span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">valor</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
@@ -1287,7 +1287,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>Cuyo resultado sería el siguiente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-40.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/cpp/image-40.png" /></p>
 <p>¿Y cómo se almacena no solo un carácter sino varios para representar un texto? Pues los textos, conocidos como  <strong>cadenas de caracteres</strong>, son tradicionalmente <strong>arreglos</strong> (sucesiones) de múltiples caracteres, un tema que exploraré más adelante.</p>
 <h2 id="tipo-automatico">Tipo automático<a class="headerlink" href="#tipo-automatico" title="Permanent link">&para;</a></h2>
 <p>Siempre que definimos una variable debemos indicar el tipo de dato para almacenar el espacio necesario en la memoria, sin embargo desde C++11 podemos dejar al propio lenguaje deducir el tipo de dato a partir del valor literal asignado durante la definición.</p>
@@ -1313,20 +1313,20 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">var8</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">var8</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; bytes&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 </code></pre></div>
 <p>Este sería el resultado:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-42.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/cpp/image-42.png" /></p>
 <p>Cabe mencionar que si dejamos que el sistema defina el tipo y le asignamos un sufijo <code>unsigned</code>, si sobrescribimos el valor con un negativo, resultará en un funcionamiento no espero del dato:</p>
 <div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">numero</span><span class="p">{</span><span class="mi">10u</span><span class="p">};</span>
 <span class="n">numero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-21</span><span class="p">;</span><span class="w">  </span><span class="c1">// ¡Cuidado!</span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">numero</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-43.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/cpp/image-43.png" /></p>
 <p>También si establecemos un tipo como un carácter y luego lo sobrescribimos por algo como un flotante:</p>
 <div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">valor</span><span class="p">{</span><span class="sc">&#39;A&#39;</span><span class="p">};</span>
 <span class="n">valor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14f</span><span class="p">;</span><span class="w"> </span><span class="c1">// ¡Cuidado!</span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">valor</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 </code></pre></div>
 <p>En este caso se devolvería lo siguiente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-44.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/cpp/image-44.png" /></p>
 <p>En conclusión este tipo es muy cómodo, pero debemos tener cuidado con sus valores de sobreescritura.</p>
 <h2 id="ambito-de-las-variables">Ámbito de las variables<a class="headerlink" href="#ambito-de-las-variables" title="Permanent link">&para;</a></h2>
 <p>El ámbito de una variable es el espacio donde se encuentra accesible dentro del programa. Básicamente hay dos tipos de ámbito: <code>local</code> y <code>global</code>.</p>
@@ -1453,7 +1453,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>Lo que ocurre es ni más ni menos que un <strong>overflow</strong>, un reinicio a 0 para el 256 y así sucesivamente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-61.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/cpp/image-61.png" /></p>
 <p>El mismo caso pero por abajo ocurrirá a la inversa, un <strong>underflow</strong>, pasando de 0 a 255:</p>
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 
@@ -1469,7 +1469,7 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/cpp/image-62.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/cpp/image-62.png" /></p>
 <p>Es muy importante tener en cuenta esta situación en las conversiones entre tipo ya que en estos casos no ocurrirá un error y simplemente se tratará el desbordamiento como un reinicio del tamaño.</p>
 <hr />
 <p><small class="edited"><i>Última edición: 08 de Mayo de 2022</i></small></p>
@@ -1588,8 +1588,8 @@ div.my-img{text-align:center;margin-top:20px}
         <a id="anchorID" href="/docs/" target="_blank"></a>
       </div>
       <script type='text/javascript'
-              src="https://hektorprofe.github.io/docs/assets/javascripts/application.a26c1c21.js"></script>
-      <script src="https://hektorprofe.github.io/docs/assets/javascripts/tingle.min.js"></script>
+              src="https://hektorprofe.github.io/assets/javascripts/application.a26c1c21.js"></script>
+      <script src="https://hektorprofe.github.io/assets/javascripts/tingle.min.js"></script>
       <script type='text/javascript'>
     app.initialize({version:"1.2.3",url:{base:"../.."}})
     var _extends=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(t[o]=n[o])}return t},_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t};!function(t,e){"object"===("undefined"==typeof exports?"undefined":_typeof(exports))&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):t.LazyLoad=e()}(this,function(){"use strict";function t(t,e,n){var o=e._settings;!n&&i(t)||(C(o.callback_enter,t),R.indexOf(t.tagName)>-1&&(N(t,e),I(t,o.class_loading)),E(t,e),a(t),C(o.callback_set,t))}var e={elements_selector:"img",container:document,threshold:300,thresholds:null,data_src:"src",data_srcset:"srcset",data_sizes:"sizes",data_bg:"bg",class_loading:"loading",class_loaded:"loaded",class_error:"error",load_delay:0,callback_load:null,callback_error:null,callback_set:null,callback_enter:null,callback_finish:null,to_webp:!1},n=function(t){return _extends({},e,t)},o=function(t,e){return t.getAttribute("data-"+e)},r=function(t,e,n){var o="data-"+e;null!==n?t.setAttribute(o,n):t.removeAttribute(o)},a=function(t){return r(t,"was-processed","true")},i=function(t){return"true"===o(t,"was-processed")},s=function(t,e){return r(t,"ll-timeout",e)},c=function(t){return o(t,"ll-timeout")},l=function(t){return t.filter(function(t){return!i(t)})},u=function(t,e){return t.filter(function(t){return t!==e})},d=function(t,e){var n,o=new t(e);try{n=new CustomEvent("LazyLoad::Initialized",{detail:{instance:o}})}catch(t){(n=document.createEvent("CustomEvent")).initCustomEvent("LazyLoad::Initialized",!1,!1,{instance:o})}window.dispatchEvent(n)},f=function(t,e){return e?t.replace(/\.(jpe?g|png)/gi,".webp"):t},_="undefined"!=typeof window,v=_&&!("onscroll"in window)||/(gle|ing|ro)bot|crawl|spider/i.test(navigator.userAgent),g=_&&"IntersectionObserver"in window,h=_&&"classList"in document.createElement("p"),b=_&&function(){var t=document.createElement("canvas");return!(!t.getContext||!t.getContext("2d"))&&0===t.toDataURL("image/webp").indexOf("data:image/webp")}(),m=function(t,e,n,r){for(var a,i=0;a=t.children[i];i+=1)if("SOURCE"===a.tagName){var s=o(a,n);p(a,e,s,r)}},p=function(t,e,n,o){n&&t.setAttribute(e,f(n,o))},y=function(t,e){var n=b&&e.to_webp,r=o(t,e.data_src),a=o(t,e.data_bg);if(r){var i=f(r,n);t.style.backgroundImage='url("'+i+'")'}if(a){var s=f(a,n);t.style.backgroundImage=s}},w={IMG:function(t,e){var n=b&&e.to_webp,r=e.data_srcset,a=t.parentNode;a&&"PICTURE"===a.tagName&&m(a,"srcset",r,n);var i=o(t,e.data_sizes);p(t,"sizes",i);var s=o(t,r);p(t,"srcset",s,n);var c=o(t,e.data_src);p(t,"src",c,n)},IFRAME:function(t,e){var n=o(t,e.data_src);p(t,"src",n)},VIDEO:function(t,e){var n=e.data_src,r=o(t,n);m(t,"src",n),p(t,"src",r),t.load()}},E=function(t,e){var n=e._settings,o=t.tagName,r=w[o];if(r)return r(t,n),e._updateLoadingCount(1),void(e._elements=u(e._elements,t));y(t,n)},I=function(t,e){h?t.classList.add(e):t.className+=(t.className?" ":"")+e},L=function(t,e){h?t.classList.remove(e):t.className=t.className.replace(new RegExp("(^|\\s+)"+e+"(\\s+|$)")," ").replace(/^\s+/,"").replace(/\s+$/,"")},C=function(t,e){t&&t(e)},O=function(t,e,n){t.addEventListener(e,n)},k=function(t,e,n){t.removeEventListener(e,n)},x=function(t,e,n){O(t,"load",e),O(t,"loadeddata",e),O(t,"error",n)},A=function(t,e,n){k(t,"load",e),k(t,"loadeddata",e),k(t,"error",n)},z=function(t,e,n){var o=n._settings,r=e?o.class_loaded:o.class_error,a=e?o.callback_load:o.callback_error,i=t.target;L(i,o.class_loading),I(i,r),C(a,i),n._updateLoadingCount(-1)},N=function(t,e){var n=function n(r){z(r,!0,e),A(t,n,o)},o=function o(r){z(r,!1,e),A(t,n,o)};x(t,n,o)},R=["IMG","IFRAME","VIDEO"],S=function(e,n,o){t(e,o),n.unobserve(e)},M=function(t){var e=c(t);e&&(clearTimeout(e),s(t,null))},j=function(t,e,n){var o=n._settings.load_delay,r=c(t);r||(r=setTimeout(function(){S(t,e,n),M(t)},o),s(t,r))},D=function(t){return t.isIntersecting||t.intersectionRatio>0},T=function(t){return{root:t.container===document?null:t.container,rootMargin:t.thresholds||t.threshold+"px"}},U=function(t,e){this._settings=n(t),this._setObserver(),this._loadingCount=0,this.update(e)};return U.prototype={_manageIntersection:function(t){var e=this._observer,n=this._settings.load_delay,o=t.target;n?D(t)?j(o,e,this):M(o):D(t)&&S(o,e,this)},_onIntersection:function(t){t.forEach(this._manageIntersection.bind(this))},_setObserver:function(){g&&(this._observer=new IntersectionObserver(this._onIntersection.bind(this),T(this._settings)))},_updateLoadingCount:function(t){this._loadingCount+=t,0===this._elements.length&&0===this._loadingCount&&C(this._settings.callback_finish)},update:function(t){var e=this,n=this._settings,o=t||n.container.querySelectorAll(n.elements_selector);this._elements=l(Array.prototype.slice.call(o)),!v&&this._observer?this._elements.forEach(function(t){e._observer.observe(t)}):this.loadAll()},destroy:function(){var t=this;this._observer&&(this._elements.forEach(function(e){t._observer.unobserve(e)}),this._observer=null),this._elements=null,this._settings=null},load:function(e,n){t(e,this,n)},loadAll:function(){var t=this;this._elements.forEach(function(e){t.load(e)})}},_&&function(t,e){if(e)if(e.length)for(var n,o=0;n=e[o];o+=1)d(t,n);else d(t,e)}(U,window.lazyLoadOptions),U});

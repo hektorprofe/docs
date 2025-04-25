@@ -11,7 +11,7 @@
       
         <meta name="description" content="Archivo con apuntes de programación de Hector Costa Guzman.">
       
-      <link rel="canonical" href="https://hektorprofe.github.io/docs/graficos-3d/12-rasterizacion-de-triangulos/">
+      <link rel="canonical" href="https://hektorprofe.github.io/graficos-3d/12-rasterizacion-de-triangulos/">
       
         <meta name="author" content="Héctor Costa Guzman">
       
@@ -34,9 +34,9 @@
     
     
     <link rel="stylesheet"
-          href="https://hektorprofe.github.io/docs/assets/stylesheets/tingle.min.css">
+          href="https://hektorprofe.github.io/assets/stylesheets/tingle.min.css">
     <style>
-@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
+@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
 [data-md-color-primary="grey"] .md-header { background-color: #191A1D }
 [data-md-color-primary="grey"] .md-tabs { background-color: #222831 }
 .md-footer-nav { background-color: #222831; }
@@ -127,11 +127,11 @@ div.my-img{text-align:center;margin-top:20px}
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://hektorprofe.github.io/docs/"
+        <a href="https://hektorprofe.github.io/"
            title="Archivo - Archivo de Hektor Profe Docs"
            class="md-header-nav__button md-logo"
            style="font-size: 0px">
-          <img src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+          <img src="https://hektorprofe.github.io/assets/images/logo.png"
                width="200px"
                height="35px"
                style="margin-top: -5px"
@@ -150,9 +150,9 @@ div.my-img{text-align:center;margin-top:20px}
              href="https://hektorprofe.github.io/docs/"
              style="margin-left:1.4em"
              title="Buscador de documentos">Buscador</a>
-          <a href="https://hektorprofe.github.io/docs/">
+          <a href="https://hektorprofe.github.io/">
             <img class="nav__logo"
-                 src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+                 src="https://hektorprofe.github.io/assets/images/logo.png"
                  width="200px"
                  height="35px"
                  style="margin: 6px auto 0"
@@ -765,16 +765,16 @@ div.my-img{text-align:center;margin-top:20px}
 <p>Esto lo conseguiremos recorriendo cada <code>scanline</code> (las líneas horizontales que conforman lo que sería la pantalla), determinando si forma parte de un triángulo y activando el color en ese lugar.</p>
 <h2 id="tecnica-flat-bottom-flat-top">Técnica Flat-Bottom Flat-Top<a class="headerlink" href="#tecnica-flat-bottom-flat-top" title="Permanent link">&para;</a></h2>
 <p>El método que vamos a utilizar para rellenar los triángulos consiste en dividir cada cara en dos triángulos, uno con el costado inferior plano y otro con el costado superior plano, de manera que coincidan en ese costado:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-49.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-49.png" /></p>
 <p>Primero deberemos aprender a dividir el triángulo y tan pronto lo tengamos dividido en dos triángulos, uno con inferior plano y otro con superior plano, podremos realizar un bucle de arriba hacia abajo rellenando cada línea de ambos triángulos color.</p>
 <p>Para dividir nuestro triángulo, lo primero que tomaremos son los tres vértices del triángulo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-50.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-50.png" /></p>
 <p>Ahora bien, ¿cómo determinamos cuál es el vértice superior? Tan pronto como empecemos a realizar transformaciones, escalar y rotar el triángulo, ese vértice dejará de ser el superior.</p>
 <p>Pues lo que tenemos que hacer es ir reordenando los vértices en función de su altura, el componente <code>y</code>:</p>
 <div class="highlight"><pre><span></span><code>y0 &lt; y1 &lt; y2
 </code></pre></div>
 <p>Una vez ordenados los vértices debemos pensar cómo identificar los dos triángulos que comparten el lado plano y para ello deberemos identificar el segundo punto que cortará el triángulo desde <code>(x1,y1)</code> al que llamaremos <code>(Mx, My)</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-51.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-51.png" /></p>
 <p>Cuando tengamos el <strong>punto medio</strong> <code>M</code>, podremos utilizar dos funciones para dibujar ambos triángulos rellenos:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Dibujar triángulo con lado inferior plano</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">DrawFlatBottom</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="w"> </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">y1</span><span class="p">,</span><span class="w"> </span><span class="n">Mx</span><span class="p">,</span><span class="w"> </span><span class="n">My</span><span class="p">);</span>
@@ -784,7 +784,7 @@ div.my-img{text-align:center;margin-top:20px}
 </code></pre></div>
 <p>Determinar <code>My</code> es simple, está a la misma altura que <code>y1</code>, sin embargo <code>Mx</code> no es tan fácil a simple vista.</p>
 <p>Para determinar <code>Mx</code> acudiremos a la propiedad de los triángulos similares donde se comparte la misma proporción en sus costados para las bases y las alturas:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-52.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-52.png" /></p>
 <p>La relación quedará:</p>
 <p><img src="https://latex.codecogs.com/png.image?\large&space;\dpi{150}\bg{white}\frac{Mx&space;-&space;x_0}{x_2&space;-&space;x_0}&space;=&space;\frac{y_1&space;-&space;y_0}{y_2&space;-&space;y_0}"/></p>
 <p>Aplicando un poco de álgebra podemos aislar <code>Mx</code>:</p>
@@ -794,7 +794,7 @@ div.my-img{text-align:center;margin-top:20px}
 <div class="highlight"><pre><span></span><code><span class="n">DrawTriangle</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="mi">450</span><span class="p">,</span><span class="w"> </span><span class="mh">0xFF00FFFF</span><span class="p">);</span>
 </code></pre></div>
 <p>Que se vería de esta forma:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-53.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-53.png" /></p>
 <p>Ahora queremos dibujar el triángulo con relleno, para lo cuál empezaremos por dividir el triángulo en dos partes en un nuevo método:</p>
 <div class="highlight"><pre><span></span><code><span class="n">DrawFilledTriangle</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="mi">450</span><span class="p">,</span><span class="w"> </span><span class="mh">0xFF00FFFF</span><span class="p">);</span>
 </code></pre></div>
@@ -870,7 +870,7 @@ div.my-img{text-align:center;margin-top:20px}
 </code></pre></div>
 <p>Ahora nos toca implementar los algoritmos para dibujar ambos triángulos.</p>
 <p>El algoritmo para dibujar el triángulo con lado inferior plano enumera los sigientes pasos:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-54.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-54.png" /></p>
 <ol>
 <li>Empezaremos desde arriba en el vértice <code>(x0, y0)</code>.</li>
 <li>Calcularemos la <code>pendiente 1</code> y la <code>pendiente 2</code>.</li>
@@ -882,7 +882,7 @@ div.my-img{text-align:center;margin-top:20px}
 </li>
 </ol>
 <p>Para calcular las pendientes solo debemos encontrar la relación entre el alto y ancho de los triángulos que se forman:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-55.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-55.png" /></p>
 <p><img alt="" src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}m&space;=&space;\frac{\Delta&space;y}{\Delta&space;x}" /></p>
 <div class="highlight"><pre><span></span><code>m1 = b/a = (y2 - y0) / (x2 - x0) 
 m2 = b/c = (y1 - y0) / (x0 - x1)
@@ -905,7 +905,7 @@ m2 = b/c = (y1 - y0) / (x0 - x1)
 <div class="highlight"><pre><span></span><code><span class="n">DrawTriangle</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="mi">450</span><span class="p">,</span><span class="w"> </span><span class="mh">0xFFFF00FF</span><span class="p">);</span>
 <span class="n">DrawFilledTriangle</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="mi">450</span><span class="p">,</span><span class="w"> </span><span class="mh">0xFF00FF00</span><span class="p">);</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-56.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-56.png" /></p>
 <p>El algoritmo para dibujar el triángulo con lado superior plano enumera los sigientes pasos:</p>
 <ol>
 <li>Empezaremos desde abajo en el vértice <code>(x2, y2)</code>.</li>
@@ -917,9 +917,9 @@ m2 = b/c = (y1 - y0) / (x0 - x1)
 </ol>
 </li>
 </ol>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-57.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-57.png" /></p>
 <p>Quizá en este triángulo no queda muy claro cómo calcular las pendientes, la siguiente figura muestra esas pendientes en base a la altura y anchura marcadas en azul:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-58.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-58.png" /></p>
 <p>Y el código quedará:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">Window::FillFlatTopTriangle</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x0</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x2</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y2</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">color</span><span class="p">)</span>
 <span class="p">{</span>
@@ -934,9 +934,9 @@ m2 = b/c = (y1 - y0) / (x0 - x1)
 <span class="p">}</span>
 </code></pre></div>
 <p>El resultado en este punto será el triángulo inferior:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-59.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-59.png" /></p>
 <p>Con ambos triángulos activos tendremos la cara completa rasterizada:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-60.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-60.png" /></p>
 <p>Así que vamos a probar como queda nuestro nuevo método para pintar las caras del cubo, dibujando los triángulos rasterizados en blanco y por encima los vértices en negro:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">Mesh::Render</span><span class="p">()</span>
 <span class="p">{</span>
@@ -968,12 +968,12 @@ m2 = b/c = (y1 - y0) / (x0 - x1)
 <span class="p">}</span>
 </code></pre></div>
 <p>Si lo probamos...</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-11.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/anim-11.gif" /></p>
 <p>Lo tenemos perfecto pero hay una optimización que debemos añadir lo antes posible para prevenir divisiones entre cero, que en C++ al dividr números flotantes dan lugar a valores potencialmente infinitos.</p>
 <h2 id="evitar-division-entre-cero">Evitar división entre cero<a class="headerlink" href="#evitar-division-entre-cero" title="Permanent link">&para;</a></h2>
 <p>Cuando una cara tiene un lado plano debemos podemos saltataros el dibujado de uno de los dos triángulos, ya que simplemente será una línea recta.</p>
 <p>El primer caso es que la altura del segundo vértice <code>y1</code> y tercero <code>y2</code> sean la misma, por ejemplo en una cara como esta:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-61.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-61.png" /></p>
 <p>En ese caso haremos un by-pass para dibujar únicamente el triángulo superior:</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">y1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">y2</span><span class="p">)</span>
 <span class="p">{</span>
@@ -981,7 +981,7 @@ m2 = b/c = (y1 - y0) / (x0 - x1)
 <span class="p">}</span>
 </code></pre></div>
 <p>En el segundo caso en que la altura del primer vértice <code>y0</code> y la del segundo <code>y1</code> sea la misma:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-62.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-62.png" /></p>
 <p>En este caso haremos un by-pass para dibujar únicamente el triángulo inferior:</p>
 <div class="highlight"><pre><span></span><code><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">y1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">y2</span><span class="p">)</span>
 <span class="p">{</span>
@@ -1002,7 +1002,7 @@ m2 = b/c = (y1 - y0) / (x0 - x1)
 <span class="p">}</span>
 </code></pre></div>
 <p>El resultado será el mismo pero habremos optimizado bastante el código al saltarnos el renderizado y los cálculos del punto medio <code>M</code> cuando no nos hace falta:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-12.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/anim-12.gif" /></p>
 <hr />
 <p><small class="edited"><i>Última edición: 05 de Junio de 2022</i></small></p>
                   
@@ -1120,8 +1120,8 @@ m2 = b/c = (y1 - y0) / (x0 - x1)
         <a id="anchorID" href="/docs/" target="_blank"></a>
       </div>
       <script type='text/javascript'
-              src="https://hektorprofe.github.io/docs/assets/javascripts/application.a26c1c21.js"></script>
-      <script src="https://hektorprofe.github.io/docs/assets/javascripts/tingle.min.js"></script>
+              src="https://hektorprofe.github.io/assets/javascripts/application.a26c1c21.js"></script>
+      <script src="https://hektorprofe.github.io/assets/javascripts/tingle.min.js"></script>
       <script type='text/javascript'>
     app.initialize({version:"1.2.3",url:{base:"../.."}})
     var _extends=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(t[o]=n[o])}return t},_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t};!function(t,e){"object"===("undefined"==typeof exports?"undefined":_typeof(exports))&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):t.LazyLoad=e()}(this,function(){"use strict";function t(t,e,n){var o=e._settings;!n&&i(t)||(C(o.callback_enter,t),R.indexOf(t.tagName)>-1&&(N(t,e),I(t,o.class_loading)),E(t,e),a(t),C(o.callback_set,t))}var e={elements_selector:"img",container:document,threshold:300,thresholds:null,data_src:"src",data_srcset:"srcset",data_sizes:"sizes",data_bg:"bg",class_loading:"loading",class_loaded:"loaded",class_error:"error",load_delay:0,callback_load:null,callback_error:null,callback_set:null,callback_enter:null,callback_finish:null,to_webp:!1},n=function(t){return _extends({},e,t)},o=function(t,e){return t.getAttribute("data-"+e)},r=function(t,e,n){var o="data-"+e;null!==n?t.setAttribute(o,n):t.removeAttribute(o)},a=function(t){return r(t,"was-processed","true")},i=function(t){return"true"===o(t,"was-processed")},s=function(t,e){return r(t,"ll-timeout",e)},c=function(t){return o(t,"ll-timeout")},l=function(t){return t.filter(function(t){return!i(t)})},u=function(t,e){return t.filter(function(t){return t!==e})},d=function(t,e){var n,o=new t(e);try{n=new CustomEvent("LazyLoad::Initialized",{detail:{instance:o}})}catch(t){(n=document.createEvent("CustomEvent")).initCustomEvent("LazyLoad::Initialized",!1,!1,{instance:o})}window.dispatchEvent(n)},f=function(t,e){return e?t.replace(/\.(jpe?g|png)/gi,".webp"):t},_="undefined"!=typeof window,v=_&&!("onscroll"in window)||/(gle|ing|ro)bot|crawl|spider/i.test(navigator.userAgent),g=_&&"IntersectionObserver"in window,h=_&&"classList"in document.createElement("p"),b=_&&function(){var t=document.createElement("canvas");return!(!t.getContext||!t.getContext("2d"))&&0===t.toDataURL("image/webp").indexOf("data:image/webp")}(),m=function(t,e,n,r){for(var a,i=0;a=t.children[i];i+=1)if("SOURCE"===a.tagName){var s=o(a,n);p(a,e,s,r)}},p=function(t,e,n,o){n&&t.setAttribute(e,f(n,o))},y=function(t,e){var n=b&&e.to_webp,r=o(t,e.data_src),a=o(t,e.data_bg);if(r){var i=f(r,n);t.style.backgroundImage='url("'+i+'")'}if(a){var s=f(a,n);t.style.backgroundImage=s}},w={IMG:function(t,e){var n=b&&e.to_webp,r=e.data_srcset,a=t.parentNode;a&&"PICTURE"===a.tagName&&m(a,"srcset",r,n);var i=o(t,e.data_sizes);p(t,"sizes",i);var s=o(t,r);p(t,"srcset",s,n);var c=o(t,e.data_src);p(t,"src",c,n)},IFRAME:function(t,e){var n=o(t,e.data_src);p(t,"src",n)},VIDEO:function(t,e){var n=e.data_src,r=o(t,n);m(t,"src",n),p(t,"src",r),t.load()}},E=function(t,e){var n=e._settings,o=t.tagName,r=w[o];if(r)return r(t,n),e._updateLoadingCount(1),void(e._elements=u(e._elements,t));y(t,n)},I=function(t,e){h?t.classList.add(e):t.className+=(t.className?" ":"")+e},L=function(t,e){h?t.classList.remove(e):t.className=t.className.replace(new RegExp("(^|\\s+)"+e+"(\\s+|$)")," ").replace(/^\s+/,"").replace(/\s+$/,"")},C=function(t,e){t&&t(e)},O=function(t,e,n){t.addEventListener(e,n)},k=function(t,e,n){t.removeEventListener(e,n)},x=function(t,e,n){O(t,"load",e),O(t,"loadeddata",e),O(t,"error",n)},A=function(t,e,n){k(t,"load",e),k(t,"loadeddata",e),k(t,"error",n)},z=function(t,e,n){var o=n._settings,r=e?o.class_loaded:o.class_error,a=e?o.callback_load:o.callback_error,i=t.target;L(i,o.class_loading),I(i,r),C(a,i),n._updateLoadingCount(-1)},N=function(t,e){var n=function n(r){z(r,!0,e),A(t,n,o)},o=function o(r){z(r,!1,e),A(t,n,o)};x(t,n,o)},R=["IMG","IFRAME","VIDEO"],S=function(e,n,o){t(e,o),n.unobserve(e)},M=function(t){var e=c(t);e&&(clearTimeout(e),s(t,null))},j=function(t,e,n){var o=n._settings.load_delay,r=c(t);r||(r=setTimeout(function(){S(t,e,n),M(t)},o),s(t,r))},D=function(t){return t.isIntersecting||t.intersectionRatio>0},T=function(t){return{root:t.container===document?null:t.container,rootMargin:t.thresholds||t.threshold+"px"}},U=function(t,e){this._settings=n(t),this._setObserver(),this._loadingCount=0,this.update(e)};return U.prototype={_manageIntersection:function(t){var e=this._observer,n=this._settings.load_delay,o=t.target;n?D(t)?j(o,e,this):M(o):D(t)&&S(o,e,this)},_onIntersection:function(t){t.forEach(this._manageIntersection.bind(this))},_setObserver:function(){g&&(this._observer=new IntersectionObserver(this._onIntersection.bind(this),T(this._settings)))},_updateLoadingCount:function(t){this._loadingCount+=t,0===this._elements.length&&0===this._loadingCount&&C(this._settings.callback_finish)},update:function(t){var e=this,n=this._settings,o=t||n.container.querySelectorAll(n.elements_selector);this._elements=l(Array.prototype.slice.call(o)),!v&&this._observer?this._elements.forEach(function(t){e._observer.observe(t)}):this.loadAll()},destroy:function(){var t=this;this._observer&&(this._elements.forEach(function(e){t._observer.unobserve(e)}),this._observer=null),this._elements=null,this._settings=null},load:function(e,n){t(e,this,n)},loadAll:function(){var t=this;this._elements.forEach(function(e){t.load(e)})}},_&&function(t,e){if(e)if(e.length)for(var n,o=0;n=e[o];o+=1)d(t,n);else d(t,e)}(U,window.lazyLoadOptions),U});

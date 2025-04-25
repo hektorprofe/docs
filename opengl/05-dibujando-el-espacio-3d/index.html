@@ -11,7 +11,7 @@
       
         <meta name="description" content="Dibujando el espacio 3D en OpenGL con Python">
       
-      <link rel="canonical" href="https://hektorprofe.github.io/docs/opengl/05-dibujando-el-espacio-3d/">
+      <link rel="canonical" href="https://hektorprofe.github.io/opengl/05-dibujando-el-espacio-3d/">
       
         <meta name="author" content="Héctor Costa Guzman">
       
@@ -34,9 +34,9 @@
     
     
     <link rel="stylesheet"
-          href="https://hektorprofe.github.io/docs/assets/stylesheets/tingle.min.css">
+          href="https://hektorprofe.github.io/assets/stylesheets/tingle.min.css">
     <style>
-@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
+@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
 [data-md-color-primary="grey"] .md-header { background-color: #191A1D }
 [data-md-color-primary="grey"] .md-tabs { background-color: #222831 }
 .md-footer-nav { background-color: #222831; }
@@ -127,11 +127,11 @@ div.my-img{text-align:center;margin-top:20px}
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://hektorprofe.github.io/docs/"
+        <a href="https://hektorprofe.github.io/"
            title="Archivo - Archivo de Hektor Profe Docs"
            class="md-header-nav__button md-logo"
            style="font-size: 0px">
-          <img src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+          <img src="https://hektorprofe.github.io/assets/images/logo.png"
                width="200px"
                height="35px"
                style="margin-top: -5px"
@@ -150,9 +150,9 @@ div.my-img{text-align:center;margin-top:20px}
              href="https://hektorprofe.github.io/docs/"
              style="margin-left:1.4em"
              title="Buscador de documentos">Buscador</a>
-          <a href="https://hektorprofe.github.io/docs/">
+          <a href="https://hektorprofe.github.io/">
             <img class="nav__logo"
-                 src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+                 src="https://hektorprofe.github.io/assets/images/logo.png"
                  width="200px"
                  height="35px"
                  style="margin: 6px auto 0"
@@ -539,7 +539,7 @@ div.my-img{text-align:center;margin-top:20px}
                   <h1 id="dibujando-el-espacio-3d-con-opengl">Dibujando el espacio 3D con OpenGL<a class="headerlink" href="#dibujando-el-espacio-3d-con-opengl" title="Permanent link">&para;</a></h1>
 <p>A partir de ahora vamos a profundizar en cómo funciona el espacio en OpenGL para producir imágenes tridimensionales. Repasaremos las tranformaciones de esenciales, cómo mover la cámara y visualizar la orientación del mundo.</p>
 <p>También es un buen momento para dejar por aquí este esquema sobre el <em>pipeline de transformación</em> de los vértices (imagen tomada de <a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/perspective-and-orthographic-projection-matrix/projection-matrix-GPU-rendering-pipeline-clipping">este genial artículo de Scratch a pixel</a>):</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img39.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/img39.png" /></p>
 <h2 id="transformaciones-basicas">Transformaciones básicas<a class="headerlink" href="#transformaciones-basicas" title="Permanent link">&para;</a></h2>
 <p>En esta práctica vamos a explorar las view transformations, para ello partiremos de un ejemplo básico cargando el mesh de un cubo sin aplicar ninguna rectificación:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
@@ -577,7 +577,7 @@ div.my-img{text-align:center;margin-top:20px}
       <span class="n">app</span> <span class="o">=</span> <span class="n">OpenGLApp</span><span class="p">(</span><span class="s2">&quot;OpenGL en Python&quot;</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
       <span class="n">app</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img40.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/img40.png" /></p>
 <p>Como ya comentamos anteriormente, por defecto la cámara se encuentra el eje Z=0, como el cubo se está dibugando en la matriz de mundo con el centro en el origen (0,0,0), lo que vemos aquí es simplemente la cara del fondo del cubo, pues la cámara está justo sobre esa cara.</p>
 <p>Para visualizar el cubo completo debemos aplicarle una transformación de traslación y empujarlo al fondo. Podemos establer el modo modelview, configurar el espacio y activar el bufer de profundidad (si queremos) y configurar la traslación con glTranslate:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">GLUtils</span><span class="p">:</span>
@@ -598,21 +598,21 @@ div.my-img{text-align:center;margin-top:20px}
           <span class="n">glTranslate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
 <p>Al mover la cámara del modelo -1 unidad del mundo hacia atrás estará exactamente sobre la otra cara, la del frente del cubo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img41.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/img41.png" /></p>
 <p>Si posicionamos la cámara a -2 unidades, la cara frontal del cubo estará a 1 unidad de distancia de la cámara:</p>
 <p>glTranslate(0, 0, -2)</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img42.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/img42.png" /></p>
 <p>Nota: Debemos recordar que el cubo está normalizado y cada cara mide exactamente 1 unidad del mundo.</p>
 <p>En cuanto a los ejes x e y dependen de cómo hemos configurado que crezca el espacio. Por ejemplo, trasladar la cámara del modelo 1 unidad hacia arriba ocasionará que veamos solo la mitad inferior del cubo:</p>
 <p>glTranslate(0, 1, -2)</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img43.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/img43.png" /></p>
 <p>Si en lugar de configurar inicialmente la traslación la establecemos en cada fotograma, ésta se acumulará:</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
       <span class="n">GLUtils</span><span class="o">.</span><span class="n">PrepareRender</span><span class="p">()</span>
       <span class="n">glTranslate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">deltaTime</span><span class="p">)</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim26.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/anim26.gif" /></p>
 <p>Sin embargo, si utilizamos las instrucciones glPushMatrix y glPopMatrix antes y después de la transformación y el renderizado:</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
       <span class="n">GLUtils</span><span class="o">.</span><span class="n">PrepareRender</span><span class="p">()</span>
@@ -621,7 +621,7 @@ div.my-img{text-align:center;margin-top:20px}
       <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
       <span class="n">glPopMatrix</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img43.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/img43.png" /></p>
 <p>Podemos insertar la matriz actual en una pila, es decir en la memoria. Metemos las matrices de transformación en la memoria, las ejecutamos y las sacamos de la memoria. Al hacerlo reiniciamos la matriz de la modelview para el próximo fotograma y ya no se acumulan.</p>
 <p>Si intentamos dibujar dos cubos, ambos lo harán en la misma posición y no los percibiremos:</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -632,7 +632,7 @@ div.my-img{text-align:center;margin-top:20px}
       <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
       <span class="n">glPopMatrix</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img43.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/img43.png" /></p>
 <p>Sin embargo, si reiniciamos cargamos la identidad despueés de dibujar el primer cubo (recordemos que equivale a multipliar por 1):</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
       <span class="n">GLUtils</span><span class="o">.</span><span class="n">PrepareRender</span><span class="p">()</span>
@@ -643,7 +643,7 @@ div.my-img{text-align:center;margin-top:20px}
       <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
       <span class="n">glPopMatrix</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img44.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/img44.png" /></p>
 <p>El segundo cubo se dibujará de nuevo en el origen. Eso ya nos da la pista de que podemos modificar la posición de la subsiguiente malla si primero reiniciamos la transformación con la matriz de identidad:</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
       <span class="n">GLUtils</span><span class="o">.</span><span class="n">PrepareRender</span><span class="p">()</span>
@@ -655,7 +655,7 @@ div.my-img{text-align:center;margin-top:20px}
       <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
       <span class="n">glPopMatrix</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img45.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/img45.png" /></p>
 <p>Exactamente lo mismo ocurrirá con las transformaciones de escalado y rotación</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
       <span class="n">GLUtils</span><span class="o">.</span><span class="n">PrepareRender</span><span class="p">()</span>
@@ -677,7 +677,7 @@ div.my-img{text-align:center;margin-top:20px}
 
       <span class="n">glPopMatrix</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img46.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/img46.png" /></p>
 <p>Nota: OpenGL lee las matrices en orden mayor de columna, por lo que las transformaciones deben ser:</p>
 <ul>
 <li>Traslación</li>
@@ -793,7 +793,7 @@ div.my-img{text-align:center;margin-top:20px}
           <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
           <span class="n">glPopMatrix</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim27.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/anim27.gif" /></p>
 <p>Listo, ya tenemos una cámara que podemos mover en tiempo real con el teclado.</p>
 <h2 id="rotando-la-camara">Rotando la cámara<a class="headerlink" href="#rotando-la-camara" title="Permanent link">&para;</a></h2>
 <p>Un objeto tridimensional puede rotar a partir de uno de sus tres ejes. El ángulo de rotación recibe un nombre distinto para cada eje:</p>
@@ -802,7 +802,7 @@ div.my-img{text-align:center;margin-top:20px}
 <li>Yaw para la rotación congelando el eje Y.</li>
 <li>Roll para la rotación congelando el eje Z.</li>
 </ul>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img47.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/img47.png" /></p>
 <p>En esta práctica vamos a mapear los ángulos pitch y yaw en función del cursor del ratón para rotar la cámara en el espacio 3D, consiguiendo un efecto similar al de una cámara en primera persona.</p>
 <p>Continuando con la cámara en movimiento, vamos a añadirle dos atributos para controlar los ángulos:</p>
 <div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">pitch</span> <span class="o">=</span> <span class="mi">0</span>
@@ -887,7 +887,7 @@ div.my-img{text-align:center;margin-top:20px}
                   <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
 </code></pre></div>
 <p>En este punto la cámara funcionará bastante bien:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim28.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/anim28.gif" /></p>
 <p>Lamentablemente seguimos limitados por el espacio de la ventana y no podemos seguir rotando la vista, debemos encontrar una forma de solucionarlo.</p>
 <p>Lo que haremos es que la cámara sea consciente del tamaño de la ventana y reinicie la posición del ratón justo al centro después de mover el ratón en cada fotograma. Luego actualizaremos la última posición, pero en lugar de la posición inicial utilizaremos la que hemos establecido en medio de la pantalla:</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">UpdateCamera</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -901,7 +901,7 @@ div.my-img{text-align:center;margin-top:20px}
       <span class="bp">self</span><span class="o">.</span><span class="n">lastMouse</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">get_pos</span><span class="p">()</span>              <span class="c1"># &lt;-----</span>
 </code></pre></div>
 <p>Ahora ya podemos rotar indefinidamente la cámara:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim29.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/anim29.gif" /></p>
 <p>Solo nos falta encontrar una forma de alternar si queremos mover/rotar la cámara o no. Para mí la mejor forma de hacerlo es cuando el clic derecho del ratón está clicado. Quitaremos que el ratón desaparezca inicialmente y en su lugar detectaremos el clic derecho para activar el modo grab y ratón invisible:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">OpenGLApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
       <span class="k">def</span><span class="w"> </span><span class="nf">Inputs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -957,7 +957,7 @@ div.my-img{text-align:center;margin-top:20px}
                   <span class="bp">self</span><span class="o">.</span><span class="n">up</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">up</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">up</span><span class="o">.</span><span class="n">z</span><span class="p">)</span>
 </code></pre></div>
 <p>El resultado será simplemente perfecto:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/anim30.gif" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/anim30.gif" /></p>
 <h2 id="visualizando-la-orientacion">Visualizando la orientación<a class="headerlink" href="#visualizando-la-orientacion" title="Permanent link">&para;</a></h2>
 <p>En esta práctica vamos a dibujar unas líneas representando el punto de origen del mundo tridimensional y sus vectores con dirección arriba, derecha y adelante.</p>
 <p>Utilizaremos como base el programa anterior:</p>
@@ -1037,7 +1037,7 @@ div.my-img{text-align:center;margin-top:20px}
           <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
           <span class="n">glPopMatrix</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img48.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/img48.png" /></p>
 <p>Podemos hacerlas de distintos colores:</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">DrawWorldAxes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
       <span class="n">glLineWidth</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -1055,7 +1055,7 @@ div.my-img{text-align:center;margin-top:20px}
       <span class="n">glColor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
       <span class="n">glLineWidth</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img49.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/img49.png" /></p>
 <p>Ahora podemos dibujar en la longitud 1 de cada eje una esfera. Para ello crearemos un objeto cuádrico de OpenGL. De paso modificaremos la longitud de las líneas a una sola unidad:</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">DrawWorldAxes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
@@ -1102,7 +1102,7 @@ div.my-img{text-align:center;margin-top:20px}
       <span class="n">glLineWidth</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 <p>Si modificamos el ángulo inicial yaw a -90 para alinear la cámara con el origen para el eje x moviéndonos hacia atrás veremos los ejes del cubo en el mundo en el punto de origen:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/opengl/img50.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/opengl/img50.png" /></p>
 <hr />
 <p><small class="edited"><i>Última edición: 3 de Octubre de 2022</i></small></p>
                   
@@ -1220,8 +1220,8 @@ div.my-img{text-align:center;margin-top:20px}
         <a id="anchorID" href="/docs/" target="_blank"></a>
       </div>
       <script type='text/javascript'
-              src="https://hektorprofe.github.io/docs/assets/javascripts/application.a26c1c21.js"></script>
-      <script src="https://hektorprofe.github.io/docs/assets/javascripts/tingle.min.js"></script>
+              src="https://hektorprofe.github.io/assets/javascripts/application.a26c1c21.js"></script>
+      <script src="https://hektorprofe.github.io/assets/javascripts/tingle.min.js"></script>
       <script type='text/javascript'>
     app.initialize({version:"1.2.3",url:{base:"../.."}})
     var _extends=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(t[o]=n[o])}return t},_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t};!function(t,e){"object"===("undefined"==typeof exports?"undefined":_typeof(exports))&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):t.LazyLoad=e()}(this,function(){"use strict";function t(t,e,n){var o=e._settings;!n&&i(t)||(C(o.callback_enter,t),R.indexOf(t.tagName)>-1&&(N(t,e),I(t,o.class_loading)),E(t,e),a(t),C(o.callback_set,t))}var e={elements_selector:"img",container:document,threshold:300,thresholds:null,data_src:"src",data_srcset:"srcset",data_sizes:"sizes",data_bg:"bg",class_loading:"loading",class_loaded:"loaded",class_error:"error",load_delay:0,callback_load:null,callback_error:null,callback_set:null,callback_enter:null,callback_finish:null,to_webp:!1},n=function(t){return _extends({},e,t)},o=function(t,e){return t.getAttribute("data-"+e)},r=function(t,e,n){var o="data-"+e;null!==n?t.setAttribute(o,n):t.removeAttribute(o)},a=function(t){return r(t,"was-processed","true")},i=function(t){return"true"===o(t,"was-processed")},s=function(t,e){return r(t,"ll-timeout",e)},c=function(t){return o(t,"ll-timeout")},l=function(t){return t.filter(function(t){return!i(t)})},u=function(t,e){return t.filter(function(t){return t!==e})},d=function(t,e){var n,o=new t(e);try{n=new CustomEvent("LazyLoad::Initialized",{detail:{instance:o}})}catch(t){(n=document.createEvent("CustomEvent")).initCustomEvent("LazyLoad::Initialized",!1,!1,{instance:o})}window.dispatchEvent(n)},f=function(t,e){return e?t.replace(/\.(jpe?g|png)/gi,".webp"):t},_="undefined"!=typeof window,v=_&&!("onscroll"in window)||/(gle|ing|ro)bot|crawl|spider/i.test(navigator.userAgent),g=_&&"IntersectionObserver"in window,h=_&&"classList"in document.createElement("p"),b=_&&function(){var t=document.createElement("canvas");return!(!t.getContext||!t.getContext("2d"))&&0===t.toDataURL("image/webp").indexOf("data:image/webp")}(),m=function(t,e,n,r){for(var a,i=0;a=t.children[i];i+=1)if("SOURCE"===a.tagName){var s=o(a,n);p(a,e,s,r)}},p=function(t,e,n,o){n&&t.setAttribute(e,f(n,o))},y=function(t,e){var n=b&&e.to_webp,r=o(t,e.data_src),a=o(t,e.data_bg);if(r){var i=f(r,n);t.style.backgroundImage='url("'+i+'")'}if(a){var s=f(a,n);t.style.backgroundImage=s}},w={IMG:function(t,e){var n=b&&e.to_webp,r=e.data_srcset,a=t.parentNode;a&&"PICTURE"===a.tagName&&m(a,"srcset",r,n);var i=o(t,e.data_sizes);p(t,"sizes",i);var s=o(t,r);p(t,"srcset",s,n);var c=o(t,e.data_src);p(t,"src",c,n)},IFRAME:function(t,e){var n=o(t,e.data_src);p(t,"src",n)},VIDEO:function(t,e){var n=e.data_src,r=o(t,n);m(t,"src",n),p(t,"src",r),t.load()}},E=function(t,e){var n=e._settings,o=t.tagName,r=w[o];if(r)return r(t,n),e._updateLoadingCount(1),void(e._elements=u(e._elements,t));y(t,n)},I=function(t,e){h?t.classList.add(e):t.className+=(t.className?" ":"")+e},L=function(t,e){h?t.classList.remove(e):t.className=t.className.replace(new RegExp("(^|\\s+)"+e+"(\\s+|$)")," ").replace(/^\s+/,"").replace(/\s+$/,"")},C=function(t,e){t&&t(e)},O=function(t,e,n){t.addEventListener(e,n)},k=function(t,e,n){t.removeEventListener(e,n)},x=function(t,e,n){O(t,"load",e),O(t,"loadeddata",e),O(t,"error",n)},A=function(t,e,n){k(t,"load",e),k(t,"loadeddata",e),k(t,"error",n)},z=function(t,e,n){var o=n._settings,r=e?o.class_loaded:o.class_error,a=e?o.callback_load:o.callback_error,i=t.target;L(i,o.class_loading),I(i,r),C(a,i),n._updateLoadingCount(-1)},N=function(t,e){var n=function n(r){z(r,!0,e),A(t,n,o)},o=function o(r){z(r,!1,e),A(t,n,o)};x(t,n,o)},R=["IMG","IFRAME","VIDEO"],S=function(e,n,o){t(e,o),n.unobserve(e)},M=function(t){var e=c(t);e&&(clearTimeout(e),s(t,null))},j=function(t,e,n){var o=n._settings.load_delay,r=c(t);r||(r=setTimeout(function(){S(t,e,n),M(t)},o),s(t,r))},D=function(t){return t.isIntersecting||t.intersectionRatio>0},T=function(t){return{root:t.container===document?null:t.container,rootMargin:t.thresholds||t.threshold+"px"}},U=function(t,e){this._settings=n(t),this._setObserver(),this._loadingCount=0,this.update(e)};return U.prototype={_manageIntersection:function(t){var e=this._observer,n=this._settings.load_delay,o=t.target;n?D(t)?j(o,e,this):M(o):D(t)&&S(o,e,this)},_onIntersection:function(t){t.forEach(this._manageIntersection.bind(this))},_setObserver:function(){g&&(this._observer=new IntersectionObserver(this._onIntersection.bind(this),T(this._settings)))},_updateLoadingCount:function(t){this._loadingCount+=t,0===this._elements.length&&0===this._loadingCount&&C(this._settings.callback_finish)},update:function(t){var e=this,n=this._settings,o=t||n.container.querySelectorAll(n.elements_selector);this._elements=l(Array.prototype.slice.call(o)),!v&&this._observer?this._elements.forEach(function(t){e._observer.observe(t)}):this.loadAll()},destroy:function(){var t=this;this._observer&&(this._elements.forEach(function(e){t._observer.unobserve(e)}),this._observer=null),this._elements=null,this._settings=null},load:function(e,n){t(e,this,n)},loadAll:function(){var t=this;this._elements.forEach(function(e){t.load(e)})}},_&&function(t,e){if(e)if(e.length)for(var n,o=0;n=e[o];o+=1)d(t,n);else d(t,e)}(U,window.lazyLoadOptions),U});

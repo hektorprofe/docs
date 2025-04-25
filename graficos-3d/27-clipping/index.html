@@ -11,7 +11,7 @@
       
         <meta name="description" content="Archivo con apuntes de programación de Hector Costa Guzman.">
       
-      <link rel="canonical" href="https://hektorprofe.github.io/docs/graficos-3d/27-clipping/">
+      <link rel="canonical" href="https://hektorprofe.github.io/graficos-3d/27-clipping/">
       
         <meta name="author" content="Héctor Costa Guzman">
       
@@ -34,9 +34,9 @@
     
     
     <link rel="stylesheet"
-          href="https://hektorprofe.github.io/docs/assets/stylesheets/tingle.min.css">
+          href="https://hektorprofe.github.io/assets/stylesheets/tingle.min.css">
     <style>
-@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
+@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
 [data-md-color-primary="grey"] .md-header { background-color: #191A1D }
 [data-md-color-primary="grey"] .md-tabs { background-color: #222831 }
 .md-footer-nav { background-color: #222831; }
@@ -127,11 +127,11 @@ div.my-img{text-align:center;margin-top:20px}
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://hektorprofe.github.io/docs/"
+        <a href="https://hektorprofe.github.io/"
            title="Archivo - Archivo de Hektor Profe Docs"
            class="md-header-nav__button md-logo"
            style="font-size: 0px">
-          <img src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+          <img src="https://hektorprofe.github.io/assets/images/logo.png"
                width="200px"
                height="35px"
                style="margin-top: -5px"
@@ -150,9 +150,9 @@ div.my-img{text-align:center;margin-top:20px}
              href="https://hektorprofe.github.io/docs/"
              style="margin-left:1.4em"
              title="Buscador de documentos">Buscador</a>
-          <a href="https://hektorprofe.github.io/docs/">
+          <a href="https://hektorprofe.github.io/">
             <img class="nav__logo"
-                 src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+                 src="https://hektorprofe.github.io/assets/images/logo.png"
                  width="200px"
                  height="35px"
                  style="margin: 6px auto 0"
@@ -846,7 +846,7 @@ div.my-img{text-align:center;margin-top:20px}
                   
                   <h1 id="clipping">Clipping<a class="headerlink" href="#clipping" title="Permanent link">&para;</a></h1>
 <p>Llegó la hora de implementar la última funcionalidad importante de mi sistema de renderizado, el <em>clipping</em>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-72.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-72.png" /></p>
 <p>Empezaré enumerando sus objetivos más importantes del <em>clipping</em>:</p>
 <ul>
 <li>La meta de usar <em>clipping</em> es eliminar los objetos o segmentos de línea que quedan fuera del volumen de la vista (aka <em>frustum</em>).</li>
@@ -854,7 +854,7 @@ div.my-img{text-align:center;margin-top:20px}
 <li>El <em>pipeline</em> define varios pasos, uno para cada plano del <em>frustum</em> que hay que recortar.</li>
 </ul>
 <p>Es decir, no se trata solo de descartar los modelos externos al <em>frustum</em> sino de la capacidad de recortar los que se encuentran cortando el propio <em>frustum</em> y eso nos traerá bastante trabajo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-138.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-138.png" /></p>
 <p>En el <em>frustum clipping</em> tenemos que recortar los modelos en cada uno de los seis planos por orden:</p>
 <ol>
 <li>Arriba</li>
@@ -868,7 +868,7 @@ div.my-img{text-align:center;margin-top:20px}
 <h2 id="planos-del-frustum">Planos del frustum<a class="headerlink" href="#planos-del-frustum" title="Permanent link">&para;</a></h2>
 <p>Empecemos repasando qué es un plano, a fin de cuentas necesitamos 6 planos para formar un <em>frustum</em>.</p>
 <p>Un plano se define como el <strong>conjunto de un punto y un vector normal</strong>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-139.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-139.png" /></p>
 <p>Un punto puede tener infinitos planos dependiendo del vector normal.</p>
 <p>Así que vamos a crear esta clase dentro de nuestra nueva cabecera <code>clipping.h</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="cp">#ifndef CLIPPING_H</span>
@@ -892,32 +892,32 @@ div.my-img{text-align:center;margin-top:20px}
 </ul>
 <p><strong>Plano derecho</strong></p>
 <p>Si suponemos que miramos desde arriba y queremos determinar el plano derecho del <code>frustum</code> tenemos:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-140.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-140.png" /></p>
 <p>El punto <code>P</code> podemos suponerlo como el origen o la propia cámara en <code>(0,0,0)</code>. Mediante trigonometría encontraremos cada componente:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-141.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-141.png" /></p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}\\{\color{Blue}&space;P}&space;=&space;(0,0,0)\\&space;{\color{Green}&space;\overrightarrow{n}}_{x}&space;=&space;-cos({\color{Orange}&space;fov/2})\\&space;{\color{Green}&space;\overrightarrow{n}}_{y}&space;=&space;0\\&space;{\color{Green}&space;\overrightarrow{n}}_{z}&space;=&space;sin({\color{Orange}&space;fov/2})"/></p>
 <p>Debemos tener en cuenta que <code>X</code> se encuentra a la izquierda y por tanto es negativa, de ahí que el coseno sea negativo.</p>
 <p><strong>Plano izquierdo</strong></p>
 <p>Este es exactamente igual pero la <code>X</code> es positiva, por tanto el ángulo del coseno será positivo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-142.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-142.png" /></p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}\\{\color{Blue}&space;P}&space;=&space;(0,0,0)\\&space;{\color{Green}&space;\overrightarrow{n}}_{x}&space;=&space;cos({\color{Orange}&space;fov/2})\\&space;{\color{Green}&space;\overrightarrow{n}}_{y}&space;=&space;0\\&space;{\color{Green}&space;\overrightarrow{n}}_{z}&space;=&space;sin({\color{Orange}&space;fov/2})"/></p>
 <p><strong>Plano superior</strong></p>
 <p>Ahora vamos a cambiar de perspectiva, vamos a ver el <code>frustum</code> desde el lado. Así podemos conseguir <code>Y</code> y <code>Z</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-143.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-143.png" /></p>
 <p>Dado que la <code>Y</code> es negativa, el coseno del ángulo será negativo:</p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}\\{\color{Blue}&space;P}&space;=&space;(0,0,0)\\&space;{\color{Green}&space;\overrightarrow{n}}_{x}&space;=&space;0\\&space;{\color{Green}&space;\overrightarrow{n}}_{y}&space;=&space;-cos({\color{Orange}&space;fov/2})\\&space;{\color{Green}&space;\overrightarrow{n}}_{z}&space;=&space;sin({\color{Orange}&space;fov/2})" /></p>
 <p><strong>Plano inferior</strong></p>
 <p>Cambiando al plano de abajo, el único cambio es que la <code>Y</code> es ahora positiva, por tanto el coseno será positivo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-144.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-144.png" /></p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}\\{\color{Blue}&space;P}&space;=&space;(0,0,0)\\&space;{\color{Green}&space;\overrightarrow{n}}_{x}&space;=&space;0\\&space;{\color{Green}&space;\overrightarrow{n}}_{y}&space;=&space;cos({\color{Orange}&space;fov/2})\\&space;{\color{Green}&space;\overrightarrow{n}}_{z}&space;=&space;sin({\color{Orange}&space;fov/2})"/></p>
 <p><strong>Plano cercano</strong></p>
 <p>Para poner en perspectiva la profundidad la vamos a visualizar desde el lado, suponiendo que tenemos un plano cercano cortando el <code>frustum</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-145.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-145.png" /></p>
 <p>En esta ocasión el punto <code>P</code> ya no será <code>(0,0,0)</code> sino que la profundidad <code>Z</code> vendrá marcada por el valor <code>znear</code> y la longitud normalizada es <code>1</code> hacia adelante, por tanto positiva:</p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}\\{\color{Blue}&space;P}&space;=&space;(0,&space;0,&space;{\color{Orange}&space;znear})\\&space;{\color{Green}&space;\overrightarrow{n}}_{x}&space;=&space;0\\&space;{\color{Green}&space;\overrightarrow{n}}_{y}&space;=&space;0\\&space;{\color{Green}&space;\overrightarrow{n}}_{z}&space;=&space;1" /></p>
 <p><strong>Plano alejado</strong></p>
 <p>Prácticamente con la misma lógica determinamos el plano más lejos en profundidad:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-146.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-146.png" /></p>
 <p>la diferencia es que ahora la profundidad del punto <code>P</code> la determina nuestro valor <code>zfar</code> y el vector normal apunta hacia adentro, por lo que será negativo:</p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}\\{\color{Blue}&space;P}&space;=&space;(0,&space;0,&space;{\color{Orange}&space;zfar})\\&space;{\color{Green}&space;\overrightarrow{n}}_{x}&space;=&space;0\\&space;{\color{Green}&space;\overrightarrow{n}}_{y}&space;=&space;0\\&space;{\color{Green}&space;\overrightarrow{n}}_{z}&space;=&space;-1" /></p>
 <p>Con la información de los planos podemos codificar un método para inicializar una nueva clase <code>frustum</code> en función del valor <code>fov</code>, <code>znear</code> y <code>zfar</code>:</p>
@@ -986,23 +986,23 @@ div.my-img{text-align:center;margin-top:20px}
 <p><strong>Dentro del plano</strong></p>
 <p>El punto <code>Q</code> estará dentro del plano si el resultado del producto escalar es mayor que <code>0</code>:</p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}({\color{DarkRed}&space;Q}&space;-&space;{\color{Blue}&space;P})&space;\cdot&space;{\color{DarkGreen}&space;\overrightarrow{n}}&space;>&space;0" /&gt;</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-148.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-148.png" /></p>
 <p><strong>Fuera del plano</strong></p>
 <p>El punto <code>Q</code> estará fuera del plano si el resultado del producto escalar es menor que <code>0</code>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/latex099.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-149.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/latex099.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-149.png" /></p>
 <p><strong>Alineado sobre el plano</strong></p>
 <p>El punto <code>Q</code> estará alineado sobre el plano si el resultado del producto escalar es igual <code>0</code>:</p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}({\color{DarkRed}&space;Q}&space;-&space;{\color{Blue}&space;P})&space;\cdot&space;{\color{DarkGreen}&space;\overrightarrow{n}}&space;=&space;0" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-147.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-147.png" /></p>
 <h2 id="punto-de-interseccion">Punto de intersección<a class="headerlink" href="#punto-de-interseccion" title="Permanent link">&para;</a></h2>
 <p>Sabiendo cómo determinar si un punto <code>Q</code> se encuentra dentro o fuera de un plano ya podemos descartar los vértices fuera del frustum.</p>
 <p>Si todos los vértices de una malla están fuera del frustum simplemente la ignoramos y no la dibujamos, pero... ¿Y si la malla tiene algunos vértices dentro y otros fuera del plano? </p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-150.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-150.png" /></p>
 <p>En ese caso lo siguiente que debemos encontrar son <strong>los puntos de intersección</strong> entre el plano y el polígono:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-151.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-151.png" /></p>
 <p>Bueno, en realidad lo que queremos encontrar es el punto de intersección entre un segmento de una línea y una plano:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-152.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-152.png" /></p>
 <p>Podemos interpolar cualquier punto de este segmento mediante la ecuación de <strong>interpolación lineal</strong>:</p>
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}{\color{Red}&space;I}&space;=&space;Q_1&space;&plus;&space;{\color{Blue}&space;t}(Q_2&space;-&space;Q_1)"/></p>
 <p>Donde <code>t</code> es un factor entre <code>0</code> y <code>1</code> cuyo valor nos dará cualquier punto entre el segmento <code>Q1</code> y <code>Q2</code>, siendo <code>I = Q1</code> si <code>t = 0</code> o <code>I = Q2</code> si <code>t = 1</code>.</p>
@@ -1014,13 +1014,13 @@ div.my-img{text-align:center;margin-top:20px}
 <p><img src="https://latex.codecogs.com/png.image?\dpi{150}\bg{white}{\color{Red}&space;I}&space;=&space;Q_1&space;&plus;&space;\frac{dot_{Q1}}{(dot_{Q1}-dot_{Q2})}(Q_2&space;-&space;Q_1)" /></p>
 <h2 id="algoritmo-de-clipping">Algoritmo de clipping<a class="headerlink" href="#algoritmo-de-clipping" title="Permanent link">&para;</a></h2>
 <p>En este punto ya podemos hacernos una idea del procedimiento de <em>clipping</em>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-153.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-153.png" /></p>
 <p>Al final la idea se basa en subtituir los vértices fuera de los planos por los puntos de intersecciónen, dando lugar a un nuevo polígono:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-154.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-154.png" /></p>
 <p>Esto sería el recorte para un plano, tendremos que repetir el proceso para cada plano del <em>frustum</em> (arriba, abajo, izquierda, derecha, cercano y alejado), <strong>utilizando como entrada el polígono resultante de cada recorte anterior</strong>:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-155.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-155.png" /></p>
 <p>La función que implementará todo este procedimiento para los seis planos tomará un polígono (una nueva clase <code>Poligon</code> en <code>clipping.h</code>) creado inicialmente con un triángulo y que podrá tener un número indeterminado de vértices, debido a que después del corte, pueden generarse nuevos vértices como en este ejemplo que al cortar un triángulo obtenemos un polígono de cuatro costados:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-156.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-156.png" /></p>
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;deque&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;vector.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;triangle.h&quot;</span>
@@ -1134,16 +1134,16 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Polygon vertices: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">polygon</span><span class="p">.</span><span class="n">vertices</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 </code></pre></div>
 <p>Deberíamos ver como cambia el contador dependiendo de cómo lo cortemos, por ejemplo recortando por arriba obtendremos 3 vértices:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-157.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-157.png" /></p>
 <p>Recortando por la izquierda 4 vértices:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-158.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-158.png" /></p>
 <p>Por abajo a la izquierda 5 vértices:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-159.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-159.png" /></p>
 <p>En conclusión parece que funciona.</p>
 <h2 id="de-poligonos-a-triangulos">De polígonos a triángulos<a class="headerlink" href="#de-poligonos-a-triangulos" title="Permanent link">&para;</a></h2>
 <p>El siguiente objetivo es transformar el polígono formado por una cantidad indeterminado de vértices de nuevo a triángulos para renderizararlos.</p>
 <p>Para conseguirlo podemos unir el primer vértice del polígono con el segundo y el tercero, de nuevo el primero con el tercero y el cuarto, el primero con el cuarto y el quinto... Así sucesivamente hasta el penúltimo vértice (<code>-2</code> respecto a la longitud de la cola):</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-160.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-160.png" /></p>
 <p>La implementación es fácil, en un método <code>GenerateClippedTriangles</code> iremos metiendo los triángulos recortados en una cola que pasaremos por referencia:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Polygon</span>
 <span class="p">{</span>
@@ -1200,10 +1200,10 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">clippedTriangles</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
 </code></pre></div>
 <p>En este punto, aunque con algún <em>bug</em> en el frustum, se deberían recortar los triángulos, formarse nuevos polígonos y transformarse de nuevo en triángulos:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-45.gif" /> </p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/anim-45.gif" /> </p>
 <h2 id="ajustando-el-angulo-fov">Ajustando el ángulo FOV<a class="headerlink" href="#ajustando-el-angulo-fov" title="Permanent link">&para;</a></h2>
 <p>Por alguna razón ahora mismo se está considerando el espacio de <strong>clipping</strong> algo así:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-161.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-161.png" /></p>
 <p>Solo con observar podemos suponer que se está tomando el mismo ancho que alto para el <em>frustum</em> y es que al crearlo utilizamos un <code>fovFactor</code> basado en el <code>aspectRatio</code> de la altura respecto a la anchura:</p>
 <div class="highlight"><pre><span></span><code><span class="n">aspectRatio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rendererHeight</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">rendererWidth</span><span class="p">);</span>
 <span class="n">viewFrustum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Frustum</span><span class="p">(</span><span class="n">fovFactor</span><span class="p">,</span><span class="w"> </span><span class="n">zNear</span><span class="p">,</span><span class="w"> </span><span class="n">zFar</span><span class="p">);</span>
@@ -1271,9 +1271,9 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="n">viewFrustum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Frustum</span><span class="p">(</span><span class="n">fovFactorX</span><span class="p">,</span><span class="w"> </span><span class="n">fovFactorY</span><span class="p">,</span><span class="w"> </span><span class="n">zNear</span><span class="p">,</span><span class="w"> </span><span class="n">zFar</span><span class="p">);</span>
 </code></pre></div>
 <p>Con esto tendremos perfectamente configurado el <em>frustum</em> de la cámara:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-46.gif" /> </p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/anim-46.gif" /> </p>
 <p>El coloreado de triángulos también debería funcionar, pero el texturizado tendremos que rectificarlo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-47.gif" /> </p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/anim-47.gif" /> </p>
 <h2 id="clipping-en-las-texturas">Clipping en las texturas<a class="headerlink" href="#clipping-en-las-texturas" title="Permanent link">&para;</a></h2>
 <p>La información de la textura de cada cara está contenida en el triángulo que enviamos al polígono y almacenamos en <code>sourceTriangle</code>, por lo que podemos empezar almacenándolas en una cola durante la creación del mismo:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Polygon</span>
@@ -1396,15 +1396,15 @@ div.my-img{text-align:center;margin-top:20px}
 <span class="p">}</span>
 </code></pre></div>
 <p>Con esto el <em>clipping</em> para las texturas debería funcionar:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-48.gif" /> </p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/anim-48.gif" /> </p>
 <p>Ha sido un largo camino empezando por la creación del <em>frustum</em> con sus diferentes planos, el recorte de los vértices de los triángulos dando lugar a polígonos de lados indeterminados, la interpolación de los nuevos vértices y texturas para finalmente regenerar nuevos triángulos, pero ha valido la pena.</p>
 <p>Ahora el sistema de renderizado está mucho más optimizado, el <em>clipping</em> nos ahorra renderizar elementos descartados y además evita que se bloquee por los vértices por detrás de la cámara:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/anim-49.gif" /> </p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/anim-49.gif" /> </p>
 <h2 id="frustum-clipping-y-space-clipping">Frustum clipping y space clipping<a class="headerlink" href="#frustum-clipping-y-space-clipping" title="Permanent link">&para;</a></h2>
 <p>Al final el proceso de realizar el <em>clipping</em> es bastante costoso para nuestra CPU. Debemos tener en cuenta que se ejecuta todo el procedimiento de recortar los polígonos, regenerar los triángulos y todas sus interpolaciones en cada fotograma. Con una malla formada por pocos triángulos no se notará, como un cubo de 8 vértices el rendimiento es exagerado y fácilmente llego a los <code>300</code> FPS:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-162.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-162.png" /></p>
 <p>Pero con otros modelos con un número de triángulos mucho mayor, como este dron con <code>7750</code> vértices la tasa de fotogramas se reduce drásticamente hasta apenas alcanzar los <code>25</code> FPS de media:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/graficos3d/image-163.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/graficos3d/image-163.png" /></p>
 <p>Repasando el <em>rendering pipeline</em> de mi sistema:</p>
 <ol>
 <li><strong>Model space</strong>: El modelo empieza en su propio espacio codificado tal como se ha creado en un programa de modelado.</li>
@@ -1559,8 +1559,8 @@ div.my-img{text-align:center;margin-top:20px}
         <a id="anchorID" href="/docs/" target="_blank"></a>
       </div>
       <script type='text/javascript'
-              src="https://hektorprofe.github.io/docs/assets/javascripts/application.a26c1c21.js"></script>
-      <script src="https://hektorprofe.github.io/docs/assets/javascripts/tingle.min.js"></script>
+              src="https://hektorprofe.github.io/assets/javascripts/application.a26c1c21.js"></script>
+      <script src="https://hektorprofe.github.io/assets/javascripts/tingle.min.js"></script>
       <script type='text/javascript'>
     app.initialize({version:"1.2.3",url:{base:"../.."}})
     var _extends=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(t[o]=n[o])}return t},_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t};!function(t,e){"object"===("undefined"==typeof exports?"undefined":_typeof(exports))&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):t.LazyLoad=e()}(this,function(){"use strict";function t(t,e,n){var o=e._settings;!n&&i(t)||(C(o.callback_enter,t),R.indexOf(t.tagName)>-1&&(N(t,e),I(t,o.class_loading)),E(t,e),a(t),C(o.callback_set,t))}var e={elements_selector:"img",container:document,threshold:300,thresholds:null,data_src:"src",data_srcset:"srcset",data_sizes:"sizes",data_bg:"bg",class_loading:"loading",class_loaded:"loaded",class_error:"error",load_delay:0,callback_load:null,callback_error:null,callback_set:null,callback_enter:null,callback_finish:null,to_webp:!1},n=function(t){return _extends({},e,t)},o=function(t,e){return t.getAttribute("data-"+e)},r=function(t,e,n){var o="data-"+e;null!==n?t.setAttribute(o,n):t.removeAttribute(o)},a=function(t){return r(t,"was-processed","true")},i=function(t){return"true"===o(t,"was-processed")},s=function(t,e){return r(t,"ll-timeout",e)},c=function(t){return o(t,"ll-timeout")},l=function(t){return t.filter(function(t){return!i(t)})},u=function(t,e){return t.filter(function(t){return t!==e})},d=function(t,e){var n,o=new t(e);try{n=new CustomEvent("LazyLoad::Initialized",{detail:{instance:o}})}catch(t){(n=document.createEvent("CustomEvent")).initCustomEvent("LazyLoad::Initialized",!1,!1,{instance:o})}window.dispatchEvent(n)},f=function(t,e){return e?t.replace(/\.(jpe?g|png)/gi,".webp"):t},_="undefined"!=typeof window,v=_&&!("onscroll"in window)||/(gle|ing|ro)bot|crawl|spider/i.test(navigator.userAgent),g=_&&"IntersectionObserver"in window,h=_&&"classList"in document.createElement("p"),b=_&&function(){var t=document.createElement("canvas");return!(!t.getContext||!t.getContext("2d"))&&0===t.toDataURL("image/webp").indexOf("data:image/webp")}(),m=function(t,e,n,r){for(var a,i=0;a=t.children[i];i+=1)if("SOURCE"===a.tagName){var s=o(a,n);p(a,e,s,r)}},p=function(t,e,n,o){n&&t.setAttribute(e,f(n,o))},y=function(t,e){var n=b&&e.to_webp,r=o(t,e.data_src),a=o(t,e.data_bg);if(r){var i=f(r,n);t.style.backgroundImage='url("'+i+'")'}if(a){var s=f(a,n);t.style.backgroundImage=s}},w={IMG:function(t,e){var n=b&&e.to_webp,r=e.data_srcset,a=t.parentNode;a&&"PICTURE"===a.tagName&&m(a,"srcset",r,n);var i=o(t,e.data_sizes);p(t,"sizes",i);var s=o(t,r);p(t,"srcset",s,n);var c=o(t,e.data_src);p(t,"src",c,n)},IFRAME:function(t,e){var n=o(t,e.data_src);p(t,"src",n)},VIDEO:function(t,e){var n=e.data_src,r=o(t,n);m(t,"src",n),p(t,"src",r),t.load()}},E=function(t,e){var n=e._settings,o=t.tagName,r=w[o];if(r)return r(t,n),e._updateLoadingCount(1),void(e._elements=u(e._elements,t));y(t,n)},I=function(t,e){h?t.classList.add(e):t.className+=(t.className?" ":"")+e},L=function(t,e){h?t.classList.remove(e):t.className=t.className.replace(new RegExp("(^|\\s+)"+e+"(\\s+|$)")," ").replace(/^\s+/,"").replace(/\s+$/,"")},C=function(t,e){t&&t(e)},O=function(t,e,n){t.addEventListener(e,n)},k=function(t,e,n){t.removeEventListener(e,n)},x=function(t,e,n){O(t,"load",e),O(t,"loadeddata",e),O(t,"error",n)},A=function(t,e,n){k(t,"load",e),k(t,"loadeddata",e),k(t,"error",n)},z=function(t,e,n){var o=n._settings,r=e?o.class_loaded:o.class_error,a=e?o.callback_load:o.callback_error,i=t.target;L(i,o.class_loading),I(i,r),C(a,i),n._updateLoadingCount(-1)},N=function(t,e){var n=function n(r){z(r,!0,e),A(t,n,o)},o=function o(r){z(r,!1,e),A(t,n,o)};x(t,n,o)},R=["IMG","IFRAME","VIDEO"],S=function(e,n,o){t(e,o),n.unobserve(e)},M=function(t){var e=c(t);e&&(clearTimeout(e),s(t,null))},j=function(t,e,n){var o=n._settings.load_delay,r=c(t);r||(r=setTimeout(function(){S(t,e,n),M(t)},o),s(t,r))},D=function(t){return t.isIntersecting||t.intersectionRatio>0},T=function(t){return{root:t.container===document?null:t.container,rootMargin:t.thresholds||t.threshold+"px"}},U=function(t,e){this._settings=n(t),this._setObserver(),this._loadingCount=0,this.update(e)};return U.prototype={_manageIntersection:function(t){var e=this._observer,n=this._settings.load_delay,o=t.target;n?D(t)?j(o,e,this):M(o):D(t)&&S(o,e,this)},_onIntersection:function(t){t.forEach(this._manageIntersection.bind(this))},_setObserver:function(){g&&(this._observer=new IntersectionObserver(this._onIntersection.bind(this),T(this._settings)))},_updateLoadingCount:function(t){this._loadingCount+=t,0===this._elements.length&&0===this._loadingCount&&C(this._settings.callback_finish)},update:function(t){var e=this,n=this._settings,o=t||n.container.querySelectorAll(n.elements_selector);this._elements=l(Array.prototype.slice.call(o)),!v&&this._observer?this._elements.forEach(function(t){e._observer.observe(t)}):this.loadAll()},destroy:function(){var t=this;this._observer&&(this._elements.forEach(function(e){t._observer.unobserve(e)}),this._observer=null),this._elements=null,this._settings=null},load:function(e,n){t(e,this,n)},loadAll:function(){var t=this;this._elements.forEach(function(e){t.load(e)})}},_&&function(t,e){if(e)if(e.length)for(var n,o=0;n=e[o];o+=1)d(t,n);else d(t,e)}(U,window.lazyLoadOptions),U});

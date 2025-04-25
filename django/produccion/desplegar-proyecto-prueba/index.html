@@ -11,7 +11,7 @@
       
         <meta name="description" content="Archivo con apuntes de programación de Hector Costa Guzman.">
       
-      <link rel="canonical" href="https://hektorprofe.github.io/docs/django/produccion/desplegar-proyecto-prueba/">
+      <link rel="canonical" href="https://hektorprofe.github.io/django/produccion/desplegar-proyecto-prueba/">
       
         <meta name="author" content="Héctor Costa Guzman">
       
@@ -34,9 +34,9 @@
     
     
     <link rel="stylesheet"
-          href="https://hektorprofe.github.io/docs/assets/stylesheets/tingle.min.css">
+          href="https://hektorprofe.github.io/assets/stylesheets/tingle.min.css">
     <style>
-@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/docs/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
+@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("https://hektorprofe.github.io/assets/fonts/specimen/MaterialIcons-Regular.woff2") format("woff2"),url("https://hektorprofe.github.io/assets/fonts/specimen/MaterialIcons-Regular.woff") format("woff"),url("https://hektorprofe.github.io/assets/fonts/specimen/MaterialIcons-Regular.ttf") format("truetype")}
 [data-md-color-primary="grey"] .md-header { background-color: #191A1D }
 [data-md-color-primary="grey"] .md-tabs { background-color: #222831 }
 .md-footer-nav { background-color: #222831; }
@@ -127,11 +127,11 @@ div.my-img{text-align:center;margin-top:20px}
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://hektorprofe.github.io/docs/"
+        <a href="https://hektorprofe.github.io/"
            title="Archivo - Archivo de Hektor Profe Docs"
            class="md-header-nav__button md-logo"
            style="font-size: 0px">
-          <img src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+          <img src="https://hektorprofe.github.io/assets/images/logo.png"
                width="200px"
                height="35px"
                style="margin-top: -5px"
@@ -150,9 +150,9 @@ div.my-img{text-align:center;margin-top:20px}
              href="https://hektorprofe.github.io/docs/"
              style="margin-left:1.4em"
              title="Buscador de documentos">Buscador</a>
-          <a href="https://hektorprofe.github.io/docs/">
+          <a href="https://hektorprofe.github.io/">
             <img class="nav__logo"
-                 src="https://hektorprofe.github.io/docs/assets/images/logo.png"
+                 src="https://hektorprofe.github.io/assets/images/logo.png"
                  width="200px"
                  height="35px"
                  style="margin: 6px auto 0"
@@ -1562,8 +1562,8 @@ menos os sirve de experiencia práctica.</p>
 crear una cuenta de principiante. El nombre de la cuenta será la
 dirección donde se publicará nuestro proyecto, así que elegid un buen
 nombre.</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image318.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image623.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image318.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image623.png" /></p>
 <p>Al registrarnos contaremos con nuestro propio subdominio, en mi caso:
 <a href="http://webpersonal.pythonanywhere.com/">http://webpersonal.pythonanywhere.com/</a> ,
 con hasta 512 MB de espacio.</p>
@@ -1583,14 +1583,14 @@ como si estuviéramos en la terminal del servidor.</p>
 <p>El siguiente paso es crear un entorno virtual para ejecutar nuestro
 proyecto, pero en lugar de utilizar Anaconda aquí tenemos que crearlo
 con la herramienta VirtualEnv, es la forma más clásica:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image340.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image340.png" /></p>
 <p>De forma similar a Anaconda podemos desactivar el entorno con:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image35.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image35.png" /></p>
 <p>Sin embargo para activarlo aquí deberemos ejecutar el script activate
 desde su propio directorio con un source:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image80.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image80.png" /></p>
 <p>Podemos hacer un pip list para ver qué paquetes nos vienen instalados:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image645.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image645.png" /></p>
 <p>Obviamente si vamos a utilizar Django y otros paquetes como Pillow y
 django-ckeditor deberíamos instalarlos aquí mismo, pero es una mejor
 práctica crear un fichero requirements.txt en nuestro repositorio para
@@ -1598,24 +1598,24 @@ luego instalarlo de forma mucho más cómoda. Iremos a nuestro directorio
 del repositorio, crearemos el fichero y añadiremos lo siguiente,
 haciendo referencia al nombre del paquete y a la versión que sabemos es
 estable en nuestro proyecto:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image856.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image518.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image856.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image518.png" /></p>
 <p>Ahora vamos a publicar los cambios:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image621.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image849.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image621.png" />\
+<img alt="" src="https://hektorprofe.github.io/cdn/django/images/image849.png" /></p>
 <p>Ahora vamos a clonar el repositorio desde la terminal Bash. Haremos un
 simple git clone (podemos pegar con Control+V):</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image539.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image539.png" /></p>
 <p>Con esto tenemos el repositorio ya en el servicio de PythonAnywhere,
 vamos a instalar las dependencias en el entorno virtual:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image176.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image176.png" /></p>
 <p>Esperamos un rato que instale todo…</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image89.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image89.png" /></p>
 <p>En este punto todos los paquetes habrán quedado instalados en nuestro
 entorno virtual y deberíamos ser capaces de ejecutar el scripts
 manage.py de forma normal.</p>
 <p>Así que vamos a ejecutar el comando: python manage.py check --deploy</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image546.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image546.png" /></p>
 <p>Es interesante ver cómo el propio Django analiza la configuración para
 avisarnos de todo lo que deberíamos solucionar antes de hacer poner el
 servidor en marcha en este entorno de producción.</p>
@@ -1623,13 +1623,13 @@ servidor en marcha en este entorno de producción.</p>
 True algunas opciones en el settings.py, otros son recomendaciones que
 se entienden leyendo la descripción. Sin embargo hay dos que son
 sumamente importantes:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image243.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image488.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image243.png" />\
+<img alt="" src="https://hektorprofe.github.io/cdn/django/images/image488.png" /></p>
 <p>Así que tenemos que arreglarlos antes de continuar.</p>
 <p>Simplemente editaremos el fichero settings.py con algún editor a través
 de la terminal:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image356.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image467.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image356.png" />\
+<img alt="" src="https://hektorprofe.github.io/cdn/django/images/image467.png" /></p>
 <p>Así desactivaremos el Debug y daremos permiso a los HOST locales,
 incluyendo el propio dominio de la página.</p>
 <p>La base de datos no tenemos que hacer nada con ella, ya que la hemos
@@ -1646,15 +1646,15 @@ encargue de mantener el servicio de Django en marcha.</p>
 <p>Abriremos otra pestaña en la sección Apps:
 <a href="https://www.pythonanywhere.com/user/webpersonal/webapps/">https://www.pythonanywhere.com/user/webpersonal/webapps/</a> y
 crearemos una nueva app:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image655.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image655.png" /></p>
 <p>Aunque en la lista nos salga la opción Django, no seleccionaremos esa
 opción, primero porque se crearía un nuevo proyecto y nosotros ya
 tenemos uno existente, y segundo porque tampoco tiene soporte para
 Django 2 automátic. Así que vamos a seleccionar la configuración Manual
 para Python 3.6:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image200.png" />+ <img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image210.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image200.png" />+ <img alt="" src="https://hektorprofe.github.io/cdn/django/images/image210.png" /></p>
 <p>Ahora nos indicará que debemos configurar nuestro propio fichero WSGI:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image662.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image662.png" /></p>
 <p>¿Recordáis al principio del curso cuando os comenté que dentro del
 proyecto Django, en el directorio donde está settings.py también hay un
 script llamado wsgi.py? Pues es hora de que este fichero entre en
@@ -1662,30 +1662,30 @@ escena, aunque de una forma distinta, ya que pythonanywhere utiliza su
 propia versión. Así que presionamos NEXT para crear la web app y acto
 seguido, una vez se cree, llegaremos a la página de gestión de nuestra
 web app:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image323.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image323.png" /></p>
 <p>De hecho ya podemos acceder a la página, aunque sólo nos aparecerá
 información de prueba:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image527.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image527.png" /></p>
 <p>¿De dónde sale esta información de prueba? Pues ni nada menos que del
 fichero wsgi que se está utilizando ahora mismo:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image58.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image58.png" /></p>
 <p>Luego volveremos a él, pero antes vamos a realizar la configuración
 inferior. Debemos introducir el directorio con el código fuente del
-proyecto y también el del entorno virtual:<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image58.png" /></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image58.png" /></p>
+proyecto y también el del entorno virtual:<img alt="" src="https://hektorprofe.github.io/cdn/django/images/image58.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image58.png" /></p>
 <p>El directorio del código fuente es obviamente donde encuentra el
 proyecto. Podemos consultarlo haciendo un pwd en la terminal,
 seleccionarlo y copiarlo con Control+C:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image656.png" /> \
-<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image157.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image656.png" /> \
+<img alt="" src="https://hektorprofe.github.io/cdn/django/images/image157.png" /></p>
 <p>El del entorno virtual podemos consultarlo haciendo un which python, y
 copiando la parte hasta el nombre del entorno:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image784.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image254.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image784.png" />\
+<img alt="" src="https://hektorprofe.github.io/cdn/django/images/image254.png" /></p>
 <p>Ahora vamos de vuelta al fichero WSGI que utiliza nuestro proyecto, si
 accedemos a él veremos que contiene una configuración de prueba en lugar
 de poner en marcha nuestro servidor Django:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image126.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image126.png" /></p>
 <p>Así que evidentemente tenemos que configurar una serie de cosillas para
 que todo funcione. Vamos a borrar todo el contenido, sí, todo. En su
 lugar vamos a copiar la configuración recomendada por la propia empresa.
@@ -1695,17 +1695,17 @@ nuestro proyecto y el de la variable de entorno DJANGO_SETTINGS_MODULE
 para que haga referencia al settings del proyecto:</p>
 <p><a href="https://help.pythonanywhere.com/pages/FollowingTheDjangoTutorial/">https://help.pythonanywhere.com/pages/FollowingTheDjangoTutorial/</a> </p>
 <p>MUCHO OJO CON LOS ESPACIOS (COMO EN LA CAPTURA EN EL PATH):</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image763.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image763.png" /></p>
 <p>Luego lo guardaremos y recargaremos el proyecto:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image293.png" /><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image387.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image293.png" /><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image387.png" /></p>
 <p>En teoría una vez se recargue, si visitamos nuestra página deberíamos
 funcionar perfectamente:</p>
 <p><a href="https://webpersonal.pythonanywhere.com/">https://webpersonal.pythonanywhere.com/</a></p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image480.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image480.png" /></p>
 <p>Podemos también visitar el panel de administrador:</p>
 <p><a href="https://webpersonal.pythonanywhere.com/admin/">https://webpersonal.pythonanywhere.com/admin/</a> 
 (hector -&gt; hola1234)</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image276.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image276.png" /></p>
 <p>Todos nos funcionará, excepto por una cosa: los ficheros media. Y es que
 estos ficheros no sé si lo recordaréis pero os dije muchas veces que se
 suelen servir con servidores como Nginx o Apache y por defecto Django no
@@ -1717,9 +1717,9 @@ tampoco es buena idea, deberíamos hacer unos ajustes finales para que
 nuestra webapp sirva los ficheros estáticos de forma correcta.</p>
 <p>Para ello vamos a hacer lo siguiente, iremos al apartado FILES de la
 webapp:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image107.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image107.png" /></p>
 <p>Aquí añadiremos dos urls y dos directorios:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image926.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image926.png" /></p>
 <p>Sé lo que estaréis pensando… El directorio media se entiende, pero
 ¿porque hemos puesto un directorio static si no existe en nuestra
 aplicación? Pues muy sencillo, porque vamos a crearlo manualmente y
@@ -1727,15 +1727,15 @@ copiaremos todos los ficheros estáticos ahí! Pero tranquilos, que no
 tenemos que hacerlo nosotros, Django lo hará por nosotros.</p>
 <p>Simplemente debemos ir al fichero settings y  justo abajo en la
 configuración de ficheros estáticos añadir la siguiente variable:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image925.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image925.png" /></p>
 <p>Guardamos el fichero, y ahora en nuestra terminal y con el entorno
 virtual en marcha vamos a ejecutar la magia potagia:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image153.png" />\
-<img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image253.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image153.png" />\
+<img alt="" src="https://hektorprofe.github.io/cdn/django/images/image253.png" /></p>
 <p>Habiendo hecho esto, reiniciamos la webapp:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image930.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image930.png" /></p>
 <p>Accedemos de nuevo a nuestra página y…</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image281.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image281.png" /></p>
 <p>Valorar si añadir un mailbox nuevo y probar a enviar un correo o no hace
 falta.</p>
 <p>Ya lo tenemos todo funcionando. Nuestra web app está lista, sirviendo
@@ -1743,7 +1743,7 @@ ficheros estáticos y media con el servidor de ficheros estáticos de
 Python Anywhere. ¿Qué os parece?</p>
 <p>Sólo una última cosa, debemos volver al panel de la webapp una vez cada
 tres meses si no queremos que la desactiven por inactividad:</p>
-<p><img alt="" src="https://hektorprofe.github.io/docs/cdn/django/images/image866.png" /></p>
+<p><img alt="" src="https://hektorprofe.github.io/cdn/django/images/image866.png" /></p>
 <p>Y bueno, todo lo que hemos visto es muy parecido en los demás servicios,
 dejando de banda las opciones de configuración específicas de cada uno,
 pero estoy seguro de que os habrá servido mucho, porque por lo menos
@@ -1866,8 +1866,8 @@ propios manos, que ya es algo.</p>
         <a id="anchorID" href="/docs/" target="_blank"></a>
       </div>
       <script type='text/javascript'
-              src="https://hektorprofe.github.io/docs/assets/javascripts/application.a26c1c21.js"></script>
-      <script src="https://hektorprofe.github.io/docs/assets/javascripts/tingle.min.js"></script>
+              src="https://hektorprofe.github.io/assets/javascripts/application.a26c1c21.js"></script>
+      <script src="https://hektorprofe.github.io/assets/javascripts/tingle.min.js"></script>
       <script type='text/javascript'>
     app.initialize({version:"1.2.3",url:{base:"../../.."}})
     var _extends=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(t[o]=n[o])}return t},_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t};!function(t,e){"object"===("undefined"==typeof exports?"undefined":_typeof(exports))&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):t.LazyLoad=e()}(this,function(){"use strict";function t(t,e,n){var o=e._settings;!n&&i(t)||(C(o.callback_enter,t),R.indexOf(t.tagName)>-1&&(N(t,e),I(t,o.class_loading)),E(t,e),a(t),C(o.callback_set,t))}var e={elements_selector:"img",container:document,threshold:300,thresholds:null,data_src:"src",data_srcset:"srcset",data_sizes:"sizes",data_bg:"bg",class_loading:"loading",class_loaded:"loaded",class_error:"error",load_delay:0,callback_load:null,callback_error:null,callback_set:null,callback_enter:null,callback_finish:null,to_webp:!1},n=function(t){return _extends({},e,t)},o=function(t,e){return t.getAttribute("data-"+e)},r=function(t,e,n){var o="data-"+e;null!==n?t.setAttribute(o,n):t.removeAttribute(o)},a=function(t){return r(t,"was-processed","true")},i=function(t){return"true"===o(t,"was-processed")},s=function(t,e){return r(t,"ll-timeout",e)},c=function(t){return o(t,"ll-timeout")},l=function(t){return t.filter(function(t){return!i(t)})},u=function(t,e){return t.filter(function(t){return t!==e})},d=function(t,e){var n,o=new t(e);try{n=new CustomEvent("LazyLoad::Initialized",{detail:{instance:o}})}catch(t){(n=document.createEvent("CustomEvent")).initCustomEvent("LazyLoad::Initialized",!1,!1,{instance:o})}window.dispatchEvent(n)},f=function(t,e){return e?t.replace(/\.(jpe?g|png)/gi,".webp"):t},_="undefined"!=typeof window,v=_&&!("onscroll"in window)||/(gle|ing|ro)bot|crawl|spider/i.test(navigator.userAgent),g=_&&"IntersectionObserver"in window,h=_&&"classList"in document.createElement("p"),b=_&&function(){var t=document.createElement("canvas");return!(!t.getContext||!t.getContext("2d"))&&0===t.toDataURL("image/webp").indexOf("data:image/webp")}(),m=function(t,e,n,r){for(var a,i=0;a=t.children[i];i+=1)if("SOURCE"===a.tagName){var s=o(a,n);p(a,e,s,r)}},p=function(t,e,n,o){n&&t.setAttribute(e,f(n,o))},y=function(t,e){var n=b&&e.to_webp,r=o(t,e.data_src),a=o(t,e.data_bg);if(r){var i=f(r,n);t.style.backgroundImage='url("'+i+'")'}if(a){var s=f(a,n);t.style.backgroundImage=s}},w={IMG:function(t,e){var n=b&&e.to_webp,r=e.data_srcset,a=t.parentNode;a&&"PICTURE"===a.tagName&&m(a,"srcset",r,n);var i=o(t,e.data_sizes);p(t,"sizes",i);var s=o(t,r);p(t,"srcset",s,n);var c=o(t,e.data_src);p(t,"src",c,n)},IFRAME:function(t,e){var n=o(t,e.data_src);p(t,"src",n)},VIDEO:function(t,e){var n=e.data_src,r=o(t,n);m(t,"src",n),p(t,"src",r),t.load()}},E=function(t,e){var n=e._settings,o=t.tagName,r=w[o];if(r)return r(t,n),e._updateLoadingCount(1),void(e._elements=u(e._elements,t));y(t,n)},I=function(t,e){h?t.classList.add(e):t.className+=(t.className?" ":"")+e},L=function(t,e){h?t.classList.remove(e):t.className=t.className.replace(new RegExp("(^|\\s+)"+e+"(\\s+|$)")," ").replace(/^\s+/,"").replace(/\s+$/,"")},C=function(t,e){t&&t(e)},O=function(t,e,n){t.addEventListener(e,n)},k=function(t,e,n){t.removeEventListener(e,n)},x=function(t,e,n){O(t,"load",e),O(t,"loadeddata",e),O(t,"error",n)},A=function(t,e,n){k(t,"load",e),k(t,"loadeddata",e),k(t,"error",n)},z=function(t,e,n){var o=n._settings,r=e?o.class_loaded:o.class_error,a=e?o.callback_load:o.callback_error,i=t.target;L(i,o.class_loading),I(i,r),C(a,i),n._updateLoadingCount(-1)},N=function(t,e){var n=function n(r){z(r,!0,e),A(t,n,o)},o=function o(r){z(r,!1,e),A(t,n,o)};x(t,n,o)},R=["IMG","IFRAME","VIDEO"],S=function(e,n,o){t(e,o),n.unobserve(e)},M=function(t){var e=c(t);e&&(clearTimeout(e),s(t,null))},j=function(t,e,n){var o=n._settings.load_delay,r=c(t);r||(r=setTimeout(function(){S(t,e,n),M(t)},o),s(t,r))},D=function(t){return t.isIntersecting||t.intersectionRatio>0},T=function(t){return{root:t.container===document?null:t.container,rootMargin:t.thresholds||t.threshold+"px"}},U=function(t,e){this._settings=n(t),this._setObserver(),this._loadingCount=0,this.update(e)};return U.prototype={_manageIntersection:function(t){var e=this._observer,n=this._settings.load_delay,o=t.target;n?D(t)?j(o,e,this):M(o):D(t)&&S(o,e,this)},_onIntersection:function(t){t.forEach(this._manageIntersection.bind(this))},_setObserver:function(){g&&(this._observer=new IntersectionObserver(this._onIntersection.bind(this),T(this._settings)))},_updateLoadingCount:function(t){this._loadingCount+=t,0===this._elements.length&&0===this._loadingCount&&C(this._settings.callback_finish)},update:function(t){var e=this,n=this._settings,o=t||n.container.querySelectorAll(n.elements_selector);this._elements=l(Array.prototype.slice.call(o)),!v&&this._observer?this._elements.forEach(function(t){e._observer.observe(t)}):this.loadAll()},destroy:function(){var t=this;this._observer&&(this._elements.forEach(function(e){t._observer.unobserve(e)}),this._observer=null),this._elements=null,this._settings=null},load:function(e,n){t(e,this,n)},loadAll:function(){var t=this;this._elements.forEach(function(e){t.load(e)})}},_&&function(t,e){if(e)if(e.length)for(var n,o=0;n=e[o];o+=1)d(t,n);else d(t,e)}(U,window.lazyLoadOptions),U});
