@@ -21,11 +21,6 @@
 <lastmod>2021-03-24</lastmod>
 <changefreq>monthly</changefreq>
 </url>
-<url>
-<loc>https://hektorprofe.github.io/docs/</loc>
-<lastmod>2021-03-24</lastmod>
-<changefreq>monthly</changefreq>
-</url>
 {%- for item in nav -%}
     {{ nav_item(item) }}
 {%- endfor %}
